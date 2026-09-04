@@ -1,0 +1,359 @@
+/*
+ * Magic-Style Input — flat hairline field with tonal focus.
+ * Classes: .ms-input (wrapper), .ms-input-native, .ms-input-prefix, .ms-input-suffix.
+ * States via data attributes: data-size, data-invalid, data-disabled.
+ */
+
+.ms-input {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-2);
+  block-size: var(--ms-layout-field-height-md);
+  padding-inline: var(--ms-space-3);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border-radius: var(--ms-control-radius);
+  background-color: var(--ms-color-surface-raised);
+  transition:
+    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-input:hover:not([data-disabled]):not([data-invalid]) {
+  border-color: var(--ms-color-border-strong);
+}
+
+.ms-input:focus-within {
+  border-color: var(--ms-focus-ring-color);
+  box-shadow: 0 0 0 1px var(--ms-focus-ring-color);
+}
+
+.ms-input[data-invalid] {
+  border-color: var(--ms-color-feedback-danger-border);
+}
+.ms-input[data-invalid]:focus-within {
+  border-color: var(--ms-color-feedback-danger-border);
+  box-shadow: 0 0 0 1px var(--ms-color-feedback-danger-border);
+}
+
+.ms-input[data-disabled] {
+  background-color: var(--ms-color-surface-sunken);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ms-input[data-size="sm"] {
+  block-size: var(--ms-layout-field-height-sm);
+}
+.ms-input[data-size="lg"] {
+  block-size: var(--ms-layout-field-height-lg);
+}
+.ms-input[data-size="xl"] {
+  block-size: var(--ms-layout-field-height-xl);
+}
+.ms-input[data-size="xxl"] {
+  block-size: var(--ms-layout-field-height-xxl);
+}
+
+.ms-input-native {
+  flex: 1;
+  min-inline-size: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-md);
+  color: var(--ms-color-text-primary);
+}
+.ms-input-native::placeholder {
+  color: var(--ms-color-text-muted);
+}
+.ms-input-native:disabled {
+  cursor: not-allowed;
+}
+
+.ms-input-prefix,
+.ms-input-suffix {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--ms-font-mono);
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-muted);
+  flex-shrink: 0;
+}
+
+/* ---------- Tone variations (border + focus follow the tone) ---------- */
+
+.ms-input[data-tone="success"] {
+  border-color: var(--ms-color-feedback-success-border);
+}
+.ms-input[data-tone="success"]:focus-within {
+  border-color: var(--ms-color-feedback-success-text);
+  box-shadow: 0 0 0 1px var(--ms-color-feedback-success-text);
+}
+.ms-input[data-tone="info"] {
+  border-color: var(--ms-color-feedback-info-border);
+}
+.ms-input[data-tone="info"]:focus-within {
+  border-color: var(--ms-color-feedback-info-text);
+  box-shadow: 0 0 0 1px var(--ms-color-feedback-info-text);
+}
+.ms-input[data-tone="warning"] {
+  border-color: var(--ms-color-feedback-warning-border);
+}
+.ms-input[data-tone="warning"]:focus-within {
+  border-color: var(--ms-color-feedback-warning-text);
+  box-shadow: 0 0 0 1px var(--ms-color-feedback-warning-text);
+}
+
+/* ---------- Addons: integrated input groups (shared silhouette) ---------- */
+
+.ms-input-group {
+  display: flex;
+  align-items: stretch;
+  inline-size: 100%;
+}
+.ms-input-group .ms-input {
+  flex: 1 1 auto;
+}
+.ms-input-group .ms-input:not(:last-child) {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+.ms-input-group .ms-button {
+  flex-shrink: 0;
+  block-size: auto;
+}
+.ms-input-group .ms-button[data-attached="start"] {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+  margin-inline-end: calc(-1 * var(--ms-border-hairline));
+}
+.ms-input-group .ms-button[data-attached="end"] {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+  margin-inline-start: calc(-1 * var(--ms-border-hairline));
+}
+
+/* Focus highlights the compound as ONE element */
+.ms-input-group:focus-within {
+  box-shadow: 0 0 0 1px var(--ms-focus-ring-color);
+  border-radius: var(--ms-control-radius);
+}
+.ms-input-group:focus-within .ms-input,
+.ms-input-group:focus-within .ms-input:hover {
+  border-color: var(--ms-focus-ring-color);
+  box-shadow: none;
+}
+.ms-input-group:focus-within .ms-button[data-attached],
+.ms-input-group:focus-within .ms-button[data-attached]:hover {
+  border-color: var(--ms-focus-ring-color);
+  box-shadow: inset 0 0 0 1px var(--ms-focus-ring-color);
+}
+
+/* ---------- Processing: spinner in suffix ---------- */
+
+.ms-input[data-processing] {
+  cursor: progress;
+}
+.ms-input[data-processing] .ms-input-native {
+  cursor: progress;
+}
+.ms-input-spinner {
+  inline-size: 14px;
+  block-size: 14px;
+  flex-shrink: 0;
+  border-radius: var(--ms-radius-full);
+  border: var(--ms-border-thick) solid
+    color-mix(in oklch, var(--ms-color-text-muted) 30%, transparent);
+  border-block-start-color: var(--ms-color-text-muted);
+  animation: ms-button-spin var(--ms-motion-duration-deliberate) linear infinite;
+}
+
+/* ---------- Floating label (opt-in via data-floating) ---------- */
+
+.ms-input[data-floating] {
+  position: relative;
+}
+.ms-input[data-floating] .ms-input-native::placeholder {
+  color: transparent;
+}
+.ms-input-floating-label {
+  position: absolute;
+  inset-inline-start: var(--ms-space-3);
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  padding-inline: var(--ms-space-1);
+  background-color: var(--ms-color-surface-raised);
+  border-radius: var(--ms-radius-xs);
+  font-size: var(--ms-typography-size-md);
+  color: var(--ms-color-text-muted);
+  pointer-events: none;
+  transition:
+    transform var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    font-size var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+.ms-input[data-floating]:focus-within .ms-input-floating-label,
+.ms-input[data-floating] .ms-input-native:not(:placeholder-shown) + .ms-input-floating-label,
+.ms-input[data-floating] .ms-input-native:not(:placeholder-shown) ~ .ms-input-floating-label {
+  inset-block-start: 0;
+  transform: translateY(-50%) scale(0.78);
+  transform-origin: inline-start;
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-focus-ring-color);
+}
+
+/* ---------- Textarea ---------- */
+
+.ms-textarea {
+  display: inline-flex;
+  align-items: stretch;
+  min-block-size: 96px;
+  padding-block: var(--ms-space-2);
+  resize: vertical;
+}
+.ms-textarea .ms-input-native {
+  resize: vertical;
+  line-height: var(--ms-typography-line-height-base);
+}
+
+/* ---------- Pill shape (opt-in) ---------- */
+
+.ms-input[data-pill] {
+  border-radius: var(--ms-radius-full);
+  padding-inline: var(--ms-space-4);
+}
+.ms-input[data-pill][data-floating] .ms-input-floating-label {
+  inset-inline-start: var(--ms-space-4);
+}
+
+/* ---------- Kbd chip (keyboard shortcuts inside inputs) ---------- */
+
+.ms-input-kbd {
+  display: inline-flex;
+  align-items: center;
+  padding-inline: var(--ms-space-1);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border-radius: var(--ms-radius-sm);
+  background-color: var(--ms-color-surface-sunken);
+  font-family: var(--ms-font-mono);
+  font-size: var(--ms-typography-size-2xs);
+  color: var(--ms-color-text-muted);
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+/* ---------- Inline select (select embedded as prefix/suffix) ---------- */
+
+.ms-input-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  position: relative;
+  color: var(--ms-color-interactive-primary-text);
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-medium);
+  line-height: 1;
+}
+.ms-input-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  outline: none;
+  cursor: pointer;
+  max-inline-size: 160px;
+}
+.ms-input-select select:hover {
+  color: var(--ms-color-interactive-primary);
+}
+.ms-input-select svg {
+  flex-shrink: 0;
+  opacity: 0.65;
+  transition: opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+.ms-input-select select:hover + svg,
+.ms-input-select select:focus + svg {
+  opacity: 1;
+}
+
+/* ---------- Custom select (styled dropdown replacing native popup) ---------- */
+
+.ms-input {
+  position: relative;
+}
+.ms-select-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  outline: none;
+}
+.ms-select-trigger:hover {
+  color: var(--ms-color-interactive-primary);
+}
+.ms-select-trigger svg {
+  flex-shrink: 0;
+  opacity: 0.65;
+  transition:
+    opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    transform var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+.ms-select-trigger:hover svg {
+  opacity: 1;
+}
+.ms-select-trigger[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+.ms-select-popup {
+  position: absolute;
+  inset-block-start: calc(100% + var(--ms-space-1));
+  inset-inline-start: 0;
+  z-index: var(--ms-z-index-dropdown);
+  min-inline-size: 180px;
+}
+.ms-select-popup[data-align="end"] {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+}
+.ms-select-popup .ms-menu-item[data-checked] {
+  font-weight: var(--ms-typography-weight-semibold);
+}
+
+/* ---------- No-focus (bare) input ---------- */
+
+.ms-input[data-nofocus] {
+  border-color: transparent;
+  background-color: transparent;
+  box-shadow: none;
+}
+.ms-input[data-nofocus]:hover {
+  border-color: var(--ms-color-border-default);
+}
+.ms-input[data-nofocus]:focus-within,
+.ms-input[data-nofocus][data-tone]:focus-within {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/* ---------- Embedded checkbox/radio inside inputs ---------- */
+
+.ms-input .ms-checkbox,
+.ms-input .ms-radio {
+  flex-shrink: 0;
+  font-size: var(--ms-typography-size-sm);
+}

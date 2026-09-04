@@ -1,0 +1,42 @@
+{
+  "name": "@magic-style/css",
+  "version": "0.1.0",
+  "description": "Magic-Style official CSS: semantic component classes and design-token layers. Framework-free.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": true,
+  "exports": {
+    ".": "./dist/index.css",
+    "./reset.css": "./dist/reset.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./themes.css": "./dist/themes.css",
+    "./base.css": "./dist/base.css",
+    "./utilities.css": "./dist/utilities.css",
+    "./components/button.css": "./dist/components/button.css",
+    "./components/button-group.css": "./dist/components/button-group.css",
+    "./components/menu.css": "./dist/components/menu.css",
+    "./components/field.css": "./dist/components/field.css",
+    "./components/input.css": "./dist/components/input.css",
+    "./components/checkbox.css": "./dist/components/checkbox.css",
+    "./components/radio.css": "./dist/components/radio.css",
+    "./components/switch.css": "./dist/components/switch.css",
+    "./components/index.css": "./dist/components/index.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "node scripts/check-package.mjs",
+    "test": "node scripts/build.mjs && vitest run",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vitest": "^4.1.11"
+  },
+  "dependencies": {
+    "@magic-style-internal/tokens": "workspace:*",
+    "@magic-style-internal/themes": "workspace:*"
+  }
+}

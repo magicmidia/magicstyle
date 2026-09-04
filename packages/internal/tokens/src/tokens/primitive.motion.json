@@ -1,0 +1,16 @@
+{
+  "$schema": "https://designtokens.dev/dtcg/schema.json",
+  "duration": {
+    "instant": { "$type": "duration", "$value": "0ms" },
+    "fast": { "$type": "duration", "$value": "120ms" },
+    "base": { "$type": "duration", "$value": "200ms" },
+    "slow": { "$type": "duration", "$value": "320ms" },
+    "deliberate": { "$type": "duration", "$value": "480ms" }
+  },
+  "easing": {
+    "standard": { "$type": "other", "$value": "cubic-bezier(0.16, 1, 0.3, 1)" },
+    "entrance": { "$type": "other", "$value": "cubic-bezier(0.05, 0.7, 0.1, 1)" },
+    "exit": { "$type": "other", "$value": "cubic-bezier(0.3, 0, 0.8, 0.15)" },
+    "emphasized": { "$type": "other", "$value": "cubic-bezier(0.22, 1.4, 0.36, 1)" }
+  }
+}

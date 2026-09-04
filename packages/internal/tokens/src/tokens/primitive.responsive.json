@@ -1,0 +1,17 @@
+{
+  "$schema": "https://designtokens.dev/dtcg/schema.json",
+  "viewport-breakpoint": {
+    "sm": { "$type": "dimension", "$value": "640px" },
+    "md": { "$type": "dimension", "$value": "768px" },
+    "lg": { "$type": "dimension", "$value": "1024px" },
+    "xl": { "$type": "dimension", "$value": "1280px" },
+    "2xl": { "$type": "dimension", "$value": "1536px" }
+  },
+  "container-size": {
+    "xs": { "$type": "dimension", "$value": "240px" },
+    "sm": { "$type": "dimension", "$value": "384px" },
+    "md": { "$type": "dimension", "$value": "576px" },
+    "lg": { "$type": "dimension", "$value": "768px" },
+    "xl": { "$type": "dimension", "$value": "1024px" }
+  }
+}

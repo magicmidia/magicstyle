@@ -1,0 +1,63 @@
+/*
+ * Magic-Style Menu — flat hairline panel with keyboard-navigable items.
+ * Classes: .ms-menu, .ms-menu-item. Depends on tokens.css + themes.css.
+ */
+
+.ms-menu {
+  min-inline-size: 168px;
+  padding: var(--ms-space-1);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-md);
+  background-color: var(--ms-color-surface-raised);
+  display: grid;
+  gap: 2px;
+}
+
+/* The hidden attribute must always win over the grid display */
+.ms-menu[hidden] {
+  display: none;
+}
+
+.ms-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-2);
+  padding: var(--ms-space-2) var(--ms-space-3);
+  border-radius: var(--ms-radius-sm);
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text-primary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.ms-menu-item:hover:not([data-disabled]),
+.ms-menu-item[data-active] {
+  background-color: var(--ms-color-interactive-accent-subtle);
+  color: var(--ms-color-interactive-accent-text);
+}
+
+.ms-menu-item[data-disabled] {
+  color: var(--ms-color-text-subtle);
+  cursor: not-allowed;
+}
+
+.ms-menu-item[data-selected] {
+  font-weight: var(--ms-typography-weight-semibold);
+}
+
+.ms-menu-item .ms-button-suffix {
+  margin-inline-start: auto;
+}
+
+/* Dropdown anchor */
+.ms-dropdown {
+  position: relative;
+  display: inline-flex;
+}
+
+.ms-dropdown .ms-menu {
+  position: absolute;
+  inset-block-start: calc(100% + var(--ms-space-1));
+  inset-inline-start: 0;
+  z-index: var(--ms-z-index-dropdown);
+}

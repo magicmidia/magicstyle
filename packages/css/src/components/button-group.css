@@ -1,0 +1,40 @@
+/*
+ * Magic-Style Button Group — joined controls (doc 09 §2 components layer).
+ * Class: .ms-button-group. Children join borders and share one silhouette.
+ */
+
+.ms-button-group {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.ms-button-group .ms-button {
+  border-radius: 0;
+}
+
+.ms-button-group .ms-button:not(:first-child) {
+  margin-inline-start: calc(-1 * var(--ms-border-hairline));
+}
+
+/* First/last keep the outer corners; pill groups keep outer pill halves */
+.ms-button-group .ms-button:first-child {
+  border-start-start-radius: var(--ms-control-radius);
+  border-end-start-radius: var(--ms-control-radius);
+}
+.ms-button-group .ms-button:last-child {
+  border-start-end-radius: var(--ms-control-radius);
+  border-end-end-radius: var(--ms-control-radius);
+}
+.ms-button-group .ms-button[data-pill]:first-child {
+  border-start-start-radius: var(--ms-radius-full);
+  border-end-start-radius: var(--ms-radius-full);
+}
+.ms-button-group .ms-button[data-pill]:last-child {
+  border-start-end-radius: var(--ms-radius-full);
+  border-end-end-radius: var(--ms-radius-full);
+}
+
+/* Focused member raises above its neighbors */
+.ms-button-group .ms-button:focus-visible {
+  z-index: 1;
+}

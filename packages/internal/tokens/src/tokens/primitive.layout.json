@@ -1,0 +1,17 @@
+{
+  "$schema": "https://designtokens.dev/dtcg/schema.json",
+  "sidebar-width": { "$type": "dimension", "$value": "272px" },
+  "sidebar-collapsed-width": { "$type": "dimension", "$value": "64px" },
+  "rail-width": { "$type": "dimension", "$value": "80px" },
+  "topbar-height": { "$type": "dimension", "$value": "56px" },
+  "statusbar-height": { "$type": "dimension", "$value": "28px" },
+  "toolbar-height": { "$type": "dimension", "$value": "44px" },
+  "toolbar-gap": { "$type": "dimension", "$value": "8px" },
+  "page-gutter": { "$type": "dimension", "$value": "24px" },
+  "touch-target-min": { "$type": "dimension", "$value": "44px" },
+  "field-height-sm": { "$type": "dimension", "$value": "32px" },
+  "field-height-md": { "$type": "dimension", "$value": "36px" },
+  "field-height-lg": { "$type": "dimension", "$value": "40px" },
+  "field-height-xl": { "$type": "dimension", "$value": "46px" },
+  "field-height-xxl": { "$type": "dimension", "$value": "56px" }
+}

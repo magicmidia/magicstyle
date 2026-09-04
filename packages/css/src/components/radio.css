@@ -1,0 +1,74 @@
+/*
+ * Magic-Style Radio — circular mark drawn in CSS.
+ * Classes: .ms-radio (label wrapper), .ms-radio-dot, .ms-radio-native (sr).
+ */
+
+.ms-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-2);
+  cursor: pointer;
+  color: var(--ms-color-text-primary);
+  font-size: var(--ms-typography-size-sm);
+  user-select: none;
+}
+
+.ms-radio-dot {
+  position: relative;
+  block-size: 16px;
+  inline-size: 16px;
+  flex-shrink: 0;
+  border: var(--ms-border-hairline) solid var(--ms-color-border-strong);
+  border-radius: var(--ms-radius-full);
+  background-color: var(--ms-color-surface-raised);
+  transition:
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-radio-native {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.ms-radio-dot::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: var(--ms-radius-full);
+  background-color: var(--ms-color-text-on-accent);
+  transform: scale(0);
+  transition: transform var(--ms-motion-duration-fast) var(--ms-motion-easing-emphasized);
+}
+
+.ms-radio-native:checked + .ms-radio-dot {
+  background-color: var(--ms-color-interactive-primary);
+  border-color: var(--ms-color-interactive-primary);
+}
+.ms-radio-native:checked + .ms-radio-dot::after {
+  transform: scale(1);
+}
+
+.ms-radio-native:focus-visible + .ms-radio-dot {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
+}
+
+.ms-radio[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ms-radio:hover:not([data-disabled]) .ms-radio-dot {
+  border-color: var(--ms-color-interactive-primary);
+}
+
+/* Group layout */
+.ms-radio-group {
+  display: inline-flex;
+  gap: var(--ms-space-3);
+  align-items: center;
+}

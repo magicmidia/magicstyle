@@ -1,0 +1,62 @@
+{
+  "$schema": "https://designtokens.dev/dtcg/schema.json",
+  "elevation": {
+    "1": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px",
+          "color": "oklch(0.189 0.016 248 / 0.10)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "1px",
+          "spread": "-1px",
+          "color": "oklch(0.189 0.016 248 / 0.06)"
+        }
+      ]
+    },
+    "2": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "12px",
+          "spread": "-2px",
+          "color": "oklch(0.189 0.018 248 / 0.12)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px",
+          "color": "oklch(0.189 0.016 248 / 0.06)"
+        }
+      ]
+    },
+    "3": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "12px",
+          "blur": "32px",
+          "spread": "-8px",
+          "color": "oklch(0.120 0.014 248 / 0.18)"
+        },
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "6px",
+          "spread": "-2px",
+          "color": "oklch(0.120 0.012 248 / 0.08)"
+        }
+      ]
+    }
+  }
+}

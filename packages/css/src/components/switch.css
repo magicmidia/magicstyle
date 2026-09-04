@@ -1,0 +1,70 @@
+/*
+ * Magic-Style Switch — pill track + sliding thumb.
+ * Classes: .ms-switch (label wrapper), .ms-switch-track, .ms-switch-native (sr).
+ */
+
+.ms-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-2);
+  cursor: pointer;
+  color: var(--ms-color-text-primary);
+  font-size: var(--ms-typography-size-sm);
+  user-select: none;
+}
+
+.ms-switch-track {
+  position: relative;
+  block-size: 20px;
+  inline-size: 36px;
+  flex-shrink: 0;
+  border-radius: var(--ms-radius-full);
+  background-color: var(--ms-color-border-strong);
+  transition: background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-switch-native {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.ms-switch-track::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 2px;
+  inset-inline-start: 2px;
+  block-size: 16px;
+  inline-size: 16px;
+  border-radius: var(--ms-radius-full);
+  background-color: var(--ms-color-surface-raised);
+  box-shadow: 0 1px 2px color-mix(in oklch, var(--ms-color-text-primary) 25%, transparent);
+  transition: transform var(--ms-motion-duration-fast) var(--ms-motion-easing-emphasized);
+}
+
+.ms-switch-native:checked + .ms-switch-track {
+  background-color: var(--ms-color-interactive-primary);
+}
+.ms-switch-native:checked + .ms-switch-track::after {
+  transform: translateX(16px);
+}
+
+.ms-switch-native:focus-visible + .ms-switch-track {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
+}
+
+.ms-switch[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ms-switch:hover:not([data-disabled]) .ms-switch-track {
+  background-color: color-mix(
+    in oklch,
+    var(--ms-color-border-strong) 80%,
+    var(--ms-color-interactive-primary)
+  );
+}

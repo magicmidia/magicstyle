@@ -1,0 +1,1150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Magic-Style: Form tests</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    `n
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/themes.css" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/utilities.css" />
+    <link rel="stylesheet" href="/css/components/index.css" />
+    <style>
+      body {
+        min-block-size: 100vh;
+        background: var(--ms-color-surface-default);
+        color: var(--ms-color-text-primary);
+        font-family: var(--ms-font-sans);
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        gap: var(--ms-space-4);
+        padding-inline: var(--ms-space-4);
+        block-size: var(--ms-layout-topbar-height);
+        background: var(--ms-color-surface-inverse);
+        color: var(--ms-color-text-inverse);
+        position: sticky;
+        inset-block-start: 0;
+        z-index: var(--ms-z-index-sticky);
+      }
+      .logo {
+        font-family: var(--ms-font-display);
+        font-weight: var(--ms-typography-weight-bold);
+        font-size: var(--ms-typography-size-lg);
+        letter-spacing: -0.01em;
+        color: var(--ms-color-text-inverse);
+        text-decoration: none;
+      }
+      .logo span {
+        color: var(--ms-color-interactive-primary);
+      }
+      .nav {
+        display: flex;
+        gap: var(--ms-space-1);
+      }
+      .nav a {
+        padding: var(--ms-space-1) var(--ms-space-3);
+        border-radius: var(--ms-radius-md);
+        color: color-mix(in oklch, var(--ms-color-text-inverse) 70%, transparent);
+        text-decoration: none;
+        font-size: var(--ms-typography-size-sm);
+        font-weight: var(--ms-typography-weight-medium);
+      }
+      .nav a.is-active {
+        background-color: var(--ms-color-interactive-accent);
+        color: var(--ms-color-text-on-accent);
+      }
+      .icon-moon {
+        display: none;
+      }
+      html[data-ms-color-mode="dark"] .icon-sun {
+        display: none;
+      }
+      html[data-ms-color-mode="dark"] .icon-moon {
+        display: block;
+      }
+      .main {
+        display: grid;
+        gap: var(--ms-space-6);
+        padding: var(--ms-space-6);
+        max-inline-size: 1280px;
+        margin-inline: auto;
+      }
+      .panel {
+        border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+        border-radius: var(--ms-radius-lg);
+        background-color: var(--ms-color-surface-raised);
+        padding: var(--ms-space-6);
+        display: grid;
+        gap: var(--ms-space-3);
+        align-content: start;
+      }
+      h1 {
+        font-size: var(--ms-typography-size-3xl);
+        letter-spacing: var(--ms-typography-letter-spacing-tight);
+        font-family: var(--ms-font-display);
+      }
+      .section-title {
+        font-family: var(--ms-font-mono);
+        font-size: var(--ms-typography-size-xs);
+        letter-spacing: var(--ms-typography-letter-spacing-micro);
+        text-transform: uppercase;
+        color: var(--ms-color-text-muted);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--ms-space-6);
+        align-items: start;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--ms-space-5);
+        align-items: center;
+      }
+      .demo {
+        display: grid;
+        gap: 2px;
+        grid-template-columns: minmax(0, 1fr);
+        align-content: start;
+      }
+      .demo > .ms-input,
+      .demo > .ms-input-group {
+        min-inline-size: 0;
+      }
+      .demo .caption {
+        font-family: var(--ms-font-mono);
+        font-size: var(--ms-typography-size-2xs);
+        letter-spacing: var(--ms-typography-letter-spacing-micro);
+        text-transform: uppercase;
+        color: var(--ms-color-text-muted);
+        line-height: 1;
+      }
+      .ms-field {
+        gap: var(--ms-space-1);
+      }
+      .ms-field-label {
+        line-height: 1.2;
+      }
+      .ms-field > .ms-input,
+      .demo > .ms-input,
+      .ms-field > .ms-input-group,
+      .demo > .ms-input-group {
+        inline-size: 100%;
+      }
+    </style>
+  </head>
+  <body data-ms-theme="magic">
+    <header class="topbar">
+      <a class="logo" href="/">MAGIC<span>/</span>STYLE</a>
+      <nav class="nav" aria-label="Pages">
+        <a href="/buttons.html">Buttons</a>
+        <a class="is-active" href="/forms.html">Forms</a>
+      </nav>
+      <button
+        class="ms-button"
+        data-ms-button
+        data-variant="outline"
+        data-tone="primary"
+        data-size="md"
+        data-mode-toggle
+        style="
+          margin-inline-start: auto;
+          color: var(--ms-color-text-inverse);
+          border-color: color-mix(in oklch, var(--ms-color-text-inverse) 40%, transparent);
+        "
+        aria-label="Toggle color mode"
+      >
+        <span class="ms-button-icon">
+          <svg
+            class="icon-sun"
+            width="15"
+            height="15"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <circle cx="8" cy="8" r="3" />
+            <path
+              d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M12.6 3.4l-1.4 1.4M4.8 11.2l-1.4 1.4"
+            />
+          </svg>
+          <svg
+            class="icon-moon"
+            width="15"
+            height="15"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path d="M13.5 9.5A6 6 0 0 1 6.5 2.5a6 6 0 1 0 7 7z" />
+          </svg>
+        </span>
+        <span class="ms-button-label" data-mode-label>Dark mode</span>
+      </button>
+    </header>
+
+    <main class="main">
+      <h1>MsField · MsInput · MsTextarea — test page</h1>
+
+      <section class="panel">
+        <span class="section-title">Inputs: estados</span>
+        <div class="grid">
+          <div class="ms-field">
+            <label class="ms-field-label" for="e-mail">Email</label>
+            <div class="ms-input" data-size="md">
+              <input
+                id="e-mail"
+                class="ms-input-native"
+                type="email"
+                placeholder="voce@empresa.com"
+              />
+            </div>
+            <p class="ms-field-description">Usado para login e notificações.</p>
+          </div>
+          <div class="ms-field" data-required>
+            <label class="ms-field-label" for="e-nome">Nome completo</label>
+            <div class="ms-input" data-size="md">
+              <input id="e-nome" class="ms-input-native" type="text" value="Ada Lovelace" />
+            </div>
+          </div>
+          <div class="ms-field">
+            <label class="ms-field-label" for="e-err">Senha</label>
+            <div class="ms-input" data-size="md" data-invalid>
+              <input
+                id="e-err"
+                class="ms-input-native"
+                type="password"
+                value="1234"
+                aria-invalid="true"
+              />
+            </div>
+            <p class="ms-field-error">Mínimo de 8 caracteres.</p>
+          </div>
+          <div class="ms-field">
+            <label class="ms-field-label" for="e-dis">Desabilitado</label>
+            <div class="ms-input" data-size="md" data-disabled>
+              <input
+                id="e-dis"
+                class="ms-input-native"
+                type="text"
+                placeholder="Somente leitura"
+                disabled
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">Grupos integrados (input + botão)</span>
+        <div class="grid">
+          <div class="demo">
+            <span class="caption">Busca com ação</span>
+            <div class="ms-input-group">
+              <div class="ms-input" data-size="md">
+                <span class="ms-input-prefix" data-ms-slot="prefix">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <circle cx="7" cy="7" r="4.5" />
+                    <path d="M10.5 10.5L14 14" />
+                  </svg>
+                </span>
+                <input
+                  class="ms-input-native"
+                  type="search"
+                  placeholder="Buscar documentos…"
+                  aria-label="busca"
+                />
+              </div>
+              <button
+                class="ms-button"
+                data-ms-button
+                data-variant="solid"
+                data-tone="primary"
+                data-size="md"
+                data-attached="end"
+              >
+                Buscar
+              </button>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Código + copiar</span>
+            <div class="ms-input-group">
+              <div class="ms-input" data-size="md">
+                <span class="ms-input-prefix" data-ms-slot="prefix">#</span>
+                <input
+                  class="ms-input-native"
+                  type="text"
+                  value="MS-2026-0001"
+                  aria-label="código"
+                />
+              </div>
+              <button
+                class="ms-button"
+                data-ms-button
+                data-variant="outline"
+                data-tone="primary"
+                data-size="md"
+                data-attached="end"
+              >
+                Copiar
+              </button>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Newsletter</span>
+            <div class="ms-input-group">
+              <div class="ms-input" data-size="md">
+                <input
+                  class="ms-input-native"
+                  type="email"
+                  placeholder="seu@email.com"
+                  aria-label="email newsletter"
+                />
+              </div>
+              <button
+                class="ms-button"
+                data-ms-button
+                data-variant="soft"
+                data-tone="primary"
+                data-size="md"
+                data-attached="end"
+              >
+                Assinar
+              </button>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Peso + confirmar</span>
+            <div class="ms-input-group">
+              <div class="ms-input" data-size="md">
+                <input
+                  class="ms-input-native"
+                  type="text"
+                  value="42"
+                  inputmode="decimal"
+                  aria-label="peso"
+                />
+                <span class="ms-input-suffix" data-ms-slot="suffix">kg</span>
+              </div>
+              <button
+                class="ms-button"
+                data-ms-button
+                data-variant="soft"
+                data-tone="success"
+                data-size="md"
+                data-attached="end"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">Moedas e unidades (prefixo/sufixo)</span>
+        <div class="grid">
+          <div class="demo">
+            <span class="caption">BRL</span>
+            <div class="ms-input" data-size="md">
+              <span class="ms-input-prefix" data-ms-slot="prefix">$</span>
+              <input
+                class="ms-input-native"
+                type="text"
+                value="1.280,00"
+                inputmode="decimal"
+                aria-label="valor em reais"
+              />
+              <span class="ms-input-suffix" data-ms-slot="suffix">BRL</span>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">EUR</span>
+            <div class="ms-input" data-size="md">
+              <input
+                class="ms-input-native"
+                type="text"
+                value="2.450,75"
+                inputmode="decimal"
+                aria-label="valor em euros"
+              />
+              <span class="ms-input-suffix" data-ms-slot="suffix">€</span>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Percentual</span>
+            <div class="ms-input" data-size="md">
+              <input
+                class="ms-input-native"
+                type="text"
+                value="12,5"
+                inputmode="decimal"
+                aria-label="percentual"
+              />
+              <span class="ms-input-suffix" data-ms-slot="suffix">%</span>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Quilometragem</span>
+            <div class="ms-input" data-size="md">
+              <input
+                class="ms-input-native"
+                type="text"
+                value="128.4"
+                inputmode="decimal"
+                aria-label="quilometragem"
+              />
+              <span class="ms-input-suffix" data-ms-slot="suffix">km</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">Processing &amp; customized</span>
+        <div class="grid">
+          <div class="demo">
+            <span class="caption">Processing (spinner)</span>
+            <div class="ms-input" data-size="md" data-processing>
+              <input
+                class="ms-input-native"
+                type="text"
+                value="Verificando…"
+                disabled
+                aria-label="processing input"
+              />
+              <span class="ms-input-spinner" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Customizado (ícone + cor + badge)</span>
+            <div class="ms-input" data-size="md" data-tone="info">
+              <span class="ms-input-prefix" data-ms-slot="prefix">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M8 9.5V7M8 4.5v.5M8 14a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
+                </svg>
+              </span>
+              <input
+                class="ms-input-native"
+                type="text"
+                value="Sincronizado há 2 min"
+                aria-label="customized input"
+              />
+              <span class="ms-input-suffix" data-ms-slot="suffix">LIVE</span>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Máscara de domínio</span>
+            <div class="ms-input" data-size="md">
+              <input class="ms-input-native" type="text" value="acme" aria-label="domínio" />
+              <span class="ms-input-suffix" data-ms-slot="suffix">.magic.style</span>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Senha com ação</span>
+            <div class="ms-input-group">
+              <div class="ms-input" data-size="md">
+                <input class="ms-input-native" type="password" value="segredo" aria-label="senha" />
+              </div>
+              <button
+                class="ms-button"
+                data-ms-button
+                data-variant="ghost"
+                data-tone="primary"
+                data-size="md"
+                data-attached="end"
+                data-icon-only
+                aria-label="Mostrar senha"
+              >
+                <span class="ms-button-icon"
+                  ><svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path d="M2 8s2.5-4 6-4 6 4 6 4-2.5 4-6 4-6-4-6-4z" />
+                    <circle cx="8" cy="8" r="2" /></svg
+                ></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">Inputs: tonalidades</span>
+        <div class="grid">
+          <div class="demo">
+            <span class="caption">Success</span>
+            <div class="ms-input" data-size="md" data-tone="success">
+              <input
+                class="ms-input-native"
+                type="text"
+                value="Disponível"
+                aria-label="success input"
+              />
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Info</span>
+            <div class="ms-input" data-size="md" data-tone="info">
+              <input
+                class="ms-input-native"
+                type="text"
+                value="Sincronizado"
+                aria-label="info input"
+              />
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Warning</span>
+            <div class="ms-input" data-size="md" data-tone="warning">
+              <input
+                class="ms-input-native"
+                type="text"
+                value="Próximo do limite"
+                aria-label="warning input"
+              />
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Danger</span>
+            <div class="ms-input" data-size="md" data-tone="danger">
+              <input
+                class="ms-input-native"
+                type="text"
+                value="Falha na conexão"
+                aria-label="danger input"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">Floating labels (opt-in)</span>
+        <div class="grid">
+          <div class="ms-input" data-size="md" data-floating>
+            <input
+              class="ms-input-native"
+              type="text"
+              placeholder=" "
+              aria-label="floating email"
+            />
+            <label class="ms-input-floating-label">Email</label>
+          </div>
+          <div class="ms-input" data-size="md" data-floating>
+            <input
+              class="ms-input-native"
+              type="text"
+              value="Ada Lovelace"
+              placeholder=" "
+              aria-label="floating nome"
+            />
+            <label class="ms-input-floating-label">Nome completo</label>
+          </div>
+          <div class="ms-input" data-size="md" data-floating>
+            <input
+              class="ms-input-native"
+              type="text"
+              placeholder=" "
+              aria-label="floating empresa"
+            />
+            <label class="ms-input-floating-label">Empresa</label>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">Shapes: pill &amp; no-focus</span>
+        <div class="grid">
+          <div class="demo">
+            <span class="caption">Pill</span>
+            <div class="ms-input" data-size="md" data-pill>
+              <input class="ms-input-native" type="text" value="usuário" aria-label="pill input" />
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Pill com prefixo/sufixo</span>
+            <div class="ms-input" data-size="md" data-pill>
+              <span class="ms-input-prefix" data-ms-slot="prefix">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <circle cx="7" cy="7" r="4.5" />
+                  <path d="M10.5 10.5L14 14" />
+                </svg>
+              </span>
+              <input
+                class="ms-input-native"
+                type="search"
+                placeholder="Buscar…"
+                aria-label="pill search"
+              />
+              <span class="ms-input-kbd">⌘K</span>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Pill com floating label</span>
+            <div class="ms-input" data-size="md" data-pill data-floating>
+              <input
+                class="ms-input-native"
+                type="text"
+                placeholder=" "
+                aria-label="pill floating"
+              />
+              <label class="ms-input-floating-label">Nome</label>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">No-focus (bare)</span>
+            <div class="ms-input" data-size="md" data-nofocus>
+              <input
+                class="ms-input-native"
+                type="text"
+                value="Sem borda, sem anel"
+                aria-label="nofocus input"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">Keyboard shortcuts (kbd)</span>
+        <div class="grid">
+          <div class="demo">
+            <span class="caption">Busca global</span>
+            <div class="ms-input" data-size="md">
+              <span class="ms-input-prefix" data-ms-slot="prefix">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <circle cx="7" cy="7" r="4.5" />
+                  <path d="M10.5 10.5L14 14" />
+                </svg>
+              </span>
+              <input
+                class="ms-input-native"
+                type="search"
+                placeholder="Buscar em tudo…"
+                aria-label="global search"
+              />
+              <span class="ms-input-kbd">⌘K</span>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Salvar</span>
+            <div class="ms-input" data-size="md">
+              <input
+                class="ms-input-native"
+                type="text"
+                value="rascunho.md"
+                aria-label="save input"
+              />
+              <span class="ms-input-kbd">Ctrl+S</span>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Multi-kbd</span>
+            <div class="ms-input" data-size="md">
+              <input
+                class="ms-input-native"
+                type="text"
+                value="seleção"
+                aria-label="multi kbd input"
+              />
+              <span class="ms-input-kbd">⇧</span>
+              <span class="ms-input-kbd">⌘</span>
+              <span class="ms-input-kbd">P</span>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Escape</span>
+            <div class="ms-input" data-size="md">
+              <input
+                class="ms-input-native"
+                type="text"
+                value="modal aberto"
+                aria-label="escape input"
+              />
+              <span class="ms-input-kbd">ESC</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">Checkbox &amp; radios dentro de inputs</span>
+        <div class="grid">
+          <div class="demo">
+            <span class="caption">Consentimento embutido</span>
+            <div class="ms-input" data-size="md">
+              <label class="ms-checkbox" style="font-size: var(--ms-typography-size-xs)">
+                <input class="ms-checkbox-native" type="checkbox" checked />
+                <span class="ms-checkbox-box" aria-hidden="true"></span>
+                <span>Ativo</span>
+              </label>
+              <input
+                class="ms-input-native"
+                type="text"
+                value="Assinatura premium"
+                aria-label="consent input"
+              />
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Opção embutida (radio)</span>
+            <div class="ms-input" data-size="md">
+              <span class="ms-input-prefix" data-ms-slot="prefix">
+                <label class="ms-radio" style="font-size: var(--ms-typography-size-xs)">
+                  <input class="ms-radio-native" type="radio" name="inline-radio" checked />
+                  <span class="ms-radio-dot" aria-hidden="true"></span>
+                </label>
+              </span>
+              <input
+                class="ms-input-native"
+                type="text"
+                value="Endpoint principal"
+                aria-label="radio input"
+              />
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Lista com checkboxes</span>
+            <div class="ms-input" data-size="md">
+              <input
+                class="ms-input-native"
+                type="text"
+                value="3 selecionados"
+                aria-label="checklist input"
+              />
+              <label class="ms-checkbox" style="font-size: var(--ms-typography-size-xs)">
+                <input class="ms-checkbox-native" type="checkbox" data-indeterminate />
+                <span class="ms-checkbox-box" aria-hidden="true"></span>
+              </label>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Chave + radio</span>
+            <div class="ms-input" data-size="md">
+              <span class="ms-input-prefix" data-ms-slot="prefix">#</span>
+              <input
+                class="ms-input-native"
+                type="text"
+                value="CH-01"
+                aria-label="key radio input"
+              />
+              <label class="ms-radio" style="font-size: var(--ms-typography-size-xs)">
+                <input class="ms-radio-native" type="radio" name="inline-radio-2" />
+                <span class="ms-radio-dot" aria-hidden="true"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">Selects inline</span>
+        <div class="grid">
+          <div class="demo">
+            <span class="caption">Protocolo (URL)</span>
+            <div class="ms-input" data-size="md">
+              <span class="ms-input-select">
+                <select aria-label="protocolo">
+                  <option>https://</option>
+                  <option>http://</option>
+                  <option>ws://</option>
+                </select>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M4 6l4 4 4-4" />
+                </svg>
+              </span>
+              <input
+                class="ms-input-native"
+                type="text"
+                value="app.magic.style"
+                aria-label="url input"
+              />
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Moeda (select)</span>
+            <div class="ms-input" data-size="md">
+              <span class="ms-input-select">
+                <select aria-label="moeda">
+                  <option>$ USD</option>
+                  <option>€ EUR</option>
+                  <option>R$ BRL</option>
+                </select>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M4 6l4 4 4-4" />
+                </svg>
+              </span>
+              <input
+                class="ms-input-native"
+                type="text"
+                value="2.450,75"
+                inputmode="decimal"
+                aria-label="currency input"
+              />
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Unidade (select)</span>
+            <div class="ms-input" data-size="md">
+              <input
+                class="ms-input-native"
+                type="text"
+                value="42"
+                inputmode="decimal"
+                aria-label="unit input"
+              />
+              <span class="ms-input-select">
+                <select aria-label="unidade">
+                  <option>kg</option>
+                  <option>g</option>
+                  <option>t</option>
+                </select>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M4 6l4 4 4-4" />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Status (select + tone)</span>
+            <div class="ms-input" data-size="md" data-tone="success">
+              <input
+                class="ms-input-native"
+                type="text"
+                value="Deploy concluído"
+                aria-label="status input"
+              />
+              <span class="ms-input-select">
+                <select aria-label="status">
+                  <option>produção</option>
+                  <option>staging</option>
+                </select>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M4 6l4 4 4-4" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">Input number &amp; steppers</span>
+        <div class="grid">
+          <div class="demo">
+            <span class="caption">Stepper (− / +)</span>
+            <div class="ms-input-group">
+              <button
+                class="ms-button"
+                data-ms-button
+                data-variant="ghost"
+                data-tone="primary"
+                data-size="md"
+                data-attached="start"
+                data-icon-only
+                data-stepper="-1"
+                aria-label="Diminuir"
+              >
+                <span class="ms-button-icon"
+                  ><svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path d="M3 8h10" /></svg
+                ></span>
+              </button>
+              <div class="ms-input" data-size="md" style="text-align: center">
+                <input
+                  class="ms-input-native"
+                  type="number"
+                  value="1"
+                  min="0"
+                  max="20"
+                  inputmode="numeric"
+                  aria-label="stepper input"
+                  style="text-align: center"
+                />
+              </div>
+              <button
+                class="ms-button"
+                data-ms-button
+                data-variant="ghost"
+                data-tone="primary"
+                data-size="md"
+                data-attached="end"
+                data-icon-only
+                data-stepper="1"
+                aria-label="Aumentar"
+              >
+                <span class="ms-button-icon"
+                  ><svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path d="M8 3v10M3 8h10" /></svg
+                ></span>
+              </button>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Quantidade com unidade</span>
+            <div class="ms-input" data-size="md">
+              <input
+                class="ms-input-native"
+                type="number"
+                value="12"
+                inputmode="numeric"
+                aria-label="quantity input"
+              />
+              <span class="ms-input-suffix" data-ms-slot="suffix">un.</span>
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Número com tone</span>
+            <div class="ms-input" data-size="md" data-tone="info">
+              <input
+                class="ms-input-native"
+                type="number"
+                value="3.14159"
+                step="0.00001"
+                aria-label="number tone input"
+              />
+            </div>
+          </div>
+          <div class="demo">
+            <span class="caption">Faixa (min–máx)</span>
+            <div class="ms-input" data-size="md">
+              <input
+                class="ms-input-native"
+                type="number"
+                value="8"
+                min="0"
+                max="20"
+                aria-label="range number input"
+              />
+              <span class="ms-input-kbd">0–20</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">Inputs: tamanhos</span>
+        <div class="row">
+          <div class="ms-input" data-size="sm" style="inline-size: 220px">
+            <input class="ms-input-native" type="text" value="small" aria-label="small input" />
+          </div>
+          <div class="ms-input" data-size="md" style="inline-size: 220px">
+            <input class="ms-input-native" type="text" value="medium" aria-label="medium input" />
+          </div>
+          <div class="ms-input" data-size="lg" style="inline-size: 220px">
+            <input class="ms-input-native" type="text" value="large" aria-label="large input" />
+          </div>
+          <div class="ms-input" data-size="xl" style="inline-size: 220px">
+            <input class="ms-input-native" type="text" value="xlarge" aria-label="xlarge input" />
+          </div>
+          <div class="ms-input" data-size="xxl" style="inline-size: 220px">
+            <input class="ms-input-native" type="text" value="xxlarge" aria-label="xxlarge input" />
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">MsTextarea &amp; select nativo</span>
+        <div class="grid">
+          <div class="ms-field">
+            <label class="ms-field-label" for="t-msg">Mensagem</label>
+            <div class="ms-input ms-textarea">
+              <textarea
+                id="t-msg"
+                class="ms-input-native"
+                rows="4"
+                placeholder="Escreva sua mensagem…"
+              ></textarea>
+            </div>
+          </div>
+          <div class="ms-field">
+            <label class="ms-field-label" for="t-err">Mensagem (erro)</label>
+            <div class="ms-input ms-textarea" data-invalid>
+              <textarea id="t-err" class="ms-input-native" rows="4" aria-invalid="true">
+Texto curto.</textarea>
+            </div>
+            <p class="ms-field-error">A mensagem precisa de pelo menos 20 caracteres.</p>
+          </div>
+          <div class="ms-field">
+            <label class="ms-field-label" for="t-sel">Plano</label>
+            <div class="ms-input" data-size="md">
+              <select id="t-sel" class="ms-input-native" style="appearance: auto">
+                <option>Starter</option>
+                <option selected>Pro</option>
+                <option>Enterprise</option>
+              </select>
+            </div>
+          </div>
+          <div class="ms-field">
+            <label class="ms-field-label" for="t-seld">Plano (desabilitado)</label>
+            <div class="ms-input" data-size="md" data-disabled>
+              <select id="t-seld" class="ms-input-native" style="appearance: auto" disabled>
+                <option>Enterprise</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">MsCheckbox</span>
+        <div class="row">
+          <label class="ms-checkbox">
+            <input class="ms-checkbox-native" type="checkbox" checked />
+            <span class="ms-checkbox-box" aria-hidden="true"></span>
+            <span>Marcado</span>
+          </label>
+          <label class="ms-checkbox">
+            <input class="ms-checkbox-native" type="checkbox" />
+            <span class="ms-checkbox-box" aria-hidden="true"></span>
+            <span>Não marcado</span>
+          </label>
+          <label class="ms-checkbox">
+            <input class="ms-checkbox-native" type="checkbox" data-indeterminate />
+            <span class="ms-checkbox-box" aria-hidden="true"></span>
+            <span>Indeterminado</span>
+          </label>
+          <label class="ms-checkbox" data-disabled>
+            <input class="ms-checkbox-native" type="checkbox" checked disabled />
+            <span class="ms-checkbox-box" aria-hidden="true"></span>
+            <span>Desabilitado</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">MsRadioGroup</span>
+        <div class="ms-radio-group" role="radiogroup">
+          <label class="ms-radio">
+            <input class="ms-radio-native" type="radio" name="preview-radio" checked />
+            <span class="ms-radio-dot" aria-hidden="true"></span>
+            <span>Opção A</span>
+          </label>
+          <label class="ms-radio">
+            <input class="ms-radio-native" type="radio" name="preview-radio" />
+            <span class="ms-radio-dot" aria-hidden="true"></span>
+            <span>Opção B</span>
+          </label>
+          <label class="ms-radio">
+            <input class="ms-radio-native" type="radio" name="preview-radio" />
+            <span class="ms-radio-dot" aria-hidden="true"></span>
+            <span>Opção C</span>
+          </label>
+          <label class="ms-radio" data-disabled>
+            <input class="ms-radio-native" type="radio" name="preview-radio" disabled />
+            <span class="ms-radio-dot" aria-hidden="true"></span>
+            <span>Desabilitada</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <span class="section-title">MsSwitch</span>
+        <div class="row">
+          <label class="ms-switch">
+            <input class="ms-switch-native" type="checkbox" role="switch" checked />
+            <span class="ms-switch-track" aria-hidden="true"></span>
+            <span>Ativo</span>
+          </label>
+          <label class="ms-switch">
+            <input class="ms-switch-native" type="checkbox" role="switch" />
+            <span class="ms-switch-track" aria-hidden="true"></span>
+            <span>Inativo</span>
+          </label>
+          <label class="ms-switch" data-disabled>
+            <input class="ms-switch-native" type="checkbox" role="switch" checked disabled />
+            <span class="ms-switch-track" aria-hidden="true"></span>
+            <span>Desabilitado</span>
+          </label>
+        </div>
+      </section>
+    </main>
+
+    <script src="/theme-toggle.js"></script>
+    <script src="/preview-selects.js"></script>
+  </body>
+</html>

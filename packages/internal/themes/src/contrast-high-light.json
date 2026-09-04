@@ -1,0 +1,13 @@
+{
+  "$schema": "https://designtokens.dev/dtcg/schema.json",
+  "color": {
+    "border": {
+      "subtle": { "$type": "color", "$value": "{color.neutral.400}" },
+      "default": { "$type": "color", "$value": "{color.neutral.500}" }
+    },
+    "text": {
+      "muted": { "$type": "color", "$value": "{color.neutral.700}" },
+      "subtle": { "$type": "color", "$value": "{color.neutral.600}" }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://designtokens.dev/dtcg/schema.json",
+  "color": {
+    "surface": {
+      "default": { "$type": "color", "$value": "{color.neutral.950}" },
+      "raised": { "$type": "color", "$value": "{color.neutral.900}" },
+      "sunken": { "$type": "color", "$value": "{color.neutral.1000}" },
+      "inverse": { "$type": "color", "$value": "{color.neutral.50}" }
+    },
+    "text": {
+      "primary": { "$type": "color", "$value": "{color.neutral.50}" },
+      "secondary": { "$type": "color", "$value": "{color.neutral.300}" },
+      "muted": { "$type": "color", "$value": "{color.neutral.400}" },
+      "subtle": { "$type": "color", "$value": "{color.neutral.500}" },
+      "inverse": { "$type": "color", "$value": "{color.neutral.900}" },
+      "on-accent": { "$type": "color", "$value": "{color.neutral.950}" }
+    },
+    "border": {
+      "subtle": { "$type": "color", "$value": "{color.neutral.800}" },
+      "default": { "$type": "color", "$value": "{color.neutral.700}" },
+      "strong": { "$type": "color", "$value": "{color.neutral.600}" },
+      "focus": { "$type": "color", "$value": "{color.accent.400}" }
+    },
+    "interactive": {
+      "primary": { "$type": "color", "$value": "{color.primary.400}" },
+      "primary-hover": { "$type": "color", "$value": "{color.primary.300}" },
+      "primary-active": { "$type": "color", "$value": "{color.primary.200}" },
+      "primary-subtle": { "$type": "color", "$value": "{color.primary.900}" },
+      "primary-text": { "$type": "color", "$value": "{color.primary.300}" },
+      "accent": { "$type": "color", "$value": "{color.accent.400}" },
+      "accent-hover": { "$type": "color", "$value": "{color.accent.300}" },
+      "accent-active": { "$type": "color", "$value": "{color.accent.200}" },
+      "accent-subtle": { "$type": "color", "$value": "{color.accent.900}" },
+      "accent-text": { "$type": "color", "$value": "{color.accent.300}" },
+      "neutral": { "$type": "color", "$value": "{color.neutral.100}" },
+      "neutral-hover": { "$type": "color", "$value": "{color.neutral.200}" },
+      "neutral-active": { "$type": "color", "$value": "{color.neutral.300}" },
+      "neutral-subtle": { "$type": "color", "$value": "{color.neutral.900}" },
+      "neutral-text": { "$type": "color", "$value": "{color.neutral.300}" },
+      "neutral-fg": { "$type": "color", "$value": "{color.neutral.950}" },
+      "secondary": { "$type": "color", "$value": "{color.secondary.400}" },
+      "secondary-hover": { "$type": "color", "$value": "{color.secondary.300}" },
+      "secondary-active": { "$type": "color", "$value": "{color.secondary.200}" },
+      "secondary-subtle": { "$type": "color", "$value": "{color.secondary.900}" },
+      "secondary-text": { "$type": "color", "$value": "{color.secondary.300}" },
+      "secondary-fg": { "$type": "color", "$value": "{color.neutral.950}" }
+    },
+    "feedback": {
+      "info-bg": { "$type": "color", "$value": "{color.info.950}" },
+      "info-text": { "$type": "color", "$value": "{color.info.300}" },
+      "info-border": { "$type": "color", "$value": "{color.info.800}" },
+      "success-bg": { "$type": "color", "$value": "{color.success.950}" },
+      "success-text": { "$type": "color", "$value": "{color.success.300}" },
+      "success-border": { "$type": "color", "$value": "{color.success.800}" },
+      "warning-bg": { "$type": "color", "$value": "{color.warning.950}" },
+      "warning-text": { "$type": "color", "$value": "{color.warning.300}" },
+      "warning-border": { "$type": "color", "$value": "{color.warning.800}" },
+      "danger-bg": { "$type": "color", "$value": "{color.danger.950}" },
+      "danger-text": { "$type": "color", "$value": "{color.danger.300}" },
+      "danger-border": { "$type": "color", "$value": "{color.danger.800}" }
+    }
+  },
+  "focus-ring": {
+    "color": { "$type": "color", "$value": "{color.accent.400}" }
+  }
+}

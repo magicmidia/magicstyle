@@ -1,0 +1,40 @@
+/*
+ * Magic-Style Field — label/description/error wiring for form controls.
+ * Classes: .ms-field, .ms-field-label, .ms-field-description, .ms-field-error.
+ */
+
+.ms-field {
+  display: grid;
+  gap: var(--ms-space-1);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Grid items must be able to shrink below their content min-width */
+.ms-field > .ms-input,
+.ms-field > .ms-input-group,
+.ms-field > .ms-textarea {
+  min-inline-size: 0;
+}
+
+.ms-field-label {
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-medium);
+  letter-spacing: var(--ms-typography-letter-spacing-wide);
+  color: var(--ms-color-text-primary);
+}
+
+.ms-field-description {
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-muted);
+}
+
+.ms-field-error {
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-feedback-danger-text);
+}
+
+/* Required marker */
+.ms-field[data-required] .ms-field-label::after {
+  content: " *";
+  color: var(--ms-color-feedback-danger-text);
+}

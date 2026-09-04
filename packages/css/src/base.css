@@ -1,0 +1,67 @@
+/*
+ * Magic-Style Base layer (doc 09 §2).
+ * Applies the design language to the document without resetting anything.
+ * Depends on: tokens.css + themes.css.
+ */
+
+html {
+  font-family: var(--ms-font-sans);
+  line-height: var(--ms-typography-line-height-base);
+  color: var(--ms-color-text-primary);
+  background-color: var(--ms-color-surface-default);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: var(--ms-typography-feature-contextual);
+}
+
+::selection {
+  color: var(--ms-color-text-on-accent);
+  background-color: color-mix(in oklch, var(--ms-color-interactive-accent) 28%, transparent);
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: var(--ms-typography-letter-spacing-tight);
+  text-wrap: balance;
+}
+
+input,
+textarea,
+select {
+  caret-color: var(--ms-color-interactive-accent);
+}
+
+:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
+}
+
+/*
+ * Motion is tokenized and reduced-motion aware (doc 03 §7).
+ * Components must animate via --ms-motion-duration-* / --ms-motion-easing-*
+ * so this single guard covers the whole system with zero !important.
+ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ms-motion-duration-instant: 0ms;
+    --ms-motion-duration-fast: 0ms;
+    --ms-motion-duration-base: 0ms;
+    --ms-motion-duration-slow: 0ms;
+    --ms-motion-duration-deliberate: 0ms;
+  }
+}
+
+/* Keep visible focus under forced colors */
+@media (forced-colors: active) {
+  :focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+/* Environment signal for input modality adaptation (doc 02 §5) */
+@media (pointer: coarse) {
+  :root {
+    --ms-pointer-coarse: 1;
+  }
+}

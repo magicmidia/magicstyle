@@ -1,0 +1,18 @@
+{
+  "$schema": "https://designtokens.dev/dtcg/schema.json",
+  "color": {
+    "accent": {
+      "50": { "$type": "color", "$value": "oklch(0.970 0.010 280)" },
+      "100": { "$type": "color", "$value": "oklch(0.940 0.020 280)" },
+      "200": { "$type": "color", "$value": "oklch(0.870 0.032 280)" },
+      "300": { "$type": "color", "$value": "oklch(0.780 0.044 280)" },
+      "400": { "$type": "color", "$value": "oklch(0.680 0.055 280)" },
+      "500": { "$type": "color", "$value": "oklch(0.580 0.062 280)" },
+      "600": { "$type": "color", "$value": "oklch(0.490 0.065 280)" },
+      "700": { "$type": "color", "$value": "oklch(0.400 0.062 280)" },
+      "800": { "$type": "color", "$value": "oklch(0.330 0.052 280)" },
+      "900": { "$type": "color", "$value": "oklch(0.280 0.040 280)" },
+      "950": { "$type": "color", "$value": "oklch(0.220 0.030 280)" }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@magic-style-internal/tokens",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Canonical DTCG design token sources and compiler for Magic-Style.",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node src/compile.ts && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@types/node": "^26.3.0",
+    "typescript": "~5.9.3",
+    "vitest": "^4.1.11"
+  }
+}

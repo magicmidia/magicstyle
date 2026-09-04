@@ -1,0 +1,12 @@
+/*
+ * Magic-Style Components layer - granular imports.
+ * Each file is standalone; import only what you use or take the bundle.
+ */
+@import "./button.css";
+@import "./button-group.css";
+@import "./menu.css";
+@import "./field.css";
+@import "./input.css";
+@import "./checkbox.css";
+@import "./radio.css";
+@import "./switch.css";

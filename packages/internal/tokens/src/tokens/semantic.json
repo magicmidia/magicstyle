@@ -1,0 +1,236 @@
+{
+  "$schema": "https://designtokens.dev/dtcg/schema.json",
+  "surface": {
+    "default": { "$type": "color", "$value": "{color.neutral.50}" },
+    "raised": { "$type": "color", "$value": "{color.neutral.0}" },
+    "sunken": { "$type": "color", "$value": "{color.neutral.100}" },
+    "inverse": { "$type": "color", "$value": "{color.neutral.950}" }
+  },
+  "text": {
+    "primary": { "$type": "color", "$value": "{color.neutral.900}" },
+    "secondary": { "$type": "color", "$value": "{color.neutral.700}" },
+    "muted": { "$type": "color", "$value": "{color.neutral.500}" },
+    "subtle": { "$type": "color", "$value": "{color.neutral.400}" },
+    "inverse": { "$type": "color", "$value": "{color.neutral.50}" },
+    "on-accent": { "$type": "color", "$value": "{color.neutral.0}" }
+  },
+  "border-color": {
+    "subtle": { "$type": "color", "$value": "{color.neutral.200}" },
+    "default": { "$type": "color", "$value": "{color.neutral.300}" },
+    "strong": { "$type": "color", "$value": "{color.neutral.400}" },
+    "focus": { "$type": "color", "$value": "{color.accent.500}" }
+  },
+  "interactive": {
+    "primary": {
+      "$type": "color",
+      "$value": "{color.primary.600}",
+      "$description": "Default action fill - brand primary #2e86de family."
+    },
+    "primary-hover": { "$type": "color", "$value": "{color.primary.700}" },
+    "primary-active": { "$type": "color", "$value": "{color.primary.800}" },
+    "primary-subtle": { "$type": "color", "$value": "{color.primary.100}" },
+    "primary-text": { "$type": "color", "$value": "{color.primary.700}" },
+    "accent": {
+      "$type": "color",
+      "$value": "{color.accent.600}",
+      "$description": "Brand accent #341f97 - focus rings and brand moments."
+    },
+    "accent-hover": { "$type": "color", "$value": "{color.accent.700}" },
+    "accent-active": { "$type": "color", "$value": "{color.accent.800}" },
+    "accent-subtle": { "$type": "color", "$value": "{color.accent.100}" },
+    "accent-text": { "$type": "color", "$value": "{color.accent.700}" },
+    "neutral": {
+      "$type": "color",
+      "$value": "{color.neutral.700}",
+      "$description": "Neutral ink #222f3e fill."
+    },
+    "neutral-hover": { "$type": "color", "$value": "{color.neutral.800}" },
+    "neutral-active": { "$type": "color", "$value": "{color.neutral.900}" },
+    "neutral-subtle": { "$type": "color", "$value": "{color.neutral.100}" },
+    "neutral-text": { "$type": "color", "$value": "{color.neutral.700}" },
+    "neutral-fg": { "$type": "color", "$value": "{color.neutral.50}" },
+    "secondary": {
+      "$type": "color",
+      "$value": "{color.secondary.500}",
+      "$description": "Secondary fill - coral #e15f41; pairs with ink text."
+    },
+    "secondary-hover": { "$type": "color", "$value": "{color.secondary.600}" },
+    "secondary-active": { "$type": "color", "$value": "{color.secondary.700}" },
+    "secondary-subtle": { "$type": "color", "$value": "{color.secondary.100}" },
+    "secondary-text": { "$type": "color", "$value": "{color.secondary.700}" },
+    "secondary-fg": {
+      "$type": "color",
+      "$value": "{color.neutral.950}",
+      "$description": "Ink text for coral fills - AA in both modes."
+    },
+    "accent-gradient": {
+      "$type": "other",
+      "$value": "linear-gradient(120deg, oklch(0.360 0.181 280), oklch(0.560 0.150 252), oklch(0.520 0.120 219))",
+      "$description": "Brand gradient derived from #341f97 -> #2e86de -> #0abde3 (AA-safe stops). Opt-in variant only."
+    }
+  },
+  "feedback": {
+    "info-bg": { "$type": "color", "$value": "{color.info.100}" },
+    "info-text": { "$type": "color", "$value": "{color.info.800}" },
+    "info-border": { "$type": "color", "$value": "{color.info.200}" },
+    "success-bg": { "$type": "color", "$value": "{color.success.100}" },
+    "success-text": { "$type": "color", "$value": "{color.success.800}" },
+    "success-border": { "$type": "color", "$value": "{color.success.200}" },
+    "warning-bg": { "$type": "color", "$value": "{color.warning.100}" },
+    "warning-text": { "$type": "color", "$value": "{color.warning.800}" },
+    "warning-border": { "$type": "color", "$value": "{color.warning.300}" },
+    "danger-bg": { "$type": "color", "$value": "{color.danger.100}" },
+    "danger-text": { "$type": "color", "$value": "{color.danger.800}" },
+    "danger-border": { "$type": "color", "$value": "{color.danger.200}" },
+    "info-solid": {
+      "$type": "color",
+      "$value": "{color.info.500}",
+      "$description": "Flat cyan fill; pairs with ink text."
+    },
+    "info-solid-hover": {
+      "$type": "color",
+      "$value": "{color.info.600}",
+      "$description": "One-step hover; keeps ink text AA."
+    },
+    "success-solid": {
+      "$type": "color",
+      "$value": "{color.success.500}",
+      "$description": "Flat green fill; pairs with ink text."
+    },
+    "success-solid-hover": {
+      "$type": "color",
+      "$value": "{color.success.600}",
+      "$description": "One-step hover; keeps ink text AA."
+    },
+    "warning-solid": {
+      "$type": "color",
+      "$value": "{color.warning.500}",
+      "$description": "Flat orange fill; pairs with ink text."
+    },
+    "warning-solid-hover": {
+      "$type": "color",
+      "$value": "{color.warning.600}",
+      "$description": "One-step hover; keeps ink text AA."
+    },
+    "warning-solid-fg": {
+      "$type": "color",
+      "$value": "{color.neutral.950}",
+      "$description": "Ink text for light fills - AA in both modes."
+    },
+    "danger-solid": {
+      "$type": "color",
+      "$value": "{color.danger.600}",
+      "$description": "Flat danger fill with on-accent text; AA against white."
+    },
+    "danger-solid-hover": {
+      "$type": "color",
+      "$value": "{color.danger.700}",
+      "$description": "One-step hover; white text stays AA."
+    }
+  },
+  "focus-ring": {
+    "width": { "$type": "dimension", "$value": "{border.focus}" },
+    "offset": { "$type": "dimension", "$value": "2px" },
+    "color": {
+      "$type": "color",
+      "$value": "{color.accent.500}",
+      "$description": "Brand indigo focus ring (#341f97 family)."
+    }
+  },
+  "control": {
+    "radius": { "$type": "dimension", "$value": "{radius.md}" }
+  },
+  "font": {
+    "display": { "$type": "fontFamily", "$value": "{typography.family.display}" },
+    "sans": { "$type": "fontFamily", "$value": "{typography.family.sans}" },
+    "mono": { "$type": "fontFamily", "$value": "{typography.family.mono}" }
+  },
+  "role": {
+    "display": {
+      "$type": "typography-role",
+      "$value": {
+        "family": "{font.display}",
+        "size": "{typography.size.4xl}",
+        "line-height": "{typography.line-height.tight}",
+        "weight": "{typography.weight.semibold}",
+        "tracking": "{typography.letter-spacing.tight}"
+      }
+    },
+    "heading": {
+      "$type": "typography-role",
+      "$value": {
+        "family": "{font.sans}",
+        "size": "{typography.size.xl}",
+        "line-height": "{typography.line-height.tight}",
+        "weight": "{typography.weight.semibold}",
+        "tracking": "{typography.letter-spacing.tight}"
+      }
+    },
+    "title": {
+      "$type": "typography-role",
+      "$value": {
+        "family": "{font.sans}",
+        "size": "{typography.size.lg}",
+        "line-height": "{typography.line-height.tight}",
+        "weight": "{typography.weight.medium}"
+      }
+    },
+    "body": {
+      "$type": "typography-role",
+      "$value": {
+        "family": "{font.sans}",
+        "size": "{typography.size.md}",
+        "line-height": "{typography.line-height.base}",
+        "weight": "{typography.weight.regular}"
+      }
+    },
+    "label": {
+      "$type": "typography-role",
+      "$value": {
+        "family": "{font.sans}",
+        "size": "{typography.size.sm}",
+        "line-height": "{typography.line-height.base}",
+        "weight": "{typography.weight.medium}",
+        "tracking": "{typography.letter-spacing.wide}"
+      }
+    },
+    "caption": {
+      "$type": "typography-role",
+      "$value": {
+        "family": "{font.sans}",
+        "size": "{typography.size.xs}",
+        "line-height": "{typography.line-height.relaxed}",
+        "weight": "{typography.weight.regular}"
+      }
+    },
+    "micro": {
+      "$type": "typography-role",
+      "$value": {
+        "family": "{font.mono}",
+        "size": "{typography.size.2xs}",
+        "line-height": "{typography.line-height.base}",
+        "weight": "{typography.weight.medium}",
+        "tracking": "{typography.letter-spacing.micro}"
+      }
+    },
+    "code": {
+      "$type": "typography-role",
+      "$value": {
+        "family": "{font.mono}",
+        "size": "{typography.size.sm}",
+        "line-height": "{typography.line-height.base}",
+        "weight": "{typography.weight.regular}"
+      }
+    },
+    "numeric": {
+      "$type": "typography-role",
+      "$value": {
+        "family": "{font.sans}",
+        "size": "{typography.size.md}",
+        "line-height": "{typography.line-height.base}",
+        "weight": "{typography.weight.medium}",
+        "feature": "{typography.feature.tabular-nums}"
+      }
+    }
+  }
+}

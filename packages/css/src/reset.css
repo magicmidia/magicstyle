@@ -1,0 +1,60 @@
+/*
+ * Magic-Style Reset - OPT-IN layer (doc 09 §3).
+ * Import "@magic-style/css/reset.css" explicitly. The library works without it.
+ * Granular: each block is independent; delete what you do not want.
+ */
+
+/* Border-box model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Neutral document margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Sensible list defaults inside Magic-Style surfaces only */
+.ms-list-clean,
+.ms-list-clean ul,
+.ms-list-clean ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Media defaults */
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Consistent text sizing and minimum tap targets on coarse pointers */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}

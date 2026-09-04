@@ -1,0 +1,292 @@
+/*
+ * Magic-Style Button component layer — flat tonal grammar (shadcn-guided).
+ * Defaults: solid = flat fill, slight 6px rounding, no shadows.
+ * Options: variant "gradient" (brand signature) and [data-pill].
+ * States via data attributes (doc 09 §4, §8). No !important, low specificity.
+ */
+
+.ms-button {
+  --_ms-btn-height: var(--ms-layout-field-height-md);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ms-space-2);
+  block-size: var(--_ms-btn-height);
+  padding-inline: var(--ms-space-4);
+  border: var(--ms-border-hairline) solid transparent;
+  border-radius: var(--ms-control-radius);
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-medium);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  background-color: transparent;
+  color: var(--ms-color-text-primary);
+  transition:
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    filter var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    transform var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-button-label {
+  letter-spacing: var(--ms-typography-letter-spacing-wide);
+}
+
+/* Opt-in pill shape */
+.ms-button[data-pill] {
+  border-radius: var(--ms-radius-full);
+}
+
+/* Sizes (doc 03 §6: density is not size; height scale comes from layout tokens) */
+.ms-button[data-size="sm"] {
+  --_ms-btn-height: var(--ms-layout-field-height-sm);
+  padding-inline: var(--ms-space-3);
+  font-size: var(--ms-typography-size-xs);
+}
+.ms-button[data-size="lg"] {
+  --_ms-btn-height: var(--ms-layout-field-height-lg);
+  padding-inline: var(--ms-space-5);
+  font-size: var(--ms-typography-size-md);
+}
+.ms-button[data-size="xl"] {
+  --_ms-btn-height: var(--ms-layout-field-height-xl);
+  padding-inline: var(--ms-space-6);
+  font-size: var(--ms-typography-size-md);
+}
+.ms-button[data-size="xxl"] {
+  --_ms-btn-height: var(--ms-layout-field-height-xxl);
+  padding-inline: var(--ms-space-7);
+  font-size: var(--ms-typography-size-lg);
+}
+
+/* Icon-only buttons become circles */
+.ms-button[data-icon-only] {
+  inline-size: var(--_ms-btn-height);
+  padding-inline: 0;
+  border-radius: var(--ms-radius-full);
+}
+
+/* Generic prefix/suffix adornments (kbd hints, badges, counts) */
+.ms-button-prefix,
+.ms-button-suffix {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--ms-font-mono);
+  font-size: var(--ms-typography-size-xs);
+  color: color-mix(in oklch, currentColor 72%, transparent);
+}
+
+/* Dropdown caret */
+.ms-button-caret {
+  display: inline-flex;
+  transition: transform var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+.ms-button[data-open] .ms-button-caret {
+  transform: rotate(180deg);
+}
+
+/* Coarse pointers raise hit targets toward the 44px minimum (doc 06 §5) */
+@media (pointer: coarse) {
+  .ms-button[data-size="sm"],
+  .ms-button[data-size="md"] {
+    --_ms-btn-height: var(--ms-layout-touch-target-min);
+  }
+}
+
+.ms-button[data-full-width] {
+  display: flex;
+  inline-size: 100%;
+}
+
+/* ---------- Tones: Primary, Secondary, Accent, Neutral, Success, Info, Warning, Danger ---------- */
+
+.ms-button[data-tone="primary"] {
+  --_ms-btn-accent: var(--ms-color-interactive-primary);
+  --_ms-btn-accent-hover: var(--ms-color-interactive-primary-hover);
+  --_ms-btn-accent-subtle: var(--ms-color-interactive-primary-subtle);
+  --_ms-btn-accent-fg: var(--ms-color-text-on-accent);
+  --_ms-btn-accent-fg-muted: var(--ms-color-interactive-primary-text);
+}
+.ms-button[data-tone="secondary"] {
+  --_ms-btn-accent: var(--ms-color-interactive-secondary);
+  --_ms-btn-accent-hover: var(--ms-color-interactive-secondary-hover);
+  --_ms-btn-accent-subtle: var(--ms-color-interactive-secondary-subtle);
+  --_ms-btn-accent-fg: var(--ms-color-interactive-secondary-fg);
+  --_ms-btn-accent-fg-muted: var(--ms-color-interactive-secondary-text);
+}
+.ms-button[data-tone="accent"] {
+  --_ms-btn-accent: var(--ms-color-interactive-accent);
+  --_ms-btn-accent-hover: var(--ms-color-interactive-accent-hover);
+  --_ms-btn-accent-subtle: var(--ms-color-interactive-accent-subtle);
+  --_ms-btn-accent-fg: var(--ms-color-text-on-accent);
+  --_ms-btn-accent-fg-muted: var(--ms-color-interactive-accent-text);
+}
+.ms-button[data-tone="neutral"] {
+  --_ms-btn-accent: var(--ms-color-interactive-neutral);
+  --_ms-btn-accent-hover: var(--ms-color-interactive-neutral-hover);
+  --_ms-btn-accent-subtle: var(--ms-color-interactive-neutral-subtle);
+  --_ms-btn-accent-fg: var(--ms-color-interactive-neutral-fg);
+  --_ms-btn-accent-fg-muted: var(--ms-color-interactive-neutral-text);
+}
+.ms-button[data-tone="success"] {
+  --_ms-btn-accent: var(--ms-color-feedback-success-solid);
+  --_ms-btn-accent-hover: var(--ms-color-feedback-success-solid-hover);
+  --_ms-btn-accent-subtle: var(--ms-color-feedback-success-bg);
+  --_ms-btn-accent-fg: var(--ms-color-feedback-warning-solid-fg);
+  --_ms-btn-accent-fg-muted: var(--ms-color-feedback-success-text);
+}
+.ms-button[data-tone="info"] {
+  --_ms-btn-accent: var(--ms-color-feedback-info-solid);
+  --_ms-btn-accent-hover: var(--ms-color-feedback-info-solid-hover);
+  --_ms-btn-accent-subtle: var(--ms-color-feedback-info-bg);
+  --_ms-btn-accent-fg: var(--ms-color-feedback-warning-solid-fg);
+  --_ms-btn-accent-fg-muted: var(--ms-color-feedback-info-text);
+}
+.ms-button[data-tone="warning"] {
+  --_ms-btn-accent: var(--ms-color-feedback-warning-solid);
+  --_ms-btn-accent-hover: var(--ms-color-feedback-warning-solid-hover);
+  --_ms-btn-accent-subtle: var(--ms-color-feedback-warning-bg);
+  --_ms-btn-accent-fg: var(--ms-color-feedback-warning-solid-fg);
+  --_ms-btn-accent-fg-muted: var(--ms-color-feedback-warning-text);
+}
+.ms-button[data-tone="danger"] {
+  --_ms-btn-accent: var(--ms-color-feedback-danger-solid);
+  --_ms-btn-accent-hover: var(--ms-color-feedback-danger-solid-hover);
+  --_ms-btn-accent-subtle: var(--ms-color-feedback-danger-bg);
+  --_ms-btn-accent-fg: var(--ms-color-text-on-accent);
+  --_ms-btn-accent-fg-muted: var(--ms-color-feedback-danger-text);
+}
+
+/* ---------- Variants ---------- */
+
+/* Solid: flat fill, slight rounding (default identity) */
+.ms-button[data-variant="solid"],
+.ms-button[data-variant="squared"] {
+  background-color: var(--_ms-btn-accent);
+  color: var(--_ms-btn-accent-fg);
+}
+.ms-button[data-variant="solid"]:hover:not(:disabled),
+.ms-button[data-variant="squared"]:hover:not(:disabled) {
+  background-color: var(--_ms-btn-accent-hover);
+}
+.ms-button[data-variant="solid"]:active:not(:disabled),
+.ms-button[data-variant="squared"]:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Squared: opt-in sharp geometry (0 radius) */
+.ms-button[data-variant="squared"] {
+  border-radius: 0;
+}
+
+/* Gradient: opt-in brand signature variant */
+.ms-button[data-variant="gradient"] {
+  background-image: var(--ms-color-interactive-accent-gradient);
+  background-color: var(--ms-color-interactive-accent);
+  color: var(--ms-color-text-on-accent);
+}
+.ms-button[data-variant="gradient"]:hover:not(:disabled) {
+  filter: brightness(1.07);
+}
+.ms-button[data-variant="gradient"]:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Soft: tinted field, quiet until touched */
+.ms-button[data-variant="soft"] {
+  background-color: var(--_ms-btn-accent-subtle);
+  color: var(--_ms-btn-accent-fg-muted);
+}
+.ms-button[data-variant="soft"]:hover:not(:disabled) {
+  background-color: color-mix(in oklch, var(--_ms-btn-accent-subtle) 80%, var(--_ms-btn-accent));
+}
+.ms-button[data-variant="soft"]:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Outline: inherits the tone - tinted hairline and tone text */
+.ms-button[data-variant="outline"] {
+  border-color: color-mix(in oklch, var(--_ms-btn-accent) 42%, transparent);
+  color: var(--_ms-btn-accent-fg-muted);
+}
+.ms-button[data-variant="outline"]:hover:not(:disabled) {
+  background-color: var(--_ms-btn-accent-subtle);
+  border-color: var(--_ms-btn-accent);
+}
+.ms-button[data-variant="outline"]:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Ghost: inherits the tone - tone text, subtle fill on hover */
+.ms-button[data-variant="ghost"] {
+  color: var(--_ms-btn-accent-fg-muted);
+}
+.ms-button[data-variant="ghost"]:hover:not(:disabled) {
+  background-color: var(--_ms-btn-accent-subtle);
+}
+.ms-button[data-variant="ghost"]:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* ---------- States ---------- */
+
+.ms-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.ms-button[data-loading] {
+  cursor: progress;
+  pointer-events: none;
+}
+.ms-button[data-loading] .ms-button-label,
+.ms-button[data-loading] .ms-button-icon {
+  opacity: 0.35;
+}
+
+/* Signature focus: cyan ring */
+.ms-button:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
+}
+
+/* Spinner built from motion tokens only */
+.ms-button-spinner {
+  position: absolute;
+  inset-block-start: calc(50% - 8px);
+  inset-inline-start: calc(50% - 8px);
+  block-size: 16px;
+  inline-size: 16px;
+  border-radius: var(--ms-radius-full);
+  border: var(--ms-border-thick) solid color-mix(in oklch, currentColor 25%, transparent);
+  border-block-start-color: currentColor;
+  animation: ms-button-spin var(--ms-motion-duration-deliberate) linear infinite;
+}
+
+@keyframes ms-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Icons stay optically balanced against the label */
+.ms-button-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+/* Forced colors: keep affordance readable */
+@media (forced-colors: active) {
+  .ms-button[data-variant="solid"],
+  .ms-button[data-variant="soft"],
+  .ms-button[data-variant="gradient"] {
+    border-color: ButtonText;
+  }
+}

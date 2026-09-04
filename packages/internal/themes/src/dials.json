@@ -1,0 +1,14 @@
+{
+  "$schema": "https://designtokens.dev/dtcg/schema.json",
+  "density": {
+    "compact": { "$type": "number", "$value": 0.875 },
+    "comfortable": { "$type": "number", "$value": 1 },
+    "spacious": { "$type": "number", "$value": 1.125 }
+  },
+  "radius": {
+    "sharp": { "$type": "dimension", "$value": "{radius.xs}" },
+    "subtle": { "$type": "dimension", "$value": "{radius.sm}" },
+    "medium": { "$type": "dimension", "$value": "{radius.md}" },
+    "rounded": { "$type": "dimension", "$value": "{radius.lg}" }
+  }
+}
