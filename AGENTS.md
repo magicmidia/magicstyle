@@ -4,7 +4,7 @@ Configuração de IA compartilhada vive na raiz do workspace (`C:\Repositórios\
 
 ## Baseline
 
-Normativo: **Architecture Baseline 1.2** em `../../temp/Magic-Style-Architecture-Baseline-1.2/` (workspace root). Startup flow: doc 28 §8. Context packs: skill `magic-style-baseline`.
+Normativo: **Architecture Baseline 1.2** em `docs/baseline/Magic-Style-Architecture-Baseline-1.2/` (este repositório). Startup flow: doc 28 §8. Context packs: skill `magic-style-baseline`.
 
 ## Comandos
 

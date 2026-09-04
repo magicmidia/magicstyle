@@ -1,6 +1,6 @@
 # ARCHITECTURE
 
-Fonte normativa única: **Magic-Style Architecture Baseline 1.2** (`temp/Magic-Style-Architecture-Baseline-1.2/` no workspace root). Este arquivo resume o que governa ESTE repositório; não duplica o baseline.
+Fonte normativa única: **Magic-Style Architecture Baseline 1.2** (`docs/baseline/Magic-Style-Architecture-Baseline-1.2/`). Este arquivo resume o que governa ESTE repositório; não duplica o baseline.
 
 ## Camadas (doc 18 §1)
 

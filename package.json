@@ -15,6 +15,7 @@
     "test": "turbo run test",
     "build": "turbo run build",
     "architecture": "node scripts/check-architecture.mjs",
+    "dev:preview": "node apps/preview/serve.mjs",
     "changeset": "changeset",
     "version-packages": "changeset version"
   },

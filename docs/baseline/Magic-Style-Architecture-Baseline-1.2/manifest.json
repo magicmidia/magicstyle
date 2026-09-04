@@ -1,0 +1,39 @@
+{
+  "project": "Magic-Style",
+  "architectureBaseline": "1.2",
+  "consolidatedAt": "2026-08-25",
+  "documents": [
+    "01-PRD.md",
+    "02-Technical-Architecture.md",
+    "03-Design-System-Specification.md",
+    "04-Component-Architecture.md",
+    "05-Component-Catalog.md",
+    "06-Design-Tokens.md",
+    "07-Theming-System.md",
+    "08-Vue-API-Guidelines.md",
+    "09-CSS-Tailwind-Architecture.md",
+    "10-CLI-Registry-Specification.md",
+    "11-Accessibility-Specification.md",
+    "12-Testing-Strategy.md",
+    "13-Documentation-Specification.md",
+    "14-AI-Development-Guidelines.md",
+    "15-Security-Architecture.md",
+    "16-Performance-and-Bundle-Budgets.md",
+    "17-Roadmap.md",
+    "18-Package-Contracts.md",
+    "19-Component-Specification-Template.md",
+    "20-Registry-and-Metadata-Schemas.md",
+    "21-CLI-and-Registry-Implementation-Design.md",
+    "22-CI-CD-Release-Architecture.md",
+    "23-Contribution-and-Governance.md",
+    "24-Development-Execution-Plan.md",
+    "25-Repository-Bootstrap-Specification.md",
+    "26-Documentation-Closure-and-Gap-Analysis.md",
+    "27-Architecture-Decisions-and-Final-Contracts.md",
+    "28-Final-Architecture-Index-and-AI-Handoff.md"
+  ],
+  "extras": [
+    "README.md",
+    "CHANGELOG-Baseline-1.2.md"
+  ]
+}
