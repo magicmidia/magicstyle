@@ -1,0 +1,129 @@
+/* ==========================================================================
+   MsSegmentedControl Component
+   Multi-choice linear toggle bar with active segment indicator
+   ========================================================================== */
+
+.ms-segmented-control {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  background-color: var(--ms-color-surface-sunken);
+  border: 1px solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-lg);
+  padding: 2px;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.ms-segmented-control--full-width {
+  display: flex;
+  width: 100%;
+}
+
+/* Shapes */
+.ms-segmented-control--pill {
+  border-radius: var(--ms-radius-full);
+}
+.ms-segmented-control--pill .ms-segmented-control__item {
+  border-radius: var(--ms-radius-full);
+}
+
+.ms-segmented-control--square {
+  border-radius: 0;
+}
+.ms-segmented-control--square .ms-segmented-control__item {
+  border-radius: 0;
+}
+
+/* Tones */
+.ms-segmented-control--tone-primary .ms-segmented-control__item.is-active {
+  background-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-text-on-accent);
+}
+
+.ms-segmented-control--tone-accent .ms-segmented-control__item.is-active {
+  background-color: var(--ms-color-interactive-accent);
+  color: var(--ms-color-text-on-accent);
+}
+
+/* Sizes */
+.ms-segmented-control--xs {
+  height: 24px;
+  font-size: 11px;
+  padding: 1px;
+}
+
+.ms-segmented-control--sm {
+  height: 32px;
+  font-size: var(--ms-font-size-xs);
+}
+
+.ms-segmented-control--md {
+  height: 40px;
+  font-size: var(--ms-font-size-sm);
+}
+
+.ms-segmented-control--lg {
+  height: 48px;
+  font-size: var(--ms-font-size-md);
+}
+
+.ms-segmented-control--xl {
+  height: 56px;
+  font-size: var(--ms-font-size-md);
+  padding: 3px;
+}
+
+/* Options / Segments */
+.ms-segmented-control__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ms-space-2);
+  flex: 1 1 auto;
+  height: 100%;
+  padding: 0 var(--ms-space-3);
+  border-radius: calc(var(--ms-radius-lg) - 2px);
+  border: none;
+  background: transparent;
+  color: var(--ms-color-text-muted);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--ms-font-weight-medium);
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+  transition:
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-ease-out),
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-ease-out),
+    box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-ease-out);
+}
+
+.ms-segmented-control__item:hover:not(:disabled):not(.is-active) {
+  color: var(--ms-color-text-default);
+}
+
+.ms-segmented-control__item:focus-visible {
+  outline: 2px solid var(--ms-color-focus-ring);
+  outline-offset: -2px;
+  z-index: 2;
+}
+
+.ms-segmented-control__item.is-active {
+  background-color: var(--ms-color-surface-default);
+  color: var(--ms-color-text-default);
+  font-weight: var(--ms-font-weight-semibold);
+  box-shadow: var(--ms-elevation-1);
+}
+
+.ms-segmented-control__item:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.ms-segmented-control--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}

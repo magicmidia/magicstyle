@@ -9,6 +9,19 @@
   grid-template-columns: minmax(0, 1fr);
 }
 
+/* Horizontal layout */
+.ms-field--horizontal {
+  grid-template-columns: minmax(140px, auto) 1fr;
+  align-items: start;
+  gap: var(--ms-space-4);
+}
+
+.ms-field-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-1);
+}
+
 /* Grid items must be able to shrink below their content min-width */
 .ms-field > .ms-input,
 .ms-field > .ms-input-group,
@@ -21,6 +34,21 @@
   font-weight: var(--ms-typography-weight-medium);
   letter-spacing: var(--ms-typography-letter-spacing-wide);
   color: var(--ms-color-text-primary);
+}
+
+.ms-field--sm .ms-field-label {
+  font-size: var(--ms-typography-size-xs);
+}
+
+.ms-field--lg .ms-field-label {
+  font-size: var(--ms-typography-size-md);
+}
+
+.ms-field-optional {
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-muted);
+  font-weight: var(--ms-typography-weight-regular);
+  margin-inline-start: var(--ms-space-1);
 }
 
 .ms-field-description {

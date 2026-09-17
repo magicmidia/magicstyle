@@ -1,0 +1,161 @@
+/*
+ * Magic-Style Breadcrumbs layer (doc 05 §7).
+ * Accessible breadcrumb trail navigation with customizable separators, variants, and collapse.
+ */
+
+.ms-breadcrumbs {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.ms-breadcrumbs__list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--ms-space-2, 8px);
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-sm, 0.875rem);
+  line-height: var(--ms-typography-line-height-base, 1.5);
+}
+
+/* Sizes */
+.ms-breadcrumbs--sm .ms-breadcrumbs__list {
+  font-size: var(--ms-typography-size-xs, 0.75rem);
+  gap: var(--ms-space-1-5, 6px);
+}
+
+.ms-breadcrumbs--md .ms-breadcrumbs__list {
+  font-size: var(--ms-typography-size-sm, 0.875rem);
+  gap: var(--ms-space-2, 8px);
+}
+
+.ms-breadcrumbs--lg .ms-breadcrumbs__list {
+  font-size: var(--ms-typography-size-md, 1rem);
+  gap: var(--ms-space-3, 12px);
+}
+
+/* Items */
+.ms-breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-1-5, 6px);
+}
+
+.ms-breadcrumbs__link,
+.ms-breadcrumbs__current,
+.ms-breadcrumbs__text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-1-5, 6px);
+  border-radius: var(--ms-radius-sm, 4px);
+  transition:
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-breadcrumbs__link {
+  color: var(--ms-color-text-secondary);
+  text-decoration: none;
+  padding: 2px 4px;
+  margin: -2px -4px;
+}
+
+.ms-breadcrumbs__link:hover {
+  color: var(--ms-color-interactive-primary);
+  background-color: var(--ms-color-interactive-primary-subtle, rgba(46, 134, 222, 0.08));
+  text-decoration: none;
+}
+
+.ms-breadcrumbs__link:focus-visible {
+  outline: var(--ms-border-focus) solid var(--ms-color-border-focus);
+  outline-offset: 2px;
+}
+
+.ms-breadcrumbs__current {
+  color: var(--ms-color-text-primary);
+  font-weight: var(--ms-typography-weight-semibold);
+  padding: 2px 4px;
+  margin: -2px -4px;
+}
+
+.ms-breadcrumbs__text {
+  color: var(--ms-color-text-secondary);
+}
+
+.ms-breadcrumbs__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+.ms-breadcrumbs__separator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ms-color-neutral-400);
+  user-select: none;
+  font-size: 0.9em;
+}
+
+/* Ellipsis collapse button */
+.ms-breadcrumbs__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 6px;
+  border-radius: var(--ms-radius-sm, 4px);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--ms-color-text-muted);
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all var(--ms-motion-duration-fast) ease;
+}
+
+.ms-breadcrumbs__ellipsis:hover {
+  background-color: var(--ms-color-surface-sunken);
+  color: var(--ms-color-text-primary);
+  border-color: var(--ms-color-border-subtle);
+}
+
+/* Variant: Pills */
+.ms-breadcrumbs--pills .ms-breadcrumbs__link,
+.ms-breadcrumbs--pills .ms-breadcrumbs__current,
+.ms-breadcrumbs--pills .ms-breadcrumbs__text {
+  padding: 4px 10px;
+  margin: 0;
+  border-radius: var(--ms-radius-full, 9999px);
+  background-color: var(--ms-color-surface-sunken);
+}
+
+.ms-breadcrumbs--pills .ms-breadcrumbs__link:hover {
+  background-color: var(--ms-color-interactive-primary-subtle);
+  color: var(--ms-color-interactive-primary);
+}
+
+.ms-breadcrumbs--pills .ms-breadcrumbs__current {
+  background-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-text-on-accent);
+}
+
+/* Variant: Solid container */
+.ms-breadcrumbs--solid {
+  background-color: var(--ms-color-surface-sunken);
+  border: 1px solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-md, 8px);
+  padding: var(--ms-space-2, 8px) var(--ms-space-3-5, 14px);
+}
+
+/* Disabled state */
+.ms-breadcrumbs__item--disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}

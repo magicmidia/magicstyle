@@ -8,16 +8,16 @@
     "300": { "$type": "color", "$value": "oklch(0.825 0.014 252)" },
     "400": { "$type": "color", "$value": "oklch(0.695 0.018 252)" },
     "500": { "$type": "color", "$value": "oklch(0.575 0.022 252)" },
-    "600": { "$type": "color", "$value": "oklch(0.390 0.026 252)" },
+    "600": { "$type": "color", "$value": "oklch(0.440 0.026 252)" },
     "700": {
       "$type": "color",
-      "$value": "oklch(0.300 0.033 252)",
+      "$value": "oklch(0.350 0.028 252)",
       "$description": "Brand neutral #222f3e."
     },
-    "800": { "$type": "color", "$value": "oklch(0.240 0.030 252)" },
-    "900": { "$type": "color", "$value": "oklch(0.180 0.025 252)" },
-    "950": { "$type": "color", "$value": "oklch(0.135 0.020 252)" },
-    "1000": { "$type": "color", "$value": "oklch(0.100 0.016 252)" }
+    "800": { "$type": "color", "$value": "oklch(0.275 0.026 252)" },
+    "900": { "$type": "color", "$value": "oklch(0.215 0.023 252)" },
+    "950": { "$type": "color", "$value": "oklch(0.170 0.020 252)" },
+    "1000": { "$type": "color", "$value": "oklch(0.140 0.016 252)" }
   },
   "accent": {
     "50": { "$type": "color", "$value": "oklch(0.975 0.030 280)" },

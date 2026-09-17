@@ -1,0 +1,104 @@
+/*
+ * Magic-Style Collapse layer (doc 05 §10).
+ * Standalone collapsible disclosure with smooth CSS Grid transition and customizable trigger header.
+ */
+
+.ms-collapse {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: var(--ms-color-surface-default);
+  border-radius: var(--ms-radius-md);
+  overflow: hidden;
+  transition: border-color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-collapse--bordered {
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+}
+
+.ms-collapse--card {
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  background-color: var(--ms-color-surface-raised);
+  box-shadow: var(--ms-shadow-xs);
+}
+
+.ms-collapse--ghost {
+  border: none;
+  background-color: transparent;
+}
+
+/* Header & Trigger */
+.ms-collapse__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ms-space-3) var(--ms-space-4);
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-medium);
+  color: var(--ms-color-text-primary);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-collapse__header:hover:not(:disabled) {
+  background-color: var(--ms-color-surface-sunken);
+}
+
+.ms-collapse__header:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ms-collapse__title {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-2);
+  flex: 1;
+}
+
+.ms-collapse__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-2);
+}
+
+.ms-collapse__chevron {
+  width: 18px;
+  height: 18px;
+  color: var(--ms-color-text-muted);
+  transition: transform var(--ms-motion-duration-normal) var(--ms-motion-easing-standard);
+}
+
+.ms-collapse--open .ms-collapse__chevron {
+  transform: rotate(180deg);
+}
+
+/* Body / Content animation via CSS Grid */
+.ms-collapse__wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--ms-motion-duration-normal) var(--ms-motion-easing-standard);
+}
+
+.ms-collapse--open .ms-collapse__wrapper {
+  grid-template-rows: 1fr;
+}
+
+.ms-collapse__content {
+  overflow: hidden;
+}
+
+.ms-collapse__inner {
+  padding: var(--ms-space-3) var(--ms-space-4);
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text-secondary);
+  line-height: 1.6;
+  border-top: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+}

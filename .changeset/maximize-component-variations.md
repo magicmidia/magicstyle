@@ -1,0 +1,63 @@
+---
+"@magic-style/vue": minor
+"@magic-style/css": minor
+---
+
+- **textarea**: Added `autoGrow`, scale sizes (`sm`, `md`, `lg`, `xl`), resize classes (`none`, `vertical`, `horizontal`, `both`), and character counter slot/display.
+- **search-field**: Fixed icon overlap by adjusting native input padding; added variants (`outline`, `filled`, `flushed`), keyboard shortcut badge (`shortcut`), and clear action.
+- **select**: Added `tone` (8 semantic brand colors: `primary`, `secondary`, `accent`, `neutral`, `success`, `info`, `warning`, `danger`), `variant` (`outline`, `filled`, `flushed`), `pill` shape, size scale (`xs` 28px to `xl` 56px), and fixed SVG icons.
+- **button**: Added `xs` (28px) size, and `dashed` (dashed outline) and `link` (underlined text) variants.
+- **input**: Added all 8 semantic brand tones and `xs` (28px) size.
+- **card**: Added `tone` prop with accent top border in all 8 brand colors.
+- **alert**: Enlarged and vertically centered icons, added featured badge style (`featured`), and sizes (`sm`, `md`, `lg`).
+- **skeleton**: Fixed token fallback to ensure visibility; added presets (`circle`, `avatar`, `button`, `card`, `rect`, `text`), tones, and speeds (`fast`, `normal`, `slow`).
+- **tabs**: Added `solid` variant and responsive scrollable container with smooth navigation arrows for overflow/mobile views.
+- **breadcrumbs**: Added variants (`plain`, `pills`, `solid`), sizes (`sm`, `md`, `lg`), separator presets (`chevron`, `slash`, `arrow`, `dot`), item icons, and intelligent ellipsis collapse (`maxItems`).
+- **separator**: Added styles (`dashed`, `dotted`, `gradient`), semantic tones, thicknesses (1, 2, 4px), and labeled text dividers (`label="OU"`).
+- **badge**: Added `xs` and `xl` sizes, `count`, `maxCount` (e.g. `99+`), `dotOnly`, radar ping animation (`pulse`), ring border (`bordered`), wrapper mode, and corner positioning (`placement`).
+- **avatar**: Added `square` shape, extended sizes (`2xs`, `2xl`, `3xl`), `statusPlacement`, `bordered`, and created `MsAvatarGroup` with overlap spacing (`tight`, `normal`, `loose`), hover lift, and `+N` excess counter.
+- **card**: Added `glass` frosted blur variant, `xs` and `xl` padding, hover elevation (`hoverable`), `headerDivider`, `footerDivider`, cover image (`coverSrc`/`coverAlt`), and horizontal orientation (`orientation="horizontal"`).
+- **tag**: Added `pill` and `square` shapes, status indicator dot (`dot`), and prefix/suffix slots.
+- **switch**: Added sizes (`sm`, `md`, `lg`), semantic tones (`primary`, `success`, `warning`, `danger`, `accent`), label placement (`labelPlacement="left"|"right"`), and descriptive subtitle support.
+- **checkbox**: Added sizes (`sm`, `md`, `lg`), semantic tones, card option mode (`card`), and descriptive subtitle support.
+- **input**: Added `filled` and `flushed` variants, `pill` shape, clear action button (`clearable`), and interactive password visibility toggle (`passwordToggle`).
+- **progress**: Added micro (`2xs` - 2px) and ample (`2xl` - 24px) sizes, shapes (`square`, `rounded`, `pill`), gradient fills (`gradient`), and inline percentage text (`inlineValue`).
+- **radio**: Added sizes (`sm`, `md`, `lg`), semantic tones (`primary`, `success`, `warning`, `danger`), card option mode (`card`), subtitle descriptions, and group orientations (`horizontal`, `vertical`).
+- **button-group**: Added orientation layout (`horizontal`, `vertical`), attached mode (`attached`), and full-width block distribution (`fullWidth`).
+- **icon-button**: Added micro size (`2xs` - 20px), shapes (`square`, `rounded`, `circle`), and active pressed toggle state (`active`, `aria-pressed`).
+- **empty-state**: Added container variants (`dashed`, `plain`, `card`) and semantic icon tones (`primary`, `success`, `warning`, `danger`, `neutral`).
+- **native-select**: Added input variants (`filled`, `flushed`), rounded pill shape (`pill`), and validation tones (`success`, `warning`, `danger`).
+- **tooltip**: Added tones (`dark`, `light`, `primary`), sizes (`sm`, `md`, `lg`), directional arrow toggling (`arrow`), and max-width clamping with text wrap.
+- **dialog**: Added placement positions (`center`, `top`, `bottom` bottom-sheet), semantic tone indicators (`default`, `danger`, `warning`, `success`, `info`), and accessible role customization (`dialog`, `alertdialog`).
+- **segmented-control**: Added shapes (`rounded`, `pill`, `square`), tones (`neutral`, `primary`, `accent`), and extended size scale (`xs` 24px to `xl` 56px).
+- **menu / dropdown-button**: Added menu item prefixes (`prefix`), semantic danger tone (`tone="danger"`), divider separators (`divider`), and dropdown button alignment (`align="left"|"right"`) and full-width mode (`fullWidth`).
+- **table**: Added container variants (`default`, `surface`, `flush`), sticky header pinning (`stickyHeader`), and densities `xs` (11px micro) and `xl` (18px comfortable).
+- **spinner**: Added speeds (`fast` 0.4s, `normal` 0.8s, `slow` 1.4s) and micro (`2xs` 8px) / mega (`2xl` 64px) sizes.
+- **field**: Added layout orientations (`vertical`, `horizontal`), optional indicator text (`optional`), and font size scales (`sm`, `md`, `lg`).
+- **container**: Added `MsContainer` with fluid and fixed max-width breakpoints (`sm`, `md`, `lg`, `xl`, `2xl`, `full`) and gutters.
+- **banner**: Added `MsBanner` with floating, sticky, and inline variants, status tones, and actions.
+- **drawer**: Added `MsDrawer` with placements (`left`, `right`, `top`, `bottom`), backdrop blur, keyboard traps, and sizes.
+- **accordion**: Added `MsAccordion` and `MsAccordionItem` with single and multiple expansion, icons, bordered and flush styles.
+- **popover**: Added `MsPopover` with click/hover triggers, custom placement, arrows, and auto-dismiss.
+- **confirm-dialog**: Added `MsConfirmDialog` for critical operations with confirm/cancel semantics, tones, and loading states.
+- **timeline**: Added `MsTimeline` and `MsTimelineItem` with vertical and horizontal directions, custom markers, and tones.
+- **progress-radial**: Added `MsProgressRadial` SVG gauge with smooth animations, custom thickness, and center label slots.
+- **status**: Added `MsStatus` badge and dot indicator with pulsing radar effect and semantic tones.
+- **rating**: Added `MsRating` with interactive star rating, half-stars, keyboard navigation, and readonly/disabled states.
+- **toast**: Added `MsToast`, `MsToastContainer`, and `useToast` reactive composable with positioning, automatic timeouts, and tone cards.
+- **animated-number**: Added `MsAnimatedNumber` for smooth numeric counting animations with configurable formatting and duration.
+- **list / list-group**: Added `MsList`, `MsListItem`, and `MsListGroup` with selection, avatars, prefixes, suffixes, and interactive states.
+- **range**: Added `MsRange` custom slider with tick marks, tooltips, semantic tones, and step snapping.
+- **stepper**: Added `MsStepper` and `MsStep` with horizontal/vertical layouts, completion tracking, clickable steps, and subtitle support.
+- **file-input**: Added `MsFileInput` with drag-and-drop zone, file type validation, size limits, and multi-file listing.
+- **tree**: Added `MsTree` and `MsTreeNode` with nested tree structures, expand/collapse, selection, and custom node icons.
+- **context-menu**: Added `MsContextMenu` triggered by right-click with boundary positioning, submenus, shortcuts, and items.
+- **chat-bubble**: Added `MsChatBubble` with sent/received alignments, timestamps, status ticks, and avatar integration.
+- **carousel**: Added `MsCarousel` and `MsCarouselSlide` with touch swiping, navigation arrows, pagination dots, and autoplay.
+- **dock**: Added `MsDock` and `MsDockItem` with macOS-style hover magnification, tooltips, and floating dock bars.
+- **color-picker**: Added `MsColorPicker` with interactive hex inputs, preset palettes, transparency slider, and popover picker.
+- **scroll-spy**: Added `MsScrollSpy` for automatic section highlighting based on viewport scroll position.
+- **sidebar-menu**: Added `MsSidebarMenu`, `MsSidebarMenuGroup`, and `MsSidebarMenuItem` for corporate and dashboard navigation with accordion submenus, sliding active indicators, mini/collapsed mode, badge indicators, and 8 semantic tones.
+- **brand-palette**: Standardized and strictly enforced official brand colors across internal tokens, CSS, and Vue: Accent (`#341f97`), Neutral (`#222f3e`), Primary (`#2e86de`), Secondary (`#e15f41`), Success (`#10ac84`), Info (`#0abde3`), Warning (`#ff9f43`), Danger (`#ee5253`).
+- **preview-studio**: Redesigned Preview Studio inspired by FlyonUI / Radix / DaisyUI with sliding `MsSidebarMenu` navigation across 6 categories, live search filter across 57 tabs, 4 FlyonUI-style synchronized tabs ([✨ Preview Interativo], [📋 Código Vue SFC], [📖 Especificação de API], [🎨 Galeria]), live reactive Vue SFC code generation matching playground state for all 51 components, enriched interactive controls across all components, responsive mobile drawer, and RTL toggle.
+- **studio-foundation**: Added interactive Typography scale, Colors WCAG AA contrast matrix, Themes & Dials visual playground, CSS Utilities live explorer, RTL switcher, and Customization playground.

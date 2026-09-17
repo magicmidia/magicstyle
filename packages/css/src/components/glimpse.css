@@ -1,0 +1,229 @@
+/*
+ * Magic-Style Glimpse Component Layer
+ * Rich URL hovercard preview for links
+ * Classes: .ms-glimpse, .ms-glimpse__trigger, .ms-glimpse__card,
+ *          .ms-glimpse__image-wrapper, .ms-glimpse__image,
+ *          .ms-glimpse__content, .ms-glimpse__site-header,
+ *          .ms-glimpse__domain-wrap, .ms-glimpse__favicon,
+ *          .ms-glimpse__badge, .ms-glimpse__title, .ms-glimpse__description
+ * Placements: top, bottom, left, right
+ */
+
+.ms-glimpse {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.ms-glimpse__trigger {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Floating Card */
+.ms-glimpse__card {
+  position: absolute;
+  z-index: var(--ms-z-index-popover, 1000);
+  width: 300px;
+  max-width: calc(100vw - 32px);
+  border-radius: var(--ms-radius-lg, 12px);
+  background-color: var(--ms-color-surface-raised);
+  border: var(--ms-border-hairline, 1px) solid var(--ms-color-border-subtle);
+  box-shadow: var(
+    --ms-elevation-dropdown,
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--ms-motion-duration-fast, 150ms) var(--ms-motion-easing-standard, ease),
+    transform var(--ms-motion-duration-fast, 150ms) var(--ms-motion-easing-standard, ease),
+    visibility var(--ms-motion-duration-fast, 150ms);
+}
+
+.ms-glimpse__card--open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Placements */
+.ms-glimpse__card--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  margin-bottom: 6px;
+}
+.ms-glimpse__card--top.ms-glimpse__card--open {
+  transform: translateX(-50%) translateY(0);
+}
+
+.ms-glimpse__card--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  margin-top: 6px;
+}
+.ms-glimpse__card--bottom.ms-glimpse__card--open {
+  transform: translateX(-50%) translateY(0);
+}
+
+.ms-glimpse__card--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-6px);
+  margin-right: 6px;
+}
+.ms-glimpse__card--left.ms-glimpse__card--open {
+  transform: translateY(-50%) translateX(0);
+}
+
+.ms-glimpse__card--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  margin-left: 6px;
+}
+.ms-glimpse__card--right.ms-glimpse__card--open {
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Card image */
+.ms-glimpse__image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 130px;
+  background-color: var(--ms-color-surface-sunken);
+  overflow: hidden;
+}
+
+.ms-glimpse__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card content */
+.ms-glimpse__content {
+  padding: var(--ms-space-3, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-1-5, 6px);
+}
+
+.ms-glimpse__site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ms-space-2, 8px);
+}
+
+.ms-glimpse__domain-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-1-5, 6px);
+  font-family: var(--ms-font-family-sans, sans-serif);
+  font-size: var(--ms-font-size-xs, 12px);
+  color: var(--ms-color-text-muted);
+}
+
+.ms-glimpse__favicon {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  object-fit: contain;
+}
+
+.ms-glimpse__badge {
+  font-family: var(--ms-font-family-sans, sans-serif);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: var(--ms-radius-full, 9999px);
+  background-color: var(--ms-color-surface-sunken);
+  color: var(--ms-color-brand-primary);
+  border: var(--ms-border-hairline, 1px) solid var(--ms-color-border-subtle);
+}
+
+.ms-glimpse__title {
+  font-family: var(--ms-font-family-sans, sans-serif);
+  font-size: var(--ms-font-size-sm, 13px);
+  font-weight: var(--ms-font-weight-semibold, 600);
+  color: var(--ms-color-text-primary);
+  line-height: var(--ms-line-height-tight, 1.3);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.ms-glimpse__description {
+  font-family: var(--ms-font-family-sans, sans-serif);
+  font-size: var(--ms-font-size-xs, 11.5px);
+  color: var(--ms-color-text-muted);
+  line-height: var(--ms-line-height-normal, 1.45);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Skeleton Loading State */
+.ms-glimpse__skeleton-image {
+  width: 100%;
+  height: 130px;
+  background-color: var(--ms-color-surface-sunken);
+  position: relative;
+  overflow: hidden;
+}
+
+.ms-glimpse__skeleton-image::after,
+.ms-glimpse__skeleton-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(255, 255, 255, 0.15) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: ms-glimpse-shimmer 2s infinite;
+}
+
+.ms-glimpse__skeleton-line {
+  height: 12px;
+  border-radius: var(--ms-radius-sm, 4px);
+  background-color: var(--ms-color-surface-sunken);
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes ms-glimpse-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ms-glimpse__card,
+  .ms-glimpse__skeleton-image::after,
+  .ms-glimpse__skeleton-line::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

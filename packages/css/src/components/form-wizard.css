@@ -1,0 +1,115 @@
+/*
+ * Magic-Style FormWizard layer (doc 05 §10).
+ * Multi-step guided wizard layout with progress indicators and navigation controls.
+ */
+
+.ms-form-wizard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--ms-color-surface-raised);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-lg);
+  overflow: hidden;
+}
+
+/* Header & Steps Tracker */
+.ms-form-wizard__header {
+  padding: var(--ms-space-4) var(--ms-space-5);
+  background-color: var(--ms-color-surface-sunken);
+  border-bottom: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+}
+
+.ms-form-wizard__steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.ms-form-wizard__step {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-2);
+  cursor: default;
+  color: var(--ms-color-text-muted);
+  font-size: var(--ms-typography-size-sm);
+  transition: color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-form-wizard__step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--ms-radius-full);
+  background-color: var(--ms-color-border-subtle);
+  color: var(--ms-color-text-secondary);
+  font-weight: var(--ms-typography-weight-semibold);
+  font-size: var(--ms-typography-size-xs);
+  transition:
+    background-color var(--ms-motion-duration-fast) ease,
+    color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-form-wizard__step--active {
+  color: var(--ms-color-text-primary);
+  font-weight: var(--ms-typography-weight-medium);
+}
+
+.ms-form-wizard__step--active .ms-form-wizard__step-badge {
+  background-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-text-inverse);
+}
+
+.ms-form-wizard__step--completed .ms-form-wizard__step-badge {
+  background-color: var(--ms-color-status-success);
+  color: var(--ms-color-text-inverse);
+}
+
+.ms-form-wizard__step-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ms-form-wizard__step-title {
+  line-height: 1.2;
+}
+
+.ms-form-wizard__step-desc {
+  font-size: var(--ms-typography-size-2xs);
+  color: var(--ms-color-text-muted);
+}
+
+.ms-form-wizard__step-divider {
+  flex: 1;
+  height: 2px;
+  background-color: var(--ms-color-border-subtle);
+  margin: 0 var(--ms-space-3);
+  transition: background-color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-form-wizard__step-divider--completed {
+  background-color: var(--ms-color-status-success);
+}
+
+/* Content Body */
+.ms-form-wizard__body {
+  padding: var(--ms-space-6);
+  min-height: 200px;
+}
+
+/* Footer / Actions */
+.ms-form-wizard__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ms-space-4) var(--ms-space-6);
+  border-top: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  background-color: var(--ms-color-surface-sunken);
+}

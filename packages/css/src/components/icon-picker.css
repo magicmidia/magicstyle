@@ -1,0 +1,133 @@
+/*
+ * Magic-Style IconPicker layer (doc 05 §10).
+ * Popover icon selection grid with search, categories, and preview.
+ */
+
+.ms-icon-picker {
+  position: relative;
+  display: inline-flex;
+  box-sizing: border-box;
+}
+
+.ms-icon-picker__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-2);
+  height: var(--ms-control-height-md, 40px);
+  padding: 0 var(--ms-space-3);
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text-primary);
+  background-color: var(--ms-color-surface-raised);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-md);
+  cursor: pointer;
+  user-select: none;
+  transition: border-color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-icon-picker__trigger:hover {
+  border-color: var(--ms-color-border-strong);
+}
+
+.ms-icon-picker__preview {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.ms-icon-picker__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 50;
+  width: 320px;
+  background-color: var(--ms-color-surface-raised);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-lg);
+  box-shadow: var(--ms-shadow-md);
+  padding: var(--ms-space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-2);
+}
+
+.ms-icon-picker__search {
+  width: 100%;
+  height: 32px;
+  padding: 0 var(--ms-space-2);
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-primary);
+  background-color: var(--ms-color-surface-sunken);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-sm);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.ms-icon-picker__search:focus {
+  border-color: var(--ms-color-interactive-primary);
+}
+
+.ms-icon-picker__categories {
+  display: flex;
+  gap: var(--ms-space-1);
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+
+.ms-icon-picker__category-btn {
+  background: transparent;
+  border: none;
+  padding: 2px var(--ms-space-2);
+  font-size: var(--ms-typography-size-2xs);
+  color: var(--ms-color-text-muted);
+  border-radius: var(--ms-radius-xs);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ms-icon-picker__category-btn--active {
+  background-color: var(--ms-color-surface-sunken);
+  color: var(--ms-color-text-primary);
+  font-weight: var(--ms-typography-weight-medium);
+}
+
+.ms-icon-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  max-height: 190px;
+  overflow-y: auto;
+  padding: 2px;
+}
+
+.ms-icon-picker__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--ms-radius-sm);
+  background: transparent;
+  border: var(--ms-border-hairline) solid transparent;
+  color: var(--ms-color-text-primary);
+  cursor: pointer;
+  transition:
+    background-color var(--ms-motion-duration-fast) ease,
+    border-color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-icon-picker__item:hover {
+  background-color: var(--ms-color-surface-sunken);
+  border-color: var(--ms-color-border-subtle);
+}
+
+.ms-icon-picker__item--selected {
+  background-color: color-mix(in oklch, var(--ms-color-interactive-primary) 15%, transparent);
+  border-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-interactive-primary);
+}

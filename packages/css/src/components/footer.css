@@ -1,0 +1,218 @@
+/**
+ * Magic-Style: MsFooter CSS Component (Doc 04 §2, Doc 09 §10)
+ * Semantic application and marketing footer with multi-column, simple, compact layouts, brand tones, and sunken/inverse variants.
+ */
+
+.ms-footer {
+  display: flex;
+  flex-direction: column;
+  inline-size: 100%;
+  background: var(--ms-color-surface-default);
+  color: var(--ms-color-text-primary);
+  border-block-start: 1px solid var(--ms-color-border-subtle);
+  padding: var(--ms-space-6) var(--ms-space-4);
+  box-sizing: border-box;
+  transition:
+    background var(--ms-motion-duration-fast),
+    color var(--ms-motion-duration-fast);
+}
+
+/* Layouts */
+.ms-footer--layout-simple,
+.ms-footer[data-layout="simple"] {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--ms-space-3);
+  padding: var(--ms-space-4);
+}
+
+.ms-footer--layout-compact,
+.ms-footer[data-layout="compact"] {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--ms-space-2) var(--ms-space-4);
+  font-size: var(--ms-typography-size-xs);
+  min-height: 40px;
+}
+
+.ms-footer--layout-centered,
+.ms-footer[data-layout="centered"] {
+  text-align: center;
+  align-items: center;
+  gap: var(--ms-space-4);
+}
+
+.ms-footer--layout-multi-column,
+.ms-footer[data-layout="multi-column"] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-6);
+}
+
+/* Positions */
+.ms-footer--position-sticky,
+.ms-footer[data-position="sticky"] {
+  position: sticky;
+  bottom: 0;
+  inset-block-end: 0;
+  z-index: var(--ms-z-index-sticky, 100);
+}
+
+.ms-footer--position-fixed,
+.ms-footer[data-position="fixed"] {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  z-index: var(--ms-z-index-sticky, 100);
+}
+
+/* Shadows */
+.ms-footer--shadow-none,
+.ms-footer[data-shadow="none"] {
+  box-shadow: none;
+}
+
+.ms-footer--shadow-sm,
+.ms-footer[data-shadow="sm"] {
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ms-footer--shadow-md,
+.ms-footer[data-shadow="md"] {
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.ms-footer--shadow-lg,
+.ms-footer[data-shadow="lg"] {
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Variants */
+.ms-footer--variant-bordered,
+.ms-footer[data-variant="bordered"] {
+  border-block-start: 2px solid var(--ms-color-border);
+}
+
+.ms-footer--variant-sunken,
+.ms-footer[data-variant="sunken"] {
+  background: var(--ms-color-surface-sunken, #f1f5f9);
+}
+
+.ms-footer--variant-inverse,
+.ms-footer[data-variant="inverse"] {
+  background: var(--ms-color-surface-inverse);
+  color: var(--ms-color-text-inverse);
+  border-block-start-color: transparent;
+}
+
+/* Semantic Brand Tones */
+.ms-footer--tone-neutral,
+.ms-footer[data-tone="neutral"] {
+  background: var(--ms-color-neutral, #222f3e);
+  color: #ffffff;
+  border-block-start-color: color-mix(in srgb, var(--ms-color-neutral, #222f3e) 85%, white 15%);
+}
+
+.ms-footer--tone-primary,
+.ms-footer[data-tone="primary"] {
+  background: var(--ms-color-primary, #2e86de);
+  color: #ffffff;
+  border-block-start-color: color-mix(in srgb, var(--ms-color-primary, #2e86de) 85%, black 15%);
+}
+
+.ms-footer--tone-accent,
+.ms-footer[data-tone="accent"] {
+  background: var(--ms-color-accent, #341f97);
+  color: #ffffff;
+  border-block-start-color: color-mix(in srgb, var(--ms-color-accent, #341f97) 85%, black 15%);
+}
+
+/* Sub-elements */
+.ms-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--ms-space-6);
+  inline-size: 100%;
+}
+
+.ms-footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-2);
+}
+
+.ms-footer__column-title {
+  font-weight: var(--ms-typography-weight-bold, 700);
+  font-size: var(--ms-typography-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: inherit;
+  margin-block-end: var(--ms-space-1);
+}
+
+.ms-footer__link {
+  color: color-mix(in srgb, currentColor 75%, transparent);
+  text-decoration: none;
+  font-size: var(--ms-typography-size-sm);
+  transition: color var(--ms-motion-duration-fast);
+}
+
+.ms-footer__link:hover {
+  color: var(--ms-color-primary, #2e86de);
+}
+
+.ms-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--ms-space-3);
+  padding-block-start: var(--ms-space-4);
+  border-block-start: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+  inline-size: 100%;
+}
+
+.ms-footer__copyright {
+  font-size: var(--ms-typography-size-xs);
+  color: color-mix(in srgb, currentColor 65%, transparent);
+}
+
+.ms-footer__social {
+  display: flex;
+  gap: var(--ms-space-2);
+  align-items: center;
+}
+
+/* Optional Inner Container */
+.ms-footer__container {
+  width: 100%;
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+
+.ms-footer__container--fluid {
+  max-width: 100%;
+}
+
+.ms-footer__container--sm {
+  max-width: 640px;
+}
+
+.ms-footer__container--md {
+  max-width: 768px;
+}
+
+.ms-footer__container--lg {
+  max-width: 1024px;
+}
+
+.ms-footer__container--xl {
+  max-width: 1280px;
+}

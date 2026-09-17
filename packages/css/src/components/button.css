@@ -45,6 +45,12 @@
 }
 
 /* Sizes (doc 03 §6: density is not size; height scale comes from layout tokens) */
+.ms-button[data-size="xs"],
+.ms-button--size-xs {
+  --_ms-btn-height: 28px;
+  padding-inline: var(--ms-space-2, 8px);
+  font-size: 0.75rem;
+}
 .ms-button[data-size="sm"] {
   --_ms-btn-height: var(--ms-layout-field-height-sm);
   padding-inline: var(--ms-space-3);
@@ -171,6 +177,7 @@
 .ms-button[data-variant="squared"] {
   background-color: var(--_ms-btn-accent);
   color: var(--_ms-btn-accent-fg);
+  box-shadow: var(--ms-elevation-button, none);
 }
 .ms-button[data-variant="solid"]:hover:not(:disabled),
 .ms-button[data-variant="squared"]:hover:not(:disabled) {
@@ -235,6 +242,35 @@
   transform: scale(0.98);
 }
 
+/* Dashed: corporate dashed outline style */
+.ms-button[data-variant="dashed"],
+.ms-button--variant-dashed {
+  border-style: dashed;
+  border-color: color-mix(in oklch, var(--_ms-btn-accent) 50%, transparent);
+  color: var(--_ms-btn-accent-fg-muted);
+  background-color: transparent;
+}
+.ms-button[data-variant="dashed"]:hover:not(:disabled),
+.ms-button--variant-dashed:hover:not(:disabled) {
+  background-color: var(--_ms-btn-accent-subtle);
+  border-color: var(--_ms-btn-accent);
+}
+
+/* Link: hyperlinked button with underline on hover */
+.ms-button[data-variant="link"],
+.ms-button--variant-link {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--_ms-btn-accent);
+  padding-inline: var(--ms-space-1, 4px);
+  text-decoration: none;
+}
+.ms-button[data-variant="link"]:hover:not(:disabled),
+.ms-button--variant-link:hover:not(:disabled) {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 /* ---------- States ---------- */
 
 .ms-button:disabled {
@@ -255,6 +291,10 @@
 .ms-button:focus-visible {
   outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
   outline-offset: var(--ms-focus-ring-offset);
+}
+
+.ms-button:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /* Spinner built from motion tokens only */

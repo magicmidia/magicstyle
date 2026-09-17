@@ -1,0 +1,226 @@
+/* ==========================================================================
+   MsTable — Semantic Data Display Table (Doc 05 §10)
+   Tokens: color, space, radius, typography, motion
+   ========================================================================== */
+
+.ms-table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background-color: var(--ms-color-surface-default, #ffffff);
+  border: 1px solid var(--ms-color-border-subtle, #e2e8f0);
+  border-radius: var(--ms-radius-md, 6px);
+  box-sizing: border-box;
+}
+
+.ms-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: inherit;
+  font-size: var(--ms-font-size-body-md, 0.9375rem);
+  color: var(--ms-color-text-primary, #1e293b);
+  box-sizing: border-box;
+}
+
+.ms-table *,
+.ms-table *::before,
+.ms-table *::after {
+  box-sizing: border-box;
+}
+
+/* --- Caption --- */
+.ms-table__caption {
+  caption-side: top;
+  padding: var(--ms-space-2, 8px) var(--ms-space-4, 16px);
+  font-size: var(--ms-font-size-body-sm, 0.8125rem);
+  font-weight: 600;
+  color: var(--ms-color-text-muted, #64748b);
+  text-align: left;
+}
+
+/* --- Table Head --- */
+.ms-table__head {
+  background-color: var(--ms-color-surface-sunken, #f8fafc);
+  border-bottom: 2px solid var(--ms-color-border-default, #cbd5e1);
+}
+
+.ms-table__th {
+  padding: var(--ms-space-3, 12px) var(--ms-space-4, 16px);
+  font-size: var(--ms-font-size-body-sm, 0.8125rem);
+  font-weight: 600;
+  color: var(--ms-color-text-primary, #1e293b);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.ms-table__th[data-align="left"] {
+  text-align: left;
+}
+
+.ms-table__th[data-align="center"] {
+  text-align: center;
+}
+
+.ms-table__th[data-align="right"] {
+  text-align: right;
+}
+
+/* Sortable Table Header */
+.ms-table__th--sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--ms-motion-duration-fast, 150ms) ease;
+}
+
+.ms-table__th--sortable:hover {
+  background-color: var(--ms-color-surface-hover, #f1f5f9);
+}
+
+.ms-table__th-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-1, 4px);
+}
+
+.ms-table__sort-icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ms-color-text-muted, #94a3b8);
+  font-size: 0.75rem;
+  transition: color var(--ms-motion-duration-fast, 150ms) ease;
+}
+
+.ms-table__th--sortable[aria-sort="ascending"] .ms-table__sort-icon,
+.ms-table__th--sortable[aria-sort="descending"] .ms-table__sort-icon {
+  color: var(--ms-color-primary, #6366f1);
+}
+
+/* --- Table Body --- */
+.ms-table__body {
+  background-color: var(--ms-color-surface-default, #ffffff);
+}
+
+.ms-table__row {
+  border-bottom: 1px solid var(--ms-color-border-subtle, #e2e8f0);
+  transition: background-color var(--ms-motion-duration-fast, 150ms) ease;
+}
+
+.ms-table__row:last-child {
+  border-bottom: none;
+}
+
+/* Hoverable modifier */
+.ms-table--hoverable .ms-table__body .ms-table__row:hover {
+  background-color: var(--ms-color-surface-hover, #f8fafc);
+}
+
+/* Striped modifier */
+.ms-table--striped .ms-table__body .ms-table__row:nth-child(even) {
+  background-color: var(--ms-color-surface-sunken, #f8fafc);
+}
+
+.ms-table--striped.ms-table--hoverable .ms-table__body .ms-table__row:hover {
+  background-color: var(--ms-color-surface-hover, #f1f5f9);
+}
+
+/* Selected row state */
+.ms-table .ms-table__body .ms-table__row[data-selected="true"] {
+  background-color: var(--ms-color-primary-subtle, #eef2ff);
+}
+
+/* Clickable row state */
+.ms-table__row[data-clickable="true"] {
+  cursor: pointer;
+}
+
+/* --- Table Data Cell --- */
+.ms-table__td {
+  padding: var(--ms-space-3, 12px) var(--ms-space-4, 16px);
+  color: var(--ms-color-text-primary, #1e293b);
+  vertical-align: middle;
+}
+
+.ms-table__td[data-align="left"] {
+  text-align: left;
+}
+
+.ms-table__td[data-align="center"] {
+  text-align: center;
+}
+
+.ms-table__td[data-align="right"] {
+  text-align: right;
+}
+
+/* --- Table Footer --- */
+.ms-table__footer {
+  background-color: var(--ms-color-surface-sunken, #f8fafc);
+  border-top: 2px solid var(--ms-color-border-default, #cbd5e1);
+  font-weight: 500;
+}
+
+.ms-table__footer .ms-table__td {
+  font-weight: 600;
+  color: var(--ms-color-text-primary, #1e293b);
+}
+
+/* --- Bordered modifier --- */
+.ms-table--bordered {
+  border: 1px solid var(--ms-color-border-subtle, #e2e8f0);
+}
+
+.ms-table--bordered .ms-table__th,
+.ms-table--bordered .ms-table__td {
+  border: 1px solid var(--ms-color-border-subtle, #e2e8f0);
+}
+
+/* --- Variants --- */
+.ms-table-container--surface {
+  box-shadow: var(--ms-elevation-2);
+  border-color: var(--ms-color-border-default);
+}
+
+.ms-table-container--flush {
+  border-inline: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* --- Sticky Header --- */
+.ms-table--sticky-header .ms-table__head .ms-table__th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* --- Densities --- */
+.ms-table--xs .ms-table__th,
+.ms-table--xs .ms-table__td {
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+.ms-table--sm .ms-table__th,
+.ms-table--sm .ms-table__td {
+  padding: var(--ms-space-1-5, 6px) var(--ms-space-2-5, 10px);
+  font-size: var(--ms-font-size-body-sm, 0.8125rem);
+}
+
+.ms-table--md .ms-table__th,
+.ms-table--md .ms-table__td {
+  padding: var(--ms-space-3, 12px) var(--ms-space-4, 16px);
+  font-size: var(--ms-font-size-body-md, 0.9375rem);
+}
+
+.ms-table--lg .ms-table__th,
+.ms-table--lg .ms-table__td {
+  padding: var(--ms-space-4, 16px) var(--ms-space-5, 20px);
+  font-size: var(--ms-font-size-body-lg, 1.0625rem);
+}
+
+.ms-table--xl .ms-table__th,
+.ms-table--xl .ms-table__td {
+  padding: var(--ms-space-5, 20px) var(--ms-space-6, 24px);
+  font-size: 1.125rem;
+}

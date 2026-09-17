@@ -1,0 +1,329 @@
+/*
+ * Magic-Style Sidebar Menu component layer — enterprise sliding navigation menu.
+ * Classes:
+ *   .ms-sidebar-menu
+ *   .ms-sidebar-menu-group
+ *   .ms-sidebar-menu-title
+ *   .ms-sidebar-menu-list
+ *   .ms-sidebar-menu-item
+ *   .ms-sidebar-menu-button
+ *   .ms-sidebar-menu-icon
+ *   .ms-sidebar-menu-label
+ *   .ms-sidebar-menu-badge
+ *   .ms-sidebar-menu-arrow
+ *   .ms-sidebar-menu-sub
+ *
+ * Variants:
+ *   data-tone: primary (default), secondary, accent, neutral, success, info, warning, danger
+ *   data-density: compact, normal (default), spacious
+ *   data-shape: rounded (default), pill, square
+ *   data-collapsed: true (icon-only mode)
+ *
+ * Accessible states: aria-expanded, aria-current, is-active, is-open, is-disabled.
+ */
+
+.ms-sidebar-menu {
+  --_ms-smenu-tone-bg: var(--ms-color-primary, #2e86de);
+  --_ms-smenu-tone-subtle: var(--ms-color-interactive-primary-subtle, rgba(46, 134, 222, 0.12));
+  --_ms-smenu-tone-fg: var(--ms-color-interactive-primary-text, #2e86de);
+  --_ms-smenu-item-py: var(--ms-space-2, 8px);
+  --_ms-smenu-item-px: var(--ms-space-3, 12px);
+  --_ms-smenu-font-size: var(--ms-typography-size-sm, 14px);
+  --_ms-smenu-radius: var(--ms-radius-md, 8px);
+  --_ms-smenu-gap: var(--ms-space-2, 8px);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-4, 16px);
+  inline-size: 100%;
+  box-sizing: border-box;
+  font-family: var(--ms-font-sans, system-ui, -apple-system, sans-serif);
+  color: var(--ms-color-text-primary, #1e293b);
+  user-select: none;
+}
+
+/* ---------- Tones ---------- */
+.ms-sidebar-menu[data-tone="primary"] {
+  --_ms-smenu-tone-bg: var(--ms-color-primary, #2e86de);
+  --_ms-smenu-tone-subtle: color-mix(in srgb, #2e86de 12%, transparent);
+  --_ms-smenu-tone-fg: #2e86de;
+}
+.ms-sidebar-menu[data-tone="secondary"] {
+  --_ms-smenu-tone-bg: var(--ms-color-secondary, #e15f41);
+  --_ms-smenu-tone-subtle: color-mix(in srgb, #e15f41 12%, transparent);
+  --_ms-smenu-tone-fg: #e15f41;
+}
+.ms-sidebar-menu[data-tone="accent"] {
+  --_ms-smenu-tone-bg: var(--ms-color-accent, #341f97);
+  --_ms-smenu-tone-subtle: color-mix(in srgb, #341f97 12%, transparent);
+  --_ms-smenu-tone-fg: #341f97;
+}
+.ms-sidebar-menu[data-tone="neutral"] {
+  --_ms-smenu-tone-bg: var(--ms-color-neutral, #222f3e);
+  --_ms-smenu-tone-subtle: color-mix(in srgb, #222f3e 12%, transparent);
+  --_ms-smenu-tone-fg: #222f3e;
+}
+.ms-sidebar-menu[data-tone="success"] {
+  --_ms-smenu-tone-bg: var(--ms-color-success, #10ac84);
+  --_ms-smenu-tone-subtle: color-mix(in srgb, #10ac84 12%, transparent);
+  --_ms-smenu-tone-fg: #10ac84;
+}
+.ms-sidebar-menu[data-tone="info"] {
+  --_ms-smenu-tone-bg: var(--ms-color-info, #0abde3);
+  --_ms-smenu-tone-subtle: color-mix(in srgb, #0abde3 12%, transparent);
+  --_ms-smenu-tone-fg: #0abde3;
+}
+.ms-sidebar-menu[data-tone="warning"] {
+  --_ms-smenu-tone-bg: var(--ms-color-warning, #ff9f43);
+  --_ms-smenu-tone-subtle: color-mix(in srgb, #ff9f43 14%, transparent);
+  --_ms-smenu-tone-fg: #ff9f43;
+}
+.ms-sidebar-menu[data-tone="danger"] {
+  --_ms-smenu-tone-bg: var(--ms-color-danger, #ee5253);
+  --_ms-smenu-tone-subtle: color-mix(in srgb, #ee5253 12%, transparent);
+  --_ms-smenu-tone-fg: #ee5253;
+}
+
+/* ---------- Densities ---------- */
+.ms-sidebar-menu[data-density="compact"] {
+  --_ms-smenu-item-py: var(--ms-space-1-5, 6px);
+  --_ms-smenu-item-px: var(--ms-space-2-5, 10px);
+  --_ms-smenu-font-size: var(--ms-typography-size-xs, 12px);
+  --_ms-smenu-gap: var(--ms-space-1, 4px);
+}
+.ms-sidebar-menu[data-density="spacious"] {
+  --_ms-smenu-item-py: var(--ms-space-3, 12px);
+  --_ms-smenu-item-px: var(--ms-space-4, 16px);
+  --_ms-smenu-font-size: var(--ms-typography-size-md, 15px);
+  --_ms-smenu-gap: var(--ms-space-2-5, 10px);
+}
+
+/* ---------- Shapes ---------- */
+.ms-sidebar-menu[data-shape="pill"] {
+  --_ms-smenu-radius: var(--ms-radius-full, 9999px);
+}
+.ms-sidebar-menu[data-shape="square"] {
+  --_ms-smenu-radius: 0px;
+}
+
+/* ---------- Groups ---------- */
+.ms-sidebar-menu-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-1, 4px);
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.ms-sidebar-menu-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: var(--_ms-smenu-item-px);
+  padding-block: var(--ms-space-1, 4px);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ms-color-text-muted, #64748b);
+}
+
+/* ---------- Lists ---------- */
+.ms-sidebar-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--_ms-smenu-gap);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* ---------- Items ---------- */
+.ms-sidebar-menu-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+}
+
+/* Button / Link */
+.ms-sidebar-menu-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--ms-space-2-5, 10px);
+  inline-size: 100%;
+  box-sizing: border-box;
+  padding-block: var(--_ms-smenu-item-py);
+  padding-inline: var(--_ms-smenu-item-px);
+  border: none;
+  border-radius: var(--_ms-smenu-radius);
+  background: transparent;
+  color: var(--ms-color-text-secondary, #475569);
+  font-family: inherit;
+  font-size: var(--_ms-smenu-font-size);
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color var(--ms-motion-duration-fast, 150ms) var(--ms-motion-easing-standard, ease),
+    color var(--ms-motion-duration-fast, 150ms) var(--ms-motion-easing-standard, ease),
+    transform var(--ms-motion-duration-fast, 150ms) var(--ms-motion-easing-standard, ease);
+}
+
+.ms-sidebar-menu-button:hover:not(:disabled):not(.is-disabled) {
+  background-color: var(--ms-color-surface-hover, rgba(0, 0, 0, 0.04));
+  color: var(--ms-color-text-primary, #0f172a);
+}
+
+.ms-sidebar-menu-button:focus-visible {
+  outline: 2px solid var(--_ms-smenu-tone-bg);
+  outline-offset: 1px;
+}
+
+/* Active State */
+.ms-sidebar-menu-button.is-active,
+.ms-sidebar-menu-button[aria-current="page"] {
+  background-color: var(--_ms-smenu-tone-subtle);
+  color: var(--_ms-smenu-tone-fg);
+  font-weight: 600;
+}
+
+.ms-sidebar-menu-button.is-active .ms-sidebar-menu-icon,
+.ms-sidebar-menu-button[aria-current="page"] .ms-sidebar-menu-icon {
+  color: var(--_ms-smenu-tone-fg);
+}
+
+/* Disabled State */
+.ms-sidebar-menu-button:disabled,
+.ms-sidebar-menu-button.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Icon */
+.ms-sidebar-menu-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  inline-size: 18px;
+  block-size: 18px;
+  color: var(--ms-color-text-muted, #64748b);
+  transition: color var(--ms-motion-duration-fast, 150ms);
+}
+
+.ms-sidebar-menu-button:hover .ms-sidebar-menu-icon {
+  color: var(--ms-color-text-primary, #0f172a);
+}
+
+/* Label */
+.ms-sidebar-menu-label {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Badge */
+.ms-sidebar-menu-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 600;
+  padding-inline: 6px;
+  padding-block: 2px;
+  border-radius: var(--ms-radius-full, 9999px);
+  background-color: var(--_ms-smenu-tone-subtle);
+  color: var(--_ms-smenu-tone-fg);
+  line-height: 1;
+}
+
+/* Arrow / Chevron */
+.ms-sidebar-menu-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  inline-size: 16px;
+  block-size: 16px;
+  color: var(--ms-color-text-muted, #94a3b8);
+  transition: transform var(--ms-motion-duration-fast, 180ms) var(--ms-motion-easing-standard, ease);
+}
+
+.ms-sidebar-menu-button[aria-expanded="true"] .ms-sidebar-menu-arrow,
+.ms-sidebar-menu-button.is-open .ms-sidebar-menu-arrow {
+  transform: rotate(90deg);
+}
+
+/* ---------- Submenu (Accordion Accord) ---------- */
+.ms-sidebar-menu-sub {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--ms-motion-duration-moderate, 240ms)
+    cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  padding-inline-start: var(--ms-space-4, 16px);
+  margin-inline-start: var(--ms-space-3, 12px);
+  border-inline-start: 1px solid var(--ms-color-border-subtle, rgba(0, 0, 0, 0.08));
+  margin-top: 2px;
+}
+
+.ms-sidebar-menu-sub.is-open,
+.ms-sidebar-menu-item[data-open="true"] > .ms-sidebar-menu-sub {
+  grid-template-rows: 1fr;
+}
+
+.ms-sidebar-menu-sub-inner {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--_ms-smenu-gap);
+  padding-top: var(--ms-space-1, 4px);
+  padding-bottom: var(--ms-space-1, 4px);
+}
+
+/* ---------- Collapsed (Mini / Icons-only) Mode ---------- */
+.ms-sidebar-menu[data-collapsed="true"] {
+  inline-size: fit-content;
+}
+
+.ms-sidebar-menu[data-collapsed="true"] .ms-sidebar-menu-title,
+.ms-sidebar-menu[data-collapsed="true"] .ms-sidebar-menu-label,
+.ms-sidebar-menu[data-collapsed="true"] .ms-sidebar-menu-badge,
+.ms-sidebar-menu[data-collapsed="true"] .ms-sidebar-menu-arrow,
+.ms-sidebar-menu[data-collapsed="true"] .ms-sidebar-menu-sub {
+  display: none;
+}
+
+.ms-sidebar-menu[data-collapsed="true"] .ms-sidebar-menu-button {
+  justify-content: center;
+  padding-inline: var(--_ms-smenu-item-py);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .ms-sidebar-menu {
+  color: var(--ms-color-text-primary, #f1f5f9);
+}
+[data-theme="dark"] .ms-sidebar-menu-title {
+  color: var(--ms-color-text-muted, #94a3b8);
+}
+[data-theme="dark"] .ms-sidebar-menu-button {
+  color: var(--ms-color-text-secondary, #cbd5e1);
+}
+[data-theme="dark"] .ms-sidebar-menu-button:hover:not(:disabled):not(.is-disabled) {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+[data-theme="dark"] .ms-sidebar-menu-sub {
+  border-inline-start-color: rgba(255, 255, 255, 0.1);
+}

@@ -1,0 +1,95 @@
+/*
+ * Magic-Style FAB layer (doc 05 §10).
+ * Floating Action Button with speed-dial popover menu.
+ */
+
+.ms-fab-container {
+  position: fixed;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ms-space-2);
+}
+
+.ms-fab-container--bottom-right {
+  bottom: var(--ms-space-6);
+  right: var(--ms-space-6);
+}
+
+.ms-fab-container--bottom-left {
+  bottom: var(--ms-space-6);
+  left: var(--ms-space-6);
+}
+
+.ms-fab-container--top-right {
+  top: var(--ms-space-6);
+  right: var(--ms-space-6);
+  flex-direction: column-reverse;
+}
+
+.ms-fab-container--top-left {
+  top: var(--ms-space-6);
+  left: var(--ms-space-6);
+  flex-direction: column-reverse;
+}
+
+.ms-fab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ms-space-2);
+  min-width: 56px;
+  height: 56px;
+  padding: 0 var(--ms-space-4);
+  border-radius: var(--ms-radius-full);
+  background-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-text-inverse);
+  border: none;
+  box-shadow: var(--ms-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.2));
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-semibold);
+  cursor: pointer;
+  user-select: none;
+  transition:
+    transform var(--ms-motion-duration-fast) ease,
+    box-shadow var(--ms-motion-duration-fast) ease;
+}
+
+.ms-fab:hover {
+  transform: scale(1.05);
+  box-shadow: var(--ms-shadow-xl);
+}
+
+.ms-fab:active {
+  transform: scale(0.96);
+}
+
+/* Speed-dial items */
+.ms-fab__speed-dial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ms-space-2);
+}
+
+.ms-fab-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--ms-radius-full);
+  background-color: var(--ms-color-surface-raised);
+  color: var(--ms-color-text-primary);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  box-shadow: var(--ms-shadow-md);
+  cursor: pointer;
+  transition: transform var(--ms-motion-duration-fast) ease;
+}
+
+.ms-fab-action:hover {
+  transform: scale(1.1);
+  background-color: var(--ms-color-surface-sunken);
+}

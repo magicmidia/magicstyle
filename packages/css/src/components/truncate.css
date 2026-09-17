@@ -1,0 +1,67 @@
+/*
+ * Magic-Style Truncate layer (doc 05 §10).
+ * Smart text truncation for single or multi-line text with expand toggles and tooltips.
+ */
+
+.ms-truncate {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Single line truncation (default) */
+.ms-truncate--single {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Multiline clamp */
+.ms-truncate--multiline {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Middle truncation */
+.ms-truncate--middle {
+  display: inline-flex;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.ms-truncate__start {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ms-truncate__end {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Expandable Actions */
+.ms-truncate__toggle {
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--ms-space-1);
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--ms-color-interactive-primary);
+  font-size: var(--ms-typography-size-xs);
+  font-weight: var(--ms-typography-weight-medium);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.ms-truncate__toggle:hover {
+  text-decoration: underline;
+}
+
+.ms-truncate__toggle:focus-visible {
+  outline: 2px solid var(--ms-color-interactive-focus);
+  outline-offset: 2px;
+  border-radius: var(--ms-radius-xs);
+}

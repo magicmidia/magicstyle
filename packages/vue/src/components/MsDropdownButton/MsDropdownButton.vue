@@ -2,20 +2,16 @@
 import { ref } from "vue";
 import MsButton from "../MsButton/MsButton.vue";
 import MsMenu from "../MsMenu/MsMenu.vue";
-import type { MsButtonVariant, MsSize, MsTone } from "../MsButton/types.ts";
 import type { MsMenuItem } from "../MsMenu/types.ts";
+import type { MsDropdownButtonProps } from "./types.ts";
 
-const props = withDefaults(
-  defineProps<{
-    items: readonly MsMenuItem[];
-    label?: string;
-    variant?: MsButtonVariant;
-    tone?: MsTone;
-    size?: MsSize;
-    pill?: boolean;
-  }>(),
-  { variant: "solid", tone: "primary", size: "md" },
-);
+const props = withDefaults(defineProps<MsDropdownButtonProps>(), {
+  variant: "solid",
+  tone: "primary",
+  size: "md",
+  align: "left",
+  fullWidth: false,
+});
 
 const emit = defineEmits<{
   select: [item: MsMenuItem];
@@ -40,6 +36,7 @@ function onSelect(item: MsMenuItem): void {
       :tone="props.tone"
       :size="props.size"
       :pill="props.pill"
+      :full-width="props.fullWidth"
       :caret="true"
       :open="open"
       aria-haspopup="menu"
@@ -51,6 +48,7 @@ function onSelect(item: MsMenuItem): void {
       v-if="open"
       :items="props.items"
       :open="open"
+      :class="{ 'ms-menu--right': props.align === 'right' }"
       @select="onSelect"
       @update:open="open = $event"
     />

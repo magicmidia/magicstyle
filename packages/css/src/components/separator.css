@@ -1,0 +1,188 @@
+/* ==========================================================================
+   MsSeparator Component
+   Token-based visual and semantic divider with rich styles, tones, and labels
+   ========================================================================== */
+
+.ms-separator {
+  --_ms-sep-color: var(--ms-color-border-subtle, #e2e8f0);
+  --_ms-sep-thickness: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  background-color: var(--_ms-sep-color);
+}
+
+/* Orientations */
+.ms-separator--horizontal {
+  width: 100%;
+  height: var(--_ms-sep-thickness);
+}
+
+.ms-separator--vertical {
+  width: var(--_ms-sep-thickness);
+  height: 100%;
+  align-self: stretch;
+}
+
+/* Thicknesses */
+.ms-separator--thickness-1 {
+  --_ms-sep-thickness: 1px;
+}
+
+.ms-separator--thickness-2 {
+  --_ms-sep-thickness: 2px;
+}
+
+.ms-separator--thickness-4 {
+  --_ms-sep-thickness: 4px;
+}
+
+/* Style variants */
+.ms-separator--dashed.ms-separator--horizontal {
+  background-color: transparent;
+  border-bottom: var(--_ms-sep-thickness) dashed var(--_ms-sep-color);
+}
+
+.ms-separator--dashed.ms-separator--vertical {
+  background-color: transparent;
+  border-right: var(--_ms-sep-thickness) dashed var(--_ms-sep-color);
+}
+
+.ms-separator--dotted.ms-separator--horizontal {
+  background-color: transparent;
+  border-bottom: var(--_ms-sep-thickness) dotted var(--_ms-sep-color);
+}
+
+.ms-separator--dotted.ms-separator--vertical {
+  background-color: transparent;
+  border-right: var(--_ms-sep-thickness) dotted var(--_ms-sep-color);
+}
+
+.ms-separator--gradient.ms-separator--horizontal {
+  background: linear-gradient(90deg, transparent 0%, var(--_ms-sep-color) 50%, transparent 100%);
+}
+
+.ms-separator--gradient.ms-separator--vertical {
+  background: linear-gradient(180deg, transparent 0%, var(--_ms-sep-color) 50%, transparent 100%);
+}
+
+/* Tones */
+.ms-separator--tone-neutral,
+.ms-separator--default {
+  --_ms-sep-color: var(--ms-color-border-subtle, #e2e8f0);
+}
+
+.ms-separator--tone-muted,
+.ms-separator--subtle {
+  --_ms-sep-color: var(--ms-color-border-subtle, #e2e8f0);
+  opacity: 0.6;
+}
+
+.ms-separator--tone-strong,
+.ms-separator--strong {
+  --_ms-sep-color: var(--ms-color-border-default, #cbd5e1);
+}
+
+.ms-separator--tone-primary {
+  --_ms-sep-color: var(--ms-color-interactive-primary, #2e86de);
+}
+
+.ms-separator--tone-accent {
+  --_ms-sep-color: var(--ms-color-interactive-accent, #341f97);
+}
+
+.ms-separator--tone-success {
+  --_ms-sep-color: var(--ms-color-feedback-success-solid, #10ac84);
+}
+
+.ms-separator--tone-warning {
+  --_ms-sep-color: var(--ms-color-feedback-warning-solid, #ff9f43);
+}
+
+.ms-separator--tone-danger {
+  --_ms-sep-color: var(--ms-color-feedback-danger-solid, #ee5253);
+}
+
+/* Spacings */
+.ms-separator--spacing-none {
+  margin: 0;
+}
+
+.ms-separator--spacing-sm.ms-separator--horizontal {
+  margin-block: var(--ms-space-2, 8px);
+}
+.ms-separator--spacing-sm.ms-separator--vertical {
+  margin-inline: var(--ms-space-2, 8px);
+}
+
+.ms-separator--spacing-md.ms-separator--horizontal {
+  margin-block: var(--ms-space-4, 16px);
+}
+.ms-separator--spacing-md.ms-separator--vertical {
+  margin-inline: var(--ms-space-4, 16px);
+}
+
+.ms-separator--spacing-lg.ms-separator--horizontal {
+  margin-block: var(--ms-space-6, 24px);
+}
+.ms-separator--spacing-lg.ms-separator--vertical {
+  margin-inline: var(--ms-space-6, 24px);
+}
+
+/* Label Container / Group */
+.ms-separator-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-block: var(--ms-space-4, 16px);
+  gap: var(--ms-space-3, 12px);
+}
+
+.ms-separator-group--spacing-none {
+  margin-block: 0;
+}
+
+.ms-separator-group--spacing-sm {
+  margin-block: var(--ms-space-2, 8px);
+}
+
+.ms-separator-group--spacing-md {
+  margin-block: var(--ms-space-4, 16px);
+}
+
+.ms-separator-group--spacing-lg {
+  margin-block: var(--ms-space-6, 24px);
+}
+
+.ms-separator-group--align-start .ms-separator--part:first-child {
+  flex: 0 0 24px;
+}
+
+.ms-separator-group--align-start .ms-separator--part:last-child {
+  flex: 1 1 auto;
+}
+
+.ms-separator-group--align-end .ms-separator--part:first-child {
+  flex: 1 1 auto;
+}
+
+.ms-separator-group--align-end .ms-separator--part:last-child {
+  flex: 0 0 24px;
+}
+
+.ms-separator-group--align-center .ms-separator--part {
+  flex: 1 1 auto;
+}
+
+.ms-separator__label {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-xs, 0.75rem);
+  font-weight: var(--ms-typography-weight-medium, 500);
+  color: var(--ms-color-text-muted, #64748b);
+  white-space: nowrap;
+  user-select: none;
+}

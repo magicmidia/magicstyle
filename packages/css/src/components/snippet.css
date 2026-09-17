@@ -1,0 +1,226 @@
+/*
+ * Magic-Style Snippet Component Layer
+ * Classes: .ms-snippet, .ms-snippet__header, .ms-snippet__tabs, .ms-snippet__tab,
+ *          .ms-snippet__body, .ms-snippet__code-wrapper, .ms-snippet__prompt,
+ *          .ms-snippet__code, .ms-snippet__copy-btn
+ * Variants: default, bordered, flat
+ * Sizes: sm, md, lg
+ */
+
+.ms-snippet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: var(--ms-radius-md, 8px);
+  overflow: hidden;
+  font-family: var(--ms-font-family-mono, monospace);
+  background-color: var(--ms-color-surface-sunken);
+  border: var(--ms-border-hairline, 1px) solid var(--ms-color-border-subtle);
+  color: var(--ms-color-text-primary);
+  transition: border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+/* Variants */
+.ms-snippet--default {
+  background-color: var(--ms-color-surface-sunken);
+  border: var(--ms-border-hairline, 1px) solid var(--ms-color-border-subtle);
+}
+
+.ms-snippet--bordered {
+  background-color: var(--ms-color-surface-raised);
+  border: 1px solid var(--ms-color-border-default, var(--ms-color-border-subtle));
+  box-shadow: var(--ms-elevation-card, 0 1px 3px rgba(0, 0, 0, 0.05));
+}
+
+.ms-snippet--flat {
+  background-color: var(--ms-color-surface-sunken);
+  border: none;
+}
+
+/* Header & Tab bar */
+.ms-snippet__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: var(--ms-border-hairline, 1px) solid var(--ms-color-border-subtle);
+  background-color: var(--ms-color-surface-raised);
+  padding: 0 var(--ms-space-2, 8px);
+  min-height: 38px;
+  gap: var(--ms-space-2, 8px);
+}
+
+.ms-snippet__tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-1, 4px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ms-snippet__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.ms-snippet__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-1-5, 6px);
+  font-family: var(--ms-font-family-sans, sans-serif);
+  font-size: var(--ms-font-size-xs, 12px);
+  font-weight: var(--ms-font-weight-medium, 500);
+  padding: var(--ms-space-1, 4px) var(--ms-space-2-5, 10px);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--ms-color-text-muted);
+  border-radius: var(--ms-radius-sm, 4px);
+  transition: all var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+  white-space: nowrap;
+  outline: none;
+}
+
+.ms-snippet__tab:hover {
+  color: var(--ms-color-text-primary);
+  background-color: var(--ms-color-surface-sunken);
+}
+
+.ms-snippet__tab[aria-selected="true"] {
+  color: var(--ms-color-brand-primary);
+  background-color: var(--ms-color-surface-sunken);
+  font-weight: var(--ms-font-weight-semibold, 600);
+}
+
+.ms-snippet__tab:focus-visible {
+  outline: 2px solid var(--ms-color-focus-ring, var(--ms-color-brand-primary));
+  outline-offset: 1px;
+}
+
+.ms-snippet__header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-2, 8px);
+  margin-left: auto;
+}
+
+/* Body */
+.ms-snippet__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ms-space-3, 12px);
+  padding: var(--ms-space-3, 12px) var(--ms-space-4, 16px);
+  position: relative;
+  overflow-x: auto;
+}
+
+.ms-snippet__code-wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ms-space-2, 8px);
+  min-width: 0;
+  flex: 1;
+}
+
+.ms-snippet__prompt {
+  user-select: none;
+  color: var(--ms-color-text-muted);
+  font-weight: var(--ms-font-weight-bold, 700);
+  flex-shrink: 0;
+}
+
+.ms-snippet__code {
+  font-family: var(--ms-font-family-mono, monospace);
+  font-size: var(--ms-font-size-sm, 13px);
+  line-height: var(--ms-line-height-relaxed, 1.6);
+  white-space: pre;
+  margin: 0;
+  flex: 1;
+  color: var(--ms-color-text-primary);
+}
+
+.ms-snippet--wrap .ms-snippet__code {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* Copy Button */
+.ms-snippet__copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--ms-radius-md, 6px);
+  border: var(--ms-border-hairline, 1px) solid var(--ms-color-border-subtle);
+  background: var(--ms-color-surface-raised);
+  color: var(--ms-color-text-muted);
+  cursor: pointer;
+  transition: all var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+  flex-shrink: 0;
+  outline: none;
+}
+
+.ms-snippet__copy-btn:hover {
+  color: var(--ms-color-text-primary);
+  border-color: var(--ms-color-border-default, var(--ms-color-border-subtle));
+  background-color: var(--ms-color-surface-sunken);
+}
+
+.ms-snippet__copy-btn[data-copied="true"] {
+  color: var(--ms-color-brand-success);
+  border-color: var(--ms-color-brand-success);
+  background-color: var(--ms-color-surface-raised);
+}
+
+.ms-snippet__copy-btn:focus-visible {
+  outline: 2px solid var(--ms-color-focus-ring, var(--ms-color-brand-primary));
+  outline-offset: 1px;
+}
+
+/* Sizes */
+.ms-snippet--sm .ms-snippet__body {
+  padding: var(--ms-space-2, 8px) var(--ms-space-3, 12px);
+}
+.ms-snippet--sm .ms-snippet__code {
+  font-size: var(--ms-font-size-xs, 12px);
+}
+.ms-snippet--sm .ms-snippet__copy-btn {
+  width: 26px;
+  height: 26px;
+}
+
+.ms-snippet--md .ms-snippet__body {
+  padding: var(--ms-space-3, 12px) var(--ms-space-4, 16px);
+}
+.ms-snippet--md .ms-snippet__code {
+  font-size: var(--ms-font-size-sm, 13px);
+}
+
+.ms-snippet--lg .ms-snippet__body {
+  padding: var(--ms-space-4, 16px) var(--ms-space-5, 20px);
+}
+.ms-snippet--lg .ms-snippet__code {
+  font-size: var(--ms-font-size-base, 14px);
+}
+.ms-snippet--lg .ms-snippet__copy-btn {
+  width: 34px;
+  height: 34px;
+}
+
+/* Tones */
+.ms-snippet--tone-primary {
+  border-left: 3px solid var(--ms-color-brand-primary);
+}
+.ms-snippet--tone-success {
+  border-left: 3px solid var(--ms-color-brand-success);
+}
+.ms-snippet--tone-warning {
+  border-left: 3px solid var(--ms-color-brand-warning);
+}
+.ms-snippet--tone-danger {
+  border-left: 3px solid var(--ms-color-brand-danger);
+}
+.ms-snippet--tone-info {
+  border-left: 3px solid var(--ms-color-brand-info);
+}

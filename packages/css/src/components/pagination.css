@@ -1,0 +1,116 @@
+/*
+ * Magic-Style Pagination layer (doc 05 §10).
+ * Enterprise pagination bar with items, jumper, size selector, and accessible states.
+ */
+
+.ms-pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-2);
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-sm);
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.ms-pagination__list {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ms-pagination__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 var(--ms-space-2);
+  border-radius: var(--ms-radius-md);
+  background-color: transparent;
+  color: var(--ms-color-text-secondary);
+  border: var(--ms-border-hairline) solid transparent;
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: var(--ms-typography-weight-medium);
+  text-decoration: none;
+  transition:
+    background-color var(--ms-motion-duration-fast) ease,
+    border-color var(--ms-motion-duration-fast) ease,
+    color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-pagination__item:hover:not(:disabled):not(.ms-pagination__item--active) {
+  background-color: var(--ms-color-surface-sunken);
+  color: var(--ms-color-text-primary);
+}
+
+.ms-pagination__item--active {
+  background-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-text-inverse);
+  border-color: var(--ms-color-interactive-primary);
+  font-weight: var(--ms-typography-weight-semibold);
+}
+
+.ms-pagination__item:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.ms-pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  color: var(--ms-color-text-muted);
+}
+
+/* Sizes */
+.ms-pagination--sm .ms-pagination__item {
+  min-width: 28px;
+  height: 28px;
+  font-size: var(--ms-typography-size-xs);
+  border-radius: var(--ms-radius-sm);
+}
+
+.ms-pagination--lg .ms-pagination__item {
+  min-width: 42px;
+  height: 42px;
+  font-size: var(--ms-typography-size-md);
+  border-radius: var(--ms-radius-lg);
+}
+
+/* Jumper & Size changer */
+.ms-pagination__jumper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-1);
+  margin-left: var(--ms-space-2);
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-secondary);
+}
+
+.ms-pagination__jumper-input {
+  width: 48px;
+  height: 30px;
+  text-align: center;
+  background-color: var(--ms-color-surface-raised);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-sm);
+  color: var(--ms-color-text-primary);
+  font-size: inherit;
+  outline: none;
+}
+
+.ms-pagination__jumper-input:focus {
+  border-color: var(--ms-color-interactive-primary);
+}
+
+.ms-pagination__total {
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-muted);
+  margin-right: var(--ms-space-2);
+}

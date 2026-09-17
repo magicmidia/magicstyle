@@ -1,0 +1,114 @@
+/*
+ * Magic-Style EmojiPicker layer (doc 05 §10).
+ * Popover emoji selector with categories, search, and skin tones.
+ */
+
+.ms-emoji-picker {
+  position: relative;
+  display: inline-flex;
+  box-sizing: border-box;
+}
+
+.ms-emoji-picker__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--ms-control-height-md, 40px);
+  padding: 0 var(--ms-space-3);
+  font-size: var(--ms-typography-size-lg);
+  background-color: var(--ms-color-surface-raised);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-md);
+  cursor: pointer;
+  user-select: none;
+  transition: border-color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-emoji-picker__trigger:hover {
+  border-color: var(--ms-color-border-strong);
+}
+
+.ms-emoji-picker__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 50;
+  width: 320px;
+  background-color: var(--ms-color-surface-raised);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-lg);
+  box-shadow: var(--ms-shadow-md);
+  padding: var(--ms-space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-2);
+}
+
+.ms-emoji-picker__search {
+  width: 100%;
+  height: 32px;
+  padding: 0 var(--ms-space-2);
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-primary);
+  background-color: var(--ms-color-surface-sunken);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-sm);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.ms-emoji-picker__search:focus {
+  border-color: var(--ms-color-interactive-primary);
+}
+
+.ms-emoji-picker__categories {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  padding-bottom: var(--ms-space-1);
+}
+
+.ms-emoji-picker__category-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  padding: 2px 4px;
+  cursor: pointer;
+  border-radius: var(--ms-radius-xs);
+  opacity: 0.6;
+  transition: opacity var(--ms-motion-duration-fast) ease;
+}
+
+.ms-emoji-picker__category-btn:hover,
+.ms-emoji-picker__category-btn--active {
+  opacity: 1;
+  background-color: var(--ms-color-surface-sunken);
+}
+
+.ms-emoji-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 2px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 2px;
+}
+
+.ms-emoji-picker__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  font-size: 20px;
+  border-radius: var(--ms-radius-sm);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-emoji-picker__item:hover {
+  background-color: var(--ms-color-surface-sunken);
+}

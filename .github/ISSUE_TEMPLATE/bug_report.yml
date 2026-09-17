@@ -1,0 +1,59 @@
+name: 🐛 Bug Report
+description: Create a report to help us improve Magic-Style
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please ensure you have checked existing issues before submitting.
+  - type: input
+    id: component
+    attributes:
+      label: Component or Package
+      description: Which component or package has the bug? (e.g., MsSelect, @magic-style/vue, @magic-style/css)
+      placeholder: e.g., MsSelect
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Current Behavior
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction Steps
+      description: Steps or minimal reproduction repository to reproduce the behavior.
+      placeholder: |
+        1. Open component in preview or studio
+        2. Click on '...'
+        3. See error
+    validations:
+      required: true
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser / Environment
+      options:
+        - Chrome / Chromium
+        - Firefox
+        - Safari
+        - Edge
+        - Node.js SSR
+        - Other
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Add any other context or screenshots about the problem here.

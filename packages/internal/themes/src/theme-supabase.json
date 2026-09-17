@@ -1,0 +1,102 @@
+{
+  "$schema": "https://designtokens.dev/dtcg/schema.json",
+  "font": {
+    "sans": {
+      "$type": "fontFamily",
+      "$value": [
+        "Custom Sans",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "sans-serif"
+      ]
+    }
+  },
+  "control": {
+    "radius": { "$type": "dimension", "$value": "6px" }
+  },
+  "radius": {
+    "sm": { "$type": "dimension", "$value": "4px" },
+    "md": { "$type": "dimension", "$value": "6px" },
+    "lg": { "$type": "dimension", "$value": "8px" },
+    "xl": { "$type": "dimension", "$value": "12px" }
+  },
+  "elevation": {
+    "button": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px",
+          "color": "rgba(0, 0, 0, 0.1)"
+        }
+      ]
+    },
+    "card": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "6px",
+          "spread": "0px",
+          "color": "rgba(0, 0, 0, 0.08)"
+        }
+      ]
+    }
+  },
+  "color": {
+    "surface": {
+      "default": { "$type": "color", "$value": "#f8faf9" },
+      "raised": { "$type": "color", "$value": "#ffffff" },
+      "sunken": { "$type": "color", "$value": "#f0f4f1" },
+      "subtle": { "$type": "color", "$value": "#f0f4f1" },
+      "inverse": { "$type": "color", "$value": "#171717" }
+    },
+    "text": {
+      "primary": { "$type": "color", "$value": "#171717" },
+      "secondary": { "$type": "color", "$value": "#525252" },
+      "muted": { "$type": "color", "$value": "#737373" },
+      "subtle": { "$type": "color", "$value": "#a3a3a3" },
+      "inverse": { "$type": "color", "$value": "#ededed" },
+      "on-accent": { "$type": "color", "$value": "#ffffff" }
+    },
+    "border": {
+      "subtle": { "$type": "color", "$value": "#e5e7eb" },
+      "default": { "$type": "color", "$value": "#d1d5db" },
+      "strong": { "$type": "color", "$value": "#9ca3af" },
+      "focus": { "$type": "color", "$value": "#24b47e" }
+    },
+    "brand": {
+      "primary": { "$type": "color", "$value": "#24b47e" },
+      "secondary": { "$type": "color", "$value": "#525252" },
+      "accent": { "$type": "color", "$value": "#3ecf8e" },
+      "neutral": { "$type": "color", "$value": "#171717" }
+    },
+    "interactive": {
+      "primary": { "$type": "color", "$value": "#24b47e" },
+      "primary-hover": { "$type": "color", "$value": "#1f9a6c" },
+      "primary-active": { "$type": "color", "$value": "#1a805a" },
+      "primary-subtle": { "$type": "color", "$value": "#ecfdf5" },
+      "primary-text": { "$type": "color", "$value": "#1a805a" },
+      "accent": { "$type": "color", "$value": "#3ecf8e" },
+      "accent-hover": { "$type": "color", "$value": "#34b27b" },
+      "accent-active": { "$type": "color", "$value": "#2b9667" },
+      "accent-subtle": { "$type": "color", "$value": "#ecfdf5" },
+      "accent-text": { "$type": "color", "$value": "#1a805a" },
+      "neutral": { "$type": "color", "$value": "#f3f4f6" },
+      "neutral-hover": { "$type": "color", "$value": "#e5e7eb" },
+      "neutral-active": { "$type": "color", "$value": "#d1d5db" },
+      "neutral-subtle": { "$type": "color", "$value": "#ffffff" },
+      "neutral-text": { "$type": "color", "$value": "#171717" },
+      "neutral-fg": { "$type": "color", "$value": "#171717" }
+    }
+  },
+  "focus-ring": {
+    "color": { "$type": "color", "$value": "#24b47e" },
+    "width": { "$type": "dimension", "$value": "2px" }
+  }
+}

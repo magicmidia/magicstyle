@@ -1,0 +1,256 @@
+/**
+ * Magic-Style: MsScrollbar CSS Component (Doc 04 §2, Doc 09 §10)
+ * High-performance cross-browser custom scroll container with brand tones, thickness scales, and visibility controls.
+ */
+
+.ms-scrollbar {
+  overflow: auto;
+  box-sizing: border-box;
+  position: relative;
+  max-inline-size: 100%;
+  max-block-size: 100%;
+
+  /* Design token variables for scrollbar */
+  --ms-scrollbar-size: 8px;
+  --ms-scrollbar-radius: 9999px;
+  --ms-scrollbar-track: transparent;
+  --ms-scrollbar-thumb: rgba(148, 163, 184, 0.45);
+  --ms-scrollbar-thumb-hover: rgba(100, 116, 139, 0.75);
+}
+
+/* WebKit / Chromium / Safari Custom Scrollbars (Chrome, Edge, Safari, Opera) */
+.ms-scrollbar::-webkit-scrollbar {
+  inline-size: var(--ms-scrollbar-size);
+  block-size: var(--ms-scrollbar-size);
+  width: var(--ms-scrollbar-size);
+  height: var(--ms-scrollbar-size);
+}
+
+.ms-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: var(--ms-scrollbar-radius);
+}
+
+/* Base thumb is transparent by default (auto-hide: only shown when scrolling/interacting) */
+.ms-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: var(--ms-scrollbar-radius);
+  transition: background var(--ms-motion-duration-fast, 200ms) ease;
+}
+
+/* Shown during active scrolling or when visibility is permanently 'always' */
+.ms-scrollbar.is-scrolling::-webkit-scrollbar-thumb,
+.ms-scrollbar--visibility-always::-webkit-scrollbar-thumb,
+.ms-scrollbar[data-visibility="always"]::-webkit-scrollbar-thumb {
+  background: var(--ms-scrollbar-thumb);
+}
+
+.ms-scrollbar.is-scrolling::-webkit-scrollbar-track,
+.ms-scrollbar--visibility-always::-webkit-scrollbar-track,
+.ms-scrollbar[data-visibility="always"]::-webkit-scrollbar-track {
+  background: var(--ms-scrollbar-track);
+}
+
+/* Direct hover on the thumb itself */
+.ms-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--ms-scrollbar-thumb-hover) !important;
+}
+
+.ms-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Scrollbar Buttons (Arrows) - STRICTLY REMOVED BY DEFAULT */
+.ms-scrollbar::-webkit-scrollbar-button {
+  display: none !important;
+  inline-size: 0 !important;
+  block-size: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+/* Optional arrows - ONLY enabled when arrows prop/attribute is explicitly true */
+.ms-scrollbar--arrows::-webkit-scrollbar-button,
+.ms-scrollbar[data-arrows="true"]::-webkit-scrollbar-button {
+  display: block !important;
+  background-color: var(--ms-scrollbar-track, transparent);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+  inline-size: var(--ms-scrollbar-size);
+  block-size: var(--ms-scrollbar-size);
+  width: var(--ms-scrollbar-size);
+  height: var(--ms-scrollbar-size);
+}
+
+.ms-scrollbar--arrows::-webkit-scrollbar-button:single-button:vertical:decrement,
+.ms-scrollbar[data-arrows="true"]::-webkit-scrollbar-button:single-button:vertical:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2394a3b8'%3E%3Cpath fill-rule='evenodd' d='M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z'/%3E%3C/svg%3E");
+}
+
+.ms-scrollbar--arrows::-webkit-scrollbar-button:single-button:vertical:increment,
+.ms-scrollbar[data-arrows="true"]::-webkit-scrollbar-button:single-button:vertical:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2394a3b8'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+}
+
+.ms-scrollbar--arrows::-webkit-scrollbar-button:single-button:horizontal:decrement,
+.ms-scrollbar[data-arrows="true"]::-webkit-scrollbar-button:single-button:horizontal:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2394a3b8'%3E%3Cpath fill-rule='evenodd' d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
+}
+
+.ms-scrollbar--arrows::-webkit-scrollbar-button:single-button:horizontal:increment,
+.ms-scrollbar[data-arrows="true"]::-webkit-scrollbar-button:single-button:horizontal:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2394a3b8'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+}
+
+/* Orientations */
+.ms-scrollbar--vertical,
+.ms-scrollbar[data-orientation="vertical"] {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.ms-scrollbar--horizontal,
+.ms-scrollbar[data-orientation="horizontal"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.ms-scrollbar--both,
+.ms-scrollbar[data-orientation="both"] {
+  overflow: auto;
+}
+
+/* Thickness Scales */
+.ms-scrollbar--size-thin,
+.ms-scrollbar[data-size="thin"] {
+  --ms-scrollbar-size: 4px;
+}
+
+.ms-scrollbar--size-normal,
+.ms-scrollbar[data-size="normal"] {
+  --ms-scrollbar-size: 8px;
+}
+
+.ms-scrollbar--size-thick,
+.ms-scrollbar[data-size="thick"] {
+  --ms-scrollbar-size: 12px;
+}
+
+/* Visibility Controls */
+/* auto: hidden when idle, shown ONLY during active scrolling */
+.ms-scrollbar--visibility-auto::-webkit-scrollbar-thumb,
+.ms-scrollbar[data-visibility="auto"]::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.ms-scrollbar--visibility-auto.is-scrolling::-webkit-scrollbar-thumb,
+.ms-scrollbar[data-visibility="auto"].is-scrolling::-webkit-scrollbar-thumb {
+  background: var(--ms-scrollbar-thumb);
+}
+
+.ms-scrollbar--visibility-auto::-webkit-scrollbar-thumb:hover,
+.ms-scrollbar[data-visibility="auto"]::-webkit-scrollbar-thumb:hover {
+  background: var(--ms-scrollbar-thumb-hover) !important;
+}
+
+/* always: thumb is permanently visible */
+.ms-scrollbar--visibility-always::-webkit-scrollbar-thumb,
+.ms-scrollbar[data-visibility="always"]::-webkit-scrollbar-thumb {
+  background: var(--ms-scrollbar-thumb);
+}
+
+/* none: completely hides the scrollbar while keeping scrollability */
+.ms-scrollbar--visibility-none::-webkit-scrollbar,
+.ms-scrollbar[data-visibility="none"]::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.ms-scrollbar--visibility-none,
+.ms-scrollbar[data-visibility="none"] {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none;
+}
+
+/* Standard CSS Scrollbars (Firefox & non-WebKit browsers) */
+@supports not selector(::-webkit-scrollbar) {
+  .ms-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  .ms-scrollbar.is-scrolling,
+  .ms-scrollbar--visibility-always,
+  .ms-scrollbar[data-visibility="always"] {
+    scrollbar-color: var(--ms-scrollbar-thumb) var(--ms-scrollbar-track);
+  }
+
+  .ms-scrollbar--size-thin,
+  .ms-scrollbar[data-size="thin"] {
+    scrollbar-width: thin;
+  }
+
+  .ms-scrollbar--size-normal,
+  .ms-scrollbar[data-size="normal"],
+  .ms-scrollbar--size-thick,
+  .ms-scrollbar[data-size="thick"] {
+    scrollbar-width: auto;
+  }
+
+  .ms-scrollbar--visibility-none,
+  .ms-scrollbar[data-visibility="none"] {
+    scrollbar-width: none !important;
+  }
+}
+
+/* 8 Semantic Brand Tones for Thumb */
+.ms-scrollbar--tone-primary,
+.ms-scrollbar[data-tone="primary"] {
+  --ms-scrollbar-thumb: var(--ms-color-primary, #2e86de);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-primary, #2e86de) 80%, black 20%);
+}
+
+.ms-scrollbar--tone-secondary,
+.ms-scrollbar[data-tone="secondary"] {
+  --ms-scrollbar-thumb: var(--ms-color-secondary, #e15f41);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-secondary, #e15f41) 80%, black 20%);
+}
+
+.ms-scrollbar--tone-accent,
+.ms-scrollbar[data-tone="accent"] {
+  --ms-scrollbar-thumb: var(--ms-color-accent, #341f97);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-accent, #341f97) 80%, black 20%);
+}
+
+.ms-scrollbar--tone-neutral,
+.ms-scrollbar[data-tone="neutral"] {
+  --ms-scrollbar-thumb: var(--ms-color-neutral, #222f3e);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-neutral, #222f3e) 80%, black 20%);
+}
+
+.ms-scrollbar--tone-success,
+.ms-scrollbar[data-tone="success"] {
+  --ms-scrollbar-thumb: var(--ms-color-success, #10ac84);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-success, #10ac84) 80%, black 20%);
+}
+
+.ms-scrollbar--tone-info,
+.ms-scrollbar[data-tone="info"] {
+  --ms-scrollbar-thumb: var(--ms-color-info, #0abde3);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-info, #0abde3) 80%, black 20%);
+}
+
+.ms-scrollbar--tone-warning,
+.ms-scrollbar[data-tone="warning"] {
+  --ms-scrollbar-thumb: var(--ms-color-warning, #ff9f43);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-warning, #ff9f43) 80%, black 20%);
+}
+
+.ms-scrollbar--tone-danger,
+.ms-scrollbar[data-tone="danger"] {
+  --ms-scrollbar-thumb: var(--ms-color-danger, #ee5253);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-danger, #ee5253) 80%, black 20%);
+}

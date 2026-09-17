@@ -1,0 +1,17 @@
+/*
+ * Magic-Style Theme Scope & Provider layer (doc 07 §4, §5).
+ * Encapsulates nested visual tokens and color transitions.
+ */
+
+.ms-provider {
+  box-sizing: border-box;
+}
+
+.ms-theme-scope {
+  box-sizing: border-box;
+  color: var(--ms-color-text-primary);
+  background-color: var(--ms-color-surface-default);
+  transition:
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}

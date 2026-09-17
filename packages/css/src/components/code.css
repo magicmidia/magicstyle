@@ -1,0 +1,192 @@
+/*
+ * Magic-Style Code layer (doc 05 §10).
+ * Semantic inline code snippets for props, values, errors, and terminal snippets.
+ */
+
+.ms-code {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-1);
+  box-sizing: border-box;
+  font-family: var(--ms-font-mono);
+  font-size: 0.875em;
+  font-weight: var(--ms-typography-weight-medium);
+  line-height: 1.35;
+  border-radius: var(--ms-radius-sm);
+  padding: 0.125em 0.375em;
+  vertical-align: baseline;
+  border: var(--ms-border-hairline) solid transparent;
+  transition:
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+  word-break: break-word;
+}
+
+/* Sizes */
+.ms-code--sm {
+  font-size: var(--ms-typography-size-xs);
+  padding: 0.075em 0.3em;
+}
+
+.ms-code--md {
+  font-size: var(--ms-typography-size-sm);
+  padding: 0.125em 0.375em;
+}
+
+.ms-code--lg {
+  font-size: var(--ms-typography-size-md);
+  padding: 0.175em 0.45em;
+}
+
+/* Variants & Tones: Subtle (Default) */
+.ms-code--subtle.ms-code--default {
+  background-color: var(--ms-color-surface-sunken);
+  color: var(--ms-color-text-primary);
+  border-color: var(--ms-color-border-subtle);
+}
+
+.ms-code--subtle.ms-code--primary {
+  background-color: color-mix(in oklch, var(--ms-color-interactive-primary) 12%, transparent);
+  color: var(--ms-color-interactive-primary);
+  border-color: color-mix(in oklch, var(--ms-color-interactive-primary) 22%, transparent);
+}
+
+.ms-code--subtle.ms-code--secondary {
+  background-color: color-mix(in oklch, var(--ms-color-interactive-secondary) 12%, transparent);
+  color: var(--ms-color-interactive-secondary);
+  border-color: color-mix(in oklch, var(--ms-color-interactive-secondary) 22%, transparent);
+}
+
+.ms-code--subtle.ms-code--success {
+  background-color: color-mix(in oklch, var(--ms-color-status-success) 12%, transparent);
+  color: var(--ms-color-status-success);
+  border-color: color-mix(in oklch, var(--ms-color-status-success) 22%, transparent);
+}
+
+.ms-code--subtle.ms-code--warning {
+  background-color: color-mix(in oklch, var(--ms-color-status-warning) 12%, transparent);
+  color: var(--ms-color-status-warning);
+  border-color: color-mix(in oklch, var(--ms-color-status-warning) 22%, transparent);
+}
+
+.ms-code--subtle.ms-code--danger {
+  background-color: color-mix(in oklch, var(--ms-color-status-danger) 12%, transparent);
+  color: var(--ms-color-status-danger);
+  border-color: color-mix(in oklch, var(--ms-color-status-danger) 22%, transparent);
+}
+
+.ms-code--subtle.ms-code--info {
+  background-color: color-mix(in oklch, var(--ms-color-status-info) 12%, transparent);
+  color: var(--ms-color-status-info);
+  border-color: color-mix(in oklch, var(--ms-color-status-info) 22%, transparent);
+}
+
+/* Variant: Outline */
+.ms-code--outline {
+  background-color: transparent;
+}
+
+.ms-code--outline.ms-code--default {
+  color: var(--ms-color-text-primary);
+  border-color: var(--ms-color-border-strong);
+}
+
+.ms-code--outline.ms-code--primary {
+  color: var(--ms-color-interactive-primary);
+  border-color: var(--ms-color-interactive-primary);
+}
+
+.ms-code--outline.ms-code--secondary {
+  color: var(--ms-color-interactive-secondary);
+  border-color: var(--ms-color-interactive-secondary);
+}
+
+.ms-code--outline.ms-code--success {
+  color: var(--ms-color-status-success);
+  border-color: var(--ms-color-status-success);
+}
+
+.ms-code--outline.ms-code--warning {
+  color: var(--ms-color-status-warning);
+  border-color: var(--ms-color-status-warning);
+}
+
+.ms-code--outline.ms-code--danger {
+  color: var(--ms-color-status-danger);
+  border-color: var(--ms-color-status-danger);
+}
+
+.ms-code--outline.ms-code--info {
+  color: var(--ms-color-status-info);
+  border-color: var(--ms-color-status-info);
+}
+
+/* Variant: Solid */
+.ms-code--solid.ms-code--default {
+  background-color: var(--ms-color-text-primary);
+  color: var(--ms-color-surface-raised);
+  border-color: transparent;
+}
+
+.ms-code--solid.ms-code--primary {
+  background-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-text-inverse);
+  border-color: transparent;
+}
+
+.ms-code--solid.ms-code--secondary {
+  background-color: var(--ms-color-interactive-secondary);
+  color: var(--ms-color-text-inverse);
+  border-color: transparent;
+}
+
+.ms-code--solid.ms-code--success {
+  background-color: var(--ms-color-status-success);
+  color: var(--ms-color-text-inverse);
+  border-color: transparent;
+}
+
+.ms-code--solid.ms-code--warning {
+  background-color: var(--ms-color-status-warning);
+  color: var(--ms-color-text-primary);
+  border-color: transparent;
+}
+
+.ms-code--solid.ms-code--danger {
+  background-color: var(--ms-color-status-danger);
+  color: var(--ms-color-text-inverse);
+  border-color: transparent;
+}
+
+.ms-code--solid.ms-code--info {
+  background-color: var(--ms-color-status-info);
+  color: var(--ms-color-text-inverse);
+  border-color: transparent;
+}
+
+/* Copy Button inside Code */
+.ms-code__copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 1px 2px;
+  margin-left: var(--ms-space-1);
+  color: inherit;
+  opacity: 0.65;
+  cursor: pointer;
+  border-radius: var(--ms-radius-xs);
+  transition: opacity var(--ms-motion-duration-fast) ease;
+}
+
+.ms-code__copy-btn:hover {
+  opacity: 1;
+  background-color: color-mix(in oklch, currentColor 15%, transparent);
+}
+
+.ms-code__copy-btn:focus-visible {
+  outline: 2px solid var(--ms-color-interactive-focus);
+  outline-offset: 1px;
+}

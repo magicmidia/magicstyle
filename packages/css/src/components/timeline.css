@@ -1,0 +1,165 @@
+/* ==========================================================================
+   Magic-Style: Timeline Component
+   Chronological event and milestone tracker
+   ========================================================================== */
+
+.ms-timeline {
+  display: flex;
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ms-timeline--direction-vertical {
+  flex-direction: column;
+}
+
+.ms-timeline--direction-horizontal {
+  flex-direction: row;
+  overflow-x: auto;
+}
+
+/* Timeline Item */
+.ms-timeline-item {
+  position: relative;
+  display: flex;
+  flex: 1;
+}
+
+/* Vertical layout structure */
+.ms-timeline--direction-vertical .ms-timeline-item {
+  padding-bottom: var(--ms-space-6, 24px);
+}
+
+.ms-timeline--direction-vertical .ms-timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Track connector line */
+.ms-timeline-item__connector {
+  position: absolute;
+  background-color: var(--ms-color-border-subtle);
+}
+
+.ms-timeline--direction-vertical .ms-timeline-item__connector {
+  top: 24px;
+  bottom: 0;
+  left: 15px;
+  width: 2px;
+}
+
+.ms-timeline--direction-vertical .ms-timeline-item:last-child .ms-timeline-item__connector {
+  display: none;
+}
+
+.ms-timeline--direction-horizontal .ms-timeline-item__connector {
+  top: 15px;
+  left: 32px;
+  right: 0;
+  height: 2px;
+}
+
+.ms-timeline--direction-horizontal .ms-timeline-item:last-child .ms-timeline-item__connector {
+  display: none;
+}
+
+/* Indicator Bullet / Node */
+.ms-timeline-item__node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--ms-radius-full, 9999px);
+  font-size: var(--ms-font-size-xs, 0.75rem);
+  font-weight: var(--ms-font-weight-bold, 700);
+  background-color: var(--ms-color-surface-raised);
+  border: 2px solid var(--ms-color-border-default);
+  color: var(--ms-color-text-secondary);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px var(--ms-color-surface-default);
+}
+
+/* Bullet Tones */
+.ms-timeline-item--tone-primary .ms-timeline-item__node {
+  border-color: var(--ms-color-primary, #2e86de);
+  background-color: var(--ms-color-primary-subtle);
+  color: var(--ms-color-primary, #2e86de);
+}
+
+.ms-timeline-item--tone-secondary .ms-timeline-item__node {
+  border-color: var(--ms-color-secondary, #e15f41);
+  background-color: var(--ms-color-secondary-subtle);
+  color: var(--ms-color-secondary, #e15f41);
+}
+
+.ms-timeline-item--tone-accent .ms-timeline-item__node {
+  border-color: var(--ms-color-accent, #341f97);
+  background-color: var(--ms-color-accent-subtle);
+  color: var(--ms-color-accent, #341f97);
+}
+
+.ms-timeline-item--tone-neutral .ms-timeline-item__node {
+  border-color: var(--ms-color-neutral, #222f3e);
+  background-color: var(--ms-color-neutral-subtle);
+  color: var(--ms-color-neutral, #222f3e);
+}
+
+.ms-timeline-item--tone-success .ms-timeline-item__node {
+  border-color: var(--ms-color-success, #10ac84);
+  background-color: var(--ms-color-success-subtle);
+  color: var(--ms-color-success, #10ac84);
+}
+
+.ms-timeline-item--tone-info .ms-timeline-item__node {
+  border-color: var(--ms-color-info, #0abde3);
+  background-color: var(--ms-color-info-subtle);
+  color: var(--ms-color-info, #0abde3);
+}
+
+.ms-timeline-item--tone-warning .ms-timeline-item__node {
+  border-color: var(--ms-color-warning, #ff9f43);
+  background-color: var(--ms-color-warning-subtle);
+  color: var(--ms-color-warning, #ff9f43);
+}
+
+.ms-timeline-item--tone-danger .ms-timeline-item__node {
+  border-color: var(--ms-color-danger, #ee5253);
+  background-color: var(--ms-color-danger-subtle);
+  color: var(--ms-color-danger, #ee5253);
+}
+
+/* Content Container */
+.ms-timeline-item__content {
+  flex-grow: 1;
+  padding-left: var(--ms-space-4, 16px);
+  padding-top: 4px;
+}
+
+.ms-timeline--direction-horizontal .ms-timeline-item__content {
+  padding-left: 0;
+  padding-top: var(--ms-space-3, 12px);
+}
+
+.ms-timeline-item__timestamp {
+  font-size: var(--ms-font-size-xs, 0.75rem);
+  color: var(--ms-color-text-muted, #64748b);
+  margin-bottom: var(--ms-space-1, 4px);
+}
+
+.ms-timeline-item__title {
+  font-size: var(--ms-font-size-md, 1rem);
+  font-weight: var(--ms-font-weight-semibold, 600);
+  color: var(--ms-color-text-primary);
+  margin: 0 0 var(--ms-space-1, 4px) 0;
+}
+
+.ms-timeline-item__description {
+  font-size: var(--ms-font-size-sm, 0.875rem);
+  color: var(--ms-color-text-secondary);
+  line-height: var(--ms-line-height-relaxed, 1.625);
+  margin: 0;
+}

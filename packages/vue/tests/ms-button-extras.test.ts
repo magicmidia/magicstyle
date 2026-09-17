@@ -6,10 +6,17 @@ import { MsButton, MsButtonGroup, MsDropdownButton } from "../src/index.ts";
 const Icon = defineComponent({ render: () => h("svg") });
 
 describe("MsButton sizes", () => {
-  it("supports sm/md/lg/xl/xxl", () => {
-    for (const size of ["sm", "md", "lg", "xl", "xxl"] as const) {
+  it("supports xs/sm/md/lg/xl/xxl", () => {
+    for (const size of ["xs", "sm", "md", "lg", "xl", "xxl"] as const) {
       const wrapper = mount(MsButton, { props: { size }, slots: { default: "x" } });
       expect(wrapper.find("button").attributes("data-size")).toBe(size);
+    }
+  });
+
+  it("supports dashed and link variants", () => {
+    for (const variant of ["dashed", "link"] as const) {
+      const wrapper = mount(MsButton, { props: { variant }, slots: { default: "x" } });
+      expect(wrapper.find("button").attributes("data-variant")).toBe(variant);
     }
   });
 });
@@ -60,6 +67,26 @@ describe("MsButtonGroup", () => {
     expect(wrapper.find('[role="group"]').exists()).toBe(true);
     expect(wrapper.findAll("button")).toHaveLength(2);
   });
+
+  it("supports orientation, attached=false, and fullWidth", () => {
+    const wrapper = mount(MsButtonGroup, {
+      props: {
+        orientation: "vertical",
+        attached: false,
+        fullWidth: true,
+      },
+      slots: {
+        default: () => [
+          h(MsButton, { variant: "outline" }, { default: () => "A" }),
+          h(MsButton, { variant: "outline" }, { default: () => "B" }),
+        ],
+      },
+    });
+
+    expect(wrapper.classes()).toContain("ms-button-group--vertical");
+    expect(wrapper.classes()).toContain("ms-button-group--spaced");
+    expect(wrapper.classes()).toContain("ms-button-group--full-width");
+  });
 });
 
 describe("MsDropdownButton", () => {
@@ -101,5 +128,44 @@ describe("MsDropdownButton", () => {
     await menu.trigger("keydown", { key: "Enter" });
     await nextTick();
     expect((wrapper.emitted("select")?.[0]?.[0] as { value: string }).value).toBe("edit");
+  });
+
+  it("skips disabled first item and focuses first enabled item on open", async () => {
+    const customItems = [
+      { label: "Primeiro Desabilitado", value: "first_dis", disabled: true },
+      { label: "Segundo Habilitado", value: "second_en" },
+    ];
+    const wrapper = mount(MsDropdownButton, { props: { label: "Ações", items: customItems } });
+    await wrapper.find("button").trigger("click");
+    await nextTick();
+    const menu = wrapper.find('[role="menu"]');
+    await menu.trigger("keydown", { key: "Enter" });
+    await nextTick();
+    expect((wrapper.emitted("select")?.[0]?.[0] as { value: string }).value).toBe("second_en");
+  });
+
+  it("renders items with prefix, tone, divider, and aligns menu right", async () => {
+    const customItems = [
+      { label: "Perfil", value: "profile", prefix: "👤" },
+      { label: "Excluir", value: "delete", tone: "danger" as const, divider: true },
+    ];
+    const wrapper = mount(MsDropdownButton, {
+      props: { label: "Menu", items: customItems, align: "right", fullWidth: true },
+    });
+    await wrapper.find("button").trigger("click");
+    await nextTick();
+
+    const menu = wrapper.find(".ms-menu");
+    expect(menu.classes()).toContain("ms-menu--right");
+
+    const divider = wrapper.find(".ms-menu-divider");
+    expect(divider.exists()).toBe(true);
+
+    const prefix = wrapper.find(".ms-menu-item__prefix");
+    expect(prefix.exists()).toBe(true);
+    expect(prefix.text()).toBe("👤");
+
+    const itemsRendered = wrapper.findAll(".ms-menu-item");
+    expect(itemsRendered[1]!.attributes("data-tone")).toBe("danger");
   });
 });

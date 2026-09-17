@@ -19,6 +19,7 @@ export const tokenTree: TokenTree = {
   color: {
     ...colorJson,
     surface: semanticJson.surface,
+    brand: semanticJson.brand,
     text: semanticJson.text,
     border: semanticJson["border-color"],
     interactive: semanticJson.interactive,

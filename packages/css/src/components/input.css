@@ -83,26 +83,68 @@
 
 /* ---------- Tone variations (border + focus follow the tone) ---------- */
 
+.ms-input[data-tone="primary"] {
+  border-color: var(--ms-color-primary, #2e86de);
+}
+.ms-input[data-tone="primary"]:focus-within {
+  border-color: var(--ms-color-primary, #2e86de);
+  box-shadow: 0 0 0 1px var(--ms-color-primary, #2e86de);
+}
+
+.ms-input[data-tone="secondary"] {
+  border-color: var(--ms-color-secondary, #e15f41);
+}
+.ms-input[data-tone="secondary"]:focus-within {
+  border-color: var(--ms-color-secondary, #e15f41);
+  box-shadow: 0 0 0 1px var(--ms-color-secondary, #e15f41);
+}
+
+.ms-input[data-tone="accent"] {
+  border-color: var(--ms-color-accent, #341f97);
+}
+.ms-input[data-tone="accent"]:focus-within {
+  border-color: var(--ms-color-accent, #341f97);
+  box-shadow: 0 0 0 1px var(--ms-color-accent, #341f97);
+}
+
+.ms-input[data-tone="neutral"] {
+  border-color: var(--ms-color-neutral, #222f3e);
+}
+.ms-input[data-tone="neutral"]:focus-within {
+  border-color: var(--ms-color-neutral, #222f3e);
+  box-shadow: 0 0 0 1px var(--ms-color-neutral, #222f3e);
+}
+
 .ms-input[data-tone="success"] {
-  border-color: var(--ms-color-feedback-success-border);
+  border-color: var(--ms-color-success, #10ac84);
 }
 .ms-input[data-tone="success"]:focus-within {
-  border-color: var(--ms-color-feedback-success-text);
-  box-shadow: 0 0 0 1px var(--ms-color-feedback-success-text);
+  border-color: var(--ms-color-success, #10ac84);
+  box-shadow: 0 0 0 1px var(--ms-color-success, #10ac84);
 }
+
 .ms-input[data-tone="info"] {
-  border-color: var(--ms-color-feedback-info-border);
+  border-color: var(--ms-color-info, #0abde3);
 }
 .ms-input[data-tone="info"]:focus-within {
-  border-color: var(--ms-color-feedback-info-text);
-  box-shadow: 0 0 0 1px var(--ms-color-feedback-info-text);
+  border-color: var(--ms-color-info, #0abde3);
+  box-shadow: 0 0 0 1px var(--ms-color-info, #0abde3);
 }
+
 .ms-input[data-tone="warning"] {
-  border-color: var(--ms-color-feedback-warning-border);
+  border-color: var(--ms-color-warning, #ff9f43);
 }
 .ms-input[data-tone="warning"]:focus-within {
-  border-color: var(--ms-color-feedback-warning-text);
-  box-shadow: 0 0 0 1px var(--ms-color-feedback-warning-text);
+  border-color: var(--ms-color-warning, #ff9f43);
+  box-shadow: 0 0 0 1px var(--ms-color-warning, #ff9f43);
+}
+
+.ms-input[data-tone="danger"] {
+  border-color: var(--ms-color-danger, #ee5253);
+}
+.ms-input[data-tone="danger"]:focus-within {
+  border-color: var(--ms-color-danger, #ee5253);
+  box-shadow: 0 0 0 1px var(--ms-color-danger, #ee5253);
 }
 
 /* ---------- Addons: integrated input groups (shared silhouette) ---------- */
@@ -356,4 +398,63 @@
 .ms-input .ms-radio {
   flex-shrink: 0;
   font-size: var(--ms-typography-size-sm);
+}
+
+/* ---------- Variants (filled, flushed) ---------- */
+
+.ms-input[data-variant="filled"] {
+  background-color: var(--ms-color-surface-sunken);
+  border-color: transparent;
+}
+.ms-input[data-variant="filled"]:hover:not([data-disabled]):not([data-invalid]) {
+  background-color: color-mix(
+    in oklch,
+    var(--ms-color-surface-sunken) 80%,
+    var(--ms-color-border-subtle)
+  );
+  border-color: transparent;
+}
+.ms-input[data-variant="filled"]:focus-within {
+  background-color: var(--ms-color-surface-raised);
+  border-color: var(--ms-focus-ring-color);
+  box-shadow: 0 0 0 1px var(--ms-focus-ring-color);
+}
+
+.ms-input[data-variant="flushed"] {
+  border-radius: 0;
+  border-inline-width: 0;
+  border-block-start-width: 0;
+  border-block-end-width: var(--ms-border-hairline);
+  padding-inline: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+.ms-input[data-variant="flushed"]:focus-within {
+  box-shadow: 0 1px 0 0 var(--ms-focus-ring-color);
+}
+
+/* Pill shape */
+.ms-input[data-pill] {
+  border-radius: var(--ms-radius-full);
+}
+
+/* Action button inside input (clearable, passwordToggle) */
+.ms-input-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--ms-color-text-muted);
+  border-radius: var(--ms-radius-xs);
+  transition: color var(--ms-motion-duration-fast) ease;
+}
+.ms-input-action-btn:hover {
+  color: var(--ms-color-text-primary);
+}
+.ms-input-action-btn:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: 1px;
 }

@@ -1,0 +1,144 @@
+/*
+ * Magic-Style Tooltip layer (doc 05 §7).
+ * Accessible, token-styled micro-overlay for contextual hints.
+ */
+
+.ms-tooltip-container {
+  display: inline-flex;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.ms-tooltip {
+  position: absolute;
+  z-index: var(--ms-z-index-dropdown);
+  display: inline-flex;
+  align-items: center;
+  pointer-events: none;
+  white-space: nowrap;
+  user-select: none;
+  box-sizing: border-box;
+
+  background-color: var(--ms-color-neutral-900);
+  color: var(--ms-color-neutral-0);
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-2xs);
+  font-weight: var(--ms-typography-weight-medium);
+  line-height: var(--ms-typography-line-height-tight);
+  padding: var(--ms-space-1) var(--ms-space-2);
+  border-radius: var(--ms-radius-sm);
+  box-shadow: var(--ms-elevation-2);
+
+  animation: ms-tooltip-fade-in var(--ms-motion-duration-fast) var(--ms-motion-easing-entrance);
+}
+
+/* Tones */
+.ms-tooltip--tone-dark {
+  background-color: var(--ms-color-neutral-900);
+  color: var(--ms-color-neutral-0);
+}
+
+.ms-tooltip--tone-light {
+  background-color: var(--ms-color-surface-raised, #ffffff);
+  color: var(--ms-color-text-primary, #0f172a);
+  border: var(--ms-border-hairline, 1px) solid var(--ms-color-border-subtle, #e2e8f0);
+  box-shadow: var(--ms-elevation-3, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
+}
+
+.ms-tooltip--tone-primary {
+  background-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-text-on-accent, #ffffff);
+}
+
+/* Sizes */
+.ms-tooltip--sm {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: var(--ms-radius-xs, 2px);
+}
+
+.ms-tooltip--md {
+  font-size: var(--ms-typography-size-2xs);
+  padding: var(--ms-space-1) var(--ms-space-2);
+  border-radius: var(--ms-radius-sm);
+}
+
+.ms-tooltip--lg {
+  font-size: var(--ms-typography-size-xs);
+  padding: var(--ms-space-2) var(--ms-space-3);
+  border-radius: var(--ms-radius-md);
+}
+
+.ms-tooltip--multiline {
+  white-space: normal;
+  text-align: center;
+}
+
+@keyframes ms-tooltip-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Placements */
+.ms-tooltip--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(calc(-1 * var(--ms-space-1) - 4px));
+}
+
+.ms-tooltip--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(calc(var(--ms-space-1) + 4px));
+}
+
+.ms-tooltip--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(calc(-1 * var(--ms-space-1) - 4px));
+}
+
+.ms-tooltip--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(calc(var(--ms-space-1) + 4px));
+}
+
+/* Arrow */
+.ms-tooltip__arrow {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: inherit;
+  transform: rotate(45deg);
+}
+
+.ms-tooltip--top .ms-tooltip__arrow {
+  bottom: -3px;
+  left: calc(50% - 3px);
+}
+
+.ms-tooltip--bottom .ms-tooltip__arrow {
+  top: -3px;
+  left: calc(50% - 3px);
+}
+
+.ms-tooltip--left .ms-tooltip__arrow {
+  right: -3px;
+  top: calc(50% - 3px);
+}
+
+.ms-tooltip--right .ms-tooltip__arrow {
+  left: -3px;
+  top: calc(50% - 3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ms-tooltip {
+    animation: none;
+  }
+}

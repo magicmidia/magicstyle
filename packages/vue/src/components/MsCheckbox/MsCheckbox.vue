@@ -4,11 +4,24 @@ import { useFieldContext } from "../../composables/use-field-context.ts";
 import { useMsId } from "../../composables/use-ms-id.ts";
 import type { MsCheckboxProps } from "./types.ts";
 
-const props = defineProps<MsCheckboxProps>();
+defineOptions({
+  name: "MsCheckbox",
+});
+
+const props = withDefaults(defineProps<MsCheckboxProps>(), {
+  size: "md",
+  tone: "primary",
+  card: false,
+});
 
 const emit = defineEmits<{
   "update:checked": [checked: boolean];
   change: [checked: boolean];
+}>();
+
+defineSlots<{
+  default?(): unknown;
+  description?(): unknown;
 }>();
 
 const field = useFieldContext();
@@ -33,7 +46,13 @@ function onChange(event: Event): void {
 </script>
 
 <template>
-  <label class="ms-checkbox" :data-disabled="props.disabled || undefined">
+  <label
+    class="ms-checkbox"
+    :data-size="props.size"
+    :data-tone="props.tone"
+    :data-card="props.card || undefined"
+    :data-disabled="props.disabled || undefined"
+  >
     <input
       :id="resolvedId"
       ref="inputRef"
@@ -47,6 +66,16 @@ function onChange(event: Event): void {
       @change="onChange"
     />
     <span class="ms-checkbox-box" aria-hidden="true" />
-    <span v-if="props.label">{{ props.label }}</span>
+    <div
+      v-if="props.label || $slots.default || props.description || $slots.description"
+      class="ms-checkbox-label-group"
+    >
+      <span class="ms-checkbox-label">
+        <slot>{{ props.label }}</slot>
+      </span>
+      <span v-if="props.description || $slots.description" class="ms-checkbox-description">
+        <slot name="description">{{ props.description }}</slot>
+      </span>
+    </div>
   </label>
 </template>

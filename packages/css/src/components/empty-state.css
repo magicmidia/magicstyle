@@ -1,0 +1,147 @@
+/*
+ * Magic-Style Empty State layer (doc 05 §8).
+ * Premium quiet surface placeholder with centered icon, heading, copy, and actions.
+ */
+
+.ms-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: var(--ms-radius-lg);
+  width: 100%;
+}
+
+/* Variants */
+.ms-empty-state--plain {
+  border: none;
+  background-color: transparent;
+}
+
+.ms-empty-state--dashed {
+  border: var(--ms-border-hairline) dashed var(--ms-color-border-subtle);
+  background-color: var(--ms-color-surface-default);
+}
+
+.ms-empty-state--card {
+  border: 1px solid var(--ms-color-border-subtle);
+  background-color: var(--ms-color-surface-raised);
+  box-shadow: var(--ms-elevation-1);
+}
+
+/* Sizes */
+.ms-empty-state--sm {
+  padding: var(--ms-space-6) var(--ms-space-4);
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.ms-empty-state--md {
+  padding: var(--ms-space-10) var(--ms-space-6);
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.ms-empty-state--lg {
+  padding: var(--ms-space-16) var(--ms-space-8);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Icon */
+.ms-empty-state__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ms-radius-full);
+  background-color: var(--ms-color-surface-sunken, #f1f5f9);
+  color: var(--ms-color-text-secondary);
+  margin-bottom: var(--ms-space-4);
+  flex-shrink: 0;
+}
+
+.ms-empty-state__icon--primary {
+  background-color: var(--ms-color-primary-subtle, rgba(59, 130, 246, 0.15));
+  color: var(--ms-color-interactive-primary);
+}
+
+.ms-empty-state__icon--success {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--ms-color-feedback-success-solid);
+}
+
+.ms-empty-state__icon--warning {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: var(--ms-color-feedback-warning-solid);
+}
+
+.ms-empty-state__icon--danger {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: var(--ms-color-feedback-danger-solid);
+}
+
+.ms-empty-state--sm .ms-empty-state__icon {
+  width: 40px;
+  height: 40px;
+}
+
+.ms-empty-state--md .ms-empty-state__icon {
+  width: 56px;
+  height: 56px;
+}
+
+.ms-empty-state--lg .ms-empty-state__icon {
+  width: 72px;
+  height: 72px;
+}
+
+.ms-empty-state__default-icon {
+  width: 50%;
+  height: 50%;
+}
+
+/* Title */
+.ms-empty-state__title {
+  font-family: var(--ms-font-display);
+  font-weight: var(--ms-typography-weight-semibold);
+  color: var(--ms-color-text-primary);
+  margin-bottom: var(--ms-space-2);
+  line-height: var(--ms-typography-line-height-tight);
+}
+
+.ms-empty-state--sm .ms-empty-state__title {
+  font-size: var(--ms-typography-size-md);
+}
+
+.ms-empty-state--md .ms-empty-state__title {
+  font-size: var(--ms-typography-size-lg);
+}
+
+.ms-empty-state--lg .ms-empty-state__title {
+  font-size: var(--ms-typography-size-xl);
+}
+
+/* Description */
+.ms-empty-state__description {
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text-secondary);
+  line-height: var(--ms-typography-line-height-relaxed);
+  max-width: 44ch;
+  margin-bottom: var(--ms-space-5);
+}
+
+.ms-empty-state--sm .ms-empty-state__description {
+  font-size: var(--ms-typography-size-xs);
+  margin-bottom: var(--ms-space-4);
+}
+
+/* Actions */
+.ms-empty-state__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ms-space-3);
+  flex-wrap: wrap;
+}

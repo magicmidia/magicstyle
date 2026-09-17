@@ -1,0 +1,137 @@
+/*
+ * Magic-Style CommandPalette layer (doc 05 §10).
+ * Enterprise Cmd+K command bar overlay with fuzzy search and keyboard navigation.
+ */
+
+.ms-command-palette-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 15vh;
+  box-sizing: border-box;
+}
+
+.ms-command-palette {
+  width: 100%;
+  max-width: 580px;
+  background-color: var(--ms-color-surface-raised);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-xl);
+  box-shadow: var(--ms-shadow-xl, 0 20px 25px -5px rgba(0, 0, 0, 0.2));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.ms-command-palette__search-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--ms-space-4);
+  border-bottom: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  height: 52px;
+  gap: var(--ms-space-2);
+}
+
+.ms-command-palette__search-icon {
+  color: var(--ms-color-text-muted);
+  flex-shrink: 0;
+}
+
+.ms-command-palette__search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-md);
+  color: var(--ms-color-text-primary);
+  outline: none;
+}
+
+.ms-command-palette__kbd {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  background-color: var(--ms-color-surface-sunken);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-xs);
+  font-size: var(--ms-typography-size-2xs);
+  font-family: var(--ms-font-mono);
+  color: var(--ms-color-text-muted);
+}
+
+.ms-command-palette__results {
+  max-height: 320px;
+  overflow-y: auto;
+  padding: var(--ms-space-2);
+  margin: 0;
+  list-style: none;
+}
+
+.ms-command-palette__group-title {
+  padding: var(--ms-space-2) var(--ms-space-3) var(--ms-space-1);
+  font-size: var(--ms-typography-size-2xs);
+  font-weight: var(--ms-typography-weight-semibold);
+  color: var(--ms-color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ms-command-palette__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ms-space-2) var(--ms-space-3);
+  border-radius: var(--ms-radius-md);
+  cursor: pointer;
+  color: var(--ms-color-text-primary);
+  font-size: var(--ms-typography-size-sm);
+  transition: background-color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-command-palette__item-main {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-3);
+}
+
+.ms-command-palette__item-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--ms-color-text-secondary);
+}
+
+.ms-command-palette__item:hover,
+.ms-command-palette__item--active {
+  background-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-text-inverse);
+}
+
+.ms-command-palette__item:hover .ms-command-palette__item-icon,
+.ms-command-palette__item--active .ms-command-palette__item-icon,
+.ms-command-palette__item:hover .ms-command-palette__kbd,
+.ms-command-palette__item--active .ms-command-palette__kbd {
+  color: var(--ms-color-text-inverse);
+}
+
+.ms-command-palette__empty {
+  padding: var(--ms-space-8) var(--ms-space-4);
+  text-align: center;
+  color: var(--ms-color-text-muted);
+  font-size: var(--ms-typography-size-sm);
+}
+
+.ms-command-palette__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ms-space-2) var(--ms-space-4);
+  background-color: var(--ms-color-surface-sunken);
+  border-top: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  font-size: var(--ms-typography-size-2xs);
+  color: var(--ms-color-text-muted);
+}

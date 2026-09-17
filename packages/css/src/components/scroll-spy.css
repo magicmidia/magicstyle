@@ -1,0 +1,52 @@
+/* ==========================================================================
+   Magic-Style: Scroll Spy Component
+   Table-of-contents navigation with active section highlighting
+   ========================================================================== */
+
+.ms-scroll-spy {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 var(--ms-space-3, 12px);
+  border-left: 2px solid var(--ms-color-border, #e2e8f0);
+}
+
+.ms-scroll-spy__item {
+  display: flex;
+  margin: var(--ms-space-1, 4px) 0;
+}
+
+.ms-scroll-spy__link {
+  all: unset;
+  display: inline-block;
+  font-size: var(--ms-font-size-sm, 0.875rem);
+  color: var(--ms-color-text-muted, #64748b);
+  cursor: pointer;
+  transition: color var(--ms-transition-duration-fast, 120ms);
+  text-decoration: none;
+}
+
+.ms-scroll-spy__link:hover {
+  color: var(--ms-color-text, #0f172a);
+}
+
+.ms-scroll-spy__item--active .ms-scroll-spy__link {
+  color: var(--ms-color-primary, #6366f1);
+  font-weight: var(--ms-font-weight-semibold, 600);
+}
+
+.ms-scroll-spy__item--active {
+  position: relative;
+}
+
+.ms-scroll-spy__item--active::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--ms-space-3, 12px) - 2px);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--ms-color-primary, #6366f1);
+}

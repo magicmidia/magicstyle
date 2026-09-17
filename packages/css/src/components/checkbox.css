@@ -4,19 +4,115 @@
  */
 
 .ms-checkbox {
+  --_ms-checkbox-size: 16px;
+  --_ms-checkbox-check-w: 4px;
+  --_ms-checkbox-check-h: 8px;
+  --_ms-checkbox-check-top: 2px;
+  --_ms-checkbox-check-left: 5px;
+  --_ms-checkbox-dash-top: 6px;
+  --_ms-checkbox-dash-left: 3px;
+  --_ms-checkbox-dash-w: 8px;
+  --_ms-checkbox-tone: var(--ms-color-interactive-primary);
+
   display: inline-flex;
-  align-items: center;
-  gap: var(--ms-space-2);
+  align-items: flex-start;
+  gap: var(--ms-space-2-5, 10px);
   cursor: pointer;
   color: var(--ms-color-text-primary);
+  font-family: var(--ms-font-sans);
   font-size: var(--ms-typography-size-sm);
   user-select: none;
 }
 
+/* Sizing */
+.ms-checkbox[data-size="sm"] {
+  --_ms-checkbox-size: 14px;
+  --_ms-checkbox-check-w: 3px;
+  --_ms-checkbox-check-h: 6px;
+  --_ms-checkbox-check-top: 2px;
+  --_ms-checkbox-check-left: 4px;
+  --_ms-checkbox-dash-top: 5px;
+  --_ms-checkbox-dash-left: 3px;
+  --_ms-checkbox-dash-w: 6px;
+  font-size: var(--ms-typography-size-xs);
+}
+
+.ms-checkbox[data-size="lg"] {
+  --_ms-checkbox-size: 20px;
+  --_ms-checkbox-check-w: 5px;
+  --_ms-checkbox-check-h: 10px;
+  --_ms-checkbox-check-top: 3px;
+  --_ms-checkbox-check-left: 6px;
+  --_ms-checkbox-dash-top: 8px;
+  --_ms-checkbox-dash-left: 4px;
+  --_ms-checkbox-dash-w: 10px;
+  font-size: var(--ms-typography-size-md);
+}
+
+/* Tones */
+.ms-checkbox[data-tone="success"] {
+  --_ms-checkbox-tone: var(--ms-color-feedback-success-solid);
+}
+
+.ms-checkbox[data-tone="warning"] {
+  --_ms-checkbox-tone: var(--ms-color-feedback-warning-solid);
+}
+
+.ms-checkbox[data-tone="danger"] {
+  --_ms-checkbox-tone: var(--ms-color-feedback-danger-solid);
+}
+
+.ms-checkbox[data-tone="accent"] {
+  --_ms-checkbox-tone: var(--ms-color-interactive-accent);
+}
+
+/* Card Mode */
+.ms-checkbox--card,
+.ms-checkbox[data-card] {
+  padding: var(--ms-space-3-5, 14px) var(--ms-space-4, 16px);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-md, 8px);
+  background-color: var(--ms-color-surface-raised, #ffffff);
+  box-shadow: var(--ms-elevation-card);
+  transition:
+    border-color var(--ms-motion-duration-fast) ease,
+    background-color var(--ms-motion-duration-fast) ease,
+    box-shadow var(--ms-motion-duration-fast) ease;
+}
+
+.ms-checkbox--card:hover:not([data-disabled]),
+.ms-checkbox[data-card]:hover:not([data-disabled]) {
+  border-color: var(--_ms-checkbox-tone);
+}
+
+.ms-checkbox--card:has(.ms-checkbox-native:checked),
+.ms-checkbox[data-card]:has(.ms-checkbox-native:checked) {
+  border-color: var(--_ms-checkbox-tone);
+  background-color: color-mix(
+    in oklch,
+    var(--_ms-checkbox-tone) 6%,
+    var(--ms-color-surface-raised, #ffffff)
+  );
+}
+
+/* Label & Description */
+.ms-checkbox-label-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-0-5, 2px);
+  line-height: var(--ms-typography-line-height-normal, 1.4);
+}
+
+.ms-checkbox-description {
+  font-size: 0.85em;
+  color: var(--ms-color-text-secondary);
+}
+
 .ms-checkbox-box {
   position: relative;
-  block-size: 16px;
-  inline-size: 16px;
+  block-size: var(--_ms-checkbox-size);
+  inline-size: var(--_ms-checkbox-size);
+  margin-block-start: 2px;
   flex-shrink: 0;
   border: var(--ms-border-hairline) solid var(--ms-color-border-strong);
   border-radius: var(--ms-radius-xs);
@@ -38,10 +134,10 @@
 .ms-checkbox-box::after {
   content: "";
   position: absolute;
-  inset-block-start: 2px;
-  inset-inline-start: 5px;
-  inline-size: 4px;
-  block-size: 8px;
+  inset-block-start: var(--_ms-checkbox-check-top);
+  inset-inline-start: var(--_ms-checkbox-check-left);
+  inline-size: var(--_ms-checkbox-check-w);
+  block-size: var(--_ms-checkbox-check-h);
   border: solid transparent;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg) scale(0);
@@ -49,8 +145,8 @@
 }
 
 .ms-checkbox-native:checked + .ms-checkbox-box {
-  background-color: var(--ms-color-interactive-primary);
-  border-color: var(--ms-color-interactive-primary);
+  background-color: var(--_ms-checkbox-tone);
+  border-color: var(--_ms-checkbox-tone);
 }
 .ms-checkbox-native:checked + .ms-checkbox-box::after {
   border-color: var(--ms-color-text-on-accent);
@@ -59,13 +155,13 @@
 
 /* Indeterminate — dash */
 .ms-checkbox-native:indeterminate + .ms-checkbox-box {
-  background-color: var(--ms-color-interactive-primary);
-  border-color: var(--ms-color-interactive-primary);
+  background-color: var(--_ms-checkbox-tone);
+  border-color: var(--_ms-checkbox-tone);
 }
 .ms-checkbox-native:indeterminate + .ms-checkbox-box::after {
-  inset-block-start: 6px;
-  inset-inline-start: 3px;
-  inline-size: 8px;
+  inset-block-start: var(--_ms-checkbox-dash-top);
+  inset-inline-start: var(--_ms-checkbox-dash-left);
+  inline-size: var(--_ms-checkbox-dash-w);
   block-size: 0;
   border-width: 0 0 2px 0;
   border-color: var(--ms-color-text-on-accent);
@@ -83,5 +179,5 @@
 }
 
 .ms-checkbox:hover:not([data-disabled]) .ms-checkbox-box {
-  border-color: var(--ms-color-interactive-primary);
+  border-color: var(--_ms-checkbox-tone);
 }

@@ -1,0 +1,303 @@
+/*
+ * Magic-Style Badge component layer — semantic status and counter tags.
+ * Classes: .ms-badge, .ms-badge-dot.
+ * Variants: soft (default), solid, outline.
+ * Tones: primary, secondary, accent, neutral, success, info, warning, danger.
+ * Sizes: sm, md (default), lg.
+ * States/Mod: data-pill.
+ */
+
+.ms-badge {
+  --_ms-badge-height: 22px;
+  --_ms-badge-padding: var(--ms-space-2) var(--ms-space-2-5, 8px);
+  --_ms-badge-font-size: var(--ms-typography-size-xs);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ms-space-1-5, 6px);
+  box-sizing: border-box;
+  block-size: var(--_ms-badge-height);
+  padding: var(--_ms-badge-padding);
+  border: var(--ms-border-hairline) solid transparent;
+  border-radius: var(--ms-radius-sm, 4px);
+  font-family: var(--ms-font-sans);
+  font-size: var(--_ms-badge-font-size);
+  font-weight: var(--ms-typography-weight-medium);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  transition:
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+/* Opt-in pill shape */
+.ms-badge[data-pill] {
+  border-radius: var(--ms-radius-full);
+}
+
+/* Sizing */
+.ms-badge[data-size="xs"] {
+  --_ms-badge-height: 16px;
+  --_ms-badge-padding: 0 var(--ms-space-1, 4px);
+  --_ms-badge-font-size: 10px;
+}
+
+.ms-badge[data-size="sm"] {
+  --_ms-badge-height: 18px;
+  --_ms-badge-padding: 0 var(--ms-space-1-5, 6px);
+  --_ms-badge-font-size: 11px;
+}
+
+.ms-badge[data-size="lg"] {
+  --_ms-badge-height: 26px;
+  --_ms-badge-padding: 0 var(--ms-space-3);
+  --_ms-badge-font-size: var(--ms-typography-size-sm);
+}
+
+.ms-badge[data-size="xl"] {
+  --_ms-badge-height: 32px;
+  --_ms-badge-padding: 0 var(--ms-space-3-5, 14px);
+  --_ms-badge-font-size: var(--ms-typography-size-md, 14px);
+  font-weight: var(--ms-typography-weight-semibold, 600);
+}
+
+/* Dot-only mode */
+.ms-badge--dot-only {
+  min-width: 0;
+  padding: 0;
+  border-radius: var(--ms-radius-full);
+}
+
+.ms-badge--dot-only[data-size="xs"] {
+  inline-size: 6px;
+  block-size: 6px;
+}
+
+.ms-badge--dot-only[data-size="sm"] {
+  inline-size: 7px;
+  block-size: 7px;
+}
+
+.ms-badge--dot-only[data-size="md"],
+.ms-badge--dot-only:not([data-size]) {
+  inline-size: 8px;
+  block-size: 8px;
+}
+
+.ms-badge--dot-only[data-size="lg"] {
+  inline-size: 10px;
+  block-size: 10px;
+}
+
+.ms-badge--dot-only[data-size="xl"] {
+  inline-size: 12px;
+  block-size: 12px;
+}
+
+/* Dot indicator inside badge */
+.ms-badge-dot {
+  inline-size: 6px;
+  block-size: 6px;
+  border-radius: var(--ms-radius-full);
+  background-color: currentColor;
+  flex-shrink: 0;
+}
+
+/* ---------- Tones ---------- */
+
+.ms-badge[data-tone="primary"],
+.ms-badge:not([data-tone]) {
+  --_ms-badge-solid-bg: var(--ms-color-interactive-primary);
+  --_ms-badge-solid-fg: var(--ms-color-text-on-accent);
+  --_ms-badge-soft-bg: var(--ms-color-interactive-primary-subtle);
+  --_ms-badge-soft-fg: var(--ms-color-interactive-primary-text);
+  --_ms-badge-soft-border: color-mix(
+    in oklch,
+    var(--ms-color-interactive-primary) 20%,
+    transparent
+  );
+  --_ms-badge-outline-fg: var(--ms-color-interactive-primary);
+  --_ms-badge-outline-border: var(--ms-color-interactive-primary);
+}
+
+.ms-badge[data-tone="secondary"] {
+  --_ms-badge-solid-bg: var(--ms-color-interactive-secondary);
+  --_ms-badge-solid-fg: var(--ms-color-interactive-secondary-fg);
+  --_ms-badge-soft-bg: var(--ms-color-interactive-secondary-subtle);
+  --_ms-badge-soft-fg: var(--ms-color-interactive-secondary-text);
+  --_ms-badge-soft-border: color-mix(
+    in oklch,
+    var(--ms-color-interactive-secondary) 25%,
+    transparent
+  );
+  --_ms-badge-outline-fg: var(--ms-color-interactive-secondary-fg);
+  --_ms-badge-outline-border: var(--ms-color-border-strong);
+}
+
+.ms-badge[data-tone="accent"] {
+  --_ms-badge-solid-bg: var(--ms-color-interactive-accent);
+  --_ms-badge-solid-fg: var(--ms-color-text-on-accent);
+  --_ms-badge-soft-bg: var(--ms-color-interactive-accent-subtle);
+  --_ms-badge-soft-fg: var(--ms-color-interactive-accent-text);
+  --_ms-badge-soft-border: color-mix(in oklch, var(--ms-color-interactive-accent) 25%, transparent);
+  --_ms-badge-outline-fg: var(--ms-color-interactive-accent-text);
+  --_ms-badge-outline-border: var(--ms-color-interactive-accent);
+}
+
+.ms-badge[data-tone="neutral"] {
+  --_ms-badge-solid-bg: var(--ms-color-interactive-neutral);
+  --_ms-badge-solid-fg: var(--ms-color-interactive-neutral-fg);
+  --_ms-badge-soft-bg: var(--ms-color-interactive-neutral-subtle);
+  --_ms-badge-soft-fg: var(--ms-color-interactive-neutral-text);
+  --_ms-badge-soft-border: var(--ms-color-border-subtle);
+  --_ms-badge-outline-fg: var(--ms-color-text-secondary);
+  --_ms-badge-outline-border: var(--ms-color-border-default);
+}
+
+.ms-badge[data-tone="success"] {
+  --_ms-badge-solid-bg: var(--ms-color-feedback-success-solid);
+  --_ms-badge-solid-fg: var(--ms-color-text-on-accent);
+  --_ms-badge-soft-bg: var(--ms-color-feedback-success-bg);
+  --_ms-badge-soft-fg: var(--ms-color-feedback-success-text);
+  --_ms-badge-soft-border: var(--ms-color-feedback-success-border);
+  --_ms-badge-outline-fg: var(--ms-color-feedback-success-text);
+  --_ms-badge-outline-border: var(--ms-color-feedback-success-solid);
+}
+
+.ms-badge[data-tone="info"] {
+  --_ms-badge-solid-bg: var(--ms-color-feedback-info-solid);
+  --_ms-badge-solid-fg: var(--ms-color-text-primary);
+  --_ms-badge-soft-bg: var(--ms-color-feedback-info-bg);
+  --_ms-badge-soft-fg: var(--ms-color-feedback-info-text);
+  --_ms-badge-soft-border: var(--ms-color-feedback-info-border);
+  --_ms-badge-outline-fg: var(--ms-color-feedback-info-text);
+  --_ms-badge-outline-border: var(--ms-color-feedback-info-solid);
+}
+
+.ms-badge[data-tone="warning"] {
+  --_ms-badge-solid-bg: var(--ms-color-feedback-warning-solid);
+  --_ms-badge-solid-fg: var(--ms-color-text-primary);
+  --_ms-badge-soft-bg: var(--ms-color-feedback-warning-bg);
+  --_ms-badge-soft-fg: var(--ms-color-feedback-warning-text);
+  --_ms-badge-soft-border: var(--ms-color-feedback-warning-border);
+  --_ms-badge-outline-fg: var(--ms-color-feedback-warning-text);
+  --_ms-badge-outline-border: var(--ms-color-feedback-warning-solid);
+}
+
+.ms-badge[data-tone="danger"] {
+  --_ms-badge-solid-bg: var(--ms-color-feedback-danger-solid);
+  --_ms-badge-solid-fg: var(--ms-color-text-on-accent);
+  --_ms-badge-soft-bg: var(--ms-color-feedback-danger-bg);
+  --_ms-badge-soft-fg: var(--ms-color-feedback-danger-text);
+  --_ms-badge-soft-border: var(--ms-color-feedback-danger-border);
+  --_ms-badge-outline-fg: var(--ms-color-feedback-danger-text);
+  --_ms-badge-outline-border: var(--ms-color-feedback-danger-solid);
+}
+
+/* ---------- Variants ---------- */
+
+/* Soft (Default) */
+.ms-badge[data-variant="soft"],
+.ms-badge:not([data-variant]) {
+  background-color: var(--_ms-badge-soft-bg);
+  color: var(--_ms-badge-soft-fg);
+  border-color: var(--_ms-badge-soft-border);
+}
+
+/* Solid */
+.ms-badge[data-variant="solid"] {
+  background-color: var(--_ms-badge-solid-bg);
+  color: var(--_ms-badge-solid-fg);
+  border-color: transparent;
+}
+
+/* Outline */
+.ms-badge[data-variant="outline"] {
+  background-color: transparent;
+  color: var(--_ms-badge-outline-fg);
+  border-color: var(--_ms-badge-outline-border);
+}
+
+/* Bordered / Inverse Ring (for dark or busy surfaces) */
+.ms-badge--bordered,
+.ms-badge[data-bordered] {
+  box-shadow: 0 0 0 2px var(--ms-color-surface-raised, #ffffff);
+}
+
+/* Pulse / Ping Animation */
+@keyframes ms-badge-ping {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  70%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.ms-badge--pulse::after,
+.ms-badge[data-pulse]::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background-color: inherit;
+  pointer-events: none;
+  animation: ms-badge-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  z-index: -1;
+}
+
+/* ---------- Badge Wrapper & Corner Placement ---------- */
+
+.ms-badge-wrapper {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.ms-badge--corner {
+  position: absolute;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.ms-badge--placement-top-right,
+.ms-badge[data-placement="top-right"] {
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  transform-origin: 100% 0%;
+}
+
+.ms-badge--placement-top-left,
+.ms-badge[data-placement="top-left"] {
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  transform-origin: 0% 0%;
+}
+
+.ms-badge--placement-bottom-right,
+.ms-badge[data-placement="bottom-right"] {
+  bottom: 0;
+  right: 0;
+  transform: translate(50%, 50%);
+  transform-origin: 100% 100%;
+}
+
+.ms-badge--placement-bottom-left,
+.ms-badge[data-placement="bottom-left"] {
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, 50%);
+  transform-origin: 0% 100%;
+}

@@ -1,0 +1,68 @@
+﻿/* ==========================================================================
+   MsPage, MsPageHeader, MsPageActions Components
+   Standardized layout and header blocks (Doc 05 §3)
+   ========================================================================== */
+
+.ms-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  gap: var(--ms-space-6);
+}
+
+.ms-page--fluid {
+  max-width: 100%;
+}
+
+.ms-page--compact {
+  max-width: 960px;
+}
+
+/* Page Header */
+.ms-page-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-2);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ms-page-header__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ms-space-4);
+  flex-wrap: wrap;
+}
+
+.ms-page-header__title-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-1);
+}
+
+.ms-page-header__title {
+  font-size: var(--ms-font-size-2xl);
+  font-weight: var(--ms-font-weight-bold);
+  color: var(--ms-color-text-default);
+  margin: 0;
+  line-height: var(--ms-line-height-tight);
+}
+
+.ms-page-header__description {
+  font-size: var(--ms-font-size-sm);
+  color: var(--ms-color-text-muted);
+  margin: 0;
+  line-height: var(--ms-line-height-normal);
+}
+
+/* Page Actions */
+.ms-page-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-3);
+  flex-wrap: wrap;
+}

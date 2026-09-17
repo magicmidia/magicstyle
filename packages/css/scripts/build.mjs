@@ -3,7 +3,7 @@
  * Build for @magic-style/css (doc 09 §10: full + granular distribution).
  * Generates dist/ from authored layers + internal token/theme outputs.
  */
-import { copyFileSync, mkdirSync, writeFileSync, existsSync } from "node:fs";
+import { copyFileSync, mkdirSync, writeFileSync, existsSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
@@ -34,19 +34,14 @@ for (const [name, from] of Object.entries(sources)) {
 }
 
 /* Component classes ship granularly and as a bundled layer (doc 09 §10) */
-mkdirSync(join(dist, "components"), { recursive: true });
-for (const file of [
-  "index.css",
-  "button.css",
-  "button-group.css",
-  "menu.css",
-  "field.css",
-  "input.css",
-  "checkbox.css",
-  "radio.css",
-  "switch.css",
-]) {
-  copyFileSync(join(pkgRoot, "src", "components", file), join(dist, "components", file));
+const compSrcDir = join(pkgRoot, "src", "components");
+const compDistDir = join(dist, "components");
+mkdirSync(compDistDir, { recursive: true });
+
+for (const file of readdirSync(compSrcDir)) {
+  if (file.endsWith(".css")) {
+    copyFileSync(join(compSrcDir, file), join(compDistDir, file));
+  }
 }
 
 /* index.css = full distribution WITHOUT the opt-in reset (doc 09 §3) */

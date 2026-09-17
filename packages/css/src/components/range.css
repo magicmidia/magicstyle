@@ -1,0 +1,147 @@
+/* ==========================================================================
+   Magic-Style: Range (Slider) Component
+   Custom slider input with dynamic fill track and value badge
+   ========================================================================== */
+
+.ms-range-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-3, 12px);
+  width: 100%;
+}
+
+.ms-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  margin: 0;
+}
+
+.ms-range:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Sizing Variables */
+.ms-range--size-sm {
+  --ms-range-height: 4px;
+  --ms-range-thumb-size: 14px;
+}
+
+.ms-range--size-md {
+  --ms-range-height: 6px;
+  --ms-range-thumb-size: 18px;
+}
+
+.ms-range--size-lg {
+  --ms-range-height: 8px;
+  --ms-range-thumb-size: 24px;
+}
+
+/* Tones */
+.ms-range--tone-primary {
+  --ms-range-fill-color: var(--ms-color-primary, #2e86de);
+}
+
+.ms-range--tone-secondary {
+  --ms-range-fill-color: var(--ms-color-secondary, #e15f41);
+}
+
+.ms-range--tone-accent {
+  --ms-range-fill-color: var(--ms-color-accent, #341f97);
+}
+
+.ms-range--tone-neutral {
+  --ms-range-fill-color: var(--ms-color-neutral, #222f3e);
+}
+
+.ms-range--tone-success {
+  --ms-range-fill-color: var(--ms-color-success, #10ac84);
+}
+
+.ms-range--tone-info {
+  --ms-range-fill-color: var(--ms-color-info, #0abde3);
+}
+
+.ms-range--tone-warning {
+  --ms-range-fill-color: var(--ms-color-warning, #ff9f43);
+}
+
+.ms-range--tone-danger {
+  --ms-range-fill-color: var(--ms-color-danger, #ee5253);
+}
+
+/* WebKit Track */
+.ms-range::-webkit-slider-runnable-track {
+  height: var(--ms-range-height, 6px);
+  border-radius: var(--ms-radius-full, 9999px);
+  background: linear-gradient(
+    to right,
+    var(--ms-range-fill-color, var(--ms-color-primary)) 0%,
+    var(--ms-range-fill-color, var(--ms-color-primary)) var(--ms-range-percent, 0%),
+    var(--ms-color-border-subtle) var(--ms-range-percent, 0%),
+    var(--ms-color-border-subtle) 100%
+  );
+}
+
+/* WebKit Thumb */
+.ms-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--ms-range-thumb-size, 18px);
+  height: var(--ms-range-thumb-size, 18px);
+  border-radius: var(--ms-radius-full, 9999px);
+  background-color: var(--ms-color-surface-raised);
+  border: 2px solid var(--ms-range-fill-color, var(--ms-color-primary));
+  box-shadow: var(--ms-elevation-1, 0 1px 3px 0 rgba(0, 0, 0, 0.1));
+  margin-top: calc((var(--ms-range-height, 6px) - var(--ms-range-thumb-size, 18px)) / 2);
+  transition:
+    transform var(--ms-transition-duration-fast, 120ms),
+    box-shadow var(--ms-transition-duration-fast, 120ms);
+}
+
+.ms-range::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.ms-range:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--ms-range-fill-color, var(--ms-color-primary));
+  outline-offset: 2px;
+}
+
+/* Firefox Track & Thumb */
+.ms-range::-moz-range-track {
+  height: var(--ms-range-height, 6px);
+  border-radius: var(--ms-radius-full, 9999px);
+  background: var(--ms-color-border-subtle);
+}
+
+.ms-range::-moz-range-progress {
+  height: var(--ms-range-height, 6px);
+  border-radius: var(--ms-radius-full, 9999px);
+  background-color: var(--ms-range-fill-color, var(--ms-color-primary));
+}
+
+.ms-range::-moz-range-thumb {
+  width: var(--ms-range-thumb-size, 18px);
+  height: var(--ms-range-thumb-size, 18px);
+  border-radius: var(--ms-radius-full, 9999px);
+  background-color: var(--ms-color-surface-raised);
+  border: 2px solid var(--ms-range-fill-color, var(--ms-color-primary));
+  box-shadow: var(--ms-elevation-1, 0 1px 3px 0 rgba(0, 0, 0, 0.1));
+  transition: transform var(--ms-transition-duration-fast, 120ms);
+}
+
+/* Value Display Badge */
+.ms-range__value {
+  font-size: var(--ms-font-size-sm, 0.875rem);
+  font-weight: var(--ms-font-weight-semibold, 600);
+  font-variant-numeric: tabular-nums;
+  color: var(--ms-color-text-primary);
+  min-width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}

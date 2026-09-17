@@ -1,0 +1,106 @@
+/* ==========================================================================
+   Magic-Style: Status Component
+   Live status dot & badge indicator with optional pulse animation
+   ========================================================================== */
+
+.ms-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-2, 8px);
+  font-weight: var(--ms-font-weight-medium, 500);
+  color: var(--ms-color-text, #0f172a);
+  line-height: 1;
+}
+
+/* Sizing */
+.ms-status--size-sm {
+  font-size: var(--ms-font-size-xs, 0.75rem);
+}
+.ms-status--size-sm .ms-status__dot {
+  width: 6px;
+  height: 6px;
+}
+
+.ms-status--size-md {
+  font-size: var(--ms-font-size-sm, 0.875rem);
+}
+.ms-status--size-md .ms-status__dot {
+  width: 8px;
+  height: 8px;
+}
+
+.ms-status--size-lg {
+  font-size: var(--ms-font-size-md, 1rem);
+}
+.ms-status--size-lg .ms-status__dot {
+  width: 10px;
+  height: 10px;
+}
+
+/* Dot Structure */
+.ms-status__indicator {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ms-status__dot {
+  position: relative;
+  border-radius: var(--ms-radius-full, 9999px);
+  background-color: currentColor;
+}
+
+.ms-status__pulse {
+  position: absolute;
+  inset: -3px;
+  border-radius: var(--ms-radius-full, 9999px);
+  background-color: currentColor;
+  opacity: 0.45;
+  animation: ms-status-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Tones */
+.ms-status--tone-primary {
+  color: var(--ms-color-primary, #2e86de);
+}
+
+.ms-status--tone-secondary {
+  color: var(--ms-color-secondary, #e15f41);
+}
+
+.ms-status--tone-accent {
+  color: var(--ms-color-accent, #341f97);
+}
+
+.ms-status--tone-neutral {
+  color: var(--ms-color-neutral, #222f3e);
+}
+
+.ms-status--tone-success {
+  color: var(--ms-color-success, #10ac84);
+}
+
+.ms-status--tone-info {
+  color: var(--ms-color-info, #0abde3);
+}
+
+.ms-status--tone-warning {
+  color: var(--ms-color-warning, #ff9f43);
+}
+
+.ms-status--tone-danger {
+  color: var(--ms-color-danger, #ee5253);
+}
+
+.ms-status__label {
+  color: var(--ms-color-text, #0f172a);
+}
+
+@keyframes ms-status-ping {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

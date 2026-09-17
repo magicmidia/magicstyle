@@ -1,0 +1,134 @@
+/*
+ * Magic-Style Link layer (doc 05 §10).
+ * Semantic, accessible hyperlink with variants, underline styles, and external icon indicators.
+ */
+
+.ms-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-1);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--ms-typography-weight-medium);
+  cursor: pointer;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  vertical-align: baseline;
+  transition:
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    text-decoration-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+/* Underline behavior */
+.ms-link--underline-always {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.ms-link--underline-hover {
+  text-decoration: none;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.ms-link--underline-hover:hover {
+  text-decoration: underline;
+}
+
+.ms-link--underline-none {
+  text-decoration: none;
+}
+
+.ms-link--underline-none:hover {
+  text-decoration: none;
+}
+
+/* Variants */
+.ms-link--default {
+  color: var(--ms-color-text-primary);
+  text-decoration-color: var(--ms-color-border-strong);
+}
+
+.ms-link--default:hover {
+  color: var(--ms-color-interactive-primary);
+  text-decoration-color: var(--ms-color-interactive-primary);
+}
+
+.ms-link--primary {
+  color: var(--ms-color-interactive-primary);
+  text-decoration-color: color-mix(in oklch, var(--ms-color-interactive-primary) 50%, transparent);
+}
+
+.ms-link--primary:hover {
+  color: var(--ms-color-interactive-primary-hover, var(--ms-color-interactive-primary));
+  text-decoration-color: currentColor;
+}
+
+.ms-link--muted {
+  color: var(--ms-color-text-secondary);
+  text-decoration-color: var(--ms-color-border-subtle);
+}
+
+.ms-link--muted:hover {
+  color: var(--ms-color-text-primary);
+  text-decoration-color: var(--ms-color-text-primary);
+}
+
+.ms-link--subtle {
+  color: inherit;
+  opacity: 0.85;
+}
+
+.ms-link--subtle:hover {
+  opacity: 1;
+}
+
+.ms-link--danger {
+  color: var(--ms-color-status-danger);
+  text-decoration-color: color-mix(in oklch, var(--ms-color-status-danger) 50%, transparent);
+}
+
+.ms-link--danger:hover {
+  color: var(--ms-color-status-danger);
+  text-decoration-color: currentColor;
+}
+
+/* External icon & adornments */
+.ms-link__external-icon {
+  display: inline-flex;
+  align-items: center;
+  width: 0.85em;
+  height: 0.85em;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.ms-link:hover .ms-link__external-icon {
+  opacity: 1;
+}
+
+.ms-link__prefix,
+.ms-link__suffix {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Focus & Disabled */
+.ms-link:focus-visible {
+  outline: 2px solid var(--ms-color-interactive-focus);
+  outline-offset: 2px;
+  border-radius: var(--ms-radius-xs);
+}
+
+.ms-link--disabled,
+.ms-link[aria-disabled="true"] {
+  opacity: 0.45;
+  pointer-events: none;
+  cursor: not-allowed;
+  text-decoration: none;
+}

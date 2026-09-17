@@ -1,0 +1,117 @@
+/*
+ * Magic-Style Spinner layer (doc 05 §8).
+ * Accessible indeterminate loading indicator.
+ */
+
+@keyframes ms-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ms-spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.ms-spinner__svg {
+  width: 100%;
+  height: 100%;
+  animation: ms-spin 0.75s linear infinite;
+  transform-origin: center center;
+}
+
+.ms-spinner__track {
+  stroke: currentColor;
+  opacity: 0.2;
+}
+
+.ms-spinner__indicator {
+  stroke: currentColor;
+  transform-origin: center center;
+  transition: stroke var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+/* Sizes */
+.ms-spinner--2xs {
+  width: 8px;
+  height: 8px;
+}
+
+.ms-spinner--xs {
+  width: 12px;
+  height: 12px;
+}
+
+.ms-spinner--sm {
+  width: 16px;
+  height: 16px;
+}
+
+.ms-spinner--md {
+  width: 24px;
+  height: 24px;
+}
+
+.ms-spinner--lg {
+  width: 32px;
+  height: 32px;
+}
+
+.ms-spinner--xl {
+  width: 48px;
+  height: 48px;
+}
+
+.ms-spinner--2xl {
+  width: 64px;
+  height: 64px;
+}
+
+/* Speeds */
+.ms-spinner--speed-fast .ms-spinner__svg {
+  animation-duration: 0.4s;
+}
+
+.ms-spinner--speed-slow .ms-spinner__svg {
+  animation-duration: 1.4s;
+}
+
+/* Tones */
+.ms-spinner--primary {
+  color: var(--ms-color-interactive-accent);
+}
+
+.ms-spinner--neutral {
+  color: var(--ms-color-text-primary);
+}
+
+.ms-spinner--success {
+  color: var(--ms-color-feedback-success-solid);
+}
+
+.ms-spinner--warning {
+  color: var(--ms-color-feedback-warning-solid);
+}
+
+.ms-spinner--danger {
+  color: var(--ms-color-feedback-danger-solid);
+}
+
+.ms-spinner--current {
+  color: currentColor;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .ms-spinner__svg {
+    animation-duration: 2s;
+  }
+}

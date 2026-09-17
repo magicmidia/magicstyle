@@ -1,7 +1,8 @@
-export type MsButtonVariant = "solid" | "squared" | "gradient" | "soft" | "outline" | "ghost";
+export type MsButtonVariant =
+  "solid" | "squared" | "gradient" | "soft" | "outline" | "ghost" | "dashed" | "link";
 export type MsTone =
   "primary" | "secondary" | "accent" | "neutral" | "success" | "info" | "warning" | "danger";
-export type MsSize = "sm" | "md" | "lg" | "xl" | "xxl";
+export type MsSize = "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
 
 export interface MsButtonProps {
   /** Visual style. @default "solid" */

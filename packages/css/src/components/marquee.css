@@ -1,0 +1,52 @@
+/*
+ * Magic-Style Marquee layer (doc 05 §10).
+ * Infinite continuous looping ticker with GPU acceleration and fade edge masks.
+ */
+
+.ms-marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--ms-marquee-gap, 1.5rem);
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.ms-marquee__track {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--ms-marquee-gap, 1.5rem);
+  min-width: 100%;
+  animation: ms-marquee-scroll var(--ms-marquee-duration, 25s) linear infinite;
+}
+
+.ms-marquee--reverse .ms-marquee__track {
+  animation-direction: reverse;
+}
+
+.ms-marquee--pause-hover:hover .ms-marquee__track {
+  animation-play-state: paused;
+}
+
+.ms-marquee--fade {
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+@keyframes ms-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--ms-marquee-gap, 1.5rem)));
+  }
+}

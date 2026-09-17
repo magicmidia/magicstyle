@@ -41,7 +41,7 @@ export function emitThemesCss(): string {
       const selector =
         mode === "dark"
           ? `[data-ms-theme="${theme.dataMs}"][data-ms-color-mode="dark"]`
-          : `[data-ms-theme="${theme.dataMs}"]`;
+          : `[data-ms-theme="${theme.dataMs}"], [data-ms-theme="${theme.dataMs}"][data-ms-color-mode="light"]`;
       parts.push(block(selector, delta));
     }
   }
@@ -75,6 +75,64 @@ export function emitThemesCss(): string {
       deltaAgainst(darkBase, resolveTheme("magic", "dark", CONTRAST_HIGH.dark)),
     ),
   );
+
+  parts.push(`/* Global Semantic Aliases & Compatibility Fallbacks */
+:root {
+  --ms-color-surface: var(--ms-color-surface-default);
+  --ms-color-surface-subtle: var(--ms-color-surface-sunken);
+  --ms-color-surface-hover: var(--ms-color-interactive-neutral-subtle);
+  --ms-color-text: var(--ms-color-text-primary);
+  --ms-color-text-default: var(--ms-color-text-primary);
+  --ms-color-border: var(--ms-color-border-default);
+  --ms-color-border-hover: var(--ms-color-border-strong);
+  --ms-color-primary: var(--ms-color-brand-primary);
+  --ms-color-secondary: var(--ms-color-brand-secondary);
+  --ms-color-accent: var(--ms-color-brand-accent);
+  --ms-color-neutral: var(--ms-color-brand-neutral);
+  --ms-color-info: var(--ms-color-brand-info);
+  --ms-color-success: var(--ms-color-brand-success);
+  --ms-color-warning: var(--ms-color-brand-warning);
+  --ms-color-danger: var(--ms-color-brand-danger);
+  --ms-color-primary-subtle: var(--ms-color-interactive-primary-subtle);
+  --ms-color-secondary-subtle: var(--ms-color-interactive-secondary-subtle);
+  --ms-color-accent-subtle: var(--ms-color-interactive-accent-subtle);
+  --ms-color-neutral-subtle: var(--ms-color-interactive-neutral-subtle);
+  --ms-color-info-subtle: var(--ms-color-feedback-info-bg);
+  --ms-color-success-subtle: var(--ms-color-feedback-success-bg);
+  --ms-color-warning-subtle: var(--ms-color-feedback-warning-bg);
+  --ms-color-danger-subtle: var(--ms-color-feedback-danger-bg);
+  --ms-color-primary-default: var(--ms-color-interactive-primary);
+  --ms-color-neutral-default: var(--ms-color-interactive-neutral);
+  --ms-color-danger-default: var(--ms-color-feedback-danger-solid);
+  --ms-color-success-default: var(--ms-color-feedback-success-solid);
+  --ms-color-info-default: var(--ms-color-feedback-info-solid);
+  --ms-color-warning-default: var(--ms-color-feedback-warning-solid);
+  --ms-color-status-danger: var(--ms-color-feedback-danger-text);
+  --ms-color-status-warning: var(--ms-color-feedback-warning-text);
+  --ms-color-status-success: var(--ms-color-feedback-success-text);
+  --ms-color-primary-text: var(--ms-color-interactive-primary-text);
+  --ms-color-primary-hover: var(--ms-color-interactive-primary-hover);
+  --ms-color-primary-active: var(--ms-color-interactive-primary-active);
+  --ms-color-primary-contrast: var(--ms-color-text-on-accent);
+  --ms-color-primary-hover-subtle: var(--ms-color-interactive-primary-subtle);
+  --ms-color-neutral-hover: var(--ms-color-interactive-neutral-hover);
+  --ms-color-neutral-contrast: var(--ms-color-interactive-neutral-fg);
+  --ms-color-danger-hover: var(--ms-color-feedback-danger-solid-hover);
+  --ms-color-danger-contrast: var(--ms-color-text-on-accent);
+  --ms-color-success-hover: var(--ms-color-feedback-success-solid-hover);
+  --ms-color-success-contrast: var(--ms-color-text-on-accent);
+  --ms-color-text-disabled: var(--ms-color-text-muted);
+  --ms-color-surface-disabled: var(--ms-color-surface-sunken);
+  --ms-color-surface-elevated: var(--ms-color-surface-raised);
+  --ms-color-backdrop-dock: rgba(15, 23, 42, 0.4);
+  --ms-color-backdrop: rgba(15, 23, 42, 0.55);
+  --ms-color-focus-ring: var(--ms-focus-ring-color);
+}
+
+[data-ms-color-mode="dark"] {
+  --ms-color-backdrop: rgba(0, 0, 0, 0.75);
+  --ms-color-backdrop-dock: rgba(0, 0, 0, 0.6);
+}`);
 
   return `${parts.filter((part) => part !== "").join("\n")}`;
 }

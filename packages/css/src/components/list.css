@@ -1,0 +1,125 @@
+/* ==========================================================================
+   Magic-Style: List Component
+   Structured items, grouped lists, navigation and selection collections
+   ========================================================================== */
+
+.ms-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: var(--ms-color-surface-raised);
+  color: var(--ms-color-text-primary);
+  width: 100%;
+}
+
+.ms-list--variant-bordered {
+  border: 1px solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-lg, 8px);
+  overflow: hidden;
+}
+
+.ms-list--variant-divided .ms-list-item:not(:last-child) {
+  border-bottom: 1px solid var(--ms-color-border-subtle);
+}
+
+/* List Item */
+.ms-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-3, 12px);
+  box-sizing: border-box;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color var(--ms-transition-duration-fast, 120ms);
+}
+
+.ms-list--size-sm .ms-list-item {
+  padding: var(--ms-space-2, 8px) var(--ms-space-3, 12px);
+  font-size: var(--ms-font-size-sm, 0.875rem);
+}
+
+.ms-list--size-md .ms-list-item {
+  padding: var(--ms-space-3, 12px) var(--ms-space-4, 16px);
+  font-size: var(--ms-font-size-md, 1rem);
+}
+
+.ms-list--size-lg .ms-list-item {
+  padding: var(--ms-space-4, 16px) var(--ms-space-5, 20px);
+  font-size: var(--ms-font-size-lg, 1.125rem);
+}
+
+.ms-list-item--interactive {
+  cursor: pointer;
+}
+
+.ms-list-item--interactive:hover {
+  background-color: var(--ms-color-surface-hover, #f8fafc);
+}
+
+.ms-list-item--active {
+  background-color: var(--ms-color-primary-subtle, #eef2ff);
+  color: var(--ms-color-primary, #6366f1);
+  font-weight: var(--ms-font-weight-medium, 500);
+}
+
+.ms-list-item--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.ms-list-item__leading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--ms-color-text-muted, #64748b);
+}
+
+.ms-list-item__body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+  gap: 2px;
+}
+
+.ms-list-item__title {
+  font-weight: var(--ms-font-weight-medium, 500);
+  line-height: var(--ms-line-height-tight, 1.25);
+  margin: 0;
+}
+
+.ms-list-item__description {
+  font-size: var(--ms-font-size-xs, 0.75rem);
+  color: var(--ms-color-text-muted, #64748b);
+  line-height: var(--ms-line-height-normal, 1.5);
+  margin: 0;
+}
+
+.ms-list-item__trailing {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-2, 8px);
+  flex-shrink: 0;
+  margin-left: auto;
+  color: var(--ms-color-text-muted, #64748b);
+}
+
+/* List Group */
+.ms-list-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.ms-list-group__header {
+  padding: var(--ms-space-2, 8px) var(--ms-space-4, 16px);
+  font-size: var(--ms-font-size-xs, 0.75rem);
+  font-weight: var(--ms-font-weight-bold, 700);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ms-color-text-secondary);
+  background-color: var(--ms-color-surface-sunken);
+  border-bottom: 1px solid var(--ms-color-border-subtle);
+}

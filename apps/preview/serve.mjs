@@ -1,24 +1,78 @@
 #!/usr/bin/env node
-/** Tiny static server for the preview app (dev only). */
+/**
+ * Interactive static & live-reload server for the preview app (dev only).
+ * Resolves packages/css, packages/vue, and vendor modules (Vue 3 ESM) with SSE LiveReload.
+ */
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
+import { existsSync, watch } from "node:fs";
 import { extname, join, normalize, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
 
-const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
+const here = dirname(fileURLToPath(import.meta.url));
+const root = join(here, "..", "..");
 const workspace = join(root, "..");
 const port = Number(process.env.PORT ?? 4173);
+
+const require = createRequire(join(root, "packages", "vue", "package.json"));
+let vueEsmPath = null;
+try {
+  vueEsmPath = require.resolve("vue/dist/vue.esm-browser.js");
+} catch {
+  // Fallback if not found
+}
 
 const types = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
+  ".mjs": "text/javascript; charset=utf-8",
+  ".json": "application/json; charset=utf-8",
+  ".map": "application/json; charset=utf-8",
   ".svg": "image/svg+xml",
   ".png": "image/png",
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
   ".webp": "image/webp",
 };
+
+/** Set of active Server-Sent Events clients for live reload */
+const sseClients = new Set();
+
+function broadcastReload() {
+  for (const client of sseClients) {
+    try {
+      client.write("data: reload\n\n");
+    } catch {
+      sseClients.delete(client);
+    }
+  }
+}
+
+// Watch dist and preview directories for changes with debounce
+let debounceTimer = null;
+const watchDirs = [
+  join(root, "apps", "preview"),
+  join(root, "packages", "css", "dist"),
+  join(root, "packages", "vue", "dist"),
+];
+
+for (const dir of watchDirs) {
+  if (existsSync(dir)) {
+    try {
+      watch(dir, { recursive: true }, () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          console.log("[preview] File change detected, broadcasting reload...");
+          broadcastReload();
+        }, 150);
+      });
+    } catch (err) {
+      console.warn(`[preview] Could not watch directory ${dir}:`, err);
+    }
+  }
+}
 
 async function firstExisting(candidates) {
   for (const file of candidates) {
@@ -35,19 +89,65 @@ async function firstExisting(candidates) {
 const server = createServer(async (req, res) => {
   try {
     const url = new URL(req.url ?? "/", "http://localhost");
-    let path = url.pathname === "/" ? "/apps/preview/index.html" : url.pathname;
+
+    // SSE endpoint for live reload
+    if (url.pathname === "/events") {
+      res.writeHead(200, {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
+        "Access-Control-Allow-Origin": "*",
+      });
+      res.write("data: connected\n\n");
+      sseClients.add(res);
+      req.on("close", () => {
+        sseClients.delete(res);
+      });
+      return;
+    }
+
+    // Vue 3 browser ESM vendor bundle
+    if (url.pathname === "/vendor/vue.js" && vueEsmPath) {
+      const body = await readFile(vueEsmPath);
+      res.writeHead(200, {
+        "content-type": types[".js"],
+        "cache-control": "no-store",
+      });
+      res.end(body);
+      return;
+    }
+
+    let path = url.pathname;
+    if (path === "/" || path === "/index.html") {
+      path = "/apps/preview/index.html";
+    } else if (path === "/docs") {
+      path = "/apps/preview/components.html";
+    } else if (path === "/changelog" || path === "/changelog.html") {
+      path = "/apps/preview/changelog.html";
+    }
     let candidates = [];
+
     if (path.startsWith("/css/")) {
-      candidates = [join(root, "packages", "css", "dist", path.slice(5))];
+      candidates = [
+        join(root, "packages", "css", "dist", path.slice(5)),
+        join(root, "packages", "css", "src", path.slice(5)),
+      ];
+    } else if (path.startsWith("/vue/")) {
+      candidates = [
+        join(root, "packages", "vue", "dist", path.slice(5)),
+        join(root, "packages", "vue", "src", path.slice(5)),
+      ];
     } else if (path.startsWith("/temp/")) {
       candidates = [join(workspace, "temp", path.slice(6))];
-    } else if (path.endsWith(".html") || path.endsWith(".js")) {
+    } else if (path.endsWith(".html") || path.endsWith(".js") || path.endsWith(".css")) {
       candidates = [join(root, "apps", "preview", path), join(root, path)];
     } else {
       candidates = [join(root, path)];
     }
+
     const file = await firstExisting(candidates.map((c) => normalize(c)));
     if (file === null) throw new Error("not found");
+
     const body = await readFile(file);
     res.writeHead(200, {
       "content-type": types[extname(file)] ?? "application/octet-stream",

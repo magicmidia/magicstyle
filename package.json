@@ -1,12 +1,38 @@
 {
   "name": "magic-style",
+  "description": "Enterprise Design System and component platform for Vue 3 and CSS: 82 accessible components, 10 authentic curated themes, 277 DTCG tokens, and WCAG 2.2 AA compliance.",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.34.5",
+  "homepage": "https://github.com/magicmidia/magicstyle",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magicmidia/magicstyle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/magicmidia/magicstyle/issues"
+  },
+  "keywords": [
+    "design-system",
+    "vue3",
+    "components",
+    "ui-library",
+    "dtcg-tokens",
+    "oklch",
+    "accessibility",
+    "wcag-aa",
+    "shadcn",
+    "bootstrap",
+    "material-design",
+    "linear",
+    "dark-mode"
+  ],
   "engines": {
     "node": ">=24 <25"
   },
   "scripts": {
+    "preview": "node apps/preview/serve.mjs",
     "validate": "prettier --check . && eslint . && node scripts/check-architecture.mjs && turbo run lint typecheck test build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

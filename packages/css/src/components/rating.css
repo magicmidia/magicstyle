@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Magic-Style: Rating Component
+   Interactive star rating with hover preview and keyboard navigation
+   ========================================================================== */
+
+.ms-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-1, 4px);
+  user-select: none;
+}
+
+.ms-rating--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.ms-rating--readonly {
+  cursor: default;
+}
+
+.ms-rating__item {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ms-color-border, #cbd5e1);
+  transition:
+    color var(--ms-transition-duration-fast, 120ms),
+    transform var(--ms-transition-duration-fast, 120ms);
+  line-height: 1;
+}
+
+.ms-rating--readonly .ms-rating__item {
+  cursor: default;
+}
+
+.ms-rating:not(.ms-rating--readonly) .ms-rating__item:hover {
+  transform: scale(1.15);
+}
+
+.ms-rating__item--filled {
+  color: var(--ms-color-warning, #f59e0b);
+}
+
+.ms-rating__item:focus-visible {
+  outline: 2px solid var(--ms-color-primary, #6366f1);
+  outline-offset: 2px;
+  border-radius: var(--ms-radius-sm, 4px);
+}
+
+/* Sizing */
+.ms-rating--size-sm .ms-rating__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.ms-rating--size-md .ms-rating__icon {
+  width: 22px;
+  height: 22px;
+}
+
+.ms-rating--size-lg .ms-rating__icon {
+  width: 30px;
+  height: 30px;
+}

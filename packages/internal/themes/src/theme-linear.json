@@ -1,0 +1,95 @@
+{
+  "$schema": "https://designtokens.dev/dtcg/schema.json",
+  "font": {
+    "sans": {
+      "$type": "fontFamily",
+      "$value": ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"]
+    }
+  },
+  "control": {
+    "radius": { "$type": "dimension", "$value": "6px" }
+  },
+  "radius": {
+    "sm": { "$type": "dimension", "$value": "4px" },
+    "md": { "$type": "dimension", "$value": "6px" },
+    "lg": { "$type": "dimension", "$value": "8px" },
+    "xl": { "$type": "dimension", "$value": "12px" }
+  },
+  "elevation": {
+    "button": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px",
+          "color": "rgba(94, 106, 210, 0.25)"
+        }
+      ]
+    },
+    "card": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "8px",
+          "spread": "0px",
+          "color": "rgba(0, 0, 0, 0.08)"
+        }
+      ]
+    }
+  },
+  "color": {
+    "surface": {
+      "default": { "$type": "color", "$value": "#f7f8f9" },
+      "raised": { "$type": "color", "$value": "#ffffff" },
+      "sunken": { "$type": "color", "$value": "#eef0f3" },
+      "subtle": { "$type": "color", "$value": "#f0f2f5" },
+      "inverse": { "$type": "color", "$value": "#08090a" }
+    },
+    "text": {
+      "primary": { "$type": "color", "$value": "#1a1b1e" },
+      "secondary": { "$type": "color", "$value": "#5e626a" },
+      "muted": { "$type": "color", "$value": "#8a8f98" },
+      "subtle": { "$type": "color", "$value": "#b4b9c2" },
+      "inverse": { "$type": "color", "$value": "#f7f8f8" },
+      "on-accent": { "$type": "color", "$value": "#ffffff" }
+    },
+    "border": {
+      "subtle": { "$type": "color", "$value": "#f0f2f5" },
+      "default": { "$type": "color", "$value": "#e2e4e9" },
+      "strong": { "$type": "color", "$value": "#c4c8d1" },
+      "focus": { "$type": "color", "$value": "#5e6ad2" }
+    },
+    "brand": {
+      "primary": { "$type": "color", "$value": "#5e6ad2" },
+      "secondary": { "$type": "color", "$value": "#717886" },
+      "accent": { "$type": "color", "$value": "#5e6ad2" },
+      "neutral": { "$type": "color", "$value": "#1a1b1e" }
+    },
+    "interactive": {
+      "primary": { "$type": "color", "$value": "#5e6ad2" },
+      "primary-hover": { "$type": "color", "$value": "#6875e5" },
+      "primary-active": { "$type": "color", "$value": "#4f5bc4" },
+      "primary-subtle": { "$type": "color", "$value": "#eeeffa" },
+      "primary-text": { "$type": "color", "$value": "#4f5bc4" },
+      "accent": { "$type": "color", "$value": "#5e6ad2" },
+      "accent-hover": { "$type": "color", "$value": "#6875e5" },
+      "accent-active": { "$type": "color", "$value": "#4f5bc4" },
+      "accent-subtle": { "$type": "color", "$value": "#eeeffa" },
+      "accent-text": { "$type": "color", "$value": "#4f5bc4" },
+      "neutral": { "$type": "color", "$value": "#f0f2f5" },
+      "neutral-hover": { "$type": "color", "$value": "#e2e4e9" },
+      "neutral-active": { "$type": "color", "$value": "#d1d5df" },
+      "neutral-subtle": { "$type": "color", "$value": "#ffffff" },
+      "neutral-text": { "$type": "color", "$value": "#1a1b1e" },
+      "neutral-fg": { "$type": "color", "$value": "#1a1b1e" }
+    }
+  },
+  "focus-ring": {
+    "color": { "$type": "color", "$value": "#5e6ad2" },
+    "width": { "$type": "dimension", "$value": "2px" }
+  }
+}

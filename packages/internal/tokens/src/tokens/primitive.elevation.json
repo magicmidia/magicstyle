@@ -1,6 +1,10 @@
 {
   "$schema": "https://designtokens.dev/dtcg/schema.json",
   "elevation": {
+    "none": {
+      "$type": "shadow",
+      "$value": "none"
+    },
     "1": {
       "$type": "shadow",
       "$value": [

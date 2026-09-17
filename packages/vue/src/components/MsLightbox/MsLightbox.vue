@@ -1,0 +1,151 @@
+<script setup lang="ts">
+import { ref, computed, watch, onMounted, onUnmounted } from "vue";
+import type { MsLightboxProps, MsLightboxEmits } from "./types.ts";
+
+const props = withDefaults(defineProps<MsLightboxProps>(), {
+  modelValue: false,
+  items: () => [],
+  index: 0,
+});
+
+const emit = defineEmits<MsLightboxEmits>();
+
+const currentIndex = ref(props.index);
+
+watch(
+  () => props.index,
+  (val) => {
+    currentIndex.value = val;
+  },
+);
+
+const currentItem = computed(() => {
+  return props.items[currentIndex.value] || null;
+});
+
+const close = () => {
+  emit("update:modelValue", false);
+};
+
+const next = () => {
+  if (currentIndex.value < props.items.length - 1) {
+    currentIndex.value++;
+    emit("update:index", currentIndex.value);
+  }
+};
+
+const prev = () => {
+  if (currentIndex.value > 0) {
+    currentIndex.value--;
+    emit("update:index", currentIndex.value);
+  }
+};
+
+const handleKeyDown = (e: KeyboardEvent) => {
+  if (!props.modelValue) return;
+  if (e.key === "Escape") close();
+  if (e.key === "ArrowRight") next();
+  if (e.key === "ArrowLeft") prev();
+};
+
+onMounted(() => {
+  window.addEventListener("keydown", handleKeyDown);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("keydown", handleKeyDown);
+});
+</script>
+
+<template>
+  <Teleport to="body">
+    <div
+      v-if="props.modelValue && currentItem"
+      class="ms-lightbox-backdrop"
+      role="dialog"
+      aria-modal="true"
+      @click.self="close"
+    >
+      <div class="ms-lightbox__topbar">
+        <span class="ms-lightbox__counter">
+          {{ currentIndex + 1 }} / {{ props.items.length }}
+        </span>
+        <button
+          type="button"
+          class="ms-lightbox__close"
+          aria-label="Fechar visualizador"
+          @click="close"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="ms-lightbox__stage">
+        <button
+          v-if="currentIndex > 0"
+          type="button"
+          class="ms-lightbox__nav-btn ms-lightbox__prev"
+          aria-label="Imagem anterior"
+          @click="prev"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+
+        <img
+          :src="currentItem.src"
+          :alt="currentItem.alt || currentItem.title || 'Imagem em destaque'"
+          class="ms-lightbox__img"
+        />
+
+        <button
+          v-if="currentIndex < props.items.length - 1"
+          type="button"
+          class="ms-lightbox__nav-btn ms-lightbox__next"
+          aria-label="Próxima imagem"
+          @click="next"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+      </div>
+
+      <div v-if="currentItem.title || currentItem.caption" class="ms-lightbox__caption">
+        <strong>{{ currentItem.title }}</strong>
+        <p v-if="currentItem.caption">{{ currentItem.caption }}</p>
+      </div>
+    </div>
+  </Teleport>
+</template>

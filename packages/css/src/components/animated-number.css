@@ -1,0 +1,12 @@
+/* ==========================================================================
+   Magic-Style: Animated Number Component
+   Numeric metric ticker with easing transitions
+   ========================================================================== */
+
+.ms-animated-number {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  font-weight: inherit;
+  color: inherit;
+}

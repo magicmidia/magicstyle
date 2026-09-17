@@ -44,10 +44,65 @@
   transition: transform var(--ms-motion-duration-fast) var(--ms-motion-easing-emphasized);
 }
 
-.ms-radio-native:checked + .ms-radio-dot {
+/* Sizes */
+.ms-radio--sm {
+  font-size: var(--ms-typography-size-xs);
+  gap: var(--ms-space-1-5, 6px);
+}
+.ms-radio--sm .ms-radio-dot {
+  block-size: 14px;
+  inline-size: 14px;
+}
+.ms-radio--sm .ms-radio-dot::after {
+  inset: 3px;
+}
+
+.ms-radio--md {
+  font-size: var(--ms-typography-size-sm);
+  gap: var(--ms-space-2);
+}
+.ms-radio--md .ms-radio-dot {
+  block-size: 16px;
+  inline-size: 16px;
+}
+.ms-radio--md .ms-radio-dot::after {
+  inset: 4px;
+}
+
+.ms-radio--lg {
+  font-size: var(--ms-typography-size-md);
+  gap: var(--ms-space-2-5, 10px);
+}
+.ms-radio--lg .ms-radio-dot {
+  block-size: 20px;
+  inline-size: 20px;
+}
+.ms-radio--lg .ms-radio-dot::after {
+  inset: 5px;
+}
+
+/* Tone styling on checked */
+.ms-radio-native:checked + .ms-radio-dot,
+.ms-radio--primary .ms-radio-native:checked + .ms-radio-dot {
   background-color: var(--ms-color-interactive-primary);
   border-color: var(--ms-color-interactive-primary);
 }
+
+.ms-radio--success .ms-radio-native:checked + .ms-radio-dot {
+  background-color: var(--ms-color-feedback-success-solid);
+  border-color: var(--ms-color-feedback-success-solid);
+}
+
+.ms-radio--warning .ms-radio-native:checked + .ms-radio-dot {
+  background-color: var(--ms-color-feedback-warning-solid);
+  border-color: var(--ms-color-feedback-warning-solid);
+}
+
+.ms-radio--danger .ms-radio-native:checked + .ms-radio-dot {
+  background-color: var(--ms-color-feedback-danger-solid);
+  border-color: var(--ms-color-feedback-danger-solid);
+}
+
 .ms-radio-native:checked + .ms-radio-dot::after {
   transform: scale(1);
 }
@@ -66,9 +121,66 @@
   border-color: var(--ms-color-interactive-primary);
 }
 
+/* Card Mode */
+.ms-radio--card {
+  display: flex;
+  align-items: flex-start;
+  padding: var(--ms-space-3) var(--ms-space-4);
+  border: 1px solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-md);
+  background-color: var(--ms-color-surface-raised);
+  transition:
+    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ms-radio--card .ms-radio-dot {
+  margin-top: 2px;
+}
+
+.ms-radio--card:hover:not([data-disabled]) {
+  border-color: var(--ms-color-border-strong);
+  background-color: var(--ms-color-surface-sunken);
+}
+
+.ms-radio--card:has(.ms-radio-native:checked),
+.ms-radio--card[data-checked] {
+  border-color: var(--ms-color-interactive-primary);
+  background-color: var(--ms-color-surface-subtle);
+  box-shadow: 0 0 0 1px var(--ms-color-interactive-primary);
+}
+
+/* Label & Description Group */
+.ms-radio-label-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ms-radio-description {
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-secondary);
+  font-weight: normal;
+}
+
 /* Group layout */
 .ms-radio-group {
   display: inline-flex;
   gap: var(--ms-space-3);
+  box-sizing: border-box;
+}
+
+.ms-radio-group--horizontal {
+  flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.ms-radio-group--vertical {
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
 }

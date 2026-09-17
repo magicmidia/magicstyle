@@ -1,0 +1,35 @@
+---
+"@magic-style/vue": minor
+"@magic-style/css": minor
+---
+
+- **vue**: Add 26 new enterprise components with comprehensive props, slots, emits, accessibility (WCAG 2.2), and full TypeScript type definitions:
+  - `MsPagination`: Multi-page navigation engine with jumper input, page size selector, ellipsis logic, and full keyboard navigation.
+  - `MsCodeBlock`: Code syntax presentation block with line numbers, copy button, collapsible view, badge, and file headers.
+  - `MsCollapse`: Smooth collapsible accordion/disclosure surface with CSS grid row animations and customizable header triggers.
+  - `MsLink`: Semantic anchor link with 5 tone variants, underline behaviors (always, hover, none), automatic external link detection, and icon.
+  - `MsBlockquote`: Expressive quotes with quote mark decoration, 8 semantic tone accents, cite author, and role attribution.
+  - `MsMaskedInput`: Form input with real-time formatting masks (CPF, CNPJ, phone, CEP, date, currency) and unmasked value binding.
+  - `MsIconPicker`: Interactive icon gallery selector with live fuzzy search, categories, and direct glyph selection.
+  - `MsFormWizard`: Multi-step form orchestrator with step progression, linear navigation validation, and custom step actions.
+  - `MsPinInput`: Security PIN / OTP split digit input with automatic focus advance, backspace navigation, paste handling, and mask mode.
+  - `MsPasswordInput`: Advanced security password field with show/hide toggle, real-time strength meter, policy criteria checklist, and strength tips.
+  - `MsDropzone`: Drag-and-drop file upload zone with visual dragover feedback, multi-file acceptance, and file item preview/remove list.
+  - `MsMarquee`: Infinite marquee ticker powered by GPU-accelerated CSS animations with speed control, pause-on-hover, reverse direction, and gradient edge masks.
+  - `MsPointer`: Custom magnetic and responsive cursor indicator overlay with dot, ring, and spotlight variants.
+  - `MsEmojiPicker`: Categorized emoji picker with quick search, category tabs (smileys, gestures, objects, symbols), and selection events.
+  - `MsSplitPane`: Resizable split panel layout engine supporting horizontal and vertical splitting with gutter drag interactions.
+  - `MsDatePicker`: Calendar date selection component with month/year navigation, quick presets (Today, Tomorrow, +7 days), and formatted output.
+  - `MsParallax`: Smooth parallax scrolling viewport with variable speed displacement and 3D depth impression.
+  - `MsBentoGrid` & `MsBentoItem`: Modern Bento-box style grid layout system with colSpan (1-4) and rowSpan (1-3) controls.
+  - `MsMasonryGrid`: Multi-column cascading masonry waterfall layout with dynamic column count.
+  - `MsLightbox`: Full-screen modal media lightbox gallery with previous/next navigation, counter, image caption, and ESC shortcut.
+  - `MsTruncate`: Multi-line text truncation utility with customizable clamp lines, middle/end positions, and inline expandable button.
+  - `MsCommandPalette`: Spotlight-style global command palette dialog (Cmd+K / Ctrl+K) with instant item search and grouped actions.
+  - `MsToggleGroup` & `MsToggleGroupItem`: Accessible segmented button toggle group supporting single and multiple selection modes.
+  - `MsFab`: Floating Action Button with expandable speed-dial secondary action items and 4 screen corner anchor positions.
+  - `MsLabel`: Semantic form label component with required badge, optional marker, and informational helper tooltip.
+  - `MsCode`: Inline typography code snippet component with semantic tones (8 tones), subtle/outline/solid variants, and one-click copy button.
+  - `MsCanvas`: Decorative textured background surface supporting dots, grid, and lines SVG patterns with customizable density and pattern colors.
+- **css**: Add 26 component CSS stylesheets under `@magic-style/css/components/` and register them in the master stylesheet and package exports.
+- **preview**: Register all 26 components in the interactive Documentation Studio with complete API tables (Props, Slots, Emits, Tokens) and interactive playgrounds.

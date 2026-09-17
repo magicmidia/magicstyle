@@ -1,0 +1,145 @@
+/*
+ * Magic-Style Blockquote layer (doc 05 §10).
+ * Semantic quote styling with author attribution, avatar, and tone accents.
+ */
+
+.ms-blockquote {
+  box-sizing: border-box;
+  margin: var(--ms-space-4) 0;
+  padding: var(--ms-space-3) var(--ms-space-4);
+  font-family: var(--ms-font-sans);
+  position: relative;
+  transition:
+    background-color var(--ms-motion-duration-fast) ease,
+    border-color var(--ms-motion-duration-fast) ease;
+}
+
+/* Variant: Bordered (Default) */
+.ms-blockquote--bordered {
+  border-left: 3px solid var(--ms-color-border-strong);
+  background-color: transparent;
+}
+
+/* Variant: Card */
+.ms-blockquote--card {
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-left: 4px solid var(--ms-color-interactive-primary);
+  background-color: var(--ms-color-surface-raised);
+  border-radius: var(--ms-radius-md);
+  box-shadow: var(--ms-shadow-sm);
+}
+
+/* Variant: Minimal */
+.ms-blockquote--minimal {
+  border: none;
+  padding-left: var(--ms-space-2);
+  background-color: transparent;
+  font-style: italic;
+}
+
+/* Variant: Filled */
+.ms-blockquote--filled {
+  background-color: var(--ms-color-surface-sunken);
+  border-radius: var(--ms-radius-md);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+}
+
+/* Tones (affects border-left or accent quote) */
+.ms-blockquote--primary {
+  border-left-color: var(--ms-color-interactive-primary);
+}
+
+.ms-blockquote--accent {
+  border-left-color: var(--ms-color-interactive-secondary);
+}
+
+.ms-blockquote--warning {
+  border-left-color: var(--ms-color-status-warning);
+}
+
+.ms-blockquote--info {
+  border-left-color: var(--ms-color-status-info);
+}
+
+/* Sizes */
+.ms-blockquote--sm {
+  font-size: var(--ms-typography-size-sm);
+  padding: var(--ms-space-2) var(--ms-space-3);
+}
+
+.ms-blockquote--md {
+  font-size: var(--ms-typography-size-md);
+  padding: var(--ms-space-3) var(--ms-space-4);
+}
+
+.ms-blockquote--lg {
+  font-size: var(--ms-typography-size-lg);
+  padding: var(--ms-space-4) var(--ms-space-5);
+  line-height: 1.5;
+}
+
+/* Quote Icon */
+.ms-blockquote__icon {
+  display: inline-block;
+  color: var(--ms-color-text-muted);
+  opacity: 0.4;
+  margin-bottom: var(--ms-space-1);
+  width: 24px;
+  height: 24px;
+}
+
+/* Content */
+.ms-blockquote__content {
+  color: var(--ms-color-text-primary);
+  line-height: 1.6;
+}
+
+.ms-blockquote__content p {
+  margin: 0 0 var(--ms-space-2) 0;
+}
+
+.ms-blockquote__content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Footer / Attribution */
+.ms-blockquote__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-2);
+  margin-top: var(--ms-space-3);
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text-secondary);
+}
+
+.ms-blockquote__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--ms-radius-full);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.ms-blockquote__author-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.ms-blockquote__author {
+  font-weight: var(--ms-typography-weight-semibold);
+  color: var(--ms-color-text-primary);
+}
+
+.ms-blockquote__role {
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-muted);
+}
+
+.ms-blockquote__cite {
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-muted);
+}
+
+.ms-blockquote__cite::before {
+  content: "— ";
+}

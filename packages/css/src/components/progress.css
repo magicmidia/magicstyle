@@ -1,0 +1,239 @@
+/*
+ * Magic-Style Progress layer (doc 05 §8).
+ * Accessible progress bar with determinate, indeterminate, and striped states.
+ */
+
+@keyframes ms-progress-indeterminate {
+  0% {
+    left: -40%;
+    width: 35%;
+  }
+  60% {
+    left: 100%;
+    width: 100%;
+  }
+  100% {
+    left: 100%;
+    width: 0%;
+  }
+}
+
+@keyframes ms-progress-stripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+.ms-progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ms-progress__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--ms-typography-size-xs);
+  font-weight: var(--ms-typography-weight-medium);
+  color: var(--ms-color-text-secondary);
+}
+
+.ms-progress__label {
+  display: inline-flex;
+  align-items: center;
+}
+
+.ms-progress__value {
+  display: inline-flex;
+  font-variant-numeric: tabular-nums;
+  color: var(--ms-color-text-primary);
+  font-weight: var(--ms-typography-weight-semibold);
+}
+
+.ms-progress__track {
+  position: relative;
+  width: 100%;
+  background-color: var(--ms-color-surface-sunken, #f1f5f9);
+  border-radius: var(--ms-radius-full);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.ms-progress__bar {
+  height: 100%;
+  border-radius: inherit;
+  transition: width var(--ms-motion-duration-base) var(--ms-motion-easing-standard);
+}
+
+/* Track sizes */
+.ms-progress--2xs .ms-progress__track {
+  height: 2px;
+}
+
+.ms-progress--xs .ms-progress__track {
+  height: 4px;
+}
+
+.ms-progress--sm .ms-progress__track {
+  height: 6px;
+}
+
+.ms-progress--md .ms-progress__track {
+  height: 8px;
+}
+
+.ms-progress--lg .ms-progress__track {
+  height: 12px;
+}
+
+.ms-progress--xl .ms-progress__track {
+  height: 16px;
+}
+
+.ms-progress--2xl .ms-progress__track {
+  height: 24px;
+}
+
+/* Shapes */
+.ms-progress--shape-square .ms-progress__track {
+  border-radius: 0;
+}
+
+.ms-progress--shape-rounded .ms-progress__track {
+  border-radius: var(--ms-radius-sm, 4px);
+}
+
+.ms-progress--shape-pill .ms-progress__track {
+  border-radius: var(--ms-radius-full);
+}
+
+/* Tone styling */
+.ms-progress--primary .ms-progress__bar {
+  background-color: var(--ms-color-primary, #2e86de);
+}
+
+.ms-progress--secondary .ms-progress__bar {
+  background-color: var(--ms-color-secondary, #e15f41);
+}
+
+.ms-progress--accent .ms-progress__bar {
+  background-color: var(--ms-color-accent, #341f97);
+}
+
+.ms-progress--neutral .ms-progress__bar {
+  background-color: var(--ms-color-neutral, #222f3e);
+}
+
+.ms-progress--success .ms-progress__bar {
+  background-color: var(--ms-color-success, #10ac84);
+}
+
+.ms-progress--info .ms-progress__bar {
+  background-color: var(--ms-color-info, #0abde3);
+}
+
+.ms-progress--warning .ms-progress__bar {
+  background-color: var(--ms-color-warning, #ff9f43);
+}
+
+.ms-progress--danger .ms-progress__bar {
+  background-color: var(--ms-color-danger, #ee5253);
+}
+
+/* Gradient effects */
+.ms-progress--gradient.ms-progress--primary .ms-progress__bar {
+  background-image: linear-gradient(90deg, #2e86de, #0abde3);
+}
+
+.ms-progress--gradient.ms-progress--secondary .ms-progress__bar {
+  background-image: linear-gradient(90deg, #e15f41, #ff9f43);
+}
+
+.ms-progress--gradient.ms-progress--accent .ms-progress__bar {
+  background-image: linear-gradient(90deg, #341f97, #2e86de);
+}
+
+.ms-progress--gradient.ms-progress--neutral .ms-progress__bar {
+  background-image: linear-gradient(
+    90deg,
+    var(--ms-color-neutral-600),
+    var(--ms-color-neutral-800)
+  );
+}
+
+.ms-progress--gradient.ms-progress--success .ms-progress__bar {
+  background-image: linear-gradient(90deg, #10ac84, #0abde3);
+}
+
+.ms-progress--gradient.ms-progress--info .ms-progress__bar {
+  background-image: linear-gradient(90deg, #0abde3, #2e86de);
+}
+
+.ms-progress--gradient.ms-progress--warning .ms-progress__bar {
+  background-image: linear-gradient(90deg, #ff9f43, #e15f41);
+}
+
+.ms-progress--gradient.ms-progress--danger .ms-progress__bar {
+  background-image: linear-gradient(90deg, #ee5253, #e15f41);
+}
+
+/* Inline bar text */
+.ms-progress__bar-text {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  padding-inline-end: var(--ms-space-2, 8px);
+  font-size: var(--ms-typography-size-2xs, 10px);
+  font-weight: var(--ms-typography-weight-bold, 700);
+  color: #ffffff;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Indeterminate state */
+.ms-progress__track--indeterminate .ms-progress__bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  animation: ms-progress-indeterminate 1.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+/* Striped state */
+.ms-progress__track--striped .ms-progress__bar {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.18) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(255, 255, 255, 0.18) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+/* Animated stripes */
+.ms-progress__track--animated .ms-progress__bar {
+  animation: ms-progress-stripes 1s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ms-progress__bar {
+    transition: none;
+  }
+  .ms-progress__track--indeterminate .ms-progress__bar {
+    animation-duration: 2.5s;
+  }
+  .ms-progress__track--animated .ms-progress__bar {
+    animation: none;
+  }
+}

@@ -1,0 +1,242 @@
+/*
+ * Magic-Style Alert component layer — accessible feedback and status banners.
+ * Classes: .ms-alert, .ms-alert-icon, .ms-alert-content, .ms-alert-title,
+ *          .ms-alert-description, .ms-alert-close, .ms-alert-actions.
+ * Variants: soft (default), solid, outline.
+ * Tones: info (default), success, warning, danger, neutral, primary.
+ */
+
+.ms-alert {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-3-5, 14px);
+  padding: var(--ms-space-3-5, 14px) var(--ms-space-4, 16px);
+  border-radius: var(--ms-radius-md, 8px);
+  border: var(--ms-border-hairline) solid transparent;
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-sm);
+  line-height: var(--ms-typography-line-height-base);
+  box-sizing: border-box;
+  transition:
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-alert[data-align="start"] {
+  align-items: flex-start;
+}
+
+/* Sizes */
+.ms-alert--sm {
+  padding: var(--ms-space-2, 8px) var(--ms-space-3, 12px);
+  font-size: var(--ms-typography-size-xs);
+  gap: var(--ms-space-2-5, 10px);
+}
+
+.ms-alert--md {
+  padding: var(--ms-space-3-5, 14px) var(--ms-space-4, 16px);
+  font-size: var(--ms-typography-size-sm);
+  gap: var(--ms-space-3-5, 14px);
+}
+
+.ms-alert--lg {
+  padding: var(--ms-space-4, 16px) var(--ms-space-5, 20px);
+  font-size: var(--ms-typography-size-md);
+  gap: var(--ms-space-4, 16px);
+}
+
+/* Icon */
+.ms-alert-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin: 0;
+}
+
+.ms-alert[data-align="start"] .ms-alert-icon {
+  align-self: flex-start;
+  margin-block-start: 2px;
+}
+
+/* Prominent / Featured Icon Badge */
+.ms-alert-icon--featured {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--ms-radius-full, 9999px);
+  background-color: color-mix(in oklch, currentColor 14%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in oklch, currentColor 20%, transparent);
+}
+
+.ms-alert--sm .ms-alert-icon--featured {
+  width: 32px;
+  height: 32px;
+}
+
+.ms-alert--lg .ms-alert-icon--featured {
+  width: 48px;
+  height: 48px;
+}
+
+.ms-alert-content {
+  flex: 1;
+  min-inline-size: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-1);
+}
+
+.ms-alert-title {
+  margin: 0;
+  font-weight: var(--ms-typography-weight-semibold);
+  line-height: var(--ms-typography-line-height-tight);
+}
+
+.ms-alert-description {
+  margin: 0;
+  font-size: var(--ms-typography-size-sm);
+  opacity: 0.92;
+}
+
+.ms-alert-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-2);
+  margin-block-start: var(--ms-space-2);
+}
+
+.ms-alert-close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  inline-size: 24px;
+  block-size: 24px;
+  border-radius: var(--ms-radius-sm);
+  border: none;
+  background: transparent;
+  color: inherit;
+  opacity: 0.7;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-alert[data-align="start"] .ms-alert-close {
+  align-self: flex-start;
+  margin-block-start: 2px;
+}
+
+.ms-alert-close:hover {
+  opacity: 1;
+}
+
+.ms-alert-close:focus-visible {
+  outline: var(--ms-focus-ring-width) solid currentColor;
+  outline-offset: var(--ms-focus-ring-offset);
+}
+
+.ms-alert-close:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ---------- Tones & Variants ---------- */
+
+/* INFO */
+.ms-alert[data-tone="info"],
+.ms-alert:not([data-tone]) {
+  --_ms-alert-bg: var(--ms-color-feedback-info-bg);
+  --_ms-alert-border: var(--ms-color-feedback-info-border);
+  --_ms-alert-fg: var(--ms-color-feedback-info-text);
+  --_ms-alert-solid-bg: var(--ms-color-feedback-info-solid);
+  --_ms-alert-solid-fg: var(--ms-color-text-primary);
+}
+
+/* SUCCESS */
+.ms-alert[data-tone="success"] {
+  --_ms-alert-bg: var(--ms-color-feedback-success-bg);
+  --_ms-alert-border: var(--ms-color-feedback-success-border);
+  --_ms-alert-fg: var(--ms-color-feedback-success-text);
+  --_ms-alert-solid-bg: var(--ms-color-feedback-success-solid);
+  --_ms-alert-solid-fg: var(--ms-color-text-on-accent);
+}
+
+/* WARNING */
+.ms-alert[data-tone="warning"] {
+  --_ms-alert-bg: var(--ms-color-feedback-warning-bg);
+  --_ms-alert-border: var(--ms-color-feedback-warning-border);
+  --_ms-alert-fg: var(--ms-color-feedback-warning-text);
+  --_ms-alert-solid-bg: var(--ms-color-feedback-warning-solid);
+  --_ms-alert-solid-fg: var(--ms-color-text-primary);
+}
+
+/* DANGER */
+.ms-alert[data-tone="danger"] {
+  --_ms-alert-bg: var(--ms-color-feedback-danger-bg);
+  --_ms-alert-border: var(--ms-color-feedback-danger-border);
+  --_ms-alert-fg: var(--ms-color-feedback-danger-text);
+  --_ms-alert-solid-bg: var(--ms-color-feedback-danger-solid);
+  --_ms-alert-solid-fg: var(--ms-color-text-on-accent);
+}
+
+/* PRIMARY */
+.ms-alert[data-tone="primary"] {
+  --_ms-alert-bg: var(--ms-color-interactive-primary-subtle);
+  --_ms-alert-border: color-mix(in oklch, var(--ms-color-interactive-primary) 25%, transparent);
+  --_ms-alert-fg: var(--ms-color-interactive-primary-text);
+  --_ms-alert-solid-bg: var(--ms-color-interactive-primary);
+  --_ms-alert-solid-fg: var(--ms-color-text-on-accent);
+}
+
+/* SECONDARY */
+.ms-alert[data-tone="secondary"] {
+  --_ms-alert-bg: var(--ms-color-interactive-secondary-subtle);
+  --_ms-alert-border: color-mix(in oklch, var(--ms-color-interactive-secondary) 25%, transparent);
+  --_ms-alert-fg: var(--ms-color-interactive-secondary-text);
+  --_ms-alert-solid-bg: var(--ms-color-interactive-secondary);
+  --_ms-alert-solid-fg: var(--ms-color-text-on-accent);
+}
+
+/* ACCENT */
+.ms-alert[data-tone="accent"] {
+  --_ms-alert-bg: var(--ms-color-interactive-accent-subtle);
+  --_ms-alert-border: color-mix(in oklch, var(--ms-color-interactive-accent) 25%, transparent);
+  --_ms-alert-fg: var(--ms-color-interactive-accent-text);
+  --_ms-alert-solid-bg: var(--ms-color-interactive-accent);
+  --_ms-alert-solid-fg: var(--ms-color-text-on-accent);
+}
+
+/* NEUTRAL */
+.ms-alert[data-tone="neutral"] {
+  --_ms-alert-bg: var(--ms-color-interactive-neutral-subtle);
+  --_ms-alert-border: var(--ms-color-border-default);
+  --_ms-alert-fg: var(--ms-color-text-primary);
+  --_ms-alert-solid-bg: var(--ms-color-interactive-neutral);
+  --_ms-alert-solid-fg: var(--ms-color-interactive-neutral-fg);
+}
+
+/* Soft Variant (Default) */
+.ms-alert[data-variant="soft"],
+.ms-alert:not([data-variant]) {
+  background-color: var(--_ms-alert-bg);
+  border-color: var(--_ms-alert-border);
+  color: var(--_ms-alert-fg);
+}
+
+/* Solid Variant */
+.ms-alert[data-variant="solid"] {
+  background-color: var(--_ms-alert-solid-bg);
+  border-color: transparent;
+  color: var(--_ms-alert-solid-fg);
+}
+
+/* Outline Variant */
+.ms-alert[data-variant="outline"] {
+  background-color: transparent;
+  border-color: var(--_ms-alert-border);
+  color: var(--_ms-alert-fg);
+}

@@ -1,0 +1,129 @@
+/*
+ * Magic-Style Grid layer (doc 05 §10).
+ * Modern Bento Grid and dynamic Masonry layouts with responsive column tokens.
+ */
+
+/* Bento Grid */
+.ms-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--ms-bento-cols, 3), minmax(0, 1fr));
+  gap: var(--ms-bento-gap, var(--ms-space-4));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ms-bento-grid--dense {
+  grid-auto-flow: dense;
+}
+
+.ms-bento-item {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: var(--ms-color-surface-raised);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-xl);
+  padding: var(--ms-space-5);
+  box-shadow: var(--ms-shadow-xs);
+  transition:
+    transform var(--ms-motion-duration-fast) ease,
+    box-shadow var(--ms-motion-duration-fast) ease,
+    border-color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-bento-item--interactive {
+  cursor: pointer;
+}
+
+.ms-bento-item--interactive:hover {
+  transform: translateY(-2px);
+  border-color: var(--ms-color-brand-primary);
+  box-shadow: var(--ms-shadow-md);
+}
+
+.ms-bento-item--interactive:active {
+  transform: translateY(0);
+}
+
+/* Bento Item Variants */
+.ms-bento-item--ghost {
+  background-color: transparent;
+  border-style: dashed;
+}
+
+.ms-bento-item--elevated {
+  background-color: var(--ms-color-surface-raised);
+  box-shadow: var(--ms-shadow-lg);
+  border-color: var(--ms-color-border-strong);
+}
+
+.ms-bento-item--accent {
+  background-color: color-mix(
+    in oklch,
+    var(--ms-color-brand-primary) 8%,
+    var(--ms-color-surface-raised)
+  );
+  border-color: color-mix(in oklch, var(--ms-color-brand-primary) 30%, transparent);
+}
+
+/* Col Spans */
+.ms-bento-item--col-1 {
+  grid-column: span 1 / span 1;
+}
+.ms-bento-item--col-2 {
+  grid-column: span 2 / span 2;
+}
+.ms-bento-item--col-3 {
+  grid-column: span 3 / span 3;
+}
+.ms-bento-item--col-4 {
+  grid-column: span 4 / span 4;
+}
+.ms-bento-item--col-5 {
+  grid-column: span 5 / span 5;
+}
+.ms-bento-item--col-6 {
+  grid-column: span 6 / span 6;
+}
+
+/* Row Spans */
+.ms-bento-item--row-1 {
+  grid-row: span 1 / span 1;
+}
+.ms-bento-item--row-2 {
+  grid-row: span 2 / span 2;
+}
+.ms-bento-item--row-3 {
+  grid-row: span 3 / span 3;
+}
+.ms-bento-item--row-4 {
+  grid-row: span 4 / span 4;
+}
+
+/* Masonry Grid */
+.ms-masonry-grid {
+  display: flex;
+  gap: var(--ms-masonry-gap, var(--ms-space-4));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ms-masonry-grid__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-masonry-gap, var(--ms-space-4));
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .ms-bento-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .ms-bento-item {
+    grid-column: span 1 !important;
+    grid-row: auto !important;
+  }
+  .ms-masonry-grid {
+    flex-direction: column;
+  }
+}

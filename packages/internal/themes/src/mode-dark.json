@@ -2,9 +2,10 @@
   "$schema": "https://designtokens.dev/dtcg/schema.json",
   "color": {
     "surface": {
-      "default": { "$type": "color", "$value": "{color.neutral.950}" },
-      "raised": { "$type": "color", "$value": "{color.neutral.900}" },
-      "sunken": { "$type": "color", "$value": "{color.neutral.1000}" },
+      "default": { "$type": "color", "$value": "{color.neutral.900}" },
+      "raised": { "$type": "color", "$value": "{color.neutral.800}" },
+      "sunken": { "$type": "color", "$value": "{color.neutral.950}" },
+      "subtle": { "$type": "color", "$value": "{color.neutral.950}" },
       "inverse": { "$type": "color", "$value": "{color.neutral.50}" }
     },
     "text": {
@@ -12,13 +13,13 @@
       "secondary": { "$type": "color", "$value": "{color.neutral.300}" },
       "muted": { "$type": "color", "$value": "{color.neutral.400}" },
       "subtle": { "$type": "color", "$value": "{color.neutral.500}" },
-      "inverse": { "$type": "color", "$value": "{color.neutral.900}" },
+      "inverse": { "$type": "color", "$value": "{color.neutral.950}" },
       "on-accent": { "$type": "color", "$value": "{color.neutral.950}" }
     },
     "border": {
-      "subtle": { "$type": "color", "$value": "{color.neutral.800}" },
-      "default": { "$type": "color", "$value": "{color.neutral.700}" },
-      "strong": { "$type": "color", "$value": "{color.neutral.600}" },
+      "subtle": { "$type": "color", "$value": "{color.neutral.700}" },
+      "default": { "$type": "color", "$value": "{color.neutral.600}" },
+      "strong": { "$type": "color", "$value": "{color.neutral.500}" },
       "focus": { "$type": "color", "$value": "{color.accent.400}" }
     },
     "interactive": {
@@ -35,8 +36,8 @@
       "neutral": { "$type": "color", "$value": "{color.neutral.100}" },
       "neutral-hover": { "$type": "color", "$value": "{color.neutral.200}" },
       "neutral-active": { "$type": "color", "$value": "{color.neutral.300}" },
-      "neutral-subtle": { "$type": "color", "$value": "{color.neutral.900}" },
-      "neutral-text": { "$type": "color", "$value": "{color.neutral.300}" },
+      "neutral-subtle": { "$type": "color", "$value": "{color.neutral.700}" },
+      "neutral-text": { "$type": "color", "$value": "{color.neutral.100}" },
       "neutral-fg": { "$type": "color", "$value": "{color.neutral.950}" },
       "secondary": { "$type": "color", "$value": "{color.secondary.400}" },
       "secondary-hover": { "$type": "color", "$value": "{color.secondary.300}" },

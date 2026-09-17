@@ -1,0 +1,95 @@
+/*
+ * Magic-Style ToggleGroup layer (doc 05 §10).
+ * Accessible button toggle grouping with single/multiple selection.
+ */
+
+.ms-toggle-group {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: var(--ms-color-surface-sunken);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-md);
+  padding: 3px;
+  gap: 2px;
+}
+
+.ms-toggle-group-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ms-space-1);
+  height: 32px;
+  padding: 0 var(--ms-space-3);
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-medium);
+  color: var(--ms-color-text-secondary);
+  background-color: transparent;
+  border: none;
+  border-radius: calc(var(--ms-radius-md) - 2px);
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color var(--ms-motion-duration-fast) ease,
+    color var(--ms-motion-duration-fast) ease,
+    box-shadow var(--ms-motion-duration-fast) ease;
+}
+
+.ms-toggle-group-item:hover:not(:disabled):not([aria-pressed="true"]) {
+  color: var(--ms-color-text-primary);
+  background-color: color-mix(in oklch, var(--ms-color-text-secondary) 10%, transparent);
+}
+
+.ms-toggle-group-item[aria-pressed="true"] {
+  background-color: var(--ms-color-surface-raised);
+  color: var(--ms-color-text-primary);
+  box-shadow: var(--ms-shadow-xs, 0 1px 2px rgba(0, 0, 0, 0.08));
+}
+
+.ms-toggle-group-item:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Sizes */
+.ms-toggle-group--sm .ms-toggle-group-item {
+  height: 26px;
+  padding: 0 var(--ms-space-2);
+  font-size: var(--ms-typography-size-xs);
+}
+
+.ms-toggle-group--lg .ms-toggle-group-item {
+  height: 40px;
+  padding: 0 var(--ms-space-4);
+  font-size: var(--ms-typography-size-md);
+}
+
+/* Outline Variant */
+.ms-toggle-group--outline {
+  background-color: transparent;
+  border-color: var(--ms-color-border-subtle);
+  padding: 0;
+  gap: 0;
+}
+
+.ms-toggle-group--outline .ms-toggle-group-item {
+  border-radius: 0;
+  border-right: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+}
+
+.ms-toggle-group--outline .ms-toggle-group-item:first-child {
+  border-top-left-radius: var(--ms-radius-md);
+  border-bottom-left-radius: var(--ms-radius-md);
+}
+
+.ms-toggle-group--outline .ms-toggle-group-item:last-child {
+  border-top-right-radius: var(--ms-radius-md);
+  border-bottom-right-radius: var(--ms-radius-md);
+  border-right: none;
+}
+
+.ms-toggle-group--outline .ms-toggle-group-item[aria-pressed="true"] {
+  background-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-text-inverse);
+}

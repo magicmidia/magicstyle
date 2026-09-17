@@ -1,0 +1,245 @@
+/*
+ * Magic-Style CodeBlock layer (doc 05 §10).
+ * Syntax and multi-line code block display with line numbers, copy button, and expandable collapse.
+ */
+
+.ms-code-block {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: var(--ms-font-mono);
+  font-size: var(--ms-typography-size-sm);
+  border-radius: var(--ms-radius-md);
+  overflow: hidden;
+  position: relative;
+  background-color: var(--ms-color-surface-sunken);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  color: var(--ms-color-text-primary);
+  margin: 0;
+}
+
+/* Variants */
+.ms-code-block--card {
+  background-color: var(--ms-color-surface-raised);
+  border-color: var(--ms-color-border-subtle);
+  box-shadow: var(--ms-shadow-sm);
+}
+
+.ms-code-block--ghost {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* Header */
+.ms-code-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ms-space-2) var(--ms-space-3);
+  background-color: color-mix(in oklch, var(--ms-color-surface-sunken) 80%, black 5%);
+  border-bottom: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-secondary);
+}
+
+.ms-code-block__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-2);
+}
+
+.ms-code-block__filename {
+  font-weight: var(--ms-typography-weight-medium);
+  color: var(--ms-color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-1);
+}
+
+.ms-code-block__lang {
+  text-transform: uppercase;
+  font-size: var(--ms-typography-size-2xs);
+  padding: 1px var(--ms-space-1);
+  border-radius: var(--ms-radius-xs);
+  background-color: color-mix(in oklch, var(--ms-color-text-secondary) 15%, transparent);
+  color: var(--ms-color-text-secondary);
+  font-weight: var(--ms-typography-weight-semibold);
+  letter-spacing: 0.05em;
+}
+
+.ms-code-block__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-1);
+}
+
+.ms-code-block__copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-1);
+  background: transparent;
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  color: var(--ms-color-text-secondary);
+  border-radius: var(--ms-radius-sm);
+  padding: var(--ms-space-1) var(--ms-space-2);
+  font-size: var(--ms-typography-size-2xs);
+  font-family: var(--ms-font-sans);
+  cursor: pointer;
+  transition:
+    background-color var(--ms-motion-duration-fast) ease,
+    color var(--ms-motion-duration-fast) ease,
+    border-color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-code-block__copy-btn:hover {
+  background-color: var(--ms-color-surface-subtle);
+  color: var(--ms-color-text-primary);
+  border-color: var(--ms-color-border-strong);
+}
+
+.ms-code-block__copy-btn:focus-visible {
+  outline: 2px solid var(--ms-color-interactive-focus);
+  outline-offset: 1px;
+}
+
+.ms-code-block__copy-btn--copied {
+  color: var(--ms-color-status-success);
+  border-color: var(--ms-color-status-success);
+}
+
+/* Body & Content */
+.ms-code-block__body {
+  position: relative;
+  display: flex;
+  overflow-x: auto;
+  padding: var(--ms-space-3);
+  scrollbar-width: thin;
+  scrollbar-color: var(--ms-color-border-strong) transparent;
+}
+
+.ms-code-block__lines {
+  display: flex;
+  flex-direction: column;
+  padding-right: var(--ms-space-3);
+  margin-right: var(--ms-space-3);
+  border-right: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  color: var(--ms-color-text-muted);
+  user-select: none;
+  text-align: right;
+  line-height: 1.6;
+  font-family: inherit;
+  font-size: inherit;
+  min-width: 2.5em;
+  position: sticky;
+  left: 0;
+  background-color: inherit;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.ms-code-block__lines span {
+  display: block;
+  line-height: 1.6;
+}
+
+.ms-code-block__pre {
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+.ms-code-block__pre code {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.ms-code-block--wrap .ms-code-block__pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Collapsible overlay */
+.ms-code-block--collapsed .ms-code-block__body {
+  max-height: 180px;
+  overflow: hidden;
+}
+
+.ms-code-block__expand-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: linear-gradient(to bottom, transparent, var(--ms-color-surface-sunken));
+  pointer-events: none;
+}
+
+.ms-code-block__footer {
+  display: flex;
+  justify-content: center;
+  padding: var(--ms-space-1) var(--ms-space-3);
+  border-top: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  background-color: var(--ms-color-surface-sunken);
+}
+
+.ms-code-block__collapse-btn {
+  background: transparent;
+  border: none;
+  color: var(--ms-color-interactive-primary);
+  font-size: var(--ms-typography-size-xs);
+  font-weight: var(--ms-typography-weight-medium);
+  font-family: var(--ms-font-sans);
+  cursor: pointer;
+  padding: var(--ms-space-1) var(--ms-space-2);
+}
+
+.ms-code-block__collapse-btn:hover {
+  text-decoration: underline;
+}
+
+/* Syntax Highlighting Tokens */
+.ms-code-token--comment {
+  color: var(--ms-color-text-muted);
+  font-style: italic;
+}
+
+.ms-code-token--string {
+  color: var(--ms-color-brand-success, #10ac84);
+}
+
+.ms-code-token--tag {
+  color: var(--ms-color-brand-danger, #ee5253);
+  font-weight: var(--ms-typography-weight-semibold);
+}
+
+.ms-code-token--attr {
+  color: var(--ms-color-brand-warning, #ff9f43);
+}
+
+.ms-code-token--keyword {
+  color: var(--ms-color-brand-secondary, #e15f41);
+  font-weight: var(--ms-typography-weight-semibold);
+}
+
+.ms-code-token--boolean {
+  color: var(--ms-color-brand-accent, #341f97);
+  font-weight: var(--ms-typography-weight-semibold);
+}
+
+.ms-code-token--type {
+  color: var(--ms-color-brand-info, #0abde3);
+}
+
+.ms-code-token--number {
+  color: var(--ms-color-brand-warning, #ff9f43);
+}
+
+.ms-code-token--function {
+  color: var(--ms-color-brand-primary, #2e86de);
+}

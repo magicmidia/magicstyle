@@ -1,0 +1,177 @@
+/*
+ * Magic-Style Dialog component layer — accessible modal dialogs and overlays.
+ * Classes: .ms-dialog-overlay, .ms-dialog-content, .ms-dialog-header,
+ *          .ms-dialog-title, .ms-dialog-description, .ms-dialog-body,
+ *          .ms-dialog-footer, .ms-dialog-close.
+ * Sizes via data-size: sm, md (default), lg, xl, full.
+ */
+
+.ms-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ms-z-index-modal);
+  display: grid;
+  place-items: center;
+  padding: var(--ms-space-4);
+  background-color: oklch(0 0 0 / 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  overflow-y: auto;
+  transition: opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+/* Placements */
+.ms-dialog-overlay--top {
+  place-items: start center;
+  padding-block-start: var(--ms-space-12);
+}
+
+.ms-dialog-overlay--bottom {
+  place-items: end center;
+  padding-block-end: 0;
+}
+
+.ms-dialog-overlay--bottom .ms-dialog-content {
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+  max-inline-size: 600px;
+}
+
+.ms-dialog-content {
+  position: relative;
+  inline-size: 100%;
+  max-inline-size: 480px;
+  background-color: var(--ms-color-surface-raised);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border-radius: var(--ms-radius-lg);
+  box-shadow:
+    0 20px 25px -5px oklch(0 0 0 / 0.15),
+    0 8px 10px -6px oklch(0 0 0 / 0.15);
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  transition:
+    transform var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+/* Tone accents */
+.ms-dialog-content[data-tone="danger"] {
+  border-block-start: 4px solid var(--ms-color-status-danger);
+}
+
+.ms-dialog-content[data-tone="warning"] {
+  border-block-start: 4px solid var(--ms-color-status-warning);
+}
+
+.ms-dialog-content[data-tone="success"] {
+  border-block-start: 4px solid var(--ms-color-status-success);
+}
+
+.ms-dialog-content[data-tone="info"] {
+  border-block-start: 4px solid var(--ms-color-interactive-primary);
+}
+
+/* Sizing */
+.ms-dialog-content[data-size="sm"] {
+  max-inline-size: 380px;
+}
+
+.ms-dialog-content[data-size="md"],
+.ms-dialog-content:not([data-size]) {
+  max-inline-size: 480px;
+}
+
+.ms-dialog-content[data-size="lg"] {
+  max-inline-size: 640px;
+}
+
+.ms-dialog-content[data-size="xl"] {
+  max-inline-size: 800px;
+}
+
+.ms-dialog-content[data-size="full"] {
+  max-inline-size: calc(100vw - 32px);
+  max-block-size: calc(100vh - 32px);
+}
+
+/* Header, Title & Description */
+.ms-dialog-header {
+  padding: var(--ms-space-5) var(--ms-space-6) var(--ms-space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-1);
+}
+
+.ms-dialog-title {
+  margin: 0;
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-lg);
+  font-weight: var(--ms-typography-weight-semibold);
+  line-height: var(--ms-typography-line-height-tight);
+  color: var(--ms-color-text-primary);
+}
+
+.ms-dialog-description {
+  margin: 0;
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text-secondary);
+  line-height: var(--ms-typography-line-height-base);
+}
+
+/* Body */
+.ms-dialog-body {
+  padding: var(--ms-space-3) var(--ms-space-6) var(--ms-space-4);
+  color: var(--ms-color-text-primary);
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-sm);
+  line-height: var(--ms-typography-line-height-base);
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Footer */
+.ms-dialog-footer {
+  padding: var(--ms-space-4) var(--ms-space-6) var(--ms-space-5);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--ms-space-3);
+  border-block-start: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+}
+
+/* Close button */
+.ms-dialog-close {
+  position: absolute;
+  inset-block-start: var(--ms-space-4);
+  inset-inline-end: var(--ms-space-4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 28px;
+  block-size: 28px;
+  border-radius: var(--ms-radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--ms-color-text-secondary);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-dialog-close:hover {
+  background-color: var(--ms-color-interactive-neutral-subtle);
+  color: var(--ms-color-text-primary);
+}
+
+.ms-dialog-close:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
+}
+
+.ms-dialog-close:focus:not(:focus-visible) {
+  outline: none;
+}

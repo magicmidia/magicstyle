@@ -1,0 +1,85 @@
+/* ==========================================================================
+   Magic-Style: Tree Component
+   Hierarchical nested tree view for navigation and data exploration
+   ========================================================================== */
+
+.ms-tree {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  font-size: var(--ms-font-size-sm, 0.875rem);
+  color: var(--ms-color-text, #0f172a);
+}
+
+.ms-tree-node {
+  display: flex;
+  flex-direction: column;
+}
+
+.ms-tree-node__row {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-2, 8px);
+  padding: var(--ms-space-1, 4px) var(--ms-space-2, 8px);
+  border-radius: var(--ms-radius-md, 6px);
+  cursor: pointer;
+  transition: background-color var(--ms-transition-duration-fast, 120ms);
+}
+
+.ms-tree-node__row:hover {
+  background-color: var(--ms-color-surface-hover, #f1f5f9);
+}
+
+.ms-tree-node--selected > .ms-tree-node__row {
+  background-color: var(--ms-color-primary-subtle, #eef2ff);
+  color: var(--ms-color-primary, #6366f1);
+  font-weight: var(--ms-font-weight-medium, 500);
+}
+
+.ms-tree-node__toggle {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  color: var(--ms-color-text-muted, #64748b);
+  transition: transform var(--ms-transition-duration-fast, 150ms);
+  flex-shrink: 0;
+}
+
+.ms-tree-node--expanded > .ms-tree-node__row .ms-tree-node__toggle {
+  transform: rotate(90deg);
+}
+
+.ms-tree-node__toggle-placeholder {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.ms-tree-node__icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ms-color-text-muted, #64748b);
+  flex-shrink: 0;
+}
+
+.ms-tree-node__label {
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ms-tree-node__children {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 var(--ms-space-4, 16px);
+  border-left: 1px dashed var(--ms-color-border, #e2e8f0);
+  margin-left: 9px;
+}

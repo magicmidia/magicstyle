@@ -16,15 +16,33 @@ defineSlots<{
 const groupName = useMsId("ms-radio");
 
 provide<MsRadioGroupContext>("ms-radio-group", {
-  name: props.name ?? groupName,
-  disabled: props.disabled === true,
-  modelValue: props.modelValue,
+  get name() {
+    return props.name ?? groupName;
+  },
+  get disabled() {
+    return props.disabled === true;
+  },
+  get modelValue() {
+    return props.modelValue;
+  },
+  get size() {
+    return props.size;
+  },
+  get tone() {
+    return props.tone;
+  },
+  get card() {
+    return props.card;
+  },
   select: (value) => emit("update:modelValue", value),
 });
 </script>
 
 <template>
-  <div class="ms-radio-group" role="radiogroup">
+  <div
+    :class="['ms-radio-group', `ms-radio-group--${props.orientation ?? 'horizontal'}`]"
+    role="radiogroup"
+  >
     <slot />
   </div>
 </template>

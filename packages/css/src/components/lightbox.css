@@ -1,0 +1,123 @@
+/*
+ * Magic-Style Lightbox layer (doc 05 §10).
+ * Fullscreen media gallery viewer with zoom, slide navigation, and captions.
+ */
+
+.ms-lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ms-z-index-modal, 1300);
+  background-color: rgba(0, 0, 0, 0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: var(--ms-space-4);
+  user-select: none;
+}
+
+.ms-lightbox__topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--ms-color-text-on-accent, #ffffff);
+}
+
+.ms-lightbox__counter {
+  font-size: var(--ms-typography-size-sm);
+  font-family: var(--ms-font-sans);
+  opacity: 0.8;
+}
+
+.ms-lightbox__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: var(--ms-radius-full);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition:
+    background-color var(--ms-motion-duration-fast) ease,
+    transform var(--ms-motion-duration-fast) ease;
+}
+
+.ms-lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.06);
+}
+
+.ms-lightbox__close:active {
+  transform: scale(0.95);
+}
+
+.ms-lightbox__stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ms-lightbox__img {
+  max-width: 90vw;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: var(--ms-radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform var(--ms-motion-duration-fast) ease;
+}
+
+.ms-lightbox__nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--ms-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition:
+    background-color var(--ms-motion-duration-fast) ease,
+    transform var(--ms-motion-duration-fast) ease;
+}
+
+.ms-lightbox__nav-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.ms-lightbox__nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.ms-lightbox__prev {
+  left: var(--ms-space-4);
+}
+
+.ms-lightbox__next {
+  right: var(--ms-space-4);
+}
+
+.ms-lightbox__caption {
+  text-align: center;
+  color: var(--ms-color-text-on-accent, #ffffff);
+  padding: var(--ms-space-2);
+  font-size: var(--ms-typography-size-sm);
+  opacity: 0.9;
+}

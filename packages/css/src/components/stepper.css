@@ -1,0 +1,156 @@
+/* ==========================================================================
+   Magic-Style: Stepper Component
+   Multi-step workflow progress tracker and wizard indicator
+   ========================================================================== */
+
+.ms-stepper {
+  display: flex;
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.ms-stepper--direction-horizontal {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ms-stepper--direction-vertical {
+  flex-direction: column;
+}
+
+/* Individual Step */
+.ms-step {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.ms-stepper--direction-vertical .ms-step {
+  padding-bottom: var(--ms-space-6, 24px);
+  align-items: flex-start;
+}
+
+.ms-stepper--direction-vertical .ms-step:last-child {
+  padding-bottom: 0;
+}
+
+/* Connector line */
+.ms-step__connector {
+  position: absolute;
+  background-color: var(--ms-color-border-subtle);
+  transition: background-color var(--ms-transition-duration-normal, 200ms);
+}
+
+.ms-stepper--direction-horizontal .ms-step__connector {
+  top: 16px;
+  left: calc(50% + 20px);
+  right: calc(-50% + 20px);
+  height: 2px;
+  z-index: 0;
+}
+
+.ms-stepper--direction-horizontal .ms-step:last-child .ms-step__connector {
+  display: none;
+}
+
+.ms-stepper--direction-vertical .ms-step__connector {
+  top: 32px;
+  bottom: 0;
+  left: 15px;
+  width: 2px;
+  z-index: 0;
+}
+
+.ms-stepper--direction-vertical .ms-step:last-child .ms-step__connector {
+  display: none;
+}
+
+.ms-step--complete .ms-step__connector {
+  background-color: var(--ms-color-primary, #6366f1);
+}
+
+/* Step Trigger Button */
+.ms-step__trigger {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-3, 12px);
+  position: relative;
+  z-index: 1;
+  cursor: default;
+  color: var(--ms-color-text, #0f172a);
+}
+
+.ms-stepper--clickable .ms-step:not(.ms-step--disabled) .ms-step__trigger {
+  cursor: pointer;
+}
+
+.ms-stepper--direction-horizontal .ms-step__trigger {
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Step Indicator Node (Circle) */
+.ms-step__indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--ms-radius-full, 9999px);
+  font-size: var(--ms-font-size-sm, 0.875rem);
+  font-weight: var(--ms-font-weight-semibold, 600);
+  background-color: var(--ms-color-surface-raised);
+  border: 2px solid var(--ms-color-border-default);
+  color: var(--ms-color-text-secondary);
+  transition: all var(--ms-transition-duration-normal, 200ms);
+  box-shadow: 0 0 0 4px var(--ms-color-surface-default);
+}
+
+.ms-step--current .ms-step__indicator {
+  border-color: var(--ms-color-primary);
+  background-color: var(--ms-color-primary);
+  color: var(--ms-color-text-on-accent);
+}
+
+.ms-step--complete .ms-step__indicator {
+  border-color: var(--ms-color-primary, #6366f1);
+  background-color: var(--ms-color-primary-subtle, #eef2ff);
+  color: var(--ms-color-primary, #6366f1);
+}
+
+.ms-step--error .ms-step__indicator {
+  border-color: var(--ms-color-danger, #ef4444);
+  background-color: var(--ms-color-danger-subtle, #fef2f2);
+  color: var(--ms-color-danger, #ef4444);
+}
+
+/* Step Text Group */
+.ms-step__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ms-step__title {
+  font-size: var(--ms-font-size-sm, 0.875rem);
+  font-weight: var(--ms-font-weight-semibold, 600);
+  color: var(--ms-color-text, #0f172a);
+  line-height: 1.25;
+}
+
+.ms-step--upcoming .ms-step__title {
+  color: var(--ms-color-text-muted, #64748b);
+}
+
+.ms-step__subtitle {
+  font-size: var(--ms-font-size-xs, 0.75rem);
+  color: var(--ms-color-text-muted, #64748b);
+  line-height: 1.4;
+}

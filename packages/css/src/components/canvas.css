@@ -1,0 +1,207 @@
+/*
+ * Magic-Style Canvas layer (doc 05 §10).
+ * Decorative patterned background surface (dots, grid, lines, cross) for workspaces, hero sections, and diagram builders.
+ */
+
+.ms-canvas {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: var(--ms-color-surface-sunken);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-lg);
+}
+
+.ms-canvas__pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-repeat: repeat;
+  transition: opacity var(--ms-motion-duration-fast) ease;
+}
+
+/* Dots Pattern */
+.ms-canvas--dots .ms-canvas__pattern {
+  background-image: radial-gradient(
+    color-mix(in oklch, var(--ms-color-text-muted) 25%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: var(--ms-canvas-size, 20px) var(--ms-canvas-size, 20px);
+}
+
+/* Grid Pattern */
+.ms-canvas--grid .ms-canvas__pattern {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklch, var(--ms-color-border-subtle) 80%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklch, var(--ms-color-border-subtle) 80%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: var(--ms-canvas-size, 24px) var(--ms-canvas-size, 24px);
+}
+
+/* Cross Pattern */
+.ms-canvas--cross .ms-canvas__pattern {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in oklch, var(--ms-color-text-muted) 35%, transparent) 1.5px,
+    transparent 1.5px
+  );
+  background-size: var(--ms-canvas-size, 28px) var(--ms-canvas-size, 28px);
+}
+
+/* Lines Pattern */
+.ms-canvas--lines .ms-canvas__pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    color-mix(in oklch, var(--ms-color-border-subtle) 50%, transparent),
+    color-mix(in oklch, var(--ms-color-border-subtle) 50%, transparent) 1px,
+    transparent 1px,
+    transparent var(--ms-canvas-size, 20px)
+  );
+}
+
+/* Isometric Pattern */
+.ms-canvas--isometric .ms-canvas__pattern {
+  background-image:
+    linear-gradient(
+      30deg,
+      color-mix(in oklch, var(--ms-color-border-subtle) 60%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      150deg,
+      color-mix(in oklch, var(--ms-color-border-subtle) 60%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      270deg,
+      color-mix(in oklch, var(--ms-color-border-subtle) 60%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: var(--ms-canvas-size, 32px) calc(var(--ms-canvas-size, 32px) * 1.732);
+}
+
+/* Diagonal Stripes Pattern */
+.ms-canvas--diagonal-stripes .ms-canvas__pattern {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    color-mix(in oklch, var(--ms-color-border-subtle) 40%, transparent),
+    color-mix(in oklch, var(--ms-color-border-subtle) 40%, transparent)
+      calc(var(--ms-canvas-size, 20px) / 2),
+    transparent calc(var(--ms-canvas-size, 20px) / 2),
+    transparent var(--ms-canvas-size, 20px)
+  );
+}
+
+/* Honeycomb Pattern */
+.ms-canvas--honeycomb .ms-canvas__pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='28' height='48' viewBox='0 0 28 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 0l14 8v16l-14 8L0 24V8l14-8zm0 24l14 8v16l-14 8L0 48V32l14-8z' fill='none' stroke='rgba(128,128,128,0.25)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: var(--ms-canvas-size, 28px) calc(var(--ms-canvas-size, 28px) * 1.714);
+}
+
+/* Waves Pattern */
+.ms-canvas--waves .ms-canvas__pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q10 0 20 10 T40 10' fill='none' stroke='rgba(128,128,128,0.3)' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-size: calc(var(--ms-canvas-size, 20px) * 2) var(--ms-canvas-size, 20px);
+}
+
+/* Checkerboard Pattern */
+.ms-canvas--checkerboard .ms-canvas__pattern {
+  background-image:
+    linear-gradient(
+      45deg,
+      color-mix(in oklch, var(--ms-color-border-subtle) 50%, transparent) 25%,
+      transparent 25%
+    ),
+    linear-gradient(
+      -45deg,
+      color-mix(in oklch, var(--ms-color-border-subtle) 50%, transparent) 25%,
+      transparent 25%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 75%,
+      color-mix(in oklch, var(--ms-color-border-subtle) 50%, transparent) 75%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 75%,
+      color-mix(in oklch, var(--ms-color-border-subtle) 50%, transparent) 75%
+    );
+  background-size: var(--ms-canvas-size, 24px) var(--ms-canvas-size, 24px);
+  background-position:
+    0 0,
+    0 calc(var(--ms-canvas-size, 24px) / 2),
+    calc(var(--ms-canvas-size, 24px) / 2) calc(-1 * var(--ms-canvas-size, 24px) / 2),
+    calc(-1 * var(--ms-canvas-size, 24px) / 2) 0px;
+}
+
+/* Plus Pattern */
+.ms-canvas--plus .ms-canvas__pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 7v10M7 12h10' stroke='rgba(128,128,128,0.35)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: var(--ms-canvas-size, 24px) var(--ms-canvas-size, 24px);
+}
+
+/* Blueprint Pattern */
+.ms-canvas--blueprint {
+  background-color: color-mix(
+    in oklch,
+    var(--ms-color-brand-primary, #3b82f6) 18%,
+    var(--ms-color-surface-sunken)
+  );
+}
+
+.ms-canvas--blueprint .ms-canvas__pattern {
+  background-image:
+    linear-gradient(
+      color-mix(in oklch, var(--ms-color-brand-primary, #3b82f6) 40%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in oklch, var(--ms-color-brand-primary, #3b82f6) 40%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      color-mix(in oklch, var(--ms-color-brand-primary, #3b82f6) 20%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in oklch, var(--ms-color-brand-primary, #3b82f6) 20%, transparent) 1px,
+      transparent 1px
+    );
+  background-size:
+    calc(var(--ms-canvas-size, 20px) * 5) calc(var(--ms-canvas-size, 20px) * 5),
+    calc(var(--ms-canvas-size, 20px) * 5) calc(var(--ms-canvas-size, 20px) * 5),
+    var(--ms-canvas-size, 20px) var(--ms-canvas-size, 20px),
+    var(--ms-canvas-size, 20px) var(--ms-canvas-size, 20px);
+}
+
+.ms-canvas__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ms-space-6);
+  box-sizing: border-box;
+}
+
+.ms-canvas--interactive {
+  cursor: grab;
+}
+
+.ms-canvas--interactive:active {
+  cursor: grabbing;
+}

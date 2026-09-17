@@ -1,0 +1,138 @@
+/* ==========================================================================
+   Magic-Style: Progress Radial Component
+   Circular SVG progress metric and spinner
+   ========================================================================== */
+
+.ms-progress-radial {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.ms-progress-radial__svg {
+  transform: rotate(-90deg);
+  display: block;
+}
+
+.ms-progress-radial__track {
+  stroke: var(--ms-color-border, #e2e8f0);
+  fill: transparent;
+}
+
+.ms-progress-radial__fill {
+  fill: transparent;
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--ms-transition-duration-normal, 300ms)
+    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Tone Colors */
+.ms-progress-radial--tone-primary .ms-progress-radial__fill {
+  stroke: var(--ms-color-primary, #2e86de);
+}
+
+.ms-progress-radial--tone-secondary .ms-progress-radial__fill {
+  stroke: var(--ms-color-secondary, #e15f41);
+}
+
+.ms-progress-radial--tone-accent .ms-progress-radial__fill {
+  stroke: var(--ms-color-accent, #341f97);
+}
+
+.ms-progress-radial--tone-neutral .ms-progress-radial__fill {
+  stroke: var(--ms-color-neutral, #222f3e);
+}
+
+.ms-progress-radial--tone-success .ms-progress-radial__fill {
+  stroke: var(--ms-color-success, #10ac84);
+}
+
+.ms-progress-radial--tone-info .ms-progress-radial__fill {
+  stroke: var(--ms-color-info, #0abde3);
+}
+
+.ms-progress-radial--tone-warning .ms-progress-radial__fill {
+  stroke: var(--ms-color-warning, #ff9f43);
+}
+
+.ms-progress-radial--tone-danger .ms-progress-radial__fill {
+  stroke: var(--ms-color-danger, #ee5253);
+}
+
+/* Centered Label */
+.ms-progress-radial__label {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--ms-font-weight-semibold, 600);
+  color: var(--ms-color-text, #0f172a);
+  user-select: none;
+}
+
+/* Sizes */
+.ms-progress-radial--size-sm {
+  width: 40px;
+  height: 40px;
+}
+.ms-progress-radial--size-sm .ms-progress-radial__label {
+  font-size: var(--ms-font-size-xs, 0.75rem);
+}
+
+.ms-progress-radial--size-md {
+  width: 64px;
+  height: 64px;
+}
+.ms-progress-radial--size-md .ms-progress-radial__label {
+  font-size: var(--ms-font-size-sm, 0.875rem);
+}
+
+.ms-progress-radial--size-lg {
+  width: 96px;
+  height: 96px;
+}
+.ms-progress-radial--size-lg .ms-progress-radial__label {
+  font-size: var(--ms-font-size-lg, 1.125rem);
+}
+
+.ms-progress-radial--size-xl {
+  width: 128px;
+  height: 128px;
+}
+.ms-progress-radial--size-xl .ms-progress-radial__label {
+  font-size: var(--ms-font-size-xl, 1.25rem);
+}
+
+/* Indeterminate spin */
+.ms-progress-radial--indeterminate .ms-progress-radial__svg {
+  animation: ms-progress-radial-spin 1.4s linear infinite;
+}
+
+.ms-progress-radial--indeterminate .ms-progress-radial__fill {
+  stroke-dasharray: 80, 200;
+  stroke-dashoffset: 0;
+  animation: ms-progress-radial-dash 1.4s ease-in-out infinite;
+}
+
+@keyframes ms-progress-radial-spin {
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes ms-progress-radial-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 100, 200;
+    stroke-dashoffset: -15;
+  }
+  100% {
+    stroke-dasharray: 100, 200;
+    stroke-dashoffset: -125;
+  }
+}

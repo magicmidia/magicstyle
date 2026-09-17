@@ -1,0 +1,184 @@
+/**
+ * Magic-Style: MsSidebar CSS Component (Doc 04 §2, Doc 09 §10)
+ * Structural sidebar navigation panel with reactive collapsing, brand tones, widths, and glass variants.
+ */
+
+.ms-sidebar {
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
+  min-block-size: 100vh;
+  inline-size: var(--ms-sidebar-width, 260px);
+  background: var(--ms-color-surface-raised);
+  color: var(--ms-color-text-primary);
+  border-inline-end: 1px solid var(--ms-color-border-subtle);
+  box-sizing: border-box;
+  position: relative;
+  transition:
+    inline-size var(--ms-motion-duration-normal) var(--ms-motion-easing-standard),
+    width var(--ms-motion-duration-normal) var(--ms-motion-easing-standard),
+    background var(--ms-motion-duration-fast);
+  z-index: var(--ms-z-index-sidebar, 90);
+  overflow: hidden;
+}
+
+/* Sides */
+.ms-sidebar--side-left,
+.ms-sidebar[data-side="left"] {
+  border-inline-end: 1px solid var(--ms-color-border-subtle);
+  border-inline-start: none;
+}
+
+.ms-sidebar--side-right,
+.ms-sidebar[data-side="right"] {
+  border-inline-start: 1px solid var(--ms-color-border-subtle);
+  border-inline-end: none;
+}
+
+/* Positions */
+.ms-sidebar--position-sticky,
+.ms-sidebar[data-position="sticky"] {
+  position: sticky;
+  inset-block-start: 0;
+}
+
+.ms-sidebar--position-fixed,
+.ms-sidebar[data-position="fixed"] {
+  position: fixed;
+  inset-block-start: 0;
+  inset-block-end: 0;
+}
+
+.ms-sidebar--position-relative,
+.ms-sidebar[data-position="relative"] {
+  position: relative;
+}
+
+/* Width Scales */
+.ms-sidebar--width-compact,
+.ms-sidebar[data-width="compact"] {
+  inline-size: 68px;
+  --ms-sidebar-width: 68px;
+}
+
+.ms-sidebar--width-normal,
+.ms-sidebar[data-width="normal"] {
+  inline-size: 260px;
+  --ms-sidebar-width: 260px;
+}
+
+.ms-sidebar--width-wide,
+.ms-sidebar[data-width="wide"] {
+  inline-size: 320px;
+  --ms-sidebar-width: 320px;
+}
+
+/* Collapsed State (Mini Rail) */
+.ms-sidebar--collapsed,
+.ms-sidebar[data-collapsed="true"] {
+  inline-size: 68px !important;
+  --ms-sidebar-width: 68px !important;
+}
+
+.ms-sidebar--collapsed .ms-sidebar-hide-on-collapse,
+.ms-sidebar[data-collapsed="true"] .ms-sidebar-hide-on-collapse {
+  display: none !important;
+}
+
+.ms-sidebar--collapsed .ms-sidebar__header,
+.ms-sidebar[data-collapsed="true"] .ms-sidebar__header {
+  justify-content: center;
+  padding-inline: var(--ms-space-2);
+}
+
+.ms-sidebar--collapsed .ms-sidebar__footer,
+.ms-sidebar[data-collapsed="true"] .ms-sidebar__footer {
+  justify-content: center;
+  padding-inline: var(--ms-space-2);
+}
+
+/* Variants */
+.ms-sidebar--variant-bordered,
+.ms-sidebar[data-variant="bordered"] {
+  border-inline-end: 2px solid var(--ms-color-border);
+}
+
+.ms-sidebar--variant-raised,
+.ms-sidebar[data-variant="raised"] {
+  box-shadow: var(--ms-elevation-card);
+  border-inline-end: none;
+}
+
+.ms-sidebar--variant-glass,
+.ms-sidebar[data-variant="glass"] {
+  background: color-mix(in srgb, var(--ms-color-surface-raised) 82%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Semantic Brand Tones */
+.ms-sidebar--tone-neutral,
+.ms-sidebar[data-tone="neutral"] {
+  background: var(--ms-color-neutral, #222f3e);
+  color: #ffffff;
+  border-inline-end-color: color-mix(in srgb, var(--ms-color-neutral, #222f3e) 85%, white 15%);
+}
+
+.ms-sidebar--tone-primary,
+.ms-sidebar[data-tone="primary"] {
+  background: var(--ms-color-primary, #2e86de);
+  color: #ffffff;
+  border-inline-end-color: color-mix(in srgb, var(--ms-color-primary, #2e86de) 85%, black 15%);
+}
+
+.ms-sidebar--tone-accent,
+.ms-sidebar[data-tone="accent"] {
+  background: var(--ms-color-accent, #341f97);
+  color: #ffffff;
+  border-inline-end-color: color-mix(in srgb, var(--ms-color-accent, #341f97) 85%, black 15%);
+}
+
+/* Sub-elements */
+.ms-sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ms-space-3) var(--ms-space-4);
+  border-bottom: 1px solid var(--ms-color-border-subtle);
+  min-height: 56px;
+  box-sizing: border-box;
+}
+
+.ms-sidebar__body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--ms-space-3) var(--ms-space-2);
+}
+
+.ms-sidebar__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ms-space-2);
+  padding: var(--ms-space-3) var(--ms-space-4);
+  border-top: 1px solid var(--ms-color-border-subtle);
+  box-sizing: border-box;
+}
+
+.ms-sidebar__collapse-btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: var(--ms-space-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ms-radius-sm);
+  transition: background var(--ms-motion-duration-fast);
+}
+
+.ms-sidebar__collapse-btn:hover {
+  background: var(--ms-color-surface-subtle);
+}

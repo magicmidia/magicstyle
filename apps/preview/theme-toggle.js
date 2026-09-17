@@ -1,31 +1,131 @@
-/* Magic-Style preview: light/dark mode toggle + indeterminate bootstraps. */
+/* Magic-Style preview: comprehensive theme/dial controls, viewport simulator & LiveReload. */
 (() => {
-  const KEY = "ms-color-mode";
   const root = document.documentElement;
+  const KEYS = {
+    mode: "ms-color-mode",
+    contrast: "ms-contrast",
+    theme: "ms-theme",
+    density: "ms-density",
+    radius: "ms-radius",
+    viewport: "ms-viewport",
+  };
 
-  function apply(mode) {
+  function applySettings() {
+    const mode =
+      localStorage.getItem(KEYS.mode) || root.getAttribute("data-ms-color-mode") || "dark";
+    const contrast = localStorage.getItem(KEYS.contrast) || "default";
+    const theme = localStorage.getItem(KEYS.theme) || "magic";
+    const density = localStorage.getItem(KEYS.density) || "comfortable";
+    const radius = localStorage.getItem(KEYS.radius) || "medium";
+    const viewport = localStorage.getItem(KEYS.viewport) || "100%";
+
     root.dataset.msColorMode = mode;
+    if (contrast === "high") {
+      root.dataset.msContrast = "high";
+    } else {
+      delete root.dataset.msContrast;
+    }
+    root.dataset.msTheme = theme;
+    root.dataset.msDensity = density;
+    root.dataset.msRadius = radius;
+
+    // Update toggles and selects
     document.querySelectorAll("[data-mode-toggle]").forEach((btn) => {
       const label = btn.querySelector("[data-mode-label]");
       if (label !== null) label.textContent = mode === "dark" ? "Light mode" : "Dark mode";
     });
+
+    document.querySelectorAll("[data-theme-select]").forEach((sel) => {
+      sel.value = theme;
+    });
+
+    document.querySelectorAll("[data-contrast-select]").forEach((sel) => {
+      sel.value = contrast;
+    });
+
+    document.querySelectorAll("[data-density-select]").forEach((sel) => {
+      sel.value = density;
+    });
+
+    document.querySelectorAll("[data-radius-select]").forEach((sel) => {
+      sel.value = radius;
+    });
+
+    document.querySelectorAll("[data-viewport-select]").forEach((sel) => {
+      sel.value = viewport;
+    });
+
+    // Update responsive viewport container if present
+    const container = document.querySelector("[data-viewport-container]");
+    if (container) {
+      container.style.maxWidth = viewport;
+      container.style.width = "100%";
+      container.style.margin = "0 auto";
+      container.style.transition = "max-width 0.25s ease";
+    }
   }
 
-  const stored = localStorage.getItem(KEY);
-  apply(stored === "dark" ? "dark" : "light");
+  // Initial immediate application before paint
+  applySettings();
 
   window.addEventListener("DOMContentLoaded", () => {
+    applySettings();
+
+    // Mode toggle button
     document.querySelectorAll("[data-mode-toggle]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const next = root.dataset.msColorMode === "dark" ? "light" : "dark";
-        localStorage.setItem(KEY, next);
-        apply(next);
+        localStorage.setItem(KEYS.mode, next);
+        applySettings();
       });
     });
+
+    // Theme selector
+    document.querySelectorAll("[data-theme-select]").forEach((sel) => {
+      sel.addEventListener("change", (e) => {
+        localStorage.setItem(KEYS.theme, e.target.value);
+        applySettings();
+      });
+    });
+
+    // Contrast selector
+    document.querySelectorAll("[data-contrast-select]").forEach((sel) => {
+      sel.addEventListener("change", (e) => {
+        localStorage.setItem(KEYS.contrast, e.target.value);
+        applySettings();
+      });
+    });
+
+    // Density selector
+    document.querySelectorAll("[data-density-select]").forEach((sel) => {
+      sel.addEventListener("change", (e) => {
+        localStorage.setItem(KEYS.density, e.target.value);
+        applySettings();
+      });
+    });
+
+    // Radius selector
+    document.querySelectorAll("[data-radius-select]").forEach((sel) => {
+      sel.addEventListener("change", (e) => {
+        localStorage.setItem(KEYS.radius, e.target.value);
+        applySettings();
+      });
+    });
+
+    // Viewport simulator
+    document.querySelectorAll("[data-viewport-select]").forEach((sel) => {
+      sel.addEventListener("change", (e) => {
+        localStorage.setItem(KEYS.viewport, e.target.value);
+        applySettings();
+      });
+    });
+
+    // Bootstrap indeterminate checkboxes
     document.querySelectorAll("[data-indeterminate]").forEach((el) => {
       el.indeterminate = true;
     });
-    /* Number steppers: [data-stepper] buttons adjust the sibling input. */
+
+    // Number steppers
     document.querySelectorAll("[data-stepper]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const group = btn.closest(".ms-input-group");
@@ -41,4 +141,22 @@
       });
     });
   });
+
+  // LiveReload via Server-Sent Events
+  if (window.EventSource) {
+    try {
+      const sse = new EventSource("/events");
+      sse.onmessage = (e) => {
+        if (e.data === "reload") {
+          console.log("[preview] Change detected, reloading page...");
+          window.location.reload();
+        }
+      };
+      sse.onerror = () => {
+        // SSE disconnected, will retry automatically
+      };
+    } catch {
+      // Ignored if SSE not supported
+    }
+  }
 })();

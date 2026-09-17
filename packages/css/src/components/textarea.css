@@ -1,0 +1,105 @@
+/* ==========================================================================
+   MsTextarea Component
+   Multiline text input with fluid vertical resize, auto-grow & character count
+   ========================================================================== */
+
+.ms-input.ms-textarea {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  block-size: auto;
+  height: auto;
+  min-block-size: 88px;
+  padding: var(--ms-space-2, 8px) var(--ms-space-3, 12px);
+  box-sizing: border-box;
+  resize: none; /* Resize is handled exclusively by the inner textarea */
+  overflow: visible;
+}
+
+.ms-textarea .ms-input-native {
+  width: 100%;
+  flex: 1;
+  min-height: 60px;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: var(--ms-typography-line-height-base, 1.5);
+  color: var(--ms-color-text-primary, #1e293b);
+  box-sizing: border-box;
+}
+
+/* Resize controls */
+.ms-textarea--resize-vertical .ms-input-native {
+  resize: vertical;
+}
+
+.ms-textarea--resize-horizontal .ms-input-native {
+  resize: horizontal;
+}
+
+.ms-textarea--resize-both .ms-input-native {
+  resize: both;
+}
+
+.ms-textarea--resize-none .ms-input-native {
+  resize: none;
+}
+
+/* Sizes */
+.ms-textarea[data-size="sm"],
+.ms-textarea--sm {
+  min-block-size: 64px;
+  padding: var(--ms-space-1-5, 6px) var(--ms-space-2-5, 10px);
+  font-size: var(--ms-typography-size-xs, 0.8125rem);
+}
+
+.ms-textarea[data-size="md"],
+.ms-textarea--md {
+  min-block-size: 88px;
+  padding: var(--ms-space-2, 8px) var(--ms-space-3, 12px);
+  font-size: var(--ms-typography-size-sm, 0.875rem);
+}
+
+.ms-textarea[data-size="lg"],
+.ms-textarea--lg {
+  min-block-size: 120px;
+  padding: var(--ms-space-3, 12px) var(--ms-space-4, 16px);
+  font-size: var(--ms-typography-size-md, 1rem);
+}
+
+.ms-textarea[data-size="xl"],
+.ms-textarea--xl {
+  min-block-size: 160px;
+  padding: var(--ms-space-4, 16px) var(--ms-space-5, 20px);
+  font-size: var(--ms-typography-size-lg, 1.125rem);
+}
+
+/* Footer, helper & counter */
+.ms-textarea__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--ms-space-1, 4px);
+  padding-top: var(--ms-space-1, 4px);
+  border-top: 1px solid var(--ms-color-border-subtle, #e2e8f0);
+  font-size: var(--ms-typography-size-xs, 0.75rem);
+  color: var(--ms-color-text-muted, #94a3b8);
+  user-select: none;
+}
+
+.ms-textarea__counter {
+  margin-left: auto;
+  font-family: var(--ms-font-mono, monospace);
+  font-size: 0.75rem;
+}
+
+.ms-textarea__counter[data-exceeded="true"] {
+  color: var(--ms-color-danger-default, #ef4444);
+  font-weight: 600;
+}

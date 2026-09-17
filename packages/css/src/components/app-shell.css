@@ -1,0 +1,215 @@
+/* ==========================================================================
+   MsAppShell Component Family
+   Application Layout System (Doc 03 §3, Doc 05 §3, Doc 27 §4)
+   ========================================================================== */
+
+:root {
+  --ms-app-shell-topbar-height: var(--ms-topbar-height, 56px);
+  --ms-app-shell-sidebar-width: var(--ms-sidebar-width, 272px);
+  --ms-app-shell-sidebar-collapsed-width: var(--ms-sidebar-collapsed-width, 64px);
+  --ms-app-shell-rail-width: var(--ms-rail-width, 80px);
+  --ms-app-shell-statusbar-height: var(--ms-statusbar-height, 28px);
+}
+
+.ms-app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--ms-color-surface-sunken);
+  color: var(--ms-color-text-default);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.ms-app-shell--full-height {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Internal body layout */
+.ms-app-shell__body {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  position: relative;
+}
+
+/* --- TOPBAR --- */
+.ms-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--ms-app-shell-topbar-height);
+  padding: 0 var(--ms-space-4);
+  background-color: var(--ms-color-surface-default);
+  border-bottom: 1px solid var(--ms-color-border-subtle);
+  flex-shrink: 0;
+  z-index: var(--ms-zindex-sticky, 20);
+  box-sizing: border-box;
+}
+
+.ms-topbar--fixed {
+  position: sticky;
+  top: 0;
+}
+
+.ms-topbar__leading {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-3);
+}
+
+.ms-topbar__center {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-2);
+  flex: 1 1 auto;
+  justify-content: center;
+  max-width: 680px;
+  padding: 0 var(--ms-space-4);
+}
+
+.ms-topbar__trailing {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-3);
+  margin-left: auto;
+}
+
+/* --- SIDEBAR --- */
+.ms-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: var(--ms-app-shell-sidebar-width);
+  background-color: var(--ms-color-surface-default);
+  border-right: 1px solid var(--ms-color-border-subtle);
+  flex-shrink: 0;
+  transition: width var(--ms-motion-duration-normal) var(--ms-motion-easing-ease-out);
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: var(--ms-zindex-docked, 10);
+}
+
+.ms-sidebar--collapsed {
+  width: var(--ms-app-shell-sidebar-collapsed-width);
+}
+
+.ms-sidebar__header {
+  padding: var(--ms-space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--ms-color-border-subtle);
+  min-height: var(--ms-app-shell-topbar-height);
+  box-sizing: border-box;
+}
+
+.ms-sidebar__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: var(--ms-space-3);
+  gap: var(--ms-space-1);
+}
+
+.ms-sidebar__footer {
+  padding: var(--ms-space-3);
+  border-top: 1px solid var(--ms-color-border-subtle);
+  margin-top: auto;
+}
+
+/* --- NAVIGATION RAIL --- */
+.ms-navigation-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: var(--ms-app-shell-rail-width);
+  background-color: var(--ms-color-surface-default);
+  border-right: 1px solid var(--ms-color-border-subtle);
+  padding: var(--ms-space-3) 0;
+  gap: var(--ms-space-3);
+  flex-shrink: 0;
+  box-sizing: border-box;
+  z-index: var(--ms-zindex-docked, 10);
+}
+
+/* --- CONTENT / MAIN --- */
+.ms-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background-color: var(--ms-color-surface-sunken);
+}
+
+.ms-content--padded {
+  padding: var(--ms-page-gutter, 24px);
+}
+
+/* --- ASIDE --- */
+.ms-aside {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  background-color: var(--ms-color-surface-default);
+  border-left: 1px solid var(--ms-color-border-subtle);
+  flex-shrink: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  z-index: var(--ms-zindex-docked, 10);
+}
+
+/* --- FOOTER --- */
+.ms-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ms-space-4) var(--ms-page-gutter, 24px);
+  background-color: var(--ms-color-surface-default);
+  border-top: 1px solid var(--ms-color-border-subtle);
+  font-size: var(--ms-font-size-sm);
+  color: var(--ms-color-text-muted);
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* --- STATUS BAR --- */
+.ms-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--ms-app-shell-statusbar-height);
+  padding: 0 var(--ms-space-3);
+  background-color: var(--ms-color-surface-default);
+  border-top: 1px solid var(--ms-color-border-subtle);
+  font-size: var(--ms-font-size-xs);
+  color: var(--ms-color-text-muted);
+  flex-shrink: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.ms-status-bar--info {
+  background-color: var(--ms-color-info-subtle);
+  color: var(--ms-color-info);
+}
+
+.ms-status-bar--success {
+  background-color: var(--ms-color-success-subtle);
+  color: var(--ms-color-success);
+}
+
+.ms-status-bar--warning {
+  background-color: var(--ms-color-warning-subtle);
+  color: var(--ms-color-warning);
+}
+
+.ms-status-bar--danger {
+  background-color: var(--ms-color-danger-subtle);
+  color: var(--ms-color-danger);
+}

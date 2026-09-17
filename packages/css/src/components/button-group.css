@@ -38,3 +38,66 @@
 .ms-button-group .ms-button:focus-visible {
   z-index: 1;
 }
+
+/* Vertical orientation */
+.ms-button-group--vertical {
+  flex-direction: column;
+}
+
+.ms-button-group--vertical .ms-button:not(:first-child) {
+  margin-inline-start: 0;
+  margin-block-start: calc(-1 * var(--ms-border-hairline));
+}
+
+.ms-button-group--vertical .ms-button:first-child {
+  border-start-start-radius: var(--ms-control-radius);
+  border-start-end-radius: var(--ms-control-radius);
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+
+.ms-button-group--vertical .ms-button:last-child {
+  border-end-start-radius: var(--ms-control-radius);
+  border-end-end-radius: var(--ms-control-radius);
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+}
+
+.ms-button-group--vertical .ms-button[data-pill]:first-child {
+  border-start-start-radius: var(--ms-radius-full);
+  border-start-end-radius: var(--ms-radius-full);
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+
+.ms-button-group--vertical .ms-button[data-pill]:last-child {
+  border-end-start-radius: var(--ms-radius-full);
+  border-end-end-radius: var(--ms-radius-full);
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+}
+
+/* Spaced mode (attached: false) */
+.ms-button-group--spaced {
+  gap: var(--ms-space-2);
+}
+
+.ms-button-group--spaced .ms-button {
+  border-radius: var(--ms-control-radius);
+  margin-inline-start: 0;
+  margin-block-start: 0;
+}
+
+.ms-button-group--spaced .ms-button[data-pill] {
+  border-radius: var(--ms-radius-full);
+}
+
+/* Full Width */
+.ms-button-group--full-width {
+  width: 100%;
+}
+
+.ms-button-group--full-width .ms-button {
+  flex: 1;
+  justify-content: center;
+}

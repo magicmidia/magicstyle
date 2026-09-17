@@ -1,9 +1,52 @@
 {
   "$schema": "https://designtokens.dev/dtcg/schema.json",
+  "brand": {
+    "accent": {
+      "$type": "color",
+      "$value": "{color.accent.700}",
+      "$description": "Brand accent #341f97"
+    },
+    "neutral": {
+      "$type": "color",
+      "$value": "{color.neutral.700}",
+      "$description": "Brand neutral #222f3e"
+    },
+    "primary": {
+      "$type": "color",
+      "$value": "{color.primary.500}",
+      "$description": "Brand primary #2e86de"
+    },
+    "secondary": {
+      "$type": "color",
+      "$value": "{color.secondary.500}",
+      "$description": "Brand secondary #e15f41"
+    },
+    "success": {
+      "$type": "color",
+      "$value": "{color.success.500}",
+      "$description": "Brand success #10ac84"
+    },
+    "info": {
+      "$type": "color",
+      "$value": "{color.info.500}",
+      "$description": "Brand info #0abde3"
+    },
+    "warning": {
+      "$type": "color",
+      "$value": "{color.warning.500}",
+      "$description": "Brand warning #ff9f43"
+    },
+    "danger": {
+      "$type": "color",
+      "$value": "{color.danger.500}",
+      "$description": "Brand danger #ee5253"
+    }
+  },
   "surface": {
     "default": { "$type": "color", "$value": "{color.neutral.50}" },
     "raised": { "$type": "color", "$value": "{color.neutral.0}" },
     "sunken": { "$type": "color", "$value": "{color.neutral.100}" },
+    "subtle": { "$type": "color", "$value": "{color.neutral.100}" },
     "inverse": { "$type": "color", "$value": "{color.neutral.950}" }
   },
   "text": {
@@ -139,6 +182,13 @@
   },
   "control": {
     "radius": { "$type": "dimension", "$value": "{radius.md}" }
+  },
+  "elevation": {
+    "card": { "$type": "shadow", "$value": "{elevation.1}" },
+    "button": { "$type": "shadow", "$value": "{elevation.none}" },
+    "dropdown": { "$type": "shadow", "$value": "{elevation.2}" },
+    "modal": { "$type": "shadow", "$value": "{elevation.3}" },
+    "input": { "$type": "shadow", "$value": "{elevation.none}" }
   },
   "font": {
     "display": { "$type": "fontFamily", "$value": "{typography.family.display}" },

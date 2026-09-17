@@ -1,0 +1,48 @@
+/*
+ * Magic-Style Pointer layer (doc 05 §10).
+ * Custom mouse cursor and trailing indicator.
+ */
+
+.ms-pointer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: var(--ms-radius-full);
+  transform: translate(-50%, -50%);
+  transition:
+    transform var(--ms-motion-duration-fast) ease-out,
+    width var(--ms-motion-duration-fast) ease,
+    height var(--ms-motion-duration-fast) ease,
+    background-color var(--ms-motion-duration-fast) ease,
+    border-color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-pointer--dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--ms-color-interactive-primary);
+}
+
+.ms-pointer--ring {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 2px solid var(--ms-color-interactive-primary);
+}
+
+.ms-pointer--spotlight {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(
+    circle,
+    color-mix(in oklch, var(--ms-color-interactive-primary) 15%, transparent) 0%,
+    transparent 70%
+  );
+}
+
+.ms-pointer--hover {
+  transform: translate(-50%, -50%) scale(1.6);
+  background-color: color-mix(in oklch, var(--ms-color-interactive-primary) 30%, transparent);
+}

@@ -1,0 +1,26 @@
+/*
+ * Magic-Style Parallax layer (doc 05 §10).
+ * Scroll-driven depth and parallax visual container.
+ */
+
+.ms-parallax {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.ms-parallax__layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ms-parallax__content {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+}

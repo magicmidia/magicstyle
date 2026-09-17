@@ -1,0 +1,73 @@
+/*
+ * Magic-Style Label layer (doc 05 §10).
+ * Form label with required indicators, optional tags, tooltips, and accessibility states.
+ */
+
+.ms-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ms-space-1);
+  font-family: var(--ms-font-sans);
+  font-weight: var(--ms-typography-weight-medium);
+  color: var(--ms-color-text-primary);
+  line-height: 1.35;
+  user-select: none;
+  cursor: pointer;
+  transition: color var(--ms-motion-duration-fast) ease;
+}
+
+/* Sizes */
+.ms-label--sm {
+  font-size: var(--ms-typography-size-xs);
+}
+
+.ms-label--md {
+  font-size: var(--ms-typography-size-sm);
+}
+
+.ms-label--lg {
+  font-size: var(--ms-typography-size-md);
+}
+
+/* Required & Optional marks */
+.ms-label__required {
+  color: var(--ms-color-status-danger);
+  font-weight: var(--ms-typography-weight-bold);
+  margin-left: 2px;
+}
+
+.ms-label__optional {
+  font-size: 0.85em;
+  font-weight: var(--ms-typography-weight-regular);
+  color: var(--ms-color-text-muted);
+  margin-left: var(--ms-space-1);
+}
+
+/* Tooltip Trigger */
+.ms-label__tooltip-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ms-color-text-muted);
+  cursor: help;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-left: 2px;
+  line-height: 1;
+}
+
+.ms-label__tooltip-trigger:hover {
+  color: var(--ms-color-text-secondary);
+}
+
+.ms-label__tooltip-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Disabled state */
+.ms-label--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

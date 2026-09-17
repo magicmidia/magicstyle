@@ -1,0 +1,276 @@
+/*
+ * Magic-Style Tag layer (doc 05 §10).
+ * Interactive, closable categorical tags with semantic tones and variants.
+ */
+
+.ms-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ms-space-1);
+  box-sizing: border-box;
+  font-family: var(--ms-font-sans);
+  font-weight: var(--ms-typography-weight-medium);
+  line-height: 1;
+  border-radius: var(--ms-radius-sm);
+  user-select: none;
+  border: var(--ms-border-hairline) solid transparent;
+  transition:
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+/* Sizes */
+.ms-tag--sm {
+  height: 20px;
+  padding: 0 var(--ms-space-1);
+  font-size: var(--ms-typography-size-2xs);
+}
+
+.ms-tag--md {
+  height: 24px;
+  padding: 0 var(--ms-space-2);
+  font-size: var(--ms-typography-size-xs);
+}
+
+.ms-tag--lg {
+  height: 30px;
+  padding: 0 var(--ms-space-3);
+  font-size: var(--ms-typography-size-sm);
+}
+
+/* Variant: Soft (Default) */
+.ms-tag--soft.ms-tag--neutral {
+  background-color: var(--ms-color-surface-sunken, #f1f5f9);
+  color: var(--ms-color-text-secondary);
+  border-color: var(--ms-color-border-subtle);
+}
+
+.ms-tag--soft.ms-tag--primary {
+  background-color: color-mix(in oklch, var(--ms-color-interactive-primary) 12%, transparent);
+  color: var(--ms-color-interactive-primary);
+  border-color: color-mix(in oklch, var(--ms-color-interactive-primary) 20%, transparent);
+}
+
+.ms-tag--soft.ms-tag--secondary {
+  background-color: color-mix(in oklch, var(--ms-color-interactive-secondary) 12%, transparent);
+  color: var(--ms-color-interactive-secondary);
+  border-color: color-mix(in oklch, var(--ms-color-interactive-secondary) 20%, transparent);
+}
+
+.ms-tag--soft.ms-tag--accent {
+  background-color: color-mix(in oklch, var(--ms-color-interactive-accent) 12%, transparent);
+  color: var(--ms-color-interactive-accent);
+  border-color: color-mix(in oklch, var(--ms-color-interactive-accent) 20%, transparent);
+}
+
+.ms-tag--soft.ms-tag--success {
+  background-color: var(--ms-color-feedback-success-bg);
+  color: var(--ms-color-feedback-success-text);
+  border-color: var(--ms-color-feedback-success-border);
+}
+
+.ms-tag--soft.ms-tag--warning {
+  background-color: var(--ms-color-feedback-warning-bg);
+  color: var(--ms-color-feedback-warning-text);
+  border-color: var(--ms-color-feedback-warning-border);
+}
+
+.ms-tag--soft.ms-tag--danger {
+  background-color: var(--ms-color-feedback-danger-bg);
+  color: var(--ms-color-feedback-danger-text);
+  border-color: var(--ms-color-feedback-danger-border);
+}
+
+.ms-tag--soft.ms-tag--info {
+  background-color: var(--ms-color-feedback-info-bg);
+  color: var(--ms-color-feedback-info-text);
+  border-color: var(--ms-color-feedback-info-border);
+}
+
+/* Variant: Solid */
+.ms-tag--solid.ms-tag--neutral {
+  background-color: var(--ms-color-neutral-700);
+  color: var(--ms-color-neutral-0);
+}
+
+.ms-tag--solid.ms-tag--primary {
+  background-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-neutral-0);
+}
+
+.ms-tag--solid.ms-tag--secondary {
+  background-color: var(--ms-color-interactive-secondary);
+  color: var(--ms-color-neutral-0);
+}
+
+.ms-tag--solid.ms-tag--accent {
+  background-color: var(--ms-color-interactive-accent);
+  color: var(--ms-color-neutral-0);
+}
+
+.ms-tag--solid.ms-tag--success {
+  background-color: var(--ms-color-feedback-success-solid);
+  color: var(--ms-color-neutral-0);
+}
+
+.ms-tag--solid.ms-tag--warning {
+  background-color: var(--ms-color-feedback-warning-solid);
+  color: var(--ms-color-neutral-1000);
+}
+
+.ms-tag--solid.ms-tag--danger {
+  background-color: var(--ms-color-feedback-danger-solid);
+  color: var(--ms-color-neutral-0);
+}
+
+.ms-tag--solid.ms-tag--info {
+  background-color: var(--ms-color-feedback-info-solid);
+  color: var(--ms-color-neutral-0);
+}
+
+/* Variant: Outline */
+.ms-tag--outline {
+  background-color: transparent;
+}
+
+.ms-tag--outline.ms-tag--neutral {
+  color: var(--ms-color-text-secondary);
+  border-color: var(--ms-color-border-default);
+}
+
+.ms-tag--outline.ms-tag--primary {
+  color: var(--ms-color-interactive-primary);
+  border-color: var(--ms-color-interactive-primary);
+}
+
+.ms-tag--outline.ms-tag--secondary {
+  color: var(--ms-color-interactive-secondary);
+  border-color: var(--ms-color-interactive-secondary);
+}
+
+.ms-tag--outline.ms-tag--accent {
+  color: var(--ms-color-interactive-accent);
+  border-color: var(--ms-color-interactive-accent);
+}
+
+.ms-tag--outline.ms-tag--success {
+  color: var(--ms-color-feedback-success-solid);
+  border-color: var(--ms-color-feedback-success-solid);
+}
+
+.ms-tag--outline.ms-tag--warning {
+  color: var(--ms-color-feedback-warning-text);
+  border-color: var(--ms-color-feedback-warning-solid);
+}
+
+.ms-tag--outline.ms-tag--danger {
+  color: var(--ms-color-feedback-danger-solid);
+  border-color: var(--ms-color-feedback-danger-solid);
+}
+
+.ms-tag--outline.ms-tag--info {
+  color: var(--ms-color-feedback-info-solid);
+  border-color: var(--ms-color-feedback-info-solid);
+}
+
+/* Icon / Prefix */
+.ms-tag__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Content */
+.ms-tag__content {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Close Button */
+.ms-tag__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-left: 2px;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.65;
+  border-radius: var(--ms-radius-xs);
+  box-sizing: border-box;
+  transition:
+    opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-tag__close:hover:not(:disabled) {
+  opacity: 1;
+  background-color: color-mix(in oklch, currentColor 18%, transparent);
+}
+
+.ms-tag__close:focus-visible {
+  outline: var(--ms-border-focus) solid var(--ms-color-border-focus);
+  outline-offset: 1px;
+}
+
+.ms-tag__close-icon {
+  width: 12px;
+  height: 12px;
+}
+
+/* Modifiers */
+.ms-tag--clickable {
+  cursor: pointer;
+}
+
+.ms-tag--clickable:hover:not(.ms-tag--disabled) {
+  filter: brightness(0.95);
+  box-shadow: var(--ms-elevation-1);
+}
+
+.ms-tag--clickable:focus-visible {
+  outline: var(--ms-border-focus) solid var(--ms-color-border-focus);
+  outline-offset: 2px;
+}
+
+.ms-tag--disabled {
+  opacity: 0.45;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* Shapes */
+.ms-tag--pill {
+  border-radius: var(--ms-radius-full);
+}
+
+.ms-tag--square {
+  border-radius: 0;
+}
+
+/* Dot indicator */
+.ms-tag__dot {
+  inline-size: 6px;
+  block-size: 6px;
+  border-radius: var(--ms-radius-full);
+  background-color: currentColor;
+  flex-shrink: 0;
+  margin-inline-end: 2px;
+}
+
+/* Prefix and Suffix Icons */
+.ms-tag__prefix,
+.ms-tag__suffix,
+.ms-tag__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+  flex-shrink: 0;
+}

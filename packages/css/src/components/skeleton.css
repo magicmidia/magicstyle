@@ -1,0 +1,147 @@
+/*
+ * Magic-Style Skeleton layer (doc 05 §8).
+ * Accessible placeholder loading shapes with shimmer and pulse animations.
+ */
+
+@keyframes ms-skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes ms-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.ms-skeleton {
+  --_ms-skel-bg: var(--ms-color-neutral-200, #e2e8f0);
+  --_ms-skel-highlight: var(--ms-color-surface-raised, #ffffff);
+  --_ms-skel-duration: 1.6s;
+  display: block;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+  background-color: var(--_ms-skel-bg);
+}
+
+/* Animations */
+.ms-skeleton--shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--_ms-skel-bg) 0%,
+    var(--_ms-skel-highlight) 50%,
+    var(--_ms-skel-bg) 100%
+  );
+  background-size: 200% 100%;
+  animation: ms-skeleton-shimmer var(--_ms-skel-duration) ease-in-out infinite;
+}
+
+.ms-skeleton--pulse {
+  background-color: var(--_ms-skel-bg);
+  animation: ms-skeleton-pulse var(--_ms-skel-duration) ease-in-out infinite;
+}
+
+.ms-skeleton--none {
+  background-color: var(--_ms-skel-bg);
+}
+
+/* Tones */
+.ms-skeleton--tone-subtle {
+  --_ms-skel-bg: var(--ms-color-surface-sunken, #f1f5f9);
+  --_ms-skel-highlight: var(--ms-color-neutral-0, #ffffff);
+}
+
+.ms-skeleton--tone-default {
+  --_ms-skel-bg: var(--ms-color-neutral-200, #e2e8f0);
+  --_ms-skel-highlight: var(--ms-color-neutral-100, #f8fafc);
+}
+
+.ms-skeleton--tone-contrast {
+  --_ms-skel-bg: var(--ms-color-neutral-300, #cbd5e1);
+  --_ms-skel-highlight: var(--ms-color-neutral-100, #f8fafc);
+}
+
+.ms-skeleton--tone-primary {
+  --_ms-skel-bg: var(--ms-color-primary-100, #dbeafe);
+  --_ms-skel-highlight: var(--ms-color-primary-50, #eff6ff);
+}
+
+/* Speeds */
+.ms-skeleton--speed-fast {
+  --_ms-skel-duration: 1s;
+}
+
+.ms-skeleton--speed-normal {
+  --_ms-skel-duration: 1.6s;
+}
+
+.ms-skeleton--speed-slow {
+  --_ms-skel-duration: 2.4s;
+}
+
+/* Shapes & Presets */
+.ms-skeleton--text {
+  height: 1.15em;
+  border-radius: var(--ms-radius-sm, 4px);
+  margin-bottom: var(--ms-space-2, 8px);
+}
+
+.ms-skeleton--circle {
+  border-radius: var(--ms-radius-full, 9999px);
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.ms-skeleton--avatar {
+  border-radius: var(--ms-radius-full, 9999px);
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.ms-skeleton--button {
+  border-radius: var(--ms-control-radius, 6px);
+  width: 100px;
+  height: 38px;
+}
+
+.ms-skeleton--card {
+  border-radius: var(--ms-radius-md, 8px);
+  width: 100%;
+  height: 160px;
+}
+
+.ms-skeleton--rect {
+  border-radius: var(--ms-radius-md, 8px);
+  width: 100%;
+  height: 100px;
+}
+
+.ms-skeleton-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.ms-skeleton-group .ms-skeleton--text:last-child {
+  margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ms-skeleton--shimmer,
+  .ms-skeleton--pulse {
+    animation: none;
+    background: var(--_ms-skel-bg);
+  }
+}

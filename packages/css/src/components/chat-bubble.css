@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Magic-Style: Chat Bubble Component
+   Message balloons for conversational AI, customer support, and chat feeds
+   ========================================================================== */
+
+.ms-chat-bubble-wrapper {
+  display: flex;
+  gap: var(--ms-space-3, 12px);
+  margin-bottom: var(--ms-space-4, 16px);
+  width: 100%;
+}
+
+.ms-chat-bubble-wrapper--start {
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.ms-chat-bubble-wrapper--end {
+  flex-direction: row-reverse;
+  align-items: flex-end;
+}
+
+.ms-chat-bubble-avatar {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--ms-radius-full, 9999px);
+  overflow: hidden;
+  background-color: var(--ms-color-surface-subtle, #f1f5f9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--ms-font-size-sm, 0.875rem);
+}
+
+.ms-chat-bubble-content {
+  display: flex;
+  flex-direction: column;
+  max-width: min(75%, 520px);
+}
+
+.ms-chat-bubble-wrapper--end .ms-chat-bubble-content {
+  align-items: flex-end;
+}
+
+.ms-chat-bubble-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ms-space-2, 8px);
+  margin-bottom: var(--ms-space-1, 4px);
+  font-size: var(--ms-font-size-xs, 0.75rem);
+  color: var(--ms-color-text-muted, #64748b);
+}
+
+.ms-chat-bubble-header__name {
+  font-weight: var(--ms-font-weight-semibold, 600);
+  color: var(--ms-color-text-primary);
+}
+
+/* The actual bubble balloon */
+.ms-chat-bubble {
+  position: relative;
+  padding: var(--ms-space-3, 10px) var(--ms-space-4, 14px);
+  border-radius: var(--ms-radius-xl, 14px);
+  font-size: var(--ms-font-size-sm, 0.875rem);
+  line-height: var(--ms-line-height-relaxed, 1.55);
+  word-break: break-word;
+}
+
+/* Bubble Tail Corners */
+.ms-chat-bubble-wrapper--start .ms-chat-bubble {
+  border-bottom-left-radius: var(--ms-radius-xs, 2px);
+}
+
+.ms-chat-bubble-wrapper--end .ms-chat-bubble {
+  border-bottom-right-radius: var(--ms-radius-xs, 2px);
+}
+
+/* Variants & Tones */
+.ms-chat-bubble--variant-soft.ms-chat-bubble--tone-neutral {
+  background-color: var(--ms-color-surface-sunken);
+  color: var(--ms-color-text-primary);
+}
+
+.ms-chat-bubble--variant-soft.ms-chat-bubble--tone-primary {
+  background-color: var(--ms-color-interactive-primary-subtle);
+  color: var(--ms-color-interactive-primary-text);
+}
+
+.ms-chat-bubble--variant-solid.ms-chat-bubble--tone-primary {
+  background-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-text-on-accent);
+}
+
+.ms-chat-bubble--variant-solid.ms-chat-bubble--tone-neutral {
+  background-color: var(--ms-color-surface-inverse);
+  color: var(--ms-color-text-inverse);
+}
+
+.ms-chat-bubble--variant-outline {
+  border: 1px solid var(--ms-color-border-subtle);
+  background-color: var(--ms-color-surface-raised);
+  color: var(--ms-color-text-primary);
+}
+
+.ms-chat-bubble-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-1, 4px);
+  margin-top: var(--ms-space-1, 4px);
+  font-size: var(--ms-font-size-xs, 0.75rem);
+  color: var(--ms-color-text-muted, #64748b);
+}

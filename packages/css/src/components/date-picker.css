@@ -1,0 +1,259 @@
+/*
+ * Magic-Style DatePicker layer (doc 05 §10).
+ * Calendar popup with presets, day grid, and keyboard support.
+ */
+
+.ms-date-picker {
+  position: relative;
+  display: inline-flex;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.ms-date-picker__input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.ms-date-picker__input {
+  width: 100%;
+  height: var(--ms-control-height-md, 40px);
+  padding: 0 var(--ms-space-8) 0 var(--ms-space-3);
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text-primary);
+  background-color: var(--ms-color-surface-raised);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-md);
+  outline: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border-color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-date-picker__input:focus {
+  border-color: var(--ms-color-interactive-primary);
+}
+
+.ms-date-picker__icon {
+  position: absolute;
+  right: var(--ms-space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--ms-color-text-muted);
+}
+
+.ms-date-picker__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 50;
+  width: 290px;
+  background-color: var(--ms-color-surface-raised);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-lg);
+  box-shadow: var(--ms-shadow-md);
+  padding: var(--ms-space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-2);
+}
+
+.ms-date-picker__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ms-date-picker__title {
+  font-weight: var(--ms-typography-weight-semibold);
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text-primary);
+}
+
+.ms-date-picker__nav-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--ms-color-text-secondary);
+  padding: 4px;
+  border-radius: var(--ms-radius-xs);
+}
+
+.ms-date-picker__nav-btn:hover {
+  background-color: var(--ms-color-surface-sunken);
+  color: var(--ms-color-text-primary);
+}
+
+.ms-date-picker__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: var(--ms-typography-size-2xs);
+  color: var(--ms-color-text-muted);
+  font-weight: var(--ms-typography-weight-medium);
+}
+
+.ms-date-picker__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.ms-date-picker__day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border-radius: var(--ms-radius-sm);
+  background: transparent;
+  border: none;
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-primary);
+  cursor: pointer;
+  transition:
+    background-color var(--ms-motion-duration-fast) ease,
+    color var(--ms-motion-duration-fast) ease;
+}
+
+.ms-date-picker__day:hover:not(:disabled):not(.ms-date-picker__day--selected) {
+  background-color: var(--ms-color-surface-sunken);
+}
+
+.ms-date-picker__day--selected {
+  background-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-text-inverse);
+  font-weight: var(--ms-typography-weight-semibold);
+}
+
+.ms-date-picker__day--today {
+  border: 1px solid var(--ms-color-interactive-primary);
+}
+
+.ms-date-picker__day--other-month {
+  color: var(--ms-color-text-muted);
+  opacity: 0.4;
+}
+
+.ms-date-picker__day:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.ms-date-picker__presets {
+  display: flex;
+  gap: var(--ms-space-1);
+  border-top: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  padding-top: var(--ms-space-2);
+  flex-wrap: wrap;
+}
+
+.ms-date-picker__preset-btn {
+  background: var(--ms-color-surface-sunken);
+  border: none;
+  border-radius: var(--ms-radius-xs);
+  padding: 2px var(--ms-space-2);
+  font-size: var(--ms-typography-size-2xs);
+  color: var(--ms-color-text-secondary);
+  cursor: pointer;
+}
+
+.ms-date-picker__preset-btn:hover {
+  color: var(--ms-color-text-primary);
+}
+
+/* Range selection states */
+.ms-date-picker__day--range-start {
+  background-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-text-inverse);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  font-weight: var(--ms-typography-weight-semibold);
+}
+
+.ms-date-picker__day--range-end {
+  background-color: var(--ms-color-interactive-primary);
+  color: var(--ms-color-text-inverse);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  font-weight: var(--ms-typography-weight-semibold);
+}
+
+.ms-date-picker__day--in-range {
+  background-color: color-mix(
+    in oklch,
+    var(--ms-color-interactive-primary) 18%,
+    var(--ms-color-surface-sunken)
+  );
+  color: var(--ms-color-text-primary);
+  border-radius: 0;
+}
+
+/* Time Picker Panel */
+.ms-date-picker__time-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-2);
+  border-top: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  padding-top: var(--ms-space-2);
+}
+
+.ms-date-picker__time-header {
+  font-size: var(--ms-typography-size-2xs);
+  color: var(--ms-color-text-muted);
+  font-weight: var(--ms-typography-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ms-date-picker__time-selectors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ms-space-2);
+}
+
+.ms-date-picker__time-select {
+  padding: 4px 8px;
+  border-radius: var(--ms-radius-sm);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  background: var(--ms-color-surface-sunken);
+  color: var(--ms-color-text-primary);
+  font-family: var(--ms-font-mono, monospace);
+  font-size: var(--ms-typography-size-xs);
+  outline: none;
+  cursor: pointer;
+}
+
+.ms-date-picker__time-select:focus {
+  border-color: var(--ms-color-interactive-primary);
+}
+
+.ms-date-picker__time-colon {
+  font-weight: bold;
+  color: var(--ms-color-text-muted);
+}
+
+.ms-date-picker__clear-btn {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ms-color-text-muted);
+  font-size: 14px;
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ms-radius-xs);
+}
+
+.ms-date-picker__clear-btn:hover {
+  color: var(--ms-color-text-primary);
+}
