@@ -2,10 +2,14 @@
   "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
   "changelog": false,
   "commit": false,
-  "fixed": [["@magic-style/vue", "@magic-style/css", "@magic-style/tailwind"]],
+  "fixed": [["@magic-style/vue", "@magic-style/css"]],
   "linked": [],
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependents": "always",
-  "ignore": []
+  "ignore": [],
+  "privatePackages": {
+    "version": true,
+    "tag": false
+  }
 }
