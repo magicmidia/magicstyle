@@ -24,6 +24,24 @@
   --ms-color-info-subtle: var(--ms-color-feedback-info-bg, oklch(0.975 0.043 219));
   --ms-color-warning-subtle: var(--ms-color-feedback-warning-bg, oklch(0.985 0.049 061));
   --ms-color-danger-subtle: var(--ms-color-feedback-danger-bg, oklch(0.94 0.061 024));
+
+  /* Canonical Soft Color Pairs (bg = tone text/ink, fg = tone subtle) */
+  --ms-color-primary-soft-bg: var(--ms-color-interactive-primary-text);
+  --ms-color-primary-soft-fg: var(--ms-color-interactive-primary-subtle);
+  --ms-color-secondary-soft-bg: var(--ms-color-interactive-secondary-text);
+  --ms-color-secondary-soft-fg: var(--ms-color-interactive-secondary-subtle);
+  --ms-color-accent-soft-bg: var(--ms-color-interactive-accent-text);
+  --ms-color-accent-soft-fg: var(--ms-color-interactive-accent-subtle);
+  --ms-color-neutral-soft-bg: var(--ms-color-interactive-neutral-text);
+  --ms-color-neutral-soft-fg: var(--ms-color-interactive-neutral-subtle);
+  --ms-color-success-soft-bg: var(--ms-color-feedback-success-text);
+  --ms-color-success-soft-fg: var(--ms-color-feedback-success-bg);
+  --ms-color-info-soft-bg: var(--ms-color-feedback-info-text);
+  --ms-color-info-soft-fg: var(--ms-color-feedback-info-bg);
+  --ms-color-warning-soft-bg: var(--ms-color-feedback-warning-text);
+  --ms-color-warning-soft-fg: var(--ms-color-feedback-warning-bg);
+  --ms-color-danger-soft-bg: var(--ms-color-feedback-danger-text);
+  --ms-color-danger-soft-fg: var(--ms-color-feedback-danger-bg);
 }
 
 html {

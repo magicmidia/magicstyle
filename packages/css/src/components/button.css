@@ -212,11 +212,11 @@
 
 /* Soft: tinted field, quiet until touched */
 .ms-button[data-variant="soft"] {
-  background-color: var(--_ms-btn-accent-subtle);
-  color: var(--_ms-btn-accent-fg-muted);
+  background-color: var(--_ms-btn-accent-fg-muted);
+  color: var(--_ms-btn-accent-subtle);
 }
 .ms-button[data-variant="soft"]:hover:not(:disabled) {
-  background-color: color-mix(in oklch, var(--_ms-btn-accent-subtle) 80%, var(--_ms-btn-accent));
+  background-color: color-mix(in oklch, var(--_ms-btn-accent-fg-muted) 85%, var(--_ms-btn-accent));
 }
 .ms-button[data-variant="soft"]:active:not(:disabled) {
   transform: scale(0.98);

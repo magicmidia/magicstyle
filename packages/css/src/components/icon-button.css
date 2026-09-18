@@ -139,27 +139,27 @@
 
 /* Soft */
 .ms-icon-button--soft.ms-icon-button--primary {
-  background-color: var(--ms-color-primary-subtle);
-  color: var(--ms-color-primary-default);
+  background-color: var(--ms-color-primary-default);
+  color: var(--ms-color-primary-subtle);
 }
 .ms-icon-button--soft.ms-icon-button--primary:hover:not(:disabled) {
-  background-color: var(--ms-color-primary-hover-subtle, rgba(59, 130, 246, 0.2));
+  background-color: var(--ms-color-primary-hover);
 }
 
 .ms-icon-button--soft.ms-icon-button--neutral {
-  background-color: var(--ms-color-neutral-subtle);
-  color: var(--ms-color-text-default);
+  background-color: var(--ms-color-text-default);
+  color: var(--ms-color-neutral-subtle);
 }
 .ms-icon-button--soft.ms-icon-button--neutral:hover:not(:disabled) {
-  background-color: var(--ms-color-surface-hover);
+  background-color: var(--ms-color-text-primary);
 }
 
 .ms-icon-button--soft.ms-icon-button--danger {
-  background-color: var(--ms-color-danger-subtle);
-  color: var(--ms-color-danger-default);
+  background-color: var(--ms-color-danger-default);
+  color: var(--ms-color-danger-subtle);
 }
 .ms-icon-button--soft.ms-icon-button--danger:hover:not(:disabled) {
-  background-color: rgba(239, 68, 68, 0.2);
+  background-color: var(--ms-color-danger-hover);
 }
 
 /* Outline */

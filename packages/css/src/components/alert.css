@@ -222,9 +222,9 @@
 /* Soft Variant (Default) */
 .ms-alert[data-variant="soft"],
 .ms-alert:not([data-variant]) {
-  background-color: var(--_ms-alert-bg);
+  background-color: var(--_ms-alert-fg);
   border-color: var(--_ms-alert-border);
-  color: var(--_ms-alert-fg);
+  color: var(--_ms-alert-bg);
 }
 
 /* Solid Variant */

@@ -205,8 +205,8 @@
 /* Soft (Default) */
 .ms-badge[data-variant="soft"],
 .ms-badge:not([data-variant]) {
-  background-color: var(--_ms-badge-soft-bg);
-  color: var(--_ms-badge-soft-fg);
+  background-color: var(--_ms-badge-soft-fg);
+  color: var(--_ms-badge-soft-bg);
   border-color: var(--_ms-badge-soft-border);
 }
 

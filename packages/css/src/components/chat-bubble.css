@@ -78,13 +78,13 @@
 
 /* Variants & Tones */
 .ms-chat-bubble--variant-soft.ms-chat-bubble--tone-neutral {
-  background-color: var(--ms-color-surface-sunken);
-  color: var(--ms-color-text-primary);
+  background-color: var(--ms-color-text-primary);
+  color: var(--ms-color-surface-sunken);
 }
 
 .ms-chat-bubble--variant-soft.ms-chat-bubble--tone-primary {
-  background-color: var(--ms-color-interactive-primary-subtle);
-  color: var(--ms-color-interactive-primary-text);
+  background-color: var(--ms-color-interactive-primary-text);
+  color: var(--ms-color-interactive-primary-subtle);
 }
 
 .ms-chat-bubble--variant-solid.ms-chat-bubble--tone-primary {
