@@ -181,23 +181,24 @@ body.lp-body {
 .lp-version-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-family: var(--lp-font-mono);
+  font-family: var(--lp-font-mono, monospace);
   font-size: 11px;
   font-weight: 600;
-  padding: 3px 9px;
+  line-height: 1;
+  padding: 3px 8px;
   border-radius: 9999px;
   background: color-mix(in srgb, #38bdf8 12%, transparent);
   color: #38bdf8;
   border: 1px solid color-mix(in srgb, #38bdf8 25%, transparent);
+  letter-spacing: 0.02em;
+  margin-inline-start: 4px;
+  user-select: none;
+  transition: all 0.15s ease;
 }
 
-.lp-live-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 6px #10b981;
+.lp-version-pill:hover {
+  background: color-mix(in srgb, #38bdf8 20%, transparent);
+  border-color: #38bdf8;
 }
 
 .lp-nav-links {

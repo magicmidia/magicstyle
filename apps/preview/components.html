@@ -78,8 +78,7 @@
       .version-tag {
         display: inline-flex;
         align-items: center;
-        gap: 5px;
-        font-family: var(--ms-font-mono);
+        font-family: var(--ms-font-mono, monospace);
         font-size: 11px;
         font-weight: 600;
         line-height: 1;
@@ -90,16 +89,13 @@
         border: 1px solid var(--ms-color-border-default);
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         letter-spacing: 0.02em;
-        margin-inline-start: 4px;
+        margin-inline-start: 6px;
         user-select: none;
+        transition: all 0.15s ease;
       }
-      .version-tag-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: #10ac84;
-        box-shadow: 0 0 6px rgba(16, 172, 132, 0.7);
-        display: inline-block;
+      .version-tag:hover {
+        color: var(--ms-color-interactive-primary);
+        border-color: var(--ms-color-interactive-primary);
       }
       .nav {
         display: flex;
@@ -128,55 +124,24 @@
         gap: var(--ms-space-3);
         margin-inline-start: auto;
       }
-      .topbar-status-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 11px;
-        font-weight: 600;
-        font-family: var(--ms-font-mono);
-        padding: 4px 10px;
-        border-radius: 9999px;
-        background: rgba(46, 134, 222, 0.15);
-        border: 1px solid rgba(46, 134, 222, 0.3);
-        color: var(--ms-color-interactive-primary);
-      }
-      .status-indicator-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: #10ac84;
-        box-shadow: 0 0 8px #10ac84;
-        animation: pulse-dot 2s infinite;
-      }
-      @keyframes pulse-dot {
-        0%,
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.5;
-          transform: scale(0.85);
-        }
-      }
       .topbar-action-link {
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        font-size: 12px;
+        font-size: 12.5px;
         font-weight: 500;
         color: var(--ms-color-text-secondary);
-        opacity: 0.9;
         text-decoration: none;
-        padding: 4px 8px;
-        border-radius: var(--ms-radius-sm);
+        padding: 6px 12px;
+        border-radius: var(--ms-radius-md);
+        border: 1px solid var(--ms-color-border-subtle);
+        background: var(--ms-color-surface-sunken);
         transition: all 0.15s ease;
       }
       .topbar-action-link:hover {
-        opacity: 1;
         color: var(--ms-color-text-primary);
-        background: var(--ms-color-interactive-neutral-subtle);
+        border-color: var(--ms-color-border-strong);
+        background: var(--ms-color-surface-raised);
       }
 
       /* Floating Cog FAB Button (Strictly Fixed Right Below Navbar, Icon-Only) */
@@ -1019,44 +984,23 @@
         <span class="logo-text"
           ><span class="logo-brand">Magic</span><span class="logo-accent">Style</span></span
         >
-        <span class="version-tag" title="Versão oficial estável conforme Architecture Baseline 1.2">
-          <span class="version-tag-dot"></span>
-          v0.1.0 • Baseline 1.2
-        </span>
+        <span class="version-tag" title="Versão oficial estável v0.1.0">v0.1.0</span>
       </a>
 
       <nav class="nav" aria-label="Navegação Principal da Documentação">
         <a href="/" title="Ir para a Landing Page">Início</a>
         <a class="is-active" href="/components.html">Documentação</a>
-        <a
-          href="#components-list"
-          onclick="
-            const inp = document.querySelector('.sidebar-search-input');
-            if (inp) {
-              inp.focus();
-              inp.scrollIntoView({ behavior: 'smooth' });
-            }
-            return false;
-          "
-          >Componentes (82)</a
-        >
         <a href="/changelog.html" title="Histórico de Versões e Releases">Changelog</a>
-        <a href="https://github.com/magicmidia/magicstyle" target="_blank" rel="noreferrer"
-          >GitHub</a
-        >
       </nav>
 
       <div class="topbar-right">
-        <span class="topbar-status-badge">
-          <span class="status-indicator-dot"></span>
-          82 Componentes Prontos
-        </span>
         <a
           href="https://github.com/magicmidia/magicstyle"
           target="_blank"
           rel="noreferrer"
           class="topbar-action-link"
           aria-label="Repositório GitHub"
+          title="Ver no GitHub"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path
