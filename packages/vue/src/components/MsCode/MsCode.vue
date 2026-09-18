@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, useSlots } from "vue";
+import { ref, computed, useSlots, onBeforeUnmount } from "vue";
 import type { MsCodeProps, MsCodeEmits } from "./types.ts";
 
 const props = withDefaults(defineProps<MsCodeProps>(), {
@@ -13,6 +13,14 @@ const emit = defineEmits<MsCodeEmits>();
 const slots = useSlots();
 const copied = ref(false);
 const codeEl = ref<HTMLElement | null>(null);
+let copyTimer: ReturnType<typeof setTimeout> | null = null;
+
+onBeforeUnmount(() => {
+  if (copyTimer) {
+    clearTimeout(copyTimer);
+    copyTimer = null;
+  }
+});
 
 const classes = computed(() => [
   "ms-code",
@@ -32,8 +40,10 @@ const handleCopy = async (event: MouseEvent) => {
       await navigator.clipboard.writeText(textToCopy);
       copied.value = true;
       emit("copy", textToCopy);
-      setTimeout(() => {
+      if (copyTimer) clearTimeout(copyTimer);
+      copyTimer = setTimeout(() => {
         copied.value = false;
+        copyTimer = null;
       }, 1500);
     } catch {
       // ignore

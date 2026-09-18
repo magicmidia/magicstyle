@@ -84,64 +84,66 @@ onBeforeUnmount(() => {
 
 <template>
   <Teleport to="body">
-    <div
-      v-if="props.open"
-      :class="['ms-dialog-overlay', `ms-dialog-overlay--${props.placement}`]"
-      @click="onOverlayClick"
-    >
+    <Transition name="ms-dialog">
       <div
-        class="ms-dialog-content"
-        :role="props.role"
-        aria-modal="true"
-        :aria-labelledby="ariaLabelledby"
-        :aria-describedby="ariaDescribedby"
-        :data-size="props.size"
-        :data-tone="props.tone !== 'default' ? props.tone : undefined"
-        tabindex="-1"
+        v-if="props.open"
+        :class="['ms-dialog-overlay', `ms-dialog-overlay--${props.placement}`]"
+        @click="onOverlayClick"
       >
-        <button
-          v-if="props.showClose"
-          type="button"
-          class="ms-dialog-close"
-          aria-label="Fechar"
-          @click="requestClose"
+        <div
+          class="ms-dialog-content"
+          :role="props.role"
+          aria-modal="true"
+          :aria-labelledby="ariaLabelledby"
+          :aria-describedby="ariaDescribedby"
+          :data-size="props.size"
+          :data-tone="props.tone !== 'default' ? props.tone : undefined"
+          tabindex="-1"
         >
-          <slot name="close">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.75"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M4 4l8 8M12 4l-8 8" />
-            </svg>
-          </slot>
-        </button>
+          <button
+            v-if="props.showClose"
+            type="button"
+            class="ms-dialog-close"
+            aria-label="Fechar"
+            @click="requestClose"
+          >
+            <slot name="close">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 4l8 8M12 4l-8 8" />
+              </svg>
+            </slot>
+          </button>
 
-        <div v-if="$slots.header || props.title || props.description" class="ms-dialog-header">
-          <slot name="header">
-            <h2 v-if="props.title" :id="titleId" class="ms-dialog-title">
-              {{ props.title }}
-            </h2>
-            <p v-if="props.description" :id="descriptionId" class="ms-dialog-description">
-              {{ props.description }}
-            </p>
-          </slot>
-        </div>
+          <div v-if="$slots.header || props.title || props.description" class="ms-dialog-header">
+            <slot name="header">
+              <h2 v-if="props.title" :id="titleId" class="ms-dialog-title">
+                {{ props.title }}
+              </h2>
+              <p v-if="props.description" :id="descriptionId" class="ms-dialog-description">
+                {{ props.description }}
+              </p>
+            </slot>
+          </div>
 
-        <div class="ms-dialog-body">
-          <slot />
-        </div>
+          <div class="ms-dialog-body">
+            <slot />
+          </div>
 
-        <div v-if="$slots.footer" class="ms-dialog-footer">
-          <slot name="footer" />
+          <div v-if="$slots.footer" class="ms-dialog-footer">
+            <slot name="footer" />
+          </div>
         </div>
       </div>
-    </div>
+    </Transition>
   </Teleport>
 </template>

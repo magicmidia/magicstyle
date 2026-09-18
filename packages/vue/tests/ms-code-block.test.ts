@@ -51,4 +51,15 @@ describe("MsCodeBlock component", () => {
     expect(wrapper.emitted("toggle-collapse")).toBeTruthy();
     expect(wrapper.classes()).not.toContain("ms-code-block--collapsed");
   });
+
+  it("safely escapes HTML tags and quotes to prevent script execution", () => {
+    const rawCode = '<script>alert("xss")</script>';
+    const wrapper = mount(MsCodeBlock, {
+      props: { code: rawCode },
+    });
+    const codeTag = wrapper.find("code");
+    // Inner HTML should contain escaped entities, never raw unescaped script tag
+    expect(codeTag.html()).not.toContain("<script>");
+    expect(codeTag.html()).toContain("&lt;");
+  });
 });

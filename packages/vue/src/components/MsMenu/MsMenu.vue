@@ -70,19 +70,25 @@ watch(
   (open) => {
     if (open) {
       activeIndex.value = getFirstEnabledIndex();
+      if (typeof document !== "undefined") {
+        document.addEventListener("click", onOutsideClick, true);
+        document.addEventListener("keydown", onOutsideKeydown);
+      }
+    } else {
+      if (typeof document !== "undefined") {
+        document.removeEventListener("click", onOutsideClick, true);
+        document.removeEventListener("keydown", onOutsideKeydown);
+      }
     }
   },
   { immediate: true },
 );
 
-onMounted(() => {
-  document.addEventListener("click", onOutsideClick, true);
-  document.addEventListener("keydown", onOutsideKeydown);
-});
-
 onBeforeUnmount(() => {
-  document.removeEventListener("click", onOutsideClick, true);
-  document.removeEventListener("keydown", onOutsideKeydown);
+  if (typeof document !== "undefined") {
+    document.removeEventListener("click", onOutsideClick, true);
+    document.removeEventListener("keydown", onOutsideKeydown);
+  }
 });
 </script>
 

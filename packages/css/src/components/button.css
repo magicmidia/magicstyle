@@ -35,6 +35,10 @@
     transform var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
+.ms-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
 .ms-button-label {
   letter-spacing: var(--ms-typography-letter-spacing-wide);
 }

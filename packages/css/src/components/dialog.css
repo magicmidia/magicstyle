@@ -175,3 +175,27 @@
 .ms-dialog-close:focus:not(:focus-visible) {
   outline: none;
 }
+
+/* Vue Transition Classes for ms-dialog */
+.ms-dialog-enter-active,
+.ms-dialog-leave-active {
+  transition: opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-dialog-enter-active .ms-dialog-content,
+.ms-dialog-leave-active .ms-dialog-content {
+  transition:
+    transform var(--ms-motion-duration-fast) var(--ms-motion-easing-entrance),
+    opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-dialog-enter-from,
+.ms-dialog-leave-to {
+  opacity: 0;
+}
+
+.ms-dialog-enter-from .ms-dialog-content,
+.ms-dialog-leave-to .ms-dialog-content {
+  opacity: 0;
+  transform: scale(0.96) translateY(8px);
+}

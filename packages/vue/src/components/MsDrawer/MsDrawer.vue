@@ -84,61 +84,63 @@ onBeforeUnmount(() => {
 
 <template>
   <Teleport :to="props.teleportTo">
-    <div
-      v-if="props.open"
-      class="ms-drawer-backdrop"
-      data-ms-drawer-backdrop
-      @click="handleBackdropClick"
-    >
+    <Transition name="ms-drawer">
       <div
-        :class="drawerClasses"
-        role="dialog"
-        aria-modal="true"
-        :aria-labelledby="title || $slots.title ? titleId : undefined"
-        :aria-describedby="description || $slots.description ? descriptionId : undefined"
-        data-ms-drawer
-        @click.stop
+        v-if="props.open"
+        class="ms-drawer-backdrop"
+        data-ms-drawer-backdrop
+        @click="handleBackdropClick"
       >
-        <!-- Header -->
-        <header
-          v-if="title || description || $slots.header || $slots.title || showClose"
-          class="ms-drawer__header"
+        <div
+          :class="drawerClasses"
+          role="dialog"
+          aria-modal="true"
+          :aria-labelledby="title || $slots.title ? titleId : undefined"
+          :aria-describedby="description || $slots.description ? descriptionId : undefined"
+          data-ms-drawer
+          @click.stop
         >
-          <slot name="header">
-            <div class="ms-drawer__title-group">
-              <h2 v-if="title || $slots.title" :id="titleId" class="ms-drawer__title">
-                <slot name="title">{{ title }}</slot>
-              </h2>
-              <p
-                v-if="description || $slots.description"
-                :id="descriptionId"
-                class="ms-drawer__description"
+          <!-- Header -->
+          <header
+            v-if="title || description || $slots.header || $slots.title || showClose"
+            class="ms-drawer__header"
+          >
+            <slot name="header">
+              <div class="ms-drawer__title-group">
+                <h2 v-if="title || $slots.title" :id="titleId" class="ms-drawer__title">
+                  <slot name="title">{{ title }}</slot>
+                </h2>
+                <p
+                  v-if="description || $slots.description"
+                  :id="descriptionId"
+                  class="ms-drawer__description"
+                >
+                  <slot name="description">{{ description }}</slot>
+                </p>
+              </div>
+              <button
+                v-if="showClose"
+                type="button"
+                class="ms-drawer__close"
+                aria-label="Close drawer"
+                @click="handleClose"
               >
-                <slot name="description">{{ description }}</slot>
-              </p>
-            </div>
-            <button
-              v-if="showClose"
-              type="button"
-              class="ms-drawer__close"
-              aria-label="Close drawer"
-              @click="handleClose"
-            >
-              <slot name="close">✕</slot>
-            </button>
-          </slot>
-        </header>
+                <slot name="close">✕</slot>
+              </button>
+            </slot>
+          </header>
 
-        <!-- Body Content -->
-        <main class="ms-drawer__body">
-          <slot />
-        </main>
+          <!-- Body Content -->
+          <main class="ms-drawer__body">
+            <slot />
+          </main>
 
-        <!-- Footer Actions -->
-        <footer v-if="$slots.footer" class="ms-drawer__footer">
-          <slot name="footer" />
-        </footer>
+          <!-- Footer Actions -->
+          <footer v-if="$slots.footer" class="ms-drawer__footer">
+            <slot name="footer" />
+          </footer>
+        </div>
       </div>
-    </div>
+    </Transition>
   </Teleport>
 </template>

@@ -194,3 +194,39 @@
   gap: var(--ms-space-3, 12px);
   flex-shrink: 0;
 }
+
+/* Vue Transition Classes for ms-drawer */
+.ms-drawer-enter-active,
+.ms-drawer-leave-active {
+  transition: opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-drawer-enter-active .ms-drawer,
+.ms-drawer-leave-active .ms-drawer {
+  transition: transform var(--ms-motion-duration-fast) var(--ms-motion-easing-entrance);
+}
+
+.ms-drawer-enter-from,
+.ms-drawer-leave-to {
+  opacity: 0;
+}
+
+.ms-drawer-enter-from .ms-drawer--placement-right,
+.ms-drawer-leave-to .ms-drawer--placement-right {
+  transform: translateX(100%);
+}
+
+.ms-drawer-enter-from .ms-drawer--placement-left,
+.ms-drawer-leave-to .ms-drawer--placement-left {
+  transform: translateX(-100%);
+}
+
+.ms-drawer-enter-from .ms-drawer--placement-top,
+.ms-drawer-leave-to .ms-drawer--placement-top {
+  transform: translateY(-100%);
+}
+
+.ms-drawer-enter-from .ms-drawer--placement-bottom,
+.ms-drawer-leave-to .ms-drawer--placement-bottom {
+  transform: translateY(100%);
+}

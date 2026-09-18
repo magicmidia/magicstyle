@@ -35,4 +35,27 @@ describe("MsIconPicker component", () => {
     const previewSvg = wrapper.find(".ms-icon-picker__preview svg");
     expect(previewSvg.exists()).toBe(true);
   });
+
+  it("sanitizes malicious script and onload/onerror attributes in custom icons", () => {
+    const maliciousIcons = [
+      {
+        id: "xss-icon",
+        name: "XSS Test",
+        category: "Test",
+        svg: '<script>alert("xss")</script><path d="M10 10" onload="alert(1)" onerror="alert(2)" />',
+      },
+    ];
+    const wrapper = mount(MsIconPicker, {
+      props: {
+        icons: maliciousIcons,
+        modelValue: "xss-icon",
+      },
+    });
+    const html = wrapper.html();
+    expect(html).not.toContain("<script>");
+    expect(html).not.toContain("alert(");
+    expect(html).not.toContain("onload=");
+    expect(html).not.toContain("onerror=");
+    expect(html).toContain('<path d="M10 10"');
+  });
 });

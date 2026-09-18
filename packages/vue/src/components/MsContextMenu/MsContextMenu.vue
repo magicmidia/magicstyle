@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount, nextTick } from "vue";
+import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from "vue";
 import type { MsContextMenuProps, MsContextMenuEmits, MsContextMenuItem } from "./types.ts";
 
 const props = withDefaults(defineProps<MsContextMenuProps>(), {
@@ -71,12 +71,20 @@ const handleKeydown = (event: KeyboardEvent) => {
   }
 };
 
-onMounted(() => {
-  if (typeof document !== "undefined") {
-    document.addEventListener("click", handleDocumentClick);
-    document.addEventListener("keydown", handleKeydown);
-  }
-});
+watch(
+  isOpen,
+  (val) => {
+    if (typeof document === "undefined") return;
+    if (val) {
+      document.addEventListener("click", handleDocumentClick);
+      document.addEventListener("keydown", handleKeydown);
+    } else {
+      document.removeEventListener("click", handleDocumentClick);
+      document.removeEventListener("keydown", handleKeydown);
+    }
+  },
+  { immediate: true },
+);
 
 onBeforeUnmount(() => {
   if (typeof document !== "undefined") {

@@ -9,24 +9,37 @@ const props = withDefaults(defineProps<MsParallaxProps>(), {
 
 const offset = ref(0);
 const containerRef = ref<HTMLElement | null>(null);
+let rafId: number | null = null;
 
 const handleScroll = () => {
-  if (!containerRef.value) return;
-  const rect = containerRef.value.getBoundingClientRect();
-  const windowHeight = window.innerHeight;
-  if (rect.bottom >= 0 && rect.top <= windowHeight) {
-    const relativeY = rect.top - windowHeight / 2;
-    offset.value = relativeY * props.speed;
-  }
+  if (rafId !== null) return;
+  rafId = requestAnimationFrame(() => {
+    rafId = null;
+    if (!containerRef.value || typeof window === "undefined") return;
+    const rect = containerRef.value.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    if (rect.bottom >= 0 && rect.top <= windowHeight) {
+      const relativeY = rect.top - windowHeight / 2;
+      offset.value = relativeY * props.speed;
+    }
+  });
 };
 
 onMounted(() => {
-  window.addEventListener("scroll", handleScroll, { passive: true });
-  handleScroll();
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+  }
 });
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
+  if (rafId !== null) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+  if (typeof window !== "undefined") {
+    window.removeEventListener("scroll", handleScroll);
+  }
 });
 
 const formattedHeight = computed(() => {

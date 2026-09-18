@@ -345,12 +345,23 @@ watch(
   },
 );
 
-onMounted(() => {
-  document.addEventListener("pointerdown", handlePointerDown);
-});
+watch(
+  internalOpen,
+  (isOpen) => {
+    if (typeof document === "undefined") return;
+    if (isOpen) {
+      document.addEventListener("pointerdown", handlePointerDown);
+    } else {
+      document.removeEventListener("pointerdown", handlePointerDown);
+    }
+  },
+  { immediate: true },
+);
 
 onUnmounted(() => {
-  document.removeEventListener("pointerdown", handlePointerDown);
+  if (typeof document !== "undefined") {
+    document.removeEventListener("pointerdown", handlePointerDown);
+  }
 });
 </script>
 

@@ -163,7 +163,7 @@
 }
 
 .ms-card[data-interactive]:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.995);
 }
 
 /* Dividers */

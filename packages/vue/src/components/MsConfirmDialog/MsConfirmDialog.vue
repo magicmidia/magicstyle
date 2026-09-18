@@ -92,56 +92,58 @@ const dialogClasses = computed(() => [
 
 <template>
   <Teleport :to="props.teleportTo">
-    <div
-      v-if="props.open"
-      class="ms-confirm-dialog-backdrop"
-      data-ms-confirm-dialog-backdrop
-      @click="handleBackdropClick"
-    >
+    <Transition name="ms-confirm-dialog">
       <div
-        :class="dialogClasses"
-        role="alertdialog"
-        aria-modal="true"
-        :aria-labelledby="titleId"
-        :aria-describedby="message || $slots.default ? messageId : undefined"
-        data-ms-confirm-dialog
-        @click.stop
+        v-if="props.open"
+        class="ms-confirm-dialog-backdrop"
+        data-ms-confirm-dialog-backdrop
+        @click="handleBackdropClick"
       >
-        <div class="ms-confirm-dialog__body">
-          <div class="ms-confirm-dialog__icon" aria-hidden="true">
-            <slot name="icon">{{ toneIcons[props.tone] }}</slot>
-          </div>
-          <div class="ms-confirm-dialog__text-group">
-            <h3 :id="titleId" class="ms-confirm-dialog__title">
-              <slot name="title">{{ props.title }}</slot>
-            </h3>
-            <div
-              v-if="props.message || $slots.default"
-              :id="messageId"
-              class="ms-confirm-dialog__message"
-            >
-              <slot>{{ props.message }}</slot>
+        <div
+          :class="dialogClasses"
+          role="alertdialog"
+          aria-modal="true"
+          :aria-labelledby="titleId"
+          :aria-describedby="message || $slots.default ? messageId : undefined"
+          data-ms-confirm-dialog
+          @click.stop
+        >
+          <div class="ms-confirm-dialog__body">
+            <div class="ms-confirm-dialog__icon" aria-hidden="true">
+              <slot name="icon">{{ toneIcons[props.tone] }}</slot>
+            </div>
+            <div class="ms-confirm-dialog__text-group">
+              <h3 :id="titleId" class="ms-confirm-dialog__title">
+                <slot name="title">{{ props.title }}</slot>
+              </h3>
+              <div
+                v-if="props.message || $slots.default"
+                :id="messageId"
+                class="ms-confirm-dialog__message"
+              >
+                <slot>{{ props.message }}</slot>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="ms-confirm-dialog__footer">
-          <slot name="footer">
-            <MsButton variant="outline" size="sm" :disabled="props.loading" @click="handleCancel">
-              {{ props.cancelLabel }}
-            </MsButton>
-            <MsButton
-              variant="solid"
-              size="sm"
-              :tone="props.tone"
-              :loading="props.loading"
-              @click="handleConfirm"
-            >
-              {{ props.confirmLabel }}
-            </MsButton>
-          </slot>
+          <div class="ms-confirm-dialog__footer">
+            <slot name="footer">
+              <MsButton variant="outline" size="sm" :disabled="props.loading" @click="handleCancel">
+                {{ props.cancelLabel }}
+              </MsButton>
+              <MsButton
+                variant="solid"
+                size="sm"
+                :tone="props.tone"
+                :loading="props.loading"
+                @click="handleConfirm"
+              >
+                {{ props.confirmLabel }}
+              </MsButton>
+            </slot>
+          </div>
         </div>
       </div>
-    </div>
+    </Transition>
   </Teleport>
 </template>

@@ -11,29 +11,46 @@ const x = ref(-100);
 const y = ref(-100);
 const isHovering = ref(false);
 
+let rafId: number | null = null;
+
 const handleMouseMove = (e: MouseEvent) => {
   if (props.disabled) return;
-  x.value = e.clientX;
-  y.value = e.clientY;
-
+  const clientX = e.clientX;
+  const clientY = e.clientY;
   const target = e.target as HTMLElement | null;
-  if (target) {
-    const isInteractive =
-      target.tagName === "BUTTON" ||
-      target.tagName === "A" ||
-      target.tagName === "INPUT" ||
-      target.closest("button") !== null ||
-      target.closest("a") !== null;
-    isHovering.value = isInteractive;
-  }
+
+  if (rafId !== null) return;
+  rafId = requestAnimationFrame(() => {
+    rafId = null;
+    x.value = clientX;
+    y.value = clientY;
+
+    if (target) {
+      const isInteractive =
+        target.tagName === "BUTTON" ||
+        target.tagName === "A" ||
+        target.tagName === "INPUT" ||
+        target.closest("button") !== null ||
+        target.closest("a") !== null;
+      isHovering.value = isInteractive;
+    }
+  });
 };
 
 onMounted(() => {
-  window.addEventListener("mousemove", handleMouseMove);
+  if (typeof window !== "undefined") {
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+  }
 });
 
 onUnmounted(() => {
-  window.removeEventListener("mousemove", handleMouseMove);
+  if (rafId !== null) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+  if (typeof window !== "undefined") {
+    window.removeEventListener("mousemove", handleMouseMove);
+  }
 });
 
 const classes = computed(() => [

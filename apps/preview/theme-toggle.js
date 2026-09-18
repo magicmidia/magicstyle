@@ -8,6 +8,7 @@
     density: "ms-density",
     radius: "ms-radius",
     viewport: "ms-viewport",
+    motion: "ms-motion",
   };
 
   function applySettings() {
@@ -18,6 +19,8 @@
     const density = localStorage.getItem(KEYS.density) || "comfortable";
     const radius = localStorage.getItem(KEYS.radius) || "medium";
     const viewport = localStorage.getItem(KEYS.viewport) || "100%";
+    const motion =
+      localStorage.getItem(KEYS.motion) || root.getAttribute("data-ms-motion") || "default";
 
     root.dataset.msColorMode = mode;
     if (contrast === "high") {
@@ -28,6 +31,12 @@
     root.dataset.msTheme = theme;
     root.dataset.msDensity = density;
     root.dataset.msRadius = radius;
+
+    if (motion === "reduced") {
+      root.dataset.msMotion = "reduced";
+    } else {
+      delete root.dataset.msMotion;
+    }
 
     // Update toggles and selects
     document.querySelectorAll("[data-mode-toggle]").forEach((btn) => {
@@ -53,6 +62,16 @@
 
     document.querySelectorAll("[data-viewport-select]").forEach((sel) => {
       sel.value = viewport;
+    });
+
+    document.querySelectorAll("[data-motion-select]").forEach((sel) => {
+      sel.value = motion;
+    });
+
+    document.querySelectorAll("[data-motion-toggle]").forEach((btn) => {
+      const label = btn.querySelector("[data-motion-label]") || btn;
+      label.textContent =
+        motion === "reduced" ? "Movimento: Reduzido (Off)" : "Movimento: Fluido (On)";
     });
 
     // Update responsive viewport container if present
@@ -116,6 +135,23 @@
     document.querySelectorAll("[data-viewport-select]").forEach((sel) => {
       sel.addEventListener("change", (e) => {
         localStorage.setItem(KEYS.viewport, e.target.value);
+        applySettings();
+      });
+    });
+
+    // Motion controls (Fluid vs Reduced)
+    document.querySelectorAll("[data-motion-select]").forEach((sel) => {
+      sel.addEventListener("change", (e) => {
+        localStorage.setItem(KEYS.motion, e.target.value);
+        applySettings();
+      });
+    });
+
+    document.querySelectorAll("[data-motion-toggle]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const current = root.dataset.msMotion === "reduced" ? "reduced" : "default";
+        const next = current === "reduced" ? "default" : "reduced";
+        localStorage.setItem(KEYS.motion, next);
         applySettings();
       });
     });

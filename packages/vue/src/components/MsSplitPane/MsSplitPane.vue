@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, onBeforeUnmount } from "vue";
 import type { MsSplitPaneProps, MsSplitPaneEmits } from "./types.ts";
 
 const props = withDefaults(defineProps<MsSplitPaneProps>(), {
@@ -14,6 +14,7 @@ const emit = defineEmits<MsSplitPaneEmits>();
 const currentSplit = ref(props.split);
 const isDragging = ref(false);
 const containerRef = ref<HTMLElement | null>(null);
+let rafId: number | null = null;
 
 watch(
   () => props.split,
@@ -25,32 +26,60 @@ watch(
 const onMouseDown = (e: MouseEvent) => {
   e.preventDefault();
   isDragging.value = true;
-  window.addEventListener("mousemove", onMouseMove);
-  window.addEventListener("mouseup", onMouseUp);
+  if (typeof window !== "undefined") {
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+  }
 };
 
 const onMouseMove = (e: MouseEvent) => {
   if (!isDragging.value || !containerRef.value) return;
-  const rect = containerRef.value.getBoundingClientRect();
-  let percentage: number;
+  if (rafId !== null) cancelAnimationFrame(rafId);
 
-  if (props.direction === "horizontal") {
-    percentage = ((e.clientX - rect.left) / rect.width) * 100;
-  } else {
-    percentage = ((e.clientY - rect.top) / rect.height) * 100;
-  }
+  const clientX = e.clientX;
+  const clientY = e.clientY;
 
-  const clamped = Math.max(props.min, Math.min(props.max, Math.round(percentage)));
-  currentSplit.value = clamped;
-  emit("update:split", clamped);
-  emit("resize", clamped);
+  rafId = requestAnimationFrame(() => {
+    if (!containerRef.value) return;
+    const rect = containerRef.value.getBoundingClientRect();
+    let percentage: number;
+
+    if (props.direction === "horizontal") {
+      percentage = ((clientX - rect.left) / rect.width) * 100;
+    } else {
+      percentage = ((clientY - rect.top) / rect.height) * 100;
+    }
+
+    const clamped = Math.max(props.min, Math.min(props.max, Math.round(percentage)));
+    currentSplit.value = clamped;
+    emit("update:split", clamped);
+    emit("resize", clamped);
+    rafId = null;
+  });
 };
 
 const onMouseUp = () => {
   isDragging.value = false;
-  window.removeEventListener("mousemove", onMouseMove);
-  window.removeEventListener("mouseup", onMouseUp);
+  if (rafId !== null) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+  if (typeof window !== "undefined") {
+    window.removeEventListener("mousemove", onMouseMove);
+    window.removeEventListener("mouseup", onMouseUp);
+  }
 };
+
+onBeforeUnmount(() => {
+  if (rafId !== null) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+  if (typeof window !== "undefined") {
+    window.removeEventListener("mousemove", onMouseMove);
+    window.removeEventListener("mouseup", onMouseUp);
+  }
+});
 
 const classes = computed(() => ["ms-split-pane", `ms-split-pane--${props.direction}`]);
 

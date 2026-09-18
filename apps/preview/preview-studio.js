@@ -1,4 +1,4 @@
-import { createApp, ref, reactive, computed } from "vue";
+import { createApp, ref, reactive, computed, watch } from "vue";
 import {
   MsButton,
   MsButtonGroup,
@@ -267,7 +267,99 @@ const App = {
     MsGlimpse,
   },
   setup() {
-    const activeTab = ref("overview");
+    const TAB_ALIASES = {
+      button: "buttons",
+      buttons: "buttons",
+      input: "inputs",
+      inputs: "inputs",
+      select: "select",
+      badge: "badges",
+      badges: "badges",
+      card: "cards",
+      cards: "cards",
+      dialog: "dialogs",
+      dialogs: "dialogs",
+      alert: "alerts",
+      alerts: "alerts",
+      avatar: "avatars",
+      avatars: "avatars",
+      tab: "tabs",
+      tabs: "tabs",
+      table: "tables",
+      tables: "tables",
+      spinner: "spinners",
+      spinners: "spinners",
+      skeleton: "skeletons",
+      skeletons: "skeletons",
+      tooltip: "tooltips",
+      tooltips: "tooltips",
+      breadcrumb: "breadcrumbs",
+      breadcrumbs: "breadcrumbs",
+      tag: "tags",
+      tags: "tags",
+      switch: "selections",
+      checkbox: "selections",
+      radio: "selections",
+      selections: "selections",
+      textarea: "inputs",
+      field: "fields",
+      fields: "fields",
+      drawer: "drawers",
+      drawers: "drawers",
+      accordion: "accordions",
+      accordions: "accordions",
+      popover: "popovers",
+      popovers: "popovers",
+      toast: "toasts",
+      toasts: "toasts",
+      rating: "ratings",
+      ratings: "ratings",
+      list: "lists",
+      lists: "lists",
+      container: "containers",
+      containers: "containers",
+      banner: "banners",
+      banners: "banners",
+      timeline: "timeline",
+      stepper: "stepper",
+      tree: "tree",
+      menu: "dropdown",
+      dropdown: "dropdown",
+      navbar: "navbar",
+      sidebar: "sidebar",
+      footer: "footer",
+      scrollbar: "scrollbar",
+      forms: "inputs",
+    };
+
+    const getNormalizedTab = (raw) => {
+      const clean = (raw || "").toLowerCase().replace(/^#/, "").replace(/^ms-?/, "");
+      return TAB_ALIASES[clean] || clean || "overview";
+    };
+
+    const initialTab =
+      typeof window !== "undefined" && window.location.hash
+        ? getNormalizedTab(window.location.hash)
+        : "overview";
+    const activeTab = ref(initialTab || "overview");
+
+    if (typeof window !== "undefined") {
+      window.addEventListener("hashchange", () => {
+        const nextTab = getNormalizedTab(window.location.hash);
+        if (nextTab && activeTab.value !== nextTab) {
+          activeTab.value = nextTab;
+        }
+      });
+    }
+
+    watch(activeTab, (val) => {
+      if (typeof window !== "undefined") {
+        if (window.location.hash.replace(/^#/, "") !== val) {
+          window.history.replaceState(null, "", `#${val}`);
+        }
+      }
+    });
+
     const copiedImport = ref(null);
     const copyImport = (cmpName) => {
       const kebab = cmpName

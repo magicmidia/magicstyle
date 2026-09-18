@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, onBeforeUnmount } from "vue";
 import type { MsCodeBlockProps, MsCodeBlockEmits } from "./types.ts";
 
 const props = withDefaults(defineProps<MsCodeBlockProps>(), {
@@ -18,6 +18,14 @@ const emit = defineEmits<MsCodeBlockEmits>();
 
 const copied = ref(false);
 const isCollapsed = ref(props.defaultCollapsed);
+let copyTimer: ReturnType<typeof setTimeout> | null = null;
+
+onBeforeUnmount(() => {
+  if (copyTimer) {
+    clearTimeout(copyTimer);
+    copyTimer = null;
+  }
+});
 
 const lines = computed(() => {
   if (!props.code) return [1];
@@ -36,6 +44,7 @@ const classes = computed(() => [
   `ms-code-block--${props.variant}`,
   {
     "ms-code-block--wrap": props.wrapLines,
+    "ms-code-block--collapsible": props.collapsible,
     "ms-code-block--collapsed": props.collapsible && isCollapsed.value,
   },
 ]);
@@ -47,8 +56,10 @@ const handleCopy = async () => {
       await navigator.clipboard.writeText(props.code);
       copied.value = true;
       emit("copy", props.code);
-      setTimeout(() => {
+      if (copyTimer) clearTimeout(copyTimer);
+      copyTimer = setTimeout(() => {
         copied.value = false;
+        copyTimer = null;
       }, 2000);
     } catch {
       // ignore
@@ -62,7 +73,12 @@ const toggleCollapse = () => {
 };
 
 function escapeHtml(s: string): string {
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 function highlightCode(src: string, _lang?: string): string {
