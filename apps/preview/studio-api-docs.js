@@ -9,13 +9,13 @@ export const componentDocs = {
     name: "MsButton",
     category: "Ações & Navegação",
     description:
-      "Botão interativo enterprise de alta densidade e precisão. Suporta 8 tons semânticos da paleta de marca, 6 variantes visuais, indicador de carregamento, formato pill, adornos prefix/suffix e expansão total de largura.",
+      "Botão interativo enterprise de alta densidade e precisão. Suporta 8 tons semânticos da marca, 10 variantes visuais (incluindo Text e Glass), efeito onda (Wave), modificadores de geometria (Shape/Pill), modos Wide/Block/Responsive, indicador de carregamento, adornos prefix/suffix e acessibilidade completa WCAG 2.1 AAA.",
     props: [
       {
         name: "variant",
-        type: "'solid' | 'soft' | 'outline' | 'ghost' | 'dashed' | 'link' | 'squared' | 'gradient'",
+        type: "'solid' | 'soft' | 'outline' | 'text' | 'ghost' | 'glass' | 'gradient' | 'dashed' | 'link' | 'squared'",
         default: "'solid'",
-        description: "Variante visual do botão (shadcn-guided e brand signature).",
+        description: "Variante visual do botão (shadcn-guided, glassmorphism e brand signature).",
       },
       {
         name: "tone",
@@ -27,37 +27,71 @@ export const componentDocs = {
         name: "size",
         type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'",
         default: "'md'",
-        description: "Escala de altura e densidade de controle.",
+        description: "Escala de altura e densidade de controle (28px a 56px+).",
+      },
+      {
+        name: "shape",
+        type: "'square' | 'rounded' | 'rounded-sm' | 'rounded-lg' | 'pill'",
+        default: "'rounded'",
+        description: "Geometria de arredondamento de borda (0px a 9999px).",
       },
       {
         name: "pill",
         type: "boolean",
         default: "false",
-        description: "Formato arredondado em pílula (radius-full).",
+        description: "Atalho booleano para formato arredondado em pílula (radius-full).",
+      },
+      {
+        name: "wide",
+        type: "boolean",
+        default: "false",
+        description:
+          "Aplica largura mínima de 160px e padding horizontal generoso para destaque de CTA.",
+      },
+      {
+        name: "block",
+        type: "boolean",
+        default: "false",
+        description: "Preenche 100% da largura do contêiner pai.",
+      },
+      {
+        name: "responsive",
+        type: "boolean",
+        default: "false",
+        description:
+          "Inline-flex no desktop; expande automaticamente para 100% de largura em telas móveis (<= 640px).",
+      },
+      {
+        name: "wave",
+        type: "boolean",
+        default: "false",
+        description:
+          "Ativa microanimação luminosa de onda de choque radial no clique (:active::after).",
       },
       {
         name: "loading",
         type: "boolean",
         default: "false",
-        description: "Estado de carregamento com spinner e bloqueio de cliques.",
+        description:
+          "Estado de carregamento com spinner tokenizado, aria-busy e bloqueio de cliques.",
       },
       {
         name: "disabled",
         type: "boolean",
         default: "false",
-        description: "Desabilita o botão e aplica opacidade atenuada.",
+        description: "Desabilita o botão e aplica opacidade atenuada com cursor not-allowed.",
       },
       {
         name: "fullWidth",
         type: "boolean",
         default: "false",
-        description: "Estica o botão para preencher 100% da largura do contêiner.",
+        description: "Alias para esticar o botão para preencher 100% da largura do contêiner.",
       },
       {
         name: "caret",
         type: "boolean",
         default: "false",
-        description: "Renderiza chevron indicador de menu suspenso.",
+        description: "Renderiza chevron indicador de menu suspenso com rotação animada.",
       },
       {
         name: "open",
@@ -73,10 +107,13 @@ export const componentDocs = {
       },
     ],
     slots: [
-      { name: "default", description: "Rótulo textual principal do botão." },
+      { name: "default", description: "Conteúdo principal ou template rico customizado do botão." },
       { name: "prefix", description: "Adorno inicial (ícone, atalho kbd ou badge)." },
       { name: "suffix", description: "Adorno final (contador numérico ou ícone)." },
+      { name: "icon-start", description: "Slot óptico para ícone no início do botão." },
+      { name: "icon-end", description: "Slot óptico para ícone no final do botão." },
       { name: "caret", description: "Ícone chevron personalizado para dropdowns." },
+      { name: "loading", description: "Indicador de carregamento ou spinner personalizado." },
     ],
     emits: [
       {

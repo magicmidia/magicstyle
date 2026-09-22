@@ -39,6 +39,33 @@ describe("MsButton rendering", () => {
     expect(squared.find("button").attributes("data-variant")).toBe("squared");
   });
 
+  it("supports text and glass variants", () => {
+    const textBtn = mount(MsButton, { props: { variant: "text" }, slots: { default: "Text" } });
+    expect(textBtn.find("button").attributes("data-variant")).toBe("text");
+    const glassBtn = mount(MsButton, { props: { variant: "glass" }, slots: { default: "Glass" } });
+    expect(glassBtn.find("button").attributes("data-variant")).toBe("glass");
+  });
+
+  it("supports shape, wide, block, responsive and wave props", () => {
+    const wrapper = mount(MsButton, {
+      props: {
+        shape: "rounded-lg",
+        wide: true,
+        block: true,
+        responsive: true,
+        wave: true,
+      },
+      slots: { default: "Action" },
+    });
+    const attrs = wrapper.find("button").attributes();
+    expect(attrs["data-shape"]).toBe("rounded-lg");
+    expect(attrs["data-wide"]).toBeDefined();
+    expect(attrs["data-block"]).toBeDefined();
+    expect(attrs["data-responsive"]).toBeDefined();
+    expect(attrs["data-wave"]).toBeDefined();
+    expect(attrs["data-full-width"]).toBeDefined();
+  });
+
   it("renders icon slots with documented data-ms-slot hooks", () => {
     const Icon = defineComponent({ render: () => h("svg") });
     const wrapper = mount(MsButton, {

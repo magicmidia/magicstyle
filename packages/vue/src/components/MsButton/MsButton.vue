@@ -35,9 +35,14 @@ const hasLabel = computed(() => slots.default !== undefined);
     :data-tone="props.tone"
     :data-size="props.size"
     :data-pill="props.pill || undefined"
+    :data-shape="props.shape || (props.pill ? 'pill' : undefined)"
+    :data-wide="props.wide || undefined"
+    :data-block="props.block || undefined"
+    :data-responsive="props.responsive || undefined"
+    :data-wave="props.wave || undefined"
     :data-icon-only="!hasLabel || undefined"
     :data-open="props.open || undefined"
-    :data-full-width="props.fullWidth || undefined"
+    :data-full-width="props.fullWidth || props.block || undefined"
     :data-loading="props.loading || undefined"
   >
     <span v-if="$slots.prefix" class="ms-button-prefix" data-ms-slot="prefix">

@@ -410,13 +410,19 @@ const App = {
       variant: "solid",
       tone: "primary",
       size: "md",
+      shape: "rounded",
       pill: false,
+      wide: false,
+      block: false,
+      responsive: false,
+      wave: false,
       caret: false,
       loading: false,
       disabled: false,
       label: "Explorar MagicStyle",
       showPrefix: true,
       showSuffix: false,
+      customTemplate: false,
     });
     const buttonGroupProps = reactive({
       orientation: "horizontal",
@@ -426,6 +432,35 @@ const App = {
     const clickCount = ref(0);
     const onButtonClick = () => {
       clickCount.value++;
+    };
+
+    // Simulated Interactive Actions
+    const downloadState = ref("idle"); // 'idle' | 'downloading' | 'completed'
+    const downloadProgress = ref(0);
+    const triggerDownloadDemo = () => {
+      if (downloadState.value === "downloading") return;
+      downloadState.value = "downloading";
+      downloadProgress.value = 0;
+      const interval = window.setInterval(() => {
+        downloadProgress.value += 25;
+        if (downloadProgress.value >= 100) {
+          window.clearInterval(interval);
+          downloadState.value = "completed";
+          setTimeout(() => {
+            downloadState.value = "idle";
+            downloadProgress.value = 0;
+          }, 3500);
+        }
+      }, 350);
+    };
+
+    const asyncLoading = ref(false);
+    const triggerAsyncLoading = () => {
+      if (asyncLoading.value) return;
+      asyncLoading.value = true;
+      setTimeout(() => {
+        asyncLoading.value = false;
+      }, 2000);
     };
 
     // --- DROPDOWN & MENU STATE ---
@@ -979,17 +1014,40 @@ const App = {
         if (buttonProps.variant !== "solid") parts.push(`  variant="${buttonProps.variant}"`);
         if (buttonProps.tone !== "primary") parts.push(`  tone="${buttonProps.tone}"`);
         if (buttonProps.size !== "md") parts.push(`  size="${buttonProps.size}"`);
+        if (buttonProps.shape && buttonProps.shape !== "rounded")
+          parts.push(`  shape="${buttonProps.shape}"`);
         if (buttonProps.pill) parts.push("  pill");
+        if (buttonProps.wide) parts.push("  wide");
+        if (buttonProps.block) parts.push("  block");
+        if (buttonProps.responsive) parts.push("  responsive");
+        if (buttonProps.wave) parts.push("  wave");
         if (buttonProps.caret) parts.push("  caret");
         if (buttonProps.loading) parts.push("  loading");
         if (buttonProps.disabled) parts.push("  disabled");
         parts.push(">");
-        if (buttonProps.showPrefix) {
-          parts.push("  <template #prefix>⚡</template>");
-        }
-        parts.push(`  ${buttonProps.label}`);
-        if (buttonProps.showSuffix) {
-          parts.push("  <template #suffix>→</template>");
+        if (buttonProps.customTemplate) {
+          parts.push('  <div style="display: inline-flex; align-items: center; gap: 8px;">');
+          parts.push(
+            '    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></span>',
+          );
+          parts.push("    <div>");
+          parts.push(`      <div style="font-weight: 600;">${buttonProps.label}</div>`);
+          parts.push(
+            '      <div style="font-size: 11px; opacity: 0.75;">Deploy Ativo · v1.2</div>',
+          );
+          parts.push("    </div>");
+          parts.push(
+            '    <span style="font-size: 10px; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.2);">PRO</span>',
+          );
+          parts.push("  </div>");
+        } else {
+          if (buttonProps.showPrefix) {
+            parts.push("  <template #prefix>⚡</template>");
+          }
+          parts.push(`  ${buttonProps.label}`);
+          if (buttonProps.showSuffix) {
+            parts.push("  <template #suffix>→</template>");
+          }
         }
         parts.push("</MsButton>");
         parts.push("");
@@ -1809,7 +1867,23 @@ const App = {
     });
 
     // FlyonUI Docs & Navigation State
-    const subTab = ref("preview");
+    const initialSubTab =
+      typeof window !== "undefined"
+        ? new window.URLSearchParams(window.location.search).get("sub") || "preview"
+        : "preview";
+    const subTab = ref(initialSubTab);
+
+    watch(subTab, (val) => {
+      if (typeof window !== "undefined") {
+        const url = new window.URL(window.location.href);
+        if (val === "preview") {
+          url.searchParams.delete("sub");
+        } else {
+          url.searchParams.set("sub", val);
+        }
+        window.history.replaceState(null, "", url.toString());
+      }
+    });
     const sidebarFilter = ref("");
     const allTones = [
       "primary",
@@ -2186,6 +2260,11 @@ const App = {
       buttonGroupProps,
       clickCount,
       onButtonClick,
+      downloadState,
+      downloadProgress,
+      triggerDownloadDemo,
+      asyncLoading,
+      triggerAsyncLoading,
       dropdownProps,
       menuItems,
       lastSelectedAction,
@@ -2546,26 +2625,103 @@ const App = {
 
             <div class="playground-grid">
               <div class="canvas-area">
-                <div class="canvas-preview">
+                <div class="canvas-preview" :style="buttonProps.variant === 'glass' ? 'background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-color: rgba(255,255,255,0.1);' : ''">
                   <MsButton
                     :variant="buttonProps.variant"
                     :tone="buttonProps.tone"
                     :size="buttonProps.size"
+                    :shape="buttonProps.shape"
                     :pill="buttonProps.pill"
+                    :wide="buttonProps.wide"
+                    :block="buttonProps.block"
+                    :responsive="buttonProps.responsive"
+                    :wave="buttonProps.wave"
                     :caret="buttonProps.caret"
                     :loading="buttonProps.loading"
                     :disabled="buttonProps.disabled"
                     @click="onButtonClick"
                   >
-                    <template v-if="buttonProps.showPrefix" #prefix>⚡</template>
-                    {{ buttonProps.label }}
-                    <template v-if="buttonProps.showSuffix" #suffix>→</template>
+                    <template v-if="buttonProps.showPrefix && !buttonProps.customTemplate" #prefix>⚡</template>
+                    <div v-if="buttonProps.customTemplate" style="display: inline-flex; align-items: center; gap: 8px; text-align: start;">
+                      <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981;"></span>
+                      <div>
+                        <div style="font-weight: 600; line-height: 1.2;">{{ buttonProps.label }}</div>
+                        <div style="font-size: 11px; opacity: 0.75; font-weight: normal;">Deploy Ativo · v1.2</div>
+                      </div>
+                      <span style="font-size: 10px; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.2); font-weight: bold; margin-left: 4px;">PRO</span>
+                    </div>
+                    <span v-else>{{ buttonProps.label }}</span>
+                    <template v-if="buttonProps.showSuffix && !buttonProps.customTemplate" #suffix>→</template>
                   </MsButton>
                 </div>
 
                 <!-- Event log -->
-                <div class="events-log">
-                  <strong>Interações:</strong> Cliques registrados: {{ clickCount }}
+                <div class="events-log" style="display: flex; justify-content: space-between; align-items: center;">
+                  <div><strong>Interações:</strong> Cliques registrados: {{ clickCount }}</div>
+                  <button v-if="clickCount > 0" class="ms-button ms-button--close" title="Zerar contagem" aria-label="Zerar contagem" @click="clickCount = 0">
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 4l8 8M12 4l-8 8" />
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Download Trigger Demo -->
+                <div class="controls-card">
+                  <div class="controls-card-title" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>📥 Download Trigger Interativo</span>
+                    <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle); color: var(--ms-color-text-secondary); font-family: monospace;">Async Action</span>
+                  </div>
+                  <div style="display: flex; gap: var(--ms-space-3); align-items: center; flex-wrap: wrap;">
+                    <MsButton
+                      :tone="downloadState === 'completed' ? 'success' : 'primary'"
+                      variant="solid"
+                      :loading="downloadState === 'downloading'"
+                      wave
+                      @click="triggerDownloadDemo"
+                    >
+                      <template v-if="downloadState === 'completed'" #prefix>✓</template>
+                      <template v-else #prefix>💾</template>
+                      {{ downloadState === 'downloading' ? 'Baixando Arquivo... (' + downloadProgress + '%)' : downloadState === 'completed' ? 'Relatório Baixado com Sucesso!' : 'Baixar Relatório (PDF)' }}
+                      <template #suffix v-if="downloadState === 'idle'">
+                        <span style="font-size: 10px; opacity: 0.85; padding: 1px 5px; border-radius: 4px; background: rgba(0,0,0,0.15);">2.4 MB</span>
+                      </template>
+                    </MsButton>
+                    <button class="ms-button ms-button--close" title="Resetar Download" aria-label="Resetar" @click="downloadState = 'idle'; downloadProgress = 0">
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4l8 8M12 4l-8 8" />
+                      </svg>
+                    </button>
+                    <span v-if="downloadState === 'downloading'" style="font-size: 12px; color: var(--ms-color-text-muted);">
+                      Aguarde a finalização do fluxo em segundo plano...
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Async Loading Tester -->
+                <div class="controls-card">
+                  <div class="controls-card-title">⏳ Microanimações de Loading (Simulação 2s)</div>
+                  <div style="display: flex; gap: var(--ms-space-3); align-items: center; flex-wrap: wrap;">
+                    <MsButton variant="solid" tone="accent" :loading="asyncLoading" wave @click="triggerAsyncLoading">
+                      {{ asyncLoading ? 'Processando...' : 'Testar Solid Loading' }}
+                    </MsButton>
+                    <MsButton variant="outline" tone="primary" :loading="asyncLoading" @click="triggerAsyncLoading">
+                      Outline Loading
+                    </MsButton>
+                    <MsButton variant="soft" tone="success" :loading="asyncLoading" @click="triggerAsyncLoading">
+                      Soft Loading
+                    </MsButton>
+                  </div>
+                </div>
+
+                <!-- Glass Variant Showcase -->
+                <div class="controls-card">
+                  <div class="controls-card-title">💎 Glass Button (Translucidez & Backdrop-Blur)</div>
+                  <div style="padding: 16px; border-radius: var(--ms-radius-md); background: linear-gradient(135deg, #2e86de 0%, #341f97 50%, #e15f41 100%); display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                    <MsButton variant="glass" tone="primary" wave>Glass Primary</MsButton>
+                    <MsButton variant="glass" tone="accent" wave>Glass Accent</MsButton>
+                    <MsButton variant="glass" tone="neutral" shape="pill">Glass Pill</MsButton>
+                    <MsButton variant="glass" size="sm">Glass Small</MsButton>
+                  </div>
                 </div>
 
                 <!-- Group Preview -->
@@ -2612,12 +2768,37 @@ const App = {
                   </div>
                 </div>
 
-                <!-- Code Card -->
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? 'Copiado!' : 'Copiar Código' }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <!-- Close Button & Template Showcase -->
+                <div class="controls-card">
+                  <div class="controls-card-title">✕ Close Button & Template Children</div>
+                  <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                    <button class="ms-button ms-button--close" title="Botão de fechamento" aria-label="Fechar">
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4l8 8M12 4l-8 8" />
+                      </svg>
+                    </button>
+                    <MsButton variant="outline" tone="neutral" style="height: auto; padding: 8px 14px;">
+                      <div style="display: flex; align-items: center; gap: 10px; text-align: left;">
+                        <span style="font-size: 18px;">🛡️</span>
+                        <div>
+                          <div style="font-weight: 600; font-size: 12px; line-height: 1.2;">Autenticação 2FA</div>
+                          <div style="font-size: 10px; opacity: 0.7;">Chave de segurança ativa</div>
+                        </div>
+                        <span style="font-size: 9px; padding: 2px 6px; border-radius: 9999px; background: var(--ms-color-interactive-primary); color: white; margin-left: 6px;">OK</span>
+                      </div>
+                    </MsButton>
+                  </div>
+                </div>
+
+                <!-- Code Block Component from Library -->
+                <div style="margin-top: var(--ms-space-4);">
+                  <MsCodeBlock
+                    :code="generatedCode"
+                    language="html"
+                    filename="MsButton.vue"
+                    :show-line-numbers="true"
+                    :copyable="true"
+                  />
                 </div>
               </div>
 
@@ -2633,14 +2814,16 @@ const App = {
                 <div class="prop-row">
                   <label class="prop-label">Variant (Estilo)</label>
                   <select class="prop-select" v-model="buttonProps.variant">
-                    <option value="solid">solid</option>
-                    <option value="soft">soft</option>
-                    <option value="outline">outline</option>
-                    <option value="ghost">ghost</option>
+                    <option value="solid">solid (Preenchido)</option>
+                    <option value="soft">soft (Suave / Invertido)</option>
+                    <option value="outline">outline (Contorno)</option>
+                    <option value="text">text (Texto Puro)</option>
+                    <option value="ghost">ghost (Fantasma)</option>
+                    <option value="glass">glass (Vidro Fosco Transparente)</option>
+                    <option value="gradient">gradient (Assinatura)</option>
                     <option value="dashed">dashed (Tracejado)</option>
                     <option value="link">link (Link de Texto)</option>
-                    <option value="gradient">gradient</option>
-                    <option value="squared">squared</option>
+                    <option value="squared">squared (Reto)</option>
                   </select>
                 </div>
 
@@ -2670,10 +2853,41 @@ const App = {
                   </select>
                 </div>
 
+                <div class="prop-row">
+                  <label class="prop-label">Shape (Geometria de Borda)</label>
+                  <select class="prop-select" v-model="buttonProps.shape">
+                    <option value="rounded">rounded (Padrão 8px)</option>
+                    <option value="rounded-sm">rounded-sm (Sutil 4px)</option>
+                    <option value="rounded-lg">rounded-lg (Amigável 12px)</option>
+                    <option value="square">square (Reto 0px)</option>
+                    <option value="pill">pill (Pílula Total 9999px)</option>
+                  </select>
+                </div>
+
                 <div style="display: flex; flex-direction: column; gap: var(--ms-space-2); margin-top: var(--ms-space-2);">
                   <label class="prop-checkbox">
+                    <input type="checkbox" v-model="buttonProps.wave" />
+                    <span>Wave Effect (Onda de Clique)</span>
+                  </label>
+                  <label class="prop-checkbox">
+                    <input type="checkbox" v-model="buttonProps.wide" />
+                    <span>Wide Button (Mínimo 160px)</span>
+                  </label>
+                  <label class="prop-checkbox">
+                    <input type="checkbox" v-model="buttonProps.block" />
+                    <span>Block Button (100% de Largura)</span>
+                  </label>
+                  <label class="prop-checkbox">
+                    <input type="checkbox" v-model="buttonProps.responsive" />
+                    <span>Responsive (100% em Telas Móveis)</span>
+                  </label>
+                  <label class="prop-checkbox">
                     <input type="checkbox" v-model="buttonProps.pill" />
-                    <span>Formato Pill (Arredondado)</span>
+                    <span>Formato Pill (Atalho)</span>
+                  </label>
+                  <label class="prop-checkbox">
+                    <input type="checkbox" v-model="buttonProps.customTemplate" />
+                    <span>Template Customizado (Children)</span>
                   </label>
                   <label class="prop-checkbox">
                     <input type="checkbox" v-model="buttonProps.caret" />

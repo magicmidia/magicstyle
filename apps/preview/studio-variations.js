@@ -6,224 +6,545 @@
 
 export const variationsTemplatesHtml = `
 
-  <div v-if="activeTab === 'buttons'">
+<div v-if="activeTab === 'buttons'">
     
+    <!-- 1. BUTTONS: SOLID, SOFT, OUTLINE, TEXT, GRADIENT -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. Galeria dos 8 Tons Semânticos Oficiais da Marca (Variante Solid)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">8 Brand Tones</span>
+        <div class="variation-card-title" style="margin: 0;">1. Variantes Principais (Solid, Soft, Outline, Text, Gradient)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Core Variants</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <MsButton v-for="t in allTones" :key="t" :tone="t" variant="solid" size="md">
-        {{ t.toUpperCase() }} ({{ toneHexMap[t] }})
-      </MsButton>
-    
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <MsButton variant="solid" tone="primary">Solid Primary</MsButton>
+        <MsButton variant="soft" tone="primary">Soft Primary</MsButton>
+        <MsButton variant="outline" tone="primary">Outline Primary</MsButton>
+        <MsButton variant="text" tone="primary">Text Primary</MsButton>
+        <MsButton variant="gradient" tone="primary">Gradient Primary</MsButton>
+        <MsButton variant="solid" tone="accent">Solid Accent</MsButton>
+        <MsButton variant="soft" tone="success">Soft Success</MsButton>
+        <MsButton variant="outline" tone="danger">Outline Danger</MsButton>
+        <MsButton variant="text" tone="neutral">Text Neutral</MsButton>
+        <MsButton variant="gradient" tone="accent">Gradient Accent</MsButton>
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsButton tone="primary" variant="solid"&gt;PRIMARY (#2e86de)&lt;/MsButton&gt;</code></pre>
-    </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsButton variant="solid" tone="primary">Solid Primary</MsButton>
+<MsButton variant="soft" tone="primary">Soft Primary</MsButton>
+<MsButton variant="outline" tone="primary">Outline Primary</MsButton>
+<MsButton variant="text" tone="primary">Text Primary</MsButton>
+<MsButton variant="gradient" tone="primary">Gradient Primary</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
-    
+    <!-- 2. WAVE EFFECT -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">2. Galeria dos 8 Tons na Variante Soft / Sutil</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Soft Variant</span>
+        <div class="variation-card-title" style="margin: 0;">2. Efeito Onda Luminosa (Wave Effect)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Ripple Animation</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <MsButton v-for="t in allTones" :key="'soft-' + t" :tone="t" variant="soft" size="md">
-        {{ t.toUpperCase() }}
-      </MsButton>
-    
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <MsButton variant="solid" tone="primary" wave>Clique para Onda Primária</MsButton>
+        <MsButton variant="solid" tone="accent" wave>Onda Accent</MsButton>
+        <MsButton variant="solid" tone="success" wave>Onda Sucesso</MsButton>
+        <MsButton variant="solid" tone="warning" wave>Onda Atenção</MsButton>
+        <MsButton variant="solid" tone="danger" wave>Onda Perigo</MsButton>
+        <MsButton variant="outline" tone="primary" wave>Onda em Outline</MsButton>
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsButton tone="accent" variant="soft"&gt;ACCENT&lt;/MsButton&gt;</code></pre>
-    </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Prop wave ativa a expansão luminosa radial em :active::after -->
+<MsButton variant="solid" tone="primary" wave>Clique para Onda Primária</MsButton>
+<MsButton variant="outline" tone="primary" wave>Onda em Outline</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
-    
+    <!-- 3. PILLED BUTTONS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">3. Galeria dos 8 Tons na Variante Outline</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Outline Variant</span>
+        <div class="variation-card-title" style="margin: 0;">3. Botões Pílula (Pilled Buttons)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Pill Shape</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <MsButton v-for="t in allTones" :key="'out-' + t" :tone="t" variant="outline" size="md">
-        {{ t.toUpperCase() }}
-      </MsButton>
-    
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <MsButton variant="solid" tone="primary" pill>Solid Pill</MsButton>
+        <MsButton variant="soft" tone="accent" pill>Soft Pill</MsButton>
+        <MsButton variant="outline" tone="neutral" pill>Outline Pill</MsButton>
+        <MsButton variant="gradient" tone="primary" pill>Gradient Pill</MsButton>
+        <MsButton variant="solid" tone="success" size="sm" pill>Sucesso SM</MsButton>
+        <MsButton variant="solid" tone="danger" size="lg" pill>Perigo LG</MsButton>
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsButton tone="success" variant="outline"&gt;SUCCESS&lt;/MsButton&gt;</code></pre>
-    </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsButton variant="solid" tone="primary" pill>Solid Pill</MsButton>
+<MsButton variant="soft" tone="accent" pill>Soft Pill</MsButton>
+<MsButton variant="outline" tone="neutral" pill>Outline Pill</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
-    
+    <!-- 4. ROUNDED BUTTONS & SHAPES -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">4. Galeria dos 8 Tons na Variante Ghost</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Ghost Variant</span>
+        <div class="variation-card-title" style="margin: 0;">4. Botões Arredondados & Geometria de Bordas (Rounded Buttons)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Shape Tokens</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <MsButton v-for="t in allTones" :key="'ghost-' + t" :tone="t" variant="ghost" size="md">
-        {{ t.toUpperCase() }}
-      </MsButton>
-    
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <MsButton variant="solid" tone="primary" shape="square">Square (0px)</MsButton>
+        <MsButton variant="solid" tone="primary" shape="rounded-sm">Rounded SM (4px)</MsButton>
+        <MsButton variant="solid" tone="primary" shape="rounded">Rounded MD (8px)</MsButton>
+        <MsButton variant="solid" tone="primary" shape="rounded-lg">Rounded LG (12px)</MsButton>
+        <MsButton variant="solid" tone="primary" shape="pill">Pill (9999px)</MsButton>
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsButton tone="danger" variant="ghost"&gt;DANGER&lt;/MsButton&gt;</code></pre>
-    </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsButton shape="square">Square (0px)</MsButton>
+<MsButton shape="rounded-sm">Rounded SM (4px)</MsButton>
+<MsButton shape="rounded">Rounded MD (8px - Padrão)</MsButton>
+<MsButton shape="rounded-lg">Rounded LG (12px)</MsButton>
+<MsButton shape="pill">Pill (9999px)</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
-    
+    <!-- 5. STATES VARIANTS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">5. Novas Variantes: Dashed (Tracejado) & Link (Texto Sublinhado)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Dashed & Link</span>
+        <div class="variation-card-title" style="margin: 0;">5. Matriz de Estados Interativos (States Variants)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Interaction States</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <MsButton variant="dashed" tone="primary" size="md">Primary Dashed</MsButton>
-      <MsButton variant="dashed" tone="accent" size="md">Accent Dashed</MsButton>
-      <MsButton variant="dashed" tone="neutral" size="md">Adicionar Novo Item +</MsButton>
-      <MsButton variant="link" tone="primary" size="md">Link Primário</MsButton>
-      <MsButton variant="link" tone="danger" size="md">Excluir Conta</MsButton>
-      <MsButton variant="gradient" tone="primary" size="md">Gradient Signature</MsButton>
-    
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <MsButton variant="solid" tone="primary">Estado Normal</MsButton>
+        <MsButton variant="solid" tone="primary" style="outline: var(--ms-focus-ring-width, 2px) solid var(--ms-focus-ring-color, #00d2d3); outline-offset: 2px;">Foco Simulado</MsButton>
+        <MsButton variant="solid" tone="primary" loading>Carregando...</MsButton>
+        <MsButton variant="outline" tone="accent" loading>Processando</MsButton>
+        <MsButton variant="solid" tone="primary" disabled>Desabilitado</MsButton>
+        <MsButton variant="outline" tone="neutral" disabled>Outline Inativo</MsButton>
+        <MsButton variant="solid" tone="primary" caret :open="true">Menu Aberto</MsButton>
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsButton variant="dashed" tone="primary"&gt;Primary Dashed&lt;/MsButton&gt;
-&lt;MsButton variant="link" tone="primary"&gt;Link Primário&lt;/MsButton&gt;</code></pre>
-    </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsButton variant="solid" tone="primary">Normal</MsButton>
+<MsButton variant="solid" tone="primary" loading>Carregando...</MsButton>
+<MsButton variant="solid" tone="primary" disabled>Desabilitado</MsButton>
+<MsButton variant="solid" tone="primary" caret :open="true">Dropdown Aberto</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
-    
+    <!-- 6. SIZE VARIANTS (XS, SM, DEFAULT, LG, XL) -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">6. Escala Completa de Tamanhos (xs a xxl)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Sizes Scale</span>
+        <div class="variation-card-title" style="margin: 0;">6. Escala Completa de Tamanhos (xs, sm, default / md, lg, xl)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Scale Sizes</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <MsButton variant="solid" tone="primary" size="xs">XS (28px)</MsButton>
-      <MsButton variant="solid" tone="primary" size="sm">SM (32px)</MsButton>
-      <MsButton variant="solid" tone="primary" size="md">MD (40px)</MsButton>
-      <MsButton variant="solid" tone="primary" size="lg">LG (48px)</MsButton>
-      <MsButton variant="solid" tone="primary" size="xl">XL (56px)</MsButton>
-    
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <MsButton variant="solid" tone="primary" size="xs">XS (28px)</MsButton>
+        <MsButton variant="solid" tone="primary" size="sm">SM (32px)</MsButton>
+        <MsButton variant="solid" tone="primary" size="md">MD / Padrão (40px)</MsButton>
+        <MsButton variant="solid" tone="primary" size="lg">LG (48px)</MsButton>
+        <MsButton variant="solid" tone="primary" size="xl">XL (56px)</MsButton>
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsButton size="xs"&gt;XS (28px)&lt;/MsButton&gt;
-&lt;MsButton size="md"&gt;MD (40px)&lt;/MsButton&gt;
-&lt;MsButton size="xl"&gt;XL (56px)&lt;/MsButton&gt;</code></pre>
-    </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsButton size="xs">XS (28px)</MsButton>
+<MsButton size="sm">SM (32px)</MsButton>
+<MsButton size="md">MD / Default (40px)</MsButton>
+<MsButton size="lg">LG (48px)</MsButton>
+<MsButton size="xl">XL (56px)</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
-    
+    <!-- 7. WIDE BUTTON -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">7. Formatos Geométricos & Shapes</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Geometry</span>
+        <div class="variation-card-title" style="margin: 0;">7. Botão Largo para Ações em Destaque (Wide Button)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">CTA Affordance</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <MsButton variant="solid" tone="primary" size="md">Padrão (Rounded)</MsButton>
-      <MsButton variant="solid" tone="primary" size="md" pill>Formato Pílula (Pill)</MsButton>
-      <MsButton variant="solid" tone="accent" size="md" pill>Accent Pill</MsButton>
-      <MsButton variant="outline" tone="neutral" size="md" pill>Outline Pill</MsButton>
-    
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
+        <MsButton variant="solid" tone="primary" wide wave>Começar Agora</MsButton>
+        <MsButton variant="outline" tone="primary" wide>Agendar Demonstração</MsButton>
+        <MsButton variant="solid" tone="accent" wide pill wave>Criar Nova Conta</MsButton>
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsButton pill tone="primary"&gt;Formato Pílula&lt;/MsButton&gt;</code></pre>
-    </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Modificador wide aplica padding horizontal de 32px e largura mínima de 160px -->
+<MsButton variant="solid" tone="primary" wide wave>Começar Agora</MsButton>
+<MsButton variant="outline" tone="primary" wide>Agendar Demonstração</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
-    
+    <!-- 8. BLOCK BUTTON -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">8. Matriz de Estados (Loading, Desabilitado, Caret)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">States Matrix</span>
+        <div class="variation-card-title" style="margin: 0;">8. Botão em Bloco / Largura Total (Block Button)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">100% Width</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <MsButton variant="solid" tone="primary" size="md">Normal</MsButton>
-      <MsButton variant="solid" tone="primary" size="md" loading>Salvando Dados...</MsButton>
-      <MsButton variant="outline" tone="accent" size="md" loading>Carregando</MsButton>
-      <MsButton variant="solid" tone="primary" size="md" disabled>Desabilitado</MsButton>
-      <MsButton variant="solid" tone="primary" size="md" caret>Opções de Exportação</MsButton>
-    
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 420px;">
+        <MsButton variant="solid" tone="primary" block wave>Continuar para o Pagamento (100%)</MsButton>
+        <MsButton variant="outline" tone="neutral" block>Voltar para o Catálogo</MsButton>
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsButton loading&gt;Salvando...&lt;/MsButton&gt;
-&lt;MsButton disabled&gt;Desabilitado&lt;/MsButton&gt;
-&lt;MsButton caret&gt;Menu&lt;/MsButton&gt;</code></pre>
-    </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Prop block preenche 100% da largura do elemento pai -->
+<MsButton variant="solid" tone="primary" block>Continuar para o Pagamento</MsButton>
+<MsButton variant="outline" tone="neutral" block>Voltar para o Catálogo</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
-    
+    <!-- 9. RESPONSIVE BUTTON -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">9. Slots de Ícones & Adornos (Prefix e Suffix)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Adornments & Icons</span>
+        <div class="variation-card-title" style="margin: 0;">9. Botão Responsivo Adaptativo (Responsive Button)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Mobile Fluid</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <MsButton variant="solid" tone="primary" size="md">
-        <template #prefix>🚀</template> Lançar Projeto
-      </MsButton>
-      <MsButton variant="outline" tone="success" size="md">
-        <template #prefix>✓</template> Aprovado
-      </MsButton>
-      <MsButton variant="solid" tone="accent" size="md">
-        Próximo Passo <template #suffix>→</template>
-      </MsButton>
-      <MsButton variant="soft" tone="neutral" size="md">
-        <template #prefix>🔍</template> Pesquisar <template #suffix>⌘K</template>
-      </MsButton>
-    
+      <div class="variation-preview-box" style="width: 100%;">
+        <div style="padding: 12px; border: 1px dashed var(--ms-color-border-default); border-radius: var(--ms-radius-md); background: var(--ms-color-surface-sunken);">
+          <div style="font-size: 12px; color: var(--ms-color-text-muted); margin-bottom: 8px;">Redimensione o viewport para &lt; 640px para observar a expansão para bloco automático:</div>
+          <MsButton variant="solid" tone="primary" responsive wave>Ação Fluida Responsiva</MsButton>
+        </div>
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsButton tone="primary"&gt;
-  &lt;template #prefix&gt;🚀&lt;/template&gt; Lançar
-  &lt;template #suffix&gt;→&lt;/template&gt;
-&lt;/MsButton&gt;</code></pre>
-    </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Prop responsive: inline-flex no desktop, inline-size: 100% em telas < 640px -->
+<MsButton variant="solid" tone="primary" responsive>Ação Fluida Responsiva</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
-    
+    <!-- 10. ICON BUTTONS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">10. Padrões de Grupo Reais (MsButtonGroup Attached & Separated)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Composite Toolbar</span>
+        <div class="variation-card-title" style="margin: 0;">10. Botões com Ícones (Leading & Trailing Adornments)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Prefix & Suffix</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
-        <MsButtonGroup attached orientation="horizontal">
-          <MsButton variant="outline" tone="neutral">Copiar</MsButton>
-          <MsButton variant="outline" tone="neutral">Colar</MsButton>
-          <MsButton variant="outline" tone="neutral">Recortar</MsButton>
-        </MsButtonGroup>
-        <MsButtonGroup attached orientation="horizontal">
-          <MsButton variant="solid" tone="primary">Publicar Alterações</MsButton>
-          <MsButton variant="solid" tone="primary" caret aria-label="Mais opções"></MsButton>
-        </MsButtonGroup>
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <MsButton variant="solid" tone="primary">
+          <template #prefix>⚡</template> Atualizar Sistema
+        </MsButton>
+        <MsButton variant="outline" tone="success">
+          <template #prefix>✓</template> Aprovado
+        </MsButton>
+        <MsButton variant="solid" tone="accent">
+          Continuar Fluxo <template #suffix>→</template>
+        </MsButton>
+        <MsButton variant="soft" tone="neutral">
+          <template #prefix>🔍</template> Buscar <template #suffix><span style="font-family: monospace; opacity: 0.7;">⌘K</span></template>
+        </MsButton>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsButton tone="primary">
+  <template #prefix>⚡</template> Atualizar Sistema
+</MsButton>
+<MsButton tone="accent">
+  Continuar <template #suffix>→</template>
+</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsButtonGroup attached&gt;
-  &lt;MsButton variant="solid" tone="primary"&gt;Publicar&lt;/MsButton&gt;
-  &lt;MsButton variant="solid" tone="primary" caret /&gt;
-&lt;/MsButtonGroup&gt;</code></pre>
     </div>
+
+    <!-- 11. ICON ONLY -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">11. Botões Somente Ícone (Icon Only)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Aria-Label Bound</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <MsButton variant="solid" tone="primary" aria-label="Adicionar item" pill>➕</MsButton>
+        <MsButton variant="outline" tone="neutral" aria-label="Editar configuração" pill>⚙️</MsButton>
+        <MsButton variant="soft" tone="accent" aria-label="Favoritar" pill>⭐</MsButton>
+        <MsButton variant="ghost" tone="danger" aria-label="Excluir item" pill>🗑️</MsButton>
+        <MsButton variant="solid" tone="primary" size="sm" aria-label="Buscar" pill>🔍</MsButton>
+        <MsButton variant="solid" tone="primary" size="lg" aria-label="Reproduzir" pill>▶</MsButton>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Sem texto no slot padrão, o botão ganha proporção quadrada 1:1 e formato circular com pill -->
+<MsButton variant="solid" tone="primary" aria-label="Adicionar item" pill>➕</MsButton>
+<MsButton variant="outline" tone="neutral" aria-label="Configurações" pill>⚙️</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 12. LOADING BUTTONS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">12. Botões em Estado de Carregamento (Loading Buttons)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Spinner Motion</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <MsButton variant="solid" tone="primary" loading>Salvando Registro...</MsButton>
+        <MsButton variant="outline" tone="accent" loading>Enviando Arquivo...</MsButton>
+        <MsButton variant="soft" tone="success" loading>Processando Pagamento...</MsButton>
+        <MsButton variant="solid" tone="danger" loading>Excluindo...</MsButton>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Ativa spinner rotativo tokenizado com bloqueio de ponteiro e aria-busy="true" -->
+<MsButton variant="solid" tone="primary" loading>Salvando Registro...</MsButton>
+<MsButton variant="outline" tone="accent" loading>Enviando Arquivo...</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 13. GLASS BUTTON -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">13. Botões Efeito Vidro Fosco (Glass Button)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Backdrop Blur</span>
+      </div>
+      <div class="variation-preview-box" style="padding: 24px; border-radius: var(--ms-radius-lg); background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #2e86de 100%); display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
+        <MsButton variant="glass" tone="primary" wave>Glass Primary</MsButton>
+        <MsButton variant="glass" tone="accent" wave>Glass Accent</MsButton>
+        <MsButton variant="glass" tone="neutral" pill wave>Glass Pill Rounded</MsButton>
+        <MsButton variant="glass" size="sm" wave>Glass Compact</MsButton>
+        <MsButton variant="glass" size="lg" wave>Glass Hero CTA</MsButton>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Variante glass aplica backdrop-filter: blur(12px) e borda translúcida -->
+<MsButton variant="glass" tone="primary" wave>Glass Primary</MsButton>
+<MsButton variant="glass" tone="neutral" pill wave>Glass Pill Rounded</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 14. BUTTON GROUP -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">14. Grupos de Botões Estruturados (Button Group)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Toolbar Composition</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+          <MsButtonGroup attached orientation="horizontal">
+            <MsButton variant="outline" tone="neutral">Copiar</MsButton>
+            <MsButton variant="outline" tone="neutral">Colar</MsButton>
+            <MsButton variant="outline" tone="neutral">Recortar</MsButton>
+          </MsButtonGroup>
+
+          <MsButtonGroup attached orientation="horizontal">
+            <MsButton variant="solid" tone="primary">Salvar Alterações</MsButton>
+            <MsButton variant="solid" tone="primary" caret aria-label="Mais opções"></MsButton>
+          </MsButtonGroup>
+        </div>
+
+        <div>
+          <MsButtonGroup attached orientation="vertical">
+            <MsButton variant="outline" tone="neutral">Mês</MsButton>
+            <MsButton variant="outline" tone="neutral">Semana</MsButton>
+            <MsButton variant="outline" tone="neutral">Dia</MsButton>
+          </MsButtonGroup>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsButtonGroup attached orientation="horizontal">
+  <MsButton variant="outline" tone="neutral">Copiar</MsButton>
+  <MsButton variant="outline" tone="neutral">Colar</MsButton>
+</MsButtonGroup>
+
+<!-- Split button com caret -->
+<MsButtonGroup attached>
+  <MsButton variant="solid" tone="primary">Salvar</MsButton>
+  <MsButton variant="solid" tone="primary" caret aria-label="Opções" />
+</MsButtonGroup>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 15. CLOSE BUTTON -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">15. Botão de Fechamento / Dismiss (Close Button)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Dismissal 90° Hover</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; border: 1px solid var(--ms-color-border-subtle); border-radius: var(--ms-radius-md); background: var(--ms-color-surface-raised);">
+          <span>Card com fechamento rápido:</span>
+          <button class="ms-button ms-button--close" title="Fechar" aria-label="Fechar">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4l8 8M12 4l-8 8" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Botão compacto com rotação suave de 90 graus no hover -->
+<button class="ms-button ms-button--close" aria-label="Fechar">
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M4 4l8 8M12 4l-8 8" />
+  </svg>
+</button>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 16. DOWNLOAD TRIGGER -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">16. Disparador de Download (Download Trigger)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">File Transfer</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
+        <MsButton variant="solid" tone="primary" wave>
+          <template #prefix>💾</template> Baixar Relatório Completo (PDF)
+          <template #suffix><span style="font-size: 10px; opacity: 0.85; padding: 2px 6px; border-radius: 4px; background: rgba(0,0,0,0.15);">3.2 MB</span></template>
+        </MsButton>
+        <MsButton variant="outline" tone="accent" wave>
+          <template #prefix>📥</template> Exportar Dados (CSV)
+        </MsButton>
+        <MsButton variant="soft" tone="success" wave>
+          <template #prefix>📦</template> Baixar Pacote de Ativos (.ZIP)
+        </MsButton>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsButton variant="solid" tone="primary" wave>
+  <template #prefix>💾</template> Baixar Relatório (PDF)
+  <template #suffix><span class="badge">3.2 MB</span></template>
+</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 17. TEMPLATE / CUSTOM CHILDREN CONTENT -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">17. Template Customizado com Filhos Complexos (Children Slot)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Multi-line Rich Layout</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
+        <MsButton variant="outline" tone="neutral" style="height: auto; padding: 12px 18px;">
+          <div style="display: flex; align-items: center; gap: 14px; text-align: start;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--ms-color-interactive-primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">
+              JD
+            </div>
+            <div>
+              <div style="font-weight: 600; font-size: 13px; line-height: 1.3;">João Duarte da Silva</div>
+              <div style="font-size: 11px; color: var(--ms-color-text-muted);">Administrador Global · TI</div>
+            </div>
+            <span style="font-size: 10px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-feedback-success-bg, rgba(16,185,129,0.15)); color: var(--ms-color-feedback-success-text, #10b981); font-weight: 600; margin-left: 8px;">ATIVO</span>
+          </div>
+        </MsButton>
+
+        <MsButton variant="solid" tone="primary" wave style="height: auto; padding: 10px 20px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%;">
+            <div style="text-align: start;">
+              <div style="font-size: 11px; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.05em;">Plano Enterprise</div>
+              <div style="font-weight: 700; font-size: 15px;">Assinar Licença Anual</div>
+            </div>
+            <div style="font-weight: 800; font-size: 16px; padding-left: 12px; border-left: 1px solid rgba(255,255,255,0.25);">
+              R$ 299<span style="font-size: 11px; font-weight: normal;">/mês</span>
+            </div>
+          </div>
+        </MsButton>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- O conteúdo padrão de MsButton aceita qualquer estrutura rica em seu slot default -->
+<MsButton variant="outline" tone="neutral" style="height: auto; padding: 12px 18px;">
+  <div class="user-card-layout">
+    <div class="avatar">JD</div>
+    <div>
+      <strong>João Duarte</strong>
+      <p>Administrador TI</p>
     </div>
   </div>
+</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
 
+    <!-- 18. ACCESSIBILITY -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">18. Acessibilidade WAI-ARIA & Diretrizes WCAG 2.1 (Accessibility)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">A11y Compliant</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 14px; width: 100%;">
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+          <MsButton variant="solid" tone="primary" aria-label="Confirmar envio de formulário com teclado">Navegável via Tab (Enter / Space)</MsButton>
+          <MsButton variant="outline" tone="neutral" aria-expanded="false" caret>Controle Expansível (aria-expanded)</MsButton>
+          <MsButton variant="solid" tone="primary" loading aria-live="polite">Status Ocupado (aria-busy)</MsButton>
+        </div>
+        <div style="padding: 12px; border-radius: var(--ms-radius-md); background: var(--ms-color-surface-sunken); font-size: 12px; line-height: 1.6; color: var(--ms-color-text-secondary);">
+          <div style="font-weight: 600; color: var(--ms-color-text-primary); margin-bottom: 4px;">Padrões de Acessibilidade Nativos:</div>
+          <div>✓ Foco Visível: anel duplo de contraste com <MsCode tone="primary">--ms-focus-ring-color</MsCode> em navegação via teclado.</div>
+          <div>✓ Leitor de Tela: botões com <MsCode>:loading="true"</MsCode> recebem <MsCode>aria-busy="true"</MsCode> automaticamente.</div>
+          <div>✓ Estado de Menu: botões com <MsCode>caret</MsCode> sincronizam <MsCode>aria-expanded</MsCode> de acordo com a abertura do painel.</div>
+          <div>✓ Alvo de Toque: ponteiros com <MsCode>(pointer: coarse)</MsCode> elevam a altura para o piso de 44px (WCAG 2.5.5).</div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Recursos nativos de acessibilidade inclusos automaticamente -->
+<MsButton variant="solid" tone="primary" aria-label="Confirmar envio">Ação Acessível</MsButton>
+<MsButton loading aria-live="polite">Carregando...</MsButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+  </div>
 
   <div v-if="activeTab === 'dropdown'">
     

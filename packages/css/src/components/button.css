@@ -43,9 +43,92 @@
   letter-spacing: var(--ms-typography-letter-spacing-wide);
 }
 
-/* Opt-in pill shape */
-.ms-button[data-pill] {
+/* Opt-in pill shape & explicit shape modifiers */
+.ms-button[data-pill],
+.ms-button--pill,
+.ms-button[data-shape="pill"] {
   border-radius: var(--ms-radius-full);
+}
+.ms-button[data-shape="square"] {
+  border-radius: 0;
+}
+.ms-button[data-shape="rounded"],
+.ms-button--rounded {
+  border-radius: var(--ms-radius-md, 8px);
+}
+.ms-button[data-shape="rounded-sm"] {
+  border-radius: var(--ms-radius-sm, 4px);
+}
+.ms-button[data-shape="rounded-lg"] {
+  border-radius: var(--ms-radius-lg, 12px);
+}
+
+/* Wide Button: prominent call-to-action with extended horizontal breathing room */
+.ms-button[data-wide],
+.ms-button--wide {
+  padding-inline: var(--ms-space-8, 32px);
+  min-inline-size: 160px;
+}
+
+/* Block Button: full container width */
+.ms-button[data-block],
+.ms-button--block {
+  display: flex;
+  inline-size: 100%;
+  width: 100%;
+}
+
+/* Responsive Button: full width on mobile viewports, inline-flex on larger screens */
+@media (max-width: 640px) {
+  .ms-button[data-responsive],
+  .ms-button--responsive {
+    display: flex;
+    inline-size: 100%;
+    width: 100%;
+  }
+}
+
+/* Wave Effect: luminous expanding wave ripple on click */
+@keyframes ms-button-wave-spread {
+  0% {
+    box-shadow: 0 0 0 0
+      color-mix(
+        in oklch,
+        var(--_ms-btn-accent, var(--ms-color-interactive-primary)) 55%,
+        transparent
+      );
+    opacity: 1;
+  }
+  100% {
+    box-shadow: 0 0 0 10px transparent;
+    opacity: 0;
+  }
+}
+
+.ms-button[data-wave]:active::after,
+.ms-button.ms-button--wave:active::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: ms-button-wave-spread 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+/* Close Button: compact dismissal action with hover rotate */
+.ms-button--close {
+  inline-size: var(--ms-layout-field-height-sm, 32px);
+  block-size: var(--ms-layout-field-height-sm, 32px);
+  padding: 0;
+  border-radius: var(--ms-radius-full);
+  color: var(--ms-color-text-muted);
+  background-color: transparent;
+  border: none;
+}
+.ms-button--close:hover:not(:disabled) {
+  background-color: var(--ms-color-interactive-neutral-subtle);
+  color: var(--ms-color-text-primary);
+  transform: rotate(90deg);
 }
 
 /* Sizes (doc 03 §6: density is not size; height scale comes from layout tokens) */
@@ -273,6 +356,59 @@
 .ms-button--variant-link:hover:not(:disabled) {
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+/* Text Buttons: lightweight, no border, subtle background on hover */
+.ms-button[data-variant="text"],
+.ms-button--variant-text {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--_ms-btn-accent-fg-muted);
+}
+.ms-button[data-variant="text"]:hover:not(:disabled),
+.ms-button--variant-text:hover:not(:disabled) {
+  background-color: var(--_ms-btn-accent-subtle);
+  color: var(--_ms-btn-accent);
+}
+.ms-button[data-variant="text"]:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Glass Button: modern frosted translucent glassmorphism */
+.ms-button[data-variant="glass"],
+.ms-button--variant-glass {
+  background-color: color-mix(
+    in srgb,
+    var(--ms-color-surface-elevated, rgba(255, 255, 255, 0.08)) 65%,
+    transparent
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: color-mix(
+    in srgb,
+    var(--ms-color-border-subtle, rgba(255, 255, 255, 0.18)) 80%,
+    transparent
+  );
+  color: var(--ms-color-text-primary);
+  box-shadow:
+    0 4px 16px 0 rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+}
+.ms-button[data-variant="glass"]:hover:not(:disabled),
+.ms-button--variant-glass:hover:not(:disabled) {
+  background-color: color-mix(
+    in srgb,
+    var(--ms-color-surface-elevated, rgba(255, 255, 255, 0.15)) 85%,
+    transparent
+  );
+  border-color: color-mix(in srgb, var(--_ms-btn-accent) 60%, transparent);
+  color: var(--_ms-btn-accent);
+  box-shadow:
+    0 6px 20px 0 rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.28);
+}
+.ms-button[data-variant="glass"]:active:not(:disabled) {
+  transform: scale(0.98);
 }
 
 /* ---------- States ---------- */
