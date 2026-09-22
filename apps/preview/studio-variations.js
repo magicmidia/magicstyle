@@ -1367,160 +1367,1166 @@ export const variationsTemplatesHtml = `
 
   <div v-if="activeTab === 'select'">
     
+    <!-- 1. DEFAULT SELECT -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsSelect nos 8 Tons Oficiais da Marca (Bordas, Focus Ring & Tags)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">8 Brand Tones</span>
+        <div class="variation-card-title" style="margin: 0;">1. Seleção Única Padrão (Default Select)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Default Single</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; width: 100%;">
-        <div v-for="t in allTones" :key="t">
-          <label style="display: block; font-size: 11px; font-weight: bold; margin-bottom: 4px; text-transform: uppercase;">{{ t }} ({{ toneHexMap[t] }})</label>
-          <MsSelect :tone="t" :options="selectOptions" model-value="vue" size="md"></MsSelect>
-        </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <label style="font-size: 12px; font-weight: 600; color: var(--ms-color-text-secondary);">Framework Frontend:</label>
+        <MsSelect
+          v-model="singleSelectValue"
+          :options="flatSelectOptions"
+          placeholder="Selecione um framework..."
+          clearable
+        />
+        <div style="font-size: 12px; color: var(--ms-color-text-secondary);">Valor Selecionado: <MsCode>{{ singleSelectValue }}</MsCode></div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  v-model="val"
+  :options="options"
+  placeholder="Selecione um framework..."
+  clearable
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSelect tone="primary" :options="options" v-model="val" /&gt;
-&lt;MsSelect tone="accent" :options="options" v-model="val" /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 2. SIZING SCALE -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">2. Variantes de Contêiner: Outline, Filled e Flushed</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Container Variants</span>
+        <div class="variation-card-title" style="margin: 0;">2. Escala Completa de Tamanhos (Sizing: xs, sm, md, lg, xl)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Size Scale</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 460px;">
-        <div>
-          <label style="font-size: 12px; font-weight: bold;">Outline (Borda Completa - Padrão):</label>
-          <MsSelect variant="outline" tone="primary" :options="selectOptions" model-value="vue"></MsSelect>
-        </div>
-        <div>
-          <label style="font-size: 12px; font-weight: bold;">Filled (Fundo Suave Preenchido):</label>
-          <MsSelect variant="filled" tone="primary" :options="selectOptions" model-value="tokens"></MsSelect>
-        </div>
-        <div>
-          <label style="font-size: 12px; font-weight: bold;">Flushed (Apenas Linha Inferior):</label>
-          <MsSelect variant="flushed" tone="primary" :options="selectOptions" model-value="css"></MsSelect>
-        </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <MsSelect size="xs" :options="flatSelectOptions" model-value="vue" placeholder="XS (28px)" />
+        <MsSelect size="sm" :options="flatSelectOptions" model-value="vue" placeholder="SM (32px)" />
+        <MsSelect size="md" :options="flatSelectOptions" model-value="vue" placeholder="MD (40px) - Padrão" />
+        <MsSelect size="lg" :options="flatSelectOptions" model-value="vue" placeholder="LG (48px)" />
+        <MsSelect size="xl" :options="flatSelectOptions" model-value="vue" placeholder="XL (56px)" />
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect size="xs" :options="options" placeholder="XS (28px)" />
+<MsSelect size="sm" :options="options" placeholder="SM (32px)" />
+<MsSelect size="md" :options="options" placeholder="MD (40px) - Padrão" />
+<MsSelect size="lg" :options="options" placeholder="LG (48px)" />
+<MsSelect size="xl" :options="options" placeholder="XL (56px)" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSelect variant="outline" :options="options" /&gt;
-&lt;MsSelect variant="filled" :options="options" /&gt;
-&lt;MsSelect variant="flushed" :options="options" /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 3. MULTIPLE SELECTION WITH TAGS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">3. Escala Completa de Tamanhos (xs a xl)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Sizes Scale</span>
+        <div class="variation-card-title" style="margin: 0;">3. Múltipla Seleção com Tags Removíveis (Multiple Selection)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Multiple Tags</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 460px;">
-        <MsSelect size="xs" tone="primary" :options="selectOptions" model-value="vue" placeholder="XS (28px)"></MsSelect>
-        <MsSelect size="sm" tone="primary" :options="selectOptions" model-value="vue" placeholder="SM (32px)"></MsSelect>
-        <MsSelect size="md" tone="primary" :options="selectOptions" model-value="vue" placeholder="MD (40px)"></MsSelect>
-        <MsSelect size="lg" tone="primary" :options="selectOptions" model-value="vue" placeholder="LG (48px)"></MsSelect>
-        <MsSelect size="xl" tone="primary" :options="selectOptions" model-value="vue" placeholder="XL (56px)"></MsSelect>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 500px;">
+        <MsSelect
+          multiple
+          clearable
+          v-model="multiSelectValue"
+          :options="flatSelectOptions"
+          placeholder="Selecione múltiplas tecnologias..."
+        />
+        <div style="font-size: 12px; color: var(--ms-color-text-secondary);">Array Selecionado: <MsCode>{{ multiSelectValue }}</MsCode></div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  multiple
+  clearable
+  v-model="selectedList"
+  :options="options"
+  placeholder="Selecione múltiplas tecnologias..."
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSelect size="xs" :options="options" /&gt;
-&lt;MsSelect size="md" :options="options" /&gt;
-&lt;MsSelect size="xl" :options="options" /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 4. MULTIPLE WITH COUNTER -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">4. Formato Pílula (Pill Shape) & Seleção Múltipla com Tags</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Pill & Multi-Select</span>
+        <div class="variation-card-title" style="margin: 0;">4. Múltipla com Contador Compacto (Multiple With Counter)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Counter Badge</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 480px;">
-        <div>
-          <label style="font-size: 12px; font-weight: bold;">Formato Pílula (Pill):</label>
-          <MsSelect pill tone="primary" :options="selectOptions" model-value="vue"></MsSelect>
-        </div>
-        <div>
-          <label style="font-size: 12px; font-weight: bold;">Múltipla Seleção com Tags Coloridas:</label>
-          <MsSelect multiple tone="primary" :options="selectOptions" :model-value="['vue', 'tokens']" clearable></MsSelect>
-        </div>
-        <div>
-          <label style="font-size: 12px; font-weight: bold;">Tags no Tom Accent (Roxo):</label>
-          <MsSelect multiple tone="accent" :options="selectOptions" :model-value="['tokens', 'css']" clearable></MsSelect>
-        </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <p style="font-size: 12px; color: var(--ms-color-text-secondary); margin: 0;">
+          A prop <MsCode>counter</MsCode> substitui tags extensas por um badge compacto indicando o total selecionado.
+        </p>
+        <MsSelect
+          multiple
+          counter
+          :options="flatSelectOptions"
+          :model-value="[&apos;vue&apos;, &apos;tokens&apos;, &apos;css&apos;]"
+          placeholder="Selecione tecnologias..."
+        />
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  multiple
+  counter
+  :options="options"
+  :model-value="[&apos;vue&apos;, &apos;tokens&apos;, &apos;css&apos;]"
+  placeholder="Selecione tecnologias..."
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSelect pill :options="options" /&gt;
-&lt;MsSelect multiple tone="primary" :model-value="['vue', 'tokens']" clearable /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 5. CONDITIONAL COUNTER -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">5. Busca Integrada (Searchable) & Opções Agrupadas por Categoria</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Search & Groups</span>
+        <div class="variation-card-title" style="margin: 0;">5. Contador Condicional (Conditional Counter: +N Mais)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">conditional-counter="2"</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 480px;">
-        <MsSelect searchable clearable tone="primary" :options="selectOptions" model-value="vue" placeholder="Digite para filtrar opções..."></MsSelect>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <p style="font-size: 12px; color: var(--ms-color-text-secondary); margin: 0;">
+          Exibe os primeiros <MsCode>N</MsCode> itens como tags completas e agrupa os excedentes no badge numérico <MsCode>+N mais</MsCode>.
+        </p>
+        <MsSelect
+          multiple
+          :conditional-counter="2"
+          :options="flatSelectOptions"
+          :model-value="[&apos;vue&apos;, &apos;tokens&apos;, &apos;css&apos;, &apos;baseline&apos;]"
+          clearable
+          placeholder="Selecione opções..."
+        />
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  multiple
+  :conditional-counter="2"
+  :options="options"
+  :model-value="[&apos;vue&apos;, &apos;tokens&apos;, &apos;css&apos;, &apos;baseline&apos;]"
+  clearable
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSelect searchable clearable :options="groupedOptions" /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 6. MULTIPLE WITH OPTION TEMPLATE -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">6. Matriz de Estados (Carregando/Loading, Inválido/Error, Desabilitado)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">States Matrix</span>
+        <div class="variation-card-title" style="margin: 0;">6. Múltipla com Template Customizado de Opção (Option Template)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Option Slot</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 500px;">
+        <MsSelect
+          multiple
+          clearable
+          v-model="multiSelectValue"
+          :options="flatSelectOptions"
+          placeholder="Selecione com templates visuais..."
+        >
+          <template #option="{ option, selected }">
+            <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+              <span style="font-weight: 500;">{{ option.label }}</span>
+              <span v-if="selected" style="font-size: 11px; font-weight: 600; color: var(--ms-color-primary);">✓ Marcado</span>
+            </div>
+          </template>
+        </MsSelect>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  multiple
+  clearable
+  v-model="selectedItems"
+  :options="options"
+>
+  <template #option="{ option, selected }">
+    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+      <span>{{ option.label }}</span>
+      <span v-if="selected" style="font-size: 11px; color: var(--ms-color-primary);">✓ Marcado</span>
+    </div>
+  </template>
+</MsSelect>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 7. SEARCHABLE SELECT -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">7. Busca Integrada em Tempo Real (Searchable Select)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Search Filter</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <MsSelect
+          searchable
+          clearable
+          :options="flatSelectOptions"
+          placeholder="Digite para pesquisar em tempo real..."
+        />
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  searchable
+  clearable
+  :options="options"
+  placeholder="Digite para pesquisar em tempo real..."
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 8. SEARCH WITH LIMIT -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">8. Busca com Limite de Resultados (Search With Limit)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">search-limit="3"</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <p style="font-size: 12px; color: var(--ms-color-text-secondary); margin: 0;">
+          A prop <MsCode>:search-limit="3"</MsCode> restringe a lista renderizada a no máximo 3 correspondências para otimização de DOM.
+        </p>
+        <MsSelect
+          searchable
+          :search-limit="3"
+          :options="flatSelectOptions"
+          placeholder="Pesquise (máximo 3 itens visíveis)..."
+        />
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  searchable
+  :search-limit="3"
+  :options="options"
+  placeholder="Pesquise (máximo 3 itens visíveis)..."
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 9. MINIMAL SEARCH LENGTH -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">9. Comprimento Mínimo para Busca (Minimal Search Length)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">min-search-length="3"</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <p style="font-size: 12px; color: var(--ms-color-text-secondary); margin: 0;">
+          A prop <MsCode>:min-search-length="3"</MsCode> exige que o usuário digite pelo menos 3 caracteres antes de disparar o filtro.
+        </p>
+        <MsSelect
+          searchable
+          :min-search-length="3"
+          :options="flatSelectOptions"
+          placeholder="Digite ao menos 3 caracteres..."
+        />
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  searchable
+  :min-search-length="3"
+  :options="options"
+  placeholder="Digite ao menos 3 caracteres..."
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 10. DIRECT MATCH SEARCHING OFF (FUZZY SUBSTRING) -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">10. Busca Não-Estrita / Substring (Direct Match Searching Off)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Substring Matching</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <p style="font-size: 12px; color: var(--ms-color-text-secondary); margin: 0;">
+          Busca por qualquer trecho do texto (ex: digite "dial" para encontrar "Design Tokens").
+        </p>
+        <MsSelect
+          searchable
+          clearable
+          :options="flatSelectOptions"
+          placeholder="Digite qualquer trecho (ex: 'dial' ou 'aa')..."
+        />
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Busca por qualquer fragmento interno do rótulo ou descrição -->
+<MsSelect
+  searchable
+  clearable
+  :options="options"
+  placeholder="Busca por qualquer trecho..."
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 11. REMOVABLE TAGS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">11. Tags Removíveis e Tons de Marca (Removable Tags Showcase)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Tag Colors</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 16px; max-width: 500px;">
+        <div>
+          <label style="font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px;">Tom Primário (Primary Blue):</label>
+          <MsSelect multiple tone="primary" :options="flatSelectOptions" :model-value="[&apos;vue&apos;, &apos;tokens&apos;]" clearable />
+        </div>
+        <div>
+          <label style="font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px;">Tom Roxo (Accent Purple):</label>
+          <MsSelect multiple tone="accent" :options="flatSelectOptions" :model-value="[&apos;tokens&apos;, &apos;css&apos;]" clearable />
+        </div>
+        <div>
+          <label style="font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px;">Tom Sucesso (Success Emerald):</label>
+          <MsSelect multiple tone="success" :options="flatSelectOptions" :model-value="[&apos;baseline&apos;, &apos;tests&apos;]" clearable />
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect multiple tone="primary" :options="options" :model-value="[&apos;vue&apos;, &apos;tokens&apos;]" clearable />
+<MsSelect multiple tone="accent" :options="options" :model-value="[&apos;tokens&apos;, &apos;css&apos;]" clearable />
+<MsSelect multiple tone="success" :options="options" :model-value="[&apos;baseline&apos;, &apos;tests&apos;]" clearable />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 12. DISABLED -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">12. Componente Totalmente Desabilitado (Disabled)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Disabled State</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 16px; max-width: 480px;">
+        <MsSelect disabled :options="flatSelectOptions" model-value="vue" />
+        <MsSelect disabled multiple :options="flatSelectOptions" :model-value="[&apos;vue&apos;, &apos;tokens&apos;]" />
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect disabled :options="options" model-value="vue" />
+<MsSelect disabled multiple :options="options" :model-value="[&apos;vue&apos;, &apos;tokens&apos;]" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 13. FLOATING LABEL -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">13. Rótulo Flutuante (Floating Label)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Floating Label</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 16px; max-width: 480px;">
+        <MsSelect
+          floating-label="Tecnologia Principal"
+          :options="flatSelectOptions"
+          v-model="singleSelectValue"
+        />
+        <MsSelect
+          floating-label="Tecnologias Habilitadas"
+          multiple
+          :options="flatSelectOptions"
+          v-model="multiSelectValue"
+        />
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  floating-label="Tecnologia Principal"
+  :options="options"
+  v-model="val"
+/>
+<MsSelect
+  floating-label="Tecnologias Habilitadas"
+  multiple
+  :options="options"
+  v-model="multiVal"
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 14. LEADING ICONS / PREFIX -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">14. Ícones e Prefixos Iniciais (Leading Icons & Prefix)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Leading Prefix</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 16px; max-width: 480px;">
+        <div>
+          <label style="font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px;">Via Prop prefix:</label>
+          <MsSelect prefix="⚡" :options="flatSelectOptions" v-model="singleSelectValue" />
+        </div>
+        <div>
+          <label style="font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px;">Via Slot #prefix:</label>
+          <MsSelect :options="flatSelectOptions" v-model="singleSelectValue">
+            <template #prefix>
+              <span style="font-size: 14px;">🎯</span>
+            </template>
+          </MsSelect>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Via prop prefix -->
+<MsSelect prefix="⚡" :options="options" v-model="val" />
+
+<!-- Via slot #prefix -->
+<MsSelect :options="options" v-model="val">
+  <template #prefix>
+    <span>🎯</span>
+  </template>
+</MsSelect>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 15. STATES (SUCCESS, INFO, DANGER, WARNING, INVALID) -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">15. Matriz de Estados Semânticos (Success, Info, Warning, Danger, Invalid)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">State Tokens</span>
       </div>
       <div class="variation-preview-box">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; width: 100%;">
+          <div>
+            <label style="font-size: 11px; font-weight: bold; margin-bottom: 4px; display: block; color: var(--ms-color-success);">SUCESSO (SUCCESS)</label>
+            <MsSelect tone="success" :options="flatSelectOptions" model-value="vue" />
+          </div>
+          <div>
+            <label style="font-size: 11px; font-weight: bold; margin-bottom: 4px; display: block; color: var(--ms-color-info);">INFORMATIVO (INFO)</label>
+            <MsSelect tone="info" :options="flatSelectOptions" model-value="tokens" />
+          </div>
+          <div>
+            <label style="font-size: 11px; font-weight: bold; margin-bottom: 4px; display: block; color: var(--ms-color-warning);">ATENÇÃO (WARNING)</label>
+            <MsSelect tone="warning" :options="flatSelectOptions" model-value="css" />
+          </div>
+          <div>
+            <label style="font-size: 11px; font-weight: bold; margin-bottom: 4px; display: block; color: var(--ms-color-danger);">PERIGO / ERRO (DANGER)</label>
+            <MsSelect tone="danger" :options="flatSelectOptions" model-value="baseline" />
+          </div>
+          <div style="grid-column: 1 / -1;">
+            <label style="font-size: 11px; font-weight: bold; margin-bottom: 4px; display: block; color: var(--ms-color-danger);">ESTADO INVÁLIDO FORMULÁRIO (INVALID PROP)</label>
+            <MsSelect invalid tone="danger" :options="flatSelectOptions" placeholder="Seleção obrigatória inválida" />
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect tone="success" :options="options" model-value="vue" />
+<MsSelect tone="info" :options="options" model-value="tokens" />
+<MsSelect tone="warning" :options="options" model-value="css" />
+<MsSelect tone="danger" :options="options" model-value="baseline" />
+<MsSelect invalid tone="danger" :options="options" placeholder="Campo obrigatório inválido" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 16. ROUNDED SELECT (5 SHAPES) -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">16. Formas e Arredondamento (Rounded Select & Shapes)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">5 Shapes</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <div>
+          <label style="font-size: 11px; font-weight: 600; margin-bottom: 2px; display: block;">Square (0px):</label>
+          <MsSelect shape="square" :options="flatSelectOptions" model-value="vue" />
+        </div>
+        <div>
+          <label style="font-size: 11px; font-weight: 600; margin-bottom: 2px; display: block;">Rounded-SM (Suave):</label>
+          <MsSelect shape="rounded-sm" :options="flatSelectOptions" model-value="vue" />
+        </div>
+        <div>
+          <label style="font-size: 11px; font-weight: 600; margin-bottom: 2px; display: block;">Rounded (Padrão):</label>
+          <MsSelect shape="rounded" :options="flatSelectOptions" model-value="vue" />
+        </div>
+        <div>
+          <label style="font-size: 11px; font-weight: 600; margin-bottom: 2px; display: block;">Rounded-LG (Curvatura Ampla):</label>
+          <MsSelect shape="rounded-lg" :options="flatSelectOptions" model-value="vue" />
+        </div>
+        <div>
+          <label style="font-size: 11px; font-weight: 600; margin-bottom: 2px; display: block;">Pill (Pílula Total):</label>
+          <MsSelect shape="pill" :options="flatSelectOptions" model-value="vue" />
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect shape="square" :options="options" model-value="vue" />
+<MsSelect shape="rounded-sm" :options="options" model-value="vue" />
+<MsSelect shape="rounded" :options="options" model-value="vue" />
+<MsSelect shape="rounded-lg" :options="options" model-value="vue" />
+<MsSelect shape="pill" :options="options" model-value="vue" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 17. GROUPED ELEMENTS (OPTGROUP) -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">17. Opções Agrupadas por Categoria (Grouped Elements / optgroup)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">optgroup</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <MsSelect
+          :options="selectOptions"
+          v-model="singleSelectValue"
+          placeholder="Selecione em categorias agrupadas..."
+        />
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='const groupedOptions = [
+  {
+    group: "Frontend & UI",
+    options: [
+      { value: "vue", label: "Vue 3 Engine" },
+      { value: "tokens", label: "Design Tokens (DTCG)" }
+    ]
+  },
+  {
+    group: "Arquitetura & Qualidade",
+    options: [
+      { value: "baseline", label: "Baseline 1.2" },
+      { value: "tests", label: "Vitest Tests" }
+    ]
+  }
+];
+
+<MsSelect :options="groupedOptions" v-model="val" placeholder="Selecione em categorias..." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 18. PLACEHOLDER -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">18. Marcador de Posição Customizado (Placeholder)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Placeholder</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <MsSelect
+          :options="flatSelectOptions"
+          :model-value="null"
+          placeholder="Escolha a arquitetura do seu novo projeto..."
+        />
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  :options="options"
+  :model-value="null"
+  placeholder="Escolha a arquitetura do seu novo projeto..."
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 19. FIXED POSITION (FIX DROPDOWN VERTICAL PLACEMENT) -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">19. Posicionamento Vertical Fixo do Dropdown (Fixed Placement: Top & Bottom)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Placement Control</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 16px; max-width: 480px;">
+        <div>
+          <label style="font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px;">Forçar Abertura Superior (Top):</label>
+          <MsSelect placement="top" :options="flatSelectOptions" placeholder="Abre fixo para cima (Top)..." />
+        </div>
+        <div>
+          <label style="font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px;">Forçar Abertura Inferior (Bottom):</label>
+          <MsSelect placement="bottom" :options="flatSelectOptions" placeholder="Abre fixo para baixo (Bottom)..." />
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Dropdown posicionado acima do gatilho -->
+<MsSelect placement="top" :options="options" placeholder="Abre para cima" />
+
+<!-- Dropdown posicionado abaixo do gatilho -->
+<MsSelect placement="bottom" :options="options" placeholder="Abre para baixo" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 20. TRIGGER DISABLED -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">20. Gatilho Desabilitado vs Ativo (Trigger Disabled)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Trigger Disabled</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 16px; max-width: 480px;">
+        <div>
+          <label style="font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px;">Gatilho Ativo (Interativo):</label>
+          <MsSelect :options="flatSelectOptions" model-value="vue" />
+        </div>
+        <div>
+          <label style="font-size: 12px; font-weight: 600; display: block; margin-bottom: 4px;">Gatilho Travado (Disabled):</label>
+          <MsSelect disabled :options="flatSelectOptions" model-value="vue" />
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Gatilho travado com cursor not-allowed e aria-disabled="true" -->
+<MsSelect disabled :options="options" model-value="vue" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 21. OPTION DISABLED -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">21. Opções Individuais Desabilitadas (Option Disabled)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">disabled: true</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <p style="font-size: 12px; color: var(--ms-color-text-secondary); margin: 0;">
+          Itens marcados com <MsCode>disabled: true</MsCode> são esmaecidos e ignorados na navegação por teclado e cliques.
+        </p>
+        <MsSelect
+          :options="disabledSelectOptions"
+          placeholder="Abra para inspecionar opções desabilitadas..."
+        />
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='const options = [
+  { value: "vue", label: "Vue 3 Engine (Ativo)" },
+  { value: "legacy_jq", label: "jQuery 1.x (Desabilitado)", disabled: true },
+  { value: "tokens", label: "Design Tokens (Ativo)" },
+  { value: "flash", label: "Adobe Flash (Desabilitado)", disabled: true },
+];
+
+<MsSelect :options="options" placeholder="Abra para ver opções desabilitadas..." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 22. CUSTOM OPTION WITH AVATAR AND METADATA -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">22. Opção Customizada com Avatar e Metadados (Custom Option Template)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Avatar & Subtitle</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <MsSelect
+          :options="avatarSelectOptions"
+          model-value="ana"
+          placeholder="Selecione um líder..."
+        >
+          <template #selectedOption="{ option }">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <img :src="option.avatar" style="width: 22px; height: 22px; border-radius: 9999px; object-fit: cover;" />
+              <span style="font-weight: 600;">{{ option.label }}</span>
+              <span style="font-size: 11px; opacity: 0.7;">— {{ option.role }}</span>
+            </div>
+          </template>
+          <template #option="{ option }">
+            <div style="display: flex; align-items: center; gap: 10px; padding: 4px 0;">
+              <img :src="option.avatar" style="width: 30px; height: 30px; border-radius: 9999px; object-fit: cover;" />
+              <div>
+                <div style="font-weight: 600; font-size: 13px;">{{ option.label }}</div>
+                <div style="font-size: 11px; color: var(--ms-color-text-secondary);">{{ option.role }}</div>
+              </div>
+            </div>
+          </template>
+        </MsSelect>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect :options="avatarOptions" v-model="selectedUser">
+  <template #selectedOption="{ option }">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <img :src="option.avatar" style="width: 22px; height: 22px; border-radius: 9999px;" />
+      <span style="font-weight: 600;">{{ option.label }}</span>
+      <span style="font-size: 11px; opacity: 0.7;">— {{ option.role }}</span>
+    </div>
+  </template>
+  <template #option="{ option }">
+    <div style="display: flex; align-items: center; gap: 10px; padding: 4px 0;">
+      <img :src="option.avatar" style="width: 30px; height: 30px; border-radius: 9999px;" />
+      <div>
+        <div style="font-weight: 600; font-size: 13px;">{{ option.label }}</div>
+        <div style="font-size: 11px; color: var(--ms-color-text-secondary);">{{ option.role }}</div>
+      </div>
+    </div>
+  </template>
+</MsSelect>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 23. ADD / REMOVE OPTIONS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">23. Inserção e Remoção Dinâmica de Opções (Add / Remove Options)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Reactive Mutation</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <div style="display: flex; gap: 8px;">
+          <MsButton size="sm" variant="soft" tone="primary" @click="addDynamicOption">+ Adicionar Opção</MsButton>
+          <MsButton size="sm" variant="soft" tone="danger" @click="removeDynamicOption">- Remover Opção</MsButton>
+        </div>
+        <MsSelect :options="demoDynamicOptions" v-model="demoDynamicVal" />
+        <div style="font-size: 12px; color: var(--ms-color-text-secondary);">
+          Total de Opções no Array: <MsCode>{{ demoDynamicOptions.length }}</MsCode> | Valor Atual: <MsCode>{{ demoDynamicVal }}</MsCode>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<div style="display: flex; gap: 8px;">
+  <MsButton size="sm" variant="soft" tone="primary" @click="addOption">+ Adicionar Opção</MsButton>
+  <MsButton size="sm" variant="soft" tone="danger" @click="removeOption">- Remover Opção</MsButton>
+</div>
+<MsSelect :options="dynamicOptions" v-model="dynamicVal" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 24. DESTROY / REINITIALIZE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">24. Destruição e Reinicialização Reativa (Destroy / Reinitialize)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">v-if Teardown</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <div>
+          <MsButton size="sm" variant="outline" :tone="demoSelectDestroyed ? &apos;success&apos; : &apos;danger&apos;" @click="toggleSelectDestroy">
+            {{ demoSelectDestroyed ? "✓ Recriar Componente (Mount)" : "✕ Destruir Componente (Unmount)" }}
+          </MsButton>
+        </div>
+        <div v-if="!demoSelectDestroyed">
+          <MsSelect :options="flatSelectOptions" v-model="singleSelectValue" />
+        </div>
+        <div v-else style="padding: 16px; border: 1px dashed var(--ms-color-border); border-radius: 6px; text-align: center; color: var(--ms-color-text-secondary); font-size: 13px;">
+          Componente desmontado do DOM. Event listeners de clique e atalhos limpos.
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsButton @click="destroyed = !destroyed">
+  {{ destroyed ? "Recriar" : "Destruir" }}
+</MsButton>
+
+<MsSelect v-if="!destroyed" :options="options" v-model="val" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 25. SET A SINGLE VALUE WITH A SETTER -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">25. Definição Programática de Valor Único (Set Single Value With Setter)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Single Setter</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <MsButton size="xs" variant="soft" tone="primary" @click="setSingleValue(&apos;vue&apos;)">Definir Vue 3</MsButton>
+          <MsButton size="xs" variant="soft" tone="accent" @click="setSingleValue(&apos;tokens&apos;)">Definir Tokens</MsButton>
+          <MsButton size="xs" variant="soft" tone="success" @click="setSingleValue(&apos;css&apos;)">Definir CSS</MsButton>
+          <MsButton size="xs" variant="soft" tone="neutral" @click="setSingleValue(null)">Limpar (null)</MsButton>
+        </div>
+        <MsSelect :options="flatSelectOptions" v-model="setterSingleVal" clearable />
+        <div style="font-size: 12px; color: var(--ms-color-text-secondary);">Valor Atual no Model: <MsCode>{{ setterSingleVal }}</MsCode></div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<div style="display: flex; gap: 8px;">
+  <MsButton size="xs" @click="setVal(&apos;vue&apos;)">Definir Vue 3</MsButton>
+  <MsButton size="xs" @click="setVal(&apos;tokens&apos;)">Definir Tokens</MsButton>
+  <MsButton size="xs" @click="setVal(null)">Limpar</MsButton>
+</div>
+<MsSelect :options="options" v-model="setterSingleVal" clearable />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 26. SET A MULTIPLE VALUE WITH A SETTER -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">26. Definição Programática de Valores Múltiplos (Set Multiple Value With Setter)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Multi Setter</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 500px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <MsButton size="xs" variant="soft" tone="primary" @click="setMultiValue([&apos;vue&apos;, &apos;tokens&apos;])">[Vue, Tokens]</MsButton>
+          <MsButton size="xs" variant="soft" tone="accent" @click="setMultiValue([&apos;tokens&apos;, &apos;css&apos;, &apos;baseline&apos;])">[Tokens, CSS, Baseline]</MsButton>
+          <MsButton size="xs" variant="soft" tone="success" @click="setMultiValue([&apos;vue&apos;, &apos;tokens&apos;, &apos;css&apos;, &apos;baseline&apos;, &apos;a11y&apos;, &apos;tests&apos;])">Selecionar Todos</MsButton>
+          <MsButton size="xs" variant="soft" tone="danger" @click="setMultiValue([])">Limpar Tudo</MsButton>
+        </div>
+        <MsSelect multiple :options="flatSelectOptions" v-model="setterMultiVal" clearable />
+        <div style="font-size: 12px; color: var(--ms-color-text-secondary);">Array no Model: <MsCode>{{ setterMultiVal }}</MsCode></div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<div style="display: flex; gap: 8px;">
+  <MsButton size="xs" @click="setMulti([&apos;vue&apos;, &apos;tokens&apos;])">[Vue, Tokens]</MsButton>
+  <MsButton size="xs" @click="setMulti([&apos;vue&apos;, &apos;tokens&apos;, &apos;css&apos;, &apos;baseline&apos;])">Selecionar Todos</MsButton>
+  <MsButton size="xs" @click="setMulti([])">Limpar Tudo</MsButton>
+</div>
+<MsSelect multiple :options="options" v-model="setterMultiVal" clearable />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 27. REMOTE DATA SELECTION WITH MULTIPLE OPTIONS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">27. Seleção Remota Assíncrona com Múltiplas Opções (Remote Data Selection)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Async Multi</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 500px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 12px; color: var(--ms-color-text-secondary);">Simulação de carregamento da API:</span>
+          <MsButton size="xs" variant="soft" tone="primary" @click="simulateRemoteSearch" :loading="remoteLoading">
+            Simular Recarregamento
+          </MsButton>
+        </div>
+        <MsSelect
+          multiple
+          searchable
+          :loading="remoteLoading"
+          :options="remoteOptions"
+          v-model="remoteMultiVal"
+          placeholder="Selecione desenvolvedores da API remota..."
+          clearable
+        />
+        <div style="font-size: 12px; color: var(--ms-color-text-secondary);">Selecionados: <MsCode>{{ remoteMultiVal }}</MsCode></div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  multiple
+  searchable
+  :loading="remoteLoading"
+  :options="remoteOptions"
+  v-model="selectedRemoteUsers"
+  placeholder="Buscar membros da API..."
+  clearable
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 28. REMOTE DATA WITH REMOVABLE TAGS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">28. Dados Remotos com Tags Removíveis (Remote Data Removable Tags)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Async Tags</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 500px;">
+        <MsSelect
+          multiple
+          clearable
+          tone="accent"
+          :options="remoteOptions"
+          v-model="remoteMultiVal"
+          placeholder="Gerenciar tags de usuários remotos..."
+        />
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  multiple
+  clearable
+  tone="accent"
+  :options="remoteOptions"
+  v-model="remoteMultiVal"
+  placeholder="Gerenciar tags de usuários remotos..."
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 29. MULTIPLE SELECTION WITH OPTION TEMPLATE (REMOTE DATA) -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">29. Seleção Múltipla Remota com Template de Opção (Remote Option Template)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Remote Template</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 500px;">
+        <MsSelect
+          multiple
+          :options="remoteOptions"
+          v-model="remoteMultiVal"
+          placeholder="Selecione colaboradores remotos..."
+        >
+          <template #option="{ option, selected }">
+            <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <img :src="option.avatar" style="width: 22px; height: 22px; border-radius: 9999px; object-fit: cover;" />
+                <span style="font-weight: 500;">{{ option.label }}</span>
+              </div>
+              <span style="font-size: 11px; color: var(--ms-color-text-secondary);">{{ option.role }}</span>
+            </div>
+          </template>
+        </MsSelect>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  multiple
+  :options="remoteOptions"
+  v-model="remoteMultiVal"
+>
+  <template #option="{ option, selected }">
+    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <img :src="option.avatar" style="width: 22px; height: 22px; border-radius: 9999px;" />
+        <span>{{ option.label }}</span>
+      </div>
+      <span style="font-size: 11px;">{{ option.role }}</span>
+    </div>
+  </template>
+</MsSelect>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 30. MULTIPLE WITH CONDITIONAL COUNTER (REMOTE DATA) -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">30. Múltipla Remota com Contador Condicional (Remote Conditional Counter)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Remote +N Mais</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 500px;">
+        <MsSelect
+          multiple
+          :conditional-counter="2"
+          :options="remoteOptions"
+          v-model="remoteMultiCounterVal"
+          placeholder="Selecione colaboradores remotos..."
+          clearable
+        />
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  multiple
+  :conditional-counter="2"
+  :options="remoteOptions"
+  v-model="remoteMultiCounterVal"
+  clearable
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 31. CUSTOM TEMPLATE WITH AVATARS (REMOTE DATA) -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">31. Template Remoto Completo com Avatares e Papéis (Remote Custom Avatars)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Remote Avatars</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 12px; max-width: 480px;">
+        <MsSelect
+          searchable
+          :options="remoteOptions"
+          v-model="remoteCustomVal"
+          placeholder="Selecione um líder técnico..."
+        >
+          <template #selectedOption="{ option }">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <img :src="option.avatar" style="width: 22px; height: 22px; border-radius: 9999px; object-fit: cover;" />
+              <span style="font-weight: 600;">{{ option.label }}</span>
+              <span style="font-size: 11px; opacity: 0.7;">— {{ option.role }}</span>
+            </div>
+          </template>
+          <template #option="{ option }">
+            <div style="display: flex; align-items: center; gap: 10px; padding: 4px 0;">
+              <img :src="option.avatar" style="width: 28px; height: 28px; border-radius: 9999px; object-fit: cover;" />
+              <div>
+                <div style="font-weight: 600;">{{ option.label }}</div>
+                <div style="font-size: 11px; color: var(--ms-color-text-secondary);">{{ option.role }}</div>
+              </div>
+            </div>
+          </template>
+        </MsSelect>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSelect
+  searchable
+  :options="remoteOptions"
+  v-model="remoteCustomVal"
+  placeholder="Selecione um líder técnico..."
+>
+  <template #selectedOption="{ option }">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <img :src="option.avatar" style="width: 22px; height: 22px; border-radius: 9999px;" />
+      <span style="font-weight: 600;">{{ option.label }}</span>
+      <span style="font-size: 11px; opacity: 0.7;">— {{ option.role }}</span>
+    </div>
+  </template>
+  <template #option="{ option }">
+    <div style="display: flex; align-items: center; gap: 10px; padding: 4px 0;">
+      <img :src="option.avatar" style="width: 28px; height: 28px; border-radius: 9999px;" />
+      <div>
+        <div style="font-weight: 600;">{{ option.label }}</div>
+        <div style="font-size: 11px; color: var(--ms-color-text-secondary);">{{ option.role }}</div>
+      </div>
+    </div>
+  </template>
+</MsSelect>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 32. MODAL & OVERFLOW: HIDDEN (TELEPORT ESCAPE) -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">32. Dropdown com Escape de Overflow & Modal (Teleport Escape)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">teleport="body"</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-direction: column; gap: 16px; max-width: 500px;">
+        <p style="font-size: 12px; color: var(--ms-color-text-secondary); margin: 0;">
+          A prop <MsCode>teleport="body"</MsCode> transfere o dropdown via <MsCode>&lt;Teleport&gt;</MsCode> para o topo da árvore DOM, calculando posição absoluta/fixed via <MsCode>getBoundingClientRect()</MsCode>. Isso impede o corte de conteúdo em contêineres com <MsCode>overflow: hidden</MsCode> ou janelas modais.
+        </p>
         
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; width: 100%;">
-        <div>
-          <label style="font-size: 11px; font-weight: bold; margin-bottom: 4px; display: block;">CARREGAMENTO ASSÍNCRONO</label>
-          <MsSelect loading tone="primary" :options="selectOptions" placeholder="Carregando opções da API..."></MsSelect>
+        <!-- Box com overflow: hidden proposital -->
+        <div style="padding: 16px; border: 1px dashed var(--ms-color-primary); border-radius: 8px; overflow: hidden; background: var(--ms-color-surface-subtle, #f8fafc);">
+          <div style="font-size: 11px; font-weight: bold; margin-bottom: 8px; color: var(--ms-color-primary);">CONTÊINER COM OVERFLOW: HIDDEN</div>
+          <MsSelect
+            teleport="body"
+            :options="flatSelectOptions"
+            placeholder="Clique aqui: o menu escapa do overflow..."
+          />
         </div>
+
         <div>
-          <label style="font-size: 11px; font-weight: bold; margin-bottom: 4px; display: block;">ESTADO INVÁLIDO (ERRO)</label>
-          <MsSelect invalid tone="danger" :options="selectOptions" placeholder="Seleção obrigatória"></MsSelect>
+          <MsButton variant="solid" tone="primary" @click="showSelectModal = true">
+            Abrir em Janela Modal (MsDialog)
+          </MsButton>
         </div>
-        <div>
-          <label style="font-size: 11px; font-weight: bold; margin-bottom: 4px; display: block;">DESABILITADO</label>
-          <MsSelect disabled tone="neutral" :options="selectOptions" model-value="vue"></MsSelect>
-        </div>
+
+        <MsDialog :open="showSelectModal" @update:open="showSelectModal = $event" title="Seleção em Janela Modal" size="sm">
+          <div style="display: flex; flex-direction: column; gap: 12px; padding: 8px 0;">
+            <p style="font-size: 13px; color: var(--ms-color-text-secondary); margin: 0;">
+              O dropdown dentro da modal utiliza <MsCode>teleport="body"</MsCode> para sobrepor a camada z-index sem clipping:
+            </p>
+            <MsSelect
+              teleport="body"
+              :options="flatSelectOptions"
+              v-model="modalSelectVal"
+              placeholder="Escolha dentro da modal..."
+            />
+          </div>
+        </MsDialog>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- O dropdown escapa perfeitamente de contêineres com overflow: hidden via Teleport para body -->
+<div style="overflow: hidden; border: 1px dashed var(--ms-color-border); padding: 16px; border-radius: 8px;">
+  <MsSelect teleport="body" :options="options" placeholder="Dropdown escapa do overflow..." />
+</div>
+
+<!-- Em Janelas Modais (MsDialog): -->
+<MsDialog :open="showModal" @update:open="showModal = $event" title="Configurações">
+  <MsSelect teleport="body" :options="options" v-model="modalVal" />
+</MsDialog>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSelect loading placeholder="Carregando..." /&gt;
-&lt;MsSelect invalid tone="danger" /&gt;
-&lt;MsSelect disabled /&gt;</code></pre>
     </div>
-    </div>
+
   </div>
 
 

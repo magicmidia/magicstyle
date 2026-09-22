@@ -859,14 +859,22 @@ const App = {
       size: "md",
       tone: "primary",
       variant: "outline",
+      shape: "rounded",
       pill: false,
+      placement: "bottom",
       multiple: false,
+      counter: false,
+      useConditionalCounter: false,
+      conditionalCounter: 2,
       searchable: true,
       clearable: true,
       loading: false,
       creatable: false,
       disabled: false,
       invalid: false,
+      floatingLabel: "",
+      showPrefix: false,
+      customTemplate: false,
       placeholder: "Escolha uma tecnologia...",
     });
     const singleSelectValue = ref("vue");
@@ -901,6 +909,140 @@ const App = {
         ],
       },
     ];
+
+    const flatSelectOptions = [
+      { value: "vue", label: "Vue 3 Engine", description: "Composition API & TypeScript" },
+      { value: "tokens", label: "Design Tokens", description: "DTCG e Dial de raio" },
+      { value: "css", label: "CSS Layers", description: "Variáveis semânticas BEM" },
+      { value: "baseline", label: "Baseline 1.2", description: "Governança normativa 01-28" },
+      { value: "a11y", label: "WAI-ARIA 1.2", description: "WCAG 2.2 AA" },
+      { value: "tests", label: "Vitest Tests", description: "Qualidade No Fake Green" },
+    ];
+
+    const disabledSelectOptions = [
+      { value: "vue", label: "Vue 3 Engine (Ativo)" },
+      { value: "legacy_jq", label: "jQuery 1.x (Desabilitado)", disabled: true },
+      { value: "tokens", label: "Design Tokens (Ativo)" },
+      { value: "flash", label: "Adobe Flash (Desabilitado)", disabled: true },
+      { value: "css", label: "CSS Layers (Ativo)" },
+    ];
+
+    const avatarSelectOptions = [
+      {
+        value: "ana",
+        label: "Ana Silva",
+        role: "Design Systems Lead",
+        avatar:
+          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces",
+      },
+      {
+        value: "carlos",
+        label: "Carlos Souza",
+        role: "Frontend Architect",
+        avatar:
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=faces",
+      },
+      {
+        value: "mariana",
+        label: "Mariana Costa",
+        role: "Senior A11y Engineer",
+        avatar:
+          "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces",
+      },
+      {
+        value: "lucas",
+        label: "Lucas Pereira",
+        role: "Core QA Specialist",
+        avatar:
+          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces",
+      },
+    ];
+
+    const demoDynamicOptions = ref([
+      { value: "opt-1", label: "Elemento Alpha" },
+      { value: "opt-2", label: "Elemento Beta" },
+      { value: "opt-3", label: "Elemento Gama" },
+    ]);
+    const demoDynamicVal = ref("opt-1");
+    let dynamicCount = 4;
+    function addDynamicOption() {
+      demoDynamicOptions.value.push({
+        value: `opt-${dynamicCount}`,
+        label: `Elemento ${dynamicCount}`,
+      });
+      dynamicCount++;
+    }
+    function removeDynamicOption() {
+      if (demoDynamicOptions.value.length > 1) {
+        demoDynamicOptions.value.pop();
+      }
+    }
+
+    const demoSelectDestroyed = ref(false);
+    function toggleSelectDestroy() {
+      demoSelectDestroyed.value = !demoSelectDestroyed.value;
+    }
+
+    const setterSingleVal = ref("vue");
+    const setterMultiVal = ref(["vue", "tokens"]);
+    function setSingleValue(val) {
+      setterSingleVal.value = val;
+    }
+    function setMultiValue(vals) {
+      setterMultiVal.value = vals;
+    }
+
+    const remoteLoading = ref(false);
+    const remoteOptions = ref([
+      {
+        value: "usr-1",
+        label: "Beatriz Santos",
+        role: "Core Maintainer",
+        avatar:
+          "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop&crop=faces",
+      },
+      {
+        value: "usr-2",
+        label: "Guilherme Ramos",
+        role: "Design Token Lead",
+        avatar:
+          "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop&crop=faces",
+      },
+      {
+        value: "usr-3",
+        label: "Larissa Dias",
+        role: "A11y Specialist",
+        avatar:
+          "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&h=100&fit=crop&crop=faces",
+      },
+      {
+        value: "usr-4",
+        label: "Rodrigo Toledo",
+        role: "DevOps Engineer",
+        avatar:
+          "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100&h=100&fit=crop&crop=faces",
+      },
+      {
+        value: "usr-5",
+        label: "Camila Fernandes",
+        role: "Staff Engineer",
+        avatar:
+          "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=faces",
+      },
+    ]);
+    const remoteMultiVal = ref(["usr-1", "usr-2"]);
+    const remoteMultiCounterVal = ref(["usr-1", "usr-2", "usr-3"]);
+    const remoteCustomVal = ref("usr-1");
+
+    function simulateRemoteSearch() {
+      remoteLoading.value = true;
+      setTimeout(() => {
+        remoteLoading.value = false;
+      }, 500);
+    }
+
+    const showSelectModal = ref(false);
+    const modalSelectVal = ref("vue");
 
     // --- TABLE STATE ---
     const tableProps = reactive({
@@ -1428,12 +1570,47 @@ const App = {
       }
 
       if (activeTab.value === "select") {
-        return `<MsSelect
-  v-model="${selectProps.multiple ? "multiSelectValue" : "singleSelectValue"}"
-  size="${selectProps.size}"${selectProps.tone !== "primary" ? `\n  tone="${selectProps.tone}"` : ""}${selectProps.variant !== "outline" ? `\n  variant="${selectProps.variant}"` : ""}${selectProps.pill ? "\n  pill" : ""}${selectProps.multiple ? "\n  multiple" : ""}${selectProps.searchable ? "\n  searchable" : ""}${selectProps.clearable ? "\n  clearable" : ""}${selectProps.loading ? "\n  loading" : ""}${selectProps.creatable ? "\n  creatable" : ""}${selectProps.disabled ? "\n  disabled" : ""}${selectProps.invalid ? "\n  invalid" : ""}
-  placeholder="${selectProps.placeholder}"
-  :options="selectOptions"
-/>`;
+        const parts = ["<MsSelect"];
+        parts.push(
+          `  v-model="${selectProps.multiple ? "multiSelectValue" : "singleSelectValue"}"`,
+        );
+        if (selectProps.size !== "md") parts.push(`  size="${selectProps.size}"`);
+        if (selectProps.tone !== "primary") parts.push(`  tone="${selectProps.tone}"`);
+        if (selectProps.variant !== "outline") parts.push(`  variant="${selectProps.variant}"`);
+        if (selectProps.shape !== "rounded") parts.push(`  shape="${selectProps.shape}"`);
+        if (selectProps.pill) parts.push("  pill");
+        if (selectProps.placement !== "bottom")
+          parts.push(`  placement="${selectProps.placement}"`);
+        if (selectProps.multiple) parts.push("  multiple");
+        if (selectProps.counter) parts.push("  counter");
+        if (selectProps.useConditionalCounter)
+          parts.push(`  :conditional-counter="${selectProps.conditionalCounter}"`);
+        if (selectProps.searchable) parts.push("  searchable");
+        if (selectProps.clearable) parts.push("  clearable");
+        if (selectProps.loading) parts.push("  loading");
+        if (selectProps.creatable) parts.push("  creatable");
+        if (selectProps.disabled) parts.push("  disabled");
+        if (selectProps.invalid) parts.push("  invalid");
+        if (selectProps.floatingLabel)
+          parts.push(`  floating-label="${selectProps.floatingLabel}"`);
+        if (selectProps.placeholder) parts.push(`  placeholder="${selectProps.placeholder}"`);
+        parts.push('  :options="selectOptions"');
+        if (selectProps.showPrefix || selectProps.customTemplate) {
+          parts.push(">");
+          if (selectProps.showPrefix) parts.push("  <template #prefix>🚀</template>");
+          if (selectProps.customTemplate) {
+            parts.push('  <template #option="{ option }">');
+            parts.push('    <div class="ms-select__option-meta">');
+            parts.push('      <span class="ms-select__option-avatar">⭐</span>');
+            parts.push("      <div><strong>{{ option.label }}</strong></div>");
+            parts.push("    </div>");
+            parts.push("  </template>");
+          }
+          parts.push("</MsSelect>");
+        } else {
+          parts.push("/>");
+        }
+        return parts.join("\n");
       }
 
       if (activeTab.value === "tables") {
@@ -2321,6 +2498,27 @@ const App = {
       singleSelectValue,
       multiSelectValue,
       selectOptions,
+      flatSelectOptions,
+      disabledSelectOptions,
+      avatarSelectOptions,
+      demoDynamicOptions,
+      demoDynamicVal,
+      addDynamicOption,
+      removeDynamicOption,
+      demoSelectDestroyed,
+      toggleSelectDestroy,
+      setterSingleVal,
+      setterMultiVal,
+      setSingleValue,
+      setMultiValue,
+      remoteLoading,
+      remoteOptions,
+      remoteMultiVal,
+      remoteMultiCounterVal,
+      remoteCustomVal,
+      simulateRemoteSearch,
+      showSelectModal,
+      modalSelectVal,
       tableProps,
       tableSortDirection,
       tableRows,
@@ -6242,24 +6440,42 @@ const App = {
                       :size="selectProps.size"
                       :tone="selectProps.tone"
                       :variant="selectProps.variant"
+                      :shape="selectProps.shape"
                       :pill="selectProps.pill"
+                      :placement="selectProps.placement"
                       :multiple="true"
+                      :counter="selectProps.counter"
+                      :conditional-counter="selectProps.useConditionalCounter ? selectProps.conditionalCounter : undefined"
                       :searchable="selectProps.searchable"
                       :clearable="selectProps.clearable"
                       :loading="selectProps.loading"
                       :creatable="selectProps.creatable"
                       :disabled="selectProps.disabled"
                       :invalid="selectProps.invalid"
+                      :floating-label="selectProps.floatingLabel || undefined"
                       :placeholder="selectProps.placeholder"
                       :options="selectOptions"
-                    />
+                    >
+                      <template v-if="selectProps.showPrefix" #prefix>🚀</template>
+                      <template v-if="selectProps.customTemplate" #option="{ option }">
+                        <div class="ms-select__option-meta">
+                          <span class="ms-select__option-avatar">⭐</span>
+                          <div>
+                            <div><strong>{{ option.label }}</strong></div>
+                            <div v-if="option.description" class="ms-select__option-sub">{{ option.description }}</div>
+                          </div>
+                        </div>
+                      </template>
+                    </MsSelect>
                     <MsSelect
                       v-else
                       v-model="singleSelectValue"
                       :size="selectProps.size"
                       :tone="selectProps.tone"
                       :variant="selectProps.variant"
+                      :shape="selectProps.shape"
                       :pill="selectProps.pill"
+                      :placement="selectProps.placement"
                       :multiple="false"
                       :searchable="selectProps.searchable"
                       :clearable="selectProps.clearable"
@@ -6267,9 +6483,21 @@ const App = {
                       :creatable="selectProps.creatable"
                       :disabled="selectProps.disabled"
                       :invalid="selectProps.invalid"
+                      :floating-label="selectProps.floatingLabel || undefined"
                       :placeholder="selectProps.placeholder"
                       :options="selectOptions"
-                    />
+                    >
+                      <template v-if="selectProps.showPrefix" #prefix>🚀</template>
+                      <template v-if="selectProps.customTemplate" #option="{ option }">
+                        <div class="ms-select__option-meta">
+                          <span class="ms-select__option-avatar">⭐</span>
+                          <div>
+                            <div><strong>{{ option.label }}</strong></div>
+                            <div v-if="option.description" class="ms-select__option-sub">{{ option.description }}</div>
+                          </div>
+                        </div>
+                      </template>
+                    </MsSelect>
 
                     <div style="font-size: var(--ms-font-size-body-sm); color: var(--ms-color-text-muted); padding: 8px 12px; background: var(--ms-color-surface-sunken, #f1f5f9); border-radius: var(--ms-radius-sm);">
                       <strong>Valor Selecionado:</strong> {{ selectProps.multiple ? JSON.stringify(multiSelectValue) : JSON.stringify(singleSelectValue) }}
@@ -6277,14 +6505,14 @@ const App = {
                   </div>
                 </div>
 
-                <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
-                  </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: var(--ms-space-4);">
+                  <MsCodeBlock
+                    :code="generatedCode"
+                    language="html"
+                    filename="MsSelect.vue"
+                    :show-line-numbers="true"
+                    :copyable="true"
+                  />
                 </div>
               </div>
 
@@ -6326,6 +6554,30 @@ const App = {
                 </div>
 
                 <div class="prop-row">
+                  <label class="prop-label">Geometria de Bordas (shape)</label>
+                  <select class="prop-select" v-model="selectProps.shape">
+                    <option value="rounded">rounded (Padrão 6px)</option>
+                    <option value="rounded-sm">rounded-sm (4px)</option>
+                    <option value="rounded-lg">rounded-lg (12px)</option>
+                    <option value="square">square (0px Reto)</option>
+                    <option value="pill">pill (9999px Circular)</option>
+                  </select>
+                </div>
+
+                <div class="prop-row">
+                  <label class="prop-label">Direcionamento de Abertura (placement)</label>
+                  <select class="prop-select" v-model="selectProps.placement">
+                    <option value="bottom">bottom (Abre para baixo)</option>
+                    <option value="top">top (Abre para cima)</option>
+                  </select>
+                </div>
+
+                <div class="prop-row">
+                  <label class="prop-label">Floating Label (Rótulo Flutuante)</label>
+                  <input class="prop-input" type="text" v-model="selectProps.floatingLabel" placeholder="Ex: Tecnologia Principal" />
+                </div>
+
+                <div class="prop-row">
                   <label class="prop-label">Placeholder</label>
                   <input class="prop-input" type="text" v-model="selectProps.placeholder" />
                 </div>
@@ -6338,6 +6590,22 @@ const App = {
                   <label class="prop-checkbox">
                     <input type="checkbox" v-model="selectProps.multiple" />
                     <span>Múltipla Seleção (multiple / tags)</span>
+                  </label>
+                  <label v-if="selectProps.multiple" class="prop-checkbox">
+                    <input type="checkbox" v-model="selectProps.counter" />
+                    <span>Modo Resumo Contador (counter)</span>
+                  </label>
+                  <label v-if="selectProps.multiple" class="prop-checkbox">
+                    <input type="checkbox" v-model="selectProps.useConditionalCounter" />
+                    <span>Contador Condicional (conditionalCounter)</span>
+                  </label>
+                  <label class="prop-checkbox">
+                    <input type="checkbox" v-model="selectProps.showPrefix" />
+                    <span>Ícone de Prefixo (#prefix)</span>
+                  </label>
+                  <label class="prop-checkbox">
+                    <input type="checkbox" v-model="selectProps.customTemplate" />
+                    <span>Template Rico com Avatar (#option)</span>
                   </label>
                   <label class="prop-checkbox">
                     <input type="checkbox" v-model="selectProps.searchable" />

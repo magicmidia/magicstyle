@@ -260,4 +260,91 @@ describe("MsSelect (Doc 04 §9, Doc 05 §6, Doc 27 §6)", () => {
     expect(root.classes()).toContain("ms-select--variant-filled");
     expect(root.classes()).toContain("ms-select--tone-accent");
   });
+
+  it("supports shape modifiers (square, rounded-sm, rounded-lg, pill)", () => {
+    const wrapperSquare = mount(MsSelect, {
+      props: { options: sampleOptions, shape: "square" },
+    });
+    expect(wrapperSquare.find(".ms-select").classes()).toContain("ms-select--shape-square");
+
+    const wrapperRoundedLg = mount(MsSelect, {
+      props: { options: sampleOptions, shape: "rounded-lg" },
+    });
+    expect(wrapperRoundedLg.find(".ms-select").classes()).toContain("ms-select--shape-rounded-lg");
+  });
+
+  it("supports placement prop (top / bottom)", () => {
+    const wrapper = mount(MsSelect, {
+      props: { options: sampleOptions, placement: "top" },
+    });
+    expect(wrapper.find(".ms-select").classes()).toContain("ms-select--placement-top");
+    expect(wrapper.find(".ms-select").attributes("data-placement")).toBe("top");
+  });
+
+  it("supports multiple with counter and conditional counter", () => {
+    const wrapperCounter = mount(MsSelect, {
+      props: {
+        options: sampleOptions,
+        multiple: true,
+        counter: true,
+        modelValue: ["vue", "react", "svelte"],
+      },
+    });
+    expect(wrapperCounter.find(".ms-select__counter").text()).toContain("3 selecionados");
+
+    const wrapperConditional = mount(MsSelect, {
+      props: {
+        options: sampleOptions,
+        multiple: true,
+        conditionalCounter: 1,
+        modelValue: ["vue", "react", "svelte"],
+      },
+    });
+    const tags = wrapperConditional.findAll(".ms-select__tag");
+    expect(tags.length).toBe(1);
+    expect(wrapperConditional.find(".ms-select__counter").text()).toContain("+2 mais");
+  });
+
+  it("supports search limit and minimal search length", async () => {
+    const wrapper = mount(MsSelect, {
+      props: {
+        options: sampleOptions,
+        searchable: true,
+        open: true,
+        minSearchLength: 3,
+        searchLimit: 2,
+      },
+    });
+
+    const searchInput = wrapper.find(".ms-select__search-input");
+    // With query length < 3, it should not filter
+    await searchInput.setValue("re");
+    // All 2 limited options displayed
+    expect(wrapper.findAll('[role="option"]').length).toBe(2);
+
+    // With query length >= 3, it filters and respects limit
+    await searchInput.setValue("eac");
+    const filtered = wrapper.findAll('[role="option"]');
+    expect(filtered.length).toBe(1);
+    expect(filtered[0]!.text()).toContain("React");
+  });
+
+  it("supports floating label and custom slots", () => {
+    const wrapper = mount(MsSelect, {
+      props: {
+        options: sampleOptions,
+        floatingLabel: "Framework",
+        modelValue: "vue",
+      },
+      slots: {
+        prefix: () => "🚀",
+        selectedOption: ({ option }: { option: MsSelectOption }) => `🌟 ${option.label}`,
+      },
+    });
+
+    expect(wrapper.find(".ms-select").classes()).toContain("ms-select--floating");
+    expect(wrapper.find(".ms-select__floating-label").text()).toBe("Framework");
+    expect(wrapper.find(".ms-select__prefix").text()).toBe("🚀");
+    expect(wrapper.find(".ms-select__single-value").text()).toBe("🌟 Vue.js");
+  });
 });

@@ -14,12 +14,16 @@ const props = withDefaults(defineProps<MsSelectProps>(), {
   size: "md",
   tone: "primary",
   variant: "outline",
+  shape: "rounded",
   pill: false,
   multiple: false,
   searchable: false,
   clearable: false,
   loading: false,
   creatable: false,
+  placement: "bottom",
+  minSearchLength: 0,
+  counter: false,
   placeholder: "Select...",
   searchPlaceholder: "Search...",
 });
@@ -29,16 +33,25 @@ const emit = defineEmits<MsSelectEmits>();
 defineSlots<{
   default?(): unknown;
   option?(props: { option: MsSelectOption; selected: boolean; active: boolean }): unknown;
+  selectedOption?(props: { option: MsSelectOption }): unknown;
+  value?(props: {
+    selectedOptions: MsSelectOption[];
+    remove: (val: string | number) => void;
+  }): unknown;
   tag?(props: { option: MsSelectOption; remove: () => void }): unknown;
+  counter?(props: { count: number; total: number }): unknown;
+  prefix?(): unknown;
+  icon?(): unknown;
+  suffix?(): unknown;
   empty?(): unknown;
   header?(): unknown;
   footer?(): unknown;
-  icon?(): unknown;
 }>();
 
 const rootRef = ref<HTMLElement | null>(null);
 const searchInputRef = ref<HTMLInputElement | null>(null);
 const triggerRef = ref<HTMLElement | null>(null);
+const dropdownRef = ref<HTMLElement | null>(null);
 
 const field = useFieldContext();
 const baseId = useMsId("ms-select");
@@ -46,6 +59,18 @@ const resolvedId = computed(() => field?.controlId ?? baseId);
 const listboxId = computed(() => `${resolvedId.value}-listbox`);
 const describedBy = computed(() => field?.describedBy());
 const isInvalid = computed(() => props.invalid === true || field?.invalid() === true);
+
+const effectiveShape = computed(() => (props.pill ? "pill" : props.shape || "rounded"));
+
+const rootClasses = computed(() => [
+  props.tone ? `ms-select--tone-${props.tone}` : null,
+  props.variant ? `ms-select--variant-${props.variant}` : null,
+  effectiveShape.value ? `ms-select--shape-${effectiveShape.value}` : null,
+  effectiveShape.value === "pill" ? "ms-select--pill" : null,
+  props.placement ? `ms-select--placement-${props.placement}` : null,
+  props.floatingLabel ? "ms-select--floating" : null,
+  props.size ? `ms-select--size-${props.size}` : null,
+]);
 
 const instance = getCurrentInstance();
 const hasOpenProp = computed(() => {
@@ -85,11 +110,34 @@ const allFlatOptions = computed<MsSelectOption[]>(() => {
   return list;
 });
 
-// Filtered options based on search query
+function applySearchLimit(list: MsSelectOptionOrGroup[]): MsSelectOptionOrGroup[] {
+  if (!props.searchLimit || props.searchLimit <= 0) return list;
+  let count = 0;
+  const limited: MsSelectOptionOrGroup[] = [];
+  for (const item of list) {
+    if (count >= props.searchLimit) break;
+    if (isGroup(item)) {
+      const remaining = props.searchLimit - count;
+      const sliced = item.options.slice(0, remaining);
+      if (sliced.length > 0) {
+        limited.push({ group: item.group, options: sliced });
+        count += sliced.length;
+      }
+    } else {
+      limited.push(item);
+      count++;
+    }
+  }
+  return limited;
+}
+
+// Filtered options based on search query, minSearchLength and searchLimit
 const filteredGroupsOrOptions = computed<MsSelectOptionOrGroup[]>(() => {
   if (!props.options) return [];
   const query = searchQuery.value.trim().toLowerCase();
-  if (!query) return props.options;
+  if (!query || (props.minSearchLength && query.length < props.minSearchLength)) {
+    return applySearchLimit(props.options);
+  }
 
   const defaultFilter = (opt: MsSelectOption, q: string) => opt.label.toLowerCase().includes(q);
   const filterFn = props.filterFn ?? defaultFilter;
@@ -107,7 +155,7 @@ const filteredGroupsOrOptions = computed<MsSelectOptionOrGroup[]>(() => {
       }
     }
   }
-  return result;
+  return applySearchLimit(result);
 });
 
 // Flat list of selectable options currently visible
@@ -144,6 +192,32 @@ const selectedOptions = computed<MsSelectOption[]>(() => {
   });
 });
 
+// Multiple Tag & Counter calculations
+const isCounterOnly = computed(() => {
+  return props.multiple && (props.counter === true || props.maxTagCount === 0);
+});
+
+const effectiveMaxTags = computed(() => {
+  if (props.conditionalCounter !== undefined) {
+    return selectedOptions.value.length > props.conditionalCounter
+      ? props.conditionalCounter
+      : undefined;
+  }
+  return props.maxTagCount;
+});
+
+const displayedTags = computed(() => {
+  if (isCounterOnly.value) return [];
+  if (effectiveMaxTags.value !== undefined && effectiveMaxTags.value > 0) {
+    return selectedOptions.value.slice(0, effectiveMaxTags.value);
+  }
+  return selectedOptions.value;
+});
+
+const remainingTagCount = computed(() => {
+  return selectedOptions.value.length - displayedTags.value.length;
+});
+
 function isSelected(opt: MsSelectOption): boolean {
   return selectedValues.value.includes(opt.value);
 }
@@ -163,6 +237,45 @@ const activeOptionId = computed(() => {
   return opt ? getOptionId(opt.value) : undefined;
 });
 
+// Teleport support & fixed positioning
+const teleportTarget = computed(() => {
+  if (typeof props.teleport === "string") return props.teleport;
+  if (props.teleport) return "body";
+  return undefined;
+});
+
+const dropdownStyle = ref<Record<string, string>>({});
+
+function updateDropdownPosition(): void {
+  if (!teleportTarget.value || !triggerRef.value || !isDropdownOpen.value) return;
+  const rect = triggerRef.value.getBoundingClientRect();
+  const placement = props.placement || "bottom";
+
+  if (placement === "top") {
+    dropdownStyle.value = {
+      position: "fixed",
+      bottom: `${window.innerHeight - rect.top + 4}px`,
+      left: `${rect.left}px`,
+      width: `${rect.width}px`,
+      zIndex: "1050",
+    };
+  } else {
+    dropdownStyle.value = {
+      position: "fixed",
+      top: `${rect.bottom + 4}px`,
+      left: `${rect.left}px`,
+      width: `${rect.width}px`,
+      zIndex: "1050",
+    };
+  }
+}
+
+function handleWindowUpdate(): void {
+  if (isDropdownOpen.value && teleportTarget.value) {
+    updateDropdownPosition();
+  }
+}
+
 function setOpen(open: boolean): void {
   if (props.disabled) return;
   if (internalOpen.value !== open) {
@@ -174,6 +287,7 @@ function setOpen(open: boolean): void {
     searchQuery.value = "";
     highlightedIndex.value = visibleSelectableOptions.value.findIndex((o) => !o.disabled);
     nextTick(() => {
+      updateDropdownPosition();
       searchInputRef.value?.focus();
     });
   } else {
@@ -329,11 +443,10 @@ function onDropdownKeyDown(event: KeyboardEvent): void {
 }
 
 function handlePointerDown(event: PointerEvent): void {
-  if (!rootRef.value) return;
   const target = event.target as Node;
-  if (!rootRef.value.contains(target)) {
-    setOpen(false);
-  }
+  if (rootRef.value?.contains(target)) return;
+  if (dropdownRef.value?.contains(target)) return;
+  setOpen(false);
 }
 
 watch(
@@ -351,8 +464,16 @@ watch(
     if (typeof document === "undefined") return;
     if (isOpen) {
       document.addEventListener("pointerdown", handlePointerDown);
+      if (teleportTarget.value && typeof window !== "undefined") {
+        window.addEventListener("scroll", handleWindowUpdate, true);
+        window.addEventListener("resize", handleWindowUpdate);
+      }
     } else {
       document.removeEventListener("pointerdown", handlePointerDown);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("scroll", handleWindowUpdate, true);
+        window.removeEventListener("resize", handleWindowUpdate);
+      }
     }
   },
   { immediate: true },
@@ -362,6 +483,10 @@ onUnmounted(() => {
   if (typeof document !== "undefined") {
     document.removeEventListener("pointerdown", handlePointerDown);
   }
+  if (typeof window !== "undefined") {
+    window.removeEventListener("scroll", handleWindowUpdate, true);
+    window.removeEventListener("resize", handleWindowUpdate);
+  }
 });
 </script>
 
@@ -369,17 +494,16 @@ onUnmounted(() => {
   <div
     ref="rootRef"
     class="ms-select"
-    :class="[
-      props.tone ? `ms-select--tone-${props.tone}` : null,
-      props.variant ? `ms-select--variant-${props.variant}` : null,
-      props.pill ? 'ms-select--pill' : null,
-      props.size ? `ms-select--size-${props.size}` : null,
-    ]"
+    :class="rootClasses"
     :data-size="props.size"
     :data-tone="props.tone"
     :data-variant="props.variant"
-    :data-pill="props.pill || undefined"
+    :data-shape="effectiveShape"
+    :data-placement="props.placement"
+    :data-pill="effectiveShape === 'pill' || undefined"
     :data-disabled="props.disabled || undefined"
+    :data-focused="isDropdownOpen || undefined"
+    :data-has-value="selectedValues.length > 0 || undefined"
   >
     <!-- Hidden input for form submission -->
     <input
@@ -410,54 +534,93 @@ onUnmounted(() => {
       @keydown="onTriggerKeyDown"
     >
       <div class="ms-select__value-container">
-        <!-- Optional Prepend Slot / Icon -->
-        <slot name="icon" />
+        <!-- Optional Prepend / Prefix Slot / Icon -->
+        <div v-if="props.prefix || $slots.prefix || $slots.icon" class="ms-select__prefix">
+          <slot name="prefix">
+            <slot name="icon">{{ props.prefix }}</slot>
+          </slot>
+        </div>
 
-        <!-- Multi-select Tags -->
-        <template v-if="props.multiple && selectedOptions.length > 0">
-          <span v-for="opt in selectedOptions" :key="String(opt.value)" class="ms-select__tag">
-            <slot name="tag" :option="opt" :remove="() => removeValue(opt.value)">
-              <span class="ms-select__tag-label">{{ opt.label }}</span>
-              <button
-                v-if="!props.disabled"
-                type="button"
-                class="ms-select__tag-remove"
-                :aria-label="`Remove ${opt.label}`"
-                @click="removeValue(opt.value, $event)"
-              >
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
+        <!-- Floating Label -->
+        <label v-if="props.floatingLabel" class="ms-select__floating-label">
+          {{ props.floatingLabel }}
+        </label>
+
+        <!-- Custom Full Value Slot -->
+        <slot
+          v-if="$slots.value"
+          name="value"
+          :selected-options="selectedOptions"
+          :remove="removeValue"
+        />
+
+        <!-- Multi-select Tags / Counter -->
+        <template v-else-if="props.multiple && selectedOptions.length > 0">
+          <!-- Counter only mode -->
+          <template v-if="isCounterOnly">
+            <slot name="counter" :count="selectedOptions.length" :total="allFlatOptions.length">
+              <span class="ms-select__counter"> {{ selectedOptions.length }} selecionados </span>
+            </slot>
+          </template>
+
+          <!-- Normal / Conditional tags -->
+          <template v-else>
+            <span v-for="opt in displayedTags" :key="String(opt.value)" class="ms-select__tag">
+              <slot name="tag" :option="opt" :remove="() => removeValue(opt.value)">
+                <span class="ms-select__tag-label">{{ opt.label }}</span>
+                <button
+                  v-if="!props.disabled"
+                  type="button"
+                  class="ms-select__tag-remove"
+                  :aria-label="`Remove ${opt.label}`"
+                  @click="removeValue(opt.value, $event)"
                 >
-                  <path d="M4 4l8 8m0-8l-8 8" />
-                </svg>
-              </button>
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M4 4l8 8m0-8l-8 8" />
+                  </svg>
+                </button>
+              </slot>
+            </span>
+
+            <!-- Remaining counter badge if conditional counter is active -->
+            <span v-if="remainingTagCount > 0" class="ms-select__counter">
+              +{{ remainingTagCount }} mais
+            </span>
+          </template>
+        </template>
+
+        <!-- Single Selected Value -->
+        <template v-else-if="!props.multiple && selectedOptions.length > 0 && selectedOptions[0]">
+          <span class="ms-select__single-value">
+            <slot name="selectedOption" :option="selectedOptions[0]">
+              {{ selectedOptions[0].label }}
             </slot>
           </span>
         </template>
 
-        <!-- Single Selected Value -->
-        <template v-else-if="!props.multiple && selectedOptions.length > 0">
-          <span class="ms-select__single-value">
-            {{ selectedOptions[0]?.label }}
-          </span>
-        </template>
-
         <!-- Placeholder -->
-        <span v-if="selectedOptions.length === 0" class="ms-select__placeholder">
+        <span
+          v-if="selectedOptions.length === 0 && (!props.floatingLabel || isDropdownOpen)"
+          class="ms-select__placeholder"
+        >
           {{ props.placeholder }}
         </span>
       </div>
 
       <!-- Actions (Clear, Loading Spinner, Chevron) -->
       <div class="ms-select__actions">
+        <slot name="suffix" />
+
         <button
           v-if="props.clearable && selectedValues.length > 0 && !props.disabled"
           type="button"
@@ -509,131 +672,150 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- Dropdown Popup -->
-    <div v-if="isDropdownOpen" class="ms-select__dropdown" @keydown="onDropdownKeyDown">
-      <slot name="header" />
-
-      <!-- Search Box inside Dropdown -->
-      <div v-if="props.searchable" class="ms-select__search-box">
-        <input
-          ref="searchInputRef"
-          type="text"
-          class="ms-select__search-input"
-          :placeholder="props.searchPlaceholder"
-          :value="searchQuery"
-          @input="onSearchInput"
-        />
-      </div>
-
-      <!-- Listbox -->
-      <ul
-        :id="listboxId"
-        class="ms-select__listbox"
-        role="listbox"
-        :aria-multiselectable="props.multiple || undefined"
+    <!-- Dropdown Popup with optional Teleport -->
+    <Teleport :disabled="!teleportTarget" :to="teleportTarget || 'body'">
+      <div
+        v-if="isDropdownOpen"
+        ref="dropdownRef"
+        class="ms-select__dropdown"
+        :class="{ 'ms-select__dropdown--teleported': Boolean(teleportTarget) }"
+        :style="teleportTarget ? dropdownStyle : undefined"
+        :data-placement="props.placement"
+        @keydown="onDropdownKeyDown"
       >
-        <template v-if="filteredGroupsOrOptions.length > 0">
-          <template
-            v-for="(item, itemIdx) in filteredGroupsOrOptions"
-            :key="isGroup(item) ? item.group : String(item.value)"
-          >
-            <!-- Option Group -->
-            <li v-if="isGroup(item)" class="ms-select__group" role="group" :aria-label="item.group">
-              <div class="ms-select__group-label">{{ item.group }}</div>
-              <ul class="ms-select__listbox" role="none">
-                <li
-                  v-for="opt in item.options"
-                  :id="getOptionId(opt.value)"
-                  :key="String(opt.value)"
-                  class="ms-select__option"
-                  role="option"
-                  :aria-selected="isSelected(opt)"
-                  :aria-disabled="opt.disabled || undefined"
-                  :data-highlighted="
-                    visibleSelectableOptions[highlightedIndex]?.value === opt.value || undefined
-                  "
-                  :data-disabled="opt.disabled || undefined"
-                  @click="selectOption(opt)"
-                >
-                  <slot
-                    name="option"
-                    :option="opt"
-                    :selected="isSelected(opt)"
-                    :active="visibleSelectableOptions[highlightedIndex]?.value === opt.value"
-                  >
-                    <div class="ms-select__option-content">
-                      <span class="ms-select__option-label">{{ opt.label }}</span>
-                      <span v-if="opt.description" class="ms-select__option-desc">
-                        {{ opt.description }}
-                      </span>
-                    </div>
-                    <span v-if="isSelected(opt)" class="ms-select__option-check" aria-hidden="true">
-                      ✓
-                    </span>
-                  </slot>
-                </li>
-              </ul>
-            </li>
+        <slot name="header" />
 
-            <!-- Standalone Option -->
-            <li
-              v-else
-              :id="getOptionId(item.value)"
-              class="ms-select__option"
-              role="option"
-              :aria-selected="isSelected(item)"
-              :aria-disabled="item.disabled || undefined"
-              :data-highlighted="
-                visibleSelectableOptions[highlightedIndex]?.value === item.value || undefined
-              "
-              :data-disabled="item.disabled || undefined"
-              @click="selectOption(item)"
+        <!-- Search Box inside Dropdown -->
+        <div v-if="props.searchable" class="ms-select__search-box">
+          <input
+            ref="searchInputRef"
+            type="text"
+            class="ms-select__search-input"
+            :placeholder="props.searchPlaceholder"
+            :value="searchQuery"
+            @input="onSearchInput"
+          />
+        </div>
+
+        <!-- Listbox -->
+        <ul
+          :id="listboxId"
+          class="ms-select__listbox"
+          role="listbox"
+          :aria-multiselectable="props.multiple || undefined"
+        >
+          <template v-if="filteredGroupsOrOptions.length > 0">
+            <template
+              v-for="item in filteredGroupsOrOptions"
+              :key="isGroup(item) ? item.group : String(item.value)"
             >
-              <slot
-                name="option"
-                :option="item"
-                :selected="isSelected(item)"
-                :active="visibleSelectableOptions[highlightedIndex]?.value === item.value"
+              <!-- Option Group -->
+              <li
+                v-if="isGroup(item)"
+                class="ms-select__group"
+                role="group"
+                :aria-label="item.group"
               >
-                <div class="ms-select__option-content">
-                  <span class="ms-select__option-label">{{ item.label }}</span>
-                  <span v-if="item.description" class="ms-select__option-desc">
-                    {{ item.description }}
+                <div class="ms-select__group-label">{{ item.group }}</div>
+                <ul class="ms-select__listbox" role="none">
+                  <li
+                    v-for="opt in item.options"
+                    :id="getOptionId(opt.value)"
+                    :key="String(opt.value)"
+                    class="ms-select__option"
+                    role="option"
+                    :aria-selected="isSelected(opt)"
+                    :aria-disabled="opt.disabled || undefined"
+                    :data-highlighted="
+                      visibleSelectableOptions[highlightedIndex]?.value === opt.value || undefined
+                    "
+                    :data-disabled="opt.disabled || undefined"
+                    @click="selectOption(opt)"
+                  >
+                    <slot
+                      name="option"
+                      :option="opt"
+                      :selected="isSelected(opt)"
+                      :active="visibleSelectableOptions[highlightedIndex]?.value === opt.value"
+                    >
+                      <div class="ms-select__option-content">
+                        <span class="ms-select__option-label">{{ opt.label }}</span>
+                        <span v-if="opt.description" class="ms-select__option-desc">
+                          {{ opt.description }}
+                        </span>
+                      </div>
+                      <span
+                        v-if="isSelected(opt)"
+                        class="ms-select__option-check"
+                        aria-hidden="true"
+                      >
+                        ✓
+                      </span>
+                    </slot>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Standalone Option -->
+              <li
+                v-else
+                :id="getOptionId(item.value)"
+                class="ms-select__option"
+                role="option"
+                :aria-selected="isSelected(item)"
+                :aria-disabled="item.disabled || undefined"
+                :data-highlighted="
+                  visibleSelectableOptions[highlightedIndex]?.value === item.value || undefined
+                "
+                :data-disabled="item.disabled || undefined"
+                @click="selectOption(item)"
+              >
+                <slot
+                  name="option"
+                  :option="item"
+                  :selected="isSelected(item)"
+                  :active="visibleSelectableOptions[highlightedIndex]?.value === item.value"
+                >
+                  <div class="ms-select__option-content">
+                    <span class="ms-select__option-label">{{ item.label }}</span>
+                    <span v-if="item.description" class="ms-select__option-desc">
+                      {{ item.description }}
+                    </span>
+                  </div>
+                  <span v-if="isSelected(item)" class="ms-select__option-check" aria-hidden="true">
+                    ✓
                   </span>
-                </div>
-                <span v-if="isSelected(item)" class="ms-select__option-check" aria-hidden="true">
-                  ✓
-                </span>
-              </slot>
-            </li>
+                </slot>
+              </li>
+            </template>
           </template>
-        </template>
 
-        <!-- Empty State -->
-        <li
-          v-else-if="!props.creatable || hasExactMatch"
-          class="ms-select__empty"
-          role="presentation"
-        >
-          <slot name="empty">No options found</slot>
-        </li>
-
-        <!-- Creatable option when query has no exact match -->
-        <li
-          v-if="props.creatable && !hasExactMatch && searchQuery.trim()"
-          class="ms-select__create"
-          role="button"
-          tabindex="0"
-          @click="handleCreate"
-        >
-          <span
-            >Create "<strong>{{ searchQuery }}</strong
-            >"</span
+          <!-- Empty State -->
+          <li
+            v-else-if="!props.creatable || hasExactMatch"
+            class="ms-select__empty"
+            role="presentation"
           >
-        </li>
-      </ul>
+            <slot name="empty">No options found</slot>
+          </li>
 
-      <slot name="footer" />
-    </div>
+          <!-- Creatable option when query has no exact match -->
+          <li
+            v-if="props.creatable && !hasExactMatch && searchQuery.trim()"
+            class="ms-select__create"
+            role="button"
+            tabindex="0"
+            @click="handleCreate"
+          >
+            <span
+              >Create "<strong>{{ searchQuery }}</strong
+              >"</span
+            >
+          </li>
+        </ul>
+
+        <slot name="footer" />
+      </div>
+    </Teleport>
   </div>
 </template>

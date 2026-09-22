@@ -710,19 +710,32 @@ export const componentDocs = {
         name: "options",
         type: "(MsSelectOption | MsSelectGroup)[]",
         default: "[]",
-        description: "Lista de opções ou grupos de opções { value, label, group, disabled }.",
+        description:
+          "Lista de opções ou grupos de opções { value, label, group, disabled, description }.",
       },
       {
         name: "multiple",
         type: "boolean",
         default: "false",
-        description: "Permite selecionar múltiplos valores como tags.",
+        description: "Permite selecionar múltiplos valores com tags ou contadores.",
       },
       {
         name: "searchable",
         type: "boolean",
         default: "false",
-        description: "Exibe campo de busca interno para filtrar opções.",
+        description: "Exibe campo de busca interno para filtrar opções em tempo real.",
+      },
+      {
+        name: "searchLimit",
+        type: "number",
+        default: "undefined",
+        description: "Limita a quantidade máxima de opções filtradas renderizadas no dropdown.",
+      },
+      {
+        name: "minSearchLength",
+        type: "number",
+        default: "0",
+        description: "Quantidade mínima de caracteres digitados para iniciar a filtragem.",
       },
       {
         name: "clearable",
@@ -734,7 +747,7 @@ export const componentDocs = {
         name: "loading",
         type: "boolean",
         default: "false",
-        description: "Exibe indicador de carregamento assíncrono de dados.",
+        description: "Exibe indicador animado de carregamento assíncrono de dados.",
       },
       {
         name: "creatable",
@@ -747,29 +760,86 @@ export const componentDocs = {
         type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
         default: "'md'",
         description:
-          "Escala de altura do campo (xs: 28px, sm: 32px, md: 40px, lg: 48px, xl: 56px).",
+          "Escala de altura do controle (xs: 28px, sm: 32px, md: 40px, lg: 48px, xl: 56px).",
       },
       {
         name: "tone",
         type: "'primary' | 'secondary' | 'accent' | 'neutral' | 'success' | 'info' | 'warning' | 'danger'",
         default: "'primary'",
         description:
-          "Tom semântico corporativo aplicado à borda, anel de foco, tags e opções selecionadas.",
+          "Tom semântico corporativo aplicado à borda, anel de foco, tags, contadores e opções ativas.",
       },
       {
         name: "variant",
         type: "'outline' | 'filled' | 'flushed'",
         default: "'outline'",
         description:
-          "Variante visual do contêiner (outline com borda, filled com fundo sutil, flushed com borda inferior).",
+          "Variante visual do contêiner (outline com borda completa, filled com fundo suave, flushed com borda inferior).",
+      },
+      {
+        name: "shape",
+        type: "'rounded' | 'square' | 'rounded-sm' | 'rounded-lg' | 'pill'",
+        default: "'rounded'",
+        description: "Geometria de arredondamento das bordas do gatilho (0px a 9999px).",
       },
       {
         name: "pill",
         type: "boolean",
         default: "false",
-        description: "Bordas totalmente arredondadas no formato pílula.",
+        description: "Atalho booleano para formato arredondado em pílula (radius-full).",
       },
-      { name: "disabled", type: "boolean", default: "false", description: "Desabilita o seletor." },
+      {
+        name: "placement",
+        type: "'bottom' | 'top' | 'auto'",
+        default: "'bottom'",
+        description: "Direcionamento fixo vertical de abertura do dropdown (bottom ou top).",
+      },
+      {
+        name: "maxTagCount",
+        type: "number",
+        default: "undefined",
+        description:
+          "Número máximo de tags exibidas no gatilho antes de exibir o badge de contador (+X mais).",
+      },
+      {
+        name: "counter",
+        type: "boolean",
+        default: "false",
+        description: "Modo compacto que exibe apenas o resumo 'X selecionados' em vez de tags.",
+      },
+      {
+        name: "conditionalCounter",
+        type: "number",
+        default: "undefined",
+        description:
+          "Exibe tags até o limite N e alterna para badge de contador quando ultrapassado.",
+      },
+      {
+        name: "floatingLabel",
+        type: "string",
+        default: "undefined",
+        description:
+          "Rótulo flutuante animado integrado que se eleva ao focar ou selecionar valor.",
+      },
+      {
+        name: "teleport",
+        type: "boolean | string",
+        default: "false",
+        description:
+          "Teleporta o dropdown para 'body' ou alvo DOM, garantindo exibição em modais com overflow:hidden.",
+      },
+      {
+        name: "prefix",
+        type: "string",
+        default: "undefined",
+        description: "Texto ou ícone em string exibido antes do valor selecionado.",
+      },
+      {
+        name: "disabled",
+        type: "boolean",
+        default: "false",
+        description: "Desabilita o seletor por completo.",
+      },
       {
         name: "invalid",
         type: "boolean",
@@ -779,24 +849,53 @@ export const componentDocs = {
       {
         name: "placeholder",
         type: "string",
-        default: "'Selecione...'",
+        default: "'Select...'",
         description: "Texto exibido quando nenhum valor está selecionado.",
       },
     ],
     slots: [
-      { name: "prefix", description: "Ícone ou adorno inicial do campo." },
+      { name: "prefix", description: "Ícone ou adorno inicial do campo (adornment)." },
+      { name: "icon", description: "Slot alternativo para ícone inicial." },
+      { name: "suffix", description: "Conteúdo adicional à direita no grupo de ações." },
       {
         name: "option",
-        scope: "{ option, selected }",
-        description: "Template customizado para renderizar cada item da lista.",
+        scope: "{ option, selected, active }",
+        description: "Template customizado para renderizar cada item na lista suspensa.",
+      },
+      {
+        name: "selectedOption",
+        scope: "{ option }",
+        description: "Template customizado para renderizar a opção selecionada no gatilho único.",
+      },
+      {
+        name: "tag",
+        scope: "{ option, remove }",
+        description: "Template customizado para cada tag no modo múltiplo.",
+      },
+      {
+        name: "counter",
+        scope: "{ count, total }",
+        description: "Template customizado para a badge de contador de itens selecionados.",
+      },
+      {
+        name: "value",
+        scope: "{ selectedOptions, remove }",
+        description: "Template completo de substituição do contêiner de valores no gatilho.",
       },
       { name: "empty", description: "Conteúdo exibido quando nenhuma opção corresponde à busca." },
+      { name: "header", description: "Área fixa no topo do dropdown (antes da busca e lista)." },
+      { name: "footer", description: "Área fixa no rodapé do dropdown (após a lista)." },
     ],
     emits: [
       {
         name: "update:modelValue",
         payload: "(value: any)",
-        description: "Disparado quando a seleção muda.",
+        description: "Disparado quando a seleção muda (v-model).",
+      },
+      {
+        name: "update:open",
+        payload: "(open: boolean)",
+        description: "Sincroniza o estado aberto/fechado do dropdown (v-model:open).",
       },
       {
         name: "change",
@@ -814,20 +913,35 @@ export const componentDocs = {
         description: "Disparado ao criar uma nova opção inline.",
       },
       { name: "clear", payload: "()", description: "Disparado ao clicar no botão de limpar." },
+      {
+        name: "open-change",
+        payload: "(open: boolean)",
+        description: "Disparado ao abrir ou fechar o menu flutuante.",
+      },
     ],
     tokens: [
       {
-        name: "--ms-color-border-subtle",
-        default: "rgba(0,0,0,0.12)",
+        name: "--ms-color-surface-default",
+        default: "#ffffff",
+        description: "Cor de fundo do gatilho e opções normais.",
+      },
+      {
+        name: "--ms-color-border-default",
+        default: "#cbd5e1",
         description: "Borda padrão do gatilho.",
       },
       {
         name: "--ms-color-primary",
         default: "#2e86de",
-        description: "Cor da borda e anel em foco.",
+        description: "Tom corporativo padrão para anel de foco e seleção.",
       },
       {
-        name: "--ms-z-index-dropdown",
+        name: "--ms-radius-md",
+        default: "6px",
+        description: "Raio de arredondamento padrão do gatilho e dropdown.",
+      },
+      {
+        name: "--ms-z-popover",
         default: "1000",
         description: "Camada de elevação do popup flutuante.",
       },

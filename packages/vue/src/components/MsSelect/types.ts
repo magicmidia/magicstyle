@@ -2,6 +2,8 @@ export type MsSelectSize = "xs" | "sm" | "md" | "lg" | "xl";
 export type MsSelectTone =
   "primary" | "secondary" | "accent" | "neutral" | "success" | "info" | "warning" | "danger";
 export type MsSelectVariant = "outline" | "filled" | "flushed";
+export type MsSelectShape = "rounded" | "square" | "rounded-sm" | "rounded-lg" | "pill";
+export type MsSelectPlacement = "bottom" | "top" | "auto";
 
 export interface MsSelectOption {
   value: string | number;
@@ -34,7 +36,17 @@ export interface MsSelectProps {
   size?: MsSelectSize | undefined;
   tone?: MsSelectTone | undefined;
   variant?: MsSelectVariant | undefined;
+  shape?: MsSelectShape | undefined;
   pill?: boolean | undefined;
+  placement?: MsSelectPlacement | undefined;
+  maxTagCount?: number | undefined;
+  counter?: boolean | undefined;
+  conditionalCounter?: number | undefined;
+  searchLimit?: number | undefined;
+  minSearchLength?: number | undefined;
+  floatingLabel?: string | undefined;
+  teleport?: boolean | string | undefined;
+  prefix?: string | undefined;
   name?: string | undefined;
   open?: boolean | undefined;
   filterFn?: ((option: MsSelectOption, query: string) => boolean) | undefined;
