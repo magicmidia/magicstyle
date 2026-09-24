@@ -1,1 +1,301 @@
 # @magic-style/css
+
+## 0.2.0
+
+### Minor Changes
+
+- 3dc2963: - **themes & css**: Added 8 new curated design system themes (`shadcn`, `bootstrap`, `material`, `github`, `linear`, `vercel`, `supabase`, `nord`) alongside `magic` and `graphite`, reaching a total of 10 distinct, production-grade themes with authentic visual identities beyond simple color swaps.
+  - **tokens**: Extended semantic tokens with `elevation.button`, `elevation.card`, `elevation.dropdown`, `elevation.modal`, `elevation.input`, and added `elevation.none` to primitive shadows.
+  - **themes**: Added `darkOverrides` support to `ThemeDefinition` and DTCG token compilation in `@magic-style-internal/themes`, enabling themes to feature distinct light and dark mode palettes (e.g. Shadcn zinc monochrome with black/white buttons, Material 3 royal purple/lavender pastel, GitHub primer green, Linear radiant electric indigo, Supabase emerald neon, Vercel pure contrast, Nord arctic frost).
+  - **css**: Introduced `packages/css/src/components/theme-enhancements.css` and token bindings:
+    - **MaterialUI (M3)**: Full pill buttons (`border-radius: 9999px`), M3 dual-layer ambient + key elevation shadows (`0 1px 3px 1px rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.3)`), 16px rounded cards, and pill badges.
+    - **Bootstrap 5**: Signature 0.375rem (6px) rounded geometry, top highlight inset bevels on solid buttons (`inset 0 1px 0 rgba(255,255,255,0.15)`), diffuse card drop-shadows, and iconic 0.25rem royal blue focus halo (`0 0 0 0.25rem rgba(13,110,253,0.25)`).
+    - **Shadcn UI**: Radical flat minimalism, crisp 1px zinc borders (`#e4e4e7` / `#27272a`), 6px/8px radius, flat solid buttons (black in light, white in dark), and micro-shadows.
+    - **GitHub Primer**: Iconic Primer button top highlight bevel & bottom shadow (`0 1px 0 rgba(27,31,36,0.1), inset 0 1px 0 rgba(255,255,255,0.2)`), 6px radius, and Primer borders.
+    - **Linear**: Dark-first obsidian SaaS surfaces, specular edge highlights on buttons, radiant violet focus halo, and deep elevated card shadows.
+    - **Vercel Geist**: Hyper-minimal high-contrast monochrome, razor-sharp 6px geometry, dual-ring focus outline, and flat zero-shadow surfaces.
+    - **Supabase**: Dark studio charcoal with emerald neon accents (`#3ecf8e`), dark specular bevels, and emerald focus rings.
+    - **Nord Arctic**: Scandinavian polar night palette, soft 8-10px rounded contours, and cold ambient shadows.
+  - **preview**: Integrated all 10 themes in the Preview Studio theme switcher and added a full interactive Design Dials & Themes Catalog showcase in the documentation.
+- 3dc2963: - **vue**: Add 26 new enterprise components with comprehensive props, slots, emits, accessibility (WCAG 2.2), and full TypeScript type definitions:
+  - `MsPagination`: Multi-page navigation engine with jumper input, page size selector, ellipsis logic, and full keyboard navigation.
+  - `MsCodeBlock`: Code syntax presentation block with line numbers, copy button, collapsible view, badge, and file headers.
+  - `MsCollapse`: Smooth collapsible accordion/disclosure surface with CSS grid row animations and customizable header triggers.
+  - `MsLink`: Semantic anchor link with 5 tone variants, underline behaviors (always, hover, none), automatic external link detection, and icon.
+  - `MsBlockquote`: Expressive quotes with quote mark decoration, 8 semantic tone accents, cite author, and role attribution.
+  - `MsMaskedInput`: Form input with real-time formatting masks (CPF, CNPJ, phone, CEP, date, currency) and unmasked value binding.
+  - `MsIconPicker`: Interactive icon gallery selector with live fuzzy search, categories, and direct glyph selection.
+  - `MsFormWizard`: Multi-step form orchestrator with step progression, linear navigation validation, and custom step actions.
+  - `MsPinInput`: Security PIN / OTP split digit input with automatic focus advance, backspace navigation, paste handling, and mask mode.
+  - `MsPasswordInput`: Advanced security password field with show/hide toggle, real-time strength meter, policy criteria checklist, and strength tips.
+  - `MsDropzone`: Drag-and-drop file upload zone with visual dragover feedback, multi-file acceptance, and file item preview/remove list.
+  - `MsMarquee`: Infinite marquee ticker powered by GPU-accelerated CSS animations with speed control, pause-on-hover, reverse direction, and gradient edge masks.
+  - `MsPointer`: Custom magnetic and responsive cursor indicator overlay with dot, ring, and spotlight variants.
+  - `MsEmojiPicker`: Categorized emoji picker with quick search, category tabs (smileys, gestures, objects, symbols), and selection events.
+  - `MsSplitPane`: Resizable split panel layout engine supporting horizontal and vertical splitting with gutter drag interactions.
+  - `MsDatePicker`: Calendar date selection component with month/year navigation, quick presets (Today, Tomorrow, +7 days), and formatted output.
+  - `MsParallax`: Smooth parallax scrolling viewport with variable speed displacement and 3D depth impression.
+  - `MsBentoGrid` & `MsBentoItem`: Modern Bento-box style grid layout system with colSpan (1-4) and rowSpan (1-3) controls.
+  - `MsMasonryGrid`: Multi-column cascading masonry waterfall layout with dynamic column count.
+  - `MsLightbox`: Full-screen modal media lightbox gallery with previous/next navigation, counter, image caption, and ESC shortcut.
+  - `MsTruncate`: Multi-line text truncation utility with customizable clamp lines, middle/end positions, and inline expandable button.
+  - `MsCommandPalette`: Spotlight-style global command palette dialog (Cmd+K / Ctrl+K) with instant item search and grouped actions.
+  - `MsToggleGroup` & `MsToggleGroupItem`: Accessible segmented button toggle group supporting single and multiple selection modes.
+  - `MsFab`: Floating Action Button with expandable speed-dial secondary action items and 4 screen corner anchor positions.
+  - `MsLabel`: Semantic form label component with required badge, optional marker, and informational helper tooltip.
+  - `MsCode`: Inline typography code snippet component with semantic tones (8 tones), subtle/outline/solid variants, and one-click copy button.
+  - `MsCanvas`: Decorative textured background surface supporting dots, grid, and lines SVG patterns with customizable density and pattern colors.
+  - **css**: Add 26 component CSS stylesheets under `@magic-style/css/components/` and register them in the master stylesheet and package exports.
+  - **preview**: Register all 26 components in the interactive Documentation Studio with complete API tables (Props, Slots, Emits, Tokens) and interactive playgrounds.
+- 3dc2963: - **vue**: Add `MsAlert` feedback banner component with semantic tones, title/description slots, and dismissible state.
+  - **vue**: Add `MsCard` container component with raised, flat, outline, and sunken variants, header, footer, and interactive state.
+  - **vue**: Add `MsAvatar` user identity component with image support, initials fallback, size presets, and status indicators.
+  - **css**: Add `alert.css` with semantic color roles and soft, solid, and outline variants.
+  - **css**: Add `card.css` with elevation tokens, padding scales, and interactive hover transitions.
+  - **css**: Add `avatar.css` with size scales, circular/rounded geometry, and status indicator dots.
+- 3dc2963: - **vue**: Add `MsAppShell` family (`MsAppShell`, `MsTopbar`, `MsSidebar`, `MsNavigationRail`, `MsContent`, `MsAside`, `MsFooter`, `MsStatusBar`) establishing the normative first-class Application Layout System with collapsible context and responsive area coordination.
+  - **vue**: Add `MsPage` family (`MsPage`, `MsPageHeader`, `MsPageActions`) providing standardized page container constraints, headers with breadcrumbs and action slots.
+  - **css**: Add `app-shell.css` defining the application layout grid, token-bound dimensions (`--ms-topbar-height`, `--ms-sidebar-width`, `--ms-rail-width`, `--ms-statusbar-height`), and collapsible transitions.
+  - **css**: Add `page.css` with fluid and compact constraints, balanced gutter tokens, and structured header layouts.
+- 3dc2963: - **vue**: Add `MsBreadcrumbs`, `MsBreadcrumbItem`, and `MsBreadcrumbSeparator` suite with WAI-ARIA breadcrumb navigation compliance, item list shorthand, and customizable separators.
+  - **vue**: Add `MsTag` component for categorization and metadata tagging with soft, solid, and outline variants, 7 semantic tones, sizes sm/md/lg, and closable dismiss action.
+  - **vue**: Add `MsEmptyState` component for feedback and placeholder UI with icon, title, description, and action slots across sm/md/lg container sizes.
+  - **css**: Add `breadcrumbs.css` with structured flex layout, token-based link typography, and subtle separator spacing.
+  - **css**: Add `tag.css` with pill geometry, tone border/background variants, and integrated focus-visible close button.
+  - **css**: Add `empty-state.css` with centered layout, dashed surface borders, and balanced spacing tokens.
+- 3dc2963: - **vue**: Add `MsNativeSelect` HTML-native dropdown component wired into `MsField`.
+  - **vue**: Add `MsBadge` semantic tag and counter component with soft, solid, and outline variants.
+  - **vue**: Add `MsDialog` modal overlay component (Milestone M9 vertical slice) with WAI-ARIA compliance, focus management, backdrop, and Escape handling.
+  - **css**: Add `native-select.css` with tokenized field heights, border styling, and chevron SVG overlay.
+  - **css**: Add `badge.css` with semantic color tones, size presets, and pill/dot modifiers.
+  - **css**: Add `dialog.css` with elevation overlay, backdrop blur, and motion tokens.
+- 3dc2963: - **vue**: Add and enhance `MsNavbar` responsive header component with brand tones, positions (static, sticky, fixed, fixed-bottom, floating), shadow levels (none, sm, md, lg, xl), responsive container modes (sm, md, lg, xl, fluid), variants (elevated, bordered, glass), sizes (sm, md, lg), and semantic slots (#brand, #default, #actions, #mobile-toggle, #mobile-menu).
+  - **vue**: Add `MsSidebar` collapsible layout panel with mini rail mode (68px), sides (left, right), width scales (compact, normal, wide), tones, variants, and header/body/footer slots, integrating seamlessly both standalone and inside `MsAppShell`.
+  - **vue**: Add and enhance `MsFooter` semantic footer component supporting multi-column grid, compact, simple, and centered layouts, shadow levels (sm, md, lg), positions (static, sticky, fixed), responsive container modes (sm, md, lg, xl, fluid), with sunken and inverse surface variants.
+  - **vue**: Add and enhance `MsScrollbar` high-performance custom scroll container supporting auto-hide visibility (thumb hides when idle and smoothly reveals on scroll and hover), optional navigation arrows (hidden by default, toggled via `arrows`), custom track background color (`trackColor`), custom thumb color (`thumbColor`), and custom corner radius (`thumbRadius`/`radius`).
+  - **css**: Add and enhance `navbar.css`, `sidebar.css`, `footer.css`, and `scrollbar.css` with zero `!important`, full design token variables (`--ms-scrollbar-*`, `--ms-navbar-*`, `--ms-footer-*`), auto-hide transitions, and individual CSS bundles.
+  - **preview**: Modernize top navbar and sidebar, remove cluttered toolbar selects, add floating Cog button (⚙️) on top left below navbar opening right-sliding offcanvas drawer with all system customization options (Theme, Contrast, Density, Radius Dial, Viewport, RTL, Dark mode).
+- 3dc2963: - **vue**: Add `MsProgress` component with determinate and indeterminate modes, custom labels, percentages, semantic tones, and striped/animated variations.
+  - **vue**: Add `MsSkeleton` component for accessible loading state placeholders with text, circle, and rect shapes, multi-line count, and shimmer/pulse animations.
+  - **vue**: Add `MsTooltip` component for accessible contextual overlays with directional placements (top, bottom, left, right), hover/focus triggers, configurable delays, and Escape dismissal.
+  - **css**: Add `progress.css` with token-based sizing scales, semantic tone backgrounds, and keyframe animations for indeterminate states and moving stripes.
+  - **css**: Add `skeleton.css` with shape geometries and motion-token shimmer and pulse animations.
+  - **css**: Add `tooltip.css` with token-based dark container, pointer arrow, directional offsets, and entrance animations.
+- 3dc2963: Adiciona os componentes canônicos `MsSelect` (Unified Advanced Select Engine) e a suite `MsTable` (Semantic Data Display Table):
+
+  - **`MsSelect`**: Engine unificado avançado da Baseline 1.2 com suporte a seleção simples, múltipla com tags, busca integrada filtrável, optgroups, ação de limpeza, loading, creatable e acessibilidade WAI-ARIA 1.2 Combobox/Listbox com navegação completa por teclado.
+  - **`MsTable` Suite**: `MsTable`, `MsTableHead`, `MsTableBody`, `MsTableRow`, `MsTableHeaderCell`, `MsTableCell`, `MsTableFooter` com suporte a listras alternadas (striped), bordas completas (bordered), linhas com hover e seleção, ordenação de colunas com aria-sort e 3 densidades tokenizadas (sm, md, lg).
+  - **CSS Distribution**: Exportações granulares adicionadas para `components/select.css` e `components/table.css`, totalizando 39 exportações públicas verificadas.
+
+- 3dc2963: - **vue**: Add `MsSeparator` component for accessible visual or semantic horizontal and vertical separation with decorative toggle.
+  - **vue**: Add `MsIconButton` component for accessible, square or circular icon action buttons with required aria-label, loading spinner, and semantic tones.
+  - **vue**: Add `MsSegmentedControl` component for multi-option linear selection with WAI-ARIA radiogroup semantics, keyboard arrow navigation, and elevated active indicator.
+  - **vue**: Add `MsSearchField` component for dedicated search experiences with integrated search icon, clear button, and loading spinner.
+  - **css**: Add `separator.css` with token-based borders, horizontal/vertical orientations, and subtle/strong/dashed styles.
+  - **css**: Add `icon-button.css` with square and circle shapes, 5 size steps, and full tone variants.
+  - **css**: Add `segmented-control.css` with sunken track surface, elevated active segment pill, and hover/active states.
+  - **css**: Add `search-field.css` with prefix icon positioning, suffix clear/spinner actions, and focus ring tokens.
+- 3dc2963: - **vue**: Add `MsSnippet` component supporting single and multi-tab command runners (npm, pnpm, yarn, bun), customizable prompt indicators, one-click copy to clipboard with feedback timeout and callback, line wrapping, and WAI-ARIA tab navigation.
+  - **css**: Add `.ms-snippet` layer in `@magic-style/css/components/snippet.css` with surface-sunken terminal container, tab triggers, responsive prompt styling, and semantic brand tones.
+  - **vue**: Add `MsChoicebox` and `MsChoiceboxItem` components for card-style interactive form options, supporting both radio (single) and checkbox (multiple) modes, keyboard arrow and space navigation, customizable headers, titles, descriptions, badges, prices, icons, and flexible grid/vertical/horizontal layouts.
+  - **css**: Add `.ms-choicebox` and `.ms-choicebox-item` layer in `@magic-style/css/components/choicebox.css` with elevated card styling, active border rings, animated radio and checkbox indicators, and responsive grid columns.
+  - **vue**: Add `MsGlimpse` component for rich URL hovercard previews, featuring open graph thumbnails, clean domain displays with favicons, badges, titles, descriptions, loading skeletons, smooth positioning (`top`, `bottom`, `left`, `right`), keyboard accessibility, and mobile touch support.
+  - **css**: Add `.ms-glimpse` layer in `@magic-style/css/components/glimpse.css` with floating popover cards, image wrappers, metadata layouts, shimmer skeletons, and `prefers-reduced-motion` compliance.
+- 3dc2963: - **vue**: Add `MsProvider` root theming and configuration provider with system preference resolution and document/wrapper attribute binding.
+  - **vue**: Add `MsThemeScope` component for nested visual configuration with dial inheritance and local overrides (Doc 07 §4, §5).
+  - **vue**: Add `useThemeContext`, `useMagicStyle`, and `useSystemColorMode` composables for full reactivity of themes, color modes, and design dials.
+  - **vue**: Add `MsTabs`, `MsTabList`, `MsTab`, `MsTabPanels`, `MsTabPanel` components with complete WAI-ARIA tablist accessibility, keyboard navigation, and line, pill, and enclosed variants.
+  - **vue**: Add `MsSpinner` loading indicator with accessible `aria-live` status announcements, SVG vector circles, and thickness/tone variants.
+  - **css**: Add `theme-scope.css` with surface and text color transitions for nested theme scopes.
+  - **css**: Add `tabs.css` with line, pill, and enclosed variants, horizontal and vertical layouts, and focus rings.
+  - **css**: Add `spinner.css` with motion token keyframe spin animations, size scales, and semantic tone palette.
+- feb5e06: Comprehensive revamp of MsButton and Buttons Documentation in Studio:
+
+  - Added new button variants: `text` and `glass` (frosted glassmorphism with backdrop blur).
+  - Added geometry modifiers: `shape` (`square`, `rounded`, `rounded-sm`, `rounded-lg`, `pill`).
+  - Added responsive and layout props: `wide`, `block`, `responsive` (fluid full-width on mobile viewports).
+  - Added interactive feedback modifiers: `wave` (radial ripple wave animation on click) and `.ms-button--close` (dismissal button with 90-degree hover rotation).
+  - Standardized documentation to display all code snippets using the library's official `<MsCodeBlock>` and `<MsCode>` components.
+  - Expanded Studio buttons documentation to cover all 18 variations and live interactive playground with download triggers and loading simulations.
+
+- eadc66b: Invert "soft" variant color pairs for optimal contrast and authentic tonal styling:
+
+  - Swapped text color and background color across all "soft" component variants (`button`, `badge`, `alert`, `banner`, `icon-button`, `tag`, and `chat-bubble`).
+  - Backgrounds now receive the luminous tonal tint while typography receives the deep, readable ink color.
+  - Added canonical `--ms-color-*-soft-bg` and `--ms-color-*-soft-fg` pairs in `base.css` for all 8 tones.
+
+- 3dc2963: - **textarea**: Added `autoGrow`, scale sizes (`sm`, `md`, `lg`, `xl`), resize classes (`none`, `vertical`, `horizontal`, `both`), and character counter slot/display.
+  - **search-field**: Fixed icon overlap by adjusting native input padding; added variants (`outline`, `filled`, `flushed`), keyboard shortcut badge (`shortcut`), and clear action.
+  - **select**: Added `tone` (8 semantic brand colors: `primary`, `secondary`, `accent`, `neutral`, `success`, `info`, `warning`, `danger`), `variant` (`outline`, `filled`, `flushed`), `pill` shape, size scale (`xs` 28px to `xl` 56px), and fixed SVG icons.
+  - **button**: Added `xs` (28px) size, and `dashed` (dashed outline) and `link` (underlined text) variants.
+  - **input**: Added all 8 semantic brand tones and `xs` (28px) size.
+  - **card**: Added `tone` prop with accent top border in all 8 brand colors.
+  - **alert**: Enlarged and vertically centered icons, added featured badge style (`featured`), and sizes (`sm`, `md`, `lg`).
+  - **skeleton**: Fixed token fallback to ensure visibility; added presets (`circle`, `avatar`, `button`, `card`, `rect`, `text`), tones, and speeds (`fast`, `normal`, `slow`).
+  - **tabs**: Added `solid` variant and responsive scrollable container with smooth navigation arrows for overflow/mobile views.
+  - **breadcrumbs**: Added variants (`plain`, `pills`, `solid`), sizes (`sm`, `md`, `lg`), separator presets (`chevron`, `slash`, `arrow`, `dot`), item icons, and intelligent ellipsis collapse (`maxItems`).
+  - **separator**: Added styles (`dashed`, `dotted`, `gradient`), semantic tones, thicknesses (1, 2, 4px), and labeled text dividers (`label="OU"`).
+  - **badge**: Added `xs` and `xl` sizes, `count`, `maxCount` (e.g. `99+`), `dotOnly`, radar ping animation (`pulse`), ring border (`bordered`), wrapper mode, and corner positioning (`placement`).
+  - **avatar**: Added `square` shape, extended sizes (`2xs`, `2xl`, `3xl`), `statusPlacement`, `bordered`, and created `MsAvatarGroup` with overlap spacing (`tight`, `normal`, `loose`), hover lift, and `+N` excess counter.
+  - **card**: Added `glass` frosted blur variant, `xs` and `xl` padding, hover elevation (`hoverable`), `headerDivider`, `footerDivider`, cover image (`coverSrc`/`coverAlt`), and horizontal orientation (`orientation="horizontal"`).
+  - **tag**: Added `pill` and `square` shapes, status indicator dot (`dot`), and prefix/suffix slots.
+  - **switch**: Added sizes (`sm`, `md`, `lg`), semantic tones (`primary`, `success`, `warning`, `danger`, `accent`), label placement (`labelPlacement="left"|"right"`), and descriptive subtitle support.
+  - **checkbox**: Added sizes (`sm`, `md`, `lg`), semantic tones, card option mode (`card`), and descriptive subtitle support.
+  - **input**: Added `filled` and `flushed` variants, `pill` shape, clear action button (`clearable`), and interactive password visibility toggle (`passwordToggle`).
+  - **progress**: Added micro (`2xs` - 2px) and ample (`2xl` - 24px) sizes, shapes (`square`, `rounded`, `pill`), gradient fills (`gradient`), and inline percentage text (`inlineValue`).
+  - **radio**: Added sizes (`sm`, `md`, `lg`), semantic tones (`primary`, `success`, `warning`, `danger`), card option mode (`card`), subtitle descriptions, and group orientations (`horizontal`, `vertical`).
+  - **button-group**: Added orientation layout (`horizontal`, `vertical`), attached mode (`attached`), and full-width block distribution (`fullWidth`).
+  - **icon-button**: Added micro size (`2xs` - 20px), shapes (`square`, `rounded`, `circle`), and active pressed toggle state (`active`, `aria-pressed`).
+  - **empty-state**: Added container variants (`dashed`, `plain`, `card`) and semantic icon tones (`primary`, `success`, `warning`, `danger`, `neutral`).
+  - **native-select**: Added input variants (`filled`, `flushed`), rounded pill shape (`pill`), and validation tones (`success`, `warning`, `danger`).
+  - **tooltip**: Added tones (`dark`, `light`, `primary`), sizes (`sm`, `md`, `lg`), directional arrow toggling (`arrow`), and max-width clamping with text wrap.
+  - **dialog**: Added placement positions (`center`, `top`, `bottom` bottom-sheet), semantic tone indicators (`default`, `danger`, `warning`, `success`, `info`), and accessible role customization (`dialog`, `alertdialog`).
+  - **segmented-control**: Added shapes (`rounded`, `pill`, `square`), tones (`neutral`, `primary`, `accent`), and extended size scale (`xs` 24px to `xl` 56px).
+  - **menu / dropdown-button**: Added menu item prefixes (`prefix`), semantic danger tone (`tone="danger"`), divider separators (`divider`), and dropdown button alignment (`align="left"|"right"`) and full-width mode (`fullWidth`).
+  - **table**: Added container variants (`default`, `surface`, `flush`), sticky header pinning (`stickyHeader`), and densities `xs` (11px micro) and `xl` (18px comfortable).
+  - **spinner**: Added speeds (`fast` 0.4s, `normal` 0.8s, `slow` 1.4s) and micro (`2xs` 8px) / mega (`2xl` 64px) sizes.
+  - **field**: Added layout orientations (`vertical`, `horizontal`), optional indicator text (`optional`), and font size scales (`sm`, `md`, `lg`).
+  - **container**: Added `MsContainer` with fluid and fixed max-width breakpoints (`sm`, `md`, `lg`, `xl`, `2xl`, `full`) and gutters.
+  - **banner**: Added `MsBanner` with floating, sticky, and inline variants, status tones, and actions.
+  - **drawer**: Added `MsDrawer` with placements (`left`, `right`, `top`, `bottom`), backdrop blur, keyboard traps, and sizes.
+  - **accordion**: Added `MsAccordion` and `MsAccordionItem` with single and multiple expansion, icons, bordered and flush styles.
+  - **popover**: Added `MsPopover` with click/hover triggers, custom placement, arrows, and auto-dismiss.
+  - **confirm-dialog**: Added `MsConfirmDialog` for critical operations with confirm/cancel semantics, tones, and loading states.
+  - **timeline**: Added `MsTimeline` and `MsTimelineItem` with vertical and horizontal directions, custom markers, and tones.
+  - **progress-radial**: Added `MsProgressRadial` SVG gauge with smooth animations, custom thickness, and center label slots.
+  - **status**: Added `MsStatus` badge and dot indicator with pulsing radar effect and semantic tones.
+  - **rating**: Added `MsRating` with interactive star rating, half-stars, keyboard navigation, and readonly/disabled states.
+  - **toast**: Added `MsToast`, `MsToastContainer`, and `useToast` reactive composable with positioning, automatic timeouts, and tone cards.
+  - **animated-number**: Added `MsAnimatedNumber` for smooth numeric counting animations with configurable formatting and duration.
+  - **list / list-group**: Added `MsList`, `MsListItem`, and `MsListGroup` with selection, avatars, prefixes, suffixes, and interactive states.
+  - **range**: Added `MsRange` custom slider with tick marks, tooltips, semantic tones, and step snapping.
+  - **stepper**: Added `MsStepper` and `MsStep` with horizontal/vertical layouts, completion tracking, clickable steps, and subtitle support.
+  - **file-input**: Added `MsFileInput` with drag-and-drop zone, file type validation, size limits, and multi-file listing.
+  - **tree**: Added `MsTree` and `MsTreeNode` with nested tree structures, expand/collapse, selection, and custom node icons.
+  - **context-menu**: Added `MsContextMenu` triggered by right-click with boundary positioning, submenus, shortcuts, and items.
+  - **chat-bubble**: Added `MsChatBubble` with sent/received alignments, timestamps, status ticks, and avatar integration.
+  - **carousel**: Added `MsCarousel` and `MsCarouselSlide` with touch swiping, navigation arrows, pagination dots, and autoplay.
+  - **dock**: Added `MsDock` and `MsDockItem` with macOS-style hover magnification, tooltips, and floating dock bars.
+  - **color-picker**: Added `MsColorPicker` with interactive hex inputs, preset palettes, transparency slider, and popover picker.
+  - **scroll-spy**: Added `MsScrollSpy` for automatic section highlighting based on viewport scroll position.
+  - **sidebar-menu**: Added `MsSidebarMenu`, `MsSidebarMenuGroup`, and `MsSidebarMenuItem` for corporate and dashboard navigation with accordion submenus, sliding active indicators, mini/collapsed mode, badge indicators, and 8 semantic tones.
+  - **brand-palette**: Standardized and strictly enforced official brand colors across internal tokens, CSS, and Vue: Accent (`#341f97`), Neutral (`#222f3e`), Primary (`#2e86de`), Secondary (`#e15f41`), Success (`#10ac84`), Info (`#0abde3`), Warning (`#ff9f43`), Danger (`#ee5253`).
+  - **preview-studio**: Redesigned Preview Studio inspired by FlyonUI / Radix / DaisyUI with sliding `MsSidebarMenu` navigation across 6 categories, live search filter across 57 tabs, 4 FlyonUI-style synchronized tabs ([✨ Preview Interativo], [📋 Código Vue SFC], [📖 Especificação de API], [🎨 Galeria]), live reactive Vue SFC code generation matching playground state for all 51 components, enriched interactive controls across all components, responsive mobile drawer, and RTL toggle.
+  - **studio-foundation**: Added interactive Typography scale, Colors WCAG AA contrast matrix, Themes & Dials visual playground, CSS Utilities live explorer, RTL switcher, and Customization playground.
+- 3e9e469: Comprehensive visual modernization, modern design system harmonization (FlyonUI / Shadcn UI), and foundational Studio overhaul:
+
+  - **New Components:**
+    - `MsKbd`: Keyboard shortcut indicator with 3D raised (`raised`), outline (`outline`), and flat (`flat`) variants, 4 heights (xs 18px, sm 22px, md 26px, lg 32px), and 8 semantic brand tones.
+    - `MsAspectRatio`: Responsive container preserving fixed aspect ratios (16:9, 4:3, 1:1, 21:9, 9:16, or custom ratios) with zero layout shift / reflow.
+    - `MsRow` & `MsCol` (`MsGrid`): 12-column responsive flex grid system with semantic gutter control (`none`, `xs`, `sm`, `md`, `lg`, `xl`), column spans (`1`-`12`), offsets (`1`-`11`), and flex alignment props.
+    - `MsHoverCard`: Interactive floating card overlay activated on hover with cubic easing micro-animations and configurable open/close delays.
+  - **Visual Harmonization & CSS Refinements:**
+    - `card.css`: Layered micro-shadows fallback (`0 1px 3px 0 rgb(0 0 0 / 0.04)`) and soft variant (`data-variant="soft"`) across all 8 brand tones.
+    - `input.css`: Added compact `xs` (28px) size and shape geometry modifiers matching modern FlyonUI and Shadcn scales.
+    - `grid.css`: Full 12-column CSS grid and gutter utility classes.
+  - **Studio Documentation & Foundations Overhaul:**
+    - **Tipografia:** 13-level harmonic scale (`display-2xl` to `caption-2xs`), 3 canonical font families, interactive live type tester, and live CSS code generator.
+    - **Cores & WCAG 2.2:** 8 brand tone palettes (50-950 stops in OKLCH + HEX), 1-click token copy, semantic surface swatches, and real-time interactive WCAG 2.2 contrast validator.
+    - **Grid (12-Col):** Interactive 12-column visualizer with presets (`1x 12`, `2x 6+6`, `3x 4+4+4`, `Dashboard 8+4`), gutter scale, and 12-column guide overlay.
+    - All Studio code snippets and galleries strictly updated to use official `<MsCodeBlock>` and `<MsCode>` components.
+
+- 556af52: Comprehensive modernization and visual unification of MsSelect and Studio Documentation:
+
+  - Added shape geometry modifiers: `shape` ("square" | "rounded-sm" | "rounded" | "rounded-lg" | "pill").
+  - Added dropdown positioning controls: `placement` ("top" | "bottom" | "auto") and teleport support via `<Teleport>` to body with dynamic bounding rect tracking.
+  - Added advanced selection features: `counter` mode for compact badge display, `conditionalCounter` for progressive tag display (`+N mais`), `searchLimit`, and `minSearchLength`.
+  - Added floating label support with inset label transitions (`floatingLabel`), prefix props/slots (`prefix`), and custom option template slots (`#option`, `#selectedOption`).
+  - Rebuilt Studio Select documentation and gallery to cover all 32 usage patterns with live previews and official `<MsCodeBlock>` and `<MsCode>` syntax highlighting.
+
+- 3dc2963: Release v0.1.0 Enterprise Baseline 1.2:
+
+  - Added official Changelog page (`/changelog` & `apps/preview/changelog.html`) tracking releases and GitHub changes.
+  - Revamped Landing Page with the Flyon UI Interactive Workbench and Floating Living Component Cluster.
+  - Configured GitHub Actions CI/CD workflows for automated validation and Changeset releases (`.github/workflows/ci.yml`, `.github/workflows/release.yml`).
+  - Added standard open-source community templates (`CONTRIBUTING.md`, `CHANGELOG.md`, Issue forms, and PR template).
+
+- d384fc8: Comprehensive security, microanimations, visual polish, and performance overhaul:
+
+  - **Security & Memory Safety**:
+    - `MsIconPicker`: Enforced strict SVG sanitization stripping `<script>`, `<style>`, inline event handlers (`on*`), and `javascript:` URIs.
+    - `MsCodeBlock` & `MsCode`: Implemented full HTML entity escaping and guaranteed unmount cleanup for copy notification timers.
+    - `MsSelect`, `MsMenu`, `MsPopover`, `MsContextMenu`: Refactored global listeners (`click`, `keydown`, `resize`, `scroll`) to dynamically bind only while open and automatically detach upon closing or component unmount.
+    - `MsSplitPane`, `MsParallax`, `MsPointer`: Guarded mouse/scroll event listeners with `requestAnimationFrame` throttling and explicit lifecycle teardown to prevent memory leaks and layout thrashing.
+    - `MsDialog`, `MsDrawer`, `MsConfirmDialog`: Integrated native Vue `<Transition>` wrappers for animated overlays and panels.
+
+  - **Tokenized Microanimations & CSS Modernization**:
+    - `base.css`: Introduced `--ms-motion-scale: 1` token and comprehensive zero-motion overrides for both `@media (prefers-reduced-motion: reduce)` and `[data-ms-motion="reduced"]` attribute selectors without `!important`.
+    - `button.css`, `card.css`: Added active press micro-transforms (`scale(0.98)` / `scale(0.995)`).
+    - `input.css`: Implemented multi-layered OKLCH ambient focus ring halos.
+    - `switch.css`: Added spring-like thumb elongation feedback on active drag/press.
+    - `toast.css`: Tokenized animation durations to `--ms-motion-duration-fast` with hardware-accelerated transforms.
+    - `dialog.css`, `drawer.css`, `confirm-dialog.css`: Created enter/leave transition states matching Vue `<Transition>`.
+
+  - **Documentation & Studio Synchronization**:
+    - Synchronized all 82 catalog directory items on the landing page with deep-link Studio hashes.
+    - Added bidirectional hash-routing in Studio with browser history synchronization and instant tab activation.
+    - Added motion toggle control in the floating Theme Settings Drawer (`theme-toggle.js` & `components.html`).
+
+### Patch Changes
+
+- 3dc2963: - **landing & preview**: Created a high-level, production-grade official Landing Page at `/` (`apps/preview/index.html` + `landing.css` + `landing.js`) with an atmospheric OKLCH mesh backdrop, live Multi-Theme interactive sandbox, 1-click install command tabs, metrics bar, 10 themes showcase, 6 architectural pillars, quickstart guide, component directory, and seamless GitHub & Studio integration.
+  - **docs**: Refined the Studio documentation navigation bar with direct link to the Landing Page ("Início 🏠") and updated component counters from 55 to 82 production-ready components.
+  - **readme**: Completely overhauled the root `README.md` with official shields/badges, 10 themes normative catalog, 82 components directory, multi-package-manager quickstart, and monorepo governance runbook.
+  - **package.json**: Enriched monorepo metadata with description, keywords, repository, homepage, bug tracker, and preview scripts.
+- 3dc2963: - **themes/tokens**: Rework dark mode color palette from crushed pitch-black to refined modern dark slate/obsidian (Linear/Vercel/GitHub inspired) with distinct 3-layer surface elevations (sunken, default, raised), luminous borders, and WCAG AAA/AA text contrast.
+  - **themes**: Introduce comprehensive semantic aliases and compatibility fallbacks for shorthand CSS custom properties (--ms-color-surface, --ms-color-text, --ms-color-border, --ms-color-primary, etc.).
+  - **css**: Update accordion, confirm-dialog, context-menu, drawer, color-picker, popover, toast, list, file-input, chat-bubble, stepper, timeline, and range component styles to use canonical semantic tokens.
+  - **preview**: Enhance Preview Studio topbar, canvas preview dot-grid background, and variation galleries to adapt seamlessly across Light and Dark color modes.
+- aa52212: Elevate visual aesthetics to FlyonUI & Shadcn UI benchmarks, expand component variations gallery across the design system, and standardize Studio code examples:
+
+  - **CSS & Design System Modernization:**
+    - `alert.css`: Fixed soft alert background & text color inversion; added FlyonUI-style 4px saturated left-accent strip (`[data-accent="left"]` / `.ms-alert--accent-left`).
+    - `badge.css`: Added ghost variant (`data-variant="ghost"`), live pulsing dot indicator (`[data-pulse]` with keyframe pulse animation), and removable tag dismiss button (`.ms-badge__remove`).
+    - `card.css`: Added glassmorphism variant (`data-variant="glass"` with 16px backdrop blur), enterprise SaaS KPI metric cards (`.ms-card-stat`), and cover image badge positioning (`.ms-card-cover-badge`).
+    - `input.css`: Added soft tinted surface variant (`data-variant="soft"`), ghost variant (`data-variant="ghost"`), input prefix/suffix addons (`.ms-input-addon`), and attached action input groups (`.ms-input-group`).
+    - `tabs.css`: Added Shadcn-style boxed segmented track (`.ms-tab-list--boxed`) with floating active pill and micro-shadow.
+    - `avatar.css`: Extended brand tone coverage to all 8 semantic tones.
+    - `chat-bubble.css`: Added all 8 brand semantic tones for soft and solid variants; fixed soft bubble color inversion; added live 3-dot typing indicator balloon (`.ms-chat-bubble--typing`).
+    - `empty-state.css`: Added 8-tone icon palettes and subtle outer ring gap signature (`.ms-empty-state__icon--ring`).
+    - `skeleton.css`: Added dark mode contrast adaptation (`:root[data-ms-color-mode="dark"]`) with subtle Linear/Vercel opacity shimmer eliminating stark white blocks.
+    - `timeline.css`: Added `.ms-timeline-item--solid` node fill and `.ms-timeline-item--active` live pulsing ping ring.
+    - `accordion.css`: Added active border highlight and micro-shadow for separated accordion items.
+    - `rating.css` & `MsRating`: Added `tone` prop support in Vue and 8 semantic tone classes with soft drop-shadow in CSS.
+    - `stepper.css`: Added active subtle ring (`box-shadow`), completed checks, and interactive hover feedback.
+    - `list.css` & `MsList`: Added `separated` card variant (`variant="separated"`) and fixed leading/trailing slot rendering.
+  - **Studio Variations Overhaul:**
+    - Expanded enterprise variations across 15+ component categories: `empty-states` (5), `accordions` (5), `skeletons` (5), `timeline` (5), `chat-bubbles` (5), `ratings` (5), `steppers` (5), `lists` (5), `separators` (5), `file-inputs` (5), `drawers` (4), `color-pickers` (4), `tooltips` (3), `inputs` (10), `cards` (8), `tabs` (7), `alerts` (7), `badges` (6), `avatars` (6), `tables` (4).
+    - Replaced all raw `<pre><code>` blocks across `studio-variations.js` with `<MsCodeBlock>` (featuring syntax highlighting, copy button, and theme tokens).
+
+- 3dc2963: - **vue**: Fix reactivity in `MsRadioGroup` context so controlled state updates properly.
+  - **vue**: Fix `MsMenu` active index alignment to always point to valid enabled items.
+  - **vue**: Fix `MsField` error check to prevent empty string errors from rendering invalid state.
+  - **css**: Add dedicated `textarea.css` component layer and package export.
+  - **css**: Add `:focus:not(:focus-visible)` across base and button layers for cleaner pointer interaction.
+- 3dc2963: - **css**: Fix dark mode color contrast across all 26 enterprise components (password-input, masked-input, pin-input, pagination, code, code-block, collapse, blockquote, icon-picker, emoji-picker, date-picker, canvas, form-wizard, dropzone, split-pane, grid, command-palette, toggle-group, fab) by migrating from non-existent surface-base / surface-elevated tokens to canonical semantic tokens (--ms-color-surface-raised, --ms-color-surface-sunken, --ms-color-surface-default, --ms-color-text-primary, and --ms-color-text-inverse).
+  - **vue**: Add zero-dependency, high-performance syntax highlighting in MsCodeBlock for TypeScript, JavaScript, HTML, Vue, CSS, JSON, and Bash, tokenizing keywords, strings, comments, numbers, tags, attributes, and functions.
+  - **css**: Add .ms-code-token--* syntax token styles mapped to brand design tokens with WCAG 2.2 AAA contrast in both light and dark mode.
+  - **apps/preview**: Restructure Batch 9-14 templates to standard .canvas-preview, .controls-card, .prop-row, .prop-label, .prop-select, .prop-input, and .prop-checkbox controls with minmax(0, 1fr) bounding, eliminating horizontal scroll blowouts and overlapping options in MsLink, MsCode, and all other new components.
+- 3dc2963: - **vue**: Add `@wheel` and `@touchmove` passive listeners alongside `@scroll` in `MsScrollbar` to immediately activate the `.is-scrolling` visibility state on mouse wheel and touch gestures, resetting smoothly after 1000ms of inactivity.
+  - **css**: Remove container `:hover` lock from `visibility="auto"` scrollbars so the thumb only appears during active scroll/wheel interaction and properly disappears when the user stops, even if the cursor remains over the element. Direct hover on the thumb (`::-webkit-scrollbar-thumb:hover`) remains available for manual dragging.
+  - **css**: Isolate standard `scrollbar-width` and `scrollbar-color` to non-WebKit browsers (Firefox) to prevent Chromium from disabling custom WebKit scrollbars, completely removing native Windows arrow buttons by default.
+- 3dc2963: Transform preview studio into official library documentation portal:
+
+  - Restructured navigation sidebar with Primeiros Passos (Overview, Installation, Theming Guide) and canonical documentation categories across all 55 components.
+  - Added quick-import code card with one-click copy to component documentation headers.
+  - Repositioned theme customization floating cog button strictly to the right below the navbar as an icon-only floating action button (FAB).
+  - Added official geometric SVG crystal logo and typography mark for the topbar.
+  - Fixed version tag contrast in light and dark modes with high-contrast sunken surface and active status indicator.
+  - Updated all component documentation screens to use official standard MsTabs, MsTabList, and MsTab components.
+
+- 3dc2963: - **studio**: Modernize component header with MsSnippet and code tab with MsCodeBlock.
+  - **studio**: Fix dark mode contrast for .api-type-tag in API specifications table.
+  - **studio**: Custom styled .prop-select with tokenized borders and SVG chevron.
+  - **vue/css**: Enable line numbers by default (`showLineNumbers: true`) in MsCodeBlock, fix newline handling, and ensure sticky aligned line gutter.
+  - **studio**: Remove nested card wrapper around MsCodeBlock in showcase and documentation views.
+  - **vue/css**: Add range, time, and datetime modes with minuteStep and clearable to MsDatePicker.
+  - **vue/css**: Expand geometric patterns in MsCanvas (isometric, diagonal-stripes, honeycomb, waves, checkerboard, plus, blueprint).
+  - **vue**: Render true vector SVG icons in MsIconPicker and expand default icon set.
+  - **vue**: Expand MsEmojiPicker catalog to 200+ emojis across 7 categories.
+  - **vue/css**: Add gap, dense, interactive, and variant options to MsBentoGrid and MsMasonryGrid.
+  - **vue/css**: Add glassmorphic close button and high-contrast SVG chevrons to MsLightbox.
