@@ -9,6 +9,7 @@ import {
 } from "./types";
 import MsSidebarMenuGroup from "./MsSidebarMenuGroup.vue";
 import MsSidebarMenuItem from "./MsSidebarMenuItem.vue";
+import { safeHref } from "../../composables/safe-url.ts";
 
 defineOptions({
   name: "MsSidebarMenu",
@@ -132,7 +133,7 @@ function isGroup(
               :icon="item.icon"
               :badge="item.badge"
               :badge-tone="item.badgeTone"
-              :href="item.href"
+              :href="safeHref(item.href)"
               :disabled="item.disabled"
               :active="item.active"
               :open="item.open"
@@ -147,7 +148,7 @@ function isGroup(
                   :icon="child.icon"
                   :badge="child.badge"
                   :badge-tone="child.badgeTone"
-                  :href="child.href"
+                  :href="safeHref(child.href)"
                   :disabled="child.disabled"
                   :active="child.active"
                   :open="child.open"
@@ -165,7 +166,7 @@ function isGroup(
               :icon="(entry as MsSidebarMenuItemData).icon"
               :badge="(entry as MsSidebarMenuItemData).badge"
               :badge-tone="(entry as MsSidebarMenuItemData).badgeTone"
-              :href="(entry as MsSidebarMenuItemData).href"
+              :href="safeHref((entry as MsSidebarMenuItemData).href)"
               :disabled="(entry as MsSidebarMenuItemData).disabled"
               :active="(entry as MsSidebarMenuItemData).active"
               :open="(entry as MsSidebarMenuItemData).open"
@@ -191,7 +192,7 @@ function isGroup(
                   :icon="child.icon"
                   :badge="child.badge"
                   :badge-tone="child.badgeTone"
-                  :href="child.href"
+                  :href="safeHref(child.href)"
                   :disabled="child.disabled"
                   :active="child.active"
                   :open="child.open"

@@ -5,6 +5,7 @@ import {
   sidebarMenuContextKey,
   type MsSidebarMenuItemData,
 } from "./types";
+import { safeHref } from "../../composables/safe-url.ts";
 
 defineOptions({
   name: "MsSidebarMenuItem",
@@ -84,7 +85,7 @@ function handleClick(evt: MouseEvent) {
   <li class="ms-sidebar-menu-item" :data-open="isOpen" :data-active="isActive">
     <component
       :is="href ? 'a' : 'button'"
-      :href="href"
+      :href="safeHref(href)"
       :type="href ? undefined : 'button'"
       class="ms-sidebar-menu-button"
       :class="{

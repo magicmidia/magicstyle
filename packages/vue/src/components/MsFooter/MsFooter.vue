@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import type { MsFooterProps } from "./types";
+import { safeHref } from "../../composables/safe-url.ts";
 
 defineOptions({
   name: "MsFooter",
@@ -70,7 +71,7 @@ const containerClasses = computed(() => {
             <a
               v-for="(link, linkIndex) in col.links"
               :key="linkIndex"
-              :href="link.href || '#'"
+              :href="safeHref(link.href) ?? '#'"
               class="ms-footer__link"
             >
               {{ link.label }}
@@ -114,7 +115,7 @@ const containerClasses = computed(() => {
             <a
               v-for="(link, linkIndex) in col.links"
               :key="linkIndex"
-              :href="link.href || '#'"
+              :href="safeHref(link.href) ?? '#'"
               class="ms-footer__link"
             >
               {{ link.label }}

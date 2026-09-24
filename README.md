@@ -12,7 +12,7 @@
 [![Accessibility](https://img.shields.io/badge/a11y-WCAG%202.2%20AA-green.svg?style=flat-square)](docs/baseline/Magic-Style-Architecture-Baseline-1.2/11-Accessibility-Specification.md)
 [![TypeScript](https://img.shields.io/badge/typescript-strict%205.9-blue.svg?style=flat-square)](tsconfig.base.json)
 [![Node](https://img.shields.io/badge/node-%3E%3D24-brightgreen.svg?style=flat-square)](package.json)
-[![License](https://img.shields.io/badge/license-MIT%2FApache--2.0-yellow.svg?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-yellow.svg?style=flat-square)](LICENSE)
 
 <br />
 

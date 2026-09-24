@@ -19,7 +19,7 @@
           <!-- Standard item -->
           <template v-else>
             <MsBreadcrumbItem
-              :href="entry.item.href"
+              :href="safeHref(entry.item.href)"
               :current="entry.item.current || entry.isLast"
               :disabled="entry.item.disabled"
               :icon="entry.item.icon"
@@ -47,6 +47,7 @@ import {
   type MsBreadcrumbsSize,
   type MsBreadcrumbsVariant,
 } from "./types.ts";
+import { safeHref } from "../../composables/safe-url.ts";
 
 defineOptions({
   name: "MsBreadcrumbs",

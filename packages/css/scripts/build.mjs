@@ -3,7 +3,7 @@
  * Build for @magic-style/css (doc 09 §10: full + granular distribution).
  * Generates dist/ from authored layers + internal token/theme outputs.
  */
-import { copyFileSync, mkdirSync, writeFileSync, existsSync, readdirSync } from "node:fs";
+import { copyFileSync, mkdirSync, writeFileSync, existsSync, readdirSync, rmSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
@@ -18,6 +18,8 @@ function resolveDepFile(dep, file) {
   return join(dirname(jsonPath), file);
 }
 
+// Start from a clean dist so removed stylesheets are never published.
+rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
 
 const sources = {

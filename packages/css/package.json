@@ -2,7 +2,7 @@
   "name": "@magic-style/css",
   "version": "0.1.0",
   "description": "Magic-Style official CSS: semantic component classes and design-token layers. Framework-free.",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "type": "module",
   "sideEffects": true,
   "exports": {
@@ -102,7 +102,11 @@
     "./components/snippet.css": "./dist/components/snippet.css",
     "./components/choicebox.css": "./dist/components/choicebox.css",
     "./components/glimpse.css": "./dist/components/glimpse.css",
-    "./components/index.css": "./dist/components/index.css"
+    "./components/kbd.css": "./dist/components/kbd.css",
+    "./components/aspect-ratio.css": "./dist/components/aspect-ratio.css",
+    "./components/hover-card.css": "./dist/components/hover-card.css",
+    "./components/index.css": "./dist/components/index.css",
+    "./package.json": "./package.json"
   },
   "files": [
     "dist"
@@ -114,11 +118,19 @@
     "lint": "eslint ."
   },
   "devDependencies": {
+    "@magic-style-internal/tokens": "workspace:*",
+    "@magic-style-internal/themes": "workspace:*",
     "typescript": "~5.9.3",
     "vitest": "^4.1.11"
   },
-  "dependencies": {
-    "@magic-style-internal/tokens": "workspace:*",
-    "@magic-style-internal/themes": "workspace:*"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magicmidia/magicstyle.git",
+    "directory": "packages/css"
+  },
+  "homepage": "https://github.com/magicmidia/magicstyle#readme",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

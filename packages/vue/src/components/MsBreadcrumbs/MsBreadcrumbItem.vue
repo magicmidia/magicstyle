@@ -6,7 +6,7 @@
       </span>
       <slot />
     </span>
-    <a v-else-if="href && !disabled" class="ms-breadcrumbs__link" :href="href">
+    <a v-else-if="href && !disabled" class="ms-breadcrumbs__link" :href="safeHref(href)">
       <span v-if="$slots.icon || icon" class="ms-breadcrumbs__icon" aria-hidden="true">
         <slot name="icon">{{ icon }}</slot>
       </span>
@@ -24,6 +24,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import type { MsBreadcrumbItemProps } from "./types.ts";
+import { safeHref } from "../../composables/safe-url.ts";
 
 defineOptions({
   name: "MsBreadcrumbItem",

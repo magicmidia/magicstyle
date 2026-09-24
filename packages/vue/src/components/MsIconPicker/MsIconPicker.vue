@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import { sanitizeSvg } from "../../composables/sanitize-svg.ts";
 import type { MsIconPickerProps, MsIconPickerEmits, MsIconItem } from "./types.ts";
 
 const ICON_PATHS: Record<string, string> = {
@@ -98,18 +99,6 @@ const searchQuery = ref("");
 const selectedCategory = ref("Todos");
 
 const activeIcons = computed(() => props.icons || defaultIcons);
-
-function sanitizeSvg(raw: string): string {
-  if (!raw) return "";
-  // Block script/style tags, event handlers (on*), and javascript: URIs
-  return raw
-    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
-    .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, "")
-    .replace(/\bon\w+\s*=\s*(?:'[^']*'|"[^"]*"|[^\s>]+)/gi, "")
-    .replace(/(?:href|src)\s*=\s*(?:'javascript:[^']*'|"javascript:[^"]*")/gi, "")
-    .replace(/^<svg[^>]*>/i, "")
-    .replace(/<\/svg>$/i, "");
-}
 
 const getIconContent = (id: string): string => {
   const custom = activeIcons.value.find((i) => i.id === id);

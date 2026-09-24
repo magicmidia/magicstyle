@@ -31,14 +31,13 @@ importers:
         version: 8.68.0(eslint@10.9.1)(typescript@5.9.3)
 
   packages/css:
-    dependencies:
+    devDependencies:
       '@magic-style-internal/themes':
         specifier: workspace:*
         version: link:../internal/themes
       '@magic-style-internal/tokens':
         specifier: workspace:*
         version: link:../internal/tokens
-    devDependencies:
       typescript:
         specifier: ~5.9.3
         version: 5.9.3

@@ -13,9 +13,9 @@
     >
       <slot>
         <a
-          :href="href"
+          :href="safeHref(href)"
           :target="target"
-          :rel="rel || (target === '_blank' ? 'noopener noreferrer' : undefined)"
+          :rel="safeRel(rel, target)"
           class="ms-link ms-link--primary"
         >
           {{ label || href }}
@@ -98,6 +98,7 @@
 import { computed, onUnmounted, ref } from "vue";
 import { useMsId } from "../../composables/use-ms-id.ts";
 import type { MsGlimpseProps, MsGlimpseEmits } from "./types.ts";
+import { safeHref, safeRel } from "../../composables/safe-url.ts";
 
 defineOptions({
   name: "MsGlimpse",

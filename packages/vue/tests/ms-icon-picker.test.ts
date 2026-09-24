@@ -58,4 +58,24 @@ describe("MsIconPicker component", () => {
     expect(html).not.toContain("onerror=");
     expect(html).toContain('<path d="M10 10"');
   });
+
+  it("does not render executable payloads from custom icon markup", () => {
+    const wrapper = mount(MsIconPicker, {
+      props: {
+        icons: [
+          {
+            id: "evil",
+            name: "Evil",
+            category: "Test",
+            svg: '<a href=javascript:alert(1)><path d="M1 1"/></a><foreignObject><iframe srcdoc="x"></iframe></foreignObject>',
+          },
+        ],
+        modelValue: "evil",
+      },
+    });
+    const html = wrapper.find(".ms-icon-picker__preview").html();
+    expect(html).not.toContain("javascript:");
+    expect(html).not.toContain("foreignObject");
+    expect(html).not.toContain("iframe");
+  });
 });

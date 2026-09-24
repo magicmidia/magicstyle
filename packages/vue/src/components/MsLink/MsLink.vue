@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance } from "vue";
 import type { MsLinkProps, MsLinkEmits } from "./types.ts";
+import { safeHref, safeRel } from "../../composables/safe-url.ts";
 
 const props = withDefaults(defineProps<MsLinkProps>(), {
   href: "",
@@ -27,8 +28,8 @@ const resolvedTarget = computed(() => {
 });
 
 const resolvedRel = computed(() => {
-  if (props.rel) return props.rel;
-  return isExternal.value ? "noopener noreferrer" : undefined;
+  const rel = props.rel || (isExternal.value ? "noopener noreferrer" : undefined);
+  return safeRel(rel, resolvedTarget.value);
 });
 
 const classes = computed(() => [
@@ -54,7 +55,7 @@ const handleClick = (event: MouseEvent) => {
 <template>
   <a
     :class="classes"
-    :href="props.disabled ? undefined : props.href || undefined"
+    :href="props.disabled ? undefined : safeHref(props.href)"
     :target="props.disabled ? undefined : resolvedTarget"
     :rel="props.disabled ? undefined : resolvedRel"
     :download="props.disabled ? undefined : props.download"
