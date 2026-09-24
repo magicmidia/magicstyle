@@ -1,6 +1,6 @@
 import type { InjectionKey, Ref } from "vue";
 
-export type MsListVariant = "default" | "bordered" | "divided";
+export type MsListVariant = "default" | "bordered" | "divided" | "separated";
 export type MsListSize = "sm" | "md" | "lg";
 
 export interface MsListProps {

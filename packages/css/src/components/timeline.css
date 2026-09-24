@@ -81,6 +81,38 @@
   color: var(--ms-color-text-secondary);
   flex-shrink: 0;
   box-shadow: 0 0 0 4px var(--ms-color-surface-default);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Solid Node Variant */
+.ms-timeline-item--solid .ms-timeline-item__node {
+  background-color: var(--_ms-tl-tone-solid, var(--ms-color-interactive-primary));
+  border-color: var(--_ms-tl-tone-solid, var(--ms-color-interactive-primary));
+  color: var(--ms-color-text-on-accent, #ffffff);
+}
+
+/* Pulsing Active Node */
+.ms-timeline-item--active .ms-timeline-item__node {
+  box-shadow:
+    0 0 0 4px var(--ms-color-surface-default),
+    0 0 0 8px color-mix(in oklch, currentColor 25%, transparent);
+  animation: ms-timeline-pulse 2s infinite ease-in-out;
+}
+
+@keyframes ms-timeline-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 4px var(--ms-color-surface-default),
+      0 0 0 8px color-mix(in oklch, currentColor 20%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 0 4px var(--ms-color-surface-default),
+      0 0 0 12px color-mix(in oklch, currentColor 35%, transparent);
+  }
 }
 
 /* Bullet Tones */

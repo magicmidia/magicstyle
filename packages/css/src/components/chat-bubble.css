@@ -77,14 +77,53 @@
 }
 
 /* Variants & Tones */
-.ms-chat-bubble--variant-soft.ms-chat-bubble--tone-neutral {
-  background-color: var(--ms-color-text-primary);
-  color: var(--ms-color-surface-sunken);
+.ms-chat-bubble--variant-soft.ms-chat-bubble--tone-neutral,
+.ms-chat-bubble--variant-soft:not([class*="tone-"]) {
+  background-color: var(--ms-color-surface-sunken, #f1f5f9);
+  color: var(--ms-color-text-primary);
+  border: 1px solid var(--ms-color-border-subtle);
 }
 
 .ms-chat-bubble--variant-soft.ms-chat-bubble--tone-primary {
-  background-color: var(--ms-color-interactive-primary-text);
-  color: var(--ms-color-interactive-primary-subtle);
+  background-color: var(--ms-color-interactive-primary-subtle);
+  color: var(--ms-color-interactive-primary-text);
+  border: 1px solid color-mix(in oklch, var(--ms-color-interactive-primary) 20%, transparent);
+}
+
+.ms-chat-bubble--variant-soft.ms-chat-bubble--tone-secondary {
+  background-color: var(--ms-color-interactive-secondary-subtle);
+  color: var(--ms-color-interactive-secondary-text);
+  border: 1px solid color-mix(in oklch, var(--ms-color-interactive-secondary) 25%, transparent);
+}
+
+.ms-chat-bubble--variant-soft.ms-chat-bubble--tone-accent {
+  background-color: var(--ms-color-interactive-accent-subtle);
+  color: var(--ms-color-interactive-accent-text);
+  border: 1px solid color-mix(in oklch, var(--ms-color-interactive-accent) 25%, transparent);
+}
+
+.ms-chat-bubble--variant-soft.ms-chat-bubble--tone-success {
+  background-color: var(--ms-color-feedback-success-bg);
+  color: var(--ms-color-feedback-success-text);
+  border: 1px solid var(--ms-color-feedback-success-border);
+}
+
+.ms-chat-bubble--variant-soft.ms-chat-bubble--tone-info {
+  background-color: var(--ms-color-feedback-info-bg);
+  color: var(--ms-color-feedback-info-text);
+  border: 1px solid var(--ms-color-feedback-info-border);
+}
+
+.ms-chat-bubble--variant-soft.ms-chat-bubble--tone-warning {
+  background-color: var(--ms-color-feedback-warning-bg);
+  color: var(--ms-color-feedback-warning-text);
+  border: 1px solid var(--ms-color-feedback-warning-border);
+}
+
+.ms-chat-bubble--variant-soft.ms-chat-bubble--tone-danger {
+  background-color: var(--ms-color-feedback-danger-bg);
+  color: var(--ms-color-feedback-danger-text);
+  border: 1px solid var(--ms-color-feedback-danger-border);
 }
 
 .ms-chat-bubble--variant-solid.ms-chat-bubble--tone-primary {
@@ -97,10 +136,67 @@
   color: var(--ms-color-text-inverse);
 }
 
+.ms-chat-bubble--variant-solid.ms-chat-bubble--tone-accent {
+  background-color: var(--ms-color-interactive-accent);
+  color: var(--ms-color-text-on-accent);
+}
+
+.ms-chat-bubble--variant-solid.ms-chat-bubble--tone-success {
+  background-color: var(--ms-color-feedback-success-solid);
+  color: var(--ms-color-text-on-accent);
+}
+
+.ms-chat-bubble--variant-solid.ms-chat-bubble--tone-danger {
+  background-color: var(--ms-color-feedback-danger-solid);
+  color: var(--ms-color-text-on-accent);
+}
+
 .ms-chat-bubble--variant-outline {
   border: 1px solid var(--ms-color-border-subtle);
   background-color: var(--ms-color-surface-raised);
   color: var(--ms-color-text-primary);
+}
+
+/* Typing Indicator Balloon */
+.ms-chat-bubble--typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 16px;
+}
+
+.ms-chat-bubble--typing span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: currentColor;
+  border-radius: 50%;
+  animation: ms-chat-typing 1.4s infinite ease-in-out;
+}
+
+.ms-chat-bubble--typing span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.ms-chat-bubble--typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.ms-chat-bubble--typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes ms-chat-typing {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
 }
 
 .ms-chat-bubble-footer {

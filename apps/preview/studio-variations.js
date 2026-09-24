@@ -3210,24 +3210,157 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'file-inputs'">
-    
+    <!-- 1. SINGLE FILE UPLOAD -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsFileInput em Variantes (Padrão, Compacto, Dropzone)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Variants</span>
+        <div class="variation-card-title" style="margin: 0;">1. Upload de Arquivo Único com Validação de Extensão</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Single File</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 480px;">
-        <MsFileInput label="Selecionar Arquivo Único" placeholder="Nenhum arquivo selecionado..."></MsFileInput>
-        <MsFileInput multiple label="Múltiplos Documentos" placeholder="Arraste ou clique para anexar (PDF, PNG)..."></MsFileInput>
+        <div style="width: 100%; max-width: 500px;">
+          <MsFileInput
+            label="Arraste seu comprovante em PDF ou clique para buscar"
+            accept=".pdf,.docx,.xlsx"
+            :multiple="false"
+          />
+        </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsFileInput label="Upload" placeholder="Escolher..." />
-<MsFileInput multiple />'
+          code='<MsFileInput
+  label="Arraste seu comprovante em PDF ou clique para buscar"
+  accept=".pdf,.docx,.xlsx"
+  :multiple="false"
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. MULTI-FILE UPLOAD WITH FILE LIST -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Seleção de Múltiplos Arquivos com Lista Detalhada</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Multiple Files</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 500px;">
+          <MsFileInput
+            :multiple="true"
+            label="Envie múltiplos relatórios fiscais (PDF, CSV, XML)"
+            :show-file-list="true"
+          />
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsFileInput
+  multiple
+  label="Envie múltiplos relatórios fiscais"
+  :show-file-list="true"
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. DRAG & DROP ZONE (MsDropzone) -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Zona de Upload Drag & Drop (MsDropzone) de Alta Visibilidade</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Dropzone</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 500px;">
+          <MsDropzone
+            accept="image/*,application/pdf"
+            :max-size="10485760"
+            helper-text="PNG, JPG ou PDF até 10MB"
+          >
+            <template #icon>
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" style="color: var(--ms-color-primary, #6366f1); margin-bottom: 8px;">
+                <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9m-4-4 4-4 4 4" />
+              </svg>
+            </template>
+          </MsDropzone>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsDropzone
+  accept="image/*,application/pdf"
+  :max-size="10485760"
+  helper-text="PNG, JPG ou PDF até 10MB"
+>
+  <template #icon><i class="icon-cloud-upload" /></template>
+</MsDropzone>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. DISABLED STATE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Estado Desabilitado (Disabled State)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Disabled</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 500px;">
+          <MsFileInput
+            label="Upload temporariamente bloqueado para manutenção do storage"
+            :disabled="true"
+          />
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsFileInput label="Upload bloqueado" :disabled="true" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 5. AVATAR PROFILE UPLOADER PATTERN -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. Padrão de Foto de Perfil com Avatar e Botão de Substituição</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Avatar Upload</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; align-items: center; gap: 24px; padding: 20px; border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; background: var(--ms-color-surface-raised); max-width: 500px; width: 100%;">
+          <MsAvatar name="Carlos Eduardo" size="xl" tone="primary" />
+          <div style="flex: 1;">
+            <div style="font-size: 14px; font-weight: 600; color: var(--ms-color-text-primary);">Foto do Perfil</div>
+            <div style="font-size: 12px; color: var(--ms-color-text-muted); margin-bottom: 12px;">Formatos JPG ou PNG recomendados. Resolução mínima de 400x400px.</div>
+            <div style="display: flex; gap: 8px;">
+              <MsButton variant="solid" tone="primary" size="xs">Substituir Foto</MsButton>
+              <MsButton variant="ghost" tone="danger" size="xs">Remover</MsButton>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<div style="display: flex; align-items: center; gap: 24px;">
+  <MsAvatar name="Carlos Eduardo" size="xl" tone="primary" />
+  <div>
+    <div style="font-weight: 600;">Foto do Perfil</div>
+    <div style="font-size: 12px; color: var(--ms-color-text-muted);">Recomendado: 400x400px</div>
+    <div style="display: flex; gap: 8px; margin-top: 8px;">
+      <MsButton variant="solid" tone="primary" size="xs">Substituir Foto</MsButton>
+      <MsButton variant="ghost" tone="danger" size="xs">Remover</MsButton>
+    </div>
+  </div>
+</div>'
           language="html"
           :show-line-numbers="false"
           :copyable="true"
@@ -3238,26 +3371,98 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'color-pickers'">
-    
+    <!-- 1. BRAND PALETTE PRESETS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsColorPicker com Amostras da Paleta de Marca</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Brand Palette Pickers</span>
+        <div class="variation-card-title" style="margin: 0;">1. Seletor com Amostras da Paleta da Marca (8 Tons Semânticos)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Brand Presets</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
-        <div v-for="t in allTones" :key="t" style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
-          <MsColorPicker :model-value="toneHexMap[t]"></MsColorPicker>
-          <span style="font-size: 11px; font-weight: bold; text-transform: uppercase;">{{ t }}</span>
-          <code style="font-size: 10px; color: var(--ms-color-text-muted);">{{ toneHexMap[t] }}</code>
+        <div style="width: 100%; max-width: 440px;">
+          <MsColorPicker
+            model-value="#6366f1"
+            :show-input="true"
+            :swatches="['#6366f1', '#64748b', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444', '#0ea5e9', '#0f172a']"
+          />
         </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsColorPicker model-value="#2e86de" />'
+          code='<MsColorPicker
+  v-model="brandColor"
+  :show-input="true"
+  :swatches="brandSwatches"
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. EDITABLE HEX INPUT -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Entrada Hexadecimal com Preview & Seletor Nativo do Sistema</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Hex Input</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 440px;">
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Cor de Acento do Workspace</label>
+            <MsColorPicker model-value="#8b5cf6" :show-input="true" />
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsColorPicker v-model="accentColor" :show-input="true" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. COMPACT SWATCHES ONLY -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Modo Compacto Sem Campo de Texto (:show-input="false")</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Compact Swatches</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 380px;">
+          <MsColorPicker
+            model-value="#10b981"
+            :show-input="false"
+            :swatches="['#ef4444', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6', '#ec4899']"
+          />
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsColorPicker v-model="statusColor" :show-input="false" :swatches="palette" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. DISABLED STATE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Estado Desabilitado (Disabled State)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Disabled</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 440px;">
+          <MsColorPicker model-value="#64748b" :disabled="true" :show-input="true" />
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsColorPicker model-value="#64748b" :disabled="true" />'
           language="html"
           :show-line-numbers="false"
           :copyable="true"
@@ -3667,26 +3872,100 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'banners'">
-    
+    <!-- 1. GLOBAL RELEASE ANNOUNCEMENT -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsBanner em Tons Semânticos com Botão de Ação</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Banners</span>
+        <div class="variation-card-title" style="margin: 0;">1. Banner Global de Anúncio de Versão (Top Announcement)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Global Header</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
-        <MsBanner tone="primary" variant="solid" title="Atualização MagicStyle 1.2 Disponível" description="Novas otimizações de performance e suporte total aos 8 tons corporativos.">
-          <template #actions><MsButton size="sm" variant="solid" tone="neutral">Atualizar Agora</MsButton></template>
-        </MsBanner>
-        <MsBanner tone="warning" variant="soft" title="Período de Manutenção Programada" description="Os serviços de homologação passarão por manutenção domingo às 02:00 UTC."></MsBanner>
+        <div style="width: 100%;">
+          <MsBanner tone="primary" variant="solid" title="MagicStyle v1.2 Disponível — Suporte Completo a FlyonUI & Shadcn UI" description="Mais de 50 novas variações corporativas, design tokens DTCG em OKLCH e novos componentes.">
+            <template #actions>
+              <div style="display: flex; gap: 8px;">
+                <MsButton size="xs" variant="solid" tone="neutral">Ver Novidades</MsButton>
+                <MsButton size="xs" variant="ghost" tone="neutral" style="color: white;">Ignorar</MsButton>
+              </div>
+            </template>
+          </MsBanner>
+        </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsBanner tone="primary" title="Novidades" description="...">
-  <template #actions><MsButton>Ver</MsButton></template>
+          code='<!-- Banner corporativo de anúncio global com botões de ação -->
+<MsBanner tone="primary" variant="solid"
+  title="MagicStyle v1.2 Disponível"
+  description="Novas variações corporativas e tokens DTCG."
+>
+  <template #actions>
+    <MsButton size="xs" variant="solid" tone="neutral">Ver Novidades</MsButton>
+  </template>
+</MsBanner>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. MAINTENANCE WARNING STRIP -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Banner de Manutenção Preventiva Programada (Warning Soft)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Maintenance</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%;">
+          <MsBanner tone="warning" variant="soft" title="Janela de Manutenção no Cluster de Homologação" description="Os serviços de deploy estarão pausados domingo entre 02:00 e 04:00 UTC para upgrade de hardware.">
+            <template #actions>
+              <MsButton size="xs" variant="outline" tone="warning">Ver Status do Sistema</MsButton>
+            </template>
+          </MsBanner>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Banner de manutenção em tom warning soft -->
+<MsBanner tone="warning" variant="soft"
+  title="Janela de Manutenção"
+  description="Serviços pausados domingo 02:00 UTC."
+>
+  <template #actions>
+    <MsButton size="xs" variant="outline" tone="warning">Ver Status</MsButton>
+  </template>
+</MsBanner>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. SECURITY CRITICAL BANNER -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Banner Crítico de Segurança & Renovação de Certificados</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Security Alert</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%;">
+          <MsBanner tone="danger" variant="soft" title="Certificado mTLS do Gateway expira em menos de 24 horas" description="Reemita as credenciais criptográficas para evitar desconexões na API de produção.">
+            <template #actions>
+              <MsButton size="xs" variant="solid" tone="danger">Renovar Agora</MsButton>
+            </template>
+          </MsBanner>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Banner de segurança em tom danger soft -->
+<MsBanner tone="danger" variant="soft"
+  title="Certificado TLS Expirando"
+  description="Reemita as credenciais de produção."
+>
+  <template #actions>
+    <MsButton size="xs" variant="solid" tone="danger">Renovar Agora</MsButton>
+  </template>
 </MsBanner>'
           language="html"
           :show-line-numbers="false"
@@ -3698,25 +3977,62 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'toasts'">
-    
+    <!-- 1. SEMANTIC STATUS MATRIX -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. Galeria de Notificações Toast nos Tons da Marca</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Toast Notifications</span>
+        <div class="variation-card-title" style="margin: 0;">1. Notificações Toast nos Tons Semânticos da Marca</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Toast Matrix</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 440px;">
-        <MsToast tone="success" title="Registro Salvo com Sucesso" message="Todas as alterações foram sincronizadas com o repositório."></MsToast>
-        <MsToast tone="danger" title="Falha na Conexão" message="Não foi possível autenticar com o cluster de microsserviços."></MsToast>
-        <MsToast tone="info" title="Compilação Finalizada" message="Build Turbo concluído em 1.42s com 0 erros."></MsToast>
-        <MsToast tone="warning" title="Atenção aos Tokens" message="Token de sessão expira em 5 minutos."></MsToast>
+        <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 480px;">
+          <MsToast tone="success" title="Registro Salvo com Sucesso" message="Todas as 16 alterações foram sincronizadas com o repositório remoto." />
+          <MsToast tone="danger" title="Falha de Autenticação mTLS" message="Não foi possível verificar a assinatura digital do cluster de microsserviços." />
+          <MsToast tone="info" title="Compilação Finalizada" message="Build Turbo concluído em 1.38s com 0 advertências de lint." />
+          <MsToast tone="warning" title="Sessão Próxima de Expirar" message="Sua chave de acesso expira em 5 minutos por inatividade." />
+        </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsToast tone="success" title="Salvo!" message="..." />'
+          code='<!-- Toasts semânticos nos tons da marca -->
+<MsToast tone="success" title="Salvo!" message="Sincronizado com sucesso." />
+<MsToast tone="danger" title="Falha" message="Erro ao conectar." />
+<MsToast tone="info" title="Build OK" message="Concluído em 1.38s." />
+<MsToast tone="warning" title="Atenção" message="Sessão expira em 5 min." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. TOAST WITH UNDO ACTION -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Toast com Ação Rápida de Desfazer (Undo Pattern)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Action Toast</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 480px; padding: 14px 16px; border: 1px solid var(--ms-color-border-subtle); border-radius: 10px; background: var(--ms-color-surface-raised); box-shadow: var(--ms-elevation-2); display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 18px;">🗑️</span>
+            <div>
+              <div style="font-weight: 700; font-size: 13px;">Item movido para a lixeira</div>
+              <div style="font-size: 11px; color: var(--ms-color-text-muted);">Você pode recuperá-lo a qualquer momento.</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <MsButton size="xs" variant="solid" tone="primary">Desfazer (⌘Z)</MsButton>
+            <MsButton size="xs" variant="ghost" tone="neutral">×</MsButton>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Toast de ação de desfazer (FlyonUI / Shadcn pattern) -->
+<div class="toast-action">
+  <span>Item movido para a lixeira</span>
+  <MsButton size="xs" variant="solid" tone="primary">Desfazer</MsButton>
+</div>'
           language="html"
           :show-line-numbers="false"
           :copyable="true"
@@ -3727,24 +4043,81 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'confirm-dialog'">
-    
+    <!-- 1. DESTRUCTIVE ALERT DIALOG -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. Tipos de Confirmação (Destrutiva, Sucesso, Alerta)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Confirm Dialog Types</span>
+        <div class="variation-card-title" style="margin: 0;">1. Diálogo de Exclusão Destrutiva (Shadcn Alert Dialog Signature)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Destructive Modal</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <MsButton variant="solid" tone="danger">Excluir Workspace (Danger Confirm)</MsButton>
-        <MsButton variant="solid" tone="primary">Publicar Release (Primary Confirm)</MsButton>
-        <MsButton variant="solid" tone="warning">Resetar Configurações (Warning Confirm)</MsButton>
+        <div style="width: 100%; max-width: 480px; padding: 24px; border: 1px solid color-mix(in oklch, var(--ms-color-danger) 30%, var(--ms-color-border-subtle)); border-radius: 12px; background: var(--ms-color-surface-raised); box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.28); display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; gap: 14px; align-items: flex-start;">
+            <div style="width: 42px; height: 42px; border-radius: 50%; background: var(--ms-color-feedback-danger-bg); color: var(--ms-color-danger); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
+              ⚠️
+            </div>
+            <div>
+              <div style="font-weight: 800; font-size: 16px; color: var(--ms-color-text-primary);">Você tem certeza absoluta?</div>
+              <div style="font-size: 13px; color: var(--ms-color-text-secondary); line-height: 1.5; margin-top: 6px;">
+                Esta ação é irreversível e excluirá permanentemente o workspace <strong style="color: var(--ms-color-text-primary);">@magic-style/production</strong>, juntamente com todas as chaves de API, segredos e histórico de deploys.
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--ms-color-border-subtle); padding-top: 14px;">
+            <MsButton variant="outline" tone="neutral">Cancelar</MsButton>
+            <MsButton variant="solid" tone="danger" wave>Sim, Excluir Workspace</MsButton>
+          </div>
+        </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsConfirmDialog tone="danger" title="Excluir?" description="..." />'
+          code='<!-- Diálogo de confirmação destrutiva com aviso de irreversibilidade -->
+<MsConfirmDialog tone="danger"
+  title="Você tem certeza absoluta?"
+  message="Esta ação é irreversível e excluirá permanentemente o repositório."
+  confirm-label="Sim, Excluir"
+  cancel-label="Cancelar"
+/>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. RELEASE PUBLISH CONFIRM -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Confirmação de Publicação de Versão (Primary Action)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Release Confirm</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 480px; padding: 24px; border: 1px solid color-mix(in oklch, var(--ms-color-interactive-primary) 30%, var(--ms-color-border-subtle)); border-radius: 12px; background: var(--ms-color-surface-raised); box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.28); display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; gap: 14px; align-items: flex-start;">
+            <div style="width: 42px; height: 42px; border-radius: 50%; background: var(--ms-color-primary-subtle); color: var(--ms-color-primary); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
+              🚀
+            </div>
+            <div>
+              <div style="font-weight: 800; font-size: 16px; color: var(--ms-color-text-primary);">Publicar versão v1.2.0 no npm?</div>
+              <div style="font-size: 13px; color: var(--ms-color-text-secondary); line-height: 1.5; margin-top: 6px;">
+                Os pacotes <code style="font-size: 11px;">@magic-style/vue</code> e <code style="font-size: 11px;">@magic-style/css</code> serão registrados no registro público sob a tag <strong style="color: var(--ms-color-primary);">latest</strong>.
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--ms-color-border-subtle); padding-top: 14px;">
+            <MsButton variant="outline" tone="neutral">Revisar Changeset</MsButton>
+            <MsButton variant="solid" tone="primary" wave>Publicar Agora</MsButton>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Diálogo de confirmação para publicação com tom primary -->
+<MsConfirmDialog tone="primary"
+  title="Publicar versão v1.2.0 no npm?"
+  message="Os pacotes serão registrados publicamente."
+  confirm-label="Publicar Agora"
+  cancel-label="Revisar"
+/>'
           language="html"
           :show-line-numbers="false"
           :copyable="true"
@@ -3813,34 +4186,205 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'skeletons'">
-    
+    <!-- 1. USER PROFILE SKELETON -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. Composição de Card Skeleton em Carregamento</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Card Skeleton Pattern</span>
+        <div class="variation-card-title" style="margin: 0;">1. Cartão de Perfil de Usuário em Carregamento</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Profile Skeleton</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="width: 100%; max-width: 360px; padding: 16px; border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; background: var(--ms-color-surface-raised); display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <MsSkeleton variant="circle" width="48px" height="48px" animation="shimmer"></MsSkeleton>
-          <div style="display: flex; flex-direction: column; gap: 6px; flex: 1;">
-            <MsSkeleton variant="text" width="60%" height="16px" animation="shimmer"></MsSkeleton>
-            <MsSkeleton variant="text" width="40%" height="12px" animation="shimmer"></MsSkeleton>
+        <div style="width: 100%; max-width: 400px; padding: 20px; border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; background: var(--ms-color-surface-raised); display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <MsSkeleton variant="circle" width="56px" height="56px" animation="shimmer" />
+            <div style="display: flex; flex-direction: column; gap: 8px; flex: 1;">
+              <MsSkeleton variant="text" width="65%" height="18px" animation="shimmer" />
+              <MsSkeleton variant="text" width="45%" height="12px" animation="shimmer" />
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <MsSkeleton variant="text" width="100%" height="12px" animation="shimmer" />
+            <MsSkeleton variant="text" width="90%" height="12px" animation="shimmer" />
+            <MsSkeleton variant="text" width="60%" height="12px" animation="shimmer" />
+          </div>
+          <div style="display: flex; gap: 10px; margin-top: 4px;">
+            <MsSkeleton variant="button" width="110px" height="34px" animation="shimmer" />
+            <MsSkeleton variant="button" width="110px" height="34px" animation="shimmer" />
           </div>
         </div>
-        <MsSkeleton variant="rect" width="100%" height="100px" animation="shimmer"></MsSkeleton>
-        <div style="display: flex; gap: 8px;">
-          <MsSkeleton variant="rect" width="80px" height="32px" animation="shimmer"></MsSkeleton>
-          <MsSkeleton variant="rect" width="80px" height="32px" animation="shimmer"></MsSkeleton>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Skeleton de perfil com avatar circular, bio multilinha e botões -->
+<div class="card">
+  <div class="user-row">
+    <MsSkeleton variant="circle" width="56px" height="56px" animation="shimmer" />
+    <div>
+      <MsSkeleton variant="text" width="65%" height="18px" />
+      <MsSkeleton variant="text" width="45%" height="12px" />
+    </div>
+  </div>
+  <MsSkeleton variant="text" width="100%" height="12px" />
+  <div class="actions">
+    <MsSkeleton variant="button" width="110px" height="34px" />
+  </div>
+</div>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. SAAS KPI METRIC CARDS SKELETON -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Painel de Métricas SaaS KPI em Carregamento</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">SaaS KPI Skeleton</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; width: 100%;">
+          <div v-for="i in 3" :key="i" style="padding: 16px; border: 1px solid var(--ms-color-border-subtle); border-radius: 10px; background: var(--ms-color-surface-raised); display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <MsSkeleton variant="text" width="50%" height="14px" animation="shimmer" />
+              <MsSkeleton variant="circle" width="28px" height="28px" animation="shimmer" />
+            </div>
+            <MsSkeleton variant="text" width="70%" height="30px" animation="shimmer" />
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <MsSkeleton variant="rect" width="50px" height="18px" radius="9999px" animation="shimmer" />
+              <MsSkeleton variant="text" width="35%" height="10px" animation="shimmer" />
+            </div>
+          </div>
         </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsSkeleton variant="circle" width="48px" height="48px" />
-<MsSkeleton variant="text" width="100%" />'
+          code='<!-- Grid de 3 cartões de KPI estatístico em estado de carregamento -->
+<div class="kpi-grid">
+  <div v-for="i in 3" :key="i" class="kpi-card">
+    <MsSkeleton variant="text" width="50%" height="14px" />
+    <MsSkeleton variant="text" width="70%" height="30px" />
+    <MsSkeleton variant="rect" width="50px" height="18px" radius="9999px" />
+  </div>
+</div>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. TABLE DATA SKELETON -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Tabela de Registros com Linhas Esqueleto (Table Skeleton)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Table Skeleton</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; border: 1px solid var(--ms-color-border-subtle); border-radius: 8px; overflow: hidden; background: var(--ms-color-surface-raised);">
+          <!-- Header -->
+          <div style="display: grid; grid-template-columns: 40px 180px 1fr 100px 90px; gap: 12px; padding: 12px 16px; background: var(--ms-color-surface-subtle); border-bottom: 1px solid var(--ms-color-border-subtle); align-items: center;">
+            <MsSkeleton variant="rect" width="16px" height="16px" radius="3px" animation="shimmer" />
+            <MsSkeleton variant="text" width="60%" height="12px" animation="shimmer" />
+            <MsSkeleton variant="text" width="40%" height="12px" animation="shimmer" />
+            <MsSkeleton variant="text" width="50%" height="12px" animation="shimmer" />
+            <MsSkeleton variant="text" width="70%" height="12px" animation="shimmer" />
+          </div>
+          <!-- Rows -->
+          <div v-for="r in 4" :key="r" style="display: grid; grid-template-columns: 40px 180px 1fr 100px 90px; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--ms-color-border-subtle); align-items: center;">
+            <MsSkeleton variant="rect" width="16px" height="16px" radius="3px" animation="shimmer" />
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <MsSkeleton variant="circle" width="28px" height="28px" animation="shimmer" />
+              <MsSkeleton variant="text" width="75%" height="14px" animation="shimmer" />
+            </div>
+            <MsSkeleton variant="text" :width="r % 2 === 0 ? '70%' : '55%'" height="13px" animation="shimmer" />
+            <MsSkeleton variant="rect" width="64px" height="20px" radius="9999px" animation="shimmer" />
+            <MsSkeleton variant="button" width="68px" height="26px" radius="4px" animation="shimmer" />
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Linhas da tabela populadas com MsSkeleton -->
+<div v-for="r in 5" class="table-row">
+  <MsSkeleton variant="circle" width="28px" height="28px" />
+  <MsSkeleton variant="text" width="60%" height="14px" />
+  <MsSkeleton variant="rect" width="64px" height="20px" radius="9999px" />
+</div>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. E-COMMERCE PRODUCT SKELETON -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Card de Produto E-Commerce com Capa & Preço</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Product Skeleton</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; width: 100%; max-width: 520px;">
+          <div v-for="p in 2" :key="p" style="border: 1px solid var(--ms-color-border-subtle); border-radius: 10px; overflow: hidden; background: var(--ms-color-surface-raised);">
+            <MsSkeleton variant="rect" width="100%" height="150px" animation="shimmer" radius="0" />
+            <div style="padding: 14px; display: flex; flex-direction: column; gap: 8px;">
+              <MsSkeleton variant="text" width="40%" height="10px" animation="shimmer" />
+              <MsSkeleton variant="text" width="85%" height="16px" animation="shimmer" />
+              <MsSkeleton variant="text" width="60%" height="14px" animation="shimmer" />
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
+                <MsSkeleton variant="text" width="45%" height="20px" animation="shimmer" />
+                <MsSkeleton variant="button" width="80px" height="30px" animation="shimmer" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Card de produto com imagem de capa e botão de checkout -->
+<div class="product-card">
+  <MsSkeleton variant="rect" width="100%" height="150px" />
+  <MsSkeleton variant="text" width="85%" height="16px" />
+  <MsSkeleton variant="text" width="45%" height="20px" />
+  <MsSkeleton variant="button" width="80px" height="30px" />
+</div>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 5. ANIMATION MODES COMPARISON -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. Comparativo de Modos de Animação (Shimmer vs Pulse vs None)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Animations</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 500px;">
+          <div>
+            <div style="font-size: 12px; font-weight: 700; margin-bottom: 6px; color: var(--ms-color-text-secondary);">Shimmer Sweep (Padrão Fluido contínuo):</div>
+            <MsSkeleton variant="rect" width="100%" height="32px" animation="shimmer" radius="6px" />
+          </div>
+
+          <div>
+            <div style="font-size: 12px; font-weight: 700; margin-bottom: 6px; color: var(--ms-color-text-secondary);">Pulse Opacity (Oscilação suave tonal):</div>
+            <MsSkeleton variant="rect" width="100%" height="32px" animation="pulse" radius="6px" />
+          </div>
+
+          <div>
+            <div style="font-size: 12px; font-weight: 700; margin-bottom: 6px; color: var(--ms-color-text-secondary);">None (Estático para baixa latência ou economia de energia):</div>
+            <MsSkeleton variant="rect" width="100%" height="32px" animation="none" radius="6px" />
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Modos de animação: shimmer, pulse ou none -->
+<MsSkeleton animation="shimmer" width="100%" height="32px" />
+<MsSkeleton animation="pulse" width="100%" height="32px" />
+<MsSkeleton animation="none" width="100%" height="32px" />'
           language="html"
           :show-line-numbers="false"
           :copyable="true"
@@ -3999,34 +4543,133 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'tooltips'">
-    
+    <!-- 1. PLACEMENT & ARROWS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. Direções de Posicionamento do Tooltip (Top, Right, Bottom, Left)</div>
+        <div class="variation-card-title" style="margin: 0;">1. Direções de Posicionamento com Seta (Top, Right, Bottom, Left)</div>
         <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Placements</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; padding: 20px;">
-        <MsTooltip content="Dica posicionada acima" placement="top">
-          <MsButton variant="outline" tone="primary">Top Tooltip</MsButton>
-        </MsTooltip>
-        <MsTooltip content="Dica posicionada à direita" placement="right">
-          <MsButton variant="outline" tone="primary">Right Tooltip</MsButton>
-        </MsTooltip>
-        <MsTooltip content="Dica posicionada abaixo" placement="bottom">
-          <MsButton variant="outline" tone="primary">Bottom Tooltip</MsButton>
-        </MsTooltip>
-        <MsTooltip content="Dica posicionada à esquerda" placement="left">
-          <MsButton variant="outline" tone="primary">Left Tooltip</MsButton>
-        </MsTooltip>
+        <div style="display: flex; gap: 20px; align-items: center; justify-content: center; flex-wrap: wrap; padding: 20px;">
+          <MsTooltip content="Dica posicionada acima com seta" placement="top" :arrow="true">
+            <MsButton variant="outline" tone="primary">Top Tooltip</MsButton>
+          </MsTooltip>
+          <MsTooltip content="Dica posicionada à direita com seta" placement="right" :arrow="true">
+            <MsButton variant="outline" tone="primary">Right Tooltip</MsButton>
+          </MsTooltip>
+          <MsTooltip content="Dica posicionada abaixo com seta" placement="bottom" :arrow="true">
+            <MsButton variant="outline" tone="primary">Bottom Tooltip</MsButton>
+          </MsTooltip>
+          <MsTooltip content="Dica posicionada à esquerda com seta" placement="left" :arrow="true">
+            <MsButton variant="outline" tone="primary">Left Tooltip</MsButton>
+          </MsTooltip>
+        </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsTooltip content="Dica no Topo" placement="top">
-  <MsButton>Hover</MsButton>
+          code='<!-- Direções de tooltip com seta direcional -->
+<MsTooltip content="Dica no topo" placement="top" :arrow="true">
+  <MsButton>Top</MsButton>
+</MsTooltip>
+<MsTooltip content="Dica à direita" placement="right" :arrow="true">
+  <MsButton>Right</MsButton>
+</MsTooltip>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. TOOLTIP WITH KEYBOARD SHORTCUTS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Tooltips com Atalhos de Teclado (Shadcn Keyboard Hints)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Keyboard Hints</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; gap: 16px; align-items: center; justify-content: center; flex-wrap: wrap;">
+          <MsTooltip placement="top">
+            <template #content>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span>Salvar Alterações</span>
+                <MsKbd size="xs" variant="raised">⌘S</MsKbd>
+              </div>
+            </template>
+            <MsButton variant="solid" tone="primary">Salvar</MsButton>
+          </MsTooltip>
+
+          <MsTooltip placement="top">
+            <template #content>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span>Busca Rápida</span>
+                <MsKbd size="xs" variant="raised">⌘K</MsKbd>
+              </div>
+            </template>
+            <MsButton variant="outline" tone="neutral">Buscar</MsButton>
+          </MsTooltip>
+
+          <MsTooltip placement="top">
+            <template #content>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span>Excluir Seleção</span>
+                <MsKbd size="xs" variant="raised">⌫</MsKbd>
+              </div>
+            </template>
+            <MsButton variant="ghost" tone="danger">Excluir</MsButton>
+          </MsTooltip>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Tooltip rico contendo atalho de teclado MsKbd -->
+<MsTooltip placement="top">
+  <template #content>
+    <span>Salvar Alterações</span>
+    <MsKbd size="xs">⌘S</MsKbd>
+  </template>
+  <MsButton>Salvar</MsButton>
+</MsTooltip>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. TONES & MULTILINE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Tons de Superfície (Dark, Light, Primary) & Quebra Multilinha</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Tones & Multiline</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; gap: 16px; align-items: center; justify-content: center; flex-wrap: wrap;">
+          <MsTooltip content="Tooltip corporativo em tom escuro de alto contraste" tone="dark">
+            <MsButton variant="outline" tone="neutral">Tom: Dark</MsButton>
+          </MsTooltip>
+
+          <MsTooltip content="Tooltip em tom claro para fundos densos" tone="light">
+            <MsButton variant="outline" tone="neutral">Tom: Light</MsButton>
+          </MsTooltip>
+
+          <MsTooltip content="Tooltip corporativo em azul primary" tone="primary">
+            <MsButton variant="solid" tone="primary">Tom: Primary</MsButton>
+          </MsTooltip>
+
+          <MsTooltip content="Este é um tooltip longo com quebra de linha automática perfeitamente balanceada para explicações de conformidade e governança da Baseline 1.2." :max-width="240">
+            <MsButton variant="soft" tone="neutral">Tooltip Multilinha (240px)</MsButton>
+          </MsTooltip>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Tons de tooltip e largura máxima para texto multilinha -->
+<MsTooltip tone="primary" content="Dica azul">
+  <MsButton>Primary</MsButton>
+</MsTooltip>
+<MsTooltip :max-width="240" content="Texto longo com quebra...">
+  <MsButton>Multilinha</MsButton>
 </MsTooltip>'
           language="html"
           :show-line-numbers="false"
@@ -4038,31 +4681,111 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'popovers'">
-    
+    <!-- 1. USER PROFILE POPOVER -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsPopover com Conteúdo Rico de Ação</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Rich Popover</span>
+        <div class="variation-card-title" style="margin: 0;">1. Card de Identidade de Usuário em Popover (FlyonUI Pattern)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Profile Card</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 16px; align-items: center;">
-        <MsPopover>
-          <template #trigger><MsButton variant="solid" tone="primary">Abrir Painel Rápido</MsButton></template>
-          <div style="padding: 16px; width: 260px; display: flex; flex-direction: column; gap: 12px;">
-            <div style="font-weight: bold; font-size: 14px;">Configurações Rápidas</div>
-            <p style="font-size: 12px; color: var(--ms-color-text-secondary); margin: 0;">Ajuste notificações e permissões do projeto em tempo real.</p>
-            <MsButton size="sm" variant="solid" tone="primary">Confirmar</MsButton>
-          </div>
-        </MsPopover>
+        <div style="display: flex; gap: 16px; align-items: center; justify-content: center;">
+          <MsPopover>
+            <template #trigger>
+              <div style="display: flex; align-items: center; gap: 10px; padding: 6px 12px; border: 1px solid var(--ms-color-border-subtle); border-radius: 9999px; cursor: pointer; background: var(--ms-color-surface-raised);">
+                <MsAvatar name="Helena Carvalho" size="sm" status="online" />
+                <span style="font-weight: 600; font-size: 13px;">Helena Carvalho</span>
+                <span style="font-size: 11px; opacity: 0.6;">▾</span>
+              </div>
+            </template>
+            <div style="padding: 16px; width: 280px; display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; gap: 12px; align-items: center;">
+                <MsAvatar name="Helena Carvalho" size="md" status="online" />
+                <div>
+                  <div style="font-weight: 700; font-size: 14px;">Helena Carvalho</div>
+                  <div style="font-size: 11px; color: var(--ms-color-text-muted);">helena.carvalho@empresa.com</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 6px;">
+                <MsBadge tone="primary" variant="soft" data-pill>Staff Architect</MsBadge>
+                <MsBadge tone="success" variant="soft" data-pill>Core Team</MsBadge>
+              </div>
+              <p style="font-size: 12px; color: var(--ms-color-text-secondary); margin: 0; line-height: 1.4;">
+                Responsável pela governança técnica dos pacotes Vue e CSS da Baseline 1.2.
+              </p>
+              <div style="display: flex; gap: 8px; border-top: 1px solid var(--ms-color-border-subtle); padding-top: 10px;">
+                <MsButton size="xs" variant="solid" tone="primary" style="flex: 1;">Ver Perfil</MsButton>
+                <MsButton size="xs" variant="outline" tone="neutral">Mensagem</MsButton>
+              </div>
+            </div>
+          </MsPopover>
+        </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsPopover>
-  <template #trigger><MsButton>Abrir</MsButton></template>
-  <div>Conteúdo rico</div>
+          code='<!-- Popover de perfil de usuário com avatar e badges de permissão -->
+<MsPopover>
+  <template #trigger>
+    <div class="user-pill"><MsAvatar name="Helena" /> Helena ▾</div>
+  </template>
+  <div class="profile-card">
+    <MsAvatar name="Helena" size="md" status="online" />
+    <h4>Helena Carvalho</h4>
+    <MsButton size="xs" tone="primary">Ver Perfil</MsButton>
+  </div>
+</MsPopover>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. QUICK SETTINGS POPOVER -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Painel Flutuante de Ajustes & Toggles Rápidos</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Quick Settings</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; gap: 16px; align-items: center; justify-content: center;">
+          <MsPopover>
+            <template #trigger>
+              <MsButton variant="solid" tone="neutral">
+                <span>⚙️ Ajustes Rápidos</span>
+              </MsButton>
+            </template>
+            <div style="padding: 16px; width: 280px; display: flex; flex-direction: column; gap: 14px;">
+              <div style="font-weight: 700; font-size: 14px;">Preferências do Workspace</div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-size: 13px; font-weight: 600;">Modo Escuro</div>
+                  <div style="font-size: 11px; color: var(--ms-color-text-muted);">Contraste WCAG AAA</div>
+                </div>
+                <input type="checkbox" checked style="cursor: pointer;" />
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-size: 13px; font-weight: 600;">Notificações Sonoras</div>
+                  <div style="font-size: 11px; color: var(--ms-color-text-muted);">Alertas de pipeline</div>
+                </div>
+                <input type="checkbox" style="cursor: pointer;" />
+              </div>
+              <div style="border-top: 1px solid var(--ms-color-border-subtle); padding-top: 10px; display: flex; justify-content: flex-end;">
+                <MsButton size="xs" variant="solid" tone="primary">Salvar Preferências</MsButton>
+              </div>
+            </div>
+          </MsPopover>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Popover com toggles de configuração rápida -->
+<MsPopover>
+  <template #trigger><MsButton>⚙️ Ajustes</MsButton></template>
+  <div class="settings-menu">
+    <label><input type="checkbox" /> Modo Escuro</label>
+    <MsButton size="xs" tone="primary">Salvar</MsButton>
+  </div>
 </MsPopover>'
           language="html"
           :show-line-numbers="false"
@@ -4918,38 +5641,38 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'drawers'">
-    <!-- 1. SLIDE-OVER DRAWER -->
+    <!-- 1. SLIDE-OVER RIGHT DRAWER -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. Slide-Over Direito: Filtros e Configurações (Right Slide Drawer)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Right Drawer</span>
+        <div class="variation-card-title" style="margin: 0;">1. Slide-Over Direito: Filtros Avançados de Catálogo</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Right Slide-Over</span>
       </div>
       <div class="variation-preview-box">
-        <div style="display: flex; justify-content: flex-end; width: 100%;">
-          <div style="max-width: 380px; width: 100%; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; box-shadow: -10px 0 25px -5px rgb(0 0 0 / 0.1); overflow: hidden;">
-            <div style="padding: 18px 20px; border-bottom: 1px solid var(--ms-color-border-subtle); display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; flex-direction: column; align-items: flex-end; width: 100%;">
+          <div style="max-width: 400px; width: 100%; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; box-shadow: -8px 0 24px -4px rgb(0 0 0 / 0.1); overflow: hidden;">
+            <div style="padding: 16px 20px; border-bottom: 1px solid var(--ms-color-border-subtle); display: flex; justify-content: space-between; align-items: center;">
               <div>
                 <div style="font-size: 15px; font-weight: 700; color: var(--ms-color-text-primary);">Filtros Avançados</div>
-                <div style="font-size: 11px; color: var(--ms-color-text-muted);">Refine os resultados do catálogo.</div>
+                <div style="font-size: 12px; color: var(--ms-color-text-muted);">Refine os resultados do catálogo de pacotes.</div>
               </div>
-              <span style="cursor: pointer; font-size: 16px; color: var(--ms-color-text-muted);">✕</span>
+              <span style="font-size: 18px; color: var(--ms-color-text-muted); cursor: pointer;">✕</span>
             </div>
             <div style="padding: 20px; display: flex; flex-direction: column; gap: 16px;">
               <div>
-                <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Buscar por Palavra-Chave</label>
-                <MsInput placeholder="Ex: button, select, badge..." tone="primary" size="sm" />
+                <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Palavra-chave</label>
+                <MsInput placeholder="Ex: button, select, modal..." tone="primary" size="sm" />
               </div>
               <div>
-                <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Exibir Somente Estáveis</label>
+                <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Exibir Somente Pacotes Estáveis</label>
                 <MsSwitch :model-value="true" tone="primary" />
               </div>
               <div>
-                <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Incluir Componentes Legados</label>
-                <MsSwitch :model-value="false" tone="neutral" />
+                <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Status de CI/CD</label>
+                <MsBadge tone="success" variant="soft" pill dot>Todos os Gates 100% Verificados</MsBadge>
               </div>
             </div>
             <div style="background: var(--ms-color-surface-sunken); padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--ms-color-border-subtle);">
-              <MsButton variant="ghost" tone="neutral" size="sm">Limpar Filtros</MsButton>
+              <MsButton variant="ghost" tone="neutral" size="sm">Limpar</MsButton>
               <MsButton variant="solid" tone="primary" size="sm" wave>Aplicar Filtros</MsButton>
             </div>
           </div>
@@ -4957,11 +5680,13 @@ export const variationsTemplatesHtml = `
       </div>
       <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<!-- Gaveta lateral deslizante com posicionamento à direita -->
-<MsDrawer :open="isFilterOpen" placement="right" title="Filtros Avançados">
-  <div class="filters-content">
+          code='<MsDrawer v-model:open="isOpen" placement="right" size="md">
+  <template #header>
+    <h3>Filtros Avançados</h3>
+  </template>
+  <div class="filter-body">
     <MsInput placeholder="Buscar..." />
-    <MsSwitch label="Somente Estáveis" :model-value="true" />
+    <MsSwitch v-model="onlyStable" label="Somente Estáveis" />
   </div>
   <template #footer>
     <MsButton variant="ghost">Limpar</MsButton>
@@ -4974,38 +5699,381 @@ export const variationsTemplatesHtml = `
         />
       </div>
     </div>
+
+    <!-- 2. BOTTOM SHEET DRAWER -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Bottom Sheet Móvel (placement="bottom") para Ações Rápidas</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Bottom Sheet</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; display: flex; justify-content: center;">
+          <div style="max-width: 480px; width: 100%; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 16px 16px 0 0; box-shadow: 0 -8px 24px -4px rgb(0 0 0 / 0.1); overflow: hidden;">
+            <div style="display: flex; justify-content: center; padding-top: 10px;">
+              <div style="width: 40px; height: 4px; border-radius: 9999px; background: var(--ms-color-border-default);"></div>
+            </div>
+            <div style="padding: 14px 20px; border-bottom: 1px solid var(--ms-color-border-subtle); display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 15px; font-weight: 700; color: var(--ms-color-text-primary);">Compartilhar & Exportar</div>
+                <div style="font-size: 11px; color: var(--ms-color-text-muted);">Envie link do workspace para colaboradores</div>
+              </div>
+              <span style="font-size: 18px; color: var(--ms-color-text-muted); cursor: pointer;">✕</span>
+            </div>
+            <div style="padding: 16px 20px; display: flex; flex-direction: column; gap: 10px;">
+              <MsList variant="separated" size="sm">
+                <MsListItem title="Copiar Link de Acesso Rápido" description="Qualquer pessoa com o link pode visualizar" :interactive="true">
+                  <template #leading><div style="font-size: 18px;">🔗</div></template>
+                  <template #trailing><MsBadge tone="primary" variant="soft">Copiar</MsBadge></template>
+                </MsListItem>
+                <MsListItem title="Exportar Documento em PDF" description="Relatório diagramado com gráficos e tokens" :interactive="true">
+                  <template #leading><div style="font-size: 18px;">📄</div></template>
+                  <template #trailing><MsBadge tone="neutral" variant="soft">Download</MsBadge></template>
+                </MsListItem>
+              </MsList>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsDrawer v-model:open="isOpen" placement="bottom" size="sm">
+  <template #header>
+    <h3>Compartilhar & Exportar</h3>
+  </template>
+  <MsList variant="separated">
+    <MsListItem title="Copiar Link de Acesso" interactive />
+    <MsListItem title="Exportar Documento em PDF" interactive />
+  </MsList>
+</MsDrawer>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. LEFT NAVIGATION DRAWER -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Gaveta Lateral Esquerda (placement="left") para Menu Mobile</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Left Drawer</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%;">
+          <div style="max-width: 320px; width: 100%; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; box-shadow: 8px 0 24px -4px rgb(0 0 0 / 0.1); overflow: hidden;">
+            <div style="padding: 16px; border-bottom: 1px solid var(--ms-color-border-subtle); display: flex; align-items: center; gap: 10px;">
+              <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--ms-color-primary, #6366f1); display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 13px;">
+                M
+              </div>
+              <div style="font-weight: 700; font-size: 14px;">Magic-Style Console</div>
+            </div>
+            <div style="padding: 12px;">
+              <MsList variant="default" size="sm">
+                <MsListItem title="Painel Geral" :interactive="true" :active="true">
+                  <template #leading>📊</template>
+                </MsListItem>
+                <MsListItem title="Design Tokens" :interactive="true">
+                  <template #leading>🎨</template>
+                </MsListItem>
+                <MsListItem title="Componentes (50)" :interactive="true">
+                  <template #leading>🧩</template>
+                  <template #trailing><MsBadge tone="primary" variant="soft" pill>50</MsBadge></template>
+                </MsListItem>
+                <MsListItem title="Segurança & Auditoria" :interactive="true">
+                  <template #leading>🛡️</template>
+                </MsListItem>
+              </MsList>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsDrawer v-model:open="isNavOpen" placement="left" size="sm">
+  <div class="nav-brand">Magic-Style Console</div>
+  <MsList>
+    <MsListItem title="Painel Geral" active interactive />
+    <MsListItem title="Design Tokens" interactive />
+  </MsList>
+</MsDrawer>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. WIDTH SCALE COMPARISON -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Escala de Larguras: SM (320px), MD (440px), LG (600px) e Fullscreen</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Width Scale</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 14px; width: 100%;">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <div>
+              <span style="font-size: 13px; font-weight: 600;">size="sm" (320px)</span>
+              <div style="font-size: 11px; color: var(--ms-color-text-muted);">Ideal para filtros compactos e menus mobile</div>
+            </div>
+            <MsBadge tone="neutral" variant="soft">320px</MsBadge>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <div>
+              <span style="font-size: 13px; font-weight: 600;">size="md" (440px - Padrão)</span>
+              <div style="font-size: 11px; color: var(--ms-color-text-muted);">Formulários secundários e históricos de chat</div>
+            </div>
+            <MsBadge tone="primary" variant="soft">440px</MsBadge>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <div>
+              <span style="font-size: 13px; font-weight: 600;">size="lg" (600px)</span>
+              <div style="font-size: 11px; color: var(--ms-color-text-muted);">Tabelas de detalhes e wizards com multi-step</div>
+            </div>
+            <MsBadge tone="accent" variant="soft">600px</MsBadge>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsDrawer size="sm" placement="right" />
+<MsDrawer size="md" placement="right" />
+<MsDrawer size="lg" placement="right" />
+<MsDrawer size="full" placement="right" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
   </div>
 
 
   <div v-if="activeTab === 'accordions'">
-    
+    <!-- 1. SEPARATED CARDS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsAccordion em Modo Separado e Conectado</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Accordion Styles</span>
+        <div class="variation-card-title" style="margin: 0;">1. Cartões Separados com Elevação e Borda Ativa (Separated Cards)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Separated Cards</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="width: 100%; max-width: 560px;">
-        <MsAccordion>
-          <MsAccordionItem value="item-1" title="Como funciona o sistema de tokens?">
-            O Magic-Style compila design tokens W3C DTCG em variáveis CSS (--ms-*) com suporte nativo a temas claro/escuro.
-          </MsAccordionItem>
-          <MsAccordionItem value="item-2" title="Quais são os 8 tons semânticos da marca?">
-            Primary (#2e86de), Secondary (#e15f41), Accent (#341f97), Neutral (#222f3e), Success (#10ac84), Info (#0abde3), Warning (#ff9f43) e Danger (#ee5253).
-          </MsAccordionItem>
-          <MsAccordionItem value="item-3" title="Como funciona a governança da Baseline 1.2?">
-            Documentos 01 a 28 normatizam topologia, limites arquiteturais, TypeScript estrito e gates no fake green.
-          </MsAccordionItem>
-        </MsAccordion>
+        <div style="width: 100%; max-width: 620px;">
+          <MsAccordion variant="separated" model-value="item-1">
+            <MsAccordionItem value="item-1" title="Como funciona o compilador de Design Tokens DTCG?">
+              <template #subtitle>Especificação W3C DTCG e exportação CSS automática</template>
+              <template #trailing><MsBadge tone="primary" variant="soft" data-pill>Normativo</MsBadge></template>
+              <div style="padding: 4px 0; font-size: 13px; line-height: 1.6;">
+                O MagicStyle processa o arquivo fonte de tokens e gera automaticamente variáveis canônicas <code style="font-size: 11px; background: var(--ms-color-surface-sunken); padding: 1px 4px; border-radius: 4px;">--ms-*</code> com suporte nativo a temas dinâmicos claro/escuro e contraste adaptativo WCAG 2.2 AAA.
+              </div>
+            </MsAccordionItem>
+
+            <MsAccordionItem value="item-2" title="Quais são as garantias do princípio 'No Fake Green'?">
+              <template #subtitle>Contrato de integridade de testes e gates do monorepo</template>
+              <template #trailing><MsBadge tone="success" variant="soft" data-pill>100% Real</MsBadge></template>
+              <div style="padding: 4px 0; font-size: 13px; line-height: 1.6;">
+                Nenhum resultado verde pode ser forjado ou declarado sem execução real. O health gate completo <code style="font-size: 11px; background: var(--ms-color-surface-sunken); padding: 1px 4px; border-radius: 4px;">pnpm validate</code> compila 16 tarefas simultâneas cobrindo Prettier, ESLint, arquitetura e mais de 335 testes unitários.
+              </div>
+            </MsAccordionItem>
+
+            <MsAccordionItem value="item-3" title="Como personalizar a paleta sem perder consistência?">
+              <template #subtitle>Guia de dials de contraste, raio e densidade</template>
+              <template #trailing><MsBadge tone="accent" variant="soft" data-pill>Dials</MsBadge></template>
+              <div style="padding: 4px 0; font-size: 13px; line-height: 1.6;">
+                Utilize o componente <code style="font-size: 11px; background: var(--ms-color-surface-sunken); padding: 1px 4px; border-radius: 4px;">&lt;MsThemeScope&gt;</code> para isolar densidade (compacta vs confortável) e raio (reto, arredondado ou pílula) em qualquer contêiner da página.
+              </div>
+            </MsAccordionItem>
+          </MsAccordion>
+        </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsAccordion>
-  <MsAccordionItem title="Dúvida 1">Resposta...</MsAccordionItem>
+          code='<!-- Accordion em cartões separados com subtítulos e badges trailing -->
+<MsAccordion variant="separated" model-value="item-1">
+  <MsAccordionItem value="item-1" title="Tokens DTCG">
+    <template #subtitle>Especificação W3C</template>
+    <template #trailing><MsBadge tone="primary">Normativo</MsBadge></template>
+    Conteúdo detalhado com suporte a temas...
+  </MsAccordionItem>
 </MsAccordion>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. MINIMAL FLUSH / FAQ SHADCN -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. FAQ Minimalista com Divisores Finos (Flush / Underline)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Flush FAQ</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 600px;">
+          <MsAccordion variant="flush">
+            <MsAccordionItem value="faq-1" title="O MagicStyle funciona com qualquer bundler moderno?">
+              Sim. A distribuição é 100% ESM nativo e compatível com Vite, Nuxt 3, Rollup, Webpack 5 e Next-gen runtimes.
+            </MsAccordionItem>
+            <MsAccordionItem value="faq-2" title="Posso utilizar utilitários Tailwind em conjunto?">
+              Perfeitamente. O pacote <code style="font-size: 11px; background: var(--ms-color-surface-sunken); padding: 1px 4px; border-radius: 4px;">@magic-style/tailwind</code> mapeia todos os tokens para classes Tailwind v4 nativas.
+            </MsAccordionItem>
+            <MsAccordionItem value="faq-3" title="Existe suporte a navegação por teclado e leitores de tela?">
+              Todos os componentes seguem as diretrizes WAI-ARIA 1.2 com gerenciamento de foco nativo, teclas de seta e atributos aria-expanded automáticos.
+            </MsAccordionItem>
+          </MsAccordion>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- FAQ clássico sem borda de contorno (estilo Shadcn) -->
+<MsAccordion variant="flush">
+  <MsAccordionItem value="faq-1" title="Como integrar?">
+    Conteúdo puro com linha divisória sutil...
+  </MsAccordionItem>
+</MsAccordion>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. RICH INTEGRATIONS ACCORDION -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Painel de Integrações com Status e Controles Inline</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Rich Panel</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 620px;">
+          <MsAccordion variant="separated">
+            <MsAccordionItem value="int-github">
+              <template #title>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span>🐙</span>
+                  <span>GitHub Continuous Delivery</span>
+                </div>
+              </template>
+              <template #subtitle>Disparar compilações automáticas a cada commit no main</template>
+              <template #trailing>
+                <MsBadge tone="success" variant="soft" data-pill data-pulse>Ativo</MsBadge>
+              </template>
+              <div style="display: flex; flex-direction: column; gap: 10px; padding: 6px 0;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 12px; color: var(--ms-color-text-secondary);">Webhook URL:</span>
+                  <code style="font-size: 11px; font-family: monospace; background: var(--ms-color-surface-sunken); padding: 2px 8px; border-radius: 4px;">https://api.magicstyle.dev/hooks/github</code>
+                </div>
+                <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                  <MsButton size="xs" variant="outline" tone="neutral">Testar Ping</MsButton>
+                  <MsButton size="xs" variant="ghost" tone="danger">Desconectar</MsButton>
+                </div>
+              </div>
+            </MsAccordionItem>
+
+            <MsAccordionItem value="int-slack">
+              <template #title>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span>💬</span>
+                  <span>Notificações Slack Channel</span>
+                </div>
+              </template>
+              <template #subtitle>Alertas de falhas de qualidade e novas versões publicadas</template>
+              <template #trailing>
+                <MsBadge tone="neutral" variant="soft" data-pill>Pendente</MsBadge>
+              </template>
+              <div style="padding: 6px 0; font-size: 13px;">
+                Conecte o bot MagicStyle ao seu workspace para receber resumos semanais de saúde de pacotes.
+                <div style="margin-top: 10px;">
+                  <MsButton size="xs" variant="solid" tone="primary">Autorizar no Slack</MsButton>
+                </div>
+              </div>
+            </MsAccordionItem>
+          </MsAccordion>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Accordion de integrações com badges pulsantes e botões de ação -->
+<MsAccordion variant="separated">
+  <MsAccordionItem value="int-1">
+    <template #title>🐙 GitHub CI/CD</template>
+    <template #trailing><MsBadge tone="success" data-pulse>Ativo</MsBadge></template>
+    <div class="actions">...</div>
+  </MsAccordionItem>
+</MsAccordion>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. MULTIPLE EXPANDABLE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Expansão Concorrente Múltipla (Multiple Items Open)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Multiple Mode</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 600px;">
+          <MsAccordion :multiple="true" :model-value="['sec-1', 'sec-2']">
+            <MsAccordionItem value="sec-1" title="Variáveis Globais de Cor (Tokens DTCG)">
+              Define matriz de cores nos 8 tons semânticos (50 a 950 stops em OKLCH).
+            </MsAccordionItem>
+            <MsAccordionItem value="sec-2" title="Camada de Elevações & Sombras">
+              Define escala de micro-sombras em 5 níveis com elevação suave para dark mode.
+            </MsAccordionItem>
+            <MsAccordionItem value="sec-3" title="Geometria de Raio e Bordas">
+              Escala de border-radius de none (0px), sm (4px), md (6px), lg (8px), xl (12px) a full (9999px).
+            </MsAccordionItem>
+          </MsAccordion>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Modo múltiplo permitindo abrir vários painéis em simultâneo -->
+<MsAccordion :multiple="true" :model-value="[&apos;sec-1&apos;, &apos;sec-2&apos;]">
+  <MsAccordionItem value="sec-1" title="Cores">...</MsAccordionItem>
+  <MsAccordionItem value="sec-2" title="Sombras">...</MsAccordionItem>
+</MsAccordion>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 5. SIZES SCALE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. Escala de Tamanhos (sm Compact vs lg Spacious)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Scale sm-lg</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 580px;">
+          <div>
+            <div style="font-size: 12px; font-weight: 700; margin-bottom: 6px; color: var(--ms-color-text-secondary);">Tamanho SM (Compacto para Sidebar):</div>
+            <MsAccordion size="sm" variant="bordered">
+              <MsAccordionItem value="sm-1" title="Ajustes de Conta">Informações pessoais e e-mail.</MsAccordionItem>
+              <MsAccordionItem value="sm-2" title="Segurança & MFA">Autenticação em duas etapas.</MsAccordionItem>
+            </MsAccordion>
+          </div>
+
+          <div>
+            <div style="font-size: 12px; font-weight: 700; margin-bottom: 6px; color: var(--ms-color-text-secondary);">Tamanho LG (Espaçoso para Base de Conhecimento):</div>
+            <MsAccordion size="lg" variant="bordered">
+              <MsAccordionItem value="lg-1" title="Termos de Serviço & SLA de 99.9%">
+                Nossos servidores garantem disponibilidade contínua com replicação geográfica multi-região.
+              </MsAccordionItem>
+            </MsAccordion>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Tamanhos do accordion (sm, md, lg) -->
+<MsAccordion size="sm" variant="bordered">...</MsAccordion>
+<MsAccordion size="lg" variant="bordered">...</MsAccordion>'
           language="html"
           :show-line-numbers="false"
           :copyable="true"
@@ -5016,26 +6084,232 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'empty-states'">
-    
+    <!-- 1. 404 NOT FOUND -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsEmptyState em Variantes (Dashed, Solid, Minimal)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Empty States</span>
+        <div class="variation-card-title" style="margin: 0;">1. 404 — Página Não Encontrada (Route Not Found)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">404 Page</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; width: 100%;">
-        <MsEmptyState variant="dashed" icon-tone="primary" title="Nenhum Registro Encontrado" description="Tente ajustar os filtros de busca para visualizar componentes.">
-          <template #actions><MsButton size="sm" variant="solid" tone="primary">Limpar Filtros</MsButton></template>
-        </MsEmptyState>
-        <MsEmptyState variant="solid" icon-tone="accent" title="Nenhuma Notificação Pendente" description="Você está em dia com todas as tarefas e aprovações do workspace."></MsEmptyState>
+        <div style="width: 100%; max-width: 600px; margin: 0 auto;">
+          <MsEmptyState variant="plain" size="lg" icon-tone="primary">
+            <template #icon>
+              <div class="ms-empty-state__icon ms-empty-state__icon--primary ms-empty-state__icon--ring" style="width: 64px; height: 64px; font-size: 28px;">
+                🧭
+              </div>
+            </template>
+            <template #title>
+              <div style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em;">404 — Página Não Encontrada</div>
+            </template>
+            <template #description>
+              O recurso solicitado foi movido, renomeado ou não existe no monorepo atual. Verifique o caminho digitado ou retorne à página inicial.
+            </template>
+            <template #actions>
+              <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <MsButton variant="solid" tone="primary" wave>Voltar ao Início</MsButton>
+                <MsButton variant="outline" tone="neutral">Consultar Documentação</MsButton>
+              </div>
+            </template>
+          </MsEmptyState>
+        </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsEmptyState title="Vazio" description="...">
-  <template #actions><MsButton>Ação</MsButton></template>
+          code='<!-- Padrão 404 Not Found com MsEmptyState plain -->
+<MsEmptyState variant="plain" size="lg" icon-tone="primary">
+  <template #icon>🧭</template>
+  <template #title>404 — Página Não Encontrada</template>
+  <template #description>O recurso solicitado foi movido ou renomeado.</template>
+  <template #actions>
+    <MsButton variant="solid" tone="primary">Voltar ao Início</MsButton>
+    <MsButton variant="outline">Consultar Documentação</MsButton>
+  </template>
+</MsEmptyState>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. SEARCH NO RESULTS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Busca Sem Resultados (Search Query Filter Miss)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Search Filter</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 540px; margin: 0 auto;">
+          <MsEmptyState variant="dashed" size="md" icon-tone="neutral">
+            <template #icon>
+              <div class="ms-empty-state__icon ms-empty-state__icon--neutral" style="width: 52px; height: 52px; font-size: 22px;">
+                🔍
+              </div>
+            </template>
+            <template #title>
+              Nenhum componente encontrado para "analytics-dashboard"
+            </template>
+            <template #description>
+              Não encontramos nenhum resultado para os filtros atuais. Tente ajustar os termos da busca ou limpar os filtros de categoria.
+            </template>
+            <template #actions>
+              <div style="display: flex; gap: 8px; justify-content: center;">
+                <MsButton size="sm" variant="soft" tone="neutral">Limpar Filtros</MsButton>
+                <MsButton size="sm" variant="ghost" tone="primary">Ver Todos os 82 Componentes</MsButton>
+              </div>
+            </template>
+          </MsEmptyState>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Padrão de busca sem resultados em caixa pontilhada -->
+<MsEmptyState variant="dashed" size="md" icon-tone="neutral"
+  title="Nenhum componente encontrado para &quot;...&quot;"
+  description="Tente ajustar os termos ou limpar filtros."
+>
+  <template #actions>
+    <MsButton size="sm" variant="soft">Limpar Filtros</MsButton>
+  </template>
+</MsEmptyState>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. FIRST-TIME ONBOARDING -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Primeiro Acesso & Onboarding de Workspace</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Onboarding Card</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 540px; margin: 0 auto;">
+          <MsEmptyState variant="card" size="md" icon-tone="primary">
+            <template #icon>
+              <div class="ms-empty-state__icon ms-empty-state__icon--accent ms-empty-state__icon--ring" style="width: 56px; height: 56px; font-size: 24px;">
+                🚀
+              </div>
+            </template>
+            <template #title>
+              Crie seu primeiro projeto no MagicStyle
+            </template>
+            <template #description>
+              Você ainda não configurou nenhum workspace. Crie seu primeiro projeto com tokens W3C DTCG e temas prontos em menos de 2 minutos.
+            </template>
+            <template #actions>
+              <div style="display: flex; gap: 8px; justify-content: center;">
+                <MsButton size="sm" variant="solid" tone="accent" wave>+ Criar Projeto</MsButton>
+                <MsButton size="sm" variant="outline" tone="neutral">Importar Template</MsButton>
+              </div>
+            </template>
+          </MsEmptyState>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Onboarding card com elevação sutil e tom accent -->
+<MsEmptyState variant="card" size="md" icon-tone="primary"
+  title="Crie seu primeiro projeto"
+  description="Comece com tokens e componentes prontos em minutos."
+>
+  <template #actions>
+    <MsButton variant="solid" tone="accent">+ Criar Projeto</MsButton>
+    <MsButton variant="outline">Importar Template</MsButton>
+  </template>
+</MsEmptyState>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. ACCESS RESTRICTED / 403 FORBIDDEN -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Acesso Restrito & Permissão Insuficiente (403 Forbidden)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Security 403</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 500px; margin: 0 auto;">
+          <MsEmptyState variant="card" size="sm" icon-tone="danger">
+            <template #icon>
+              <div class="ms-empty-state__icon ms-empty-state__icon--danger ms-empty-state__icon--ring" style="width: 48px; height: 48px; font-size: 20px;">
+                🔒
+              </div>
+            </template>
+            <template #title>
+              Módulo Restrito a Administradores
+            </template>
+            <template #description>
+              Sua conta com perfil "Desenvolvedor" não possui autorização para gerenciar chaves de API de produção e faturamento.
+            </template>
+            <template #actions>
+              <div style="display: flex; gap: 8px; justify-content: center;">
+                <MsButton size="xs" variant="solid" tone="danger">Solicitar Permissão</MsButton>
+                <MsButton size="xs" variant="ghost" tone="neutral">Ver Políticas de Acesso</MsButton>
+              </div>
+            </template>
+          </MsEmptyState>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Estado de permissão insuficiente 403 em tom danger -->
+<MsEmptyState variant="card" size="sm" icon-tone="danger"
+  title="Módulo Restrito a Administradores"
+  description="Sua conta não possui autorização para esta área."
+>
+  <template #actions>
+    <MsButton size="xs" variant="solid" tone="danger">Solicitar Permissão</MsButton>
+  </template>
+</MsEmptyState>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 5. OFFLINE / CONNECTION RETRY -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. Falha de Conexão com o Servidor (Offline Mode)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Network Offline</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 500px; margin: 0 auto;">
+          <MsEmptyState variant="dashed" size="sm" icon-tone="warning">
+            <template #icon>
+              <div class="ms-empty-state__icon ms-empty-state__icon--warning" style="width: 48px; height: 48px; font-size: 20px;">
+                ⚡
+              </div>
+            </template>
+            <template #title>
+              Sem Conexão com o Servidor de Tokens
+            </template>
+            <template #description>
+              Não foi possível sincronizar as variáveis de estilo com a nuvem. Operando temporariamente com cache local de fallback.
+            </template>
+            <template #actions>
+              <MsButton size="xs" variant="solid" tone="warning">Reconectar Agora</MsButton>
+            </template>
+          </MsEmptyState>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Estado de alerta de rede offline -->
+<MsEmptyState variant="dashed" size="sm" icon-tone="warning"
+  title="Sem Conexão com o Servidor"
+  description="Operando com cache local."
+>
+  <template #actions>
+    <MsButton size="xs" variant="solid" tone="warning">Reconectar</MsButton>
+  </template>
 </MsEmptyState>'
           language="html"
           :show-line-numbers="false"
@@ -5081,23 +6355,168 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'separators'">
-    
+    <!-- 1. LABELED SEPARATORS WITH BADGES & TEXT -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. Separadores Horizontais com Rótulo ("OU", "CONTINUAR")</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Separators with Labels</span>
+        <div class="variation-card-title" style="margin: 0;">1. Divisores com Rótulos Centrais e Laterais (Alinhamento start, center, end)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Labeled Dividers</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 440px;">
-        <MsSeparator orientation="horizontal" tone="neutral" label="OU" align="center"></MsSeparator>
-        <MsSeparator orientation="horizontal" tone="primary" label="NOVA SEÇÃO" align="left"></MsSeparator>
+        <div style="display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 500px;">
+          <MsSeparator orientation="horizontal" tone="neutral" label="OU" align="center" />
+          <MsSeparator orientation="horizontal" tone="primary" label="NOVA SEÇÃO" align="start" />
+          <MsSeparator orientation="horizontal" tone="accent" label="OPÇÕES AVANÇADAS" align="end" />
+          <div>
+            <MsSeparator orientation="horizontal" tone="neutral" align="center">
+              <MsBadge tone="success" variant="soft" pill dot>Ambiente Seguro</MsBadge>
+            </MsSeparator>
+          </div>
+        </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsSeparator label="OU" align="center" />'
+          code='<MsSeparator label="OU" align="center" />
+<MsSeparator tone="primary" label="NOVA SEÇÃO" align="start" />
+<MsSeparator tone="accent" label="OPÇÕES AVANÇADAS" align="end" />
+<MsSeparator align="center">
+  <MsBadge tone="success" variant="soft" pill dot>Ambiente Seguro</MsBadge>
+</MsSeparator>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. LINE STYLES: SOLID, DASHED, DOTTED, GRADIENT -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Variantes de Linha: Sólida, Tracejada (Dashed), Pontilhada (Dotted) e Gradiente</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Line Styles</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 500px;">
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--ms-color-text-muted); margin-bottom: 8px;">SÓLIDA (DEFAULT):</div>
+            <MsSeparator orientation="horizontal" variant="default" tone="neutral" />
+          </div>
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--ms-color-text-muted); margin-bottom: 8px;">TRACEJADA (DASHED):</div>
+            <MsSeparator orientation="horizontal" variant="dashed" tone="neutral" />
+          </div>
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--ms-color-text-muted); margin-bottom: 8px;">PONTILHADA (DOTTED):</div>
+            <MsSeparator orientation="horizontal" variant="dotted" tone="neutral" />
+          </div>
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--ms-color-text-muted); margin-bottom: 8px;">GRADIENTE SUAVE (GRADIENT):</div>
+            <MsSeparator orientation="horizontal" variant="gradient" tone="primary" />
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSeparator variant="default" />
+<MsSeparator variant="dashed" />
+<MsSeparator variant="dotted" />
+<MsSeparator variant="gradient" tone="primary" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. VERTICAL DIVIDERS IN TOOLBAR -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Divisores Verticais em Barra de Ferramentas (Toolbar & Actions)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Vertical Toolbar</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; border: 1px solid var(--ms-color-border-subtle); border-radius: 10px; background: var(--ms-color-surface-raised);">
+          <MsButton variant="text" tone="neutral" size="sm">Arquivo</MsButton>
+          <MsButton variant="text" tone="neutral" size="sm">Editar</MsButton>
+          <MsButton variant="text" tone="neutral" size="sm">Visualizar</MsButton>
+          <div style="height: 24px; display: flex; align-items: center;">
+            <MsSeparator orientation="vertical" tone="neutral" />
+          </div>
+          <MsButton variant="outline" tone="primary" size="xs">Formatar</MsButton>
+          <MsButton variant="outline" tone="secondary" size="xs">Validar</MsButton>
+          <div style="height: 24px; display: flex; align-items: center;">
+            <MsSeparator orientation="vertical" tone="neutral" />
+          </div>
+          <MsButton variant="solid" tone="primary" size="xs" wave>Executar CI</MsButton>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<div style="display: flex; align-items: center; gap: 12px;">
+  <MsButton variant="text" size="sm">Arquivo</MsButton>
+  <div style="height: 24px;"><MsSeparator orientation="vertical" /></div>
+  <MsButton variant="solid" tone="primary" size="xs">Executar CI</MsButton>
+</div>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. THICKNESS & SPACING SCALE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Escala de Espessuras (thickness: 1, 2, 4) e Espaçamento</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Thickness & Spacing</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 18px; width: 100%; max-width: 500px;">
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--ms-color-text-muted); margin-bottom: 6px;">THICKNESS 1 (1PX):</div>
+            <MsSeparator :thickness="1" tone="neutral" />
+          </div>
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--ms-color-text-muted); margin-bottom: 6px;">THICKNESS 2 (2PX):</div>
+            <MsSeparator :thickness="2" tone="neutral" />
+          </div>
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--ms-color-text-muted); margin-bottom: 6px;">THICKNESS 4 (4PX):</div>
+            <MsSeparator :thickness="4" tone="primary" />
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSeparator :thickness="1" />
+<MsSeparator :thickness="2" />
+<MsSeparator :thickness="4" tone="primary" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 5. 8 BRAND TONES MATRIX -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. Matriz nos 8 Tons Oficiais da Marca (Tokens Semânticos)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">8 Brand Tones</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 500px;">
+          <div v-for="t in allTones" :key="t" style="display: flex; align-items: center; gap: 16px;">
+            <span style="width: 90px; font-size: 11px; font-weight: 700; text-transform: uppercase;">{{ t }}:</span>
+            <div style="flex: 1;"><MsSeparator :tone="t" :thickness="2" /></div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSeparator tone="primary" :thickness="2" />
+<MsSeparator tone="accent" :thickness="2" />
+<MsSeparator tone="success" :thickness="2" />
+<MsSeparator tone="danger" :thickness="2" />'
           language="html"
           :show-line-numbers="false"
           :copyable="true"
@@ -5479,28 +6898,285 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'timeline'">
-    
+    <!-- 1. AUDIT LOG & REPO ACTIVITY -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsTimeline nos Tons da Marca para Rastreamento e Logs</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Audit & Progress Timeline</span>
+        <div class="variation-card-title" style="margin: 0;">1. Trilha de Auditoria & Atividades do Monorepo (Audit Log)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Audit Trail</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="width: 100%; max-width: 500px;">
-        <MsTimeline>
-          <MsTimelineItem tone="success" title="Compilação Finalizada" time="10:45:02" description="Todos os 50 componentes Vue compilados com sucesso."></MsTimelineItem>
-          <MsTimelineItem tone="primary" title="Validação de Arquitetura" time="10:45:15" description="Zero arestas proibidas detectadas pelo check-architecture.mjs."></MsTimelineItem>
-          <MsTimelineItem tone="accent" title="Publicação em Staging" time="10:46:00" description="Pacote @magic-style/vue v0.1.0 disponível para testes visuais."></MsTimelineItem>
-        </MsTimeline>
+        <div style="width: 100%; max-width: 580px;">
+          <MsTimeline>
+            <MsTimelineItem tone="primary">
+              <template #node><span style="font-size: 14px;">🚀</span></template>
+              <template #timestamp>Hoje às 17:10</template>
+              <template #title>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span>Deploy em Produção v1.2</span>
+                  <code style="font-size: 11px; font-family: monospace; background: var(--ms-color-surface-sunken); padding: 1px 6px; border-radius: 4px;">aa52212</code>
+                </div>
+              </template>
+              <div style="font-size: 13px; line-height: 1.5; color: var(--ms-color-text-secondary); margin-top: 4px;">
+                Publicação de novas variações corporativas e tokens sincronizados. Pipeline executado com 16/16 tarefas bem-sucedidas.
+              </div>
+            </MsTimelineItem>
+
+            <MsTimelineItem tone="success">
+              <template #node><span style="font-size: 14px;">✅</span></template>
+              <template #timestamp>Hoje às 16:45</template>
+              <template #title>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span>Aprovação do Gate de Arquitetura</span>
+                  <MsBadge tone="success" variant="soft" data-pill>Passed</MsBadge>
+                </div>
+              </template>
+              <div style="font-size: 13px; line-height: 1.5; color: var(--ms-color-text-secondary); margin-top: 4px;">
+                Script <code style="font-size: 11px; font-family: monospace;">scripts/check-architecture.mjs</code> validou zero arestas proibidas entre packages de browser e tooling.
+              </div>
+            </MsTimelineItem>
+
+            <MsTimelineItem tone="accent">
+              <template #node><span style="font-size: 14px;">✨</span></template>
+              <template #timestamp>Hoje às 15:30</template>
+              <template #title>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span>Tokens DTCG Compilados</span>
+                  <MsBadge tone="accent" variant="soft" data-pill>DTCG</MsBadge>
+                </div>
+              </template>
+              <div style="font-size: 13px; line-height: 1.5; color: var(--ms-color-text-secondary); margin-top: 4px;">
+                Dicionário de design tokens compilado para CSS nativo nos 8 tons semânticos (50-950 stops).
+              </div>
+            </MsTimelineItem>
+          </MsTimeline>
+        </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsTimeline>
-  <MsTimelineItem tone="success" title="Concluído" />
+          code='<!-- Trilha de auditoria com nós ricos e hashes de commit -->
+<MsTimeline>
+  <MsTimelineItem tone="primary">
+    <template #node>🚀</template>
+    <template #timestamp>Hoje às 17:10</template>
+    <template #title>Deploy em Produção <code>aa52212</code></template>
+    Pipeline executado com sucesso...
+  </MsTimelineItem>
 </MsTimeline>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. ORDER FULFILLMENT TRACKING -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Rastreamento de Pedido & Entregas (Order Tracking)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Fulfillment</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 580px; padding: 20px; border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; background: var(--ms-color-surface-raised);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--ms-color-border-subtle); padding-bottom: 12px;">
+            <div>
+              <div style="font-weight: 700; font-size: 15px;">Pedido #BR-89421-MS</div>
+              <div style="font-size: 12px; color: var(--ms-color-text-muted);">Transportadora: Loggi Express (Rastreio: LG9812401)</div>
+            </div>
+            <MsBadge tone="primary" variant="soft" data-pulse data-pill>Em Trânsito</MsBadge>
+          </div>
+
+          <MsTimeline>
+            <MsTimelineItem tone="success">
+              <template #node><span style="font-size: 13px;">✓</span></template>
+              <template #timestamp>22 Set, 09:14</template>
+              <template #title>Pedido Recebido & Pagamento Aprovado</template>
+              <div style="font-size: 12px; color: var(--ms-color-text-secondary);">Transação confirmada via Cartão Corporativo.</div>
+            </MsTimelineItem>
+
+            <MsTimelineItem tone="success">
+              <template #node><span style="font-size: 13px;">✓</span></template>
+              <template #timestamp>23 Set, 14:30</template>
+              <template #title>Coletado no Centro de Distribuição</template>
+              <div style="font-size: 12px; color: var(--ms-color-text-secondary);">Remessa expedida em Cajamar/SP.</div>
+            </MsTimelineItem>
+
+            <MsTimelineItem tone="primary">
+              <template #node><span style="font-size: 13px; font-weight: bold;">•</span></template>
+              <template #timestamp>24 Set, 08:20 (Atual)</template>
+              <template #title>
+                <span style="font-weight: 700; color: var(--ms-color-primary);">Saiu para Entrega ao Destinatário</span>
+              </template>
+              <div style="font-size: 12px; color: var(--ms-color-text-secondary);">Motorista em rota de entrega final em São Paulo/SP.</div>
+            </MsTimelineItem>
+
+            <MsTimelineItem tone="neutral">
+              <template #node><span style="font-size: 11px; opacity: 0.5;">4</span></template>
+              <template #timestamp>Previsão: Hoje até 18:00</template>
+              <template #title><span style="opacity: 0.6;">Entrega Concluída</span></template>
+              <div style="font-size: 12px; color: var(--ms-color-text-muted);">Aguardando confirmação de recebimento no local.</div>
+            </MsTimelineItem>
+          </MsTimeline>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Rastreamento de pedido com etapas concluídas, ativa e futura -->
+<MsTimeline>
+  <MsTimelineItem tone="success" title="Pagamento Aprovado">
+    <template #node>✓</template>
+  </MsTimelineItem>
+  <MsTimelineItem tone="primary" title="Em Rota de Entrega">
+    <template #node>•</template>
+  </MsTimelineItem>
+  <MsTimelineItem tone="neutral" title="Entrega Concluída" />
+</MsTimeline>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. VERSION RELEASE NOTES -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Changelog & Notas de Lançamento (Release Notes)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Changelog</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 580px;">
+          <MsTimeline>
+            <MsTimelineItem tone="primary">
+              <template #timestamp>24 de Setembro de 2026</template>
+              <template #title>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="font-weight: 800; font-size: 16px;">v1.2.0</span>
+                  <MsBadge tone="primary" variant="solid">Latest</MsBadge>
+                </div>
+              </template>
+              <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 6px; font-size: 13px;">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <MsBadge tone="success" size="xs">feat</MsBadge>
+                  <span>Harmonização visual FlyonUI e Shadcn UI em 10 componentes core.</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <MsBadge tone="info" size="xs">feat</MsBadge>
+                  <span>Inclusão dos componentes MsKbd, MsAspectRatio, MsGrid e MsHoverCard.</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <MsBadge tone="warning" size="xs">fix</MsBadge>
+                  <span>Correção de contraste em badges outline e inversão de cores da variante soft.</span>
+                </div>
+              </div>
+            </MsTimelineItem>
+
+            <MsTimelineItem tone="neutral">
+              <template #timestamp>22 de Setembro de 2026</template>
+              <template #title>
+                <span style="font-weight: 700; font-size: 15px;">v1.1.0</span>
+              </template>
+              <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 6px; font-size: 13px;">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <MsBadge tone="success" size="xs">feat</MsBadge>
+                  <span>Mecanismo unificado MsSelect com 32 variações e busca assíncrona.</span>
+                </div>
+              </div>
+            </MsTimelineItem>
+          </MsTimeline>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Changelog com badges semânticos para cada tag de versão -->
+<MsTimeline>
+  <MsTimelineItem tone="primary">
+    <template #title>v1.2.0 <MsBadge tone="primary">Latest</MsBadge></template>
+    <div class="change-item">
+      <MsBadge tone="success" size="xs">feat</MsBadge> Novo recurso...
+    </div>
+  </MsTimelineItem>
+</MsTimeline>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. HORIZONTAL ONBOARDING -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Marcos Horizontais de Progresso (Horizontal Flow)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Horizontal Mode</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; overflow-x: auto; padding: 10px 0;">
+          <MsTimeline direction="horizontal" style="min-width: 540px;">
+            <MsTimelineItem tone="success">
+              <template #node>1</template>
+              <template #title>Conta Criada</template>
+              <div style="font-size: 12px; color: var(--ms-color-text-muted);">E-mail verificado</div>
+            </MsTimelineItem>
+            <MsTimelineItem tone="success">
+              <template #node>2</template>
+              <template #title>Tokens</template>
+              <div style="font-size: 12px; color: var(--ms-color-text-muted);">Paleta escolhida</div>
+            </MsTimelineItem>
+            <MsTimelineItem tone="primary">
+              <template #node>3</template>
+              <template #title>Repositório</template>
+              <div style="font-size: 12px; color: var(--ms-color-primary); font-weight: 600;">Em configuração</div>
+            </MsTimelineItem>
+            <MsTimelineItem tone="neutral">
+              <template #node>4</template>
+              <template #title>Lançamento</template>
+              <div style="font-size: 12px; color: var(--ms-color-text-muted);">Deploy final</div>
+            </MsTimelineItem>
+          </MsTimeline>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Timeline horizontal para fluxo de etapas lineares -->
+<MsTimeline direction="horizontal">
+  <MsTimelineItem tone="success" title="Etapa 1"><template #node>1</template></MsTimelineItem>
+  <MsTimelineItem tone="primary" title="Etapa 2"><template #node>2</template></MsTimelineItem>
+  <MsTimelineItem tone="neutral" title="Etapa 3"><template #node>3</template></MsTimelineItem>
+</MsTimeline>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 5. 8 BRAND TONES MATRIX -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. Matriz nos 8 Tons Oficiais da Marca (Primary a Danger)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">8 Brand Tones</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 580px;">
+          <MsTimeline>
+            <MsTimelineItem tone="primary" title="Tom Primary (#2e86de)" description="Ações corporativas primárias e rotas essenciais." />
+            <MsTimelineItem tone="secondary" title="Tom Secondary (#e15f41)" description="Destaque coral de contraste suave." />
+            <MsTimelineItem tone="accent" title="Tom Accent (#341f97)" description="Púrpura institucional para destaques premium." />
+            <MsTimelineItem tone="neutral" title="Tom Neutral (#222f3e)" description="Superfícies estáveis e marcações discretas." />
+            <MsTimelineItem tone="success" title="Tom Success (#10ac84)" description="Confirmações de sucesso e pipelines green." />
+            <MsTimelineItem tone="info" title="Tom Info (#0abde3)" description="Informativos técnicos e avisos de versão." />
+            <MsTimelineItem tone="warning" title="Tom Warning (#ff9f43)" description="Alertas preventivos e manutenções agendadas." />
+            <MsTimelineItem tone="danger" title="Tom Danger (#ee5253)" description="Falhas críticas e operações irreversíveis." />
+          </MsTimeline>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Demonstração da timeline nos 8 tons semânticos oficiais -->
+<MsTimelineItem tone="primary" title="Primary" />
+<MsTimelineItem tone="secondary" title="Secondary" />
+<MsTimelineItem tone="accent" title="Accent" />
+<MsTimelineItem tone="success" title="Success" />'
           language="html"
           :show-line-numbers="false"
           :copyable="true"
@@ -5511,33 +7187,180 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'ratings'">
-    
+    <!-- 1. CLASSIC STAR RATING WITH NUMERIC SCORE -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsRating Interativo e Somente Leitura nos Tons da Marca</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Ratings & Stars</span>
+        <div class="variation-card-title" style="margin: 0;">1. Avaliação Clássica com Estrelas Douradas & Score Numérico</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Interactive Score</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
-        <div>
-          <div style="font-size: 12px; font-weight: bold; margin-bottom: 6px;">WARNING (GOLD - PADRÃO):</div>
-          <MsRating tone="warning" :model-value="4"></MsRating>
-        </div>
-        <div>
-          <div style="font-size: 12px; font-weight: bold; margin-bottom: 6px;">ACCENT (VIOLETA):</div>
-          <MsRating tone="accent" :model-value="5"></MsRating>
-        </div>
-        <div>
-          <div style="font-size: 12px; font-weight: bold; margin-bottom: 6px;">PRIMARY (AZUL):</div>
-          <MsRating tone="primary" :model-value="3"></MsRating>
+        <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+          <MsRating :model-value="4" size="lg" tone="warning" />
+          <div style="display: flex; align-items: baseline; gap: 6px;">
+            <span style="font-size: 20px; font-weight: 700; color: var(--ms-color-text-primary);">4.0</span>
+            <span style="font-size: 13px; color: var(--ms-color-text-muted);">/ 5.0</span>
+          </div>
+          <MsBadge tone="warning" variant="soft" pill>1.248 avaliações</MsBadge>
         </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsRating tone="warning" :model-value="4" />'
+          code='<div style="display: flex; align-items: center; gap: 16px;">
+  <MsRating v-model="rating" size="lg" tone="warning" />
+  <span style="font-size: 20px; font-weight: 700;">{{ rating }}.0 / 5.0</span>
+  <MsBadge tone="warning" variant="soft" pill>1.248 avaliações</MsBadge>
+</div>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. BRAND SEMANTIC TONES MATRIX -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Matriz nos 8 Tons Oficiais da Marca (Warning, Primary, Accent, Success, etc.)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Brand Tones</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; width: 100%;">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <span style="font-size: 12px; font-weight: 600; text-transform: uppercase;">Warning (Gold)</span>
+            <MsRating tone="warning" :model-value="5" size="md" />
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <span style="font-size: 12px; font-weight: 600; text-transform: uppercase;">Primary (Blue)</span>
+            <MsRating tone="primary" :model-value="4" size="md" />
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <span style="font-size: 12px; font-weight: 600; text-transform: uppercase;">Accent (Purple)</span>
+            <MsRating tone="accent" :model-value="5" size="md" />
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <span style="font-size: 12px; font-weight: 600; text-transform: uppercase;">Success (Green)</span>
+            <MsRating tone="success" :model-value="4" size="md" />
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <span style="font-size: 12px; font-weight: 600; text-transform: uppercase;">Danger (Red)</span>
+            <MsRating tone="danger" :model-value="3" size="md" />
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <span style="font-size: 12px; font-weight: 600; text-transform: uppercase;">Info (Cyan)</span>
+            <MsRating tone="info" :model-value="4" size="md" />
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <span style="font-size: 12px; font-weight: 600; text-transform: uppercase;">Secondary (Slate)</span>
+            <MsRating tone="secondary" :model-value="3" size="md" />
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <span style="font-size: 12px; font-weight: 600; text-transform: uppercase;">Neutral (Dark)</span>
+            <MsRating tone="neutral" :model-value="5" size="md" />
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsRating tone="warning" :model-value="5" />
+<MsRating tone="primary" :model-value="4" />
+<MsRating tone="accent" :model-value="5" />
+<MsRating tone="success" :model-value="4" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. SIZING SCALE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Escala de Tamanhos (SM, MD, LG)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Sizes Scale</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+          <div style="display: flex; align-items: center; gap: 20px;">
+            <span style="width: 80px; font-size: 12px; font-weight: 600; color: var(--ms-color-text-muted);">SM (16px):</span>
+            <MsRating size="sm" tone="warning" :model-value="4" />
+            <span style="font-size: 12px; color: var(--ms-color-text-muted);">Compacto para tabelas e feeds densos</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 20px;">
+            <span style="width: 80px; font-size: 12px; font-weight: 600; color: var(--ms-color-text-muted);">MD (22px):</span>
+            <MsRating size="md" tone="warning" :model-value="4" />
+            <span style="font-size: 12px; color: var(--ms-color-text-muted);">Padrão para cards e modais</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 20px;">
+            <span style="width: 80px; font-size: 12px; font-weight: 600; color: var(--ms-color-text-muted);">LG (30px):</span>
+            <MsRating size="lg" tone="warning" :model-value="5" />
+            <span style="font-size: 12px; color: var(--ms-color-text-muted);">Destaque para hero pages e landing reviews</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsRating size="sm" tone="warning" :model-value="4" />
+<MsRating size="md" tone="warning" :model-value="4" />
+<MsRating size="lg" tone="warning" :model-value="5" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. READONLY CUSTOMER REVIEW CARD -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Depoimento de Cliente Somente Leitura (Readonly Pattern)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Readonly Review</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="max-width: 520px; width: 100%; padding: 20px; border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; background: var(--ms-color-surface-raised);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <MsAvatar name="Fernanda Lima" size="md" tone="primary" />
+              <div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--ms-color-text-primary);">Fernanda Lima</div>
+                <div style="font-size: 12px; color: var(--ms-color-text-muted);">Arquiteta de Software na TechCorp</div>
+              </div>
+            </div>
+            <MsRating readonly :model-value="5" tone="warning" size="sm" />
+          </div>
+          <p style="font-size: 13px; line-height: 1.5; color: var(--ms-color-text-secondary); margin: 0;">
+            "A migração para o Magic-Style reduziu o overhead de estilização da nossa equipe em mais de 60%. Os componentes Vue integrados aos design tokens WCAG AAA entregam consistência impecável."
+          </p>
+          <div style="margin-top: 12px; display: flex; align-items: center; gap: 8px;">
+            <MsBadge tone="success" variant="soft" pill dot>Compra Verificada</MsBadge>
+            <span style="font-size: 11px; color: var(--ms-color-text-muted);">Postado há 2 dias</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsRating readonly :model-value="5" tone="warning" size="sm" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 5. DISABLED STATE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. Estado Desabilitado (Disabled State)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Disabled</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <MsRating disabled :model-value="3" tone="warning" size="md" />
+          <span style="font-size: 12px; color: var(--ms-color-text-muted);">Avaliação bloqueada para usuários não autenticados ou em períodos encerrados.</span>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsRating disabled :model-value="3" tone="warning" />'
           language="html"
           :show-line-numbers="false"
           :copyable="true"
@@ -5586,38 +7409,243 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'lists'">
-    
+    <!-- 1. TEAM USERS LIST WITH AVATARS & ROLES -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsList com Itens Selecionáveis, Ícones Prefix e Suffix</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Interactive Lists</span>
+        <div class="variation-card-title" style="margin: 0;">1. Gestão de Membros com Avatares, Badges de Cargo e Ações</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Team List</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="width: 100%; max-width: 480px; border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; overflow: hidden; background: var(--ms-color-surface-raised);">
-        <MsList>
-          <MsListItem title="Tokens de Cores Semânticas" subtitle="8 tons oficiais com contraste WCAG 2.2 AAA">
-            <template #prefix>🎨</template>
-            <template #suffix><MsBadge tone="success" variant="soft">OK</MsBadge></template>
-          </MsListItem>
-          <MsListItem title="Unified Select Engine" subtitle="Single, multiple, searchable, creatable, pill">
-            <template #prefix>⚡</template>
-            <template #suffix><MsBadge tone="primary" variant="soft">v1.2</MsBadge></template>
-          </MsListItem>
-          <MsListItem title="Sidebar Sliding Menu" subtitle="Navegação hierárquica retrátil integrada">
-            <template #prefix>📑</template>
-            <template #suffix><MsBadge tone="accent" variant="soft">Novo</MsBadge></template>
-          </MsListItem>
-        </MsList>
+        <div style="width: 100%; max-width: 560px;">
+          <MsList variant="bordered" size="md">
+            <MsListItem title="Guilherme Silveira" description="guilherme@magic-style.dev • Tech Lead" :interactive="true">
+              <template #leading>
+                <MsAvatar name="Guilherme Silveira" tone="primary" size="md" />
+              </template>
+              <template #trailing>
+                <MsBadge tone="primary" variant="soft" pill>Admin</MsBadge>
+                <MsButton variant="outline" tone="neutral" size="xs">Editar</MsButton>
+              </template>
+            </MsListItem>
+            <MsListItem title="Beatriz Mendes" description="beatriz@magic-style.dev • UI/UX Designer" :interactive="true">
+              <template #leading>
+                <MsAvatar name="Beatriz Mendes" tone="accent" size="md" />
+              </template>
+              <template #trailing>
+                <MsBadge tone="accent" variant="soft" pill>Designer</MsBadge>
+                <MsButton variant="outline" tone="neutral" size="xs">Editar</MsButton>
+              </template>
+            </MsListItem>
+            <MsListItem title="Lucas Ferreira" description="lucas@magic-style.dev • DevOps Engineer" :interactive="true">
+              <template #leading>
+                <MsAvatar name="Lucas Ferreira" tone="success" size="md" />
+              </template>
+              <template #trailing>
+                <MsBadge tone="success" variant="soft" pill>DevOps</MsBadge>
+                <MsButton variant="outline" tone="neutral" size="xs">Editar</MsButton>
+              </template>
+            </MsListItem>
+          </MsList>
+        </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsList>
-  <MsListItem title="Item 1">
-    <template #prefix>🎨</template>
+          code='<MsList variant="bordered">
+  <MsListItem title="Guilherme Silveira" description="Tech Lead" interactive>
+    <template #leading><MsAvatar name="GS" tone="primary" /></template>
+    <template #trailing>
+      <MsBadge tone="primary" variant="soft" pill>Admin</MsBadge>
+      <MsButton variant="outline" size="xs">Editar</MsButton>
+    </template>
   </MsListItem>
+</MsList>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. SEPARATED CARDS LIST -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Lista em Cartões Separados (variant="separated")</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Separated Cards</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 560px;">
+          <MsList variant="separated" size="md">
+            <MsListItem title="Deploy em Produção Concluído" description="Cluster us-east-1 atualizado para v1.4.2 com sucesso" :interactive="true">
+              <template #leading>
+                <div style="width: 36px; height: 36px; border-radius: 8px; background: var(--ms-color-success-subtle, #ecfdf5); color: var(--ms-color-success, #10b981); display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                  ✓
+                </div>
+              </template>
+              <template #trailing>
+                <span style="font-size: 11px; color: var(--ms-color-text-muted);">há 5 min</span>
+              </template>
+            </MsListItem>
+            <MsListItem title="Alerta de CPU Elevada" description="Instância worker-03 excedeu 88% de utilização contínua" :interactive="true">
+              <template #leading>
+                <div style="width: 36px; height: 36px; border-radius: 8px; background: var(--ms-color-warning-subtle, #fffbeb); color: var(--ms-color-warning, #f59e0b); display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                  ⚠
+                </div>
+              </template>
+              <template #trailing>
+                <span style="font-size: 11px; color: var(--ms-color-text-muted);">há 22 min</span>
+              </template>
+            </MsListItem>
+            <MsListItem title="Certificado SSL Renovado" description="Renovação automática via Let's Encrypt para *.magic-style.dev" :interactive="true">
+              <template #leading>
+                <div style="width: 36px; height: 36px; border-radius: 8px; background: var(--ms-color-info-subtle, #f0f9ff); color: var(--ms-color-info, #0ea5e9); display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                  🔒
+                </div>
+              </template>
+              <template #trailing>
+                <span style="font-size: 11px; color: var(--ms-color-text-muted);">há 1h</span>
+              </template>
+            </MsListItem>
+          </MsList>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsList variant="separated">
+  <MsListItem title="Deploy Concluído" description="Cluster us-east-1 v1.4.2" interactive>
+    <template #leading><div class="status-icon success">✓</div></template>
+    <template #trailing><span class="time-label">há 5 min</span></template>
+  </MsListItem>
+</MsList>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. WORKSPACE SETTINGS WITH TOGGLES -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Painel de Preferências com Toggles Inline (MsSwitch Trailing)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Settings Menu</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 560px;">
+          <MsList variant="divided" class="ms-list--variant-bordered">
+            <MsListItem title="Notificações por Email" description="Receber resumos diários de incidentes e commits">
+              <template #trailing>
+                <MsSwitch :model-value="true" tone="primary" />
+              </template>
+            </MsListItem>
+            <MsListItem title="Autenticação em Duas Etapas (2FA)" description="Exigir código OTP a cada novo acesso no console">
+              <template #trailing>
+                <MsSwitch :model-value="true" tone="success" />
+              </template>
+            </MsListItem>
+            <MsListItem title="Modo de Alta Densidade Visual" description="Reduzir paddings em formulários e tabelas">
+              <template #trailing>
+                <MsSwitch :model-value="false" tone="neutral" />
+              </template>
+            </MsListItem>
+          </MsList>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsList variant="bordered">
+  <MsListItem title="Notificações por Email" description="Receber resumos diários">
+    <template #trailing><MsSwitch v-model="emailNotify" tone="primary" /></template>
+  </MsListItem>
+</MsList>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. GROUPED LIST WITH SECTION HEADERS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Lista Agrupada com Cabeçalhos de Categoria (ms-list-group)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Grouped Categories</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 560px; border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; overflow: hidden; background: var(--ms-color-surface-raised);">
+          <div class="ms-list-group">
+            <div class="ms-list-group__header">Pacotes Principais (Packages)</div>
+            <MsList variant="divided">
+              <MsListItem title="@magic-style/vue" description="Componentes Vue 3 reativos com strict TypeScript" :interactive="true">
+                <template #trailing><MsBadge tone="primary" variant="soft">v1.2.0</MsBadge></template>
+              </MsListItem>
+              <MsListItem title="@magic-style/css" description="Camadas BEM, tokens CSS e reset agnóstico" :interactive="true">
+                <template #trailing><MsBadge tone="accent" variant="soft">v1.2.0</MsBadge></template>
+              </MsListItem>
+            </MsList>
+          </div>
+          <div class="ms-list-group">
+            <div class="ms-list-group__header">Fundação Interna (Internal)</div>
+            <MsList variant="divided">
+              <MsListItem title="@magic-style/tokens" description="Dicionário de design tokens com 8 tons semânticos" :interactive="true">
+                <template #trailing><MsBadge tone="success" variant="soft">Stable</MsBadge></template>
+              </MsListItem>
+              <MsListItem title="@magic-style/themes" description="6 temas oficiais: magic, neo-brutalist, corporate, etc." :interactive="true">
+                <template #trailing><MsBadge tone="warning" variant="soft">Stable</MsBadge></template>
+              </MsListItem>
+            </MsList>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<div class="ms-list-group">
+  <div class="ms-list-group__header">Pacotes Principais</div>
+  <MsList variant="divided">
+    <MsListItem title="@magic-style/vue" description="Componentes Vue 3">
+      <template #trailing><MsBadge tone="primary" variant="soft">v1.2.0</MsBadge></template>
+    </MsListItem>
+  </MsList>
+</div>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 5. DENSITY & SIZE SCALE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. Escala de Densidade: SM (Compacta), MD (Padrão) e LG (Confortável)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Density Scale</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 560px; display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--ms-color-text-muted); margin-bottom: 6px; text-transform: uppercase;">Compacta (size="sm")</div>
+            <MsList variant="bordered" size="sm">
+              <MsListItem title="Entrada de log #4892" description="GET /api/v1/health 200 OK • 14ms" :interactive="true" />
+              <MsListItem title="Entrada de log #4893" description="POST /api/v1/auth/token 200 OK • 45ms" :interactive="true" />
+            </MsList>
+          </div>
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--ms-color-text-muted); margin-bottom: 6px; text-transform: uppercase;">Confortável (size="lg")</div>
+            <MsList variant="bordered" size="lg">
+              <MsListItem title="Plano Empresarial Dedicado" description="Suporte 24/7 com SLA de 99.99% e nós isolados" :interactive="true">
+                <template #trailing><MsBadge tone="accent" variant="solid" pill>Ativo</MsBadge></template>
+              </MsListItem>
+            </MsList>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsList variant="bordered" size="sm">
+  <MsListItem title="Log de auditoria" description="Operação executada" />
+</MsList>
+
+<MsList variant="bordered" size="lg">
+  <MsListItem title="Item com padding confortável" description="Para áreas de destaque" />
 </MsList>'
           language="html"
           :show-line-numbers="false"
@@ -5629,30 +7657,195 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'steppers'">
-    
+    <!-- 1. HORIZONTAL E-COMMERCE CHECKOUT -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsStepper Horizontal de Checkout e Configuração</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Step Wizard</span>
+        <div class="variation-card-title" style="margin: 0;">1. Checkout Horizontal Corporativo (4 Etapas Conectadas)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Horizontal Checkout</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="width: 100%; max-width: 600px;">
-        <MsStepper :current-step="2">
-          <MsStep :step="1" title="Conta" description="Dados de acesso" completed></MsStep>
-          <MsStep :step="2" title="Organização" description="Workspace" active></MsStep>
-          <MsStep :step="3" title="Plano" description="Escolha"></MsStep>
-          <MsStep :step="4" title="Finalizar" description="Ativação"></MsStep>
-        </MsStepper>
+        <div style="width: 100%; max-width: 680px; padding: 20px 0;">
+          <MsStepper :model-value="1" direction="horizontal">
+            <MsStep :index="0" title="Carrinho" subtitle="3 itens selecionados" />
+            <MsStep :index="1" title="Identificação" subtitle="Dados cadastrais" />
+            <MsStep :index="2" title="Pagamento" subtitle="Cartão ou Pix" />
+            <MsStep :index="3" title="Confirmação" subtitle="Pedido aprovado" />
+          </MsStepper>
+        </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsStepper :current-step="2">
-  <MsStep :step="1" title="Passo 1" completed />
-  <MsStep :step="2" title="Passo 2" active />
+          code='<MsStepper :model-value="1" direction="horizontal">
+  <MsStep :index="0" title="Carrinho" subtitle="3 itens selecionados" />
+  <MsStep :index="1" title="Identificação" subtitle="Dados cadastrais" />
+  <MsStep :index="2" title="Pagamento" subtitle="Cartão ou Pix" />
+  <MsStep :index="3" title="Confirmação" subtitle="Pedido aprovado" />
 </MsStepper>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. VERTICAL ONBOARDING WORKFLOW -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Fluxo Vertical de Onboarding & Configuração de Workspace</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Vertical Flow</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 480px; padding: 16px; border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; background: var(--ms-color-surface-raised);">
+          <MsStepper :model-value="2" direction="vertical">
+            <MsStep :index="0" title="Criar Conta Organizacional" subtitle="Defina o nome da empresa e domínio SSO corporativo." />
+            <MsStep :index="1" title="Conectar Repositórios Git" subtitle="Integração autorizada com GitHub e GitLab Enterprise." />
+            <MsStep :index="2" title="Configurar Pipelines de CI/CD" subtitle="Defina os gates de arquitetura e linting automatizados." />
+            <MsStep :index="3" title="Convidar Membros do Time" subtitle="Envie convites para desenvolvedores e líderes técnicos." />
+          </MsStepper>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsStepper :model-value="2" direction="vertical">
+  <MsStep :index="0" title="Criar Conta Organizacional" subtitle="Domínio corporativo" />
+  <MsStep :index="1" title="Conectar Repositórios Git" subtitle="GitHub e GitLab" />
+  <MsStep :index="2" title="Configurar CI/CD" subtitle="Gates de qualidade" />
+  <MsStep :index="3" title="Convidar Membros" subtitle="Convites por email" />
+</MsStepper>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. CUSTOM ICON INDICATORS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Indicadores com Ícones Customizados nos Nós (Slot #indicator)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Custom Icons</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 680px; padding: 20px 0;">
+          <MsStepper :model-value="1" direction="horizontal">
+            <MsStep :index="0" title="Conta">
+              <template #indicator>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </template>
+            </MsStep>
+            <MsStep :index="1" title="Segurança">
+              <template #indicator>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </template>
+            </MsStep>
+            <MsStep :index="2" title="Faturamento">
+              <template #indicator>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              </template>
+            </MsStep>
+            <MsStep :index="3" title="Conclusão">
+              <template #indicator>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </template>
+            </MsStep>
+          </MsStepper>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsStepper :model-value="1" direction="horizontal">
+  <MsStep :index="0" title="Conta">
+    <template #indicator><i class="icon-user" /></template>
+  </MsStep>
+  <MsStep :index="1" title="Segurança">
+    <template #indicator><i class="icon-shield" /></template>
+  </MsStep>
+</MsStepper>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. VALIDATION ERROR STATUS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Tratamento de Erro e Validação em Etapa Crítica (status="error")</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-danger-subtle, #fef2f2); color: var(--ms-color-danger, #ef4444); font-family: monospace;">Error State</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 680px; padding: 20px 0;">
+          <MsStepper :model-value="1" direction="horizontal">
+            <MsStep :index="0" status="complete" title="Autenticação" subtitle="Token validado" />
+            <MsStep :index="1" status="error" title="Processar Pagamento" subtitle="Cartão recusado pelo emissor" />
+            <MsStep :index="2" status="upcoming" title="Liberação de Licença" subtitle="Aguardando liquidação" />
+          </MsStepper>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsStepper direction="horizontal">
+  <MsStep :index="0" status="complete" title="Autenticação" />
+  <MsStep :index="1" status="error" title="Processar Pagamento" subtitle="Cartão recusado" />
+  <MsStep :index="2" status="upcoming" title="Liberação" />
+</MsStepper>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 5. INTERACTIVE CLICKABLE STEPPER -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. Stepper Clicável e Interativo com Controles de Navegação</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Clickable & Controls</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 680px; display: flex; flex-direction: column; gap: 24px;">
+          <MsStepper v-model="batch.stepperActive" :clickable="true" direction="horizontal">
+            <MsStep :index="0" title="Informações Pessoais" subtitle="Passo 1" />
+            <MsStep :index="1" title="Preferências de Notificação" subtitle="Passo 2" />
+            <MsStep :index="2" title="Confirmação & Termos" subtitle="Passo 3" />
+          </MsStepper>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 10px;">
+            <MsButton
+              variant="outline"
+              tone="neutral"
+              size="sm"
+              :disabled="batch.stepperActive <= 0"
+              @click="batch.stepperActive = Math.max(0, batch.stepperActive - 1)"
+            >
+              ← Passo Anterior
+            </MsButton>
+            <span style="font-size: 12px; font-weight: 600; color: var(--ms-color-text-secondary);">
+              Etapa {{ batch.stepperActive + 1 }} de 3
+            </span>
+            <MsButton
+              variant="solid"
+              tone="primary"
+              size="sm"
+              :disabled="batch.stepperActive >= 2"
+              @click="batch.stepperActive = Math.min(2, batch.stepperActive + 1)"
+            >
+              Próximo Passo →
+            </MsButton>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsStepper v-model="activeStep" :clickable="true" direction="horizontal">
+  <MsStep :index="0" title="Informações Pessoais" />
+  <MsStep :index="1" title="Preferências" />
+  <MsStep :index="2" title="Confirmação" />
+</MsStepper>
+<div style="display: flex; justify-content: space-between;">
+  <MsButton @click="activeStep--">← Anterior</MsButton>
+  <MsButton tone="primary" @click="activeStep++">Próximo →</MsButton>
+</div>'
           language="html"
           :show-line-numbers="false"
           :copyable="true"
@@ -5730,24 +7923,221 @@ export const variationsTemplatesHtml = `
 
 
   <div v-if="activeTab === 'chat-bubbles'">
-    
+    <!-- 1. FULL CONVERSATIONAL AI FEED -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsChatBubble em Tons da Marca (Incoming vs Outgoing)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Chat Conversations</span>
+        <div class="variation-card-title" style="margin: 0;">1. Diálogo de Atendimento & Assistente de IA (Conversational Feed)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">AI Chat</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 480px;">
-        <MsChatBubble tone="neutral" author="Ada Lovelace" time="14:32" message="Como estão os preparativos para o release da Baseline 1.2?"></MsChatBubble>
-        <MsChatBubble tone="primary" outgoing author="Você" time="14:33" message="Todos os 50 componentes foram enriquecidos com os 8 tons corporativos e testes 100% green!"></MsChatBubble>
+        <div style="display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 540px; padding: 16px; border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; background: var(--ms-color-surface-raised);">
+          <!-- Incoming AI -->
+          <MsChatBubble placement="start" variant="soft" tone="neutral" name="Magic Assistant" timestamp="14:30">
+            <template #avatar>
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--ms-color-interactive-primary); display: flex; align-items: center; justify-content: center; font-size: 14px; color: white;">
+                🤖
+              </div>
+            </template>
+            <div>
+              Olá! Como posso ajudar na arquitetura de componentes do seu monorepo hoje?
+            </div>
+          </MsChatBubble>
+
+          <!-- Outgoing User -->
+          <MsChatBubble placement="end" variant="solid" tone="primary" name="Você" timestamp="14:31" status="read">
+            <template #avatar>
+              <MsAvatar name="Bruno Cavalcante" size="sm" />
+            </template>
+            <div>
+              Como declaro um componente MsBadge com indicador pulsante no padrão FlyonUI?
+            </div>
+          </MsChatBubble>
+
+          <!-- Incoming AI with code block -->
+          <MsChatBubble placement="start" variant="soft" tone="neutral" name="Magic Assistant" timestamp="14:31">
+            <template #avatar>
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--ms-color-interactive-primary); display: flex; align-items: center; justify-content: center; font-size: 14px; color: white;">
+                🤖
+              </div>
+            </template>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span>Basta utilizar a propriedade <code style="font-size: 11px; background: var(--ms-color-surface-sunken); padding: 1px 4px; border-radius: 3px;">data-pulse</code> com o tom desejado:</span>
+              <div style="border-radius: 6px; overflow: hidden; max-width: 380px;">
+                <MsCodeBlock
+                  code='<MsBadge tone="success" variant="soft" data-pulse data-pill>
+  Serviço Online
+</MsBadge>'
+                  language="html"
+                  :show-line-numbers="false"
+                  :copyable="true"
+                />
+              </div>
+              <div style="display: flex; gap: 6px; margin-top: 4px;">
+                <MsButton size="xs" variant="ghost" tone="neutral">👍 Útil</MsButton>
+                <MsButton size="xs" variant="ghost" tone="neutral">👎 Não ajudou</MsButton>
+              </div>
+            </div>
+          </MsChatBubble>
+        </div>
       </div>
-    
-      </div>
-          <div style="margin-top: 12px;">
+      <div style="margin-top: 12px;">
         <MsCodeBlock
-          code='<MsChatBubble tone="neutral" author="Ada" message="..." />
-<MsChatBubble tone="primary" outgoing message="..." />'
+          code='<!-- Feed de chat com avatares, status de leitura e blocos de código embutidos -->
+<MsChatBubble placement="start" tone="neutral" name="Assistente" timestamp="14:30">
+  <template #avatar><div class="bot-icon">🤖</div></template>
+  Olá! Como posso ajudar?
+</MsChatBubble>
+
+<MsChatBubble placement="end" variant="solid" tone="primary" name="Você" status="read">
+  Pergunta do usuário...
+</MsChatBubble>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. LIVE TYPING INDICATOR -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Indicador de Digitação em Tempo Real (Live Typing)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Typing Dots</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 480px;">
+          <MsChatBubble placement="start" variant="soft" tone="neutral" name="Helena Carvalho (Staff Architect)">
+            <template #avatar>
+              <MsAvatar name="Helena Carvalho" size="sm" status="online" />
+            </template>
+            <div class="ms-chat-bubble--typing">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <template #footer>
+              <span style="font-size: 11px; color: var(--ms-color-text-muted); font-style: italic;">digitando resposta técnica...</span>
+            </template>
+          </MsChatBubble>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Indicador de digitação com 3 pontos pulsantes em CSS puro -->
+<MsChatBubble placement="start" tone="neutral" name="Helena">
+  <template #avatar><MsAvatar name="Helena" status="online" /></template>
+  <div class="ms-chat-bubble--typing">
+    <span></span><span></span><span></span>
+  </div>
+</MsChatBubble>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. FILE ATTACHMENT BUBBLE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Mensagem com Anexo de Arquivo ou Documento</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Attachment</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 480px;">
+          <MsChatBubble placement="start" variant="soft" tone="neutral" name="Lucas Pereira (QA)" timestamp="16:04">
+            <template #avatar>
+              <MsAvatar name="Lucas Pereira" size="sm" />
+            </template>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span>Segue o relatório completo de cobertura de testes da Baseline 1.2:</span>
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; border: 1px solid var(--ms-color-border-subtle); border-radius: 8px; background: var(--ms-color-surface-raised);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="font-size: 24px;">📄</span>
+                  <div>
+                    <div style="font-weight: 700; font-size: 13px;">relatorio-qa-baseline-1.2.pdf</div>
+                    <div style="font-size: 11px; color: var(--ms-color-text-muted);">2.8 MB • Formato PDF</div>
+                  </div>
+                </div>
+                <MsButton size="xs" variant="solid" tone="primary">Baixar</MsButton>
+              </div>
+            </div>
+          </MsChatBubble>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Balão de mensagem contendo anexo de arquivo para download -->
+<MsChatBubble placement="start" name="Lucas" timestamp="16:04">
+  <span>Segue o relatório:</span>
+  <div class="attachment-box">
+    <span>📄 relatorio.pdf (2.8 MB)</span>
+    <MsButton size="xs">Baixar</MsButton>
+  </div>
+</MsChatBubble>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. 8 BRAND TONES MATRIX -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Matriz nos 8 Tons Oficiais da Marca (Variante Soft Tonal)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">8 Brand Tones</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; width: 100%;">
+          <MsChatBubble tone="primary" variant="soft" name="Tom: Primary">Balão tonal corporativo azul (#2e86de).</MsChatBubble>
+          <MsChatBubble tone="secondary" variant="soft" name="Tom: Secondary">Balão tonal coral (#e15f41).</MsChatBubble>
+          <MsChatBubble tone="accent" variant="soft" name="Tom: Accent">Balão tonal púrpura (#341f97).</MsChatBubble>
+          <MsChatBubble tone="neutral" variant="soft" name="Tom: Neutral">Balão tonal neutro (#222f3e).</MsChatBubble>
+          <MsChatBubble tone="success" variant="soft" name="Tom: Success">Balão tonal verde (#10ac84).</MsChatBubble>
+          <MsChatBubble tone="info" variant="soft" name="Tom: Info">Balão tonal ciano (#0abde3).</MsChatBubble>
+          <MsChatBubble tone="warning" variant="soft" name="Tom: Warning">Balão tonal âmbar (#ff9f43).</MsChatBubble>
+          <MsChatBubble tone="danger" variant="soft" name="Tom: Danger">Balão tonal rubro (#ee5253).</MsChatBubble>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Balões de conversa nos 8 tons da marca com fundo tonal suave -->
+<MsChatBubble tone="primary" variant="soft">Mensagem Primary</MsChatBubble>
+<MsChatBubble tone="accent" variant="soft">Mensagem Accent</MsChatBubble>
+<MsChatBubble tone="success" variant="soft">Mensagem Success</MsChatBubble>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 5. DELIVERY STATUS INDICATORS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. Indicadores de Status de Entrega (Enviando, Enviado, Lido)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Receipts</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 440px;">
+          <MsChatBubble placement="end" variant="solid" tone="primary" name="Você" timestamp="16:40" status="sending">
+            Enviando mensagem para o cluster...
+          </MsChatBubble>
+          <MsChatBubble placement="end" variant="solid" tone="primary" name="Você" timestamp="16:41" status="sent">
+            Mensagem entregue ao destinatário (✓).
+          </MsChatBubble>
+          <MsChatBubble placement="end" variant="solid" tone="primary" name="Você" timestamp="16:42" status="read">
+            Mensagem lida pelo destinatário (✓✓ azul).
+          </MsChatBubble>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Status de envio e leitura no rodapé do balão -->
+<MsChatBubble placement="end" status="sending">Enviando...</MsChatBubble>
+<MsChatBubble placement="end" status="sent">Enviado</MsChatBubble>
+<MsChatBubble placement="end" status="read">Lido</MsChatBubble>'
           language="html"
           :show-line-numbers="false"
           :copyable="true"

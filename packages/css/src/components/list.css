@@ -24,6 +24,17 @@
   border-bottom: 1px solid var(--ms-color-border-subtle);
 }
 
+.ms-list--variant-separated {
+  background-color: transparent;
+  gap: var(--ms-space-2, 8px);
+}
+
+.ms-list--variant-separated .ms-list-item {
+  border: 1px solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-md, 8px);
+  background-color: var(--ms-color-surface-raised);
+}
+
 /* List Item */
 .ms-list-item {
   display: flex;

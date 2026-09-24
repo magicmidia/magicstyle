@@ -145,3 +145,10 @@
     background: var(--_ms-skel-bg);
   }
 }
+
+/* Dark mode subtle contrast adaptation */
+:root[data-ms-color-mode="dark"] .ms-skeleton,
+[data-ms-color-mode="dark"] .ms-skeleton {
+  --_ms-skel-bg: rgba(255, 255, 255, 0.08);
+  --_ms-skel-highlight: rgba(255, 255, 255, 0.16);
+}

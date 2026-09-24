@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import type { MsRatingProps, MsRatingEmits } from "./types.ts";
 
 const props = withDefaults(defineProps<MsRatingProps>(), {
+  tone: "warning",
   modelValue: 0,
   max: 5,
   size: "md",
@@ -48,6 +49,7 @@ const handleKeydown = (event: KeyboardEvent) => {
 const ratingClasses = computed(() => [
   "ms-rating",
   `ms-rating--size-${props.size}`,
+  props.tone ? `ms-rating--tone-${props.tone}` : "",
   props.readonly ? "ms-rating--readonly" : "",
   props.disabled ? "ms-rating--disabled" : "",
 ]);

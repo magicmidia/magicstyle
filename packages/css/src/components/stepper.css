@@ -117,18 +117,25 @@
   border-color: var(--ms-color-primary);
   background-color: var(--ms-color-primary);
   color: var(--ms-color-text-on-accent);
+  box-shadow: 0 0 0 4px var(--ms-color-primary-subtle, rgba(99, 102, 241, 0.25));
 }
 
 .ms-step--complete .ms-step__indicator {
   border-color: var(--ms-color-primary, #6366f1);
   background-color: var(--ms-color-primary-subtle, #eef2ff);
   color: var(--ms-color-primary, #6366f1);
+  box-shadow: 0 0 0 3px var(--ms-color-surface-default);
 }
 
 .ms-step--error .ms-step__indicator {
   border-color: var(--ms-color-danger, #ef4444);
   background-color: var(--ms-color-danger-subtle, #fef2f2);
   color: var(--ms-color-danger, #ef4444);
+  box-shadow: 0 0 0 4px var(--ms-color-danger-subtle, rgba(239, 68, 68, 0.2));
+}
+
+.ms-stepper--clickable .ms-step:not(.ms-step--disabled):hover .ms-step__indicator {
+  transform: scale(1.08);
 }
 
 /* Step Text Group */

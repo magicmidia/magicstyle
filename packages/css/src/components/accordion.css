@@ -29,6 +29,18 @@
   border-radius: var(--ms-radius-lg, 8px);
   overflow: hidden;
   background-color: var(--ms-color-surface-raised);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ms-accordion--variant-separated .ms-accordion-item.ms-accordion-item--expanded {
+  border-color: color-mix(
+    in oklch,
+    var(--ms-color-interactive-primary) 35%,
+    var(--ms-color-border-subtle)
+  );
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.07);
 }
 
 .ms-accordion--variant-flush .ms-accordion-item {
