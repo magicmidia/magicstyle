@@ -1,6 +1,6 @@
 {
   "name": "@magic-style/css",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Magic-Style official CSS: semantic component classes and design-token layers. Framework-free.",
   "license": "UNLICENSED",
   "type": "module",
