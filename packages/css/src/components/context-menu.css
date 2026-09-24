@@ -33,7 +33,7 @@
   gap: var(--ms-space-2, 8px);
   padding: var(--ms-space-2, 6px) var(--ms-space-3, 10px);
   border-radius: var(--ms-radius-md, 6px);
-  font-size: var(--ms-font-size-sm, 0.875rem);
+  font-size: var(--ms-typography-size-sm, 0.875rem);
   cursor: pointer;
   user-select: none;
   transition: background-color var(--ms-transition-duration-fast, 120ms);
@@ -69,7 +69,7 @@
 }
 
 .ms-context-menu-item__shortcut {
-  font-size: var(--ms-font-size-xs, 0.75rem);
+  font-size: var(--ms-typography-size-xs, 0.75rem);
   color: var(--ms-color-text-muted, #64748b);
   margin-left: auto;
   padding-left: var(--ms-space-4, 16px);

@@ -113,8 +113,8 @@
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
-    "typecheck": "node scripts/build.mjs && node scripts/check-package.mjs",
-    "test": "node scripts/build.mjs && vitest run",
+    "typecheck": "node scripts/check-package.mjs",
+    "test": "vitest run",
     "lint": "eslint ."
   },
   "devDependencies": {

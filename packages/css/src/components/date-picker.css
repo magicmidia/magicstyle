@@ -55,7 +55,7 @@
   background-color: var(--ms-color-surface-raised);
   border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
   border-radius: var(--ms-radius-lg);
-  box-shadow: var(--ms-shadow-md);
+  box-shadow: var(--ms-elevation-2);
   padding: var(--ms-space-3);
   display: flex;
   flex-direction: column;

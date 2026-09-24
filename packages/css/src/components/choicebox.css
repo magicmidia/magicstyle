@@ -234,10 +234,10 @@
 
 .ms-choicebox-item__title {
   font-family: var(--ms-font-family-sans, sans-serif);
-  font-size: var(--ms-font-size-sm, 14px);
-  font-weight: var(--ms-font-weight-semibold, 600);
+  font-size: var(--ms-typography-size-sm, 14px);
+  font-weight: var(--ms-typography-weight-semibold, 600);
   color: var(--ms-color-text-primary);
-  line-height: var(--ms-line-height-tight, 1.25);
+  line-height: var(--ms-typography-line-height-tight, 1.25);
   margin: 0;
 }
 
@@ -247,7 +247,7 @@
   padding: 1px 6px;
   font-family: var(--ms-font-family-sans, sans-serif);
   font-size: 11px;
-  font-weight: var(--ms-font-weight-semibold, 600);
+  font-weight: var(--ms-typography-weight-semibold, 600);
   border-radius: var(--ms-radius-full, 9999px);
   background-color: var(--ms-color-surface-sunken);
   color: var(--ms-color-brand-primary);
@@ -256,17 +256,17 @@
 
 .ms-choicebox-item__price {
   font-family: var(--ms-font-family-sans, sans-serif);
-  font-size: var(--ms-font-size-sm, 14px);
-  font-weight: var(--ms-font-weight-bold, 700);
+  font-size: var(--ms-typography-size-sm, 14px);
+  font-weight: var(--ms-typography-weight-bold, 700);
   color: var(--ms-color-text-primary);
   white-space: nowrap;
 }
 
 .ms-choicebox-item__description {
   font-family: var(--ms-font-family-sans, sans-serif);
-  font-size: var(--ms-font-size-xs, 12px);
+  font-size: var(--ms-typography-size-xs, 12px);
   color: var(--ms-color-text-muted);
-  line-height: var(--ms-line-height-normal, 1.5);
+  line-height: var(--ms-typography-line-height-base, 1.5);
   margin: 0;
 }
 
@@ -280,7 +280,7 @@
   gap: var(--ms-space-2, 8px);
 }
 .ms-choicebox-item--sm .ms-choicebox-item__title {
-  font-size: var(--ms-font-size-xs, 12px);
+  font-size: var(--ms-typography-size-xs, 12px);
 }
 .ms-choicebox-item--sm .ms-choicebox-item__indicator {
   width: 16px;

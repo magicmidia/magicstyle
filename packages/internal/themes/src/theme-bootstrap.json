@@ -90,7 +90,7 @@
     },
     "text": {
       "primary": { "$type": "color", "$value": "#212529" },
-      "secondary": { "$type": "color", "$value": "#6c757d" },
+      "secondary": { "$type": "color", "$value": "#5c636a" },
       "muted": { "$type": "color", "$value": "#adb5bd" },
       "subtle": { "$type": "color", "$value": "#ced4da" },
       "inverse": { "$type": "color", "$value": "#f8f9fa" },

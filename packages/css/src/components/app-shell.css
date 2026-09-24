@@ -85,7 +85,7 @@
   background-color: var(--ms-color-surface-default);
   border-right: 1px solid var(--ms-color-border-subtle);
   flex-shrink: 0;
-  transition: width var(--ms-motion-duration-normal) var(--ms-motion-easing-ease-out);
+  transition: width var(--ms-motion-duration-base) var(--ms-motion-easing-standard);
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
@@ -172,7 +172,7 @@
   padding: var(--ms-space-4) var(--ms-page-gutter, 24px);
   background-color: var(--ms-color-surface-default);
   border-top: 1px solid var(--ms-color-border-subtle);
-  font-size: var(--ms-font-size-sm);
+  font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-muted);
   flex-shrink: 0;
   box-sizing: border-box;
@@ -187,7 +187,7 @@
   padding: 0 var(--ms-space-3);
   background-color: var(--ms-color-surface-default);
   border-top: 1px solid var(--ms-color-border-subtle);
-  font-size: var(--ms-font-size-xs);
+  font-size: var(--ms-typography-size-xs);
   color: var(--ms-color-text-muted);
   flex-shrink: 0;
   box-sizing: border-box;

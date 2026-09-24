@@ -135,6 +135,11 @@
       "$value": "{color.info.600}",
       "$description": "One-step hover; keeps ink text AA."
     },
+    "info-solid-fg": {
+      "$type": "color",
+      "$value": "{color.neutral.950}",
+      "$description": "Ink text for the light cyan fill - AA in both modes."
+    },
     "success-solid": {
       "$type": "color",
       "$value": "{color.success.500}",
@@ -144,6 +149,11 @@
       "$type": "color",
       "$value": "{color.success.600}",
       "$description": "One-step hover; keeps ink text AA."
+    },
+    "success-solid-fg": {
+      "$type": "color",
+      "$value": "{color.neutral.950}",
+      "$description": "Ink text for the green fill - AA in both modes."
     },
     "warning-solid": {
       "$type": "color",
@@ -169,6 +179,11 @@
       "$type": "color",
       "$value": "{color.danger.700}",
       "$description": "One-step hover; white text stays AA."
+    },
+    "danger-solid-fg": {
+      "$type": "color",
+      "$value": "{color.neutral.0}",
+      "$description": "White text for the danger fill - AA in both modes."
     }
   },
   "focus-ring": {

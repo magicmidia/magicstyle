@@ -372,7 +372,7 @@
   box-shadow: var(--ms-elevation-3);
 }
 .ms-u-elevation-4 {
-  box-shadow: var(--ms-elevation-4);
+  box-shadow: var(--ms-elevation-3);
 }
 
 /* RTL Bidirectional Flip Helper */

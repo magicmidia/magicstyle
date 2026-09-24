@@ -22,7 +22,7 @@
   background-color: var(--ms-color-surface-raised);
   border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
   border-radius: var(--ms-radius-xl);
-  box-shadow: var(--ms-shadow-xl, 0 20px 25px -5px rgba(0, 0, 0, 0.2));
+  box-shadow: var(--ms-elevation-3, 0 20px 25px -5px rgba(0, 0, 0, 0.2));
   overflow: hidden;
   display: flex;
   flex-direction: column;

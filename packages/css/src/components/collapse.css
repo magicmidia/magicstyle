@@ -20,7 +20,7 @@
 .ms-collapse--card {
   border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
   background-color: var(--ms-color-surface-raised);
-  box-shadow: var(--ms-shadow-xs);
+  box-shadow: var(--ms-elevation-1);
 }
 
 .ms-collapse--ghost {
@@ -73,7 +73,7 @@
   width: 18px;
   height: 18px;
   color: var(--ms-color-text-muted);
-  transition: transform var(--ms-motion-duration-normal) var(--ms-motion-easing-standard);
+  transition: transform var(--ms-motion-duration-base) var(--ms-motion-easing-standard);
 }
 
 .ms-collapse--open .ms-collapse__chevron {
@@ -84,7 +84,7 @@
 .ms-collapse__wrapper {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows var(--ms-motion-duration-normal) var(--ms-motion-easing-standard);
+  transition: grid-template-rows var(--ms-motion-duration-base) var(--ms-motion-easing-standard);
 }
 
 .ms-collapse--open .ms-collapse__wrapper {

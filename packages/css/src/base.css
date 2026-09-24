@@ -2,47 +2,9 @@
  * Magic-Style Base layer (doc 09 §2).
  * Applies the design language to the document without resetting anything.
  * Depends on: tokens.css + themes.css.
+ * Color aliases (--ms-color-primary, *-subtle, *-soft-*) live in themes.css so
+ * they re-resolve per theme scope; do not redeclare them here.
  */
-
-:root {
-  /* Canonical brand colors */
-  --ms-color-accent: var(--ms-color-accent-700, #341f97);
-  --ms-color-neutral: var(--ms-color-neutral-700, #222f3e);
-  --ms-color-primary: var(--ms-color-primary-500, #2e86de);
-  --ms-color-secondary: var(--ms-color-secondary-500, #e15f41);
-  --ms-color-success: var(--ms-color-success-500, #10ac84);
-  --ms-color-info: var(--ms-color-info-500, #0abde3);
-  --ms-color-warning: var(--ms-color-warning-500, #ff9f43);
-  --ms-color-danger: var(--ms-color-danger-500, #ee5253);
-
-  /* Semantic subtle backgrounds for all 8 tones */
-  --ms-color-primary-subtle: var(--ms-color-interactive-primary-subtle, oklch(0.93 0.05 252));
-  --ms-color-secondary-subtle: var(--ms-color-interactive-secondary-subtle, oklch(0.955 0.054 034));
-  --ms-color-accent-subtle: var(--ms-color-interactive-accent-subtle, oklch(0.945 0.06 280));
-  --ms-color-neutral-subtle: var(--ms-color-interactive-neutral-subtle, oklch(0.947 0.007 252));
-  --ms-color-success-subtle: var(--ms-color-feedback-success-bg, oklch(0.965 0.042 168));
-  --ms-color-info-subtle: var(--ms-color-feedback-info-bg, oklch(0.975 0.043 219));
-  --ms-color-warning-subtle: var(--ms-color-feedback-warning-bg, oklch(0.985 0.049 061));
-  --ms-color-danger-subtle: var(--ms-color-feedback-danger-bg, oklch(0.94 0.061 024));
-
-  /* Canonical Soft Color Pairs (bg = tone text/ink, fg = tone subtle) */
-  --ms-color-primary-soft-bg: var(--ms-color-interactive-primary-text);
-  --ms-color-primary-soft-fg: var(--ms-color-interactive-primary-subtle);
-  --ms-color-secondary-soft-bg: var(--ms-color-interactive-secondary-text);
-  --ms-color-secondary-soft-fg: var(--ms-color-interactive-secondary-subtle);
-  --ms-color-accent-soft-bg: var(--ms-color-interactive-accent-text);
-  --ms-color-accent-soft-fg: var(--ms-color-interactive-accent-subtle);
-  --ms-color-neutral-soft-bg: var(--ms-color-interactive-neutral-text);
-  --ms-color-neutral-soft-fg: var(--ms-color-interactive-neutral-subtle);
-  --ms-color-success-soft-bg: var(--ms-color-feedback-success-text);
-  --ms-color-success-soft-fg: var(--ms-color-feedback-success-bg);
-  --ms-color-info-soft-bg: var(--ms-color-feedback-info-text);
-  --ms-color-info-soft-fg: var(--ms-color-feedback-info-bg);
-  --ms-color-warning-soft-bg: var(--ms-color-feedback-warning-text);
-  --ms-color-warning-soft-fg: var(--ms-color-feedback-warning-bg);
-  --ms-color-danger-soft-bg: var(--ms-color-feedback-danger-text);
-  --ms-color-danger-soft-fg: var(--ms-color-feedback-danger-bg);
-}
 
 html {
   font-family: var(--ms-font-sans);

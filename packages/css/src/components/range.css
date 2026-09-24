@@ -137,8 +137,8 @@
 
 /* Value Display Badge */
 .ms-range__value {
-  font-size: var(--ms-font-size-sm, 0.875rem);
-  font-weight: var(--ms-font-weight-semibold, 600);
+  font-size: var(--ms-typography-size-sm, 0.875rem);
+  font-weight: var(--ms-typography-weight-semibold, 600);
   font-variant-numeric: tabular-nums;
   color: var(--ms-color-text-primary);
   min-width: 36px;

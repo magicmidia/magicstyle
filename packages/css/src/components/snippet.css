@@ -67,8 +67,8 @@
   align-items: center;
   gap: var(--ms-space-1-5, 6px);
   font-family: var(--ms-font-family-sans, sans-serif);
-  font-size: var(--ms-font-size-xs, 12px);
-  font-weight: var(--ms-font-weight-medium, 500);
+  font-size: var(--ms-typography-size-xs, 12px);
+  font-weight: var(--ms-typography-weight-medium, 500);
   padding: var(--ms-space-1, 4px) var(--ms-space-2-5, 10px);
   border: none;
   background: transparent;
@@ -88,7 +88,7 @@
 .ms-snippet__tab[aria-selected="true"] {
   color: var(--ms-color-brand-primary);
   background-color: var(--ms-color-surface-sunken);
-  font-weight: var(--ms-font-weight-semibold, 600);
+  font-weight: var(--ms-typography-weight-semibold, 600);
 }
 
 .ms-snippet__tab:focus-visible {
@@ -125,13 +125,13 @@
 .ms-snippet__prompt {
   user-select: none;
   color: var(--ms-color-text-muted);
-  font-weight: var(--ms-font-weight-bold, 700);
+  font-weight: var(--ms-typography-weight-bold, 700);
   flex-shrink: 0;
 }
 
 .ms-snippet__code {
   font-family: var(--ms-font-family-mono, monospace);
-  font-size: var(--ms-font-size-sm, 13px);
+  font-size: var(--ms-typography-size-sm, 13px);
   line-height: var(--ms-line-height-relaxed, 1.6);
   white-space: pre;
   margin: 0;
@@ -183,7 +183,7 @@
   padding: var(--ms-space-2, 8px) var(--ms-space-3, 12px);
 }
 .ms-snippet--sm .ms-snippet__code {
-  font-size: var(--ms-font-size-xs, 12px);
+  font-size: var(--ms-typography-size-xs, 12px);
 }
 .ms-snippet--sm .ms-snippet__copy-btn {
   width: 26px;
@@ -194,7 +194,7 @@
   padding: var(--ms-space-3, 12px) var(--ms-space-4, 16px);
 }
 .ms-snippet--md .ms-snippet__code {
-  font-size: var(--ms-font-size-sm, 13px);
+  font-size: var(--ms-typography-size-sm, 13px);
 }
 
 .ms-snippet--lg .ms-snippet__body {

@@ -11,14 +11,14 @@
   border-radius: var(--ms-radius-md);
   border: 1px solid transparent;
   font-family: inherit;
-  font-weight: var(--ms-font-weight-medium);
+  font-weight: var(--ms-typography-weight-medium);
   text-decoration: none;
   cursor: pointer;
   user-select: none;
   vertical-align: middle;
   transition-property: background-color, border-color, color, box-shadow, transform;
   transition-duration: var(--ms-motion-duration-fast);
-  transition-timing-function: var(--ms-motion-easing-ease-out);
+  transition-timing-function: var(--ms-motion-easing-standard);
   box-sizing: border-box;
   position: relative;
   flex-shrink: 0;

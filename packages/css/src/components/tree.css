@@ -10,7 +10,7 @@
   margin: 0;
   padding: 0;
   user-select: none;
-  font-size: var(--ms-font-size-sm, 0.875rem);
+  font-size: var(--ms-typography-size-sm, 0.875rem);
   color: var(--ms-color-text, #0f172a);
 }
 
@@ -36,7 +36,7 @@
 .ms-tree-node--selected > .ms-tree-node__row {
   background-color: var(--ms-color-primary-subtle, #eef2ff);
   color: var(--ms-color-primary, #6366f1);
-  font-weight: var(--ms-font-weight-medium, 500);
+  font-weight: var(--ms-typography-weight-medium, 500);
 }
 
 .ms-tree-node__toggle {

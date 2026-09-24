@@ -85,7 +85,7 @@
       "neutral-active": { "$type": "color", "$value": "#586379" },
       "neutral-subtle": { "$type": "color", "$value": "#3b4252" },
       "neutral-text": { "$type": "color", "$value": "#d8dee9" },
-      "neutral-fg": { "$type": "color", "$value": "#2e3440" }
+      "neutral-fg": { "$type": "color", "$value": "#eceff4" }
     }
   },
   "focus-ring": {

@@ -46,6 +46,21 @@ export function emitThemesCss(): string {
     }
   }
 
+  /*
+   * CSS-only system preference: [data-ms-color-mode="system"] follows the OS
+   * without JS (SSR/first paint). Mirrors the dark blocks above.
+   */
+  const systemDark = [
+    block('[data-ms-color-mode="system"]', deltaAgainst(base, resolveTheme("magic", "dark"))),
+    ...THEMES.filter((t) => t.name !== "magic").map((theme) =>
+      block(
+        `[data-ms-theme="${theme.dataMs}"][data-ms-color-mode="system"]`,
+        deltaAgainst(base, resolveTheme(theme.name, "dark")),
+      ),
+    ),
+  ].filter((part) => part !== "");
+  parts.push(`@media (prefers-color-scheme: dark) {\n${systemDark.join("\n")}}\n`);
+
   for (const [name, dial] of Object.entries(DIALS.density)) {
     parts.push(
       block(`[data-ms-density="${name}"]`, [
@@ -76,8 +91,15 @@ export function emitThemesCss(): string {
     ),
   );
 
+  /*
+   * Aliases are re-declared on every theming scope (not only :root) so var()
+   * references resolve against the nearest theme/mode, e.g. nested MsThemeScope.
+   */
   parts.push(`/* Global Semantic Aliases & Compatibility Fallbacks */
-:root {
+:root,
+[data-ms-theme],
+[data-ms-color-mode],
+[data-ms-contrast] {
   --ms-color-surface: var(--ms-color-surface-default);
   --ms-color-surface-subtle: var(--ms-color-surface-sunken);
   --ms-color-surface-hover: var(--ms-color-interactive-neutral-subtle);
@@ -110,6 +132,7 @@ export function emitThemesCss(): string {
   --ms-color-status-danger: var(--ms-color-feedback-danger-text);
   --ms-color-status-warning: var(--ms-color-feedback-warning-text);
   --ms-color-status-success: var(--ms-color-feedback-success-text);
+  --ms-color-status-info: var(--ms-color-feedback-info-text);
   --ms-color-primary-text: var(--ms-color-interactive-primary-text);
   --ms-color-primary-hover: var(--ms-color-interactive-primary-hover);
   --ms-color-primary-active: var(--ms-color-interactive-primary-active);
@@ -118,20 +141,64 @@ export function emitThemesCss(): string {
   --ms-color-neutral-hover: var(--ms-color-interactive-neutral-hover);
   --ms-color-neutral-contrast: var(--ms-color-interactive-neutral-fg);
   --ms-color-danger-hover: var(--ms-color-feedback-danger-solid-hover);
-  --ms-color-danger-contrast: var(--ms-color-text-on-accent);
+  --ms-color-danger-contrast: var(--ms-color-feedback-danger-solid-fg);
   --ms-color-success-hover: var(--ms-color-feedback-success-solid-hover);
-  --ms-color-success-contrast: var(--ms-color-text-on-accent);
+  --ms-color-success-contrast: var(--ms-color-feedback-success-solid-fg);
+  --ms-color-info-contrast: var(--ms-color-feedback-info-solid-fg);
+  --ms-color-warning-contrast: var(--ms-color-feedback-warning-solid-fg);
   --ms-color-text-disabled: var(--ms-color-text-muted);
   --ms-color-surface-disabled: var(--ms-color-surface-sunken);
   --ms-color-surface-elevated: var(--ms-color-surface-raised);
+  --ms-color-surface-overlay: var(--ms-color-surface-raised);
+  --ms-color-focus-ring: var(--ms-focus-ring-color);
+  /* Soft pairs (bg = tone ink, fg = tone subtle) */
+  --ms-color-primary-soft-bg: var(--ms-color-interactive-primary-text);
+  --ms-color-primary-soft-fg: var(--ms-color-interactive-primary-subtle);
+  --ms-color-secondary-soft-bg: var(--ms-color-interactive-secondary-text);
+  --ms-color-secondary-soft-fg: var(--ms-color-interactive-secondary-subtle);
+  --ms-color-accent-soft-bg: var(--ms-color-interactive-accent-text);
+  --ms-color-accent-soft-fg: var(--ms-color-interactive-accent-subtle);
+  --ms-color-neutral-soft-bg: var(--ms-color-interactive-neutral-text);
+  --ms-color-neutral-soft-fg: var(--ms-color-interactive-neutral-subtle);
+  --ms-color-success-soft-bg: var(--ms-color-feedback-success-text);
+  --ms-color-success-soft-fg: var(--ms-color-feedback-success-bg);
+  --ms-color-info-soft-bg: var(--ms-color-feedback-info-text);
+  --ms-color-info-soft-fg: var(--ms-color-feedback-info-bg);
+  --ms-color-warning-soft-bg: var(--ms-color-feedback-warning-text);
+  --ms-color-warning-soft-fg: var(--ms-color-feedback-warning-bg);
+  --ms-color-danger-soft-bg: var(--ms-color-feedback-danger-text);
+  --ms-color-danger-soft-fg: var(--ms-color-feedback-danger-bg);
+}
+
+:root {
   --ms-color-backdrop-dock: rgba(15, 23, 42, 0.4);
   --ms-color-backdrop: rgba(15, 23, 42, 0.55);
-  --ms-color-focus-ring: var(--ms-focus-ring-color);
 }
 
 [data-ms-color-mode="dark"] {
   --ms-color-backdrop: rgba(0, 0, 0, 0.75);
   --ms-color-backdrop-dock: rgba(0, 0, 0, 0.6);
+}
+
+/* Native controls, scrollbars and autofill follow the active mode. */
+:root,
+[data-ms-color-mode="light"] {
+  color-scheme: light;
+}
+
+[data-ms-color-mode="dark"] {
+  color-scheme: dark;
+}
+
+[data-ms-color-mode="system"] {
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-ms-color-mode="system"] {
+    --ms-color-backdrop: rgba(0, 0, 0, 0.75);
+    --ms-color-backdrop-dock: rgba(0, 0, 0, 0.6);
+  }
 }`);
 
   return `${parts.filter((part) => part !== "").join("\n")}`;

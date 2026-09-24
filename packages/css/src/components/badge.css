@@ -162,7 +162,7 @@
 
 .ms-badge[data-tone="success"] {
   --_ms-badge-solid-bg: var(--ms-color-feedback-success-solid);
-  --_ms-badge-solid-fg: var(--ms-color-text-on-accent);
+  --_ms-badge-solid-fg: var(--ms-color-feedback-success-solid-fg);
   --_ms-badge-soft-bg: var(--ms-color-feedback-success-bg);
   --_ms-badge-soft-fg: var(--ms-color-feedback-success-text);
   --_ms-badge-soft-border: var(--ms-color-feedback-success-border);
@@ -172,7 +172,7 @@
 
 .ms-badge[data-tone="info"] {
   --_ms-badge-solid-bg: var(--ms-color-feedback-info-solid);
-  --_ms-badge-solid-fg: var(--ms-color-text-primary);
+  --_ms-badge-solid-fg: var(--ms-color-feedback-info-solid-fg);
   --_ms-badge-soft-bg: var(--ms-color-feedback-info-bg);
   --_ms-badge-soft-fg: var(--ms-color-feedback-info-text);
   --_ms-badge-soft-border: var(--ms-color-feedback-info-border);
@@ -182,7 +182,7 @@
 
 .ms-badge[data-tone="warning"] {
   --_ms-badge-solid-bg: var(--ms-color-feedback-warning-solid);
-  --_ms-badge-solid-fg: var(--ms-color-text-primary);
+  --_ms-badge-solid-fg: var(--ms-color-feedback-warning-solid-fg);
   --_ms-badge-soft-bg: var(--ms-color-feedback-warning-bg);
   --_ms-badge-soft-fg: var(--ms-color-feedback-warning-text);
   --_ms-badge-soft-border: var(--ms-color-feedback-warning-border);
@@ -192,7 +192,7 @@
 
 .ms-badge[data-tone="danger"] {
   --_ms-badge-solid-bg: var(--ms-color-feedback-danger-solid);
-  --_ms-badge-solid-fg: var(--ms-color-text-on-accent);
+  --_ms-badge-solid-fg: var(--ms-color-feedback-danger-solid-fg);
   --_ms-badge-soft-bg: var(--ms-color-feedback-danger-bg);
   --_ms-badge-soft-fg: var(--ms-color-feedback-danger-text);
   --_ms-badge-soft-border: var(--ms-color-feedback-danger-border);

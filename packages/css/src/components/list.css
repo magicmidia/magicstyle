@@ -37,17 +37,17 @@
 
 .ms-list--size-sm .ms-list-item {
   padding: var(--ms-space-2, 8px) var(--ms-space-3, 12px);
-  font-size: var(--ms-font-size-sm, 0.875rem);
+  font-size: var(--ms-typography-size-sm, 0.875rem);
 }
 
 .ms-list--size-md .ms-list-item {
   padding: var(--ms-space-3, 12px) var(--ms-space-4, 16px);
-  font-size: var(--ms-font-size-md, 1rem);
+  font-size: var(--ms-typography-size-md, 1rem);
 }
 
 .ms-list--size-lg .ms-list-item {
   padding: var(--ms-space-4, 16px) var(--ms-space-5, 20px);
-  font-size: var(--ms-font-size-lg, 1.125rem);
+  font-size: var(--ms-typography-size-lg, 1.125rem);
 }
 
 .ms-list-item--interactive {
@@ -61,7 +61,7 @@
 .ms-list-item--active {
   background-color: var(--ms-color-primary-subtle, #eef2ff);
   color: var(--ms-color-primary, #6366f1);
-  font-weight: var(--ms-font-weight-medium, 500);
+  font-weight: var(--ms-typography-weight-medium, 500);
 }
 
 .ms-list-item--disabled {
@@ -86,15 +86,15 @@
 }
 
 .ms-list-item__title {
-  font-weight: var(--ms-font-weight-medium, 500);
-  line-height: var(--ms-line-height-tight, 1.25);
+  font-weight: var(--ms-typography-weight-medium, 500);
+  line-height: var(--ms-typography-line-height-tight, 1.25);
   margin: 0;
 }
 
 .ms-list-item__description {
-  font-size: var(--ms-font-size-xs, 0.75rem);
+  font-size: var(--ms-typography-size-xs, 0.75rem);
   color: var(--ms-color-text-muted, #64748b);
-  line-height: var(--ms-line-height-normal, 1.5);
+  line-height: var(--ms-typography-line-height-base, 1.5);
   margin: 0;
 }
 
@@ -115,8 +115,8 @@
 
 .ms-list-group__header {
   padding: var(--ms-space-2, 8px) var(--ms-space-4, 16px);
-  font-size: var(--ms-font-size-xs, 0.75rem);
-  font-weight: var(--ms-font-weight-bold, 700);
+  font-size: var(--ms-typography-size-xs, 0.75rem);
+  font-weight: var(--ms-typography-weight-bold, 700);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--ms-color-text-secondary);

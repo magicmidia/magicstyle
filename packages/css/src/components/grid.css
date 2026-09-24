@@ -24,7 +24,7 @@
   border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
   border-radius: var(--ms-radius-xl);
   padding: var(--ms-space-5);
-  box-shadow: var(--ms-shadow-xs);
+  box-shadow: var(--ms-elevation-1);
   transition:
     transform var(--ms-motion-duration-fast) ease,
     box-shadow var(--ms-motion-duration-fast) ease,
@@ -38,7 +38,7 @@
 .ms-bento-item--interactive:hover {
   transform: translateY(-2px);
   border-color: var(--ms-color-brand-primary);
-  box-shadow: var(--ms-shadow-md);
+  box-shadow: var(--ms-elevation-2);
 }
 
 .ms-bento-item--interactive:active {
@@ -53,7 +53,7 @@
 
 .ms-bento-item--elevated {
   background-color: var(--ms-color-surface-raised);
-  box-shadow: var(--ms-shadow-lg);
+  box-shadow: var(--ms-elevation-3);
   border-color: var(--ms-color-border-strong);
 }
 

@@ -46,7 +46,7 @@
   background-color: var(--ms-color-interactive-primary);
   color: var(--ms-color-text-inverse);
   border: none;
-  box-shadow: var(--ms-shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.2));
+  box-shadow: var(--ms-elevation-3, 0 10px 15px -3px rgba(0, 0, 0, 0.2));
   font-family: var(--ms-font-sans);
   font-size: var(--ms-typography-size-sm);
   font-weight: var(--ms-typography-weight-semibold);
@@ -59,7 +59,7 @@
 
 .ms-fab:hover {
   transform: scale(1.05);
-  box-shadow: var(--ms-shadow-xl);
+  box-shadow: var(--ms-elevation-3);
 }
 
 .ms-fab:active {
@@ -84,7 +84,7 @@
   background-color: var(--ms-color-surface-raised);
   color: var(--ms-color-text-primary);
   border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
-  box-shadow: var(--ms-shadow-md);
+  box-shadow: var(--ms-elevation-2);
   cursor: pointer;
   transition: transform var(--ms-motion-duration-fast) ease;
 }

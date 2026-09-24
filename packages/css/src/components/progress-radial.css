@@ -67,7 +67,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: var(--ms-font-weight-semibold, 600);
+  font-weight: var(--ms-typography-weight-semibold, 600);
   color: var(--ms-color-text, #0f172a);
   user-select: none;
 }
@@ -78,7 +78,7 @@
   height: 40px;
 }
 .ms-progress-radial--size-sm .ms-progress-radial__label {
-  font-size: var(--ms-font-size-xs, 0.75rem);
+  font-size: var(--ms-typography-size-xs, 0.75rem);
 }
 
 .ms-progress-radial--size-md {
@@ -86,7 +86,7 @@
   height: 64px;
 }
 .ms-progress-radial--size-md .ms-progress-radial__label {
-  font-size: var(--ms-font-size-sm, 0.875rem);
+  font-size: var(--ms-typography-size-sm, 0.875rem);
 }
 
 .ms-progress-radial--size-lg {
@@ -94,7 +94,7 @@
   height: 96px;
 }
 .ms-progress-radial--size-lg .ms-progress-radial__label {
-  font-size: var(--ms-font-size-lg, 1.125rem);
+  font-size: var(--ms-typography-size-lg, 1.125rem);
 }
 
 .ms-progress-radial--size-xl {
@@ -102,7 +102,7 @@
   height: 128px;
 }
 .ms-progress-radial--size-xl .ms-progress-radial__label {
-  font-size: var(--ms-font-size-xl, 1.25rem);
+  font-size: var(--ms-typography-size-xl, 1.25rem);
 }
 
 /* Indeterminate spin */

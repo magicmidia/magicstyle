@@ -70,11 +70,11 @@
       "neutral": { "$type": "color", "$value": "#2e3440" }
     },
     "interactive": {
-      "primary": { "$type": "color", "$value": "#5e81ac" },
-      "primary-hover": { "$type": "color", "$value": "#81a1c1" },
-      "primary-active": { "$type": "color", "$value": "#4c6b94" },
+      "primary": { "$type": "color", "$value": "#4c6b94" },
+      "primary-hover": { "$type": "color", "$value": "#435e84" },
+      "primary-active": { "$type": "color", "$value": "#3b5374" },
       "primary-subtle": { "$type": "color", "$value": "#e5e9f0" },
-      "primary-text": { "$type": "color", "$value": "#5e81ac" },
+      "primary-text": { "$type": "color", "$value": "#4c6b94" },
       "accent": { "$type": "color", "$value": "#88c0d0" },
       "accent-hover": { "$type": "color", "$value": "#8fbcbb" },
       "accent-active": { "$type": "color", "$value": "#78b0c0" },

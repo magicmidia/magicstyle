@@ -113,22 +113,22 @@
 
 .ms-tag--solid.ms-tag--success {
   background-color: var(--ms-color-feedback-success-solid);
-  color: var(--ms-color-neutral-0);
+  color: var(--ms-color-feedback-success-solid-fg);
 }
 
 .ms-tag--solid.ms-tag--warning {
   background-color: var(--ms-color-feedback-warning-solid);
-  color: var(--ms-color-neutral-1000);
+  color: var(--ms-color-feedback-warning-solid-fg);
 }
 
 .ms-tag--solid.ms-tag--danger {
   background-color: var(--ms-color-feedback-danger-solid);
-  color: var(--ms-color-neutral-0);
+  color: var(--ms-color-feedback-danger-solid-fg);
 }
 
 .ms-tag--solid.ms-tag--info {
   background-color: var(--ms-color-feedback-info-solid);
-  color: var(--ms-color-neutral-0);
+  color: var(--ms-color-feedback-info-solid-fg);
 }
 
 /* Variant: Outline */

@@ -21,7 +21,7 @@
   background-color: var(--ms-color-surface-raised);
   color: var(--ms-color-text-primary);
   box-shadow: var(
-    --ms-elevation-4,
+    --ms-elevation-3,
     0 20px 25px -5px rgba(0, 0, 0, 0.15),
     0 8px 10px -6px rgba(0, 0, 0, 0.1)
   );
@@ -135,18 +135,18 @@
 }
 
 .ms-drawer__title {
-  font-size: var(--ms-font-size-lg, 1.125rem);
-  font-weight: var(--ms-font-weight-semibold, 600);
+  font-size: var(--ms-typography-size-lg, 1.125rem);
+  font-weight: var(--ms-typography-weight-semibold, 600);
   line-height: var(--ms-line-height-snug, 1.35);
   color: var(--ms-color-text-primary);
   margin: 0;
 }
 
 .ms-drawer__description {
-  font-size: var(--ms-font-size-sm, 0.875rem);
+  font-size: var(--ms-typography-size-sm, 0.875rem);
   color: var(--ms-color-text-secondary);
   margin: 0;
-  line-height: var(--ms-line-height-normal, 1.5);
+  line-height: var(--ms-typography-line-height-base, 1.5);
 }
 
 .ms-drawer__close {
@@ -163,7 +163,7 @@
   transition:
     background-color var(--ms-transition-duration-fast, 150ms),
     color var(--ms-transition-duration-fast, 150ms);
-  font-size: var(--ms-font-size-md, 1rem);
+  font-size: var(--ms-typography-size-md, 1rem);
   padding: 0;
   flex-shrink: 0;
 }

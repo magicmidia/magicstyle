@@ -137,6 +137,22 @@ O pacote `@magic-style/css` é 100% utilizável sem Vue:
 </div>
 ```
 
+### 4. Cascade Layers e Modo de Cor do Sistema
+
+Todo o CSS é entregue dentro da camada `ms` (`ms.reset`, `ms.tokens`, `ms.themes`, `ms.base`, `ms.components`, `ms.utilities`). Estilos da aplicação sem camada sempre vencem, e é possível posicionar o Magic-Style na pilha de camadas de outras ferramentas, por exemplo Tailwind CSS v4:
+
+```css
+@layer theme, base, ms, components, utilities;
+@import "tailwindcss";
+@import "@magic-style/css";
+```
+
+Para seguir a preferência do sistema operacional sem JavaScript (SSR e primeiro paint, por exemplo num layout Blade/Inertia), use `data-ms-color-mode="system"`:
+
+```html
+<html data-ms-theme="magic" data-ms-color-mode="system"></html>
+```
+
 ---
 
 ## 🧩 Catálogo dos 82 Componentes

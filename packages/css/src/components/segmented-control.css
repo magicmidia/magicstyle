@@ -55,22 +55,22 @@
 
 .ms-segmented-control--sm {
   height: 32px;
-  font-size: var(--ms-font-size-xs);
+  font-size: var(--ms-typography-size-xs);
 }
 
 .ms-segmented-control--md {
   height: 40px;
-  font-size: var(--ms-font-size-sm);
+  font-size: var(--ms-typography-size-sm);
 }
 
 .ms-segmented-control--lg {
   height: 48px;
-  font-size: var(--ms-font-size-md);
+  font-size: var(--ms-typography-size-md);
 }
 
 .ms-segmented-control--xl {
   height: 56px;
-  font-size: var(--ms-font-size-md);
+  font-size: var(--ms-typography-size-md);
   padding: 3px;
 }
 
@@ -89,15 +89,15 @@
   color: var(--ms-color-text-muted);
   font-family: inherit;
   font-size: inherit;
-  font-weight: var(--ms-font-weight-medium);
+  font-weight: var(--ms-typography-weight-medium);
   cursor: pointer;
   white-space: nowrap;
   position: relative;
   z-index: 1;
   transition:
-    color var(--ms-motion-duration-fast) var(--ms-motion-easing-ease-out),
-    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-ease-out),
-    box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-ease-out);
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-segmented-control__item:hover:not(:disabled):not(.is-active) {
@@ -113,7 +113,7 @@
 .ms-segmented-control__item.is-active {
   background-color: var(--ms-color-surface-default);
   color: var(--ms-color-text-default);
-  font-weight: var(--ms-font-weight-semibold);
+  font-weight: var(--ms-typography-weight-semibold);
   box-shadow: var(--ms-elevation-1);
 }
 

@@ -22,7 +22,7 @@
 .ms-code-block--card {
   background-color: var(--ms-color-surface-raised);
   border-color: var(--ms-color-border-subtle);
-  box-shadow: var(--ms-shadow-sm);
+  box-shadow: var(--ms-elevation-1);
 }
 
 .ms-code-block--ghost {
@@ -98,7 +98,7 @@
 }
 
 .ms-code-block__copy-btn:focus-visible {
-  outline: 2px solid var(--ms-color-interactive-focus);
+  outline: 2px solid var(--ms-focus-ring-color);
   outline-offset: 1px;
 }
 

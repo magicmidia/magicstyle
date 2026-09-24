@@ -187,6 +187,6 @@
 }
 
 .ms-code__copy-btn:focus-visible {
-  outline: 2px solid var(--ms-color-interactive-focus);
+  outline: 2px solid var(--ms-focus-ring-color);
   outline-offset: 1px;
 }

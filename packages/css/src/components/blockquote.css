@@ -26,7 +26,7 @@
   border-left: 4px solid var(--ms-color-interactive-primary);
   background-color: var(--ms-color-surface-raised);
   border-radius: var(--ms-radius-md);
-  box-shadow: var(--ms-shadow-sm);
+  box-shadow: var(--ms-elevation-1);
 }
 
 /* Variant: Minimal */

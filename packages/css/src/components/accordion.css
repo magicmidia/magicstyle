@@ -63,7 +63,7 @@
   cursor: pointer;
   background: transparent;
   color: var(--ms-color-text-primary);
-  font-weight: var(--ms-font-weight-medium, 500);
+  font-weight: var(--ms-typography-weight-medium, 500);
   user-select: none;
   transition:
     background-color var(--ms-transition-duration-fast, 150ms),
@@ -82,17 +82,17 @@
 /* Sizes */
 .ms-accordion--size-sm .ms-accordion-item__trigger {
   padding: var(--ms-space-2, 8px) var(--ms-space-3, 12px);
-  font-size: var(--ms-font-size-sm, 0.875rem);
+  font-size: var(--ms-typography-size-sm, 0.875rem);
 }
 
 .ms-accordion--size-md .ms-accordion-item__trigger {
   padding: var(--ms-space-3, 12px) var(--ms-space-4, 16px);
-  font-size: var(--ms-font-size-md, 1rem);
+  font-size: var(--ms-typography-size-md, 1rem);
 }
 
 .ms-accordion--size-lg .ms-accordion-item__trigger {
   padding: var(--ms-space-4, 16px) var(--ms-space-5, 20px);
-  font-size: var(--ms-font-size-lg, 1.125rem);
+  font-size: var(--ms-typography-size-lg, 1.125rem);
 }
 
 .ms-accordion-item__header-content {
@@ -116,14 +116,14 @@
 }
 
 .ms-accordion-item__title {
-  font-weight: var(--ms-font-weight-semibold, 600);
-  line-height: var(--ms-line-height-tight, 1.25);
+  font-weight: var(--ms-typography-weight-semibold, 600);
+  line-height: var(--ms-typography-line-height-tight, 1.25);
 }
 
 .ms-accordion-item__subtitle {
-  font-size: var(--ms-font-size-xs, 0.75rem);
+  font-size: var(--ms-typography-size-xs, 0.75rem);
   color: var(--ms-color-text-muted, #64748b);
-  font-weight: var(--ms-font-weight-regular, 400);
+  font-weight: var(--ms-typography-weight-regular, 400);
 }
 
 .ms-accordion-item__trailing {
@@ -157,17 +157,17 @@
 
 .ms-accordion--size-sm .ms-accordion-item__content {
   padding: 0 var(--ms-space-3, 12px) var(--ms-space-3, 12px) var(--ms-space-3, 12px);
-  font-size: var(--ms-font-size-sm, 0.875rem);
+  font-size: var(--ms-typography-size-sm, 0.875rem);
 }
 
 .ms-accordion--size-md .ms-accordion-item__content {
   padding: 0 var(--ms-space-4, 16px) var(--ms-space-4, 16px) var(--ms-space-4, 16px);
-  font-size: var(--ms-font-size-md, 1rem);
+  font-size: var(--ms-typography-size-md, 1rem);
 }
 
 .ms-accordion--size-lg .ms-accordion-item__content {
   padding: 0 var(--ms-space-5, 20px) var(--ms-space-5, 20px) var(--ms-space-5, 20px);
-  font-size: var(--ms-font-size-md, 1rem);
+  font-size: var(--ms-typography-size-md, 1rem);
 }
 
 @keyframes ms-accordion-down {

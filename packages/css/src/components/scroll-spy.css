@@ -21,7 +21,7 @@
 .ms-scroll-spy__link {
   all: unset;
   display: inline-block;
-  font-size: var(--ms-font-size-sm, 0.875rem);
+  font-size: var(--ms-typography-size-sm, 0.875rem);
   color: var(--ms-color-text-muted, #64748b);
   cursor: pointer;
   transition: color var(--ms-transition-duration-fast, 120ms);
@@ -34,7 +34,7 @@
 
 .ms-scroll-spy__item--active .ms-scroll-spy__link {
   color: var(--ms-color-primary, #6366f1);
-  font-weight: var(--ms-font-weight-semibold, 600);
+  font-weight: var(--ms-typography-weight-semibold, 600);
 }
 
 .ms-scroll-spy__item--active {

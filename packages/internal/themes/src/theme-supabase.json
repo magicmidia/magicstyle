@@ -62,7 +62,7 @@
       "muted": { "$type": "color", "$value": "#737373" },
       "subtle": { "$type": "color", "$value": "#a3a3a3" },
       "inverse": { "$type": "color", "$value": "#ededed" },
-      "on-accent": { "$type": "color", "$value": "#ffffff" }
+      "on-accent": { "$type": "color", "$value": "#11181c" }
     },
     "border": {
       "subtle": { "$type": "color", "$value": "#e5e7eb" },

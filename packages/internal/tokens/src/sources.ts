@@ -29,7 +29,7 @@ export const tokenTree: TokenTree = {
   radius: shapeJson.radius,
   border: shapeJson.border,
   typography: typographyJson,
-  elevation: elevationJson.elevation,
+  elevation: { ...elevationJson.elevation, ...semanticJson.elevation },
   motion: motionJson,
   "z-index": zindexJson["z-index"],
   layout: layoutJson,

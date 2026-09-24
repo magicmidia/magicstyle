@@ -47,7 +47,7 @@
   border: 1px solid var(--ms-color-border, #e2e8f0);
   border-radius: var(--ms-radius-full, 9999px);
   box-shadow: var(
-    --ms-elevation-4,
+    --ms-elevation-3,
     0 20px 25px -5px rgba(0, 0, 0, 0.15),
     0 8px 10px -6px rgba(0, 0, 0, 0.1)
   );
@@ -79,19 +79,19 @@
 .ms-dock--size-sm .ms-dock-item {
   width: 36px;
   height: 36px;
-  font-size: var(--ms-font-size-md, 1rem);
+  font-size: var(--ms-typography-size-md, 1rem);
 }
 
 .ms-dock--size-md .ms-dock-item {
   width: 48px;
   height: 48px;
-  font-size: var(--ms-font-size-xl, 1.25rem);
+  font-size: var(--ms-typography-size-xl, 1.25rem);
 }
 
 .ms-dock--size-lg .ms-dock-item {
   width: 60px;
   height: 60px;
-  font-size: var(--ms-font-size-2xl, 1.5rem);
+  font-size: var(--ms-typography-size-2xl, 1.5rem);
 }
 
 .ms-dock-item:hover {

@@ -232,14 +232,14 @@
   --_ms-btn-accent: var(--ms-color-feedback-success-solid);
   --_ms-btn-accent-hover: var(--ms-color-feedback-success-solid-hover);
   --_ms-btn-accent-subtle: var(--ms-color-feedback-success-bg);
-  --_ms-btn-accent-fg: var(--ms-color-feedback-warning-solid-fg);
+  --_ms-btn-accent-fg: var(--ms-color-feedback-success-solid-fg);
   --_ms-btn-accent-fg-muted: var(--ms-color-feedback-success-text);
 }
 .ms-button[data-tone="info"] {
   --_ms-btn-accent: var(--ms-color-feedback-info-solid);
   --_ms-btn-accent-hover: var(--ms-color-feedback-info-solid-hover);
   --_ms-btn-accent-subtle: var(--ms-color-feedback-info-bg);
-  --_ms-btn-accent-fg: var(--ms-color-feedback-warning-solid-fg);
+  --_ms-btn-accent-fg: var(--ms-color-feedback-info-solid-fg);
   --_ms-btn-accent-fg-muted: var(--ms-color-feedback-info-text);
 }
 .ms-button[data-tone="warning"] {
@@ -253,7 +253,7 @@
   --_ms-btn-accent: var(--ms-color-feedback-danger-solid);
   --_ms-btn-accent-hover: var(--ms-color-feedback-danger-solid-hover);
   --_ms-btn-accent-subtle: var(--ms-color-feedback-danger-bg);
-  --_ms-btn-accent-fg: var(--ms-color-text-on-accent);
+  --_ms-btn-accent-fg: var(--ms-color-feedback-danger-solid-fg);
   --_ms-btn-accent-fg-muted: var(--ms-color-feedback-danger-text);
 }
 

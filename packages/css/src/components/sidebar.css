@@ -15,8 +15,8 @@
   box-sizing: border-box;
   position: relative;
   transition:
-    inline-size var(--ms-motion-duration-normal) var(--ms-motion-easing-standard),
-    width var(--ms-motion-duration-normal) var(--ms-motion-easing-standard),
+    inline-size var(--ms-motion-duration-base) var(--ms-motion-easing-standard),
+    width var(--ms-motion-duration-base) var(--ms-motion-easing-standard),
     background var(--ms-motion-duration-fast);
   z-index: var(--ms-z-index-sidebar, 90);
   overflow: hidden;
