@@ -329,3 +329,71 @@
 .ms-card--tone-danger {
   border-top: 3px solid var(--ms-color-danger, #ee5253);
 }
+
+/* Glass Variant (Modern Frosted Glass) */
+.ms-card[data-variant="glass"],
+.ms-card--glass {
+  background-color: color-mix(in oklch, var(--ms-color-surface-raised) 70%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--ms-border-hairline) solid
+    color-mix(in oklch, var(--ms-color-border-subtle) 60%, transparent);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* Stat / KPI Metric Card (FlyonUI / Shadcn Signature) */
+.ms-card-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-1, 4px);
+}
+.ms-card-stat__label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ms-color-text-secondary);
+}
+.ms-card-stat__value {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--ms-color-text-primary);
+  margin-block: var(--ms-space-1, 4px);
+}
+.ms-card-stat__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--ms-space-2, 8px);
+  font-size: 12px;
+  color: var(--ms-color-text-muted);
+}
+.ms-card-stat__trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: var(--ms-radius-full);
+}
+.ms-card-stat__trend--up {
+  color: var(--ms-color-success, #10ac84);
+  background-color: color-mix(in oklch, var(--ms-color-success, #10ac84) 12%, transparent);
+}
+.ms-card-stat__trend--down {
+  color: var(--ms-color-danger, #ee5253);
+  background-color: color-mix(in oklch, var(--ms-color-danger, #ee5253) 12%, transparent);
+}
+
+/* Floating Cover Badge */
+.ms-card__cover {
+  position: relative;
+}
+.ms-card-cover-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+}

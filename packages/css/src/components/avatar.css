@@ -117,6 +117,22 @@
   color: var(--ms-color-text-secondary);
 }
 
+.ms-avatar[data-tone="secondary"] .ms-avatar-fallback {
+  background-color: var(
+    --ms-color-interactive-secondary-subtle,
+    color-mix(in oklch, var(--ms-color-secondary) 15%, transparent)
+  );
+  color: var(--ms-color-interactive-secondary-text, var(--ms-color-secondary));
+}
+
+.ms-avatar[data-tone="info"] .ms-avatar-fallback {
+  background-color: var(
+    --ms-color-feedback-info-bg,
+    color-mix(in oklch, var(--ms-color-info) 15%, transparent)
+  );
+  color: var(--ms-color-feedback-info-text, var(--ms-color-info));
+}
+
 .ms-avatar[data-tone="success"] .ms-avatar-fallback {
   background-color: var(--ms-color-feedback-success-bg);
   color: var(--ms-color-feedback-success-text);

@@ -285,6 +285,38 @@
   font-weight: var(--ms-typography-weight-semibold);
 }
 
+/* Boxed / Segmented tab styling (Shadcn Signature) */
+.ms-tab-list--boxed,
+.ms-tab-list--segmented {
+  background-color: var(--ms-color-surface-sunken);
+  border: 1px solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-lg, 8px);
+  padding: 3px;
+  gap: 2px;
+  display: inline-flex;
+}
+.ms-tab--boxed,
+.ms-tab--segmented {
+  color: var(--ms-color-text-secondary);
+  border-radius: var(--ms-radius-md, 6px);
+  padding: 6px 14px;
+  font-weight: var(--ms-typography-weight-medium);
+  transition: all var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+.ms-tab--boxed:hover:not(.ms-tab--disabled),
+.ms-tab--segmented:hover:not(.ms-tab--disabled) {
+  color: var(--ms-color-text-primary);
+}
+.ms-tab--boxed.ms-tab--selected,
+.ms-tab--segmented.ms-tab--selected {
+  color: var(--ms-color-text-primary);
+  background-color: var(--ms-color-surface-raised);
+  box-shadow:
+    0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1);
+  font-weight: var(--ms-typography-weight-semibold);
+}
+
 /* Enclosed tab styling */
 .ms-tab--enclosed {
   color: var(--ms-color-text-secondary);

@@ -558,9 +558,14 @@ export const variationsTemplatesHtml = `
       <MsDropdownButton v-for="t in allTones" :key="t" :tone="t" variant="solid" :label="t.toUpperCase()" :items="menuItems"></MsDropdownButton>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsDropdownButton tone="primary" variant="solid" label="PRIMARY" :items="menuItems" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsDropdownButton tone="primary" variant="solid" label="PRIMARY" :items="menuItems" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -577,9 +582,14 @@ export const variationsTemplatesHtml = `
       <MsDropdownButton variant="ghost" tone="neutral" label="Ghost Minimal" :items="menuItems"></MsDropdownButton>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsDropdownButton variant="outline" tone="neutral" label="Menu" :items="menuItems" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsDropdownButton variant="outline" tone="neutral" label="Menu" :items="menuItems" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -595,9 +605,14 @@ export const variationsTemplatesHtml = `
       <MsDropdownButton size="lg" variant="solid" tone="primary" label="Grande (lg)" :items="menuItems"></MsDropdownButton>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsDropdownButton size="sm" label="Pequeno" :items="items" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsDropdownButton size="sm" label="Pequeno" :items="items" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -614,9 +629,14 @@ export const variationsTemplatesHtml = `
       <MsIconButton v-for="t in allTones" :key="t" :tone="t" variant="solid" aria-label="Ação">⚡</MsIconButton>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsIconButton tone="primary" variant="solid" aria-label="Raio"&gt;⚡&lt;/MsIconButton&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsIconButton tone="primary" variant="solid" aria-label="Raio">⚡</MsIconButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -632,9 +652,14 @@ export const variationsTemplatesHtml = `
       <MsIconButton variant="solid" tone="success" shape="square" aria-label="Square">⭐</MsIconButton>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsIconButton shape="circle" aria-label="Favorito"&gt;⭐&lt;/MsIconButton&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsIconButton shape="circle" aria-label="Favorito">⭐</MsIconButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -651,9 +676,14 @@ export const variationsTemplatesHtml = `
       <MsIconButton variant="ghost" tone="neutral" aria-label="Ghost">📁</MsIconButton>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsIconButton variant="ghost" aria-label="Pasta"&gt;📁&lt;/MsIconButton&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsIconButton variant="ghost" aria-label="Pasta">📁</MsIconButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -672,9 +702,14 @@ export const variationsTemplatesHtml = `
       <MsIconButton size="xl" variant="solid" tone="primary" aria-label="XL">●</MsIconButton>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsIconButton size="xs" aria-label="Mini"&gt;●&lt;/MsIconButton&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsIconButton size="xs" aria-label="Mini">●</MsIconButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -690,9 +725,14 @@ export const variationsTemplatesHtml = `
       <MsIconButton variant="solid" tone="neutral" disabled aria-label="Desabilitado">🔒</MsIconButton>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsIconButton active aria-label="Sino"&gt;🔔&lt;/MsIconButton&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsIconButton active aria-label="Sino">🔔</MsIconButton>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -714,9 +754,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSegmentedControl tone="primary" :options="options" v-model="selected" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSegmentedControl tone="primary" :options="options" v-model="selected" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -734,9 +779,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSegmentedControl size="sm" :options="options" v-model="selected" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSegmentedControl size="sm" :options="options" v-model="selected" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -754,9 +804,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSegmentedControl shape="pill" full-width :options="options" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSegmentedControl shape="pill" full-width :options="options" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -782,9 +837,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSidebarMenu tone="primary" :items="menuItems" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSidebarMenu tone="primary" :items="menuItems" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -807,9 +867,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSidebarMenu density="compact" shape="pill" :items="items" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSidebarMenu density="compact" shape="pill" :items="items" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -826,9 +891,14 @@ export const variationsTemplatesHtml = `
       <MsBreadcrumbs separator-type="chevron" :items="breadcrumbsItems"></MsBreadcrumbs>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsBreadcrumbs separator-type="chevron" :items="items" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsBreadcrumbs separator-type="chevron" :items="items" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -846,9 +916,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsBreadcrumbs separator="/" :items="items" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsBreadcrumbs separator="/" :items="items" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -866,276 +941,678 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsBreadcrumbs size="sm" :items="items" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsBreadcrumbs size="sm" :items="items" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
 
   <div v-if="activeTab === 'tabs'">
-    
+    <!-- 1. SHADCN BOXED / SEGMENTED PILLS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. Variantes Visuais (Line, Enclosed, Soft, Pill)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Visual Variants</span>
+        <div class="variation-card-title" style="margin: 0;">1. Abas Segmentadas / Boxed (Assinatura Shadcn UI)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Shadcn Style</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 24px; width: 100%;">
+      <div class="variation-preview-box" style="padding: 24px; display: flex; flex-direction: column; gap: 16px;">
         <div>
-          <div style="font-weight: bold; margin-bottom: 8px; font-size: 12px;">VARIANTE LINE (UNDERLINE)</div>
-          <MsTabs variant="line" model-value="t1">
-            <MsTabList aria-label="Line Tabs">
-              <MsTab value="t1">Visão Geral</MsTab>
-              <MsTab value="t2">Analytics</MsTab>
-              <MsTab value="t3">Configurações</MsTab>
-            </MsTabList>
-          </MsTabs>
+          <div class="ms-tab-list--boxed" role="tablist">
+            <button class="ms-tab--boxed ms-tab--selected" role="tab" aria-selected="true">Conta & Perfil</button>
+            <button class="ms-tab--boxed" role="tab" aria-selected="false">Segurança</button>
+            <button class="ms-tab--boxed" role="tab" aria-selected="false">Notificações</button>
+            <button class="ms-tab--boxed" role="tab" aria-selected="false">Faturamento</button>
+          </div>
         </div>
-        <div>
-          <div style="font-weight: bold; margin-bottom: 8px; font-size: 12px;">VARIANTE ENCLOSED (CAIXA / ABAS)</div>
-          <MsTabs variant="enclosed" model-value="t1">
-            <MsTabList aria-label="Enclosed Tabs">
-              <MsTab value="t1">Visão Geral</MsTab>
-              <MsTab value="t2">Analytics</MsTab>
-              <MsTab value="t3">Configurações</MsTab>
-            </MsTabList>
-          </MsTabs>
-        </div>
-        <div>
-          <div style="font-weight: bold; margin-bottom: 8px; font-size: 12px;">VARIANTE SOFT (FUNDO SUAVE)</div>
-          <MsTabs variant="soft" model-value="t2">
-            <MsTabList aria-label="Soft Tabs">
-              <MsTab value="t1">Geral</MsTab>
-              <MsTab value="t2">Segurança</MsTab>
-              <MsTab value="t3">Permissões</MsTab>
-            </MsTabList>
-          </MsTabs>
-        </div>
-        <div>
-          <div style="font-weight: bold; margin-bottom: 8px; font-size: 12px;">VARIANTE PILL (PÍLULA / CHIP)</div>
-          <MsTabs variant="pill" model-value="t3">
-            <MsTabList aria-label="Pill Tabs">
-              <MsTab value="t1">Todos (128)</MsTab>
-              <MsTab value="t2">Ativos (94)</MsTab>
-              <MsTab value="t3">Pendentes (34)</MsTab>
-            </MsTabList>
-          </MsTabs>
+        <div style="padding: 16px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: var(--ms-radius-md); font-size: 13px;">
+          Painel ativo com superfície rebaixada sutil e pílula flutuante de alto contraste.
         </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Abas em container rebaixado com pílulas segmentadas -->
+<div class="ms-tab-list--boxed" role="tablist">
+  <button class="ms-tab--boxed ms-tab--selected">Conta & Perfil</button>
+  <button class="ms-tab--boxed">Segurança</button>
+  <button class="ms-tab--boxed">Notificações</button>
+</div>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsTabs variant="line" v-model="tab"&gt;
-  &lt;MsTabList&gt;
-    &lt;MsTab value="t1"&gt;Tab 1&lt;/MsTab&gt;
-  &lt;/MsTabList&gt;
-&lt;/MsTabs&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 2. UNDERLINE / LINE TABS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">2. Escala de Tamanhos (sm, md, lg)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Sizes Scale</span>
+        <div class="variation-card-title" style="margin: 0;">2. Abas com Linha Inferior (Line / Underline Clássica)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Underline</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
-        <MsTabs size="sm" variant="enclosed" model-value="a">
-          <MsTabList><MsTab value="a">SM Tab 1</MsTab><MsTab value="b">SM Tab 2</MsTab></MsTabList>
-        </MsTabs>
-        <MsTabs size="md" variant="enclosed" model-value="a">
-          <MsTabList><MsTab value="a">MD Tab 1</MsTab><MsTab value="b">MD Tab 2</MsTab></MsTabList>
-        </MsTabs>
-        <MsTabs size="lg" variant="enclosed" model-value="a">
-          <MsTabList><MsTab value="a">LG Tab 1</MsTab><MsTab value="b">LG Tab 2</MsTab></MsTabList>
+      <div class="variation-preview-box" style="padding: 20px;">
+        <MsTabs variant="line" model-value="t1" style="width: 100%;">
+          <MsTabList aria-label="Abas Line">
+            <MsTab value="t1">Visão Geral do Projeto</MsTab>
+            <MsTab value="t2">Métricas de Desempenho</MsTab>
+            <MsTab value="t3">Logs & Auditoria</MsTab>
+            <MsTab value="t4">Configurações Avançadas</MsTab>
+          </MsTabList>
         </MsTabs>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsTabs variant="line" v-model="tab">
+  <MsTabList>
+    <MsTab value="t1">Visão Geral do Projeto</MsTab>
+    <MsTab value="t2">Métricas de Desempenho</MsTab>
+    <MsTab value="t3">Logs & Auditoria</MsTab>
+  </MsTabList>
+</MsTabs>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsTabs size="sm" variant="enclosed"&gt;
-  ...
-&lt;/MsTabs&gt;</code></pre>
     </div>
+
+    <!-- 3. TABS COM ÍCONES & BADGES -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Abas com Ícones & Badges de Notificação (FlyonUI Pattern)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Badges & Icons</span>
+      </div>
+      <div class="variation-preview-box" style="padding: 20px; display: flex; flex-direction: column; gap: 20px;">
+        <MsTabs variant="line" model-value="inbox" style="width: 100%;">
+          <MsTabList>
+            <MsTab value="inbox" style="display: inline-flex; align-items: center; gap: 8px;">
+              <span>📬 Caixa de Entrada</span>
+              <MsBadge tone="primary" variant="soft" pill size="xs">14</MsBadge>
+            </MsTab>
+            <MsTab value="starred" style="display: inline-flex; align-items: center; gap: 8px;">
+              <span>⭐ Favoritos</span>
+              <MsBadge tone="warning" variant="soft" pill size="xs">3</MsBadge>
+            </MsTab>
+            <MsTab value="updates" style="display: inline-flex; align-items: center; gap: 8px;">
+              <span>🚀 Atualizações</span>
+              <MsBadge tone="success" variant="soft" pill size="xs">Novo</MsBadge>
+            </MsTab>
+            <MsTab value="spam" style="display: inline-flex; align-items: center; gap: 8px;">
+              <span>🗑️ Lixeira</span>
+            </MsTab>
+          </MsTabList>
+        </MsTabs>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsTab value="inbox">
+  <span>📬 Caixa de Entrada</span>
+  <MsBadge tone="primary" variant="soft" pill size="xs">14</MsBadge>
+</MsTab>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. ENCLOSED FOLDER TABS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Abas Fechadas em Pasta (Enclosed / Folder Tabs)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Enclosed</span>
+      </div>
+      <div class="variation-preview-box" style="padding: 20px;">
+        <MsTabs variant="enclosed" model-value="f1" style="width: 100%;">
+          <MsTabList>
+            <MsTab value="f1">📄 Documento.vue</MsTab>
+            <MsTab value="f2">🎨 Estilos.css</MsTab>
+            <MsTab value="f3">⚙️ Config.json</MsTab>
+            <MsTab value="f4">🧪 Testes.spec.ts</MsTab>
+          </MsTabList>
+        </MsTabs>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsTabs variant="enclosed" v-model="activeFile">
+  <MsTabList>
+    <MsTab value="f1">📄 Documento.vue</MsTab>
+    <MsTab value="f2">🎨 Estilos.css</MsTab>
+  </MsTabList>
+</MsTabs>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 5. VERTICAL SIDEBAR TABS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. Abas Verticais de Navegação Lateral (Vertical Settings Layout)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Vertical Layout</span>
+      </div>
+      <div class="variation-preview-box" style="padding: 24px;">
+        <div style="display: flex; gap: 32px; width: 100%; min-height: 160px;">
+          <div style="width: 200px; flex-shrink: 0;">
+            <MsTabs orientation="vertical" variant="line" model-value="v1">
+              <MsTabList>
+                <MsTab value="v1">Geral</MsTab>
+                <MsTab value="v2">Aparência & Tema</MsTab>
+                <MsTab value="v3">Notificações</MsTab>
+                <MsTab value="v4">Chaves de API</MsTab>
+              </MsTabList>
+            </MsTabs>
+          </div>
+          <div style="flex: 1; padding: 16px; background: var(--ms-color-surface-sunken); border-radius: var(--ms-radius-md); font-size: 13px;">
+            <div style="font-weight: 700; margin-bottom: 8px;">Configurações Gerais da Aplicação</div>
+            <p style="margin: 0; color: var(--ms-color-text-secondary);">
+              Alterne entre as abas laterais para visualizar diferentes painéis de configuração corporativa.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsTabs orientation="vertical" variant="line" v-model="tab">
+  <MsTabList>
+    <MsTab value="v1">Geral</MsTab>
+    <MsTab value="v2">Aparência & Tema</MsTab>
+  </MsTabList>
+</MsTabs>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 6. FITTED FULL-WIDTH TABS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">6. Abas com Largura Total Distribuída (Fitted / 100% Width)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Fitted Width</span>
+      </div>
+      <div class="variation-preview-box" style="padding: 20px;">
+        <MsTabs variant="line" fitted model-value="fit1" style="width: 100%;">
+          <MsTabList>
+            <MsTab value="fit1">Mensal</MsTab>
+            <MsTab value="fit2">Semestral (10% off)</MsTab>
+            <MsTab value="fit3">Anual (25% off)</MsTab>
+          </MsTabList>
+        </MsTabs>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsTabs variant="line" fitted v-model="period">
+  <MsTabList>
+    <MsTab value="monthly">Mensal</MsTab>
+    <MsTab value="yearly">Anual (25% off)</MsTab>
+  </MsTabList>
+</MsTabs>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 7. SIZES SCALE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">7. Escala de Alturas & Tamanhos (sm, md, lg)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Sizes</span>
+      </div>
+      <div class="variation-preview-box" style="padding: 24px; display: flex; flex-direction: column; gap: 20px;">
+        <div>
+          <span style="font-size: 11px; color: var(--ms-color-text-muted); display: block; margin-bottom: 6px;">PEQUENO (sm - 32px)</span>
+          <MsTabs size="sm" variant="pill" model-value="s1">
+            <MsTabList><MsTab value="s1">Diário</MsTab><MsTab value="s2">Semanal</MsTab><MsTab value="s3">Mensal</MsTab></MsTabList>
+          </MsTabs>
+        </div>
+        <div>
+          <span style="font-size: 11px; color: var(--ms-color-text-muted); display: block; margin-bottom: 6px;">MÉDIO (md - 40px - Padrão)</span>
+          <MsTabs size="md" variant="pill" model-value="s1">
+            <MsTabList><MsTab value="s1">Diário</MsTab><MsTab value="s2">Semanal</MsTab><MsTab value="s3">Mensal</MsTab></MsTabList>
+          </MsTabs>
+        </div>
+        <div>
+          <span style="font-size: 11px; color: var(--ms-color-text-muted); display: block; margin-bottom: 6px;">GRANDE (lg - 48px)</span>
+          <MsTabs size="lg" variant="pill" model-value="s1">
+            <MsTabList><MsTab value="s1">Diário</MsTab><MsTab value="s2">Semanal</MsTab><MsTab value="s3">Mensal</MsTab></MsTabList>
+          </MsTabs>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsTabs size="sm" variant="pill">...</MsTabs>
+<MsTabs size="md" variant="pill">...</MsTabs>
+<MsTabs size="lg" variant="pill">...</MsTabs>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
 
   <div v-if="activeTab === 'inputs'">
-    
+    <!-- 1. 8 BRAND TONES -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsInput nos 8 Tons Semânticos da Marca (Bordas & Focus Ring)</div>
+        <div class="variation-card-title" style="margin: 0;">1. MsInput nos 8 Tons Semânticos da Marca (Bordas & Focus Glow)</div>
         <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">8 Brand Tones</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; width: 100%;">
-        <div v-for="t in allTones" :key="t">
-          <label style="display: block; font-size: 11px; font-weight: bold; margin-bottom: 4px; text-transform: uppercase; color: var(--ms-color-text-secondary);">
-            {{ t }} ({{ toneHexMap[t] }})
-          </label>
-          <MsInput :tone="t" :model-value="'Tom: ' + t" size="md"></MsInput>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; width: 100%;">
+          <div v-for="t in allTones" :key="t">
+            <label style="display: block; font-size: 11px; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; color: var(--ms-color-text-secondary);">
+              {{ t }} ({{ toneHexMap[t] }})
+            </label>
+            <MsInput :tone="t" :model-value="'Tom: ' + t" size="md" />
+          </div>
         </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsInput tone="primary" model-value="Tom: primary" />
+<MsInput tone="accent" model-value="Tom: accent" />
+<MsInput tone="success" model-value="Tom: success" />
+<MsInput tone="danger" model-value="Tom: danger" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsInput tone="primary" placeholder="Primary Input" /&gt;
-&lt;MsInput tone="accent" placeholder="Accent Input" /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 2. SURFACE VARIANTS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">2. Variantes de Estilo (Outline, Filled, Flushed)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Visual Variants</span>
+        <div class="variation-card-title" style="margin: 0;">2. Variantes de Superfície (Outline, Soft FlyonUI, Filled, Flushed, Ghost Shadcn)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Surface Variants</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 440px;">
-        <div>
-          <label style="font-size: 12px; font-weight: bold;">Outline (Borda Completa - Padrão):</label>
-          <MsInput variant="outline" tone="primary" placeholder="Outline variant..."></MsInput>
-        </div>
-        <div>
-          <label style="font-size: 12px; font-weight: bold;">Filled (Fundo Preenchido Sutil):</label>
-          <MsInput variant="filled" tone="primary" placeholder="Filled variant..."></MsInput>
-        </div>
-        <div>
-          <label style="font-size: 12px; font-weight: bold;">Flushed (Apenas Linha Inferior):</label>
-          <MsInput variant="flushed" tone="primary" placeholder="Flushed underline variant..."></MsInput>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; width: 100%;">
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Outline (Padrão Hairline Corporativo):</label>
+            <MsInput variant="outline" tone="primary" placeholder="Borda nítida e focus ring..." />
+          </div>
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Soft (Fundo Pastel com Tint do Tom - FlyonUI):</label>
+            <MsInput variant="soft" tone="primary" placeholder="Superfície sutilmente colorida..." />
+          </div>
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Filled (Superfície Rebaixada Preenchida):</label>
+            <MsInput variant="filled" tone="primary" placeholder="Fundo sunken integrado..." />
+          </div>
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Flushed (Apenas Linha Inferior):</label>
+            <MsInput variant="flushed" tone="primary" placeholder="Underline minimalista..." />
+          </div>
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Ghost (Sem Borda até o Foco - Shadcn):</label>
+            <MsInput variant="ghost" tone="primary" placeholder="Ghost inline editável..." />
+          </div>
         </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Variantes de superfície autênticas FlyonUI / Shadcn -->
+<MsInput variant="outline" placeholder="Outline hairline" />
+<MsInput variant="soft" tone="primary" placeholder="Soft pastel tint" />
+<MsInput variant="filled" placeholder="Filled background" />
+<MsInput variant="flushed" placeholder="Flushed underline" />
+<MsInput variant="ghost" placeholder="Ghost transparent" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsInput variant="outline" /&gt;
-&lt;MsInput variant="filled" /&gt;
-&lt;MsInput variant="flushed" /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 3. SIZES SCALE -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">3. Escala Completa de Tamanhos (xs a lg)</div>
+        <div class="variation-card-title" style="margin: 0;">3. Escala Completa de Tamanhos (xs 28px, sm 32px, md 40px, lg 48px)</div>
         <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Sizes Scale</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 440px;">
-        <MsInput size="xs" tone="primary" placeholder="XS (28px - Extra Compacto)"></MsInput>
-        <MsInput size="sm" tone="primary" placeholder="SM (32px - Compacto)"></MsInput>
-        <MsInput size="md" tone="primary" placeholder="MD (40px - Padrão)"></MsInput>
-        <MsInput size="lg" tone="primary" placeholder="LG (48px - Amplo)"></MsInput>
+        <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 480px;">
+          <MsInput size="xs" tone="primary" placeholder="XS — 28px de altura (Extra Compacto / Data Grids)" />
+          <MsInput size="sm" tone="primary" placeholder="SM — 32px de altura (Compacto / Toolbars)" />
+          <MsInput size="md" tone="primary" placeholder="MD — 40px de altura (Padrão Corporativo)" />
+          <MsInput size="lg" tone="primary" placeholder="LG — 48px de altura (Hero / Formulários de Destaque)" />
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsInput size="xs" placeholder="XS (28px)" />
+<MsInput size="sm" placeholder="SM (32px)" />
+<MsInput size="md" placeholder="MD (40px) Padrão" />
+<MsInput size="lg" placeholder="LG (48px)" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsInput size="xs" placeholder="XS 28px" /&gt;
-&lt;MsInput size="md" placeholder="MD 40px" /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 4. SHAPES -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">4. Formato Pílula vs Rounded & Tipos de Entrada</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Shapes & Types</span>
+        <div class="variation-card-title" style="margin: 0;">4. Geometria e Formatos (Default Rounded, Pill Shape)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Shapes & Radii</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 440px;">
-        <MsInput pill tone="primary" placeholder="Input no Formato Pílula (pill)"></MsInput>
-        <MsInput password-toggle type="password" model-value="MagicStyle2026!" tone="primary"></MsInput>
-        <MsInput clearable model-value="Texto com botão de limpar" tone="primary"></MsInput>
+        <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 480px;">
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">Formato Arredondado Padrão (radius-md):</label>
+            <MsInput tone="primary" placeholder="Campo com cantos ligeiramente arredondados..." />
+          </div>
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">Formato Pílula Completo (pill / radius-full):</label>
+            <MsInput pill tone="primary" placeholder="Campo totalmente arredondado (ideal para busca)..." />
+          </div>
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Padrão com radius do tema -->
+<MsInput placeholder="Rounded Padrão" />
+
+<!-- Prop pill para buscas e estética moderna FlyonUI -->
+<MsInput pill placeholder="Busca em pílula..." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsInput pill placeholder="Pill" /&gt;
-&lt;MsInput password-toggle type="password" /&gt;
-&lt;MsInput clearable /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 5. PREFIX & SUFFIX SLOTS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">5. Com Slots de Ícones Prefix e Suffix</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Slots & Icons</span>
+        <div class="variation-card-title" style="margin: 0;">5. Ícones e Adornos (Leading & Trailing Prefix / Suffix)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Slots & Adornments</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 440px;">
-        <MsInput tone="primary" placeholder="user@company.com">
-          <template #prefix>✉️</template>
-        </MsInput>
-        <MsInput tone="success" placeholder="Cupom de desconto">
-          <template #prefix>🏷️</template>
-          <template #suffix><span style="color: var(--ms-color-success); font-weight: bold;">APLICAR</span></template>
-        </MsInput>
-        <MsInput tone="accent" placeholder="Pesquisar registros...">
-          <template #prefix>🔍</template>
-          <template #suffix><kbd style="background: var(--ms-color-surface-subtle); padding: 2px 6px; border-radius: 4px; font-size: 10px;">⌘K</kbd></template>
-        </MsInput>
+        <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 480px;">
+          <MsInput tone="primary" placeholder="contato@magicstyle.dev">
+            <template #prefix><span style="font-size: 14px;">✉️</span></template>
+          </MsInput>
+          <MsInput tone="accent" placeholder="Pesquisar componentes, tokens ou guias...">
+            <template #prefix><span style="font-size: 14px;">🔍</span></template>
+            <template #suffix><kbd style="background: var(--ms-color-surface-subtle); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-family: monospace; border: 1px solid var(--ms-color-border-subtle);">⌘K</kbd></template>
+          </MsInput>
+          <MsInput tone="neutral" placeholder="Código de verificação de segurança">
+            <template #prefix><span style="font-size: 14px;">🔒</span></template>
+            <template #suffix><span style="font-size: 11px; color: var(--ms-color-text-muted); font-weight: 600;">6 DÍGITOS</span></template>
+          </MsInput>
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsInput placeholder="contato@magicstyle.dev">
+  <template #prefix>✉️</template>
+</MsInput>
+
+<MsInput placeholder="Pesquisar...">
+  <template #prefix>🔍</template>
+  <template #suffix><kbd>⌘K</kbd></template>
+</MsInput>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsInput placeholder="Email"&gt;
-  &lt;template #prefix&gt;✉️&lt;/template&gt;
-&lt;/MsInput&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 6. INPUT ADDONS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">6. Matriz de Estados (Normal, Processando, Inválido, Desabilitado, Readonly)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">States Matrix</span>
+        <div class="variation-card-title" style="margin: 0;">6. Addons Anexados de Texto e Moeda (.ms-input-addon)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Input Addons</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; width: 100%;">
-        <MsInput tone="primary" model-value="Estado Normal"></MsInput>
-        <MsInput tone="primary" processing model-value="Processando verificação..."></MsInput>
-        <MsInput tone="danger" invalid model-value="Valor Inválido (Erro)"></MsInput>
-        <MsInput tone="neutral" disabled model-value="Desabilitado"></MsInput>
-        <MsInput tone="neutral" readonly model-value="Somente Leitura"></MsInput>
+        <div style="display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 480px;">
+          <!-- URL Group -->
+          <div class="ms-input-group">
+            <span class="ms-input-addon ms-input-addon--prefix">https://</span>
+            <MsInput placeholder="meusistema" tone="primary" />
+            <span class="ms-input-addon ms-input-addon--suffix">.magicstyle.dev</span>
+          </div>
+
+          <!-- Currency Group -->
+          <div class="ms-input-group">
+            <span class="ms-input-addon ms-input-addon--prefix">R$</span>
+            <MsInput placeholder="1.250,00" tone="success" />
+            <span class="ms-input-addon ms-input-addon--suffix">/mês</span>
+          </div>
+
+          <!-- Username Group -->
+          <div class="ms-input-group">
+            <span class="ms-input-addon ms-input-addon--prefix">@</span>
+            <MsInput placeholder="brunocavalcante" tone="accent" />
+          </div>
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- URL com prefixo e sufixo anexados -->
+<div class="ms-input-group">
+  <span class="ms-input-addon ms-input-addon--prefix">https://</span>
+  <MsInput placeholder="meusistema" />
+  <span class="ms-input-addon ms-input-addon--suffix">.magicstyle.dev</span>
+</div>
+
+<!-- Moeda brasileira com R$ -->
+<div class="ms-input-group">
+  <span class="ms-input-addon ms-input-addon--prefix">R$</span>
+  <MsInput placeholder="1.250,00" tone="success" />
+  <span class="ms-input-addon ms-input-addon--suffix">/mês</span>
+</div>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsInput processing /&gt;
-&lt;MsInput invalid tone="danger" /&gt;
-&lt;MsInput disabled /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 7. ATTACHED ACTION BUTTONS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">7. MsTextarea (Área de Texto com Contador e Redimensionamento)</div>
+        <div class="variation-card-title" style="margin: 0;">7. Grupos com Botão de Ação Anexado (.ms-input-group)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Attached Buttons</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 480px;">
+          <!-- Search button attached -->
+          <div class="ms-input-group">
+            <MsInput placeholder="Digite o termo para buscar..." tone="primary" />
+            <MsButton variant="solid" tone="primary" wave>Buscar</MsButton>
+          </div>
+
+          <!-- Copy link attached -->
+          <div class="ms-input-group">
+            <MsInput model-value="https://magicstyle.dev/releases/v1.2" readonly tone="neutral" />
+            <MsButton variant="outline" tone="neutral">Copiar</MsButton>
+          </div>
+
+          <!-- Newsletter subscribe -->
+          <div class="ms-input-group">
+            <MsInput placeholder="Insira seu melhor e-mail..." tone="accent" />
+            <MsButton variant="solid" tone="accent" wave>Inscrever-se</MsButton>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Input com botão de pesquisa anexado (Shadcn pattern) -->
+<div class="ms-input-group">
+  <MsInput placeholder="Digite para buscar..." tone="primary" />
+  <MsButton variant="solid" tone="primary">Buscar</MsButton>
+</div>
+
+<!-- Input de link compartilhável com botão copiar -->
+<div class="ms-input-group">
+  <MsInput model-value="https://..." readonly />
+  <MsButton variant="outline">Copiar</MsButton>
+</div>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 8. VALIDATION & SEMANTIC FEEDBACK -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">8. Matriz de Validação & Feedback Semântico</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Validation & States</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; width: 100%;">
+          <!-- Valid state -->
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--ms-color-success);">
+              Válido / Disponível
+            </label>
+            <MsInput tone="success" model-value="brunocavalcante_dev">
+              <template #suffix><span style="color: var(--ms-color-success); font-weight: bold;">✓</span></template>
+            </MsInput>
+            <div style="font-size: 11px; color: var(--ms-color-success); margin-top: 4px;">Nome de usuário aprovado e livre para registro.</div>
+          </div>
+
+          <!-- Invalid state -->
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--ms-color-danger);">
+              Inválido / Erro de Validação
+            </label>
+            <MsInput tone="danger" invalid model-value="email-incorreto@">
+              <template #suffix><span style="color: var(--ms-color-danger); font-weight: bold;">⚠</span></template>
+            </MsInput>
+            <div style="font-size: 11px; color: var(--ms-color-danger); margin-top: 4px;">Por favor, informe um endereço de e-mail corporativo válido.</div>
+          </div>
+
+          <!-- Processing / Loading state -->
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--ms-color-primary);">
+              Verificação em Andamento
+            </label>
+            <MsInput tone="primary" processing model-value="Verificando no servidor..." />
+            <div style="font-size: 11px; color: var(--ms-color-text-muted); margin-top: 4px;">Consultando disponibilidade na base de dados...</div>
+          </div>
+
+          <!-- Disabled state -->
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--ms-color-text-muted);">
+              Campo Bloqueado
+            </label>
+            <MsInput disabled model-value="Plano Administrador (Bloqueado)" tone="neutral" />
+            <div style="font-size: 11px; color: var(--ms-color-text-muted); margin-top: 4px;">Você não possui permissão para editar este parâmetro.</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Estado Válido com tom de sucesso -->
+<MsInput tone="success" model-value="username_ok">
+  <template #suffix>✓</template>
+</MsInput>
+
+<!-- Estado Inválido com prop invalid e tom danger -->
+<MsInput invalid tone="danger" model-value="err@" />
+
+<!-- Estado com Spinner embutido -->
+<MsInput processing model-value="Consultando..." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 9. CLEARABLE & PASSWORD TOGGLE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">9. Interatividade com Clearable e Revelação de Senha</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Interactive Features</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 480px;">
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">Campo com botão de limpeza rápida (clearable):</label>
+            <MsInput clearable model-value="Clique no 'X' para limpar este texto" tone="primary" />
+          </div>
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">Campo de Senha com Alternador Revelar/Ocultar (password-toggle):</label>
+            <MsInput password-toggle type="password" model-value="MagicStyle#2026!" tone="accent" />
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Prop clearable adiciona ícone de limpeza com 1 clique -->
+<MsInput clearable model-value="Texto limpável" />
+
+<!-- Prop password-toggle para alternar visibilidade de senhas -->
+<MsInput type="password" password-toggle model-value="SecretPass123!" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 10. MSTEXTAREA -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">10. MsTextarea (Área de Texto com Contador de Caracteres e Redimensionamento)</div>
         <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">MsTextarea</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 500px;">
-        <MsTextarea rows="3" placeholder="Digite sua mensagem detalhada aqui..." show-count max-length="150" model-value="Interface enterprise construída com precisão sub-pixel e paleta de marca oficial."></MsTextarea>
-        <MsTextarea rows="2" resize="none" tone="accent" placeholder="Textarea sem redimensionamento manual..."></MsTextarea>
+        <div style="display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 520px;">
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">Textarea com Contador de Caracteres Restantes:</label>
+            <MsTextarea
+              rows="3"
+              placeholder="Digite o resumo ou justificativa..."
+              show-count
+              max-length="200"
+              model-value="O Design System MagicStyle implementa a especificação DTCG e Baseline 1.2 com foco em acessibilidade e estética premium."
+            />
+          </div>
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">Textarea com Bloqueio de Redimensionamento (resize="none") e Tom Accent:</label>
+            <MsTextarea rows="2" resize="none" tone="accent" placeholder="Comentários internos confidenciais..." />
+          </div>
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- MsTextarea com limite e contador dinâmico -->
+<MsTextarea
+  rows="3"
+  show-count
+  :max-length="200"
+  placeholder="Mensagem..."
+/>
+
+<!-- Textarea de tamanho fixo sem redimensionamento -->
+<MsTextarea rows="2" resize="none" tone="accent" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsTextarea rows="3" show-count :max-length="150" /&gt;</code></pre>
-    </div>
     </div>
   </div>
 
@@ -1156,9 +1633,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSearchField variant="outline" shortcut="⌘K" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSearchField variant="outline" shortcut="⌘K" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -1176,91 +1658,213 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSearchField size="sm" /&gt;
-&lt;MsSearchField loading /&gt;
-&lt;MsSearchField clearable /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSearchField size="sm" />
+<MsSearchField loading />
+<MsSearchField clearable />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
 
   <div v-if="activeTab === 'selections'">
     
+    <!-- 1. SWITCHES IN 8 BRAND TONES -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
         <div class="variation-card-title" style="margin: 0;">1. MsSwitch nos 8 Tons Oficiais da Marca</div>
         <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">8 Brand Tones</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; width: 100%;">
-        <MsSwitch v-for="t in allTones" :key="t" :tone="t" :model-value="true" :label="t.toUpperCase()"></MsSwitch>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; width: 100%;">
+          <div v-for="t in allTones" :key="t" style="display: flex; align-items: center; gap: 8px;">
+            <MsSwitch :tone="t" :model-value="true" />
+            <span style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--ms-color-text-secondary);">{{ t }}</span>
+          </div>
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSwitch tone="primary" :model-value="true" label="PRIMARY" />
+<MsSwitch tone="accent" :model-value="true" label="ACCENT" />
+<MsSwitch tone="success" :model-value="true" label="SUCCESS" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSwitch tone="primary" :model-value="true" label="PRIMARY" /&gt;
-&lt;MsSwitch tone="accent" :model-value="true" label="ACCENT" /&gt;</code></pre>
-    </div>
     </div>
 
     
+    <!-- 2. SWITCHES WITH LABELS AND DESCRIPTIONS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">2. MsCheckbox nos 8 Tons Oficiais</div>
+        <div class="variation-card-title" style="margin: 0;">2. MsSwitch com Rótulo e Descrição (Settings Row — Shadcn Pattern)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Settings Toggles</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 520px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <div>
+              <div style="font-size: 14px; font-weight: 700; color: var(--ms-color-text-primary);">Autenticação em Duas Etapas (2FA)</div>
+              <div style="font-size: 12px; color: var(--ms-color-text-muted);">Exigir código OTP ao fazer login em novas máquinas.</div>
+            </div>
+            <MsSwitch :model-value="true" tone="primary" />
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <div>
+              <div style="font-size: 14px; font-weight: 700; color: var(--ms-color-text-primary);">Aceleração de Renderização por GPU</div>
+              <div style="font-size: 12px; color: var(--ms-color-text-muted);">Melhora a taxa de quadros e transições em gráficos complexos.</div>
+            </div>
+            <MsSwitch :model-value="true" tone="accent" />
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <div>
+              <div style="font-size: 14px; font-weight: 700; color: var(--ms-color-text-primary);">Modo de Depuração (Bloqueado)</div>
+              <div style="font-size: 12px; color: var(--ms-color-text-muted);">Disponível apenas em ambiente de desenvolvimento.</div>
+            </div>
+            <MsSwitch :model-value="false" disabled tone="neutral" />
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Linha de configuração com switch integrado -->
+<div class="settings-row">
+  <div class="settings-text">
+    <h4>Autenticação em Duas Etapas (2FA)</h4>
+    <p>Exigir código OTP ao fazer login...</p>
+  </div>
+  <MsSwitch v-model="twoFactorEnabled" tone="primary" />
+</div>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. CHECKBOXES IN 8 BRAND TONES -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. MsCheckbox nos 8 Tons Oficiais da Marca</div>
         <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">8 Brand Tones</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; width: 100%;">
-        <MsCheckbox v-for="t in allTones" :key="t" :tone="t" :model-value="true" :label="t.toUpperCase()"></MsCheckbox>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; width: 100%;">
+          <MsCheckbox v-for="t in allTones" :key="t" :tone="t" :model-value="true" :label="t.toUpperCase()" />
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsCheckbox tone="primary" :model-value="true" label="PRIMARY" />
+<MsCheckbox tone="accent" :model-value="true" label="ACCENT" />
+<MsCheckbox tone="success" :model-value="true" label="SUCCESS" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsCheckbox tone="primary" :model-value="true" label="PRIMARY" /&gt;</code></pre>
-    </div>
     </div>
 
     
+    <!-- 4. CHECKBOX STATES -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">3. MsCheckbox com Estado Indeterminado & Desabilitado</div>
+        <div class="variation-card-title" style="margin: 0;">4. MsCheckbox com Estado Indeterminado & Desabilitado</div>
         <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Checkbox States</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
-        <MsCheckbox tone="primary" indeterminate label="Seleção Parcial (Indeterminate)"></MsCheckbox>
-        <MsCheckbox tone="primary" disabled :model-value="true" label="Marcado Desabilitado"></MsCheckbox>
-        <MsCheckbox tone="primary" disabled :model-value="false" label="Desmarcado Desabilitado"></MsCheckbox>
+        <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+          <MsCheckbox tone="primary" indeterminate label="Seleção Parcial (Indeterminate)" />
+          <MsCheckbox tone="primary" disabled :model-value="true" label="Marcado Desabilitado" />
+          <MsCheckbox tone="primary" disabled :model-value="false" label="Desmarcado Desabilitado" />
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Estado indeterminado para árvores e tabelas com seleção parcial -->
+<MsCheckbox tone="primary" indeterminate label="Seleção Parcial" />
+
+<!-- Estados desabilitados imutáveis -->
+<MsCheckbox tone="primary" disabled :model-value="true" label="Marcado Bloqueado" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsCheckbox indeterminate label="Parcial" /&gt;
-&lt;MsCheckbox disabled :model-value="true" /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 5. CHOICE TILES / PRICING CARDS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">4. Modo Card Selecionável (Checkbox Card & Radio Card)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Selectable Cards</span>
+        <div class="variation-card-title" style="margin: 0;">5. Cartões de Seleção de Planos (Choice Tiles — FlyonUI & Shadcn Pattern)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Choice Tiles</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; width: 100%;">
-        <MsCheckbox card :model-value="true" tone="primary" label="Plano Enterprise" description="Acesso a 100 assentos, suporte SLA 1h e backups automáticos."></MsCheckbox>
-        <MsCheckbox card :model-value="false" tone="accent" label="Plano Starter" description="Ideal para times até 10 pessoas com acesso a todos os componentes."></MsCheckbox>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; width: 100%;">
+          <!-- Starter Plan -->
+          <div style="padding: 16px; border: 1px solid var(--ms-color-border-subtle); border-radius: 10px; background: var(--ms-color-surface-raised); display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <div>
+                <div style="font-size: 15px; font-weight: 700; color: var(--ms-color-text-primary);">Plano Starter</div>
+                <div style="font-size: 20px; font-weight: 800; color: var(--ms-color-text-primary); margin-top: 4px;">R$ 49<span style="font-size: 12px; font-weight: 400; color: var(--ms-color-text-muted);">/mês</span></div>
+              </div>
+              <input type="radio" name="plan_demo" style="cursor: pointer; width: 18px; height: 18px;" />
+            </div>
+            <div style="font-size: 12px; color: var(--ms-color-text-secondary);">Para desenvolvedores solo e pequenos projetos pessoais.</div>
+          </div>
+
+          <!-- Pro Plan (Selected) -->
+          <div style="padding: 16px; border: 2px solid var(--ms-color-primary); border-radius: 10px; background: color-mix(in oklch, var(--ms-color-primary) 6%, var(--ms-color-surface-raised)); display: flex; flex-direction: column; gap: 8px; box-shadow: 0 4px 12px rgba(46, 134, 222, 0.15);">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <span style="font-size: 15px; font-weight: 700; color: var(--ms-color-primary);">Plano Profissional</span>
+                  <MsBadge tone="primary" variant="solid" data-pill>Popular</MsBadge>
+                </div>
+                <div style="font-size: 20px; font-weight: 800; color: var(--ms-color-text-primary); margin-top: 4px;">R$ 149<span style="font-size: 12px; font-weight: 400; color: var(--ms-color-text-muted);">/mês</span></div>
+              </div>
+              <input type="radio" name="plan_demo" checked style="cursor: pointer; width: 18px; height: 18px;" />
+            </div>
+            <div style="font-size: 12px; color: var(--ms-color-text-secondary);">Acesso completo aos 51 componentes, temas ilimitados e suporte.</div>
+          </div>
+
+          <!-- Enterprise Plan -->
+          <div style="padding: 16px; border: 1px solid var(--ms-color-border-subtle); border-radius: 10px; background: var(--ms-color-surface-raised); display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <div>
+                <div style="font-size: 15px; font-weight: 700; color: var(--ms-color-text-primary);">Plano Enterprise</div>
+                <div style="font-size: 20px; font-weight: 800; color: var(--ms-color-text-primary); margin-top: 4px;">R$ 499<span style="font-size: 12px; font-weight: 400; color: var(--ms-color-text-muted);">/mês</span></div>
+              </div>
+              <input type="radio" name="plan_demo" style="cursor: pointer; width: 18px; height: 18px;" />
+            </div>
+            <div style="font-size: 12px; color: var(--ms-color-text-secondary);">SLA de 1h garantido, SSO SAML 2.0 e deploy on-premise.</div>
+          </div>
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Cartões selecionáveis para precificação e opções exclusivas -->
+<div class="plan-card active">
+  <div class="plan-header">
+    <div class="plan-name">Plano Profissional</div>
+    <input type="radio" name="plan" checked />
+  </div>
+  <div class="plan-price">R$ 149/mês</div>
+</div>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsCheckbox card tone="primary" label="Enterprise" description="..." /&gt;</code></pre>
-    </div>
     </div>
   </div>
 
@@ -1287,14 +1891,19 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsField label="Nome" required description="..."&gt;
-  &lt;MsInput /&gt;
-&lt;/MsField&gt;
-&lt;MsField label="Email" error="Invalido"&gt;
-  &lt;MsInput invalid tone="danger" /&gt;
-&lt;/MsField&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsField label="Nome" required description="...">
+  <MsInput />
+</MsField>
+<MsField label="Email" error="Invalido">
+  <MsInput invalid tone="danger" />
+</MsField>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -1316,9 +1925,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsNativeSelect tone="primary" :options="options" v-model="val" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsNativeSelect tone="primary" :options="options" v-model="val" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -1337,10 +1951,15 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsNativeSelect variant="filled" :options="options" /&gt;
-&lt;MsNativeSelect pill :options="options" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsNativeSelect variant="filled" :options="options" />
+<MsNativeSelect pill :options="options" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -1358,9 +1977,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsNativeSelect size="sm" :options="options" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsNativeSelect size="sm" :options="options" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -2547,9 +3171,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsRange tone="primary" :min="0" :max="100" v-model="val" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsRange tone="primary" :min="0" :max="100" v-model="val" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -2567,10 +3196,15 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsRange size="sm" /&gt;
-&lt;MsRange size="lg" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsRange size="sm" />
+<MsRange size="lg" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -2590,10 +3224,15 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsFileInput label="Upload" placeholder="Escolher..." /&gt;
-&lt;MsFileInput multiple /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsFileInput label="Upload" placeholder="Escolher..." />
+<MsFileInput multiple />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -2616,140 +3255,413 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsColorPicker model-value="#2e86de" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsColorPicker model-value="#2e86de" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
 
   <div v-if="activeTab === 'badges'">
-    
+    <!-- 1. SOLID 8 BRAND TONES -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsBadge nos 8 Tons Oficiais da Marca (Variante Solid)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Solid Badges</span>
+        <div class="variation-card-title" style="margin: 0;">1. MsBadge nos 8 Tons da Marca (Variantes Solid, Soft, Outline, Ghost)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Variants & Tones</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <MsBadge v-for="t in allTones" :key="t" :tone="t" variant="solid" size="md">
-          {{ t.toUpperCase() }}
-        </MsBadge>
+      <div class="variation-preview-box" style="padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+        <div>
+          <span style="font-size: 11px; color: var(--ms-color-text-muted); display: block; margin-bottom: 8px;">SOLID (PREENCHIDO ALTO CONTRASTE)</span>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <MsBadge v-for="t in allTones" :key="'solid-' + t" :tone="t" variant="solid">{{ t }}</MsBadge>
+          </div>
+        </div>
+        <div>
+          <span style="font-size: 11px; color: var(--ms-color-text-muted); display: block; margin-bottom: 8px;">SOFT (SUPERFÍCIE TONAL SUAVE - PADRÃO MODERNO)</span>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <MsBadge v-for="t in allTones" :key="'soft-' + t" :tone="t" variant="soft">{{ t }}</MsBadge>
+          </div>
+        </div>
+        <div>
+          <span style="font-size: 11px; color: var(--ms-color-text-muted); display: block; margin-bottom: 8px;">OUTLINE (CONTORNO HAIRLINE ELEGANTE)</span>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <MsBadge v-for="t in allTones" :key="'out-' + t" :tone="t" variant="outline">{{ t }}</MsBadge>
+          </div>
+        </div>
+        <div>
+          <span style="font-size: 11px; color: var(--ms-color-text-muted); display: block; margin-bottom: 8px;">GHOST (SEM BORDA / DISCRETO)</span>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <MsBadge v-for="t in allTones" :key="'ghost-' + t" :tone="t" variant="ghost">{{ t }}</MsBadge>
+          </div>
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsBadge tone="primary" variant="solid">Primary Solid</MsBadge>
+<MsBadge tone="success" variant="soft">Success Soft</MsBadge>
+<MsBadge tone="danger" variant="outline">Danger Outline</MsBadge>
+<MsBadge tone="accent" variant="ghost">Accent Ghost</MsBadge>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsBadge tone="primary" variant="solid"&gt;PRIMARY&lt;/MsBadge&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 2. STATUS DOT WITH LIVE PULSE -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">2. MsBadge na Variante Soft / Sutil</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Soft Badges</span>
+        <div class="variation-card-title" style="margin: 0;">2. Ponto Indicador de Status com Pulso Animado (Live Status Dot)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Live Pulse</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <MsBadge v-for="t in allTones" :key="'soft-' + t" :tone="t" variant="soft" size="md">
-          {{ t.toUpperCase() }}
+      <div class="variation-preview-box" style="padding: 24px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+        <MsBadge tone="success" variant="soft" dot data-pulse pill>
+          Sistema Operacional
+        </MsBadge>
+        <MsBadge tone="danger" variant="soft" dot data-pulse pill>
+          Gravando ao Vivo
+        </MsBadge>
+        <MsBadge tone="warning" variant="soft" dot pill>
+          Manutenção Agendada
+        </MsBadge>
+        <MsBadge tone="info" variant="soft" dot data-pulse pill>
+          Sincronizando
+        </MsBadge>
+        <MsBadge tone="neutral" variant="outline" dot pill>
+          Offline
         </MsBadge>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- data-pulse ativa a micro-animação de onda expansiva no indicador -->
+<MsBadge tone="success" variant="soft" dot data-pulse pill>Sistema Operacional</MsBadge>
+<MsBadge tone="danger" variant="soft" dot data-pulse pill>Gravando ao Vivo</MsBadge>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsBadge tone="success" variant="soft"&gt;SUCCESS&lt;/MsBadge&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 3. WITH ICONS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">3. MsBadge na Variante Outline</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Outline Badges</span>
+        <div class="variation-card-title" style="margin: 0;">3. Badges com Ícones de Destaque (Feature Badges)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Icons</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <MsBadge v-for="t in allTones" :key="'out-' + t" :tone="t" variant="outline" size="md">
-          {{ t.toUpperCase() }}
+      <div class="variation-preview-box" style="padding: 24px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+        <MsBadge tone="primary" variant="solid" pill>
+          <span>⭐</span> Pro Member
+        </MsBadge>
+        <MsBadge tone="success" variant="soft" pill>
+          <span>✓</span> Verificado
+        </MsBadge>
+        <MsBadge tone="accent" variant="soft" pill>
+          <span>⚡</span> Ultrarrápido
+        </MsBadge>
+        <MsBadge tone="warning" variant="soft" pill>
+          <span>🔒</span> Acesso Restrito
+        </MsBadge>
+        <MsBadge tone="danger" variant="soft" pill>
+          <span>🔥</span> Promoção Relâmpago
+        </MsBadge>
+        <MsBadge tone="info" variant="outline" pill>
+          <span>🚀</span> Versão v1.2
         </MsBadge>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsBadge tone="primary" variant="solid" pill><span>⭐</span> Pro Member</MsBadge>
+<MsBadge tone="success" variant="soft" pill><span>✓</span> Verificado</MsBadge>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsBadge tone="danger" variant="outline"&gt;DANGER&lt;/MsBadge&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 4. REMOVABLE FILTER TAGS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">4. Formatos Geométricos (Pill, Rounded, Square) & Ponto Indicador (Dot)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Shapes & Dots</span>
+        <div class="variation-card-title" style="margin: 0;">4. Tags de Filtro Removíveis (Removable / Dismissible Badges)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Dismissible</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-        <MsBadge pill tone="primary">Pill Badge</MsBadge>
-        <MsBadge shape="rounded" tone="accent">Rounded Badge</MsBadge>
-        <MsBadge shape="square" tone="neutral">Square Badge</MsBadge>
-        <MsBadge dot tone="success" variant="soft">Online</MsBadge>
-        <MsBadge dot pulse tone="danger" variant="soft">Erro Crítico</MsBadge>
-        <MsBadge :count="5" tone="primary" pill></MsBadge>
-        <MsBadge :count="128" :max-count="99" tone="danger" pill></MsBadge>
+      <div class="variation-preview-box" style="padding: 24px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+        <span class="ms-badge" data-tone="primary" data-variant="soft" data-pill>
+          Filtro: Vue 3 <button class="ms-badge__remove" title="Remover filtro">×</button>
+        </span>
+        <span class="ms-badge" data-tone="accent" data-variant="soft" data-pill>
+          Framework: Vite <button class="ms-badge__remove" title="Remover filtro">×</button>
+        </span>
+        <span class="ms-badge" data-tone="success" data-variant="soft" data-pill>
+          Status: Aprovado <button class="ms-badge__remove" title="Remover filtro">×</button>
+        </span>
+        <span class="ms-badge" data-tone="neutral" data-variant="outline" data-pill>
+          Categoria: UI <button class="ms-badge__remove" title="Remover filtro">×</button>
+        </span>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<span class="ms-badge" data-tone="primary" data-variant="soft" data-pill>
+  Filtro: Vue 3 <button class="ms-badge__remove">×</button>
+</span>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsBadge pill tone="primary"&gt;Pill&lt;/MsBadge&gt;
-&lt;MsBadge dot pulse tone="danger"&gt;Erro&lt;/MsBadge&gt;
-&lt;MsBadge :count="128" :max-count="99" /&gt;</code></pre>
     </div>
+
+    <!-- 5. SIZES SCALE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. Escala Completa de Tamanhos (xs a xl)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Sizes</span>
+      </div>
+      <div class="variation-preview-box" style="padding: 24px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+        <MsBadge size="xs" tone="primary" variant="soft">xs (16px)</MsBadge>
+        <MsBadge size="sm" tone="primary" variant="soft">sm (18px)</MsBadge>
+        <MsBadge size="md" tone="primary" variant="soft">md (22px - Padrão)</MsBadge>
+        <MsBadge size="lg" tone="primary" variant="soft">lg (26px)</MsBadge>
+        <MsBadge size="xl" tone="primary" variant="soft">xl (32px)</MsBadge>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsBadge size="xs">xs (16px)</MsBadge>
+<MsBadge size="sm">sm (18px)</MsBadge>
+<MsBadge size="md">md (22px - Padrão)</MsBadge>
+<MsBadge size="lg">lg (26px)</MsBadge>
+<MsBadge size="xl">xl (32px)</MsBadge>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 6. NOTIFICATION COUNTER ON BUTTONS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">6. Contadores de Notificação Acoplados a Botões</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Counters</span>
+      </div>
+      <div class="variation-preview-box" style="padding: 24px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+        <button class="ms-button ms-button--outline ms-button--tone-neutral" style="position: relative;">
+          <span>Notificações</span>
+          <span class="ms-badge ms-badge--placement-top-right" data-tone="danger" data-variant="solid" data-pill style="font-size: 10px;">8</span>
+        </button>
+
+        <button class="ms-button ms-button--solid ms-button--tone-primary" style="position: relative;">
+          <span>Mensagens</span>
+          <span class="ms-badge ms-badge--placement-top-right" data-tone="warning" data-variant="solid" data-pill style="font-size: 10px;">99+</span>
+        </button>
+
+        <button class="ms-button ms-button--outline ms-button--tone-primary" style="position: relative;">
+          <span>Carrinho</span>
+          <span class="ms-badge ms-badge--placement-top-right" data-tone="success" data-variant="solid" data-pill style="font-size: 10px;">3</span>
+        </button>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<button class="ms-button" style="position: relative;">
+  <span>Mensagens</span>
+  <span class="ms-badge ms-badge--placement-top-right" data-tone="danger" data-pill>99+</span>
+</button>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
 
   <div v-if="activeTab === 'alerts'">
-    
+    <!-- 1. SOFT 8 BRAND TONES -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsAlert nos 8 Tons Oficiais da Marca (Variante Soft com Ícone)</div>
+        <div class="variation-card-title" style="margin: 0;">1. MsAlert nos 8 Tons Oficiais (Variante Soft com Ícone)</div>
         <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">8 Brand Tones</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
-        <MsAlert v-for="t in allTones" :key="t" :tone="t" variant="soft" :title="'Alerta Semântico: ' + t.toUpperCase()" :description="'Mensagem informativa no tom corporativo oficial (' + toneHexMap[t] + ').'" dismissible></MsAlert>
+      <div class="variation-preview-box" style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <MsAlert tone="primary" variant="soft" title="Informação Corporativa" description="Atualização agendada para 02:00 UTC sem interrupção de serviço."></MsAlert>
+        <MsAlert tone="success" variant="soft" title="Operação Concluída com Sucesso" description="Todos os 335 testes unitários passaram com 100% de cobertura."></MsAlert>
+        <MsAlert tone="warning" variant="soft" title="Atenção aos Limites de Armazenamento" description="Seu cluster atingiu 82% da cota mensal alocada."></MsAlert>
+        <MsAlert tone="danger" variant="soft" title="Falha Crítica no Pipeline" description="O certificado TLS expirará em menos de 48 horas."></MsAlert>
+        <MsAlert tone="accent" variant="soft" title="Novo Recurso Disponível" description="O editor visual agora suporta tokens nativos OKLCH."></MsAlert>
+        <MsAlert tone="info" variant="soft" title="Documentação Atualizada" description="Consulte os novos guias de integração em /docs."></MsAlert>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsAlert tone="success" variant="soft" title="Operação Concluída" description="Todos os testes passaram." />
+<MsAlert tone="danger" variant="soft" title="Falha no Pipeline" description="Certificado expirando." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsAlert tone="info" variant="soft" title="Informação" description="..." dismissible /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 2. LEFT ACCENT STRIP (FLYONUI SIGNATURE) -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">2. Variantes de Estilo (Solid, Soft, Outline, Left-Accent)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Style Variants</span>
+        <div class="variation-card-title" style="margin: 0;">2. Alertas com Faixa Lateral de Destaque (Left Accent Strip — FlyonUI Signature)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">FlyonUI Pattern</span>
       </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
-        <MsAlert tone="primary" variant="solid" title="Variante Solid Corporativa" description="Destaque de alta ênfase para anúncios principais."></MsAlert>
-        <MsAlert tone="success" variant="soft" title="Variante Soft Agradável" description="Ideal para confirmações de salvamento e validações bem-sucedidas."></MsAlert>
-        <MsAlert tone="warning" variant="outline" title="Variante Outline Contornada" description="Aviso leve sem fundo invasivo."></MsAlert>
+      <div class="variation-preview-box" style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <MsAlert tone="primary" variant="soft" data-accent="left" title="Destaque de Borda Esquerda (Primary)" description="Faixa saturada de 4px na extremidade esquerda com superfície tonal suave."></MsAlert>
+        <MsAlert tone="success" variant="soft" data-accent="left" title="Ambiente de Produção Estável" description="Todos os serviços distribuídos operando em latência sub-10ms."></MsAlert>
+        <MsAlert tone="warning" variant="soft" data-accent="left" title="Manutenção Preventiva Próxima" description="Verifique seus backups antes de iniciar a migração de banco de dados."></MsAlert>
+        <MsAlert tone="danger" variant="soft" data-accent="left" title="Acesso Não Autorizado Detectado" description="Uma tentativa de login a partir de um IP desconhecido foi bloqueada."></MsAlert>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- data-accent="left" adiciona a faixa lateral saturada de 4px -->
+<MsAlert tone="success" variant="soft" data-accent="left" title="Estável" description="..." />
+<MsAlert tone="danger" variant="soft" data-accent="left" title="Acesso Bloqueado" description="..." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsAlert variant="solid" tone="primary" title="Solid" /&gt;
-&lt;MsAlert variant="outline" tone="warning" title="Outline" /&gt;</code></pre>
     </div>
+
+    <!-- 3. SOLID VARIANT -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Variante Solid (Alta Ênfase para Anúncios Críticos)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Solid</span>
+      </div>
+      <div class="variation-preview-box" style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <MsAlert tone="primary" variant="solid" title="Comunicado Oficial da Plataforma" description="Lançamento estável da versão 1.2 disponível para atualização imediata."></MsAlert>
+        <MsAlert tone="danger" variant="solid" title="Parada de Emergência Solicitada" description="Tráfego desviado para clusters de contingência secundários."></MsAlert>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsAlert tone="primary" variant="solid" title="Comunicado Oficial" description="..." />
+<MsAlert tone="danger" variant="solid" title="Parada de Emergência" description="..." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. OUTLINE VARIANT -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Variante Outline (Minimalista com Contorno Hairline)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Outline</span>
+      </div>
+      <div class="variation-preview-box" style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <MsAlert tone="neutral" variant="outline" title="Dica de Desenvolvimento" description="Você pode usar atalhos de teclado ⌘K para abrir a paleta de comandos."></MsAlert>
+        <MsAlert tone="info" variant="outline" title="Versão Beta Disponível" description="Experimente as novas APIs experimentais ativando a flag no painel."></MsAlert>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsAlert tone="neutral" variant="outline" title="Dica" description="..." />
+<MsAlert tone="info" variant="outline" title="Versão Beta" description="..." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 5. COM BOTÕES DE AÇÃO -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. Alertas com Ações Integradas (Action Buttons)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Actions</span>
+      </div>
+      <div class="variation-preview-box" style="padding: 20px; display: flex; flex-direction: column; gap: 16px;">
+        <MsAlert tone="primary" variant="soft" title="Atualização do Workspace Pendente">
+          <p style="margin: 0 0 10px 0; font-size: 13px;">Uma nova versão está pronta para instalação. Salve seu trabalho antes de reiniciar.</p>
+          <div style="display: flex; gap: 8px;">
+            <MsButton size="xs" variant="solid" tone="primary">Instalar Agora</MsButton>
+            <MsButton size="xs" variant="outline" tone="primary">Lembrar Mais Tarde</MsButton>
+          </div>
+        </MsAlert>
+        <MsAlert tone="danger" variant="soft" title="Assinatura Prestes a Expirar">
+          <p style="margin: 0 0 10px 0; font-size: 13px;">Seu plano corporativo expira em 3 dias. Atualize o método de pagamento para manter o serviço ativo.</p>
+          <div style="display: flex; gap: 8px;">
+            <MsButton size="xs" variant="solid" tone="danger">Renovar Assinatura</MsButton>
+            <MsButton size="xs" variant="text" tone="danger">Ver Faturas</MsButton>
+          </div>
+        </MsAlert>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsAlert tone="primary" variant="soft" title="Atualização Pendente">
+  <p>Uma nova versão está pronta para instalação.</p>
+  <div style="display: flex; gap: 8px;">
+    <MsButton size="xs" variant="solid" tone="primary">Instalar Agora</MsButton>
+    <MsButton size="xs" variant="outline" tone="primary">Mais Tarde</MsButton>
+  </div>
+</MsAlert>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 6. DISMISSIBLE ALERTS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">6. Alertas Descartáveis com Botão Fechar (Dismissible)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Dismissible</span>
+      </div>
+      <div class="variation-preview-box" style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <MsAlert tone="success" variant="soft" title="Arquivo Exportado com Sucesso" description="O download do relatório consolidado começou automaticamente." dismissible></MsAlert>
+        <MsAlert tone="info" variant="soft" title="Cookies & Privacidade" description="Utilizamos cookies estritamente necessários para a autenticação segura." dismissible></MsAlert>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsAlert tone="success" variant="soft" title="Sucesso" description="..." dismissible />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 7. SHADCN MINIMALIST ALERT -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">7. Alerta Minimalista (Padrão Shadcn UI)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Shadcn Pattern</span>
+      </div>
+      <div class="variation-preview-box" style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; gap: 12px; padding: 16px; border: 1px solid var(--ms-color-border-subtle); border-radius: var(--ms-radius-md); background: var(--ms-color-surface-raised);">
+          <span style="font-size: 16px; line-height: 1;">⚡</span>
+          <div>
+            <div style="font-weight: 700; font-size: 13px; color: var(--ms-color-text-primary); margin-bottom: 4px;">Instalação Rápida de Componentes</div>
+            <div style="font-size: 12px; color: var(--ms-color-text-secondary); line-height: 1.5;">
+              Você pode importar qualquer componente sob demanda diretamente de <MsCode>@magic-style/vue</MsCode> com zero bundle overhead.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<div class="ms-alert ms-alert--outline">
+  <span class="ms-alert-icon">⚡</span>
+  <div class="ms-alert-content">
+    <h5 class="ms-alert-title">Instalação Rápida</h5>
+    <div class="ms-alert-description">Importe sob demanda diretamente do pacote.</div>
+  </div>
+</div>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -2771,11 +3683,16 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsBanner tone="primary" title="Novidades" description="..."&gt;
-  &lt;template #actions&gt;&lt;MsButton&gt;Ver&lt;/MsButton&gt;&lt;/template&gt;
-&lt;/MsBanner&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsBanner tone="primary" title="Novidades" description="...">
+  <template #actions><MsButton>Ver</MsButton></template>
+</MsBanner>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -2797,9 +3714,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsToast tone="success" title="Salvo!" message="..." /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsToast tone="success" title="Salvo!" message="..." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -2820,9 +3742,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsConfirmDialog tone="danger" title="Excluir?" description="..." /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsConfirmDialog tone="danger" title="Excluir?" description="..." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -2844,10 +3771,15 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSpinner tone="primary" size="lg" /&gt;
-&lt;MsSpinner tone="accent" size="lg" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSpinner tone="primary" size="lg" />
+<MsSpinner tone="accent" size="lg" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -2867,10 +3799,15 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSpinner size="xs" /&gt;
-&lt;MsSpinner size="xl" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSpinner size="xs" />
+<MsSpinner size="xl" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -2900,10 +3837,15 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSkeleton variant="circle" width="48px" height="48px" /&gt;
-&lt;MsSkeleton variant="text" width="100%" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSkeleton variant="circle" width="48px" height="48px" />
+<MsSkeleton variant="text" width="100%" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -2928,10 +3870,15 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsProgress tone="primary" :model-value="75" /&gt;
-&lt;MsProgress tone="accent" :model-value="75" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsProgress tone="primary" :model-value="75" />
+<MsProgress tone="accent" :model-value="75" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -2951,11 +3898,16 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsProgress size="sm" :model-value="60" /&gt;
-&lt;MsProgress striped animated :model-value="80" /&gt;
-&lt;MsProgress indeterminate /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsProgress size="sm" :model-value="60" />
+<MsProgress striped animated :model-value="80" />
+<MsProgress indeterminate />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -2977,10 +3929,15 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsProgressRadial tone="primary" :value="68" size="md" /&gt;
-&lt;MsProgressRadial tone="accent" :value="68" size="md" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsProgressRadial tone="primary" :value="68" size="md" />
+<MsProgressRadial tone="accent" :value="68" size="md" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
 
     
@@ -2999,10 +3956,15 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsProgressRadial size="sm" :value="45" /&gt;
-&lt;MsProgressRadial size="xl" :value="95" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsProgressRadial size="sm" :value="45" />
+<MsProgressRadial size="xl" :value="95" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3023,10 +3985,15 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsStatus tone="success" pulse label="ONLINE" /&gt;
-&lt;MsStatus tone="danger" pulse label="DEGRADE" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsStatus tone="success" pulse label="ONLINE" />
+<MsStatus tone="danger" pulse label="DEGRADE" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3056,11 +4023,16 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsTooltip content="Dica no Topo" placement="top"&gt;
-  &lt;MsButton&gt;Hover&lt;/MsButton&gt;
-&lt;/MsTooltip&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsTooltip content="Dica no Topo" placement="top">
+  <MsButton>Hover</MsButton>
+</MsTooltip>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3086,269 +4058,921 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsPopover&gt;
-  &lt;template #trigger&gt;&lt;MsButton&gt;Abrir&lt;/MsButton&gt;&lt;/template&gt;
-  &lt;div&gt;Conteúdo rico&lt;/div&gt;
-&lt;/MsPopover&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsPopover>
+  <template #trigger><MsButton>Abrir</MsButton></template>
+  <div>Conteúdo rico</div>
+</MsPopover>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
 
   <div v-if="activeTab === 'cards'">
-    
+    <!-- 1. 8 BRAND TONES BORDERS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsCard com Destaque de Borda nos 8 Tons da Marca</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">8 Brand Tones Borders</span>
+        <div class="variation-card-title" style="margin: 0;">1. MsCard com Destaque de Borda Superior nos 8 Tons da Marca</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">8 Brand Tones</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; width: 100%;">
-        <div v-for="t in allTones" :key="t">
-          <MsCard :tone="t" variant="raised" :title="t.toUpperCase() + ' ACCENT'" :description="'Borda superior corporativa (' + toneHexMap[t] + ').'">
-            <div style="font-size: 12px; color: var(--ms-color-text-secondary);">
-              Cartão com elevação e acentuação de cor no padrão visual normativo MagicStyle.
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; width: 100%;">
+          <div v-for="t in allTones" :key="t">
+            <MsCard :tone="t" variant="raised" :title="t.toUpperCase() + ' ACCENT'" :description="'Faixa superior corporativa (' + toneHexMap[t] + ').'">
+              <div style="font-size: 13px; color: var(--ms-color-text-secondary); line-height: 1.5;">
+                Cartão com elevação sutil e faixa de destaque tonal no topo, integrando identidade visual de marca de alta fidelidade.
+              </div>
+              <template #footer>
+                <MsButton size="xs" variant="outline" :tone="t">Ação {{ t }}</MsButton>
+              </template>
+            </MsCard>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Borda superior tonal automática via prop tone -->
+<MsCard tone="primary" title="PRIMARY ACCENT" description="Faixa superior corporativa">
+  <p>Conteúdo do cartão...</p>
+  <template #footer><MsButton size="xs" variant="outline" tone="primary">Ação</MsButton></template>
+</MsCard>
+
+<MsCard tone="accent" title="ACCENT ACCENT" />
+<MsCard tone="success" title="SUCCESS ACCENT" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 2. SURFACE VARIANTS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Hierarquia de Superfície (Raised, Flat, Outline, Sunken, Glass, Soft)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Surface Variants</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; width: 100%;">
+          <MsCard variant="raised" title="Raised (Padrão Elevado)">
+            <p style="font-size: 13px; margin: 0; color: var(--ms-color-text-secondary);">Superfície com micro-sombra refinada ideal para cards flutuantes sobre o fundo da página.</p>
+          </MsCard>
+          <MsCard variant="flat" title="Flat (Plano Sem Sombra)">
+            <p style="font-size: 13px; margin: 0; color: var(--ms-color-text-secondary);">Fundo clean nivelado com a página para designs minimalistas de alta densidade.</p>
+          </MsCard>
+          <MsCard variant="outline" title="Outline (Apenas Contorno)">
+            <p style="font-size: 13px; margin: 0; color: var(--ms-color-text-secondary);">Separação nítida por borda hairline sem peso visual de sombra (estética Shadcn pura).</p>
+          </MsCard>
+          <MsCard variant="sunken" title="Sunken (Rebaixado)">
+            <p style="font-size: 13px; margin: 0; color: var(--ms-color-text-secondary);">Fundo rebaixado com contraste suave, excelente para blocos de código ou logs.</p>
+          </MsCard>
+          <MsCard variant="glass" title="Glass (Translúcido com Blur)">
+            <p style="font-size: 13px; margin: 0; color: var(--ms-color-text-secondary);">Efeito moderno frosted glass com 16px de backdrop-filter e borda semi-transparente.</p>
+          </MsCard>
+          <MsCard variant="soft" tone="primary" title="Soft (Tint Pastel FlyonUI)">
+            <p style="font-size: 13px; margin: 0; color: var(--ms-color-text-secondary);">Superfície suavemente tingida pela cor da marca com borda tonal delicada.</p>
+          </MsCard>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsCard variant="raised" title="Raised Card" />
+<MsCard variant="flat" title="Flat Card" />
+<MsCard variant="outline" title="Outline Card" />
+<MsCard variant="sunken" title="Sunken Card" />
+<MsCard variant="glass" title="Glass Frosted Card" />
+<MsCard variant="soft" tone="primary" title="Soft Tinted Card" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. SAAS METRIC / KPI STAT CARDS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Cartões de Métricas / KPI SaaS (FlyonUI & Shadcn Signature)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">KPI Stat Cards</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; width: 100%;">
+          <!-- Stat Card 1 -->
+          <MsCard variant="outline" padding="md">
+            <div class="ms-card-stat">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="ms-card-stat__label">Faturamento Mensal</span>
+                <span style="font-size: 18px;">💳</span>
+              </div>
+              <div class="ms-card-stat__value">R$ 142.850</div>
+              <div class="ms-card-stat__footer">
+                <span class="ms-card-stat__trend ms-card-stat__trend--up">↑ +18.4%</span>
+                <span>vs. mês anterior</span>
+              </div>
+            </div>
+          </MsCard>
+
+          <!-- Stat Card 2 -->
+          <MsCard variant="outline" padding="md">
+            <div class="ms-card-stat">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="ms-card-stat__label">Assinaturas Ativas</span>
+                <span style="font-size: 18px;">👥</span>
+              </div>
+              <div class="ms-card-stat__value">2.480</div>
+              <div class="ms-card-stat__footer">
+                <span class="ms-card-stat__trend ms-card-stat__trend--up">↑ +4.2%</span>
+                <span>120 novas esta semana</span>
+              </div>
+            </div>
+          </MsCard>
+
+          <!-- Stat Card 3 -->
+          <MsCard variant="outline" padding="md">
+            <div class="ms-card-stat">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="ms-card-stat__label">Taxa de Rejeição</span>
+                <span style="font-size: 18px;">📉</span>
+              </div>
+              <div class="ms-card-stat__value">12.3%</div>
+              <div class="ms-card-stat__footer">
+                <span class="ms-card-stat__trend ms-card-stat__trend--down">↓ -2.8%</span>
+                <span>melhora no funil</span>
+              </div>
+            </div>
+          </MsCard>
+
+          <!-- Stat Card 4 -->
+          <MsCard variant="outline" padding="md">
+            <div class="ms-card-stat">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="ms-card-stat__label">Latência de API</span>
+                <span style="font-size: 18px;">⚡</span>
+              </div>
+              <div class="ms-card-stat__value">18ms</div>
+              <div class="ms-card-stat__footer">
+                <MsBadge tone="success" variant="soft" data-pill data-pulse>Operacional</MsBadge>
+                <span>99.98% SLA</span>
+              </div>
+            </div>
+          </MsCard>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Cartão de KPI SaaS com classes utilitárias ms-card-stat -->
+<MsCard variant="outline" padding="md">
+  <div class="ms-card-stat">
+    <div class="ms-card-stat__label">Faturamento Mensal</div>
+    <div class="ms-card-stat__value">R$ 142.850</div>
+    <div class="ms-card-stat__footer">
+      <span class="ms-card-stat__trend ms-card-stat__trend--up">↑ +18.4%</span>
+      <span>vs. mês anterior</span>
+    </div>
+  </div>
+</MsCard>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. E-COMMERCE PRODUCT CARD -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Cartão de Produto / E-Commerce com Badge Flutuante</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">E-Commerce</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <div style="max-width: 340px; width: 100%;">
+            <MsCard variant="raised" padding="none" hoverable>
+              <div class="ms-card__cover" style="height: 180px; background: linear-gradient(135deg, #1e293b, #0f172a); display: flex; align-items: center; justify-content: center; position: relative;">
+                <span class="ms-card-cover-badge">
+                  <MsBadge tone="danger" variant="solid" data-pill>-25% OFF</MsBadge>
+                </span>
+                <span style="font-size: 56px;">⌨️</span>
+              </div>
+              <div style="padding: 16px;">
+                <div style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--ms-color-primary); letter-spacing: 0.05em; margin-bottom: 4px;">Hardware & Periféricos</div>
+                <div style="font-size: 16px; font-weight: 700; color: var(--ms-color-text-primary); margin-bottom: 6px;">Magic Keyboard Pro — Dark Edition</div>
+                <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 12px;">
+                  <span style="color: #f59e0b; font-size: 13px;">★★★★★</span>
+                  <span style="font-size: 12px; color: var(--ms-color-text-muted); font-weight: 600;">4.9 (342 avaliações)</span>
+                </div>
+                <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
+                  <span style="font-size: 24px; font-weight: 800; color: var(--ms-color-text-primary);">R$ 899,00</span>
+                  <span style="font-size: 14px; text-decoration: line-through; color: var(--ms-color-text-muted);">R$ 1.199,00</span>
+                </div>
+                <MsButton variant="solid" tone="primary" block wave>Adicionar ao Carrinho</MsButton>
+              </div>
+            </MsCard>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Card de E-Commerce com capa, badge de desconto flutuante e CTA -->
+<MsCard variant="raised" padding="none" hoverable>
+  <div class="ms-card__cover">
+    <span class="ms-card-cover-badge">
+      <MsBadge tone="danger" variant="solid" data-pill>-25% OFF</MsBadge>
+    </span>
+    <img src="product.jpg" alt="Magic Keyboard" />
+  </div>
+  <div style="padding: 16px;">
+    <h4>Magic Keyboard Pro</h4>
+    <div class="price">R$ 899,00</div>
+    <MsButton variant="solid" tone="primary" block>Adicionar ao Carrinho</MsButton>
+  </div>
+</MsCard>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 5. USER PROFILE CARD -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. Cartão de Perfil de Usuário & Identidade Corporativa</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Profile Identity</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <div style="max-width: 380px; width: 100%;">
+            <MsCard variant="raised" padding="none">
+              <div style="height: 72px; background: linear-gradient(90deg, #2e86de, #341f97);"></div>
+              <div style="padding: 0 20px 20px; position: relative;">
+                <div style="margin-top: -36px; display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px;">
+                  <MsAvatar
+                    name="Dra. Helena Carvalho"
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=160&h=160&fit=crop"
+                    size="xl"
+                    shape="circle"
+                    status="online"
+                    bordered
+                  />
+                  <MsBadge tone="primary" variant="soft" data-pill>STAFF ARCHITECT</MsBadge>
+                </div>
+                <div style="font-size: 18px; font-weight: 800; color: var(--ms-color-text-primary);">Dra. Helena Carvalho</div>
+                <div style="font-size: 12px; color: var(--ms-color-text-secondary); margin-bottom: 12px;">Líder de Arquitetura de Design Systems & Engenharia Front-end.</div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; background: var(--ms-color-surface-sunken); padding: 10px; border-radius: 8px; text-align: center; margin-bottom: 16px;">
+                  <div>
+                    <div style="font-size: 16px; font-weight: 800; color: var(--ms-color-text-primary);">48</div>
+                    <div style="font-size: 10px; color: var(--ms-color-text-muted); text-transform: uppercase;">Projetos</div>
+                  </div>
+                  <div>
+                    <div style="font-size: 16px; font-weight: 800; color: var(--ms-color-text-primary);">1.4k</div>
+                    <div style="font-size: 10px; color: var(--ms-color-text-muted); text-transform: uppercase;">Seguidores</div>
+                  </div>
+                  <div>
+                    <div style="font-size: 16px; font-weight: 800; color: var(--ms-color-text-primary);">99%</div>
+                    <div style="font-size: 10px; color: var(--ms-color-text-muted); text-transform: uppercase;">Score</div>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 8px;">
+                  <MsButton variant="solid" tone="primary" style="flex: 1;" wave>Seguir</MsButton>
+                  <MsButton variant="outline" tone="neutral" style="flex: 1;">Mensagem</MsButton>
+                </div>
+              </div>
+            </MsCard>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Cartão de perfil com banner de fundo, avatar flutuante e botões de ação -->
+<MsCard variant="raised" padding="none">
+  <div class="profile-banner"></div>
+  <div class="profile-content">
+    <MsAvatar name="Helena Carvalho" size="xl" status="online" bordered />
+    <h3>Dra. Helena Carvalho</h3>
+    <MsButton variant="solid" tone="primary">Seguir</MsButton>
+  </div>
+</MsCard>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 6. HORIZONTAL CARD -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">6. Cartão Horizontal com Mídia Lateral (orientation="horizontal")</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Horizontal Media</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 640px;">
+          <MsCard variant="outline" orientation="horizontal" hoverable padding="none">
+            <div class="ms-card__cover" style="background: linear-gradient(135deg, #0984e3, #6c5ce7); display: flex; align-items: center; justify-content: center; min-width: 160px;">
+              <span style="font-size: 48px;">🚀</span>
+            </div>
+            <div class="ms-card__body-wrapper" style="padding: 20px;">
+              <div style="font-size: 11px; font-weight: 700; color: var(--ms-color-primary); text-transform: uppercase; margin-bottom: 4px;">Atualização Arquitetural</div>
+              <div style="font-size: 16px; font-weight: 700; color: var(--ms-color-text-primary); margin-bottom: 8px;">Baseline 1.2 & DTCG Tokens Lançados</div>
+              <div style="font-size: 13px; color: var(--ms-color-text-secondary); line-height: 1.5; margin-bottom: 16px;">
+                Conheça os novos contratos semânticos com suporte a multi-theming dinâmico e 51 componentes Vue 3 com acessibilidade WAI-ARIA 1.2.
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 12px; color: var(--ms-color-text-muted);">Publicado há 2 horas</span>
+                <MsButton size="sm" variant="soft" tone="primary">Ler Artigo Completo →</MsButton>
+              </div>
+            </div>
+          </MsCard>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Card horizontal com orientação split lateral -->
+<MsCard variant="outline" orientation="horizontal" hoverable padding="none">
+  <div class="ms-card__cover">
+    <img src="article.jpg" alt="Cover" />
+  </div>
+  <div class="ms-card__body-wrapper" style="padding: 20px;">
+    <h4>Baseline 1.2 Lançada</h4>
+    <p>Conheça os novos contratos semânticos...</p>
+    <MsButton size="sm" variant="soft" tone="primary">Ler Artigo</MsButton>
+  </div>
+</MsCard>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 7. INTERACTIVE HOVER LIFT -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">7. Cartões Interativos com Efeito Hover Lift (hoverable & interactive)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Interactive Cards</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; width: 100%;">
+          <MsCard variant="raised" tone="primary" hoverable interactive title="Component Engine" description="Vue 3 + Composition API">
+            <div style="font-size: 13px; color: var(--ms-color-text-secondary); line-height: 1.5;">
+              51 componentes certificados sem Fake Green com tipagem estrita TypeScript. Passe o mouse para testar a elevação.
+            </div>
+          </MsCard>
+          <MsCard variant="raised" tone="accent" hoverable interactive title="Token Dial System" description="DTCG Compliant Spec">
+            <div style="font-size: 13px; color: var(--ms-color-text-secondary); line-height: 1.5;">
+              Dial contínuo de raio, densidade de espaçamento e variáveis semânticas de cor com suporte a OKLCH.
+            </div>
+          </MsCard>
+          <MsCard variant="raised" tone="success" hoverable interactive title="A11y Core AA" description="WAI-ARIA 1.2 Compliant">
+            <div style="font-size: 13px; color: var(--ms-color-text-secondary); line-height: 1.5;">
+              Navegação total por teclado com setas direcionais, Home/End, focus ring e leitores de tela W3C.
+            </div>
+          </MsCard>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Props hoverable e interactive aplicam cursor pointer e lift translateY(-3px) -->
+<MsCard
+  variant="raised"
+  tone="primary"
+  hoverable
+  interactive
+  title="Component Engine"
+  description="Vue 3 + Composition API"
+>
+  <p>Passe o mouse para testar o efeito de elevação.</p>
+</MsCard>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 8. SEGMENTED CARD WITH DIVIDERS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">8. Cartão Segmentado com Divisores de Cabeçalho e Rodapé</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Segmented Dividers</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; max-width: 520px;">
+          <MsCard variant="raised" header-divider footer-divider title="Preferências de Notificação" description="Configure os canais de recebimento de alertas do sistema.">
+            <div style="display: flex; flex-direction: column; gap: 14px; font-size: 13px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-weight: 600; color: var(--ms-color-text-primary);">Alertas de Segurança Críticos</div>
+                  <div style="font-size: 12px; color: var(--ms-color-text-muted);">Notificações imediatas por push e e-mail</div>
+                </div>
+                <MsSwitch :model-value="true" tone="primary" />
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-weight: 600; color: var(--ms-color-text-primary);">Relatórios Semanais de Desempenho</div>
+                  <div style="font-size: 12px; color: var(--ms-color-text-muted);">Consolidado de acessos e métricas de build</div>
+                </div>
+                <MsSwitch :model-value="false" tone="primary" />
+              </div>
             </div>
             <template #footer>
-              <MsButton size="xs" variant="outline" :tone="t">Ação</MsButton>
+              <div style="display: flex; gap: 8px;">
+                <MsButton variant="outline" tone="neutral" size="sm">Cancelar</MsButton>
+                <MsButton variant="solid" tone="primary" size="sm" wave>Salvar Alterações</MsButton>
+              </div>
             </template>
           </MsCard>
         </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Props header-divider e footer-divider adicionam linhas de separação formais -->
+<MsCard
+  variant="raised"
+  header-divider
+  footer-divider
+  title="Preferências"
+  description="Configure os canais de notificação"
+>
+  <div class="settings-body">...</div>
+  <template #footer>
+    <MsButton variant="outline">Cancelar</MsButton>
+    <MsButton variant="solid" tone="primary">Salvar</MsButton>
+  </template>
+</MsCard>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsCard tone="primary" title="Primary Card"&gt;
-  &lt;p&gt;Conteúdo&lt;/p&gt;
-&lt;/MsCard&gt;
-&lt;MsCard tone="accent" title="Accent Card" /&gt;</code></pre>
-    </div>
-    </div>
-
-    
-    <div class="variation-card">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">2. Variantes de Superfície (Raised, Flat, Outline, Sunken, Glass)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Surface Variants</span>
-      </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; width: 100%;">
-        <MsCard variant="raised" title="Raised (Elevado com Sombra)">
-          <p style="font-size: 12px; margin: 0;">Superfície padrão com elevação por sombra suave.</p>
-        </MsCard>
-        <MsCard variant="flat" title="Flat (Plano Sem Sombra)">
-          <p style="font-size: 12px; margin: 0;">Fundo limpo integrado à página.</p>
-        </MsCard>
-        <MsCard variant="outline" title="Outline (Apenas Contorno)">
-          <p style="font-size: 12px; margin: 0;">Foco em separação visual nítida por borda hairline.</p>
-        </MsCard>
-        <MsCard variant="sunken" title="Sunken (Rebaixado)">
-          <p style="font-size: 12px; margin: 0;">Fundo rebaixado ideal para blocos de dados ou código.</p>
-        </MsCard>
-        <MsCard variant="glass" title="Glass (Efeito Translúcido)">
-          <p style="font-size: 12px; margin: 0;">Efeito moderno com blur e transparência.</p>
-        </MsCard>
-      </div>
-    
-      </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsCard variant="raised" /&gt;
-&lt;MsCard variant="outline" /&gt;
-&lt;MsCard variant="glass" /&gt;</code></pre>
-    </div>
-    </div>
-
-    
-    <div class="variation-card">
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">3. Padrão Completo de E-Commerce & Perfil de Usuário</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Real Composite Cards</span>
-      </div>
-      <div class="variation-preview-box">
-        
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; width: 100%;">
-        <MsCard variant="raised" tone="primary" title="MagicStyle Enterprise Edition" description="Licença corporativa de alto desempenho" interactive hoverable header-divider footer-divider>
-          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
-            <span style="font-size: 28px; font-weight: 800; color: var(--ms-color-primary, #2e86de);">R$ 2.490</span>
-            <span style="font-size: 12px; color: var(--ms-color-text-muted);">/ano por cluster</span>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px;">
-            <div>✓ 51 Componentes Vue 3 & CSS Layers</div>
-            <div>✓ 8 Tons Semânticos da Marca Oficiais</div>
-            <div>✓ Suporte Prioritário & SLA de 1 hora</div>
-          </div>
-          <template #footer>
-            <MsButton full-width variant="solid" tone="primary">Adquirir Licença</MsButton>
-          </template>
-        </MsCard>
-
-        <MsCard variant="raised" tone="accent" title="Métricas de Qualidade da Baseline" description="Relatório em tempo real do monorepo" header-divider footer-divider>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-            <div style="padding: 12px; background: var(--ms-color-surface-subtle); border-radius: 8px;">
-              <div style="font-size: 11px; color: var(--ms-color-text-muted);">COBERTURA DE TESTES</div>
-              <div style="font-size: 20px; font-weight: bold; color: var(--ms-color-success);">100%</div>
-            </div>
-            <div style="padding: 12px; background: var(--ms-color-surface-subtle); border-radius: 8px;">
-              <div style="font-size: 11px; color: var(--ms-color-text-muted);">TEMPO DE CARGA</div>
-              <div style="font-size: 20px; font-weight: bold; color: var(--ms-color-primary);">12ms</div>
-            </div>
-          </div>
-          <template #footer>
-            <MsButton variant="outline" tone="accent" size="sm">Exportar Relatório</MsButton>
-          </template>
-        </MsCard>
-      </div>
-    
-      </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsCard tone="primary" interactive hoverable&gt;
-  &lt;template #footer&gt;&lt;MsButton&gt;Comprar&lt;/MsButton&gt;&lt;/template&gt;
-&lt;/MsCard&gt;</code></pre>
-    </div>
     </div>
   </div>
 
 
   <div v-if="activeTab === 'avatars'">
-    
+    <!-- 1. 8 BRAND TONES -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsAvatar nos 8 Tons Oficiais (Iniciais Automáticas)</div>
+        <div class="variation-card-title" style="margin: 0;">1. MsAvatar nos 8 Tons Oficiais da Marca (Iniciais Automáticas)</div>
         <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">8 Brand Tones</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-        <MsAvatar v-for="t in allTones" :key="t" :tone="t" :name="t.toUpperCase() + ' User'" size="md"></MsAvatar>
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+          <div v-for="t in allTones" :key="t" style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+            <MsAvatar :tone="t" :name="t.toUpperCase() + ' User'" size="md" />
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--ms-color-text-secondary);">{{ t }}</span>
+          </div>
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Iniciais automáticas calculadas a partir da prop name com tom de marca -->
+<MsAvatar tone="primary" name="Ada Lovelace" />
+<MsAvatar tone="accent" name="Grace Hopper" />
+<MsAvatar tone="success" name="Margaret Hamilton" />
+<MsAvatar tone="danger" name="Alan Turing" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsAvatar tone="primary" name="Ada Lovelace" /&gt;
-&lt;MsAvatar tone="accent" name="Grace Hopper" /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 2. SHAPES -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">2. Formatos Geométricos (Circle, Rounded, Square) & Status</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Shapes & Status</span>
+        <div class="variation-card-title" style="margin: 0;">2. Formatos Geométricos (Circle, Rounded, Square)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Shapes</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-        <MsAvatar shape="circle" tone="primary" name="Online User" status="online"></MsAvatar>
-        <MsAvatar shape="rounded" tone="accent" name="Busy User" status="busy"></MsAvatar>
-        <MsAvatar shape="square" tone="warning" name="Away User" status="away"></MsAvatar>
+        <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <MsAvatar shape="circle" tone="primary" name="Circle Avatar" size="lg" />
+            <span style="font-size: 12px; font-weight: 600; color: var(--ms-color-text-secondary);">Circle (Padrão 100%)</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <MsAvatar shape="rounded" tone="accent" name="Rounded Avatar" size="lg" />
+            <span style="font-size: 12px; font-weight: 600; color: var(--ms-color-text-secondary);">Rounded (radius-md)</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <MsAvatar shape="square" tone="neutral" name="Square Avatar" size="lg" />
+            <span style="font-size: 12px; font-weight: 600; color: var(--ms-color-text-secondary);">Square (radius-none)</span>
+          </div>
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsAvatar shape="circle" name="Circle" />
+<MsAvatar shape="rounded" name="Rounded" />
+<MsAvatar shape="square" name="Square" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsAvatar shape="circle" status="online" /&gt;
-&lt;MsAvatar shape="rounded" status="busy" /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 3. SIZES SCALE -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">3. Escala Completa de Tamanhos (xs a 2xl)</div>
+        <div class="variation-card-title" style="margin: 0;">3. Escala Completa de Tamanhos (2xs 20px a 2xl 72px)</div>
         <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Sizes Scale</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-        <MsAvatar size="xs" name="Ada Lovelace"></MsAvatar>
-        <MsAvatar size="sm" name="Ada Lovelace"></MsAvatar>
-        <MsAvatar size="md" name="Ada Lovelace"></MsAvatar>
-        <MsAvatar size="lg" name="Ada Lovelace"></MsAvatar>
-        <MsAvatar size="xl" name="Ada Lovelace"></MsAvatar>
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+            <MsAvatar size="2xs" name="Ada Lovelace" tone="primary" />
+            <span style="font-size: 10px; color: var(--ms-color-text-muted);">2XS 20px</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+            <MsAvatar size="xs" name="Ada Lovelace" tone="primary" />
+            <span style="font-size: 10px; color: var(--ms-color-text-muted);">XS 24px</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+            <MsAvatar size="sm" name="Ada Lovelace" tone="primary" />
+            <span style="font-size: 10px; color: var(--ms-color-text-muted);">SM 32px</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+            <MsAvatar size="md" name="Ada Lovelace" tone="primary" />
+            <span style="font-size: 10px; color: var(--ms-color-text-muted);">MD 40px</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+            <MsAvatar size="lg" name="Ada Lovelace" tone="primary" />
+            <span style="font-size: 10px; color: var(--ms-color-text-muted);">LG 48px</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+            <MsAvatar size="xl" name="Ada Lovelace" tone="primary" />
+            <span style="font-size: 10px; color: var(--ms-color-text-muted);">XL 56px</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+            <MsAvatar size="2xl" name="Ada Lovelace" tone="primary" />
+            <span style="font-size: 10px; color: var(--ms-color-text-muted);">2XL 72px</span>
+          </div>
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsAvatar size="2xs" name="User" />
+<MsAvatar size="xs" name="User" />
+<MsAvatar size="sm" name="User" />
+<MsAvatar size="md" name="User" /> <!-- Padrão 40px -->
+<MsAvatar size="lg" name="User" />
+<MsAvatar size="xl" name="User" />
+<MsAvatar size="2xl" name="User" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsAvatar size="xs" /&gt;
-&lt;MsAvatar size="xl" /&gt;</code></pre>
-    </div>
     </div>
 
-    
+    <!-- 4. STATUS INDICATORS -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">4. MsAvatarGroup Empilhado (Stacked)</div>
+        <div class="variation-card-title" style="margin: 0;">4. Indicadores de Presença & Status (FlyonUI & Shadcn Pattern)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Presence Status</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <MsAvatar
+              size="lg"
+              status="online"
+              name="Online User"
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&fit=crop"
+              bordered
+            />
+            <span style="font-size: 12px; font-weight: 600; color: var(--ms-color-success);">Online (Disponível)</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <MsAvatar
+              size="lg"
+              status="busy"
+              name="Busy User"
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&fit=crop"
+              bordered
+            />
+            <span style="font-size: 12px; font-weight: 600; color: var(--ms-color-danger);">Busy (Em Reunião)</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <MsAvatar
+              size="lg"
+              status="away"
+              name="Away User"
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&fit=crop"
+              bordered
+            />
+            <span style="font-size: 12px; font-weight: 600; color: var(--ms-color-warning);">Away (Ausente)</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <MsAvatar
+              size="lg"
+              status="offline"
+              name="Offline User"
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&fit=crop"
+              bordered
+            />
+            <span style="font-size: 12px; font-weight: 600; color: var(--ms-color-text-muted);">Offline (Desconectado)</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Status dot com anel de corte que previne choque com o fundo -->
+<MsAvatar status="online" src="avatar1.jpg" bordered />
+<MsAvatar status="busy" src="avatar2.jpg" bordered />
+<MsAvatar status="away" src="avatar3.jpg" bordered />
+<MsAvatar status="offline" src="avatar4.jpg" bordered />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 5. AVATAR GROUP STACK -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">5. MsAvatarGroup Empilhado com Contador +N (Stacked Avatars)</div>
         <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Avatar Groups</span>
       </div>
       <div class="variation-preview-box">
-        
-      <MsAvatarGroup size="md" :max="3" spacing="normal">
-        <MsAvatar name="Ada Lovelace"></MsAvatar>
-        <MsAvatar name="Grace Hopper"></MsAvatar>
-        <MsAvatar name="Alan Turing"></MsAvatar>
-        <MsAvatar name="Margaret Hamilton"></MsAvatar>
-        <MsAvatar name="Linus Torvalds"></MsAvatar>
-      </MsAvatarGroup>
-    
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <!-- Team Stack -->
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <MsAvatarGroup size="md" :max="4" spacing="normal">
+              <MsAvatar name="Ada Lovelace" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&fit=crop" />
+              <MsAvatar name="Carlos Souza" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&fit=crop" />
+              <MsAvatar name="Mariana Costa" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&fit=crop" />
+              <MsAvatar name="Lucas Pereira" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&fit=crop" />
+              <MsAvatar name="Beatriz Santos" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&fit=crop" />
+              <MsAvatar name="Guilherme Ramos" tone="primary" />
+              <MsAvatar name="Rodrigo Toledo" tone="accent" />
+            </MsAvatarGroup>
+            <span style="font-size: 13px; color: var(--ms-color-text-secondary); font-weight: 500;">
+              Equipe de Design System (7 membros ativos)
+            </span>
+          </div>
+
+          <!-- Compact Spacing Stack -->
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <MsAvatarGroup size="sm" :max="3" spacing="tight">
+              <MsAvatar name="Ana Silva" tone="primary" />
+              <MsAvatar name="Carlos Silva" tone="accent" />
+              <MsAvatar name="Diana Prince" tone="success" />
+              <MsAvatar name="Bruce Wayne" tone="neutral" />
+            </MsAvatarGroup>
+            <span style="font-size: 12px; color: var(--ms-color-text-muted);">
+              Espaçamento Compacto (spacing="tight")
+            </span>
+          </div>
+        </div>
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsAvatarGroup :max="3"&gt;
-  &lt;MsAvatar name="Ada" /&gt;
-  &lt;MsAvatar name="Grace" /&gt;
-&lt;/MsAvatarGroup&gt;</code></pre>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- MsAvatarGroup com max para colapso elegante em +N -->
+<MsAvatarGroup size="md" :max="4" spacing="normal">
+  <MsAvatar name="Ada Lovelace" src="user1.jpg" />
+  <MsAvatar name="Carlos Souza" src="user2.jpg" />
+  <MsAvatar name="Mariana Costa" src="user3.jpg" />
+  <MsAvatar name="Lucas Pereira" src="user4.jpg" />
+  <MsAvatar name="Beatriz Santos" src="user5.jpg" />
+</MsAvatarGroup>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
+
+    <!-- 6. USER IDENTITY ROWS -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">6. Linhas de Identidade do Usuário (User Identity Row — Shadcn Pattern)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Identity Rows</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 480px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <MsAvatar name="Bruno Cavalcante" size="md" status="online" bordered />
+              <div>
+                <div style="font-size: 14px; font-weight: 700; color: var(--ms-color-text-primary);">Bruno Cavalcante</div>
+                <div style="font-size: 12px; color: var(--ms-color-text-muted);">bruno.netadmin@gmail.com</div>
+              </div>
+            </div>
+            <MsBadge tone="primary" variant="soft" data-pill>Admin</MsBadge>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 8px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <MsAvatar name="Carolina Mendes" size="md" status="busy" bordered />
+              <div>
+                <div style="font-size: 14px; font-weight: 700; color: var(--ms-color-text-primary);">Carolina Mendes</div>
+                <div style="font-size: 12px; color: var(--ms-color-text-muted);">carolina.mendes@empresa.com</div>
+              </div>
+            </div>
+            <MsBadge tone="neutral" variant="soft" data-pill>Editor</MsBadge>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Padrão Shadcn de linha de usuário com avatar e badge de permissão -->
+<div class="user-row">
+  <MsAvatar name="Bruno Cavalcante" size="md" status="online" bordered />
+  <div class="user-info">
+    <div class="name">Bruno Cavalcante</div>
+    <div class="email">bruno.netadmin@gmail.com</div>
+  </div>
+  <MsBadge tone="primary" variant="soft" data-pill>Admin</MsBadge>
+</div>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
 
   <div v-if="activeTab === 'dialogs'">
-    
+    <!-- 1. DESTRUCTIVE CONFIRMATION DIALOG -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. Diálogos de Confirmação & Tamanhos (sm, md, lg)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Dialog Triggers</span>
+        <div class="variation-card-title" style="margin: 0;">1. Diálogo de Confirmação Crítica (Destructive Alert Dialog — Shadcn Signature)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Alert Dialog</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <MsButton variant="solid" tone="primary">Abrir Diálogo Médio (md)</MsButton>
-        <MsButton variant="outline" tone="accent">Abrir Diálogo Grande (lg)</MsButton>
-        <MsButton variant="soft" tone="neutral">Abrir Modal Pequeno (sm)</MsButton>
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <!-- Inline Modal Representation for Studio Demonstration -->
+          <div style="max-width: 480px; width: 100%; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); overflow: hidden;">
+            <div style="padding: 24px;">
+              <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: color-mix(in oklch, var(--ms-color-danger) 15%, transparent); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; color: var(--ms-color-danger);">
+                  ⚠️
+                </div>
+                <div>
+                  <div style="font-size: 16px; font-weight: 700; color: var(--ms-color-text-primary); margin-bottom: 4px;">Excluir Repositório Permanentemente?</div>
+                  <div style="font-size: 13px; color: var(--ms-color-text-secondary); line-height: 1.5;">
+                    Esta ação não poderá ser desfeita. Todos os branches, pull requests, releases e métricas de qualidade associadas serão excluídos permanentemente.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="background: var(--ms-color-surface-sunken); padding: 12px 24px; display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--ms-color-border-subtle);">
+              <MsButton variant="outline" tone="neutral" size="sm">Cancelar</MsButton>
+              <MsButton variant="solid" tone="danger" size="sm" wave>Sim, Excluir Repositório</MsButton>
+            </div>
+          </div>
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- MsDialog para confirmações destrutivas com foco em a11y -->
+<MsDialog
+  :open="isConfirmOpen"
+  title="Excluir Repositório Permanentemente?"
+  role="alertdialog"
+  tone="danger"
+  size="sm"
+>
+  <p>Esta ação é irreversível e excluirá todos os dados do cluster.</p>
+  <template #footer>
+    <MsButton variant="outline" @click="isConfirmOpen = false">Cancelar</MsButton>
+    <MsButton variant="solid" tone="danger" @click="handleDelete">Sim, Excluir</MsButton>
+  </template>
+</MsDialog>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsDialog :open="open" title="Título" size="md"&gt;
-  &lt;p&gt;Conteúdo modal&lt;/p&gt;
-&lt;/MsDialog&gt;</code></pre>
     </div>
+
+    <!-- 2. EDIT FORM MODAL -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Modal de Formulário Corporativo (Edit Profile Dialog)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Form Modal</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <div style="max-width: 480px; width: 100%; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); overflow: hidden;">
+            <div style="padding: 20px 24px; border-bottom: 1px solid var(--ms-color-border-subtle); display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 16px; font-weight: 700; color: var(--ms-color-text-primary);">Editar Informações de Acesso</div>
+                <div style="font-size: 12px; color: var(--ms-color-text-muted);">Atualize seus dados de cadastro no sistema.</div>
+              </div>
+              <span style="cursor: pointer; font-size: 18px; color: var(--ms-color-text-muted);">✕</span>
+            </div>
+            <div style="padding: 20px 24px; display: flex; flex-direction: column; gap: 14px;">
+              <div>
+                <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">Nome de Exibição</label>
+                <MsInput model-value="Bruno Cavalcante" tone="primary" />
+              </div>
+              <div>
+                <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">E-mail Corporativo</label>
+                <MsInput model-value="bruno.netadmin@gmail.com" tone="primary" />
+              </div>
+              <div>
+                <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px;">Função / Cargo</label>
+                <MsInput model-value="Lead Software Architect" tone="neutral" readonly />
+              </div>
+            </div>
+            <div style="background: var(--ms-color-surface-sunken); padding: 14px 24px; display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--ms-color-border-subtle);">
+              <MsButton variant="outline" tone="neutral" size="sm">Descartar</MsButton>
+              <MsButton variant="solid" tone="primary" size="sm" wave>Salvar Modificações</MsButton>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Modal com formulário integrado e WAI-ARIA trap de foco -->
+<MsDialog :open="isEditOpen" title="Editar Informações de Acesso" size="md">
+  <form @submit.prevent="saveProfile">
+    <MsField label="Nome"><MsInput v-model="name" /></MsField>
+    <MsField label="E-mail"><MsInput v-model="email" /></MsField>
+    <div class="actions">
+      <MsButton variant="outline" @click="isEditOpen = false">Cancelar</MsButton>
+      <MsButton variant="solid" tone="primary" type="submit">Salvar</MsButton>
+    </div>
+  </form>
+</MsDialog>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
 
   <div v-if="activeTab === 'drawers'">
-    
+    <!-- 1. SLIDE-OVER DRAWER -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. Posicionamento de Gaveta (Esquerda, Direita, Inferior)</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Drawer Placements</span>
+        <div class="variation-card-title" style="margin: 0;">1. Slide-Over Direito: Filtros e Configurações (Right Slide Drawer)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Right Drawer</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <MsButton variant="solid" tone="primary">Gaveta Lateral Esquerda (Menu)</MsButton>
-        <MsButton variant="outline" tone="accent">Gaveta Lateral Direita (Carrinho)</MsButton>
-        <MsButton variant="soft" tone="neutral">Gaveta Inferior (Mobile Sheet)</MsButton>
+        <div style="display: flex; justify-content: flex-end; width: 100%;">
+          <div style="max-width: 380px; width: 100%; background: var(--ms-color-surface-raised); border: 1px solid var(--ms-color-border-subtle); border-radius: 12px; box-shadow: -10px 0 25px -5px rgb(0 0 0 / 0.1); overflow: hidden;">
+            <div style="padding: 18px 20px; border-bottom: 1px solid var(--ms-color-border-subtle); display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 15px; font-weight: 700; color: var(--ms-color-text-primary);">Filtros Avançados</div>
+                <div style="font-size: 11px; color: var(--ms-color-text-muted);">Refine os resultados do catálogo.</div>
+              </div>
+              <span style="cursor: pointer; font-size: 16px; color: var(--ms-color-text-muted);">✕</span>
+            </div>
+            <div style="padding: 20px; display: flex; flex-direction: column; gap: 16px;">
+              <div>
+                <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Buscar por Palavra-Chave</label>
+                <MsInput placeholder="Ex: button, select, badge..." tone="primary" size="sm" />
+              </div>
+              <div>
+                <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Exibir Somente Estáveis</label>
+                <MsSwitch :model-value="true" tone="primary" />
+              </div>
+              <div>
+                <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Incluir Componentes Legados</label>
+                <MsSwitch :model-value="false" tone="neutral" />
+              </div>
+            </div>
+            <div style="background: var(--ms-color-surface-sunken); padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--ms-color-border-subtle);">
+              <MsButton variant="ghost" tone="neutral" size="sm">Limpar Filtros</MsButton>
+              <MsButton variant="solid" tone="primary" size="sm" wave>Aplicar Filtros</MsButton>
+            </div>
+          </div>
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Gaveta lateral deslizante com posicionamento à direita -->
+<MsDrawer :open="isFilterOpen" placement="right" title="Filtros Avançados">
+  <div class="filters-content">
+    <MsInput placeholder="Buscar..." />
+    <MsSwitch label="Somente Estáveis" :model-value="true" />
+  </div>
+  <template #footer>
+    <MsButton variant="ghost">Limpar</MsButton>
+    <MsButton variant="solid" tone="primary">Aplicar</MsButton>
+  </template>
+</MsDrawer>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsDrawer placement="right" :open="open"&gt;
-  &lt;p&gt;Gaveta lateral&lt;/p&gt;
-&lt;/MsDrawer&gt;</code></pre>
-    </div>
     </div>
   </div>
 
@@ -3377,11 +5001,16 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsAccordion&gt;
-  &lt;MsAccordionItem title="Dúvida 1"&gt;Resposta...&lt;/MsAccordionItem&gt;
-&lt;/MsAccordion&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsAccordion>
+  <MsAccordionItem title="Dúvida 1">Resposta...</MsAccordionItem>
+</MsAccordion>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3403,11 +5032,16 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsEmptyState title="Vazio" description="..."&gt;
-  &lt;template #actions&gt;&lt;MsButton&gt;Ação&lt;/MsButton&gt;&lt;/template&gt;
-&lt;/MsEmptyState&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsEmptyState title="Vazio" description="...">
+  <template #actions><MsButton>Ação</MsButton></template>
+</MsEmptyState>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3432,11 +5066,16 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsContainer max-width="md"&gt;
-  &lt;p&gt;Conteúdo centralizado&lt;/p&gt;
-&lt;/MsContainer&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsContainer max-width="md">
+  <p>Conteúdo centralizado</p>
+</MsContainer>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3456,9 +5095,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsSeparator label="OU" align="center" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSeparator label="OU" align="center" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3490,13 +5134,18 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsAppShell&gt;
-  &lt;template #topbar&gt;...&lt;/template&gt;
-  &lt;template #sidebar&gt;...&lt;/template&gt;
-  &lt;router-view /&gt;
-&lt;/MsAppShell&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsAppShell>
+  <template #topbar>...</template>
+  <template #sidebar>...</template>
+  <router-view />
+</MsAppShell>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3520,56 +5169,311 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsPage title="Gestão de Módulos" description="..."&gt;
-  &lt;template #actions&gt;&lt;MsButton&gt;Novo&lt;/MsButton&gt;&lt;/template&gt;
-&lt;/MsPage&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsPage title="Gestão de Módulos" description="...">
+  <template #actions><MsButton>Novo</MsButton></template>
+</MsPage>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
 
   <div v-if="activeTab === 'tables'">
-    
+    <!-- 1. ENTERPRISE USER MANAGEMENT TABLE -->
     <div class="variation-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-        <div class="variation-card-title" style="margin: 0;">1. MsTable Completa com Cabeçalho Ordenável e Badges de Status</div>
-        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Interactive Data Table</span>
+        <div class="variation-card-title" style="margin: 0;">1. Tabela Corporativa de Usuários & Acessos (Enterprise Users)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Enterprise Table</span>
       </div>
       <div class="variation-preview-box">
-        
-      <div style="width: 100%; overflow-x: auto;">
-        <MsTable variant="default" density="normal" striped bordered hoverable caption="Pacotes do Monorepo MagicStyle">
-          <MsTableHead>
-            <MsTableRow>
-              <MsTableHeaderCell sortable sort-direction="asc">Pacote</MsTableHeaderCell>
-              <MsTableHeaderCell>Tipo</MsTableHeaderCell>
-              <MsTableHeaderCell align="right">Testes</MsTableHeaderCell>
-              <MsTableHeaderCell align="right">Cobertura</MsTableHeaderCell>
-              <MsTableHeaderCell align="center">Status</MsTableHeaderCell>
-            </MsTableRow>
-          </MsTableHead>
-          <MsTableBody>
-            <MsTableRow v-for="r in tableRows" :key="r.pkg">
-              <MsTableCell style="font-weight: bold; font-family: monospace;">{{ r.pkg }}</MsTableCell>
-              <MsTableCell>{{ r.type }}</MsTableCell>
-              <MsTableCell align="right">{{ r.tests }}</MsTableCell>
-              <MsTableCell align="right">{{ r.coverage }}</MsTableCell>
-              <MsTableCell align="center">
-                <MsBadge :tone="r.status === 'Pass' ? 'success' : 'warning'" variant="soft">{{ r.status }}</MsBadge>
-              </MsTableCell>
-            </MsTableRow>
-          </MsTableBody>
-        </MsTable>
+        <div style="width: 100%; overflow-x: auto;">
+          <MsTable variant="default" density="normal" hoverable striped caption="Membros da Organização">
+            <MsTableHead>
+              <MsTableRow>
+                <MsTableHeaderCell style="width: 40px;"><input type="checkbox" checked style="cursor: pointer;" /></MsTableHeaderCell>
+                <MsTableHeaderCell>Usuário</MsTableHeaderCell>
+                <MsTableHeaderCell>Função / Cargo</MsTableHeaderCell>
+                <MsTableHeaderCell align="center">Status</MsTableHeaderCell>
+                <MsTableHeaderCell>Último Acesso</MsTableHeaderCell>
+                <MsTableHeaderCell align="right">Ações</MsTableHeaderCell>
+              </MsTableRow>
+            </MsTableHead>
+            <MsTableBody>
+              <MsTableRow>
+                <MsTableCell><input type="checkbox" checked style="cursor: pointer;" /></MsTableCell>
+                <MsTableCell>
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <MsAvatar name="Bruno Cavalcante" size="sm" status="online" bordered />
+                    <div>
+                      <div style="font-weight: 700; color: var(--ms-color-text-primary);">Bruno Cavalcante</div>
+                      <div style="font-size: 11px; color: var(--ms-color-text-muted);">bruno.netadmin@gmail.com</div>
+                    </div>
+                  </div>
+                </MsTableCell>
+                <MsTableCell><MsBadge tone="primary" variant="soft" data-pill>Super Admin</MsBadge></MsTableCell>
+                <MsTableCell align="center"><MsBadge tone="success" variant="soft" data-pill data-pulse>Ativo</MsBadge></MsTableCell>
+                <MsTableCell style="font-size: 12px; color: var(--ms-color-text-secondary);">Hoje às 16:42</MsTableCell>
+                <MsTableCell align="right">
+                  <div style="display: inline-flex; gap: 6px;">
+                    <MsButton size="xs" variant="ghost" tone="neutral">Editar</MsButton>
+                    <MsButton size="xs" variant="ghost" tone="danger">Revogar</MsButton>
+                  </div>
+                </MsTableCell>
+              </MsTableRow>
+
+              <MsTableRow>
+                <MsTableCell><input type="checkbox" style="cursor: pointer;" /></MsTableCell>
+                <MsTableCell>
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <MsAvatar name="Helena Carvalho" size="sm" status="busy" bordered />
+                    <div>
+                      <div style="font-weight: 700; color: var(--ms-color-text-primary);">Helena Carvalho</div>
+                      <div style="font-size: 11px; color: var(--ms-color-text-muted);">helena.carvalho@empresa.com</div>
+                    </div>
+                  </div>
+                </MsTableCell>
+                <MsTableCell><MsBadge tone="accent" variant="soft" data-pill>Staff Architect</MsBadge></MsTableCell>
+                <MsTableCell align="center"><MsBadge tone="success" variant="soft" data-pill data-pulse>Ativo</MsBadge></MsTableCell>
+                <MsTableCell style="font-size: 12px; color: var(--ms-color-text-secondary);">Ontem às 18:30</MsTableCell>
+                <MsTableCell align="right">
+                  <div style="display: inline-flex; gap: 6px;">
+                    <MsButton size="xs" variant="ghost" tone="neutral">Editar</MsButton>
+                    <MsButton size="xs" variant="ghost" tone="danger">Revogar</MsButton>
+                  </div>
+                </MsTableCell>
+              </MsTableRow>
+
+              <MsTableRow>
+                <MsTableCell><input type="checkbox" style="cursor: pointer;" /></MsTableCell>
+                <MsTableCell>
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <MsAvatar name="Lucas Pereira" size="sm" status="away" bordered />
+                    <div>
+                      <div style="font-weight: 700; color: var(--ms-color-text-primary);">Lucas Pereira</div>
+                      <div style="font-size: 11px; color: var(--ms-color-text-muted);">lucas.pereira@empresa.com</div>
+                    </div>
+                  </div>
+                </MsTableCell>
+                <MsTableCell><MsBadge tone="neutral" variant="soft" data-pill>QA Engineer</MsBadge></MsTableCell>
+                <MsTableCell align="center"><MsBadge tone="warning" variant="soft" data-pill>Pendente</MsBadge></MsTableCell>
+                <MsTableCell style="font-size: 12px; color: var(--ms-color-text-secondary);">Há 3 dias</MsTableCell>
+                <MsTableCell align="right">
+                  <div style="display: inline-flex; gap: 6px;">
+                    <MsButton size="xs" variant="ghost" tone="neutral">Reenviar</MsButton>
+                    <MsButton size="xs" variant="ghost" tone="danger">Cancelar</MsButton>
+                  </div>
+                </MsTableCell>
+              </MsTableRow>
+            </MsTableBody>
+          </MsTable>
+        </div>
       </div>
-    
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Tabela completa com avatares, badges semânticos e ações inline -->
+<MsTable hoverable striped caption="Membros">
+  <MsTableHead>
+    <MsTableRow>
+      <MsTableHeaderCell>Usuário</MsTableHeaderCell>
+      <MsTableHeaderCell>Função</MsTableHeaderCell>
+      <MsTableHeaderCell>Status</MsTableHeaderCell>
+      <MsTableHeaderCell align="right">Ações</MsTableHeaderCell>
+    </MsTableRow>
+  </MsTableHead>
+  <MsTableBody>
+    <MsTableRow>
+      <MsTableCell>
+        <MsAvatar name="Bruno" size="sm" status="online" />
+        <span>Bruno Cavalcante</span>
+      </MsTableCell>
+      <MsTableCell><MsBadge tone="primary">Admin</MsBadge></MsTableCell>
+      <MsTableCell><MsBadge tone="success" data-pulse>Ativo</MsBadge></MsTableCell>
+      <MsTableCell align="right"><MsButton size="xs">Editar</MsButton></MsTableCell>
+    </MsTableRow>
+  </MsTableBody>
+</MsTable>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsTable striped bordered hoverable&gt;
-  &lt;MsTableHead&gt;...&lt;/MsTableHead&gt;
-  &lt;MsTableBody&gt;...&lt;/MsTableBody&gt;
-&lt;/MsTable&gt;</code></pre>
     </div>
+
+    <!-- 2. MONOREPO PACKAGES REGISTRY TABLE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Registro de Pacotes do Monorepo (Baseline 1.2 Health Gate)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Monorepo Registry</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; overflow-x: auto;">
+          <MsTable variant="default" density="normal" striped bordered hoverable caption="Métricas de Qualidade dos Pacotes">
+            <MsTableHead>
+              <MsTableRow>
+                <MsTableHeaderCell sortable sort-direction="asc">Pacote</MsTableHeaderCell>
+                <MsTableHeaderCell>Tipo</MsTableHeaderCell>
+                <MsTableHeaderCell align="right">Testes Unitários</MsTableHeaderCell>
+                <MsTableHeaderCell align="right">Cobertura</MsTableHeaderCell>
+                <MsTableHeaderCell align="center">Saúde</MsTableHeaderCell>
+              </MsTableRow>
+            </MsTableHead>
+            <MsTableBody>
+              <MsTableRow v-for="r in tableRows" :key="r.id">
+                <MsTableCell style="font-weight: 700; font-family: monospace; color: var(--ms-color-primary);">{{ r.name }}</MsTableCell>
+                <MsTableCell><MsBadge :tone="r.type === 'Público' ? 'primary' : 'neutral'" variant="soft">{{ r.type }}</MsBadge></MsTableCell>
+                <MsTableCell align="right" style="font-weight: 600;">{{ r.tests }} testes</MsTableCell>
+                <MsTableCell align="right" style="font-weight: 700; color: var(--ms-color-success);">{{ r.coverage }}</MsTableCell>
+                <MsTableCell align="center">
+                  <MsBadge tone="success" variant="soft" data-pill>{{ r.status }}</MsBadge>
+                </MsTableCell>
+              </MsTableRow>
+            </MsTableBody>
+          </MsTable>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Tabela com colunas numéricas alinhadas à direita e badges de saúde -->
+<MsTable striped bordered hoverable>
+  <MsTableHead>
+    <MsTableRow>
+      <MsTableHeaderCell sortable>Pacote</MsTableHeaderCell>
+      <MsTableHeaderCell align="right">Testes</MsTableHeaderCell>
+      <MsTableHeaderCell align="right">Cobertura</MsTableHeaderCell>
+      <MsTableHeaderCell align="center">Status</MsTableHeaderCell>
+    </MsTableRow>
+  </MsTableHead>
+  <MsTableBody>
+    <MsTableRow v-for="r in rows" :key="r.id">
+      <MsTableCell>{{ r.name }}</MsTableCell>
+      <MsTableCell align="right">{{ r.tests }}</MsTableCell>
+      <MsTableCell align="right">{{ r.coverage }}</MsTableCell>
+      <MsTableCell align="center"><MsBadge tone="success">{{ r.status }}</MsBadge></MsTableCell>
+    </MsTableRow>
+  </MsTableBody>
+</MsTable>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 3. FINANCIAL TRANSACTIONS TABLE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. Tabela Financeira & Faturamento de Contratos</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Billing & Finance</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="width: 100%; overflow-x: auto;">
+          <MsTable variant="default" density="normal" hoverable caption="Histórico de Faturas">
+            <MsTableHead>
+              <MsTableRow>
+                <MsTableHeaderCell>Fatura</MsTableHeaderCell>
+                <MsTableHeaderCell>Cliente Corporativo</MsTableHeaderCell>
+                <MsTableHeaderCell>Emissão</MsTableHeaderCell>
+                <MsTableHeaderCell align="right">Valor Líquido</MsTableHeaderCell>
+                <MsTableHeaderCell align="center">Status</MsTableHeaderCell>
+              </MsTableRow>
+            </MsTableHead>
+            <MsTableBody>
+              <MsTableRow>
+                <MsTableCell style="font-family: monospace; font-weight: 700;">#INV-2026-0891</MsTableCell>
+                <MsTableCell>Nubank Tecnologia S.A.</MsTableCell>
+                <MsTableCell style="font-size: 12px; color: var(--ms-color-text-muted);">24 Set 2026</MsTableCell>
+                <MsTableCell align="right" style="font-weight: 800; color: var(--ms-color-success);">+ R$ 24.890,00</MsTableCell>
+                <MsTableCell align="center"><MsBadge tone="success" variant="solid" data-pill>Liquidado</MsBadge></MsTableCell>
+              </MsTableRow>
+              <MsTableRow>
+                <MsTableCell style="font-family: monospace; font-weight: 700;">#INV-2026-0890</MsTableCell>
+                <MsTableCell>Mercado Livre Brasil</MsTableCell>
+                <MsTableCell style="font-size: 12px; color: var(--ms-color-text-muted);">22 Set 2026</MsTableCell>
+                <MsTableCell align="right" style="font-weight: 800; color: var(--ms-color-success);">+ R$ 18.450,00</MsTableCell>
+                <MsTableCell align="center"><MsBadge tone="success" variant="solid" data-pill>Liquidado</MsBadge></MsTableCell>
+              </MsTableRow>
+              <MsTableRow>
+                <MsTableCell style="font-family: monospace; font-weight: 700;">#INV-2026-0889</MsTableCell>
+                <MsTableCell>Stone Pagamentos</MsTableCell>
+                <MsTableCell style="font-size: 12px; color: var(--ms-color-text-muted);">19 Set 2026</MsTableCell>
+                <MsTableCell align="right" style="font-weight: 800; color: var(--ms-color-danger);">- R$ 1.200,00</MsTableCell>
+                <MsTableCell align="center"><MsBadge tone="danger" variant="soft" data-pill>Estorno</MsBadge></MsTableCell>
+              </MsTableRow>
+            </MsTableBody>
+          </MsTable>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Faturas financeiras com distinção de crédito e estorno -->
+<MsTable hoverable>
+  <MsTableBody>
+    <MsTableRow>
+      <MsTableCell>#INV-2026-0891</MsTableCell>
+      <MsTableCell>Nubank</MsTableCell>
+      <MsTableCell align="right" class="credit">+ R$ 24.890,00</MsTableCell>
+      <MsTableCell align="center"><MsBadge tone="success">Liquidado</MsBadge></MsTableCell>
+    </MsTableRow>
+  </MsTableBody>
+</MsTable>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
+    </div>
+
+    <!-- 4. DENSITY SCALE -->
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Escala de Densidades (Compacta vs Espaçosa)</div>
+        <span style="font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: var(--ms-color-surface-subtle, #e2e8f0); color: var(--ms-color-text-secondary); font-family: monospace;">Densities</span>
+      </div>
+      <div class="variation-preview-box">
+        <div style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
+          <div>
+            <div style="font-size: 12px; font-weight: 700; color: var(--ms-color-text-muted); margin-bottom: 6px;">DENSIDADE COMPACTA (density="compact" — Ideal para alta densidade e planilhas):</div>
+            <MsTable density="compact" striped bordered>
+              <MsTableHead>
+                <MsTableRow>
+                  <MsTableHeaderCell>Variável</MsTableHeaderCell>
+                  <MsTableHeaderCell>Token</MsTableHeaderCell>
+                  <MsTableHeaderCell align="right">Valor</MsTableHeaderCell>
+                </MsTableRow>
+              </MsTableHead>
+              <MsTableBody>
+                <MsTableRow>
+                  <MsTableCell style="font-family: monospace; font-size: 11px;">--ms-space-1</MsTableCell>
+                  <MsTableCell>Spacing Base Micro</MsTableCell>
+                  <MsTableCell align="right" style="font-family: monospace;">4px</MsTableCell>
+                </MsTableRow>
+                <MsTableRow>
+                  <MsTableCell style="font-family: monospace; font-size: 11px;">--ms-space-2</MsTableCell>
+                  <MsTableCell>Spacing Base Small</MsTableCell>
+                  <MsTableCell align="right" style="font-family: monospace;">8px</MsTableCell>
+                </MsTableRow>
+              </MsTableBody>
+            </MsTable>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Tabela compacta para painéis operacionais -->
+<MsTable density="compact" striped bordered>
+  <MsTableHead>...</MsTableHead>
+  <MsTableBody>...</MsTableBody>
+</MsTable>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3592,11 +5496,16 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsTimeline&gt;
-  &lt;MsTimelineItem tone="success" title="Concluído" /&gt;
-&lt;/MsTimeline&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsTimeline>
+  <MsTimelineItem tone="success" title="Concluído" />
+</MsTimeline>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3626,9 +5535,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsRating tone="warning" :model-value="4" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsRating tone="warning" :model-value="4" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3658,10 +5572,15 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsAnimatedNumber :value="14850" prefix="+" /&gt;
-&lt;MsAnimatedNumber :value="98450" prefix="R$ " /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsAnimatedNumber :value="14850" prefix="+" />
+<MsAnimatedNumber :value="98450" prefix="R$ " />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3693,13 +5612,18 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsList&gt;
-  &lt;MsListItem title="Item 1"&gt;
-    &lt;template #prefix&gt;🎨&lt;/template&gt;
-  &lt;/MsListItem&gt;
-&lt;/MsList&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsList>
+  <MsListItem title="Item 1">
+    <template #prefix>🎨</template>
+  </MsListItem>
+</MsList>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3723,12 +5647,17 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsStepper :current-step="2"&gt;
-  &lt;MsStep :step="1" title="Passo 1" completed /&gt;
-  &lt;MsStep :step="2" title="Passo 2" active /&gt;
-&lt;/MsStepper&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsStepper :current-step="2">
+  <MsStep :step="1" title="Passo 1" completed />
+  <MsStep :step="2" title="Passo 2" active />
+</MsStepper>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3756,13 +5685,18 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsTree&gt;
-  &lt;MsTreeNode label="src"&gt;
-    &lt;MsTreeNode label="index.ts" /&gt;
-  &lt;/MsTreeNode&gt;
-&lt;/MsTree&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsTree>
+  <MsTreeNode label="src">
+    <MsTreeNode label="index.ts" />
+  </MsTreeNode>
+</MsTree>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3781,11 +5715,16 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsContextMenu :items="menuItems"&gt;
-  &lt;div&gt;Área clicável&lt;/div&gt;
-&lt;/MsContextMenu&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsContextMenu :items="menuItems">
+  <div>Área clicável</div>
+</MsContextMenu>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3805,10 +5744,15 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsChatBubble tone="neutral" author="Ada" message="..." /&gt;
-&lt;MsChatBubble tone="primary" outgoing message="..." /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsChatBubble tone="neutral" author="Ada" message="..." />
+<MsChatBubble tone="primary" outgoing message="..." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3840,11 +5784,16 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsCarousel&gt;
-  &lt;MsCarouselSlide&gt;Slide 1&lt;/MsCarouselSlide&gt;
-&lt;/MsCarousel&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsCarousel>
+  <MsCarouselSlide>Slide 1</MsCarouselSlide>
+</MsCarousel>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3868,11 +5817,16 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsDock position="bottom"&gt;
-  &lt;MsDockItem label="Home" icon="🏠" /&gt;
-&lt;/MsDock&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsDock position="bottom">
+  <MsDockItem label="Home" icon="🏠" />
+</MsDock>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3896,9 +5850,14 @@ export const variationsTemplatesHtml = `
       </div>
     
       </div>
-    <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-      <pre style="margin: 0;"><code>&lt;MsScrollSpy :items="sections" /&gt;</code></pre>
-    </div>
+          <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsScrollSpy :items="sections" />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
+      </div>
     </div>
   </div>
 
@@ -3928,12 +5887,17 @@ export const variationsTemplatesHtml = `
           </MsNavbar>
         </div>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsNavbar tone="primary" size="sm"&gt;
-  &lt;template #brand&gt;⚡ MagicStyle&lt;/template&gt;
-  &lt;div&gt;&lt;a href="#"&gt;Visão Geral&lt;/a&gt;&lt;/div&gt;
-  &lt;template #actions&gt;&lt;span&gt;#2e86de&lt;/span&gt;&lt;/template&gt;
-&lt;/MsNavbar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsNavbar tone="primary" size="sm">
+  <template #brand>⚡ MagicStyle</template>
+  <div><a href="#">Visão Geral</a></div>
+  <template #actions><span>#2e86de</span></template>
+</MsNavbar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -3976,11 +5940,16 @@ export const variationsTemplatesHtml = `
           </MsNavbar>
         </div>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsNavbar variant="glass"&gt;
-  &lt;template #brand&gt;✨ Glassmorphism&lt;/template&gt;
-  &lt;template #actions&gt;&lt;MsButton tone="accent"&gt;Conectar&lt;/MsButton&gt;&lt;/template&gt;
-&lt;/MsNavbar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsNavbar variant="glass">
+  <template #brand>✨ Glassmorphism</template>
+  <template #actions><MsButton tone="accent">Conectar</MsButton></template>
+</MsNavbar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4003,8 +5972,13 @@ export const variationsTemplatesHtml = `
           <template #actions><MsButton size="md" variant="soft" tone="neutral">Large Portal</MsButton></template>
         </MsNavbar>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsNavbar size="lg" tone="neutral"&gt;...&lt;/MsNavbar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsNavbar size="lg" tone="neutral">...</MsNavbar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4031,11 +6005,16 @@ export const variationsTemplatesHtml = `
           </template>
         </MsNavbar>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsNavbar floating variant="elevated"&gt;
-  &lt;template #brand&gt;Magic App&lt;/template&gt;
-  &lt;template #actions&gt;&lt;MsButton pill&gt;Experimente Grátis&lt;/MsButton&gt;&lt;/template&gt;
-&lt;/MsNavbar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsNavbar floating variant="elevated">
+  <template #brand>Magic App</template>
+  <template #actions><MsButton pill>Experimente Grátis</MsButton></template>
+</MsNavbar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4062,11 +6041,16 @@ export const variationsTemplatesHtml = `
           <template #actions><MsButton size="xs" variant="solid" tone="success">Ação</MsButton></template>
         </MsNavbar>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsNavbar shadow="sm"&gt;...&lt;/MsNavbar&gt;
-&lt;MsNavbar shadow="md"&gt;...&lt;/MsNavbar&gt;
-&lt;MsNavbar shadow="lg"&gt;...&lt;/MsNavbar&gt;
-&lt;MsNavbar shadow="xl"&gt;...&lt;/MsNavbar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsNavbar shadow="sm">...</MsNavbar>
+<MsNavbar shadow="md">...</MsNavbar>
+<MsNavbar shadow="lg">...</MsNavbar>
+<MsNavbar shadow="xl">...</MsNavbar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4087,8 +6071,13 @@ export const variationsTemplatesHtml = `
           <template #actions><MsButton size="xs" variant="soft" tone="neutral">Entrar</MsButton></template>
         </MsNavbar>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsNavbar container="xl" tone="primary"&gt;...&lt;/MsNavbar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsNavbar container="xl" tone="primary">...</MsNavbar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
   </div>
@@ -4122,12 +6111,17 @@ export const variationsTemplatesHtml = `
           </MsSidebar>
         </div>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsSidebar tone="neutral" position="relative"&gt;
-  &lt;template #header&gt;&lt;strong&gt;Dashboard&lt;/strong&gt;&lt;/template&gt;
-  &lt;div&gt;Menu Content&lt;/div&gt;
-  &lt;template #footer&gt;Versão 1.2&lt;/template&gt;
-&lt;/MsSidebar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSidebar tone="neutral" position="relative">
+  <template #header><strong>Dashboard</strong></template>
+  <div>Menu Content</div>
+  <template #footer>Versão 1.2</template>
+</MsSidebar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4156,10 +6150,15 @@ export const variationsTemplatesHtml = `
           </MsSidebar>
         </div>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsSidebar width="compact"&gt;...&lt;/MsSidebar&gt;
-&lt;MsSidebar width="normal"&gt;...&lt;/MsSidebar&gt;
-&lt;MsSidebar width="wide"&gt;...&lt;/MsSidebar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSidebar width="compact">...</MsSidebar>
+<MsSidebar width="normal">...</MsSidebar>
+<MsSidebar width="wide">...</MsSidebar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4192,11 +6191,16 @@ export const variationsTemplatesHtml = `
           </template>
         </MsSidebar>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsSidebar v-model:collapsed="isCollapsed" show-toggle&gt;
-  &lt;template #header&gt;Magic Suite&lt;/template&gt;
-  &lt;div&gt;Conteúdo&lt;/div&gt;
-&lt;/MsSidebar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsSidebar v-model:collapsed="isCollapsed" show-toggle>
+  <template #header>Magic Suite</template>
+  <div>Conteúdo</div>
+</MsSidebar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
   </div>
@@ -4227,10 +6231,15 @@ export const variationsTemplatesHtml = `
           </div>
         </MsFooter>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsFooter tone="neutral" layout="simple" copyright="© 2026 MagicStyle Inc."&gt;
-  &lt;a href="#"&gt;Termos&lt;/a&gt;
-&lt;/MsFooter&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsFooter tone="neutral" layout="simple" copyright="© 2026 MagicStyle Inc.">
+  <a href="#">Termos</a>
+</MsFooter>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4259,8 +6268,13 @@ export const variationsTemplatesHtml = `
           </template>
         </MsFooter>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsFooter layout="multi-column" :columns="columns" copyright="..." /&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsFooter layout="multi-column" :columns="columns" copyright="..." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4277,9 +6291,14 @@ export const variationsTemplatesHtml = `
           <span style="font-size: 12px; color: #94a3b8;">Segurança Verificada SSL</span>
         </MsFooter>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsFooter variant="sunken" layout="simple" copyright="..." /&gt;
-&lt;MsFooter variant="inverse" layout="simple" copyright="..." /&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsFooter variant="sunken" layout="simple" copyright="..." />
+<MsFooter variant="inverse" layout="simple" copyright="..." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4299,8 +6318,13 @@ export const variationsTemplatesHtml = `
           <a href="javascript:void(0)" style="color: inherit; text-decoration: none; font-size: 13px;">Termos de Serviço</a>
         </MsFooter>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsFooter shadow="md" layout="simple" copyright="..." /&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsFooter shadow="md" layout="simple" copyright="..." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4317,8 +6341,13 @@ export const variationsTemplatesHtml = `
           </div>
         </MsFooter>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsFooter container="xl" layout="simple" copyright="..." /&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsFooter container="xl" layout="simple" copyright="..." />'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
   </div>
@@ -4346,10 +6375,15 @@ export const variationsTemplatesHtml = `
           </MsScrollbar>
         </div>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsScrollbar tone="accent" max-height="140px" visibility="always"&gt;
-  &lt;div&gt;Conteúdo rolável...&lt;/div&gt;
-&lt;/MsScrollbar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsScrollbar tone="accent" max-height="140px" visibility="always">
+  <div>Conteúdo rolável...</div>
+</MsScrollbar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4390,10 +6424,15 @@ export const variationsTemplatesHtml = `
           </MsScrollbar>
         </div>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsScrollbar size="thin"&gt;...&lt;/MsScrollbar&gt;
-&lt;MsScrollbar size="normal"&gt;...&lt;/MsScrollbar&gt;
-&lt;MsScrollbar size="thick"&gt;...&lt;/MsScrollbar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsScrollbar size="thin">...</MsScrollbar>
+<MsScrollbar size="normal">...</MsScrollbar>
+<MsScrollbar size="thick">...</MsScrollbar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4413,10 +6452,15 @@ export const variationsTemplatesHtml = `
           </div>
         </MsScrollbar>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsScrollbar orientation="horizontal" tone="accent"&gt;
-  &lt;div style="display: flex; width: max-content;"&gt;...&lt;/div&gt;
-&lt;/MsScrollbar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsScrollbar orientation="horizontal" tone="accent">
+  <div style="display: flex; width: max-content;">...</div>
+</MsScrollbar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4460,10 +6504,15 @@ export const variationsTemplatesHtml = `
           </MsScrollbar>
         </div>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsScrollbar visibility="auto" tone="primary" max-height="130px"&gt;
-  &lt;div&gt;Conteúdo rolável...&lt;/div&gt;
-&lt;/MsScrollbar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsScrollbar visibility="auto" tone="primary" max-height="130px">
+  <div>Conteúdo rolável...</div>
+</MsScrollbar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4494,8 +6543,13 @@ export const variationsTemplatesHtml = `
           </MsScrollbar>
         </div>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsScrollbar track-color="#1e293b" thumb-color="#38bdf8"&gt;...&lt;/MsScrollbar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsScrollbar track-color="#1e293b" thumb-color="#38bdf8">...</MsScrollbar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
 
@@ -4526,9 +6580,14 @@ export const variationsTemplatesHtml = `
           </MsScrollbar>
         </div>
       </div>
-      <div class="variation-code-box" style="margin-top: 12px; background: #0f172a; color: #f8fafc; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 11px; overflow-x: auto;">
-        <pre style="margin: 0;"><code>&lt;MsScrollbar radius="0px" size="thick"&gt;...&lt;/MsScrollbar&gt;
-&lt;MsScrollbar arrows size="thick"&gt;...&lt;/MsScrollbar&gt;</code></pre>
+            <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsScrollbar radius="0px" size="thick">...</MsScrollbar>
+<MsScrollbar arrows size="thick">...</MsScrollbar>'
+          language="html"
+          :show-line-numbers="false"
+          :copyable="true"
+        />
       </div>
     </div>
   </div>

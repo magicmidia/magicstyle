@@ -222,9 +222,9 @@
 /* Soft Variant (Default) */
 .ms-alert[data-variant="soft"],
 .ms-alert:not([data-variant]) {
-  background-color: var(--_ms-alert-fg);
+  background-color: var(--_ms-alert-bg);
   border-color: var(--_ms-alert-border);
-  color: var(--_ms-alert-bg);
+  color: var(--_ms-alert-fg);
 }
 
 /* Solid Variant */
@@ -239,4 +239,11 @@
   background-color: transparent;
   border-color: var(--_ms-alert-border);
   color: var(--_ms-alert-fg);
+}
+
+/* Left Accent Strip (FlyonUI Signature) */
+.ms-alert[data-accent="left"],
+.ms-alert--accent-left {
+  border-inline-start-width: 4px;
+  border-inline-start-color: var(--_ms-alert-solid-bg);
 }

@@ -136,8 +136,8 @@
     var(--ms-color-interactive-secondary) 25%,
     transparent
   );
-  --_ms-badge-outline-fg: var(--ms-color-interactive-secondary-fg);
-  --_ms-badge-outline-border: var(--ms-color-border-strong);
+  --_ms-badge-outline-fg: var(--ms-color-interactive-secondary);
+  --_ms-badge-outline-border: var(--ms-color-interactive-secondary);
 }
 
 .ms-badge[data-tone="accent"] {
@@ -205,8 +205,8 @@
 /* Soft (Default) */
 .ms-badge[data-variant="soft"],
 .ms-badge:not([data-variant]) {
-  background-color: var(--_ms-badge-soft-fg);
-  color: var(--_ms-badge-soft-bg);
+  background-color: var(--_ms-badge-soft-bg);
+  color: var(--_ms-badge-soft-fg);
   border-color: var(--_ms-badge-soft-border);
 }
 
@@ -300,4 +300,60 @@
   left: 0;
   transform: translate(-50%, 50%);
   transform-origin: 0% 100%;
+}
+
+/* Ghost Variant */
+.ms-badge[data-variant="ghost"] {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--_ms-badge-outline-fg, currentColor);
+}
+.ms-badge[data-variant="ghost"]:hover {
+  background-color: color-mix(in oklch, var(--_ms-badge-outline-fg, currentColor) 10%, transparent);
+}
+
+/* Pulsing Live Dot Animation (FlyonUI Signature) */
+@keyframes ms-badge-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 color-mix(in oklch, currentColor 70%, transparent);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 5px transparent;
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.ms-badge[data-pulse] .ms-badge-dot,
+.ms-badge--pulsing .ms-badge-dot,
+.ms-badge--dot-only[data-pulse] {
+  animation: ms-badge-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Removable tag button inside badge */
+.ms-badge__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  margin-inline-start: 2px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  border-radius: var(--ms-radius-full);
+  opacity: 0.7;
+  padding: 0;
+  transition:
+    opacity 0.15s ease,
+    background-color 0.15s ease;
+}
+.ms-badge__remove:hover {
+  opacity: 1;
+  background-color: color-mix(in oklch, currentColor 15%, transparent);
 }

@@ -494,3 +494,96 @@
   outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
   outline-offset: 1px;
 }
+
+/* Variant: Soft (FlyonUI Signature: Tinted Surface) */
+.ms-input[data-variant="soft"] {
+  background-color: var(
+    --ms-color-interactive-primary-subtle,
+    color-mix(in oklch, var(--ms-focus-ring-color) 6%, var(--ms-color-surface-sunken))
+  );
+  border-color: color-mix(in oklch, var(--ms-focus-ring-color) 20%, transparent);
+}
+.ms-input[data-variant="soft"]:hover:not([data-disabled]):not([data-invalid]) {
+  background-color: color-mix(
+    in oklch,
+    var(--ms-focus-ring-color) 10%,
+    var(--ms-color-surface-sunken)
+  );
+  border-color: color-mix(in oklch, var(--ms-focus-ring-color) 35%, transparent);
+}
+.ms-input[data-variant="soft"]:focus-within {
+  background-color: var(--ms-color-surface-raised);
+  border-color: var(--ms-focus-ring-color);
+  box-shadow:
+    0 0 0 1px var(--ms-focus-ring-color),
+    0 0 0 3px color-mix(in oklch, var(--ms-focus-ring-color) 18%, transparent);
+}
+
+/* Variant: Ghost (Borderless until hover/focus) */
+.ms-input[data-variant="ghost"] {
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.ms-input[data-variant="ghost"]:hover:not([data-disabled]):not([data-invalid]) {
+  background-color: var(--ms-color-surface-sunken);
+  border-color: var(--ms-color-border-subtle);
+}
+.ms-input[data-variant="ghost"]:focus-within {
+  background-color: var(--ms-color-surface-raised);
+  border-color: var(--ms-focus-ring-color);
+  box-shadow:
+    0 0 0 1px var(--ms-focus-ring-color),
+    0 0 0 3px color-mix(in oklch, var(--ms-focus-ring-color) 18%, transparent);
+}
+
+/* Addon Groups (https://, .com, $, etc.) */
+.ms-input-addon {
+  display: inline-flex;
+  align-items: center;
+  padding-inline: var(--ms-space-3, 12px);
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text-secondary);
+  background-color: var(--ms-color-surface-sunken);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  box-sizing: border-box;
+  white-space: nowrap;
+  user-select: none;
+}
+.ms-input-addon--prefix {
+  border-inline-end: none;
+  border-start-start-radius: var(--ms-control-radius);
+  border-end-start-radius: var(--ms-control-radius);
+}
+.ms-input-addon--suffix {
+  border-inline-start: none;
+  border-start-end-radius: var(--ms-control-radius);
+  border-end-end-radius: var(--ms-control-radius);
+}
+
+/* Group wrapper for input + addon or attached buttons */
+.ms-input-group {
+  display: inline-flex;
+  align-items: stretch;
+  position: relative;
+  width: 100%;
+}
+.ms-input-group > .ms-input {
+  flex: 1;
+}
+.ms-input-group > .ms-input-addon--prefix + .ms-input {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+.ms-input-group > .ms-input:has(+ .ms-input-addon--suffix) {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+.ms-input-group > .ms-input:has(+ .ms-button) {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+.ms-input-group > .ms-button {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}

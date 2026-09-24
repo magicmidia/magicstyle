@@ -2806,11 +2806,8 @@ const App = {
                   </div>
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? "✓ Copiado!" : "📋 Copiar Código" }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
               </div>
 
@@ -3199,11 +3196,8 @@ const App = {
                   <span v-else style="color: var(--ms-color-text-muted);"> Nenhuma ação disparada ainda.</span>
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? 'Copiado!' : 'Copiar Código' }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
               </div>
 
@@ -3328,11 +3322,8 @@ const App = {
                   <div style="margin-block-start: var(--ms-space-1);"><strong>v-model MsTextarea:</strong> "{{ textareaValue }}"</div>
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? 'Copiado!' : 'Copiar Código' }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
               </div>
 
@@ -3534,11 +3525,8 @@ const App = {
                   <div><strong>Plano Selecionado (Radio):</strong> {{ selectedPlan }}</div>
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? 'Copiado!' : 'Copiar Código' }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
               </div>
 
@@ -3693,11 +3681,8 @@ const App = {
                   <div>Orientação: {{ fieldProps.orientation }} | Escala: {{ fieldProps.size }}</div>
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? 'Copiado!' : 'Copiar Código' }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
               </div>
 
@@ -3789,11 +3774,8 @@ const App = {
                   <strong>Valor Selecionado (v-model):</strong> {{ nativeSelectProps.modelValue }}
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? 'Copiado!' : 'Copiar Código' }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
               </div>
 
@@ -3914,11 +3896,8 @@ const App = {
                   </div>
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? 'Copiado!' : 'Copiar Código' }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
               </div>
 
@@ -4037,11 +4016,8 @@ const App = {
                   <strong>Status do Diálogo:</strong> {{ dialogProps.open ? 'Aberto (aria-modal="true")' : 'Fechado' }} | {{ lastDialogEvent }}
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? 'Copiado!' : 'Copiar Código' }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
 
                 <!-- Live MsDialog instance -->
@@ -4194,11 +4170,8 @@ const App = {
                   </div>
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? 'Copiado!' : 'Copiar Código' }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
               </div>
 
@@ -4317,11 +4290,8 @@ const App = {
                   <strong>Interações do Card:</strong> Cliques registrados: {{ cardClickCount }}
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? 'Copiado!' : 'Copiar Código' }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
               </div>
 
@@ -4467,11 +4437,8 @@ const App = {
                   </div>
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? 'Copiado!' : 'Copiar Código' }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
               </div>
 
@@ -4672,13 +4639,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -4826,13 +4789,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -4944,13 +4903,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -5058,13 +5013,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -5188,13 +5139,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -5327,13 +5274,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -5443,13 +5386,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -5571,13 +5510,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -5678,13 +5613,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -5783,13 +5714,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -5920,13 +5847,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -6055,13 +5978,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -6162,13 +6081,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -6329,13 +6244,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -6439,13 +6350,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -6755,13 +6662,9 @@ const App = {
                 </div>
 
                 <div class="code-box">
-                  <div class="code-box-header">
-                    <span class="code-box-title">Código Vue / Template Gerado</span>
-                    <button class="copy-btn" @click="copyCode">
-                      {{ copied ? "✓ Copiado!" : "📋 Copiar" }}
-                    </button>
+                  <div style="margin-top: 14px;">
+                    <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                   </div>
-                  <pre class="code-content"><code>{{ generatedCode }}</code></pre>
                 </div>
               </div>
 
@@ -6852,11 +6755,8 @@ const App = {
                   </div>
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? "✓ Copiado!" : "📋 Copiar Código" }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
               </div>
 
@@ -7000,11 +6900,8 @@ const App = {
                   </div>
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? "✓ Copiado!" : "📋 Copiar Código" }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
               </div>
 
@@ -7101,11 +6998,8 @@ const App = {
                   </div>
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? "✓ Copiado!" : "📋 Copiar Código" }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
               </div>
 
@@ -7226,11 +7120,8 @@ const App = {
                   </div>
                 </div>
 
-                <div class="code-card">
-                  <button class="code-copy-btn" @click="copyCode">
-                    {{ copied ? "✓ Copiado!" : "📋 Copiar Código" }}
-                  </button>
-                  <pre style="margin: 0;"><code>{{ generatedCode }}</code></pre>
+                <div style="margin-top: 14px;">
+                  <MsCodeBlock :code="generatedCode" language="html" :copyable="true" :show-line-numbers="false" />
                 </div>
               </div>
 
