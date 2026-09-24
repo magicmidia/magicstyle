@@ -619,11 +619,18 @@ export type { MsCanvasProps, MsCanvasPattern } from "./components/MsCanvas/types
 export { default as MsBentoGrid } from "./components/MsGrid/MsBentoGrid.vue";
 export { default as MsBentoItem } from "./components/MsGrid/MsBentoItem.vue";
 export { default as MsMasonryGrid } from "./components/MsGrid/MsMasonryGrid.vue";
+export { default as MsRow } from "./components/MsGrid/MsRow.vue";
+export { default as MsCol } from "./components/MsGrid/MsCol.vue";
+export { default as MsGrid } from "./components/MsGrid/MsRow.vue";
 export type {
   MsBentoGridProps,
   MsBentoItemProps,
   MsMasonryGridProps,
   MsGridCols,
+  MsRowProps,
+  MsColProps,
+  MsRowJustify,
+  MsRowAlign,
 } from "./components/MsGrid/types.ts";
 
 export { default as MsSplitPane } from "./components/MsSplitPane/MsSplitPane.vue";
@@ -697,3 +704,13 @@ export type {
   MsGlimpseEmits,
   MsGlimpsePlacement,
 } from "./components/MsGlimpse/types.ts";
+
+// Modern Essentials: Kbd, AspectRatio, HoverCard
+export { default as MsKbd } from "./components/MsKbd/MsKbd.vue";
+export type { MsKbdProps, MsKbdSize, MsKbdVariant, MsKbdTone } from "./components/MsKbd/types.ts";
+
+export { default as MsAspectRatio } from "./components/MsAspectRatio/MsAspectRatio.vue";
+export type { MsAspectRatioProps, MsAspectRatioPreset } from "./components/MsAspectRatio/types.ts";
+
+export { default as MsHoverCard } from "./components/MsHoverCard/MsHoverCard.vue";
+export type { MsHoverCardProps, MsHoverCardPlacement } from "./components/MsHoverCard/types.ts";

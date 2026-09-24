@@ -4217,4 +4217,177 @@ export const componentDocs = {
       },
     ],
   },
+  kbd: {
+    name: "MsKbd",
+    category: "Tipografia & Conteúdo",
+    description:
+      "Indicador visual de teclas de atalho de teclado com suporte a efeito 3D em bisel (raised), contorno moderno (outline) e plano (flat), 4 escalas de altura e 8 tons de marca.",
+    props: [
+      {
+        name: "size",
+        type: "'xs' | 'sm' | 'md' | 'lg'",
+        default: "'sm'",
+        description: "Escala de altura proporcional às teclas físicas (18px, 22px, 26px, 32px).",
+      },
+      {
+        name: "variant",
+        type: "'raised' | 'outline' | 'flat'",
+        default: "'raised'",
+        description:
+          "Estilo estético da tecla: bisel físico 3D, contorno suave ou preenchimento plano.",
+      },
+      {
+        name: "tone",
+        type: "'primary' | 'secondary' | 'accent' | 'neutral' | 'success' | 'info' | 'warning' | 'danger'",
+        default: "'neutral'",
+        description: "Tom semântico corporativo aplicado à tecla.",
+      },
+      {
+        name: "as",
+        type: "string",
+        default: "'kbd'",
+        description: "Tag HTML renderizada.",
+      },
+    ],
+    slots: [
+      { name: "default", description: "Caractere ou glifo do atalho (ex: ⌘, Ctrl, K, Shift)." },
+    ],
+    tokens: [
+      {
+        name: "--ms-font-mono",
+        default: "Monospace Font",
+        description: "Tipografia tabular usada para as teclas.",
+      },
+      {
+        name: "--ms-color-border-subtle",
+        default: "Subtle Border",
+        description: "Borda hairline do bisel da tecla.",
+      },
+    ],
+  },
+  "aspect-ratio": {
+    name: "MsAspectRatio",
+    category: "Layout & Estrutura",
+    description:
+      "Contêiner que preserva proporções dimensionais constantes (16:9, 4:3, 1:1, 21:9, 9:16 ou numéricas customizadas) para mídias, vídeos, mapas e imagens responsivas sem reflow de layout.",
+    props: [
+      {
+        name: "ratio",
+        type: "number | string",
+        default: "16 / 9",
+        description:
+          "Proporção de aspecto (ex: '16:9', '4:3', '1:1', '21:9', '9:16' ou decimal 1.777).",
+      },
+      {
+        name: "as",
+        type: "string",
+        default: "'div'",
+        description: "Tag HTML base do contêiner.",
+      },
+    ],
+    slots: [
+      { name: "default", description: "Elemento de mídia filho (img, video, iframe, etc.)." },
+    ],
+  },
+  "hover-card": {
+    name: "MsHoverCard",
+    category: "Overlays & Diálogos",
+    description:
+      "Cartão flutuante ativado por hover inspirado no padrão Shadcn / FlyonUI com micro-animação cúbica, tempos de espera ajustáveis e posicionamento em 4 eixos.",
+    props: [
+      {
+        name: "open",
+        type: "boolean",
+        default: "undefined",
+        description: "Controle externo do estado de visibilidade (v-model:open).",
+      },
+      {
+        name: "openDelay",
+        type: "number",
+        default: "200",
+        description: "Atraso em milissegundos antes da abertura do cartão flutuante.",
+      },
+      {
+        name: "closeDelay",
+        type: "number",
+        default: "300",
+        description: "Atraso em milissegundos antes de fechar o cartão após a saída do mouse.",
+      },
+      {
+        name: "placement",
+        type: "'top' | 'bottom' | 'left' | 'right'",
+        default: "'bottom'",
+        description: "Posição do cartão em relação ao gatilho.",
+      },
+      {
+        name: "disabled",
+        type: "boolean",
+        default: "false",
+        description: "Desabilita a abertura do cartão flutuante.",
+      },
+    ],
+    slots: [
+      { name: "trigger", description: "Elemento de gatilho que ativa o cartão sob hover." },
+      { name: "default", description: "Conteúdo completo renderizado no interior do cartão." },
+    ],
+    emits: [
+      {
+        name: "update:open",
+        payload: "boolean",
+        description: "Emitido na alternância de visibilidade.",
+      },
+      { name: "open", payload: "void", description: "Emitido quando o cartão é aberto." },
+      { name: "close", payload: "void", description: "Emitido quando o cartão é fechado." },
+    ],
+  },
+  grid: {
+    name: "MsGrid / MsRow / MsCol",
+    category: "Layout & Estrutura",
+    description:
+      "Sistema de grid responsivo de 12 colunas corporativo com controle de gutters semânticos (none, xs, sm, md, lg, xl), offsets (1 a 11), alinhamentos flexíveis e breakpoints integrados (sm, md, lg, xl).",
+    props: [
+      {
+        name: "gutter",
+        type: "'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'",
+        default: "'md'",
+        description: "Espaçamento entre colunas no MsRow (0px a 32px).",
+      },
+      {
+        name: "justify",
+        type: "'start' | 'center' | 'end' | 'between' | 'around'",
+        default: "'start'",
+        description: "Alinhamento horizontal dos filhos no MsRow.",
+      },
+      {
+        name: "align",
+        type: "'top' | 'middle' | 'bottom'",
+        default: "'top'",
+        description: "Alinhamento vertical dos filhos no MsRow.",
+      },
+      {
+        name: "span",
+        type: "number (1-12)",
+        default: "12",
+        description: "Número de colunas ocupadas pelo MsCol.",
+      },
+      {
+        name: "offset",
+        type: "number (1-11)",
+        default: "0",
+        description: "Deslocamento horizontal de colunas vazias à esquerda no MsCol.",
+      },
+      {
+        name: "sm, md, lg, xl",
+        type: "number (1-12)",
+        default: "undefined",
+        description: "Spans específicos para cada breakpoint responsivo no MsCol.",
+      },
+    ],
+    slots: [
+      {
+        name: "default",
+        description: "Elementos de coluna (no MsRow) ou cartões/conteúdo (no MsCol).",
+      },
+    ],
+  },
 };

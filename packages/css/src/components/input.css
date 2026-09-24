@@ -45,17 +45,49 @@
   cursor: not-allowed;
 }
 
+.ms-input[data-size="xs"] {
+  block-size: 28px;
+  padding-inline: var(--ms-space-2, 8px);
+  font-size: 0.75rem;
+}
 .ms-input[data-size="sm"] {
-  block-size: var(--ms-layout-field-height-sm);
+  block-size: var(--ms-layout-field-height-sm, 32px);
+  padding-inline: var(--ms-space-2-5, 10px);
+}
+.ms-input[data-size="md"] {
+  block-size: var(--ms-layout-field-height-md, 40px);
 }
 .ms-input[data-size="lg"] {
-  block-size: var(--ms-layout-field-height-lg);
+  block-size: var(--ms-layout-field-height-lg, 48px);
 }
 .ms-input[data-size="xl"] {
-  block-size: var(--ms-layout-field-height-xl);
+  block-size: var(--ms-layout-field-height-xl, 56px);
 }
 .ms-input[data-size="xxl"] {
-  block-size: var(--ms-layout-field-height-xxl);
+  block-size: var(--ms-layout-field-height-xxl, 64px);
+}
+
+/* Shape Geometry Modifiers (Harmonized with MsButton and MsSelect) */
+.ms-input[data-shape="square"],
+.ms-input--shape-square {
+  border-radius: 0;
+}
+.ms-input[data-shape="rounded-sm"],
+.ms-input--shape-rounded-sm {
+  border-radius: var(--ms-radius-sm, 4px);
+}
+.ms-input[data-shape="rounded"],
+.ms-input--shape-rounded {
+  border-radius: var(--ms-radius-md, 6px);
+}
+.ms-input[data-shape="rounded-lg"],
+.ms-input--shape-rounded-lg {
+  border-radius: var(--ms-radius-lg, 8px);
+}
+.ms-input[data-shape="pill"],
+.ms-input--shape-pill {
+  border-radius: 9999px;
+  padding-inline: var(--ms-space-4, 16px);
 }
 
 .ms-input-native {

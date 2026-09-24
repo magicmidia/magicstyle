@@ -127,6 +127,12 @@ import {
   MsChoicebox,
   MsChoiceboxItem,
   MsGlimpse,
+  MsKbd,
+  MsAspectRatio,
+  MsHoverCard,
+  MsRow,
+  MsCol,
+  MsGrid,
 } from "@magic-style/vue";
 import { useBatch15, batch15TemplatesHtml } from "./studio-batch15.js";
 import { useBatch9To14, batch9To14TemplatesHtml } from "./studio-batch9-14.js";
@@ -265,9 +271,25 @@ const App = {
     MsChoicebox,
     MsChoiceboxItem,
     MsGlimpse,
+    MsKbd,
+    MsAspectRatio,
+    MsHoverCard,
+    MsRow,
+    MsCol,
+    MsGrid,
   },
   setup() {
     const TAB_ALIASES = {
+      grid: "grid",
+      row: "grid",
+      col: "grid",
+      kbd: "kbd",
+      key: "kbd",
+      keyboard: "kbd",
+      aspectratio: "aspect-ratio",
+      "aspect-ratio": "aspect-ratio",
+      hovercard: "hover-card",
+      "hover-card": "hover-card",
       button: "buttons",
       buttons: "buttons",
       input: "inputs",
@@ -337,10 +359,15 @@ const App = {
       return TAB_ALIASES[clean] || clean || "overview";
     };
 
-    const initialTab =
-      typeof window !== "undefined" && window.location.hash
-        ? getNormalizedTab(window.location.hash)
-        : "overview";
+    const getInitialTab = () => {
+      if (typeof window === "undefined") return "overview";
+      if (window.location.hash) return getNormalizedTab(window.location.hash);
+      const q = new window.URLSearchParams(window.location.search).get("component");
+      if (q) return getNormalizedTab(q);
+      return "overview";
+    };
+
+    const initialTab = getInitialTab();
     const activeTab = ref(initialTab || "overview");
 
     if (typeof window !== "undefined") {
@@ -2121,8 +2148,15 @@ const App = {
             badge: "Brand",
             badgeTone: "accent",
           },
+          {
+            id: "grid",
+            label: "Grid & Layout (12-Col)",
+            icon: "📐",
+            badge: "12-Col",
+            badgeTone: "primary",
+          },
           { id: "dials", label: "Temas & Dials Visuais", icon: "🎛️" },
-          { id: "utilities", label: "Utilitários CSS & Grid", icon: "🛠️" },
+          { id: "utilities", label: "Utilitários CSS", icon: "🛠️" },
           { id: "rtl", label: "Suporte RTL Bidirecional", icon: "🔄" },
           { id: "customization", label: "Customização Dinâmica", icon: "✨" },
         ],
@@ -2135,6 +2169,13 @@ const App = {
           { id: "pages", label: "MsPage & Headers", icon: "📄" },
           { id: "cards", label: "MsCard (Superfície)", icon: "🃏" },
           { id: "separators", label: "MsSeparator", icon: "➖" },
+          {
+            id: "aspect-ratio",
+            label: "MsAspectRatio",
+            icon: "🖼️",
+            badge: "Novo",
+            badgeTone: "success",
+          },
           {
             id: "scrollbar",
             label: "MsScrollbar (Barra Rolagem)",
@@ -2240,6 +2281,13 @@ const App = {
           { id: "accordions", label: "MsAccordion (Sanfona)", icon: "🪗" },
           { id: "popovers", label: "MsPopover (Flutuante)", icon: "💬" },
           { id: "context-menus", label: "MsContextMenu", icon: "🖱️" },
+          {
+            id: "hover-card",
+            label: "MsHoverCard",
+            icon: "🃏",
+            badge: "Novo",
+            badgeTone: "primary",
+          },
           { id: "glimpse", label: "MsGlimpse (Hovercard)", icon: "🔍", badge: "Novo" },
         ],
       },
@@ -2272,6 +2320,13 @@ const App = {
       {
         title: "📝 Tipografia & Conteúdo",
         items: [
+          {
+            id: "kbd",
+            label: "MsKbd (Teclas)",
+            icon: "⌨️",
+            badge: "Novo",
+            badgeTone: "primary",
+          },
           { id: "code", label: "MsCode (Inline)", icon: "💻", badge: "8 Tons" },
           { id: "code-block", label: "MsCodeBlock", icon: "📑", badge: "Destacado" },
           { id: "snippet", label: "MsSnippet (Terminal)", icon: "📋", badge: "Abas" },

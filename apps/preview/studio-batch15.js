@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 export function useBatch15() {
   // --- SNIPPET STATE ---
@@ -89,6 +89,33 @@ export function useBatch15() {
   const glimpseShowDelay = ref(180);
   const glimpseHideDelay = ref(150);
 
+  // --- KBD STATE ---
+  const kbdSize = ref("sm");
+  const kbdVariant = ref("raised");
+  const kbdTone = ref("neutral");
+  const kbdKey = ref("⌘");
+
+  // --- ASPECT RATIO STATE ---
+  const aspectRatioVal = ref("16:9");
+
+  // --- HOVER CARD STATE ---
+  const hoverCardPlacement = ref("bottom");
+  const hoverCardOpenDelay = ref(150);
+  const hoverCardCloseDelay = ref(250);
+
+  const kbdSnippetCode = computed(
+    () =>
+      `<MsKbd size="${kbdSize.value}" variant="${kbdVariant.value}" tone="${kbdTone.value}">${kbdKey.value}</MsKbd>`,
+  );
+  const aspectRatioSnippetCode = computed(
+    () =>
+      `<MsAspectRatio ratio="${aspectRatioVal.value}">\n  <img src="image.jpg" style="width: 100%; height: 100%; object-fit: cover;" />\n</MsAspectRatio>`,
+  );
+  const hoverCardSnippetCode = computed(
+    () =>
+      `<MsHoverCard placement="${hoverCardPlacement.value}" :open-delay="${hoverCardOpenDelay.value}" :close-delay="${hoverCardCloseDelay.value}">\n  <template #trigger>\n    <button class="ms-button">Passe o mouse</button>\n  </template>\n  <div>Conteúdo flutuante...</div>\n</MsHoverCard>`,
+  );
+
   return {
     snippetVariant,
     snippetSize,
@@ -111,6 +138,17 @@ export function useBatch15() {
     glimpseLoading,
     glimpseShowDelay,
     glimpseHideDelay,
+    kbdSize,
+    kbdVariant,
+    kbdTone,
+    kbdKey,
+    aspectRatioVal,
+    hoverCardPlacement,
+    hoverCardOpenDelay,
+    hoverCardCloseDelay,
+    kbdSnippetCode,
+    aspectRatioSnippetCode,
+    hoverCardSnippetCode,
   };
 }
 
@@ -400,6 +438,199 @@ export const batch15TemplatesHtml = `
           <input v-model="b15.glimpseLoading" type="checkbox" />
           <span>Simular Estado de Carregamento (Skeleton)</span>
         </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- KBD INTERACTIVE PLAYGROUND -->
+  <div v-if="activeTab === 'kbd'" class="playground-grid">
+    <div class="canvas-area">
+      <div class="canvas-preview" style="min-height: 200px; padding: 32px; display: flex; flex-direction: column; gap: 20px; align-items: center; justify-content: center;">
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <MsKbd :size="b15.kbdSize" :variant="b15.kbdVariant" :tone="b15.kbdTone">
+            {{ b15.kbdKey }}
+          </MsKbd>
+          <span v-if="b15.kbdKey === '⌘'" style="font-size: 13px; color: var(--ms-color-text-secondary);">+</span>
+          <MsKbd v-if="b15.kbdKey === '⌘'" :size="b15.kbdSize" :variant="b15.kbdVariant" :tone="b15.kbdTone">
+            K
+          </MsKbd>
+        </div>
+        <p style="margin: 0; font-size: 13px; color: var(--ms-color-text-secondary);">
+          Atalho renderizado: {{ b15.kbdKey }} • Tamanho: {{ b15.kbdSize }} • Variante: {{ b15.kbdVariant }}
+        </p>
+      </div>
+
+      <div style="margin-top: 16px;">
+        <MsCodeBlock
+          :code="b15.kbdSnippetCode"
+          language="html"
+          :show-line-numbers="false"
+        />
+      </div>
+    </div>
+
+    <div class="controls-card">
+      <div class="controls-card-title">Propriedades do MsKbd</div>
+
+      <div class="prop-row">
+        <label class="prop-label">Tecla / Glifo</label>
+        <select v-model="b15.kbdKey" class="prop-select">
+          <option value="⌘">⌘ (Command)</option>
+          <option value="Ctrl">Ctrl (Control)</option>
+          <option value="Alt">Alt / Option</option>
+          <option value="Shift">Shift ⇧</option>
+          <option value="Enter">Enter ↵</option>
+          <option value="Esc">Esc</option>
+          <option value="Tab">Tab ⇥</option>
+          <option value="Space">Space</option>
+        </select>
+      </div>
+
+      <div class="prop-row">
+        <label class="prop-label">Tamanho (size)</label>
+        <select v-model="b15.kbdSize" class="prop-select">
+          <option value="xs">xs (18px)</option>
+          <option value="sm">sm (22px - Padrão)</option>
+          <option value="md">md (26px)</option>
+          <option value="lg">lg (32px)</option>
+        </select>
+      </div>
+
+      <div class="prop-row">
+        <label class="prop-label">Variante (variant)</label>
+        <select v-model="b15.kbdVariant" class="prop-select">
+          <option value="raised">raised (Bisel 3D)</option>
+          <option value="outline">outline (Contorno)</option>
+          <option value="flat">flat (Plano)</option>
+        </select>
+      </div>
+
+      <div class="prop-row">
+        <label class="prop-label">Tom de Marca (tone)</label>
+        <select v-model="b15.kbdTone" class="prop-select">
+          <option value="neutral">neutral</option>
+          <option value="primary">primary</option>
+          <option value="secondary">secondary</option>
+          <option value="accent">accent</option>
+          <option value="success">success</option>
+          <option value="info">info</option>
+          <option value="warning">warning</option>
+          <option value="danger">danger</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASPECT RATIO INTERACTIVE PLAYGROUND -->
+  <div v-if="activeTab === 'aspect-ratio'" class="playground-grid">
+    <div class="canvas-area">
+      <div class="canvas-preview" style="min-height: 280px; padding: 32px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div style="width: 100%; max-width: 480px;">
+          <MsAspectRatio
+            :ratio="b15.aspectRatioVal"
+            style="background: var(--ms-color-surface-sunken); border: 1px solid var(--ms-color-border-subtle); border-radius: var(--ms-radius-lg); overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative;"
+          >
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--ms-color-text-secondary); padding: 16px; width: 100%; height: 100%; box-sizing: border-box;">
+              <span style="font-size: 32px; display: block; margin-bottom: 6px;">🖼️</span>
+              <div style="font-weight: 700; font-size: 14px; color: var(--ms-color-text-primary);">
+                Proporção: {{ b15.aspectRatioVal }}
+              </div>
+              <div style="font-size: 12px; margin-top: 4px;">
+                Espaço responsivo preservado sem reflow de layout
+              </div>
+            </div>
+          </MsAspectRatio>
+        </div>
+      </div>
+
+      <div style="margin-top: 16px;">
+        <MsCodeBlock
+          :code="b15.aspectRatioSnippetCode"
+          language="html"
+          :show-line-numbers="false"
+        />
+      </div>
+    </div>
+
+    <div class="controls-card">
+      <div class="controls-card-title">Propriedades do MsAspectRatio</div>
+
+      <div class="prop-row">
+        <label class="prop-label">Proporção (ratio)</label>
+        <select v-model="b15.aspectRatioVal" class="prop-select">
+          <option value="16:9">16:9 (Vídeo Widescreen)</option>
+          <option value="4:3">4:3 (Foto / Retrô)</option>
+          <option value="1:1">1:1 (Quadrado / Avatar)</option>
+          <option value="21:9">21:9 (Ultrawide Cinema)</option>
+          <option value="9:16">9:16 (Stories / Reels / Shorts)</option>
+          <option value="3:2">3:2 (Fotografia 35mm)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOVER CARD INTERACTIVE PLAYGROUND -->
+  <div v-if="activeTab === 'hover-card'" class="playground-grid">
+    <div class="canvas-area">
+      <div class="canvas-preview" style="min-height: 280px; padding: 48px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;">
+        <MsHoverCard
+          :placement="b15.hoverCardPlacement"
+          :open-delay="b15.hoverCardOpenDelay"
+          :close-delay="b15.hoverCardCloseDelay"
+        >
+          <template #trigger>
+            <button class="ms-button ms-button--solid ms-button--tone-primary">
+              <span>Passe o mouse aqui</span>
+            </button>
+          </template>
+          <div style="display: flex; gap: 14px; max-width: 300px; padding: 4px;">
+            <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--ms-color-primary), var(--ms-color-accent)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">
+              MS
+            </div>
+            <div>
+              <div style="font-weight: 700; font-size: 13px;">Magic-Style UI</div>
+              <div style="font-size: 11px; color: var(--ms-color-text-secondary); margin-bottom: 6px;">@magicstyle</div>
+              <p style="font-size: 12px; margin: 0; line-height: 1.4;">
+                Cartão flutuante ativado por hover com animação cúbica suave.
+              </p>
+            </div>
+          </div>
+        </MsHoverCard>
+        <span style="font-size: 12px; color: var(--ms-color-text-muted);">
+          Gatilho posicionado com placement="{{ b15.hoverCardPlacement }}"
+        </span>
+      </div>
+
+      <div style="margin-top: 16px;">
+        <MsCodeBlock
+          :code="b15.hoverCardSnippetCode"
+          language="html"
+          :show-line-numbers="false"
+        />
+      </div>
+    </div>
+
+    <div class="controls-card">
+      <div class="controls-card-title">Propriedades do MsHoverCard</div>
+
+      <div class="prop-row">
+        <label class="prop-label">Posicionamento (placement)</label>
+        <select v-model="b15.hoverCardPlacement" class="prop-select">
+          <option value="top">Superior (top)</option>
+          <option value="bottom">Inferior (bottom)</option>
+          <option value="left">Esquerda (left)</option>
+          <option value="right">Direita (right)</option>
+        </select>
+      </div>
+
+      <div class="prop-row">
+        <label class="prop-label">Atraso Abertura (ms)</label>
+        <input type="number" class="prop-input" v-model.number="b15.hoverCardOpenDelay" min="0" max="1000" step="50" />
+      </div>
+
+      <div class="prop-row">
+        <label class="prop-label">Atraso Fechamento (ms)</label>
+        <input type="number" class="prop-input" v-model.number="b15.hoverCardCloseDelay" min="0" max="1000" step="50" />
       </div>
     </div>
   </div>

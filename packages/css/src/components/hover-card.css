@@ -1,0 +1,77 @@
+/*
+ * Magic-Style HoverCard component.
+ * Standardized across Shadcn UI and Radix HoverCard specifications.
+ */
+
+.ms-hover-card {
+  position: relative;
+  display: inline-block;
+}
+
+.ms-hover-card__trigger {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.ms-hover-card__content {
+  position: absolute;
+  z-index: 1050;
+  width: var(--ms-hover-card-width, 300px);
+  max-width: 90vw;
+  box-sizing: border-box;
+  padding: var(--ms-space-4, 16px);
+  background-color: var(--ms-color-surface-raised, #ffffff);
+  border: 1px solid var(--ms-color-border-subtle, #e2e8f0);
+  border-radius: var(--ms-radius-lg, 8px);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  color: var(--ms-color-text-primary, #0f172a);
+  pointer-events: auto;
+  transform-origin: top center;
+  animation: ms-hover-card-enter 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+:root[data-ms-color-mode="dark"] .ms-hover-card__content {
+  background-color: var(--ms-color-surface-raised, #18181b);
+  border-color: var(--ms-color-border-subtle, #27272a);
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.5),
+    0 8px 10px -6px rgba(0, 0, 0, 0.5);
+}
+
+/* Placements */
+.ms-hover-card__content--placement-bottom {
+  top: calc(100% + 8px);
+  left: 0;
+  transform-origin: top left;
+}
+
+.ms-hover-card__content--placement-top {
+  bottom: calc(100% + 8px);
+  left: 0;
+  transform-origin: bottom left;
+}
+
+.ms-hover-card__content--placement-left {
+  right: calc(100% + 8px);
+  top: 0;
+  transform-origin: top right;
+}
+
+.ms-hover-card__content--placement-right {
+  left: calc(100% + 8px);
+  top: 0;
+  transform-origin: top left;
+}
+
+@keyframes ms-hover-card-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

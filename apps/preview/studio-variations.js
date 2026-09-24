@@ -4533,4 +4533,447 @@ export const variationsTemplatesHtml = `
     </div>
   </div>
 
+  <!-- ========================================== -->
+  <!-- TAB: KBD (TECLAS / ATALHOS) -->
+  <!-- ========================================== -->
+  <div v-if="activeTab === 'kbd'">
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">1. Escala de Tamanhos (Sizing Scale)</div>
+        <span class="ms-badge ms-badge--sm ms-badge--variant-soft ms-badge--tone-primary">xs, sm, md, lg</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 12px; color: var(--ms-color-text-secondary);">xs (18px):</span>
+          <MsKbd size="xs">⌘</MsKbd>
+          <MsKbd size="xs">K</MsKbd>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 12px; color: var(--ms-color-text-secondary);">sm (22px - Padrão):</span>
+          <MsKbd size="sm">⌘</MsKbd>
+          <MsKbd size="sm">K</MsKbd>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 12px; color: var(--ms-color-text-secondary);">md (26px):</span>
+          <MsKbd size="md">Ctrl</MsKbd>
+          <MsKbd size="md">Shift</MsKbd>
+          <MsKbd size="md">P</MsKbd>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 12px; color: var(--ms-color-text-secondary);">lg (32px):</span>
+          <MsKbd size="lg">Space</MsKbd>
+          <MsKbd size="lg">Enter ↵</MsKbd>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsKbd size="xs">⌘</MsKbd>
+<MsKbd size="sm">⌘</MsKbd>
+<MsKbd size="md">Ctrl</MsKbd>
+<MsKbd size="lg">Space</MsKbd>'
+          language="html"
+          :show-line-numbers="false"
+        />
+      </div>
+    </div>
+
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Variantes Visuais (Variants)</div>
+        <span class="ms-badge ms-badge--sm ms-badge--variant-soft ms-badge--tone-accent">raised, outline, flat</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <span style="font-size: 12px; font-weight: 600;">Raised (Efeito 3D Bisel):</span>
+          <div style="display: flex; gap: 4px;">
+            <MsKbd variant="raised">⌘</MsKbd>
+            <MsKbd variant="raised">Option</MsKbd>
+            <MsKbd variant="raised">I</MsKbd>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <span style="font-size: 12px; font-weight: 600;">Outline (Contorno Suave):</span>
+          <div style="display: flex; gap: 4px;">
+            <MsKbd variant="outline">⌘</MsKbd>
+            <MsKbd variant="outline">Option</MsKbd>
+            <MsKbd variant="outline">I</MsKbd>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <span style="font-size: 12px; font-weight: 600;">Flat (Preenchimento Plano):</span>
+          <div style="display: flex; gap: 4px;">
+            <MsKbd variant="flat">⌘</MsKbd>
+            <MsKbd variant="flat">Option</MsKbd>
+            <MsKbd variant="flat">I</MsKbd>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Efeito físico biselado 3D (padrão) -->
+<MsKbd variant="raised">⌘</MsKbd>
+
+<!-- Estilo contornado moderno estilo Shadcn -->
+<MsKbd variant="outline">⌘</MsKbd>
+
+<!-- Estilo plano com fundo sólido discreto -->
+<MsKbd variant="flat">⌘</MsKbd>'
+          language="html"
+          :show-line-numbers="false"
+        />
+      </div>
+    </div>
+
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">3. 8 Tons Semânticos de Marca (Brand Tones)</div>
+        <span class="ms-badge ms-badge--sm ms-badge--variant-soft ms-badge--tone-success">8 Tons</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <MsKbd tone="primary">Primary</MsKbd>
+        <MsKbd tone="secondary">Secondary</MsKbd>
+        <MsKbd tone="accent">Accent</MsKbd>
+        <MsKbd tone="neutral">Neutral</MsKbd>
+        <MsKbd tone="success">Success</MsKbd>
+        <MsKbd tone="info">Info</MsKbd>
+        <MsKbd tone="warning">Warning</MsKbd>
+        <MsKbd tone="danger">Danger</MsKbd>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsKbd tone="primary">Primary</MsKbd>
+<MsKbd tone="success">Success</MsKbd>
+<MsKbd tone="danger">Danger</MsKbd>'
+          language="html"
+          :show-line-numbers="false"
+        />
+      </div>
+    </div>
+
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">4. Atalhos no Contexto de Controles (Inputs & Buttons)</div>
+        <span class="ms-badge ms-badge--sm ms-badge--variant-soft ms-badge--tone-info">Prática Real</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
+        <div style="position: relative; display: inline-flex; align-items: center; width: 100%; max-width: 320px;">
+          <input
+            type="text"
+            class="ms-input ms-input--md"
+            placeholder="Pesquisar documentação..."
+            style="width: 100%; padding-right: 56px;"
+          />
+          <div style="position: absolute; right: 8px; display: flex; gap: 2px;">
+            <MsKbd size="xs">⌘</MsKbd>
+            <MsKbd size="xs">K</MsKbd>
+          </div>
+        </div>
+
+        <button class="ms-button ms-button--md ms-button--outline" style="display: inline-flex; align-items: center; gap: 8px;">
+          <span>Salvar Alterações</span>
+          <MsKbd size="xs">Ctrl</MsKbd>
+          <MsKbd size="xs">S</MsKbd>
+        </button>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<div style="position: relative; display: inline-flex; align-items: center;">
+  <MsInput placeholder="Pesquisar documentação..." style="padding-right: 60px;" />
+  <div style="position: absolute; right: 8px; display: flex; gap: 2px;">
+    <MsKbd size="xs">⌘</MsKbd>
+    <MsKbd size="xs">K</MsKbd>
+  </div>
+</div>'
+          language="html"
+          :show-line-numbers="false"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TAB: ASPECT RATIO (PROPORÇÕES DE MÍDIA) -->
+  <!-- ========================================== -->
+  <div v-if="activeTab === 'aspect-ratio'">
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">1. Proporções Canônicas de Vídeo & Imagem</div>
+        <span class="ms-badge ms-badge--sm ms-badge--variant-soft ms-badge--tone-primary">16:9, 4:3, 1:1, 21:9</span>
+      </div>
+      <div class="variation-preview-box" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+        <div>
+          <div style="font-size: 12px; font-weight: 700; margin-bottom: 6px;">16:9 (Vídeo HD Padrão):</div>
+          <MsAspectRatio ratio="16:9" style="background: var(--ms-color-surface-sunken); border: 1px solid var(--ms-color-border-subtle); border-radius: var(--ms-radius-md); display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: var(--ms-color-text-secondary); font-size: 13px;">
+              <span style="font-size: 24px; display: block; margin-bottom: 4px;">🎬</span>
+              16:9 Widescreen (1.777)
+            </div>
+          </MsAspectRatio>
+        </div>
+
+        <div>
+          <div style="font-size: 12px; font-weight: 700; margin-bottom: 6px;">4:3 (Fotografia / Retrô):</div>
+          <MsAspectRatio ratio="4:3" style="background: var(--ms-color-surface-sunken); border: 1px solid var(--ms-color-border-subtle); border-radius: var(--ms-radius-md); display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: var(--ms-color-text-secondary); font-size: 13px;">
+              <span style="font-size: 24px; display: block; margin-bottom: 4px;">📷</span>
+              4:3 Standard (1.333)
+            </div>
+          </MsAspectRatio>
+        </div>
+
+        <div>
+          <div style="font-size: 12px; font-weight: 700; margin-bottom: 6px;">1:1 (Quadrado / Avatar):</div>
+          <MsAspectRatio ratio="1:1" style="background: var(--ms-color-surface-sunken); border: 1px solid var(--ms-color-border-subtle); border-radius: var(--ms-radius-md); display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: var(--ms-color-text-secondary); font-size: 13px;">
+              <span style="font-size: 24px; display: block; margin-bottom: 4px;">⏹️</span>
+              1:1 Square (1.000)
+            </div>
+          </MsAspectRatio>
+        </div>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<!-- Proporção 16:9 para vídeos e banners -->
+<MsAspectRatio ratio="16:9">
+  <iframe src="https://www.youtube.com/embed/..." allowfullscreen></iframe>
+</MsAspectRatio>
+
+<!-- Proporção 1:1 para cartões quadrados e avatares -->
+<MsAspectRatio ratio="1:1">
+  <img src="/avatar.jpg" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;" />
+</MsAspectRatio>'
+          language="html"
+          :show-line-numbers="false"
+        />
+      </div>
+    </div>
+
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Imagem com Object-Fit Cover</div>
+        <span class="ms-badge ms-badge--sm ms-badge--variant-soft ms-badge--tone-accent">Hero Card</span>
+      </div>
+      <div class="variation-preview-box" style="max-width: 480px;">
+        <MsAspectRatio ratio="16:9" style="border-radius: var(--ms-radius-lg); overflow: hidden; border: 1px solid var(--ms-color-border-subtle); position: relative;">
+          <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2e86de 0%, #341f97 100%); display: flex; align-items: flex-end; padding: 20px; color: #fff;">
+            <div>
+              <span class="ms-badge ms-badge--sm" data-tone="primary" data-variant="solid">Novo Lançamento</span>
+              <h4 style="margin: 8px 0 2px; color: #fff;">Magic-Style Architecture Baseline 1.2</h4>
+              <p style="margin: 0; font-size: 12px; opacity: 0.85;">Preservação matemática de proporção sem flicker de renderização.</p>
+            </div>
+          </div>
+        </MsAspectRatio>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsAspectRatio ratio="16:9" style="border-radius: 12px; overflow: hidden;">
+  <img src="banner.webp" style="width: 100%; height: 100%; object-fit: cover;" />
+</MsAspectRatio>'
+          language="html"
+          :show-line-numbers="false"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TAB: HOVER CARD (OVERLAYS ESTILO SHADCN) -->
+  <!-- ========================================== -->
+  <div v-if="activeTab === 'hover-card'">
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">1. Perfil de Usuário & Card de Autor (User Profile)</div>
+        <span class="ms-badge ms-badge--sm ms-badge--variant-soft ms-badge--tone-primary">Shadcn DNA</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; gap: 24px; align-items: center; padding: 32px 16px;">
+        <MsHoverCard placement="bottom" :open-delay="150" :close-delay="250">
+          <template #trigger>
+            <a href="javascript:void(0)" class="ms-link ms-link--tone-primary" style="font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">
+              @magicstyle
+            </a>
+          </template>
+          <div style="display: flex; gap: 14px; align-items: flex-start; max-width: 320px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #2e86de, #341f97); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">
+              MS
+            </div>
+            <div>
+              <div style="font-weight: 700; font-size: 14px; color: var(--ms-color-text-primary);">Magic-Style UI</div>
+              <div style="font-size: 12px; color: var(--ms-color-text-secondary); margin-bottom: 6px;">@magicstyle • Sistema Enterprise</div>
+              <p style="font-size: 12px; color: var(--ms-color-text-primary); margin: 0 0 10px; line-height: 1.4;">
+                Design system governado pela Architecture Baseline 1.2 com contratos estritos de tokens e acessibilidade AAA.
+              </p>
+              <div style="display: flex; gap: 12px; font-size: 11px; color: var(--ms-color-text-muted);">
+                <span><strong>2.4k</strong> Seguidores</span>
+                <span><strong>100%</strong> Conforme</span>
+              </div>
+            </div>
+          </div>
+        </MsHoverCard>
+
+        <span style="font-size: 13px; color: var(--ms-color-text-secondary);">
+          Passe o mouse sobre o link <strong style="color: var(--ms-color-primary);">@magicstyle</strong> para visualizar o cartão flutuante.
+        </span>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsHoverCard placement="bottom" :open-delay="150" :close-delay="250">
+  <template #trigger>
+    <a href="#" class="ms-link">@magicstyle</a>
+  </template>
+  
+  <div style="display: flex; gap: 12px;">
+    <MsAvatar name="Magic-Style" />
+    <div>
+      <h4>Magic-Style UI</h4>
+      <p>Design system corporativo moderno.</p>
+    </div>
+  </div>
+</MsHoverCard>'
+          language="html"
+          :show-line-numbers="false"
+        />
+      </div>
+    </div>
+
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Posicionamento nos 4 Eixos (Placement)</div>
+        <span class="ms-badge ms-badge--sm ms-badge--variant-soft ms-badge--tone-accent">top, bottom, left, right</span>
+      </div>
+      <div class="variation-preview-box" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; padding: 24px 16px;">
+        <MsHoverCard placement="top">
+          <template #trigger>
+            <button class="ms-button ms-button--sm ms-button--outline">Hover: Top</button>
+          </template>
+          <div style="padding: 4px; font-size: 12px;">Cartão posicionado no topo</div>
+        </MsHoverCard>
+
+        <MsHoverCard placement="bottom">
+          <template #trigger>
+            <button class="ms-button ms-button--sm ms-button--outline">Hover: Bottom</button>
+          </template>
+          <div style="padding: 4px; font-size: 12px;">Cartão posicionado na base</div>
+        </MsHoverCard>
+
+        <MsHoverCard placement="left">
+          <template #trigger>
+            <button class="ms-button ms-button--sm ms-button--outline">Hover: Left</button>
+          </template>
+          <div style="padding: 4px; font-size: 12px;">Cartão posicionado à esquerda</div>
+        </MsHoverCard>
+
+        <MsHoverCard placement="right">
+          <template #trigger>
+            <button class="ms-button ms-button--sm ms-button--outline">Hover: Right</button>
+          </template>
+          <div style="padding: 4px; font-size: 12px;">Cartão posicionado à direita</div>
+        </MsHoverCard>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsHoverCard placement="top">
+  <template #trigger><button class="ms-button">Topo</button></template>
+  <div>Conteúdo flutuante acima</div>
+</MsHoverCard>'
+          language="html"
+          :show-line-numbers="false"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TAB: GRID (12-COL VARIATIONS) -->
+  <!-- ========================================== -->
+  <div v-if="activeTab === 'grid'">
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">1. Spans Básicos de 12 Colunas (MsRow & MsCol)</div>
+        <span class="ms-badge ms-badge--sm ms-badge--variant-soft ms-badge--tone-primary">12 Colunas</span>
+      </div>
+      <div class="variation-preview-box">
+        <MsRow gutter="sm" style="margin-bottom: 8px;">
+          <MsCol :span="12">
+            <div style="padding: 10px; background: color-mix(in oklch, var(--ms-color-primary) 15%, var(--ms-color-surface-raised)); border: 1px solid var(--ms-color-primary); border-radius: 4px; text-align: center; font-size: 12px; font-weight: 600;">
+              span="12" (100% da largura)
+            </div>
+          </MsCol>
+        </MsRow>
+        <MsRow gutter="sm" style="margin-bottom: 8px;">
+          <MsCol :span="6">
+            <div style="padding: 10px; background: color-mix(in oklch, var(--ms-color-accent) 15%, var(--ms-color-surface-raised)); border: 1px solid var(--ms-color-accent); border-radius: 4px; text-align: center; font-size: 12px; font-weight: 600;">
+              span="6" (50%)
+            </div>
+          </MsCol>
+          <MsCol :span="6">
+            <div style="padding: 10px; background: color-mix(in oklch, var(--ms-color-accent) 15%, var(--ms-color-surface-raised)); border: 1px solid var(--ms-color-accent); border-radius: 4px; text-align: center; font-size: 12px; font-weight: 600;">
+              span="6" (50%)
+            </div>
+          </MsCol>
+        </MsRow>
+        <MsRow gutter="sm">
+          <MsCol :span="4">
+            <div style="padding: 10px; background: color-mix(in oklch, var(--ms-color-success) 15%, var(--ms-color-surface-raised)); border: 1px solid var(--ms-color-success); border-radius: 4px; text-align: center; font-size: 12px; font-weight: 600;">
+              span="4" (33.3%)
+            </div>
+          </MsCol>
+          <MsCol :span="4">
+            <div style="padding: 10px; background: color-mix(in oklch, var(--ms-color-success) 15%, var(--ms-color-surface-raised)); border: 1px solid var(--ms-color-success); border-radius: 4px; text-align: center; font-size: 12px; font-weight: 600;">
+              span="4" (33.3%)
+            </div>
+          </MsCol>
+          <MsCol :span="4">
+            <div style="padding: 10px; background: color-mix(in oklch, var(--ms-color-success) 15%, var(--ms-color-surface-raised)); border: 1px solid var(--ms-color-success); border-radius: 4px; text-align: center; font-size: 12px; font-weight: 600;">
+              span="4" (33.3%)
+            </div>
+          </MsCol>
+        </MsRow>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsRow gutter="sm">
+  <MsCol :span="6"><div>Coluna A</div></MsCol>
+  <MsCol :span="6"><div>Coluna B</div></MsCol>
+</MsRow>'
+          language="html"
+          :show-line-numbers="false"
+        />
+      </div>
+    </div>
+
+    <div class="variation-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <div class="variation-card-title" style="margin: 0;">2. Deslocamentos Horizontais (Offsets)</div>
+        <span class="ms-badge ms-badge--sm ms-badge--variant-soft ms-badge--tone-accent">offset 1..11</span>
+      </div>
+      <div class="variation-preview-box">
+        <MsRow gutter="sm" style="margin-bottom: 8px;">
+          <MsCol :span="8" :offset="2">
+            <div style="padding: 10px; background: color-mix(in oklch, var(--ms-color-primary) 15%, var(--ms-color-surface-raised)); border: 1px solid var(--ms-color-primary); border-radius: 4px; text-align: center; font-size: 12px; font-weight: 600;">
+              span="8" offset="2" (Centralizado)
+            </div>
+          </MsCol>
+        </MsRow>
+        <MsRow gutter="sm">
+          <MsCol :span="4" :offset="4">
+            <div style="padding: 10px; background: color-mix(in oklch, var(--ms-color-accent) 15%, var(--ms-color-surface-raised)); border: 1px solid var(--ms-color-accent); border-radius: 4px; text-align: center; font-size: 12px; font-weight: 600;">
+              span="4" offset="4"
+            </div>
+          </MsCol>
+        </MsRow>
+      </div>
+      <div style="margin-top: 12px;">
+        <MsCodeBlock
+          code='<MsRow gutter="md">
+  <MsCol :span="8" :offset="2">
+    <div>Conteúdo centralizado ocupando 8 colunas com recuo de 2 colunas à esquerda</div>
+  </MsCol>
+</MsRow>'
+          language="html"
+          :show-line-numbers="false"
+        />
+      </div>
+    </div>
+  </div>
+
 `;

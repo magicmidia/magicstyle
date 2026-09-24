@@ -1,0 +1,111 @@
+/*
+ * Magic-Style Kbd component (Keyboard Keycap Badge).
+ * Standardized across FlyonUI & Shadcn UI design patterns.
+ */
+
+.ms-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  box-sizing: border-box;
+  font-family: var(--ms-font-mono, ui-monospace, monospace);
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+  border-radius: var(--ms-radius-sm, 4px);
+  background-color: var(--ms-color-surface-subtle, #f1f5f9);
+  color: var(--ms-color-text-primary, #0f172a);
+  border: 1px solid var(--ms-color-border-subtle, #cbd5e1);
+  transition: all var(--ms-motion-duration-fast, 150ms) ease;
+}
+
+/* --- Sizes --- */
+.ms-kbd--size-xs {
+  height: 18px;
+  min-width: 18px;
+  padding: 0 4px;
+  font-size: 0.625rem; /* 10px */
+}
+
+.ms-kbd--size-sm {
+  height: 22px;
+  min-width: 22px;
+  padding: 0 6px;
+  font-size: 0.6875rem; /* 11px */
+}
+
+.ms-kbd--size-md {
+  height: 26px;
+  min-width: 26px;
+  padding: 0 8px;
+  font-size: 0.75rem; /* 12px */
+}
+
+.ms-kbd--size-lg {
+  height: 32px;
+  min-width: 32px;
+  padding: 0 10px;
+  font-size: 0.875rem; /* 14px */
+}
+
+/* --- Variants --- */
+/* Raised (3D keycap effect standard in Shadcn & FlyonUI) */
+.ms-kbd--variant-raised {
+  background-color: var(--ms-color-surface-raised, #ffffff);
+  border-color: var(--ms-color-border-default, #cbd5e1);
+  border-bottom-width: 2px;
+  box-shadow:
+    0 1px 0 0 rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+}
+
+:root[data-ms-color-mode="dark"] .ms-kbd--variant-raised {
+  background-color: var(--ms-color-surface-raised, #1e293b);
+  border-color: var(--ms-color-border-strong, #334155);
+  border-bottom-width: 2px;
+  box-shadow:
+    0 1px 0 0 rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Outline */
+.ms-kbd--variant-outline {
+  background-color: transparent;
+  border-color: var(--ms-color-border-default, #cbd5e1);
+  box-shadow: none;
+}
+
+/* Flat / Subtle */
+.ms-kbd--variant-flat {
+  background-color: var(--ms-color-surface-subtle, #f1f5f9);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+:root[data-ms-color-mode="dark"] .ms-kbd--variant-flat {
+  background-color: var(--ms-color-surface-subtle, #1e293b);
+}
+
+/* --- Tones --- */
+.ms-kbd--tone-primary {
+  color: var(--ms-color-primary, #2e86de);
+  border-color: color-mix(in oklch, var(--ms-color-primary, #2e86de) 30%, transparent);
+}
+
+.ms-kbd--tone-accent {
+  color: var(--ms-color-accent, #341f97);
+  border-color: color-mix(in oklch, var(--ms-color-accent, #341f97) 30%, transparent);
+}
+
+.ms-kbd--tone-success {
+  color: var(--ms-color-success, #10ac84);
+  border-color: color-mix(in oklch, var(--ms-color-success, #10ac84) 30%, transparent);
+}
+
+.ms-kbd--tone-danger {
+  color: var(--ms-color-danger, #ee5253);
+  border-color: color-mix(in oklch, var(--ms-color-danger, #ee5253) 30%, transparent);
+}
