@@ -1,21 +1,21 @@
 ---
 title: Laravel + Inertia
-description: Full Magic-Style setup in a Laravel app with Inertia and Vue 3, including SSR, forms and the locale coming from the backend.
+description: Setup completo do Magic-Style num app Laravel com Inertia e Vue 3, com SSR, formulários e idioma vindo do backend.
 ---
 
 # Laravel + Inertia
 
-This guide assumes a Laravel app with Inertia and Vue 3 already set up (for example, the official Vue starter kit). By the end you'll have the theme and locale driven by the backend, per-request toasts and forms that show server-side validation errors.
+Este guia parte de um app Laravel com Inertia e Vue 3 já configurados (por exemplo, o starter kit oficial de Vue). Ao final você terá tema e idioma vindos do backend, toasts isolados por requisição e formulários com erros de validação do servidor.
 
-## 1. Install
+## 1. Instalar
 
 ```bash
 pnpm add @magic-style/vue @magic-style/css
 ```
 
-## 2. Share the locale
+## 2. Compartilhar o idioma
 
-Send the current locale as a shared prop from the `HandleInertiaRequests` middleware. Laravel uses `pt_BR`, while the components expect a BCP 47 tag (`pt-BR`), hence the `_` to `-` swap:
+Envie o idioma atual como shared prop no middleware `HandleInertiaRequests`. O Laravel usa `pt_BR`, e os componentes esperam uma tag BCP 47 (`pt-BR`), por isso a troca de `_` por `-`:
 
 ```php
 // app/Http/Middleware/HandleInertiaRequests.php
@@ -31,7 +31,7 @@ public function share(Request $request): array
 }
 ```
 
-## 3. Client entry
+## 3. Entrada do cliente
 
 ```ts
 // resources/js/app.ts
@@ -59,9 +59,9 @@ createInertiaApp({
 });
 ```
 
-Without SSR, use `createApp` instead of `createSSRApp`.
+Sem SSR, troque `createSSRApp` por `createApp`.
 
-## 4. Server entry (SSR)
+## 4. Entrada do servidor (SSR)
 
 ```ts
 // resources/js/ssr.ts
@@ -91,11 +91,11 @@ createServer((page) =>
 );
 ```
 
-::: warning Toasts and SSR
-Call `createMsToast()` inside `setup`, once per app. Each request then gets its own store, and a toast never leaks to another user.
+::: warning Toasts no SSR
+Chame `createMsToast()` dentro do `setup`, uma vez por app. Assim cada requisição tem o próprio store e um toast nunca vaza para outro usuário.
 :::
 
-Point Vite at the SSR entry and build both bundles:
+Aponte a entrada SSR no Vite e gere os dois bundles:
 
 ```ts
 // vite.config.ts
@@ -111,9 +111,9 @@ pnpm vite build && pnpm vite build --ssr
 php artisan inertia:start-ssr
 ```
 
-## 5. Root template
+## 5. Template raiz
 
-With `MsProvider target="root"`, the theme attributes land on `<html>`, but only on the client. Write the same values in Blade so the server HTML already has the right theme:
+Com `MsProvider target="root"`, os atributos de tema vão para o `<html>`, mas só no cliente. Escreva os mesmos valores no Blade para o HTML do servidor já sair com o tema certo:
 
 ```blade
 {{-- resources/views/app.blade.php --}}
@@ -135,9 +135,9 @@ With `MsProvider target="root"`, the theme attributes land on `<html>`, but only
 </html>
 ```
 
-## 6. Layout with `MsProvider`
+## 6. Layout com `MsProvider`
 
-The layout applies the theme and color mode, follows the locale on every visit and renders toasts:
+O layout aplica tema e modo de cor, acompanha o idioma a cada navegação e mostra os toasts:
 
 ```vue
 <!-- resources/js/Layouts/AppLayout.vue -->
@@ -150,7 +150,7 @@ const page = usePage<{ locale: string; flash: { success: string | null } }>();
 const locale = computed(() => page.props.locale);
 const toast = useToast();
 
-// Client only: a toast created during SSR would have nowhere to go.
+// Só no cliente: um toast criado durante o SSR não teria para onde ir.
 onMounted(() => {
   watch(
     () => page.props.flash.success,
@@ -168,11 +168,11 @@ onMounted(() => {
 </template>
 ```
 
-`createMsI18n` sets the initial locale for the whole app. The provider's `:locale` follows the shared prop, so switching the locale in Laravel updates the components on the next Inertia visit, without a full reload.
+O `createMsI18n` define o idioma inicial do app todo. O `:locale` do provider acompanha a shared prop, então trocar o idioma no Laravel atualiza os componentes na próxima visita do Inertia, sem recarregar a página.
 
-## 7. Forms
+## 7. Formulários
 
-`MsField` wires the label, description and error to its control (`for`, `aria-describedby`, `aria-invalid`). With Inertia's `useForm`, pass `form.errors.<field>` to the `error` prop:
+`MsField` liga rótulo, descrição e erro ao controle (`for`, `aria-describedby`, `aria-invalid`). Com o `useForm` do Inertia, basta passar `form.errors.<campo>` para a prop `error`:
 
 ```vue
 <!-- resources/js/Pages/Auth/Login.vue -->
@@ -192,11 +192,11 @@ function submit() {
 
 <template>
   <form @submit.prevent="submit">
-    <MsField label="Email" :error="form.errors.email" required>
+    <MsField label="E-mail" :error="form.errors.email" required>
       <MsInput v-model="form.email" type="email" name="email" autocomplete="email" />
     </MsField>
 
-    <MsField label="Password" :error="form.errors.password" required>
+    <MsField label="Senha" :error="form.errors.password" required>
       <MsInput
         v-model="form.password"
         type="password"
@@ -206,14 +206,14 @@ function submit() {
       />
     </MsField>
 
-    <MsCheckbox v-model="form.remember" label="Remember me" />
+    <MsCheckbox v-model="form.remember" label="Lembrar de mim" />
 
-    <MsButton type="submit" :loading="form.processing">Sign in</MsButton>
+    <MsButton type="submit" :loading="form.processing">Entrar</MsButton>
   </form>
 </template>
 ```
 
-Validation in Laravel stays the same. Inertia returns the first message of each field in `form.errors`:
+No Laravel, a validação continua a mesma. O Inertia devolve a primeira mensagem de cada campo em `form.errors`:
 
 ```php
 public function store(Request $request)
@@ -225,27 +225,27 @@ public function store(Request $request)
 
     // ...
 
-    return redirect()->intended('/dashboard')->with('success', 'Welcome back!');
+    return redirect()->intended('/dashboard')->with('success', 'Bem-vindo de volta!');
 }
 ```
 
-How server errors map:
+Como os erros do servidor são mapeados:
 
-| Laravel                    | Inertia                       | Magic-Style                             |
-| :------------------------- | :---------------------------- | :-------------------------------------- |
-| `'email' => ['required']`  | `form.errors.email`           | `<MsField :error="form.errors.email">`  |
-| `'items.*.name' => [...]`  | `form.errors['items.0.name']` | `:error="form.errors['items.0.name']"`  |
-| `->with('success', '...')` | `page.props.flash.success`    | `useToast().success(...)` in the layout |
+| Laravel                    | Inertia                       | Magic-Style                            |
+| :------------------------- | :---------------------------- | :------------------------------------- |
+| `'email' => ['required']`  | `form.errors.email`           | `<MsField :error="form.errors.email">` |
+| `'items.*.name' => [...]`  | `form.errors['items.0.name']` | `:error="form.errors['items.0.name']"` |
+| `->with('success', '...')` | `page.props.flash.success`    | `useToast().success(...)` no layout    |
 
 ::: tip
-`MsField`'s `required` prop only shows the indicator on the label. If you also want native browser validation, pass `required` to `MsInput`; it forwards the attribute to the `<input>`.
+A prop `required` do `MsField` só mostra o indicador no rótulo. Se quiser também a validação nativa do navegador, passe `required` para o `MsInput`; ele repassa o atributo ao `<input>`.
 :::
 
-`MsCheckbox` and `MsSwitch` accept plain `v-model` on boolean `useForm` fields such as `form.remember`.
+`MsCheckbox` e `MsSwitch` aceitam `v-model` direto em campos booleanos do `useForm`, como `form.remember`.
 
-## See also
+## Veja também
 
-- [Internationalization](/en/guide/i18n)
-- [SSR](/en/guide/ssr)
-- [Dark mode](/en/guide/dark-mode)
-- [Field](/en/components/field) and [Toast](/en/components/toast)
+- [Idiomas (i18n)](/pt/guide/i18n)
+- [SSR](/pt/guide/ssr)
+- [Modo escuro](/pt/guide/dark-mode)
+- [Field](/pt/components/field) e [Toast](/pt/components/toast)

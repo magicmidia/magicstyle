@@ -1,6 +1,6 @@
 ---
 layout: LandingLayout
 title: Magic-Style
-titleTemplate: Componentes Vue 3 acessíveis
-description: Biblioteca Vue 3 com 95 componentes acessíveis, 10 temas trocáveis em tempo real, tokens DTCG, SSR para Laravel + Inertia e textos em português, inglês e espanhol.
+titleTemplate: Accessible Vue 3 components
+description: A Vue 3 library with 95 accessible components, 10 live-switchable themes, DTCG tokens, SSR for Laravel + Inertia and strings in Portuguese, English and Spanish.
 ---

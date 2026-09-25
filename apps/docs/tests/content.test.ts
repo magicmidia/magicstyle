@@ -9,7 +9,7 @@ import { PAGES } from "../.vitepress/theme/pages/strings.ts";
 import { UI } from "../.vitepress/theme/i18n/ui.ts";
 import { checkSlug } from "../scripts/check-demos.ts";
 
-const LOCALES = ["pt-BR", "en-US", "es-ES"] as const;
+const LOCALES = ["en-US", "pt-BR", "es-ES"] as const;
 const ROOT = join(import.meta.dirname, "../../..");
 const COMPONENTS_DIR = join(ROOT, "packages/vue/src/components");
 const SRC = join(import.meta.dirname, "../src");
@@ -60,14 +60,14 @@ describe("component catalog", () => {
 
 describe("site content", () => {
   it.each(GUIDES.map((guide) => guide.slug))("guide %s exists in the 3 languages", (slug) => {
-    for (const dir of ["guide", "en/guide", "es/guide"]) {
+    for (const dir of ["guide", "pt/guide", "es/guide"]) {
       expect(existsSync(join(SRC, dir, `${slug}.md`)), `${dir}/${slug}.md`).toBe(true);
     }
   });
 
   it("has the landing, themes and tokens pages in the 3 languages", () => {
     for (const page of ["index.md", "themes.md", "tokens.md"]) {
-      for (const dir of ["", "en", "es"]) {
+      for (const dir of ["", "pt", "es"]) {
         expect(existsSync(join(SRC, dir, page)), join(dir, page)).toBe(true);
       }
     }
@@ -78,7 +78,7 @@ describe("site content", () => {
     ["page strings", PAGES],
     ["site chrome", UI],
   ] as const)("%s has the same keys in every language", (_name, table) => {
-    const reference = shape(table["pt-BR"]).sort();
+    const reference = shape(table["en-US"]).sort();
     for (const locale of LOCALES) expect(shape(table[locale]).sort(), locale).toEqual(reference);
   });
 });

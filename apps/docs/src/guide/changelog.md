@@ -1,56 +1,56 @@
 ---
 title: Changelog
-description: Resumo das mudanças ainda não publicadas e link para o histórico completo de versões.
+description: Summary of unreleased changes and a link to the full release history.
 ---
 
 # Changelog
 
-O histórico completo de versões está no [CHANGELOG.md do repositório](https://github.com/magicmidia/magicstyle/blob/main/CHANGELOG.md). A última versão publicada é a **0.1.0**. `@magic-style/vue` e `@magic-style/css` são versionados juntos.
+The full release history lives in the [repository CHANGELOG.md](https://github.com/magicmidia/magicstyle/blob/main/CHANGELOG.md). The latest published release is **0.1.0**. `@magic-style/vue` and `@magic-style/css` are versioned together.
 
-## Próxima versão (não publicada)
+## Next release (unreleased)
 
-Resumo das mudanças já no `main`, agrupadas por tema. Para atualizar um app existente, veja [Migração](/guide/migration).
+A summary of the changes already on `main`, grouped by theme. To upgrade an existing app, see [Migration](/guide/migration).
 
 ### Visual
 
-- Novo visual padrão no estilo shadcn/ui em todos os temas: controles de 36px com texto de 14px, cards com `radius-xl`, dialogs de até 512px, menus e popovers com sombra `dropdown`.
-- Novos padrões de props: badge `solid`, tabs `pill`, alert `neutral`, tooltip `primary`, skeleton `pulse`.
-- O tema Graphite ganha paleta própria nos modos claro e escuro. O Magic passa a ter superfícies neutras.
-- `!important` removido de sidebar, bento grid e scrollbar. As setas do scrollbar `arrows` voltam a aparecer.
+- New shadcn/ui-style default look across every theme: 36px controls with 14px text, `radius-xl` cards, dialogs up to 512px, menus and popovers with the `dropdown` shadow.
+- New prop defaults: badge `solid`, tabs `pill`, alert `neutral`, tooltip `primary`, skeleton `pulse`.
+- The Graphite theme gets its own light and dark palette. Magic moves to neutral surfaces.
+- `!important` removed from sidebar, bento grid and scrollbar. The `arrows` scrollbar buttons show up again.
 
-### Acessibilidade
+### Accessibility
 
-- Focus trap, pilha de camadas para Esc e clique fora, e trava de rolagem em Dialog, Drawer, ConfirmDialog, Lightbox, CommandPalette, Popover, ContextMenu e Menu.
-- Navegação por teclado no padrão APG em Menu, Select, CommandPalette, ContextMenu, Tree, SplitPane e no calendário do DatePicker (grid com tabindex itinerante).
-- Tooltip, HoverCard, Collapse e Carousel corrigidos. O carrossel ganha botão de pausar (WCAG 2.2.2).
-- Bordas de campo e anel de foco com 3:1 em todos os temas (WCAG 1.4.11).
-- Animações decorativas respeitam o movimento reduzido.
-- RTL com propriedades lógicas em 43 folhas de estilo. Carousel e marquee se espelham.
+- Focus trap, a layer stack for Escape and outside clicks, and scroll lock in Dialog, Drawer, ConfirmDialog, Lightbox, CommandPalette, Popover, ContextMenu and Menu.
+- APG keyboard navigation in Menu, Select, CommandPalette, ContextMenu, Tree, SplitPane and the DatePicker calendar (a grid with roving tabindex).
+- Tooltip, HoverCard, Collapse and Carousel fixes. The carousel gets a pause button (WCAG 2.2.2).
+- Field borders and the focus ring reach 3:1 in every theme (WCAG 1.4.11).
+- Decorative animations honor reduced motion.
+- RTL with logical properties in 43 stylesheets. Carousel and marquee mirror.
 
-### Idiomas (i18n)
+### Internationalization
 
-- Textos embutidos de cerca de 45 componentes saem de um dicionário tipado (`MsMessages`), com `createMsI18n`, `MsProvider locale` e `useMsMessages`.
-- Português por padrão, com inglês e espanhol inclusos.
-- `MsDatePicker` gera nomes de mês e dia com `Intl` no idioma ativo.
-- `MsCommandPalette` sem `items` mostra o estado vazio, em vez de comandos de demonstração.
+- Built-in strings of about 45 components come from a typed dictionary (`MsMessages`), with `createMsI18n`, `MsProvider locale` and `useMsMessages`.
+- Portuguese by default, with English and Spanish included.
+- `MsDatePicker` builds month and day names with `Intl` in the active locale.
+- `MsCommandPalette` without `items` shows its empty state instead of demo commands.
 
-### Temas
+### Theming
 
-- Contrato de 27 variáveis com tokens derivados em tempo real (`color-mix()` e `oklch(from …)`).
-- `defineMsTheme`, `msThemeToCss`, `checkMsThemeContrast`, `MS_THEME_CONTRACT` e a prop `overrides` em `MsProvider` e `MsThemeScope`.
-- Tone engine: `[data-tone]` deriva hover, active, subtle, border e texto de forma igual em todos os componentes.
-- Dial de densidade funcional (`data-ms-density`). Os dials passam a valer em qualquer elemento.
+- 27-variable contract with tokens derived at runtime (`color-mix()` and `oklch(from …)`).
+- `defineMsTheme`, `msThemeToCss`, `checkMsThemeContrast`, `MS_THEME_CONTRACT` and the `overrides` prop on `MsProvider` and `MsThemeScope`.
+- Tone engine: `[data-tone]` derives hover, active, subtle, border and text the same way in every component.
+- Working density dial (`data-ms-density`). Dials now apply to any element.
 
 ### Tokens
 
-- Tokens compatíveis com DTCG, tamanhos de fonte em `rem` e primitivas OKLCH dentro do gamut sRGB.
-- Escala de sombras `--ms-elevation-xs` a `-xl`, proporcional a `--ms-depth`.
-- Tokens de foco `--ms-focus-ring-color` e `--ms-focus-ring-shadow`, e de borda de campo `--ms-color-border-field`.
+- DTCG-compatible tokens, `rem` font sizes and OKLCH primitives within the sRGB gamut.
+- Shadow scale `--ms-elevation-xs` to `-xl`, proportional to `--ms-depth`.
+- Focus tokens `--ms-focus-ring-color` and `--ms-focus-ring-shadow`, and the field border token `--ms-color-border-field`.
 
-### SSR e DX
+### SSR and DX
 
-- `color-mode="system"` resolvido em CSS: sem flash e sem hydration mismatch.
-- Toasts por app com `createMsToast()`.
-- `MsCheckbox` e `MsSwitch` aceitam `v-model` padrão.
-- Tipos `.d.ts` resolvem com `bundler`, `node16` e `nodenext`, e todas as props públicas têm JSDoc.
-- Links passam por `safeHref`, e o SVG do `MsIconPicker` é sanitizado por allowlist.
+- `color-mode="system"` resolved in CSS: no flash and no hydration mismatch.
+- Per-app toasts with `createMsToast()`.
+- `MsCheckbox` and `MsSwitch` accept plain `v-model`.
+- `.d.ts` types resolve with `bundler`, `node16` and `nodenext`, and every public prop has JSDoc.
+- Links go through `safeHref`, and `MsIconPicker` SVG is sanitized with an allowlist.

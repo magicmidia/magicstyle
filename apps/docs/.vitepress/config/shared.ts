@@ -14,8 +14,8 @@ const vuePkg = JSON.parse(
 export const VERSION = vuePkg.version;
 
 export const LOCALES = [
-  { key: "root", prefix: "", lang: "pt-BR", label: "Português" },
-  { key: "en", prefix: "en/", lang: "en-US", label: "English" },
+  { key: "root", prefix: "", lang: "en-US", label: "English" },
+  { key: "pt", prefix: "pt/", lang: "pt-BR", label: "Português" },
   { key: "es", prefix: "es/", lang: "es-ES", label: "Español" },
 ] as const;
 
@@ -30,9 +30,9 @@ export const head = [
   ["script", {}, NO_FLASH_SCRIPT],
 ] as const;
 
-/** Page path without its locale prefix, e.g. "en/guide/theming.md" -> "guide/theming". */
+/** Page path without its locale prefix, e.g. "pt/guide/theming.md" -> "guide/theming". */
 export function localeFreePath(relativePath: string): string {
-  const withoutPrefix = relativePath.replace(/^(en|es)\//, "");
+  const withoutPrefix = relativePath.replace(/^(pt|es)\//, "");
   return withoutPrefix.replace(/(^|\/)index\.md$/, "$1").replace(/\.md$/, "");
 }
 

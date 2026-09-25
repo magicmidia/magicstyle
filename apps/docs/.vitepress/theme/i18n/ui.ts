@@ -118,7 +118,7 @@ export const UI: Record<SiteLang, UiStrings> = {
 };
 
 export function siteLang(lang: string): SiteLang {
-  if (lang.startsWith("en")) return "en-US";
+  if (lang.startsWith("pt")) return "pt-BR";
   if (lang.startsWith("es")) return "es-ES";
-  return "pt-BR";
+  return "en-US";
 }

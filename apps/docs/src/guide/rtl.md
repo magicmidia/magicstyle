@@ -1,21 +1,21 @@
 ---
 title: RTL
-description: Suporte a idiomas da direita para a esquerda com propriedades lógicas, dir no MsProvider e as exceções que continuam físicas.
+description: Right-to-left support with logical properties, dir on MsProvider and the exceptions that stay physical.
 ---
 
 # RTL
 
-O CSS do Magic-Style usa propriedades lógicas (`margin-inline-start`, `padding-inline-end`, `inset-inline-start`, `text-align: start`…). Com `dir="rtl"`, os componentes se espelham sozinhos, sem folha de estilo extra.
+Magic-Style's CSS uses logical properties (`margin-inline-start`, `padding-inline-end`, `inset-inline-start`, `text-align: start`…). With `dir="rtl"`, components mirror themselves, with no extra stylesheet.
 
-## Ativar
+## Turning it on
 
-No documento inteiro:
+For the whole document:
 
 ```html
 <html lang="ar" dir="rtl"></html>
 ```
 
-Ou pelo `MsProvider`, que grava `dir` no wrapper ou, com `target="root"`, no `<html>`:
+Or through `MsProvider`, which writes `dir` on its wrapper or, with `target="root"`, on `<html>`:
 
 ```vue
 <MsProvider dir="rtl" target="root">
@@ -23,7 +23,7 @@ Ou pelo `MsProvider`, que grava `dir` no wrapper ou, com `target="root"`, no `<h
 </MsProvider>
 ```
 
-Para um trecho da página, use `MsThemeScope`:
+For part of the page, use `MsThemeScope`:
 
 ```vue
 <MsThemeScope dir="rtl">
@@ -31,32 +31,32 @@ Para um trecho da página, use `MsThemeScope`:
 </MsThemeScope>
 ```
 
-A direção também pode mudar em tempo de execução com `useThemeContext().setDir("rtl")`.
+Direction can also change at runtime with `useThemeContext().setDir("rtl")`.
 
 ::: tip SSR
-Com `target="root"`, o `dir` só chega ao `<html>` no cliente. Em apps com SSR, escreva `dir` também no template do servidor, como no exemplo do [modo escuro](/guide/dark-mode).
+With `target="root"`, `dir` only reaches `<html>` on the client. In SSR apps, also write `dir` in the server template, as in the [dark mode](/guide/dark-mode) example.
 :::
 
-## O que se espelha
+## What mirrors
 
-- Espaçamentos, bordas, raios de canto e alinhamento de texto de todos os componentes.
-- `MsCarousel` e `MsMarquee` invertem o movimento em `:dir(rtl)`, e as setas do carrossel ficam nas bordas lógicas.
-- No calendário do `MsDatePicker`, as setas esquerda e direita se invertem.
-- O separador do `MsSplitPane` responde ao teclado de acordo com a direção.
+- Spacing, borders, corner radii and text alignment in every component.
+- `MsCarousel` and `MsMarquee` reverse their motion under `:dir(rtl)`, and the carousel arrows sit on the logical edges.
+- In the `MsDatePicker` calendar, the left and right arrow keys swap.
+- The `MsSplitPane` separator responds to the keyboard according to the direction.
 
-## Exceções (continuam físicas)
+## Exceptions (stay physical)
 
-Alguns casos continuam físicos de propósito:
+A few cases stay physical on purpose:
 
-| Caso                                                                              | Motivo                                                                  |
-| :-------------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
-| Props com nome de lado: `placement="left"`, cantos como `top-right`               | O nome promete um lado da tela. Troque o valor se quiser espelhar.      |
-| Painéis posicionados por JavaScript (`MsSelect`), tooltip, glimpse, FAB e pointer | A posição é calculada em coordenadas da tela.                           |
-| `MsCodeBlock`                                                                     | Força `direction: ltr`, porque código se lê da esquerda para a direita. |
+| Case                                                                 | Why                                                                    |
+| :------------------------------------------------------------------- | :--------------------------------------------------------------------- |
+| Side-named props: `placement="left"`, corners such as `top-right`    | The name promises a side of the screen. Change the value to mirror it. |
+| JS-positioned panels (`MsSelect`), tooltip, glimpse, FAB and pointer | Their position is computed in screen coordinates.                      |
+| `MsCodeBlock`                                                        | Forces `direction: ltr`, because code reads left to right.             |
 
-Se você escreve CSS próprio ao lado da biblioteca, prefira propriedades lógicas também. Assim o layout inteiro se espelha junto.
+If you write your own CSS next to the library, prefer logical properties too, so the whole layout mirrors together.
 
-## Veja também
+## See also
 
-- [Idiomas (i18n)](/guide/i18n)
-- [Carousel](/components/carousel) e [Marquee](/components/marquee)
+- [Internationalization](/guide/i18n)
+- [Carousel](/components/carousel) and [Marquee](/components/marquee)

@@ -30,7 +30,7 @@ const { lang, isDark } = useData();
 const ui = useUi();
 const locale = computed(() => siteLang(lang.value));
 const copy = computed(() => LANDING[locale.value]);
-const prefix = computed(() => ({ "pt-BR": "", "en-US": "/en", "es-ES": "/es" })[locale.value]);
+const prefix = computed(() => ({ "en-US": "", "pt-BR": "/pt", "es-ES": "/es" })[locale.value]);
 const link = (path: string) => withBase(`${prefix.value}${path}`);
 
 // Theme lab: local to the stage (MsProvider target="wrapper"), independent from the site prefs.

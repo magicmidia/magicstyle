@@ -1,35 +1,35 @@
 ---
-title: Acessibilidade
-description: Metas WCAG 2.2 AA, padrões WAI-ARIA APG implementados, foco, contraste, movimento reduzido e como a biblioteca é testada.
+title: Accessibility
+description: WCAG 2.2 AA targets, the WAI-ARIA APG patterns implemented, focus, contrast, reduced motion and how the library is tested.
 ---
 
-# Acessibilidade
+# Accessibility
 
-O Magic-Style mira **WCAG 2.2 nível AA**. A biblioteca cuida da parte que depende dela (semântica, teclado, foco, contraste dos tokens), mas a conformidade final depende de como você monta a página: rótulos, ordem dos títulos, textos alternativos e o conteúdo em si.
+Magic-Style targets **WCAG 2.2 level AA**. The library takes care of what depends on it (semantics, keyboard, focus, token contrast), but final conformance depends on how you build the page: labels, heading order, alt text and the content itself.
 
-## Contraste
+## Contrast
 
-- **Texto:** todos os pares de texto e fundo do contrato passam AA (4,5:1) nos 10 temas, em modo claro e escuro. Um teste reprova qualquer tema que caia abaixo disso.
-- **Anel de foco:** `--ms-focus-ring-color` atinge 3:1 contra as superfícies padrão, elevada e rebaixada de todos os temas (WCAG 1.4.11).
-- **Bordas de campo:** `--ms-color-border-field` garante 3:1 nas bordas de input, select, checkbox, radio e outros controles de formulário (WCAG 1.4.11).
-- **Contraste alto:** `contrast="high"` no `MsProvider` (ou `data-ms-contrast="high"`) reforça textos secundários e bordas.
+- **Text:** every text/background pair in the contract passes AA (4.5:1) across the 10 themes, in light and dark modes. A test fails any theme that drops below it.
+- **Focus ring:** `--ms-focus-ring-color` reaches 3:1 against the default, raised and sunken surfaces of every theme (WCAG 1.4.11).
+- **Field borders:** `--ms-color-border-field` guarantees 3:1 on the borders of inputs, selects, checkboxes, radios and other form controls (WCAG 1.4.11).
+- **High contrast:** `contrast="high"` on `MsProvider` (or `data-ms-contrast="high"`) strengthens secondary text and borders.
 
-Se você sobrescrever cores do tema, valide com `checkMsThemeContrast` (veja [Temas](/guide/theming)).
+If you override theme colors, validate them with `checkMsThemeContrast` (see [Theming](/guide/theming)).
 
-## Foco visível
+## Visible focus
 
-Todos os componentes usam o mesmo padrão de foco:
+Every component uses the same focus style:
 
-- **Campos:** borda na cor do anel mais um halo de 3px (`--ms-focus-ring-shadow`).
-- **Demais elementos:** contorno sólido com recuo, na cor `--ms-focus-ring-color`.
+- **Fields:** a border in the ring color plus a 3px halo (`--ms-focus-ring-shadow`).
+- **Everything else:** a solid offset outline in `--ms-focus-ring-color`.
 
-Em modo de alto contraste do sistema (`forced-colors`), o contorno usa a cor `Highlight`.
+In the OS high contrast mode (`forced-colors`), the outline uses the `Highlight` color.
 
-## Teclado e padrões APG
+## Keyboard and APG patterns
 
-Os componentes interativos seguem os padrões do [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/):
+Interactive components follow the [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/) patterns:
 
-| Padrão APG         | Componentes                                                                                                                    |
+| APG pattern        | Components                                                                                                                     |
 | :----------------- | :----------------------------------------------------------------------------------------------------------------------------- |
 | Accordion          | [Accordion](/components/accordion)                                                                                             |
 | Alert              | [Alert](/components/alert)                                                                                                     |
@@ -51,39 +51,39 @@ Os componentes interativos seguem os padrões do [WAI-ARIA Authoring Practices G
 | Tree View          | [Tree](/components/tree)                                                                                                       |
 | Window Splitter    | [Split Pane](/components/split-pane)                                                                                           |
 
-Por trás disso, três primitivas cuidam de camadas e foco:
+Under the hood, three primitives handle layers and focus:
 
-- **`useFocusTrap`:** foco inicial, Tab cíclico dentro da camada e devolução do foco ao fechar.
-- **`useDismissableLayer`:** pilha de camadas para Esc e clique fora. Só a camada do topo fecha.
-- **`useScrollLock`:** trava a rolagem da página com contagem de referências, para overlays aninhados.
+- **`useFocusTrap`:** initial focus, Tab cycling inside the layer and focus restoration on close.
+- **`useDismissableLayer`:** a layer stack for Escape and outside clicks. Only the top layer closes.
+- **`useScrollLock`:** reference-counted page scroll locking, for nested overlays.
 
-Menus, árvores, abas e o calendário usam tabindex itinerante (roving tabindex): um único tab stop por grupo, com setas e Home/End dentro dele (e busca por digitação nos menus). As três primitivas acima são exportadas para você usar em componentes próprios.
+Menus, trees, tabs and the calendar use roving tabindex: a single tab stop per group, with arrow keys and Home/End inside it (plus typeahead in menus). The three primitives above are exported so you can use them in your own components.
 
-## Formulários
+## Forms
 
-- `MsField` liga rótulo, descrição e erro ao controle com `for`, `aria-describedby` e `aria-invalid`. A mensagem de erro fica numa região `aria-live="polite"`.
-- Cada controle recebe um id único, mesmo com vários controles no mesmo campo.
-- Atributos como `required`, `autocomplete` e `aria-*` chegam ao elemento nativo, não ao wrapper.
+- `MsField` wires the label, description and error to the control with `for`, `aria-describedby` and `aria-invalid`. The error message sits in an `aria-live="polite"` region.
+- Each control gets a unique id, even with several controls in the same field.
+- Attributes such as `required`, `autocomplete` and `aria-*` reach the native element, not the wrapper.
 
-## Movimento reduzido
+## Reduced motion
 
-As durações de animação multiplicam por `--ms-motion-scale`. Ele vale `0` quando:
+Animation durations are multiplied by `--ms-motion-scale`. It becomes `0` when:
 
-- o sistema pede `prefers-reduced-motion: reduce`; ou
-- a página (ou um trecho) tem `data-ms-motion="reduced"`, para um controle próprio da aplicação.
+- the OS requests `prefers-reduced-motion: reduce`; or
+- the page (or part of it) has `data-ms-motion="reduced"`, for an in-app setting.
 
 ```html
 <html data-ms-motion="reduced"></html>
 ```
 
-Indicadores de carregamento (spinner, progress radial, progress indeterminado) continuam animando, porque o movimento é essencial para comunicar o estado. O carrossel pausa a rotação automática com foco, hover ou movimento reduzido, e tem botão de pausar (WCAG 2.2.2).
+Loading indicators (spinner, radial progress, indeterminate progress) keep animating, because the motion is essential to convey state. The carousel pauses auto-rotation on focus, hover or reduced motion, and has a pause button (WCAG 2.2.2).
 
-## Como é testado
+## How it's tested
 
-- **axe-core:** `packages/vue/tests/axe.test.ts` audita componentes em estados interativos (menus abertos, diálogos, formulários com erro, abas, árvore…). As regras que dependem de layout real, como contraste, ficam com os testes de contraste dos temas.
-- **Contraste:** pares de texto, anel de foco e bordas de campo são medidos em todos os temas e modos no health gate do repositório (`pnpm validate`).
-- **Comportamento:** testes de teclado e ARIA por componente.
+- **axe-core:** `packages/vue/tests/axe.test.ts` audits components in interactive states (open menus, dialogs, forms with errors, tabs, tree…). Rules that need real layout, such as contrast, are covered by the theme contrast tests instead.
+- **Contrast:** text pairs, the focus ring and field borders are measured across every theme and mode in the repository health gate (`pnpm validate`).
+- **Behavior:** keyboard and ARIA tests per component.
 
 ::: warning
-Testes automatizados pegam só parte dos problemas. Teste suas telas com teclado e com um leitor de tela (NVDA, VoiceOver) antes de publicar.
+Automated tests only catch part of the problems. Test your screens with a keyboard and a screen reader (NVDA, VoiceOver) before shipping.
 :::

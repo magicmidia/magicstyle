@@ -1,26 +1,26 @@
 ---
-title: Temas
-description: Personalize o Magic-Style com um contrato de 27 variáveis CSS, tokens derivados, dials de densidade, raio e contraste, e temas próprios validados.
+title: Theming
+description: Customize Magic-Style with a 27-variable CSS contract, derived tokens, density, radius and contrast dials, and validated custom themes.
 ---
 
-# Temas
+# Theming
 
-Um tema do Magic-Style define **só 27 variáveis** (o modelo de contrato do daisyUI e do FlyonUI). Superfícies, textos, bordas, estados de hover e foco, cores de feedback, escala de raio e sombras são **derivados no próprio CSS** com `color-mix()` e cores relativas `oklch(from …)`. Mudou uma variável, todos os componentes acompanham, em qualquer modo de cor.
+A Magic-Style theme sets **only 27 variables** (the contract model used by daisyUI and FlyonUI). Surfaces, text, borders, hover and focus states, feedback colors, the radius scale and shadows are **derived in CSS** with `color-mix()` and relative `oklch(from …)` colors. Change one variable and every component follows, in every color mode.
 
 ```text
-contrato do tema (27 vars)  ──►  tokens derivados (themes.css)  ──►  componentes
---ms-color-primary               --ms-color-interactive-primary-hover     .ms-button
---ms-color-base-100              --ms-color-text-muted                     .ms-alert
---ms-radius-field                --ms-radius-md, --ms-control-radius       …
+theme contract (27 vars)  ──►  derived tokens (themes.css)  ──►  components
+--ms-color-primary             --ms-color-interactive-primary-hover     .ms-button
+--ms-color-base-100            --ms-color-text-muted                     .ms-alert
+--ms-radius-field              --ms-radius-md, --ms-control-radius       …
 ```
 
-Todos os temas compartilham o mesmo visual padrão, no estilo shadcn/ui: controles de 36px, sombras discretas e anel de foco com halo. Cada tema troca cores, raios, profundidade e fontes. Compare os temas na [galeria](/themes) e todos os tokens na [referência de tokens](/tokens).
+Every theme shares the same shadcn/ui-style default look: 36px controls, subtle shadows and a focus ring with a halo. Each theme swaps colors, radii, depth and fonts. Compare them in the [theme gallery](/themes) and browse every token in the [token reference](/tokens).
 
-## Temas inclusos
+## Built-in themes
 
-`magic` (padrão), `graphite`, `shadcn`, `vercel`, `linear`, `github`, `supabase`, `nord`, `material` e `bootstrap`. Todos têm modo claro e escuro.
+`magic` (default), `graphite`, `shadcn`, `vercel`, `linear`, `github`, `supabase`, `nord`, `material` and `bootstrap`. All of them have light and dark modes.
 
-Ative um tema com o atributo `data-ms-theme` ou com o `MsProvider`:
+Turn a theme on with the `data-ms-theme` attribute or with `MsProvider`:
 
 ```html
 <html data-ms-theme="shadcn" data-ms-color-mode="system"></html>
@@ -32,29 +32,29 @@ Ative um tema com o atributo `data-ms-theme` ou com o `MsProvider`:
 </MsProvider>
 ```
 
-## Atributos e props
+## Attributes and props
 
-O `MsProvider` (e o `MsThemeScope`, para um trecho da página) grava atributos `data-ms-*` no próprio wrapper ou, com `target="root"`, no `<html>`. Sem Vue, escreva os atributos direto no HTML.
+`MsProvider` (and `MsThemeScope`, for part of the page) writes `data-ms-*` attributes on its own wrapper or, with `target="root"`, on `<html>`. Without Vue, write the attributes straight into the HTML.
 
-| Prop do `MsProvider` | Atributo             | Valores                                                  | Padrão        |
-| :------------------- | :------------------- | :------------------------------------------------------- | :------------ |
-| `theme`              | `data-ms-theme`      | nome do tema                                             | `magic`       |
-| `color-mode`         | `data-ms-color-mode` | `light`, `dark`, `system`                                | `system`      |
-| `density`            | `data-ms-density`    | `compact` (0,875), `comfortable` (1), `spacious` (1,125) | `comfortable` |
-| `radius`             | `data-ms-radius`     | `sharp`, `subtle`, `medium`, `rounded`                   | `medium`      |
-| `contrast`           | `data-ms-contrast`   | `normal`, `high`                                         | `normal`      |
-| `dir`                | `dir`                | `ltr`, `rtl`                                             | `ltr`         |
-| `overrides`          | `style` (variáveis)  | chaves do contrato                                       | —             |
+| `MsProvider` prop | Attribute            | Values                                                   | Default       |
+| :---------------- | :------------------- | :------------------------------------------------------- | :------------ |
+| `theme`           | `data-ms-theme`      | theme name                                               | `magic`       |
+| `color-mode`      | `data-ms-color-mode` | `light`, `dark`, `system`                                | `system`      |
+| `density`         | `data-ms-density`    | `compact` (0.875), `comfortable` (1), `spacious` (1.125) | `comfortable` |
+| `radius`          | `data-ms-radius`     | `sharp`, `subtle`, `medium`, `rounded`                   | `medium`      |
+| `contrast`        | `data-ms-contrast`   | `normal`, `high`                                         | `normal`      |
+| `dir`             | `dir`                | `ltr`, `rtl`                                             | `ltr`         |
+| `overrides`       | `style` (variables)  | contract keys                                            | —             |
 
-- **Densidade** escala a altura de todos os controles (`--ms-control-height-*`), arredondada para pixels inteiros.
-- **Raio** muda só o raio dos controles (`--ms-radius-control`): `sharp` é metade do `radius-selector`, `subtle` é o `radius-selector`, `medium` é o `radius-field` e `rounded` é o `radius-box`.
-- **Contraste alto** reforça textos secundários e bordas.
+- **Density** scales the height of every control (`--ms-control-height-*`), rounded to whole pixels.
+- **Radius** changes only the control radius (`--ms-radius-control`): `sharp` is half of `radius-selector`, `subtle` is `radius-selector`, `medium` is `radius-field` and `rounded` is `radius-box`.
+- **High contrast** strengthens secondary text and borders.
 
-Os dials funcionam em qualquer elemento, não só junto de `data-ms-theme`. Para mudar tudo isso em tempo de execução, use `useThemeContext()` (veja [Modo escuro](/guide/dark-mode)).
+The dials work on any element, not only next to `data-ms-theme`. To change them at runtime, use `useThemeContext()` (see [Dark mode](/guide/dark-mode)).
 
-## Personalização rápida (só CSS)
+## Quick customization (CSS only)
 
-Carregue o CSS e sobrescreva as variáveis do contrato. Nada precisa ser recompilado:
+Load the CSS and override the contract variables. Nothing needs rebuilding:
 
 ```css
 @import "@magic-style/css";
@@ -67,11 +67,11 @@ Carregue o CSS e sobrescreva as variáveis do contrato. Nada precisa ser recompi
 }
 ```
 
-Para mudar só um trecho, use o mesmo bloco num seletor (`.checkout { … }`). Como o CSS da biblioteca está na layer `ms`, seu CSS sem layer sempre vence.
+To change just one area, use the same block on a selector (`.checkout { … }`). Since the library CSS lives in the `ms` layer, your unlayered CSS always wins.
 
-## Personalização em tempo real (Vue)
+## Runtime customization (Vue)
 
-`MsProvider` e `MsThemeScope` aceitam `overrides` com as chaves do contrato. É o caminho para apps multi-tenant em que a cor da marca vem do backend:
+`MsProvider` and `MsThemeScope` accept `overrides` with contract keys. This is the way to go for multi-tenant apps where the brand color comes from the backend:
 
 ```vue
 <script setup lang="ts">
@@ -93,11 +93,11 @@ const tenant = usePage().props.tenant as { brand: string; brandText: string };
 </template>
 ```
 
-## Criar um tema
+## Creating a theme
 
-### Com CSS
+### With CSS
 
-Um tema é um bloco por modo. As chaves que você omitir vêm do tema padrão (Magic):
+A theme is one block per mode. Keys you leave out come from the default theme (Magic):
 
 ```css
 [data-ms-theme="acme"] {
@@ -122,84 +122,84 @@ Um tema é um bloco por modo. As chaves que você omitir vêm do tema padrão (M
 }
 ```
 
-Ative com `<html data-ms-theme="acme">` ou `<MsProvider theme="acme">`. Esse exemplo cobre `light` e `dark`. Para `system` também seguir o sistema operacional, repita o bloco escuro dentro de `@media (prefers-color-scheme: dark)` com o seletor `[data-ms-theme="acme"][data-ms-color-mode="system"]`, ou gere tudo com `msThemeToCss`, abaixo.
+Turn it on with `<html data-ms-theme="acme">` or `<MsProvider theme="acme">`. This example covers `light` and `dark`. For `system` to follow the OS as well, repeat the dark block inside `@media (prefers-color-scheme: dark)` with the `[data-ms-theme="acme"][data-ms-color-mode="system"]` selector, or generate everything with `msThemeToCss`, below.
 
-### Com TypeScript (validado)
+### With TypeScript (validated)
 
-`defineMsTheme` dá autocompletar para todas as chaves. `checkMsThemeContrast` aponta falhas de WCAG AA antes de publicar. `msThemeToCss` gera os blocos claro, escuro e `system`:
+`defineMsTheme` gives you autocomplete for every key. `checkMsThemeContrast` reports WCAG AA failures before you ship. `msThemeToCss` generates the light, dark and `system` blocks:
 
 ```ts
 import { checkMsThemeContrast, defineMsTheme, msThemeToCss } from "@magic-style/vue";
 
 export const acme = defineMsTheme({
   name: "acme",
-  extends: "shadcn", // herda o que não for definido (padrão: "magic")
+  extends: "shadcn", // inherits whatever you don't set (default: "magic")
   shared: { "radius-field": "10px", "font-sans": "Inter, system-ui, sans-serif" },
   light: { "color-primary": "#7c3aed", "color-primary-content": "#ffffff" },
   dark: { "color-primary": "#a78bfa", "color-primary-content": "#1e1b4b" },
 });
 
-const issues = checkMsThemeContrast(acme); // [] quando todos os pares passam
-const css = msThemeToCss(acme); // grave num arquivo ou injete num <style>
+const issues = checkMsThemeContrast(acme); // [] when every pair passes
+const css = msThemeToCss(acme); // write it to a file or inject it in a <style>
 ```
 
-Carregue o CSS gerado depois do `@magic-style/css`. Só quem importa `msThemeToCss` carrega o gerador, porque o pacote é tree-shakeable.
+Load the generated CSS after `@magic-style/css`. Only code that imports `msThemeToCss` pulls in the generator, since the package is tree-shakeable.
 
-::: details Tema oficial (contribuindo com o repositório)
+::: details Official theme (contributing to the repository)
 
-1. Crie `packages/internal/themes/src/themes/<nome>.json`. O `$schema` dá autocompletar e validação no editor.
-2. Adicione o import em `packages/internal/themes/src/lib/themes.ts`.
-3. Rode `pnpm validate`. O teste de contraste reprova o tema se algum par de texto e fundo ficar abaixo de AA.
+1. Create `packages/internal/themes/src/themes/<name>.json`. The `$schema` gives you autocomplete and validation in the editor.
+2. Add the import to `packages/internal/themes/src/lib/themes.ts`.
+3. Run `pnpm validate`. The contrast test fails the theme if any text/background pair drops below AA.
 
-`extras` é uma saída de emergência para assinaturas que o contrato não cobre. O teste limita a 6 extras por modo e proíbe cores ali.
+`extras` is an escape hatch for signatures the contract doesn't cover. The test caps it at 6 extras per mode and forbids colors there.
 :::
 
-## O contrato
+## The contract
 
-| Variável                              | Uso                                                        |
+| Variable                              | Purpose                                                    |
 | :------------------------------------ | :--------------------------------------------------------- |
-| `--ms-color-base-100`                 | Superfície da página e dos componentes                     |
-| `--ms-color-base-200`                 | Superfície rebaixada (poços, listras, inputs em cards)     |
-| `--ms-color-base-300`                 | Bordas e divisores                                         |
-| `--ms-color-base-content`             | Texto principal sobre as superfícies                       |
-| `--ms-color-primary` / `-content`     | Ação principal / texto sobre ela                           |
-| `--ms-color-secondary` / `-content`   | Ação secundária                                            |
-| `--ms-color-accent` / `-content`      | Destaque                                                   |
-| `--ms-color-neutral` / `-content`     | Ação neutra (escura ou inversa)                            |
-| `--ms-color-info` / `-content`        | Feedback informativo                                       |
-| `--ms-color-success` / `-content`     | Sucesso                                                    |
-| `--ms-color-warning` / `-content`     | Aviso                                                      |
-| `--ms-color-danger` / `-content`      | Erro / ação destrutiva                                     |
-| `--ms-radius-selector`                | Elementos pequenos (checkbox, tag, badge)                  |
-| `--ms-radius-field`                   | Campos                                                     |
-| `--ms-radius-box`                     | Cards, diálogos, popovers                                  |
-| `--ms-border-width`                   | Largura padrão de borda                                    |
-| `--ms-depth`                          | Intensidade das sombras (0 = plano, 1 = padrão)            |
-| `--ms-font-sans`                      | Fonte da interface                                         |
-| `--ms-font-mono`                      | Fonte de código                                            |
-| `--ms-color-base-raised` _(opcional)_ | Superfície elevada, se diferente de `base-100`             |
-| `--ms-radius-control` _(opcional)_    | Botões e controles, se diferentes dos campos (ex.: pílula) |
-| `--ms-font-display` _(opcional)_      | Fonte de títulos (padrão: `font-sans`)                     |
+| `--ms-color-base-100`                 | Page and component surface                                 |
+| `--ms-color-base-200`                 | Sunken surface (wells, stripes, inputs on cards)           |
+| `--ms-color-base-300`                 | Borders and dividers                                       |
+| `--ms-color-base-content`             | Main text on surfaces                                      |
+| `--ms-color-primary` / `-content`     | Main action / text on top of it                            |
+| `--ms-color-secondary` / `-content`   | Secondary action                                           |
+| `--ms-color-accent` / `-content`      | Highlight                                                  |
+| `--ms-color-neutral` / `-content`     | Neutral action (dark or inverse)                           |
+| `--ms-color-info` / `-content`        | Informational feedback                                     |
+| `--ms-color-success` / `-content`     | Success                                                    |
+| `--ms-color-warning` / `-content`     | Warning                                                    |
+| `--ms-color-danger` / `-content`      | Error / destructive action                                 |
+| `--ms-radius-selector`                | Small elements (checkbox, tag, badge)                      |
+| `--ms-radius-field`                   | Fields                                                     |
+| `--ms-radius-box`                     | Cards, dialogs, popovers                                   |
+| `--ms-border-width`                   | Default border width                                       |
+| `--ms-depth`                          | Shadow intensity (0 = flat, 1 = default)                   |
+| `--ms-font-sans`                      | UI font                                                    |
+| `--ms-font-mono`                      | Code font                                                  |
+| `--ms-color-base-raised` _(optional)_ | Raised surface, when it differs from `base-100`            |
+| `--ms-radius-control` _(optional)_    | Buttons and controls, when they differ from fields (pills) |
+| `--ms-font-display` _(optional)_      | Heading font (default: `font-sans`)                        |
 
-A lista completa, com tipos e descrições, está exportada como `MS_THEME_CONTRACT` em `@magic-style/vue`.
+The full list, with types and descriptions, is exported as `MS_THEME_CONTRACT` from `@magic-style/vue`.
 
-## Tokens derivados
+## Derived tokens
 
-| Token                                                                 | Como é calculado                                                                         |
-| :-------------------------------------------------------------------- | :--------------------------------------------------------------------------------------- |
-| `--ms-color-interactive-<cor>-hover` / `-active`                      | 86% / 74% da cor + o restante do `base-content`                                          |
-| `--ms-color-interactive-<cor>-subtle`, `--ms-color-feedback-<cor>-bg` | 14% da cor sobre a base, com saturação restaurada                                        |
-| `--ms-color-interactive-<cor>-text`, `--ms-color-feedback-<cor>-text` | 40% da cor sobre o `base-content`, com saturação restaurada. Passa AA em todos os temas. |
-| `--ms-color-text-secondary` / `-muted` / `-subtle`                    | 80% / 66% / 52% do `base-content` sobre a base                                           |
-| `--ms-color-border-field` / `-hover`                                  | 50% / 30% do `base-300` sobre o `base-content`: bordas de campo com 3:1 (WCAG 1.4.11)    |
-| `--ms-focus-ring-color`                                               | 80% do primário + 20% do `base-content`: 3:1 em todas as superfícies                     |
-| `--ms-focus-ring-shadow`                                              | Halo de 3px (30% da cor do anel) usado nos campos focados                                |
-| `--ms-radius-sm` / `-md` / `-lg` / `-xl`                              | `selector` / `field` / `box` / `box × 1,5`                                               |
-| `--ms-elevation-xs` … `--ms-elevation-xl`                             | Sombras neutras na escala do Tailwind, multiplicadas por `--ms-depth`                    |
+| Token                                                                     | How it's computed                                                                     |
+| :------------------------------------------------------------------------ | :------------------------------------------------------------------------------------ |
+| `--ms-color-interactive-<color>-hover` / `-active`                        | 86% / 74% of the color + the rest of `base-content`                                   |
+| `--ms-color-interactive-<color>-subtle`, `--ms-color-feedback-<color>-bg` | 14% of the color over the base, with chroma restored                                  |
+| `--ms-color-interactive-<color>-text`, `--ms-color-feedback-<color>-text` | 40% of the color over `base-content`, with chroma restored. Passes AA in every theme. |
+| `--ms-color-text-secondary` / `-muted` / `-subtle`                        | 80% / 66% / 52% of `base-content` over the base                                       |
+| `--ms-color-border-field` / `-hover`                                      | 50% / 30% of `base-300` over `base-content`: 3:1 field borders (WCAG 1.4.11)          |
+| `--ms-focus-ring-color`                                                   | 80% primary + 20% `base-content`: 3:1 on every surface                                |
+| `--ms-focus-ring-shadow`                                                  | 3px halo (30% of the ring color) used on focused fields                               |
+| `--ms-radius-sm` / `-md` / `-lg` / `-xl`                                  | `selector` / `field` / `box` / `box × 1.5`                                            |
+| `--ms-elevation-xs` … `--ms-elevation-xl`                                 | Neutral shadows on the Tailwind scale, multiplied by `--ms-depth`                     |
 
-As sombras semânticas apontam para essa escala: `--ms-elevation-button` e `-input` usam `xs`, `-card` usa `sm`, `-dropdown` usa `md` e `-modal` usa `lg`. Os nomes antigos `--ms-elevation-1`, `-2` e `-3` continuam válidos como aliases de `sm`, `md` e `lg`.
+Semantic shadows point at that scale: `--ms-elevation-button` and `-input` use `xs`, `-card` uses `sm`, `-dropdown` uses `md` and `-modal` uses `lg`. The legacy names `--ms-elevation-1`, `-2` and `-3` still work as aliases of `sm`, `md` and `lg`.
 
-Qualquer token derivado pode ser sobrescrito como uma variável comum. Por exemplo, para bordas de campo mais suaves (abaixo de 3:1, fora da WCAG 1.4.11):
+Any derived token can be overridden like a regular variable. For example, for softer field borders (below 3:1, outside WCAG 1.4.11):
 
 ```css
 :root {
@@ -208,9 +208,9 @@ Qualquer token derivado pode ser sobrescrito como uma variável comum. Por exemp
 }
 ```
 
-## Tons nos componentes
+## Tones in components
 
-Os tons (`primary`, `success`…) funcionam igual em todos os componentes. `[data-tone="success"]` define `--ms-tone` e `--ms-tone-content`, e o motor de tons deriva `--ms-tone-hover`, `-active`, `-subtle`, `-border` e `-text` com as mesmas proporções dos tokens do tema. Para um tom de marca pontual:
+Tones (`primary`, `success`…) work the same way in every component. `[data-tone="success"]` sets `--ms-tone` and `--ms-tone-content`, and the tone engine derives `--ms-tone-hover`, `-active`, `-subtle`, `-border` and `-text` with the same ratios as the theme tokens. For a one-off brand tone:
 
 ```css
 .ms-button[data-tone="brand"],
@@ -220,5 +220,5 @@ Os tons (`primary`, `success`…) funcionam igual em todos os componentes. `[dat
 }
 ```
 
-- **Texto usa `--ms-tone-text`**, nunca o tom puro, porque é ele que garante AA. O tom puro fica para preenchimentos, bordas e indicadores.
-- `neutral` usa a cor do texto base no lugar do texto tingido, porque em alguns temas ele é um cinza claro.
+- **Text uses `--ms-tone-text`**, never the raw tone, because that's what guarantees AA. The raw tone is for fills, borders and indicators.
+- `neutral` uses the base text color instead of tinted text, because in some themes it is a light gray.

@@ -1,22 +1,22 @@
 ---
 title: SSR
-description: Renderização no servidor sem flash e sem hydration mismatch, com toasts por requisição e modo de cor resolvido em CSS.
+description: Server-side rendering with no flash and no hydration mismatch, per-request toasts and color mode resolved in CSS.
 ---
 
 # SSR
 
-Todos os componentes do `@magic-style/vue` renderizam no servidor sem acessar `window` ou `document`. Isso vale para Inertia SSR, Nuxt ou um servidor Vite próprio.
+Every `@magic-style/vue` component renders on the server without touching `window` or `document`. That holds for Inertia SSR, Nuxt or your own Vite server.
 
-## O que é testado
+## What's tested
 
-| Teste                                  | O que garante                                                                             |
-| :------------------------------------- | :---------------------------------------------------------------------------------------- |
-| `packages/vue/tests/ssr.test.ts`       | Cada componente exportado renderiza com `renderToString` num ambiente Node, sem `window`. |
-| `packages/vue/tests/hydration.test.ts` | `MsProvider`, `MsThemeScope` e `MsDatePicker` hidratam sem avisos de mismatch.            |
+| Test                                   | What it guarantees                                                                              |
+| :------------------------------------- | :---------------------------------------------------------------------------------------------- |
+| `packages/vue/tests/ssr.test.ts`       | Every exported component renders with `renderToString` in a Node environment, with no `window`. |
+| `packages/vue/tests/hydration.test.ts` | `MsProvider`, `MsThemeScope` and `MsDatePicker` hydrate without mismatch warnings.              |
 
-## Entrada do servidor
+## Server entry
 
-Crie um app novo por requisição e instale os plugins dentro dela:
+Create a new app per request and install the plugins on it:
 
 ```ts
 // entry-server.ts
@@ -32,44 +32,44 @@ export async function render(locale: string) {
 }
 ```
 
-Com Laravel + Inertia, o mesmo vale para o `resources/js/ssr.ts`. Veja [Laravel + Inertia](/guide/laravel-inertia).
+With Laravel + Inertia, the same applies to `resources/js/ssr.ts`. See [Laravel + Inertia](/guide/laravel-inertia).
 
 ## Checklist
 
-### Toasts por app
+### Per-app toasts
 
-Instale `createMsToast()` em cada app criado. Sem o plugin, o `useToast()` usa um store compartilhado no navegador, mas no servidor cria um store descartável a cada chamada: toasts disparados durante o SSR se perdem. Com o plugin, cada requisição tem o seu store e nada vaza entre usuários.
+Install `createMsToast()` on every app you create. Without the plugin, `useToast()` uses a shared store in the browser, but on the server it creates a throwaway store on every call: toasts fired during SSR are lost. With the plugin, each request has its own store and nothing leaks between users.
 
 ```ts
 app.use(createMsToast());
 ```
 
-### Modo de cor
+### Color mode
 
-Use `color-mode="system"` quando a escolha do usuário não estiver disponível no servidor. O provider renderiza `data-ms-color-mode="system"` dos dois lados, e o CSS resolve claro ou escuro com `prefers-color-scheme`. A marcação é idêntica, então não há flash nem mismatch.
+Use `color-mode="system"` when the user's choice isn't available on the server. The provider renders `data-ms-color-mode="system"` on both sides, and CSS resolves light or dark through `prefers-color-scheme`. The markup is identical, so there is no flash and no mismatch.
 
-O `useSystemColorMode()` só lê `matchMedia` depois da montagem. Até lá, `resolvedColorMode` vale `light` no servidor e no cliente. Para respeitar uma escolha explícita (`light` ou `dark`) sem flash, veja [Modo escuro](/guide/dark-mode#sem-flash-no-ssr).
+`useSystemColorMode()` only reads `matchMedia` after mount. Until then, `resolvedColorMode` is `light` on server and client. To honor an explicit choice (`light` or `dark`) without a flash, see [Dark mode](/guide/dark-mode#no-flash-with-ssr).
 
 ### `target="root"`
 
-Com `target="root"`, o `MsProvider` grava os atributos (`data-ms-theme`, `data-ms-color-mode`, `dir`…) e os `overrides` no `<html>`, mas só no cliente, porque no servidor não existe `document`. Escreva os mesmos atributos no template HTML do servidor:
+With `target="root"`, `MsProvider` writes the attributes (`data-ms-theme`, `data-ms-color-mode`, `dir`…) and the `overrides` on `<html>`, but only on the client, since there is no `document` on the server. Write the same attributes in the server HTML template:
 
 ```html
-<html lang="pt-BR" dir="ltr" data-ms-theme="magic" data-ms-color-mode="system"></html>
+<html lang="en-US" dir="ltr" data-ms-theme="magic" data-ms-color-mode="system"></html>
 ```
 
-Com o `target="wrapper"` padrão, os atributos saem no `div` do provider e já vêm no HTML do servidor.
+With the default `target="wrapper"`, the attributes go on the provider's `div` and are already in the server HTML.
 
-### Datas
+### Dates
 
-O `MsDatePicker` interpreta `YYYY-MM-DD` e `YYYY-MM-DD HH:mm` no fuso local e resolve "hoje" só no cliente. Servidor e navegador em fusos diferentes não causam mismatch.
+`MsDatePicker` parses `YYYY-MM-DD` and `YYYY-MM-DD HH:mm` in the local time zone and resolves "today" on the client only. A server and a browser in different time zones don't cause a mismatch.
 
-### Idioma
+### Locale
 
-Passe o mesmo `locale` para o servidor e para o cliente (por exemplo, a shared prop `locale` do Inertia). Nomes de mês e dia saem do `Intl` com esse `locale`, então os dois lados geram o mesmo texto.
+Pass the same `locale` to server and client (for example, Inertia's `locale` shared prop). Month and day names come from `Intl` with that `locale`, so both sides produce the same text.
 
-## Veja também
+## See also
 
-- [Modo escuro](/guide/dark-mode)
-- [Idiomas (i18n)](/guide/i18n)
+- [Dark mode](/guide/dark-mode)
+- [Internationalization](/guide/i18n)
 - [Toast](/components/toast)

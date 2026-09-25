@@ -6,7 +6,7 @@
  *
  *   node scripts/e2e.ts            # all routes
  *   node scripts/e2e.ts --a11y-only
- *   node scripts/e2e.ts --only=/components/tabs,/en/   # smoke a subset, verbose console
+ *   node scripts/e2e.ts --only=/components/tabs,/pt/   # smoke a subset, verbose console
  *
  * Chromium comes from playwright-core (`pnpm exec playwright-core install chromium`)
  * or from PLAYWRIGHT_CHROMIUM_EXECUTABLE.
@@ -26,16 +26,16 @@ const AXE_SOURCE = readFileSync(
 );
 const A11Y_PAGES = [
   "/",
-  "/en/",
+  "/pt/",
   "/es/",
   "/guide/introduction",
   "/components/button",
   "/components/dialog",
   "/components/select",
-  "/en/components/table",
+  "/pt/components/table",
   "/es/components/tabs",
   "/themes",
-  "/en/tokens",
+  "/pt/tokens",
 ];
 const CONCURRENCY = 4;
 /** Requests that fail on purpose (the avatar demo shows its fallback for a missing photo). */
@@ -90,9 +90,9 @@ function routesFromSitemap(): string[] {
 }
 
 function expectedLang(path: string): string {
-  if (path.startsWith("/en/") || path === "/en") return "en-US";
+  if (path.startsWith("/pt/") || path === "/pt") return "pt-BR";
   if (path.startsWith("/es/") || path === "/es") return "es-ES";
-  return "pt-BR";
+  return "en-US";
 }
 
 async function smoke(browser: Browser, origin: string, path: string): Promise<string[]> {

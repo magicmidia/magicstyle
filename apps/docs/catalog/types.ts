@@ -10,7 +10,7 @@ export interface Category {
 }
 
 export interface CatalogEntry {
-  /** URL slug: /components/<slug> (and /en/, /es/). */
+  /** URL slug: /components/<slug> (and /pt/, /es/). */
   slug: string;
   /** Folder in packages/vue/src/components. */
   dir: string;

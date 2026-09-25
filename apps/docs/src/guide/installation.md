@@ -1,18 +1,18 @@
 ---
-title: Instalação
-description: Instale @magic-style/vue e @magic-style/css, carregue o CSS e use os componentes com TypeScript.
+title: Installation
+description: Install @magic-style/vue and @magic-style/css, load the CSS and use the components with TypeScript.
 ---
 
-# Instalação
+# Installation
 
-## Requisitos
+## Requirements
 
-- Vue **3.5** ou superior (peer dependency do `@magic-style/vue`).
-- Um bundler que resolva imports de CSS em pacotes (Vite, por exemplo).
+- Vue **3.5** or later (peer dependency of `@magic-style/vue`).
+- A bundler that resolves CSS imports from packages (Vite, for example).
 
-O `@magic-style/css` é peer **opcional** do pacote Vue: os componentes não trazem estilos próprios, mas sem ele ficam sem visual.
+`@magic-style/css` is an **optional** peer of the Vue package: the components ship no styles of their own, so without it they render unstyled.
 
-## Instalar os pacotes
+## Install the packages
 
 ::: code-group
 
@@ -34,24 +34,24 @@ bun add @magic-style/vue @magic-style/css
 
 :::
 
-## Carregar o CSS
+## Load the CSS
 
-Importe o CSS completo uma vez, no ponto de entrada da aplicação:
+Import the full stylesheet once, in your app's entry point:
 
 ```ts
 // main.ts
 import "@magic-style/css";
 ```
 
-Isso inclui tokens, temas, estilos base, todos os componentes e utilitários. O reset é opcional e fica fora do pacote completo:
+That includes tokens, themes, base styles, every component and utilities. The reset is opt-in and not part of the full bundle:
 
 ```ts
 import "@magic-style/css/reset.css";
 ```
 
-### Importação granular
+### Granular imports
 
-Se você usa poucos componentes, carregue só as camadas e os componentes necessários. Tokens, temas e base são obrigatórios:
+If you only use a few components, load just the layers and components you need. Tokens, themes and base are required:
 
 ```css
 @import "@magic-style/css/tokens.css";
@@ -62,29 +62,29 @@ Se você usa poucos componentes, carregue só as camadas e os componentes necess
 @import "@magic-style/css/components/input.css";
 ```
 
-Cada componente tem um arquivo em `@magic-style/css/components/<nome>.css`. A lista completa está nos `exports` do `package.json` do pacote.
+Every component has a file at `@magic-style/css/components/<name>.css`. The full list is in the `exports` field of the package's `package.json`.
 
 ### Cascade layers
 
-Todo o CSS fica em camadas nomeadas, nesta ordem:
+All CSS lives in named layers, in this order:
 
 ```css
 @layer ms.reset, ms.tokens, ms.themes, ms.base, ms.components, ms.utilities;
 ```
 
-CSS sem layer sempre vence CSS em layer, então os estilos da sua aplicação sobrescrevem os da biblioteca sem `!important`. Com Tailwind CSS v4, posicione a camada `ms` antes das utilidades:
+Unlayered CSS always beats layered CSS, so your app's styles override the library's without `!important`. With Tailwind CSS v4, place the `ms` layer before the utilities:
 
 ```css
 @layer theme, base, ms, components, utilities;
 ```
 
-::: tip Fontes
-Os temas declaram fontes como IBM Plex Sans ou Inter, com fallback para fontes do sistema. Os arquivos de fonte não vêm no pacote: carregue-os você mesmo, se quiser a tipografia exata.
+::: tip Fonts
+Themes declare fonts such as IBM Plex Sans or Inter, falling back to system fonts. The font files are not bundled: load them yourself if you want the exact typography.
 :::
 
-## Usar os componentes
+## Use the components
 
-Importe cada componente pelo nome. O pacote é ESM e `sideEffects: false`, então o bundler descarta o que você não usar:
+Import each component by name. The package is ESM with `sideEffects: false`, so your bundler drops whatever you don't use:
 
 ```vue
 <script setup lang="ts">
@@ -93,13 +93,13 @@ import { MsButton, MsCard } from "@magic-style/vue";
 
 <template>
   <MsCard>
-    <MsButton variant="outline">Cancelar</MsButton>
-    <MsButton>Salvar</MsButton>
+    <MsButton variant="outline">Cancel</MsButton>
+    <MsButton>Save</MsButton>
   </MsCard>
 </template>
 ```
 
-Não existe um plugin que registre todos os componentes globalmente. Se preferir registro global, faça só com os que você usa:
+There is no plugin that registers every component globally. If you prefer global registration, do it for the components you use:
 
 ```ts
 import { createApp } from "vue";
@@ -109,9 +109,9 @@ const app = createApp(App);
 app.component("MsButton", MsButton).component("MsInput", MsInput);
 ```
 
-## Plugins recomendados
+## Recommended plugins
 
-Dois plugins são opcionais, mas recomendados:
+Two plugins are optional but recommended:
 
 ```ts
 import { createApp } from "vue";
@@ -120,12 +120,12 @@ import "@magic-style/css";
 import App from "./App.vue";
 
 createApp(App)
-  .use(createMsToast()) // store de toasts por app (obrigatório com SSR)
-  .use(createMsI18n({ locale: "pt-BR" })) // idioma dos textos embutidos
+  .use(createMsToast()) // per-app toast store (required with SSR)
+  .use(createMsI18n({ locale: "en-US" })) // language of built-in strings
   .mount("#app");
 ```
 
-Depois, envolva a aplicação num `MsProvider` para escolher tema e modo de cor:
+Then wrap your app in an `MsProvider` to pick the theme and color mode:
 
 ```vue
 <template>
@@ -137,14 +137,14 @@ Depois, envolva a aplicação num `MsProvider` para escolher tema e modo de cor:
 
 ## TypeScript
 
-O pacote publica as declarações (`dist/index.d.ts`), que resolvem com `moduleResolution` `bundler`, `node16` e `nodenext`. Props, eventos e tipos públicos têm JSDoc, então aparecem no autocomplete do editor. Os tipos públicos também são exportados:
+The package ships its declarations (`dist/index.d.ts`), which resolve with `moduleResolution` set to `bundler`, `node16` or `nodenext`. Props, events and public types carry JSDoc, so they show up in your editor's autocomplete. Public types are exported too:
 
 ```ts
 import type { MsButtonProps, MsTone, MsMessages, MsThemeValues } from "@magic-style/vue";
 ```
 
-## Próximos passos
+## Next steps
 
 - [Laravel + Inertia](/guide/laravel-inertia)
-- [Temas](/guide/theming)
+- [Theming](/guide/theming)
 - [SSR](/guide/ssr)

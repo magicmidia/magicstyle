@@ -1,26 +1,26 @@
 ---
-title: Galeria de temas
-description: Os 10 temas oficiais do Magic-Style lado a lado, nos modos claro e escuro, e um gerador de tema com verificação de contraste AA.
+title: Theme gallery
+description: The 10 official Magic-Style themes side by side in light and dark mode, plus a theme generator with AA contrast checks.
 aside: false
 pageClass: docs-wide
 ---
 
-# Galeria de temas
+# Theme gallery
 
-Todos os temas compartilham a mesma estrutura visual, no estilo shadcn/ui. Cada um define só o [contrato de variáveis](/tokens): cores, raios, profundidade e fontes. Troque o modo para comparar, ou aplique um tema ao site inteiro.
+Every theme shares the same shadcn/ui-style structure. Each one only sets the [variable contract](/tokens): colors, radii, depth and fonts. Switch the mode to compare, or apply a theme to the whole site.
 
 <ThemeGallery />
 
-## Gerador de temas
+## Theme generator
 
-Escolha um tema base, a cor primária de cada modo, a matiz dos neutros, o raio e as sombras. A prévia usa os componentes reais, o contraste é verificado com `checkMsThemeContrast`, e o código sai pronto para copiar.
+Pick a base theme, the primary color for each mode, the neutral hue, the radius and the shadows. The preview uses the real components, contrast is checked with `checkMsThemeContrast`, and the code is ready to copy.
 
 <ThemeBuilder />
 
-## Usar o tema gerado
+## Using the generated theme
 
-1. Salve a definição em um arquivo do seu projeto (por exemplo `src/themes/acme.ts`).
-2. Gere o CSS com `msThemeToCss` no build ou copie a aba **CSS gerado**, e carregue-o depois de `@magic-style/css`.
-3. Ative o tema com `data-ms-theme="acme"` no `<html>` ou com `<MsProvider theme="acme">`.
+1. Save the definition in your project (for example `src/themes/acme.ts`).
+2. Generate the CSS with `msThemeToCss` at build time, or copy the **Generated CSS** tab, and load it after `@magic-style/css`.
+3. Activate it with `data-ms-theme="acme"` on `<html>` or with `<MsProvider theme="acme">`.
 
-Os detalhes do contrato, das derivações e dos dials de densidade, raio e contraste estão no guia de [temas](/guide/theming).
+The contract, the derivations and the density, radius and contrast dials are covered in the [theming](/guide/theming) guide.

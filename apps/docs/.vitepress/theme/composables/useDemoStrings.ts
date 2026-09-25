@@ -15,7 +15,7 @@ export function useDemoStrings<K extends string>(
   const { lang } = useData();
   const current = computed(() => strings[siteLang(lang.value)]);
   const t = {} as Record<K, string>;
-  for (const key of Object.keys(strings["pt-BR"]) as K[]) {
+  for (const key of Object.keys(strings["en-US"]) as K[]) {
     Object.defineProperty(t, key, { enumerable: true, get: () => current.value[key] });
   }
   return t;

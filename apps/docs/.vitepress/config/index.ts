@@ -14,8 +14,8 @@ export default defineConfig({
   lastUpdated: true,
   head: head as unknown as HeadConfig[],
   locales: {
-    root: localeConfig("pt-BR", ""),
-    en: { ...localeConfig("en-US", "en/"), link: "/en/" },
+    root: localeConfig("en-US", ""),
+    pt: { ...localeConfig("pt-BR", "pt/"), link: "/pt/" },
     es: { ...localeConfig("es-ES", "es/"), link: "/es/" },
   },
   themeConfig: {
@@ -26,8 +26,8 @@ export default defineConfig({
       provider: "local",
       options: {
         locales: {
-          root: { translations: SEARCH_TRANSLATIONS["pt-BR"] },
-          en: { translations: SEARCH_TRANSLATIONS["en-US"] },
+          root: { translations: SEARCH_TRANSLATIONS["en-US"] },
+          pt: { translations: SEARCH_TRANSLATIONS["pt-BR"] },
           es: { translations: SEARCH_TRANSLATIONS["es-ES"] },
         },
       },

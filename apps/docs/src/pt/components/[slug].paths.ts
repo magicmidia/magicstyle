@@ -3,5 +3,5 @@ import { componentRoutes } from "../../../.vitepress/content/component-page.ts";
 
 export default defineRoutes({
   watch: ["../../../demos/**/meta.json", "../../../catalog/*.ts"],
-  paths: () => componentRoutes("en-US"),
+  paths: () => componentRoutes("pt-BR"),
 });

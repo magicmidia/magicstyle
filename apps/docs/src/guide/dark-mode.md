@@ -1,21 +1,21 @@
 ---
-title: Modo escuro
-description: Modo claro, escuro ou do sistema com data-ms-color-mode, troca em tempo de execução e como evitar o flash no SSR.
+title: Dark mode
+description: Light, dark or system color mode with data-ms-color-mode, runtime switching and how to avoid a flash with SSR.
 ---
 
-# Modo escuro
+# Dark mode
 
-Todo tema tem modo claro e escuro. O modo é escolhido pelo atributo `data-ms-color-mode`, que aceita três valores:
+Every theme has a light and a dark mode. The mode is picked by the `data-ms-color-mode` attribute, which takes three values:
 
-| Valor    | Comportamento                                                                       |
-| :------- | :---------------------------------------------------------------------------------- |
-| `light`  | Sempre claro.                                                                       |
-| `dark`   | Sempre escuro.                                                                      |
-| `system` | Segue o sistema operacional via `prefers-color-scheme`, só com CSS, sem JavaScript. |
+| Value    | Behavior                                                                   |
+| :------- | :------------------------------------------------------------------------- |
+| `light`  | Always light.                                                              |
+| `dark`   | Always dark.                                                               |
+| `system` | Follows the OS through `prefers-color-scheme`, in CSS only, no JavaScript. |
 
-Cada bloco de tema também define `color-scheme`, então barras de rolagem e controles nativos acompanham o modo.
+Each theme block also sets `color-scheme`, so scrollbars and native controls follow the mode.
 
-## Só com CSS
+## CSS only
 
 ```html
 <html data-ms-theme="magic" data-ms-color-mode="system">
@@ -23,9 +23,9 @@ Cada bloco de tema também define `color-scheme`, então barras de rolagem e con
 </html>
 ```
 
-## Com `MsProvider`
+## With `MsProvider`
 
-`color-mode` é `system` por padrão:
+`color-mode` defaults to `system`:
 
 ```vue
 <MsProvider theme="magic" color-mode="system">
@@ -33,19 +33,19 @@ Cada bloco de tema também define `color-scheme`, então barras de rolagem e con
 </MsProvider>
 ```
 
-Por padrão, os atributos vão para o `div` do provider. Com `target="root"`, vão para o `<html>`, o que também pinta o fundo da página e os elementos teleportados para o `body`. Ao desmontar, o provider devolve ao `<html>` os atributos que ele tinha antes.
+By default the attributes go on the provider's `div`. With `target="root"` they go on `<html>`, which also paints the page background and elements teleported to `body`. On unmount, the provider restores whatever attributes `<html>` had before.
 
-Para mudar o modo só num trecho da página, use `MsThemeScope`:
+To change the mode for part of the page, use `MsThemeScope`:
 
 ```vue
 <MsThemeScope color-mode="dark">
-  <MsCard>Sempre escuro</MsCard>
+  <MsCard>Always dark</MsCard>
 </MsThemeScope>
 ```
 
-## Trocar em tempo de execução
+## Switching at runtime
 
-`useThemeContext()` (ou o alias `useMagicStyle()`) devolve o contexto do provider mais próximo:
+`useThemeContext()` (or its alias `useMagicStyle()`) returns the nearest provider's context:
 
 ```vue
 <script setup lang="ts">
@@ -62,38 +62,38 @@ function toggle() {
 
 <template>
   <MsButton variant="outline" @click="toggle">
-    {{ isDark ? "Modo claro" : "Modo escuro" }}
+    {{ isDark ? "Light mode" : "Dark mode" }}
   </MsButton>
 </template>
 ```
 
-| Campo                 | Tipo                                 | Descrição                                         |
-| :-------------------- | :----------------------------------- | :------------------------------------------------ |
-| `colorModePreference` | `Ref<"light" \| "dark" \| "system">` | O que o usuário escolheu.                         |
-| `resolvedColorMode`   | `ComputedRef<"light" \| "dark">`     | O modo em uso, com `system` já resolvido.         |
-| `setColorMode(mode)`  | função                               | Muda a preferência (`light`, `dark` ou `system`). |
+| Field                 | Type                                 | Description                                         |
+| :-------------------- | :----------------------------------- | :-------------------------------------------------- |
+| `colorModePreference` | `Ref<"light" \| "dark" \| "system">` | What the user picked.                               |
+| `resolvedColorMode`   | `ComputedRef<"light" \| "dark">`     | The mode in use, with `system` already resolved.    |
+| `setColorMode(mode)`  | function                             | Changes the preference (`light`, `dark`, `system`). |
 
-O contexto também expõe `setTheme`, `setDensity`, `setRadius`, `setContrast` e `setDir`.
+The context also exposes `setTheme`, `setDensity`, `setRadius`, `setContrast` and `setDir`.
 
 ::: tip
-Em `system`, o `resolvedColorMode` vale `light` no servidor e na primeira renderização do cliente. O valor real do sistema chega depois da montagem. O visual não depende disso, porque o CSS resolve `system` sozinho.
+In `system` mode, `resolvedColorMode` is `light` on the server and on the first client render. The real OS value arrives after mount. The visuals don't depend on it, because CSS resolves `system` on its own.
 :::
 
-## Sem flash no SSR
+## No flash with SSR
 
-Com `color-mode="system"`, o provider renderiza `data-ms-color-mode="system"` no servidor e no cliente. Quem escolhe entre claro e escuro é o CSS, então não há flash nem hydration mismatch.
+With `color-mode="system"`, the provider renders `data-ms-color-mode="system"` on both server and client. CSS picks light or dark, so there is no flash and no hydration mismatch.
 
-O flash aparece quando o usuário escolhe `light` ou `dark` e essa escolha só existe no navegador. Duas formas de evitar:
+A flash shows up when the user picks `light` or `dark` and that choice only lives in the browser. Two ways to avoid it:
 
-**1. Guarde a escolha num cookie e renderize no servidor.** É o caminho mais robusto com Laravel:
+**1. Store the choice in a cookie and render it on the server.** This is the most robust option with Laravel:
 
 ```blade
 <html data-ms-theme="magic" data-ms-color-mode="{{ request()->cookie('ms-color-mode', 'system') }}">
 ```
 
-Passe o mesmo valor para o `MsProvider` (por exemplo, como shared prop do Inertia) e grave o cookie quando o usuário trocar o modo.
+Pass the same value to `MsProvider` (for example as an Inertia shared prop) and write the cookie when the user switches modes.
 
-**2. Aplique a escolha antes da primeira pintura** com um script inline no `<head>`, antes do CSS:
+**2. Apply the choice before first paint** with an inline script in `<head>`, before the CSS:
 
 ```html
 <script>
@@ -105,11 +105,11 @@ Passe o mesmo valor para o `MsProvider` (por exemplo, como shared prop do Inerti
 ```
 
 ::: warning
-Com `target="root"`, o provider sobrescreve os atributos do `<html>` ao montar. Passe para ele o mesmo modo que o servidor ou o script aplicou, senão a página troca de modo logo após carregar.
+With `target="root"`, the provider overwrites the `<html>` attributes on mount. Pass it the same mode the server or the script applied, or the page will switch modes right after loading.
 :::
 
-## Veja também
+## See also
 
-- [Temas](/guide/theming)
+- [Theming](/guide/theming)
 - [SSR](/guide/ssr)
-- [Provider](/components/provider) e [Theme Scope](/components/theme-scope)
+- [Provider](/components/provider) and [Theme Scope](/components/theme-scope)
