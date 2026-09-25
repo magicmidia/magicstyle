@@ -1,7 +1,7 @@
 <template>
   <div
+    ref="containerRef"
     class="ms-tooltip-container"
-    :aria-describedby="isOpen && !disabled ? tooltipId : undefined"
     @mouseenter="handleOpen"
     @mouseleave="handleClose"
     @focusin="handleOpen"
@@ -10,8 +10,10 @@
   >
     <slot />
 
+    <!-- Always rendered (v-show) so aria-describedby is valid the moment the trigger gets focus. -->
     <div
-      v-if="isOpen && !disabled"
+      v-if="!disabled"
+      v-show="isOpen"
       :id="tooltipId"
       role="tooltip"
       :class="tooltipClasses"
@@ -24,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onUnmounted, ref } from "vue";
+import { computed, onUnmounted, ref, watchPostEffect } from "vue";
 import { useMsId } from "../../composables/use-ms-id.ts";
 import type { MsTooltipProps } from "./types.ts";
 
@@ -44,6 +46,21 @@ const props = withDefaults(defineProps<MsTooltipProps>(), {
 
 const tooltipId = useMsId("tooltip");
 const isOpen = ref(false);
+const containerRef = ref<HTMLElement | null>(null);
+
+// The description belongs on the focusable trigger inside the slot, not on the wrapper div.
+watchPostEffect(() => {
+  const trigger = containerRef.value?.querySelector<HTMLElement>(
+    "button, a[href], input, select, textarea, [tabindex]:not([tabindex='-1'])",
+  );
+  if (!trigger) return;
+  const ids = (trigger.getAttribute("aria-describedby") ?? "")
+    .split(/\s+/)
+    .filter((id) => id && id !== tooltipId);
+  if (!props.disabled) ids.push(tooltipId);
+  if (ids.length) trigger.setAttribute("aria-describedby", ids.join(" "));
+  else trigger.removeAttribute("aria-describedby");
+});
 
 let timer: ReturnType<typeof setTimeout> | null = null;
 

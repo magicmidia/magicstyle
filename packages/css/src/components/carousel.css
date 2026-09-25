@@ -88,3 +88,25 @@
   width: 24px;
   background-color: #ffffff;
 }
+
+.ms-carousel__rotation {
+  position: absolute;
+  inset-block-start: var(--ms-space-2);
+  inset-inline-end: var(--ms-space-2);
+  z-index: 2;
+  display: inline-grid;
+  place-items: center;
+  inline-size: 32px;
+  block-size: 32px;
+  border: 0;
+  border-radius: var(--ms-radius-full);
+  background-color: color-mix(in oklab, black 55%, transparent);
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.ms-carousel__rotation:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
+}

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, provide, onMounted, onBeforeUnmount } from "vue";
+import { ref, computed, toRef, watch, provide, onMounted, onBeforeUnmount } from "vue";
 import type { MsCarouselProps, MsCarouselEmits } from "./types.ts";
 import { MS_CAROUSEL_KEY } from "./types.ts";
 
@@ -29,9 +29,20 @@ watch(
   },
 );
 
+let slideCount = 0;
 provide(MS_CAROUSEL_KEY, {
   activeSlide: current,
+  registerSlide: () => slideCount++,
+  totalSlides: toRef(props, "totalSlides"),
 });
+
+// WCAG 2.2.2: autoplay pauses on hover/focus, has a visible control, and never starts
+// for users who prefer reduced motion.
+const userPaused = ref(false);
+const interacting = ref(false);
+const prefersReducedMotion = () =>
+  typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+const isRotating = computed(() => props.autoplay && !userPaused.value && !interacting.value);
 
 const goTo = (index: number) => {
   let target = index;
@@ -50,8 +61,8 @@ const next = () => goTo(current.value + 1);
 const prev = () => goTo(current.value - 1);
 
 const startAutoplay = () => {
-  if (!props.autoplay || props.totalSlides <= 1) return;
   stopAutoplay();
+  if (!isRotating.value || props.totalSlides <= 1 || prefersReducedMotion()) return;
   timer = setInterval(() => {
     next();
   }, props.interval);
@@ -64,16 +75,24 @@ const stopAutoplay = () => {
   }
 };
 
-watch(
-  () => props.autoplay,
-  (val) => {
-    if (val) startAutoplay();
-    else stopAutoplay();
-  },
-);
+watch(isRotating, (rotating) => (rotating ? startAutoplay() : stopAutoplay()));
+
+const pauseForInteraction = () => {
+  interacting.value = true;
+};
+const resumeAfterInteraction = (event?: FocusEvent) => {
+  const root = event?.currentTarget as HTMLElement | undefined;
+  if (event && root?.contains(event.relatedTarget as Node | null)) return;
+  interacting.value = false;
+};
+
+const toggleRotation = () => {
+  userPaused.value = !userPaused.value;
+};
 
 onMounted(() => {
-  if (props.autoplay) startAutoplay();
+  if (props.autoplay && prefersReducedMotion()) userPaused.value = true;
+  startAutoplay();
 });
 
 onBeforeUnmount(() => {
@@ -92,11 +111,23 @@ const trackStyle = computed(() => ({
     aria-roledescription="carousel"
     aria-label="Galeria de slides"
     data-ms-carousel
-    @mouseenter="stopAutoplay"
-    @mouseleave="startAutoplay"
+    @mouseenter="pauseForInteraction"
+    @mouseleave="resumeAfterInteraction()"
+    @focusin="pauseForInteraction"
+    @focusout="resumeAfterInteraction"
   >
+    <button
+      v-if="props.autoplay && props.totalSlides > 1"
+      type="button"
+      class="ms-carousel__rotation"
+      :aria-label="userPaused ? 'Iniciar rotação automática' : 'Pausar rotação automática'"
+      @click="toggleRotation"
+    >
+      <span aria-hidden="true">{{ userPaused ? "▶" : "❚❚" }}</span>
+    </button>
     <!-- Slides track -->
-    <div class="ms-carousel__track" :style="trackStyle">
+    <!-- Announce slide changes only when the user drives them (off during autoplay). -->
+    <div class="ms-carousel__track" :style="trackStyle" :aria-live="isRotating ? 'off' : 'polite'">
       <slot />
     </div>
 
@@ -124,7 +155,6 @@ const trackStyle = computed(() => ({
     <div
       v-if="props.showIndicators && props.totalSlides > 1"
       class="ms-carousel__indicators"
-      role="tablist"
       aria-label="Seletores de slide"
     >
       <button
@@ -133,9 +163,8 @@ const trackStyle = computed(() => ({
         type="button"
         class="ms-carousel__indicator"
         :class="{ 'ms-carousel__indicator--active': current === index - 1 }"
-        role="tab"
-        :aria-selected="current === index - 1"
-        :aria-label="`Slide ${index}`"
+        :aria-current="current === index - 1 ? 'true' : undefined"
+        :aria-label="`Ir para o slide ${index}`"
         @click="goTo(index - 1)"
       />
     </div>

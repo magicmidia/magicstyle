@@ -40,6 +40,11 @@ const handleMouseLeave = () => {
   }, props.closeDelay);
 };
 
+const close = () => {
+  clearTimers();
+  isOpen.value = false;
+};
+
 onBeforeUnmount(() => {
   clearTimers();
 });
@@ -61,12 +66,14 @@ const contentClasses = computed(() => [
     @mouseleave="handleMouseLeave"
     @focusin="handleMouseEnter"
     @focusout="handleMouseLeave"
+    @keydown.esc="close"
   >
     <div class="ms-hover-card__trigger">
       <slot />
     </div>
 
-    <div v-if="isOpen" :class="contentClasses" :style="contentStyle" role="tooltip">
+    <!-- Supplementary preview for pointer users; not a tooltip (it may hold interactive content). -->
+    <div v-if="isOpen" :class="contentClasses" :style="contentStyle">
       <slot name="content" />
     </div>
   </div>

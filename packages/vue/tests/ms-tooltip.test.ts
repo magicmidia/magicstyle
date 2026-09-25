@@ -1,7 +1,14 @@
 import { mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import { h } from "vue";
+import type { VueWrapper } from "@vue/test-utils";
 import MsTooltip from "../src/components/MsTooltip/MsTooltip.vue";
+
+/** The tooltip is always rendered (v-show) so aria-describedby stays valid; "shown" = not display:none. */
+const shown = (wrapper: VueWrapper) => {
+  const tooltip = wrapper.find('[role="tooltip"]');
+  return tooltip.exists() && !/display:\s*none/.test(tooltip.attributes("style") ?? "");
+};
 
 describe("MsTooltip (doc 05 §7)", () => {
   it("renders trigger element and does not render tooltip initially", () => {
@@ -15,8 +22,12 @@ describe("MsTooltip (doc 05 §7)", () => {
     });
 
     expect(wrapper.text()).toContain("Passe o mouse");
-    expect(wrapper.find('[role="tooltip"]').exists()).toBe(false);
+    expect(shown(wrapper)).toBe(false);
     expect(wrapper.attributes("aria-describedby")).toBeUndefined();
+    // Described on the focusable trigger from the start (not on the wrapper).
+    expect(wrapper.find("button").attributes("aria-describedby")).toBe(
+      wrapper.find('[role="tooltip"]').attributes("id"),
+    );
   });
 
   it("shows tooltip on pointerenter and focusin with ARIA relationship", async () => {
@@ -38,14 +49,14 @@ describe("MsTooltip (doc 05 §7)", () => {
     await wrapper.vm.$nextTick();
 
     const tooltip = wrapper.find('[role="tooltip"]');
-    expect(tooltip.exists()).toBe(true);
+    expect(shown(wrapper)).toBe(true);
     expect(tooltip.text()).toBe("Dica de Ajuda");
     expect(tooltip.classes()).toContain("ms-tooltip--bottom");
 
     // Check aria-describedby
     const tooltipId = tooltip.attributes("id");
     expect(tooltipId).toBeDefined();
-    expect(wrapper.attributes("aria-describedby")).toBe(tooltipId);
+    expect(wrapper.find("button").attributes("aria-describedby")).toBe(tooltipId);
 
     vi.useRealTimers();
   });
@@ -65,20 +76,20 @@ describe("MsTooltip (doc 05 §7)", () => {
     });
 
     await wrapper.trigger("mouseenter");
-    expect(wrapper.find('[role="tooltip"]').exists()).toBe(true);
+    expect(shown(wrapper)).toBe(true);
 
     // Escape closes immediately
     await wrapper.trigger("keydown.esc");
-    expect(wrapper.find('[role="tooltip"]').exists()).toBe(false);
+    expect(shown(wrapper)).toBe(false);
 
     // Trigger again, then mouseleave with hide delay
     await wrapper.trigger("mouseenter");
-    expect(wrapper.find('[role="tooltip"]').exists()).toBe(true);
+    expect(shown(wrapper)).toBe(true);
 
     await wrapper.trigger("mouseleave");
     vi.advanceTimersByTime(50);
     await wrapper.vm.$nextTick();
-    expect(wrapper.find('[role="tooltip"]').exists()).toBe(false);
+    expect(shown(wrapper)).toBe(false);
 
     vi.useRealTimers();
   });

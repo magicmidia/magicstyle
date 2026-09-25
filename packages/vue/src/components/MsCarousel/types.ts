@@ -51,6 +51,9 @@ export interface MsCarouselEmits {
 
 export interface MsCarouselContext {
   activeSlide: Ref<number>;
+  /** Registers a slide and returns its index (mount order). */
+  registerSlide?: () => number;
+  totalSlides?: Ref<number>;
 }
 
 export const MS_CAROUSEL_KEY: InjectionKey<MsCarouselContext> = Symbol("MS_CAROUSEL_KEY");
