@@ -1,1 +1,3124 @@
-{}
+{
+  "MsAccordion": {
+    "props": {
+      "modelValue": {
+        "text": "Identificador do item expandido no momento, ou array de identificadores se multiple estiver habilitado.",
+        "source": "Currently expanded item identifier or array of identifiers if multiple is enabled."
+      },
+      "multiple": {
+        "text": "Se vários itens do acordeão podem ficar expandidos ao mesmo tempo.",
+        "source": "Whether multiple accordion items can be expanded concurrently."
+      },
+      "size": {
+        "text": "Escala de tamanho para padding e tamanhos de fonte.",
+        "source": "Sizing scale for padding and font sizes."
+      },
+      "variant": {
+        "text": "Variante de enquadramento visual.",
+        "source": "Visual framing variant."
+      }
+    }
+  },
+  "MsAccordionItem": {
+    "props": {
+      "disabled": {
+        "text": "Se este item está desabilitado e não pode ser alternado.",
+        "source": "Whether this item is disabled and cannot be toggled."
+      },
+      "subtitle": {
+        "text": "Texto de descrição secundária abaixo do título.",
+        "source": "Secondary description text below the title."
+      },
+      "title": {
+        "text": "Rótulo de título principal do cabeçalho do acordeão.",
+        "source": "Primary title label for the accordion header."
+      },
+      "value": {
+        "text": "Identificador único comparado com modelValue.",
+        "source": "Unique identifier matching or checked against modelValue."
+      }
+    }
+  },
+  "MsAlert": {
+    "props": {
+      "align": {
+        "text": "Alinhamento vertical do ícone e das ações: \"center\" (padrão) | \"start\".",
+        "source": "Vertical alignment of icon and actions: \"center\" (default) | \"start\"."
+      },
+      "description": {
+        "text": "Descrição secundária (também é possível usar o slot padrão).",
+        "source": "Secondary description (can also use default slot)."
+      },
+      "dismissible": {
+        "text": "Se o alerta pode ser fechado pelo usuário.",
+        "source": "Whether the alert can be closed by the user."
+      },
+      "iconStyle": {
+        "text": "Estilo de apresentação do ícone: \"plain\" | \"featured\" (fundo em badge).",
+        "source": "Icon presentation style: \"plain\" | \"featured\" (badge background)."
+      },
+      "size": {
+        "text": "Tamanho da escala: \"sm\" | \"md\" | \"lg\".",
+        "source": "Scale size: \"sm\" | \"md\" | \"lg\"."
+      },
+      "title": {
+        "text": "Título principal do alerta.",
+        "source": "Primary alert title."
+      },
+      "tone": {
+        "text": "Papel semântico.",
+        "source": "Semantic role."
+      },
+      "variant": {
+        "text": "Variante visual.",
+        "source": "Visual variant."
+      }
+    }
+  },
+  "MsAnimatedNumber": {
+    "props": {
+      "decimals": {
+        "text": "Número de casas decimais.",
+        "source": "Number of fractional decimal places."
+      },
+      "duration": {
+        "text": "Duração da transição em milissegundos.",
+        "source": "Transition duration in milliseconds."
+      },
+      "format": {
+        "text": "Função de formatação personalizada.",
+        "source": "Custom formatting function."
+      },
+      "prefix": {
+        "text": "Texto prefixado (ex.: '$', 'R$').",
+        "source": "String prepend (e.g., '$', 'R$')."
+      },
+      "suffix": {
+        "text": "Texto sufixado (ex.: '%', ' kg').",
+        "source": "String append (e.g., '%', ' kg')."
+      },
+      "value": {
+        "text": "Valor numérico de destino da animação.",
+        "source": "Target numeric value to animate towards."
+      }
+    }
+  },
+  "MsAppShell": {
+    "props": {
+      "fullHeight": {
+        "text": "Estende o shell até a altura total da viewport.",
+        "source": "Stretches the shell to the full viewport height."
+      },
+      "sidebarCollapsed": {
+        "text": "Estado recolhido da sidebar do shell, compartilhado com o `MsSidebar` filho (suporta `v-model:sidebarCollapsed`).",
+        "source": "Collapsed state of the shell sidebar, shared with child `MsSidebar` (supports `v-model:sidebarCollapsed`)."
+      }
+    }
+  },
+  "MsAppShellFooter": {
+    "props": {
+      "bordered": {
+        "text": "Reservado para um rodapé com borda; atualmente não é aplicado pelo componente.",
+        "source": "Reserved for a bordered footer; currently not applied by the component."
+      }
+    }
+  },
+  "MsAppShellSidebar": {
+    "props": {
+      "collapsed": {
+        "text": "Estado recolhido; quando definido explicitamente, sobrescreve o contexto `sidebarCollapsed` do shell.",
+        "source": "Collapsed state; when set explicitly it overrides the shell's `sidebarCollapsed` context."
+      },
+      "collapsedWidth": {
+        "text": "Largura (qualquer comprimento CSS) aplicada enquanto recolhido.",
+        "source": "Width (any CSS length) applied while collapsed."
+      },
+      "width": {
+        "text": "Largura expandida (qualquer comprimento CSS), aplicada enquanto não recolhido.",
+        "source": "Expanded width (any CSS length), applied while not collapsed."
+      }
+    }
+  },
+  "MsAside": {
+    "props": {
+      "width": {
+        "text": "Largura do aside (qualquer comprimento CSS).",
+        "source": "Aside width (any CSS length)."
+      }
+    }
+  },
+  "MsAspectRatio": {
+    "props": {
+      "ratio": {
+        "text": "Proporção numérica (ex.: 16/9 = 1.777) ou string (ex.: \"16/9\", \"4/3\", \"1/1\")",
+        "source": "Numeric ratio (e.g. 16/9 = 1.777) or string (e.g. \"16/9\", \"4/3\", \"1/1\")"
+      }
+    }
+  },
+  "MsAvatar": {
+    "props": {
+      "bordered": {
+        "text": "Adiciona um anel de contorno ao redor do avatar para separá-lo de superfícies carregadas.",
+        "source": "Adds an outline ring around the avatar for separation against busy surfaces."
+      },
+      "name": {
+        "text": "Nome da entidade, usado no texto alternativo e no fallback de iniciais.",
+        "source": "Name of the entity for alt text and initials fallback."
+      },
+      "shape": {
+        "text": "Geometria do formato.",
+        "source": "Shape geometry."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Size scale."
+      },
+      "src": {
+        "text": "URL da imagem.",
+        "source": "Image source URL."
+      },
+      "status": {
+        "text": "Ponto indicador de status online.",
+        "source": "Online status indicator dot."
+      },
+      "statusPlacement": {
+        "text": "Posição do ponto indicador de status.",
+        "source": "Placement for status indicator dot."
+      },
+      "tone": {
+        "text": "Tom de fundo do fallback de iniciais.",
+        "source": "Background tone for initials fallback."
+      }
+    }
+  },
+  "MsAvatarGroup": {
+    "props": {
+      "bordered": {
+        "text": "Aplica um anel de contorno a todos os avatares filhos.",
+        "source": "Applies outline border ring to all child avatars."
+      },
+      "items": {
+        "text": "Array prático de itens de avatar.",
+        "source": "Convenient array of avatar items."
+      },
+      "max": {
+        "text": "Número máximo de avatares exibidos antes de recolher em '+N'.",
+        "source": "Maximum number of avatars displayed before collapsing into '+N'."
+      },
+      "size": {
+        "text": "Tamanho aplicado em cascata aos avatares dentro do grupo.",
+        "source": "Cascading size applied to avatars inside the group."
+      },
+      "spacing": {
+        "text": "Espaçamento de sobreposição entre avatares.",
+        "source": "Overlap spacing between avatars."
+      }
+    }
+  },
+  "MsBadge": {
+    "props": {
+      "as": {
+        "text": "Tag de elemento ou componente para o badge avulso (ex.: `\"a\"` ou `RouterLink`); atributos extras como `href`/`to` são repassados. O modo de wrapper de canto (com `placement` e um slot padrão) sempre renderiza spans.",
+        "source": "Element tag or component for the standalone badge (e.g. `\"a\"` or `RouterLink`); extra attributes such as `href`/`to` are passed through. The corner wrapper mode (with `placement` and a default slot) always renders spans."
+      },
+      "bordered": {
+        "text": "Anel de contorno invertido ao redor do badge para separá-lo de fundos escuros ou carregados.",
+        "source": "Inverted outline ring around badge for separation against dark/busy backgrounds."
+      },
+      "count": {
+        "text": "Valor numérico do contador a exibir.",
+        "source": "Numeric counter value to display."
+      },
+      "dot": {
+        "text": "Exibe um pequeno ponto circular indicador antes do conteúdo.",
+        "source": "Displays a small circular dot indicator before content."
+      },
+      "dotOnly": {
+        "text": "Modo somente ponto (renderiza um badge em forma de pequeno ponto circular, sem texto).",
+        "source": "Dot-only mode (renders a small circular dot badge without text)."
+      },
+      "maxCount": {
+        "text": "Valor máximo do contador antes de exibir '+'.",
+        "source": "Maximum counter value before displaying '+'."
+      },
+      "pill": {
+        "text": "Badge em formato de pílula arredondada.",
+        "source": "Rounded pill badge."
+      },
+      "placement": {
+        "text": "Posição de ancoragem no canto quando o badge envolve elementos filhos.",
+        "source": "Corner anchor placement when badge wraps child elements."
+      },
+      "pulse": {
+        "text": "Efeito animado de pulso de radar.",
+        "source": "Animated radar pulse effect."
+      },
+      "showZero": {
+        "text": "Se o badge deve ser renderizado quando count é 0.",
+        "source": "Whether to render the badge when count is 0."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Size scale."
+      },
+      "tone": {
+        "text": "Tom semântico.",
+        "source": "Semantic tone."
+      },
+      "variant": {
+        "text": "Variante visual.",
+        "source": "Visual variant."
+      }
+    }
+  },
+  "MsBanner": {
+    "props": {
+      "actionLabel": {
+        "text": "Rótulo opcional do botão de ação principal.",
+        "source": "Optional primary action button label."
+      },
+      "dismissible": {
+        "text": "Permite que o banner seja fechado pelo usuário. Padrão: false.",
+        "source": "Allows the banner to be closed by the user. Default: false."
+      },
+      "position": {
+        "text": "Posicionamento de exibição: \"top\" (cabeçalho fixo), \"bottom\" (rodapé fixo), \"inline\". Padrão: \"inline\".",
+        "source": "Display positioning: \"top\" (sticky header), \"bottom\" (sticky footer), \"inline\". Default: \"inline\"."
+      },
+      "title": {
+        "text": "Prefixo opcional de título.",
+        "source": "Optional title text prefix."
+      },
+      "tone": {
+        "text": "Tom de cor semântico. Padrão: \"info\".",
+        "source": "Semantic color tone. Default: \"info\"."
+      },
+      "variant": {
+        "text": "Variante visual de superfície. Padrão: \"soft\".",
+        "source": "Visual surface variant. Default: \"soft\"."
+      }
+    }
+  },
+  "MsBlockquote": {
+    "props": {
+      "author": {
+        "text": "Nome do autor exibido no rodapé (também usado como texto alternativo do avatar).",
+        "source": "Author name shown in the footer (also the avatar alt text)."
+      },
+      "authorAvatar": {
+        "text": "URL da imagem de avatar do autor.",
+        "source": "Author avatar image URL."
+      },
+      "authorRole": {
+        "text": "Cargo ou título do autor exibido abaixo do nome.",
+        "source": "Author role or title shown below the name."
+      },
+      "cite": {
+        "text": "Fonte da citação: definida como o atributo nativo `cite` e renderizada no rodapé.",
+        "source": "Source of the quote: set as the native `cite` attribute and rendered in the footer."
+      },
+      "icon": {
+        "text": "Exibe o ícone decorativo de citação quando verdadeiro; use o slot `icon` para conteúdo personalizado.",
+        "source": "Shows the decorative quote icon when truthy; use the `icon` slot for custom content."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Size scale."
+      },
+      "tone": {
+        "text": "Papel de cor semântico.",
+        "source": "Semantic color role."
+      },
+      "variant": {
+        "text": "Estilo visual.",
+        "source": "Visual style."
+      }
+    }
+  },
+  "MsBreadcrumbItem": {
+    "props": {
+      "current": {
+        "text": "Marca o item como a página atual (aplica aria-current=\"page\"). Padrão: false.",
+        "source": "Marks the item as the current page (applies aria-current=\"page\"). Default: false."
+      },
+      "disabled": {
+        "text": "Desabilita a interação com este item do breadcrumb. Padrão: false.",
+        "source": "Disables interaction with this breadcrumb item. Default: false."
+      },
+      "href": {
+        "text": "URL de destino quando o item é um link navegável.",
+        "source": "Target URL when the item is a navigable link."
+      },
+      "icon": {
+        "text": "Ícone SVG ou texto inicial opcional.",
+        "source": "Optional leading icon SVG or text."
+      }
+    }
+  },
+  "MsBreadcrumbSeparator": {
+    "props": {
+      "as": {
+        "text": "Elemento a renderizar. Use \"li\" ao colocar o separador diretamente dentro da lista, ou coloque-o no slot `separator` do MsBreadcrumbItem.",
+        "source": "Element to render. Use \"li\" when placing the separator directly inside the list, or put it in MsBreadcrumbItem's `separator` slot."
+      }
+    }
+  },
+  "MsBreadcrumbs": {
+    "props": {
+      "ariaLabel": {
+        "text": "Rótulo de navegação acessível para leitores de tela.",
+        "source": "Accessible navigation label for screen readers."
+      },
+      "items": {
+        "text": "Array opcional de itens a renderizar automaticamente. Se omitido, os itens filhos são renderizados pelo slot padrão.",
+        "source": "Optional array of items to render automatically. If omitted, children items are rendered via default slot."
+      },
+      "itemsAfterCollapse": {
+        "text": "Número de itens exibidos após as reticências quando recolhido. Padrão: 1.",
+        "source": "Number of items to show after the ellipsis when collapsed. Default: 1."
+      },
+      "itemsBeforeCollapse": {
+        "text": "Número de itens exibidos antes das reticências quando recolhido. Padrão: 1.",
+        "source": "Number of items to show before the ellipsis when collapsed. Default: 1."
+      },
+      "maxItems": {
+        "text": "Número máximo de itens visíveis antes de recolher os itens do meio com reticências (...).",
+        "source": "Maximum visible items before collapsing middle items with an ellipsis (...)."
+      },
+      "separator": {
+        "text": "Caractere ou símbolo separador personalizado (ex.: \"/\", \"›\", \"•\", \"→\"). Sobrescrito pelo preset separatorType, se especificado. Padrão: \"›\".",
+        "source": "Custom separator character or symbol (e.g. \"/\", \"›\", \"•\", \"→\"). Overridden by separatorType preset if specified. Default: \"›\"."
+      },
+      "separatorType": {
+        "text": "Preset de separador: \"chevron\" (›) | \"slash\" (/) | \"arrow\" (→) | \"dot\" (•).",
+        "source": "Separator preset: \"chevron\" (›) | \"slash\" (/) | \"arrow\" (→) | \"dot\" (•)."
+      },
+      "size": {
+        "text": "Tamanho da escala: \"sm\" | \"md\" | \"lg\". Padrão: \"md\".",
+        "source": "Scale size: \"sm\" | \"md\" | \"lg\". Default: \"md\"."
+      },
+      "variant": {
+        "text": "Variante visual: - \"plain\": links inline simples e limpos. - \"pills\": badges em cápsula arredondada com o item ativo destacado. - \"solid\": contêiner em card fechado. Padrão: \"plain\".",
+        "source": "Visual variant: - \"plain\": standard clean inline links. - \"pills\": rounded capsule badges with active highlighted. - \"solid\": enclosed card container. Default: \"plain\"."
+      }
+    }
+  },
+  "MsButton": {
+    "props": {
+      "as": {
+        "text": "Tag de elemento ou componente a renderizar no lugar de `<button>` (ex.: `\"a\"`, `RouterLink`, `Link` do Inertia). Atributos extras como `to` são repassados.",
+        "source": "Element tag or component to render instead of `<button>` (e.g. `\"a\"`, `RouterLink`, Inertia `Link`). Extra attributes such as `to` are passed through."
+      },
+      "block": {
+        "text": "Largura total do contêiner.",
+        "source": "Full container width."
+      },
+      "caret": {
+        "text": "Renderiza um caret de dropdown e define aria-expanded.",
+        "source": "Renders a dropdown caret and sets aria-expanded."
+      },
+      "disabled": {
+        "text": "Desabilita o botão. Botões nativos recebem o atributo `disabled`; links e componentes personalizados recebem `aria-disabled=\"true\"`, `tabindex=\"-1\"`, nenhum `href` e cliques bloqueados.",
+        "source": "Disables the button. Native buttons get the `disabled` attribute; links and custom components get `aria-disabled=\"true\"`, `tabindex=\"-1\"`, no `href` and blocked clicks."
+      },
+      "fullWidth": {
+        "text": "Estende para preencher a largura do contêiner.",
+        "source": "Stretches to fill the container width."
+      },
+      "href": {
+        "text": "Destino do link. Sem `as`, o botão é renderizado como um `<a href>` com estilo de botão. Removido enquanto `disabled` ou `loading`.",
+        "source": "Link target. Without `as`, the button renders as an `<a href>` styled like a button. Removed while `disabled` or `loading`."
+      },
+      "loading": {
+        "text": "Exibe um spinner e bloqueia a interação.",
+        "source": "Shows spinner and blocks interaction."
+      },
+      "open": {
+        "text": "Estado aberto controlado para botões com caret (aria-expanded + rotação).",
+        "source": "Controlled open state for caret buttons (aria-expanded + rotation)."
+      },
+      "pill": {
+        "text": "Formato de pílula opcional (arredondamento total).",
+        "source": "Opt-in pill shape (full rounding)."
+      },
+      "responsive": {
+        "text": "Largura total do contêiner em telas móveis (max-width: 640px).",
+        "source": "Full container width on mobile screens (max-width: 640px)."
+      },
+      "shape": {
+        "text": "Geometria explícita de border-radius.",
+        "source": "Explicit border-radius geometry."
+      },
+      "size": {
+        "text": "Escala de altura do controle: xs/sm/md/lg/xl/xxl.",
+        "source": "Control height scale: xs/sm/md/lg/xl/xxl."
+      },
+      "tone": {
+        "text": "Papel de cor semântico.",
+        "source": "Semantic color role."
+      },
+      "type": {
+        "text": "Tipo nativo do botão; aplicado somente ao renderizar um `<button>` nativo.",
+        "source": "Native button type; only applied when rendering a native `<button>`."
+      },
+      "variant": {
+        "text": "Estilo visual.",
+        "source": "Visual style."
+      },
+      "wave": {
+        "text": "Efeito de onda luminosa (ripple) ao clicar.",
+        "source": "Luminous wave ripple effect on click."
+      },
+      "wide": {
+        "text": "CTA de destaque com largura horizontal estendida.",
+        "source": "Prominent CTA with extended horizontal width."
+      }
+    }
+  },
+  "MsButtonGroup": {
+    "props": {
+      "attached": {
+        "text": "Se os botões filhos ficam unidos pelas bordas. Se false, adiciona espaçamento entre os botões. Padrão: true.",
+        "source": "Whether child buttons are joined together at borders. If false, adds spacing between buttons. Default: true."
+      },
+      "fullWidth": {
+        "text": "Se o grupo de botões se expande para 100% da largura com distribuição igual. Padrão: false.",
+        "source": "Whether the button group expands to 100% width with equal distribution. Default: false."
+      },
+      "orientation": {
+        "text": "Orientação do layout do grupo de botões. Padrão: \"horizontal\".",
+        "source": "Layout orientation of the button group. Default: \"horizontal\"."
+      }
+    }
+  },
+  "MsCanvas": {
+    "props": {
+      "interactive": {
+        "text": "Habilita o estilo de canvas interativo (`ms-canvas--interactive`).",
+        "source": "Enables the interactive canvas styling (`ms-canvas--interactive`)."
+      },
+      "pattern": {
+        "text": "Padrão de fundo.",
+        "source": "Background pattern."
+      },
+      "size": {
+        "text": "Tamanho da célula do padrão em pixels.",
+        "source": "Pattern cell size in pixels."
+      }
+    }
+  },
+  "MsCard": {
+    "props": {
+      "as": {
+        "text": "Tag de elemento raiz ou componente (ex.: `\"article\"`, `\"section\"`, `RouterLink` com `to`). Ignorado quando `href` está definido.",
+        "source": "Root element tag or component (e.g. `\"article\"`, `\"section\"`, `RouterLink` with `to`). Ignored when `href` is set."
+      },
+      "coverAlt": {
+        "text": "Texto alternativo da imagem de capa.",
+        "source": "Cover image alt text."
+      },
+      "coverSrc": {
+        "text": "URL da imagem de capa.",
+        "source": "Cover image URL."
+      },
+      "description": {
+        "text": "Subtítulo/descrição secundária.",
+        "source": "Secondary subtitle/description."
+      },
+      "footerDivider": {
+        "text": "Adiciona uma linha divisória acima do rodapé do card.",
+        "source": "Adds a divider border line above the card footer."
+      },
+      "headerDivider": {
+        "text": "Adiciona uma linha divisória abaixo do cabeçalho do card.",
+        "source": "Adds a divider border line below the card header."
+      },
+      "hoverable": {
+        "text": "Leve elevação ao passar o mouse.",
+        "source": "Subtle lift and elevation on hover."
+      },
+      "href": {
+        "text": "Renderiza o card como um card de link `<a href>` (estilo de hover/foco, sem semântica de botão).",
+        "source": "Renders the card as an `<a href>` link card (hover/focus styling, no button semantics)."
+      },
+      "interactive": {
+        "text": "Card com comportamento de botão: focável, emite `click` ao clicar/pressionar Enter/Space e recebe estilo de hover/active. Ignorado quando `href` está definido (a âncora já fornece a semântica de link).",
+        "source": "Button-like card: focusable, emits `click` on click/Enter/Space and gets hover/active styling. Ignored when `href` is set (the anchor already provides link semantics)."
+      },
+      "orientation": {
+        "text": "Orientação do layout: \"vertical\" | \"horizontal\".",
+        "source": "Layout orientation: \"vertical\" | \"horizontal\"."
+      },
+      "padding": {
+        "text": "Escala do padding interno.",
+        "source": "Inner padding scale."
+      },
+      "title": {
+        "text": "Título principal do card.",
+        "source": "Primary card title."
+      },
+      "tone": {
+        "text": "Tom de destaque semântico da marca: uma borda de destaque no topo na maioria das variantes, ou uma superfície tingida com `variant=\"soft\"`.",
+        "source": "Semantic brand accent tone: a top accent border on most variants, or a tinted surface with `variant=\"soft\"`."
+      },
+      "variant": {
+        "text": "Estilo de superfície.",
+        "source": "Surface style."
+      }
+    }
+  },
+  "MsCarousel": {
+    "props": {
+      "autoplay": {
+        "text": "Se os slides devem girar automaticamente.",
+        "source": "Whether to automatically rotate slides."
+      },
+      "interval": {
+        "text": "Intervalo de atraso do autoplay em milissegundos.",
+        "source": "Autoplay delay interval in milliseconds."
+      },
+      "loop": {
+        "text": "Se a sequência se repete indefinidamente.",
+        "source": "Whether cycling loops indefinitely."
+      },
+      "modelValue": {
+        "text": "Índice do slide ativo atual (v-model:modelValue).",
+        "source": "Current active slide index (v-model:modelValue)."
+      },
+      "showArrows": {
+        "text": "Se os botões de seta de navegação devem ser exibidos.",
+        "source": "Whether to show navigation arrow buttons."
+      },
+      "showIndicators": {
+        "text": "Se os indicadores em ponto na parte inferior devem ser exibidos.",
+        "source": "Whether to show bottom dot indicators."
+      },
+      "totalSlides": {
+        "text": "Número total de slides (usado na navegação e nos indicadores).",
+        "source": "Total number of slides (used for navigation and indicators)."
+      }
+    }
+  },
+  "MsChatBubble": {
+    "props": {
+      "name": {
+        "text": "Nome de exibição do remetente.",
+        "source": "Sender display name."
+      },
+      "placement": {
+        "text": "Alinhamento da mensagem: 'start' para recebida/esquerda, 'end' para enviada/direita.",
+        "source": "Message alignment: 'start' for received/left, 'end' for sent/right."
+      },
+      "status": {
+        "text": "Indicador de status de entrega.",
+        "source": "Delivery status indicator."
+      },
+      "timestamp": {
+        "text": "Texto opcional de data e hora.",
+        "source": "Optional timestamp text."
+      },
+      "tone": {
+        "text": "Tema de cor semântico.",
+        "source": "Semantic color theme."
+      },
+      "variant": {
+        "text": "Estilo de preenchimento da superfície.",
+        "source": "Surface fill style."
+      }
+    }
+  },
+  "MsCheckbox": {
+    "props": {
+      "card": {
+        "text": "Estilo de contêiner em card para opções selecionáveis.",
+        "source": "Card container style for selectable options."
+      },
+      "checked": {
+        "text": "Estado marcado para `v-model:checked`. `modelValue` prevalece quando ambos estão vinculados.",
+        "source": "Checked state for `v-model:checked`. `modelValue` wins when both are bound."
+      },
+      "description": {
+        "text": "Texto de descrição/ajuda secundário.",
+        "source": "Secondary description/helper text."
+      },
+      "disabled": {
+        "text": "Estado desabilitado.",
+        "source": "Disabled state."
+      },
+      "indeterminate": {
+        "text": "Estado visual indeterminado (aria-checked=\"mixed\").",
+        "source": "Indeterminate visual state (aria-checked=\"mixed\")."
+      },
+      "label": {
+        "text": "Texto do rótulo principal.",
+        "source": "Primary label text."
+      },
+      "modelValue": {
+        "text": "Estado marcado para `v-model` (ex.: `v-model=\"form.remember\"`).",
+        "source": "Checked state for `v-model` (e.g. `v-model=\"form.remember\"`)."
+      },
+      "name": {
+        "text": "Atributo name.",
+        "source": "Name attribute."
+      },
+      "size": {
+        "text": "Tamanho da escala: \"sm\" | \"md\" | \"lg\".",
+        "source": "Scale size: \"sm\" | \"md\" | \"lg\"."
+      },
+      "tone": {
+        "text": "Tom semântico quando ativo.",
+        "source": "Semantic active tone."
+      },
+      "value": {
+        "text": "Valor quando dentro de grupos de formulário/array.",
+        "source": "Value when inside form/array groups."
+      }
+    }
+  },
+  "MsChoicebox": {
+    "props": {
+      "columns": {
+        "text": "Número de colunas da grade quando layout=\"grid\"",
+        "source": "Grid column count when layout=\"grid\""
+      },
+      "disabled": {
+        "text": "Estado desabilitado do grupo",
+        "source": "Group disabled state"
+      },
+      "indicatorPlacement": {
+        "text": "Posição do indicador",
+        "source": "Indicator position"
+      },
+      "items": {
+        "text": "Array de itens, caso não sejam usados itens via slot",
+        "source": "Array of items if not using slot items"
+      },
+      "layout": {
+        "text": "Direção do layout",
+        "source": "Layout direction"
+      },
+      "modelValue": {
+        "text": "Valor do modelo: string/number para radio, array para checkbox",
+        "source": "Model value: string/number for radio, array for checkbox"
+      },
+      "name": {
+        "text": "Nome do grupo no formulário",
+        "source": "Group form name"
+      },
+      "size": {
+        "text": "Escala de tamanho",
+        "source": "Size scale"
+      },
+      "tone": {
+        "text": "Tom semântico",
+        "source": "Semantic tone"
+      },
+      "type": {
+        "text": "Tipo de seleção",
+        "source": "Selection type"
+      }
+    }
+  },
+  "MsCode": {
+    "props": {
+      "copyable": {
+        "text": "Exibe um botão que copia o texto do código para a área de transferência.",
+        "source": "Shows a button that copies the code text to the clipboard."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Size scale."
+      },
+      "tone": {
+        "text": "Papel de cor semântico.",
+        "source": "Semantic color role."
+      },
+      "variant": {
+        "text": "Estilo visual.",
+        "source": "Visual style."
+      }
+    }
+  },
+  "MsCodeBlock": {
+    "props": {
+      "code": {
+        "text": "Código-fonte a renderizar com realce de sintaxe embutido; quando vazio, o slot padrão é renderizado em seu lugar.",
+        "source": "Source code to render with built-in syntax highlighting; when empty, the default slot is rendered instead."
+      },
+      "collapsible": {
+        "text": "Adiciona um botão no rodapé para expandir/recolher o bloco.",
+        "source": "Adds a footer button to expand/collapse the block."
+      },
+      "copyable": {
+        "text": "Exibe um botão no cabeçalho que copia `code` para a área de transferência.",
+        "source": "Shows a header button that copies `code` to the clipboard."
+      },
+      "defaultCollapsed": {
+        "text": "Estado recolhido inicial quando `collapsible` está definido.",
+        "source": "Initial collapsed state when `collapsible` is set."
+      },
+      "filename": {
+        "text": "Nome do arquivo exibido no cabeçalho.",
+        "source": "File name shown in the header."
+      },
+      "language": {
+        "text": "Rótulo da linguagem exibido no cabeçalho; também habilita comentários com `#` para linguagens semelhantes a shell/Python/YAML.",
+        "source": "Language label shown in the header; also enables `#` comments for shell/Python/YAML-like languages."
+      },
+      "maxHeight": {
+        "text": "Altura máxima do corpo (número em pixels ou qualquer comprimento CSS); ignorada enquanto recolhido.",
+        "source": "Maximum body height (number in pixels or any CSS length); ignored while collapsed."
+      },
+      "showLineNumbers": {
+        "text": "Exibe uma coluna com números de linha.",
+        "source": "Shows a line-number gutter."
+      },
+      "variant": {
+        "text": "Estilo visual.",
+        "source": "Visual style."
+      },
+      "wrapLines": {
+        "text": "Quebra linhas longas em vez de rolar horizontalmente.",
+        "source": "Wraps long lines instead of scrolling horizontally."
+      }
+    }
+  },
+  "MsCol": {
+    "props": {
+      "lg": {
+        "text": "Span em telas grandes (>= 1024px)",
+        "source": "Span on large screens (>= 1024px)"
+      },
+      "md": {
+        "text": "Span em telas médias (>= 768px)",
+        "source": "Span on medium screens (>= 768px)"
+      },
+      "offset": {
+        "text": "Número de colunas de deslocamento a partir da esquerda (1 a 11)",
+        "source": "Number of columns offset from the left (1 to 11)"
+      },
+      "order": {
+        "text": "Ordem no flexbox",
+        "source": "Flexbox order"
+      },
+      "sm": {
+        "text": "Span em telas pequenas (>= 640px)",
+        "source": "Span on small screens (>= 640px)"
+      },
+      "span": {
+        "text": "Número de colunas ocupadas (1 a 12)",
+        "source": "Number of columns spanned (1 to 12)"
+      },
+      "xl": {
+        "text": "Span em telas extragrandes (>= 1280px)",
+        "source": "Span on extra-large screens (>= 1280px)"
+      }
+    }
+  },
+  "MsCollapse": {
+    "props": {
+      "disabled": {
+        "text": "Desabilita a alternância do painel.",
+        "source": "Disables toggling the panel."
+      },
+      "modelValue": {
+        "text": "Estado aberto (`v-model`).",
+        "source": "Open state (`v-model`)."
+      },
+      "title": {
+        "text": "Texto do título do cabeçalho (pode ser substituído pelo slot `title` ou `header`).",
+        "source": "Header title text (overridable via the `title` or `header` slot)."
+      },
+      "variant": {
+        "text": "Estilo visual.",
+        "source": "Visual style."
+      }
+    }
+  },
+  "MsColorPicker": {
+    "props": {
+      "disabled": {
+        "text": "Se o seletor de cor está desabilitado.",
+        "source": "Whether color picker is disabled."
+      },
+      "modelValue": {
+        "text": "String de cor hexadecimal (v-model:modelValue).",
+        "source": "Hex color string (v-model:modelValue)."
+      },
+      "showInput": {
+        "text": "Se deve exibir o campo de texto para entrada direta do hex.",
+        "source": "Whether to display direct text hex input."
+      },
+      "swatches": {
+        "text": "Amostras de paleta predefinidas.",
+        "source": "Preset palette swatches."
+      }
+    }
+  },
+  "MsCommandPalette": {
+    "props": {
+      "emptyText": {
+        "text": "Texto exibido quando nenhum comando corresponde.",
+        "source": "Text shown when no command matches."
+      },
+      "hotkey": {
+        "text": "Registra o atalho global Ctrl/⌘+K. Desabilite em instâncias secundárias.",
+        "source": "Registers the global Ctrl/⌘+K shortcut. Disable on secondary instances."
+      },
+      "items": {
+        "text": "Comandos a listar. Sem itens, a paleta exibe seu estado vazio.",
+        "source": "Commands to list. Without items the palette shows its empty state."
+      },
+      "placeholder": {
+        "text": "Placeholder do campo de busca (também é o nome acessível do input e da listbox).",
+        "source": "Search input placeholder (also the input and listbox accessible name)."
+      }
+    }
+  },
+  "MsConfirmDialog": {
+    "props": {
+      "cancelLabel": {
+        "text": "Rótulo do botão de cancelar.",
+        "source": "Label for the cancel button."
+      },
+      "closeOnBackdrop": {
+        "text": "Se clicar no backdrop fecha o diálogo.",
+        "source": "Whether clicking backdrop dismisses dialog."
+      },
+      "closeOnEscape": {
+        "text": "Se pressionar a tecla Escape fecha o diálogo.",
+        "source": "Whether pressing Escape key dismisses dialog."
+      },
+      "confirmLabel": {
+        "text": "Rótulo do botão de ação de confirmação.",
+        "source": "Label for the confirmation action button."
+      },
+      "loading": {
+        "text": "Se a ação de confirmação está em estado pendente/carregando.",
+        "source": "Whether the confirm action is in a pending/loading state."
+      },
+      "message": {
+        "text": "Mensagem explicativa do corpo.",
+        "source": "Body explanatory message."
+      },
+      "open": {
+        "text": "Estado aberto controlado.",
+        "source": "Controlled open state."
+      },
+      "teleportTo": {
+        "text": "Seletor de destino do Teleport.",
+        "source": "Teleport target selector."
+      },
+      "title": {
+        "text": "Texto do título do cabeçalho.",
+        "source": "Header title text."
+      },
+      "tone": {
+        "text": "Tom do tema que afeta o ícone e o botão de confirmação.",
+        "source": "Tone theme affecting the icon and confirmation button."
+      }
+    }
+  },
+  "MsContainer": {
+    "props": {
+      "as": {
+        "text": "Tag HTML a renderizar como raiz. Padrão: \"div\".",
+        "source": "HTML element tag to render as root. Default: \"div\"."
+      },
+      "maxWidth": {
+        "text": "Escala de largura máxima vinculada aos breakpoints dos design tokens. Padrão: \"xl\".",
+        "source": "Maximum width scale bound to design token breakpoints. Default: \"xl\"."
+      },
+      "padded": {
+        "text": "Aplica tokens de padding horizontal responsivo. Padrão: true.",
+        "source": "Applies responsive horizontal padding tokens. Default: true."
+      }
+    }
+  },
+  "MsContent": {
+    "props": {
+      "padded": {
+        "text": "Aplica padding interno à área de conteúdo principal.",
+        "source": "Applies inner padding to the main content area."
+      }
+    }
+  },
+  "MsContextMenu": {
+    "props": {
+      "disabled": {
+        "text": "Se o acionamento do menu de contexto está desabilitado.",
+        "source": "Whether context menu triggering is disabled."
+      },
+      "items": {
+        "text": "Array de itens de ação do menu e divisores.",
+        "source": "Array of menu action items and dividers."
+      }
+    }
+  },
+  "MsDatePicker": {
+    "props": {
+      "clearable": {
+        "text": "Exibe o botão de limpar",
+        "source": "Show clear button"
+      },
+      "disabled": {
+        "text": "Estado desabilitado",
+        "source": "Disabled state"
+      },
+      "format24h": {
+        "text": "Flag de formato 24 horas para seletores de hora (padrão true)",
+        "source": "24-hour format flag for time pickers (default true)"
+      },
+      "maxDate": {
+        "text": "Data máxima selecionável (YYYY-MM-DD)",
+        "source": "Maximum selectable date (YYYY-MM-DD)"
+      },
+      "minDate": {
+        "text": "Data mínima selecionável (YYYY-MM-DD)",
+        "source": "Minimum selectable date (YYYY-MM-DD)"
+      },
+      "minuteStep": {
+        "text": "Intervalo de passo para a seleção de minutos (padrão 5)",
+        "source": "Step interval for minutes selection (default 5)"
+      },
+      "mode": {
+        "text": "Modo do seletor: data única, intervalo de datas, somente hora ou data e hora combinadas",
+        "source": "Picker mode: single date, date range, hour/time only, or mixed datetime"
+      },
+      "modelValue": {
+        "text": "Valor do modelo: string de data, array [start, end] ou objeto de intervalo",
+        "source": "Model value: date string, [start, end] array, or range object"
+      },
+      "placeholder": {
+        "text": "Texto de placeholder do input (padrão: as mensagens `datePicker.placeholder*` do modo)",
+        "source": "Input placeholder text (defaults to the messages `datePicker.placeholder*` for the mode)"
+      }
+    }
+  },
+  "MsDialog": {
+    "props": {
+      "closeOnEscape": {
+        "text": "Fecha ao pressionar a tecla Escape.",
+        "source": "Close when the Escape key is pressed."
+      },
+      "closeOnOutsideClick": {
+        "text": "Fecha ao clicar fora do conteúdo do diálogo.",
+        "source": "Close when clicking outside the dialog content."
+      },
+      "description": {
+        "text": "Descrição do diálogo para acessibilidade e subtexto.",
+        "source": "Dialog description for accessibility and subtext."
+      },
+      "open": {
+        "text": "Controla o estado aberto (v-model:open).",
+        "source": "Controls open state (v-model:open)."
+      },
+      "placement": {
+        "text": "Modo de posicionamento: \"center\" (padrão), \"top\" ou \"bottom\" (bottom sheet).",
+        "source": "Placement mode: \"center\" (default), \"top\", or \"bottom\" (bottom sheet)."
+      },
+      "role": {
+        "text": "Papel WAI-ARIA: \"dialog\" (padrão) ou \"alertdialog\" (para confirmações críticas).",
+        "source": "WAI-ARIA role: \"dialog\" (default) or \"alertdialog\" (for critical confirmations)."
+      },
+      "showClose": {
+        "text": "Exibe o botão de fechar padrão (X) no cabeçalho.",
+        "source": "Show the default close button (X) in the header."
+      },
+      "size": {
+        "text": "Preset de largura.",
+        "source": "Size width preset."
+      },
+      "title": {
+        "text": "Título do diálogo para acessibilidade e exibição no cabeçalho.",
+        "source": "Dialog title for accessibility and header display."
+      },
+      "tone": {
+        "text": "Tom semântico do indicador: \"default\", \"danger\", \"warning\", \"success\", \"info\".",
+        "source": "Semantic indicator tone: \"default\", \"danger\", \"warning\", \"success\", \"info\"."
+      }
+    }
+  },
+  "MsDock": {
+    "props": {
+      "position": {
+        "text": "Posição de ancoragem na tela.",
+        "source": "Screen anchor position."
+      },
+      "size": {
+        "text": "Escala de dimensão dos ícones do dock.",
+        "source": "Dock icon dimension scale."
+      }
+    }
+  },
+  "MsDockItem": {
+    "props": {
+      "active": {
+        "text": "Se um ponto indicador de ativo é exibido sob este ícone.",
+        "source": "Whether an active indicator dot is shown under this icon."
+      },
+      "label": {
+        "text": "Rótulo para o título de acessibilidade e o tooltip.",
+        "source": "Label for accessibility title and tooltip."
+      }
+    }
+  },
+  "MsDrawer": {
+    "props": {
+      "closeOnBackdrop": {
+        "text": "Se clicar no backdrop fecha o drawer.",
+        "source": "Whether clicking the backdrop closes the drawer."
+      },
+      "closeOnEscape": {
+        "text": "Se pressionar Escape fecha o drawer.",
+        "source": "Whether pressing Escape closes the drawer."
+      },
+      "description": {
+        "text": "Texto de apoio secundário abaixo do título.",
+        "source": "Secondary supporting text beneath the title."
+      },
+      "open": {
+        "text": "Controla se o drawer está aberto (vinculação bidirecional via v-model:open).",
+        "source": "Controls whether the drawer is open (two-way binding via v-model:open)."
+      },
+      "placement": {
+        "text": "Borda da tela da qual o drawer desliza.",
+        "source": "Screen edge from which the drawer slides out."
+      },
+      "showClose": {
+        "text": "Se deve exibir o botão de ícone de fechar no canto superior direito.",
+        "source": "Whether to show the top-right close icon button."
+      },
+      "size": {
+        "text": "Preset de largura (ou altura, para top/bottom).",
+        "source": "Width (or height for top/bottom) dimension preset."
+      },
+      "teleportTo": {
+        "text": "Contêiner de destino do Teleport.",
+        "source": "Target container for Teleport."
+      },
+      "title": {
+        "text": "Título do cabeçalho do drawer.",
+        "source": "Drawer header title."
+      }
+    }
+  },
+  "MsDropdownButton": {
+    "props": {
+      "align": {
+        "text": "Alinha o menu à borda esquerda ou direita do gatilho.",
+        "source": "Aligns the menu to the left or right edge of the trigger."
+      },
+      "fullWidth": {
+        "text": "Estende o botão gatilho até a largura do contêiner.",
+        "source": "Stretches the trigger button to the container width."
+      },
+      "items": {
+        "text": "Itens de menu renderizados no `MsMenu` do dropdown.",
+        "source": "Menu items rendered in the dropdown `MsMenu`."
+      },
+      "label": {
+        "text": "Texto do botão gatilho.",
+        "source": "Trigger button text."
+      },
+      "pill": {
+        "text": "Formato de pílula (arredondamento total) para o botão gatilho.",
+        "source": "Pill shape (full rounding) for the trigger button."
+      },
+      "size": {
+        "text": "Escala de tamanho do botão gatilho.",
+        "source": "Trigger button size scale."
+      },
+      "tone": {
+        "text": "Papel de cor semântico do botão gatilho.",
+        "source": "Semantic color role of the trigger button."
+      },
+      "variant": {
+        "text": "Estilo visual do botão gatilho.",
+        "source": "Visual style of the trigger button."
+      }
+    }
+  },
+  "MsEmojiPicker": {
+    "props": {
+      "disabled": {
+        "text": "Desabilita o gatilho para que o seletor não possa ser aberto.",
+        "source": "Disables the trigger so the picker cannot be opened."
+      },
+      "modelValue": {
+        "text": "Caractere de emoji selecionado (`v-model`), exibido no gatilho.",
+        "source": "Selected emoji character (`v-model`), shown on the trigger."
+      },
+      "placeholder": {
+        "text": "Conteúdo do gatilho exibido enquanto nenhum emoji está selecionado.",
+        "source": "Trigger content shown while no emoji is selected."
+      }
+    }
+  },
+  "MsEmptyState": {
+    "props": {
+      "description": {
+        "text": "Texto de apoio secundário explicando por que o conteúdo está ausente ou qual ação tomar.",
+        "source": "Secondary supporting text explaining why content is missing or action to take."
+      },
+      "iconTone": {
+        "text": "Tom semântico do badge do ícone. Padrão: \"neutral\".",
+        "source": "Semantic tone for the icon badge. Default: \"neutral\"."
+      },
+      "size": {
+        "text": "Tamanho da escala: \"sm\" | \"md\" | \"lg\". Padrão: \"md\".",
+        "source": "Scale size: \"sm\" | \"md\" | \"lg\". Default: \"md\"."
+      },
+      "title": {
+        "text": "Título principal do estado vazio.",
+        "source": "Main title heading of the empty state."
+      },
+      "variant": {
+        "text": "Estilo visual do contêiner: - \"dashed\": contorno sutil com borda tracejada (padrão) - \"plain\": sem borda, fundo transparente - \"card\": borda sólida com sombra de elevação",
+        "source": "Container visual style: - \"dashed\": subtle dashed border outline (default) - \"plain\": no border, transparent background - \"card\": solid border with elevation shadow"
+      }
+    }
+  },
+  "MsFab": {
+    "props": {
+      "actions": {
+        "text": "Ações do speed dial; quando não vazio, clicar no botão principal as alterna.",
+        "source": "Speed-dial actions; when non-empty, clicking the main button toggles them."
+      },
+      "icon": {
+        "text": "Texto/glifo do ícone do botão principal (pode ser substituído pelo slot `icon`).",
+        "source": "Icon text/glyph of the main button (overridable via the `icon` slot)."
+      },
+      "label": {
+        "text": "Rótulo de texto opcional exibido ao lado do ícone (FAB estendido).",
+        "source": "Optional text label shown next to the icon (extended FAB)."
+      },
+      "position": {
+        "text": "Canto da viewport ao qual o botão fica ancorado.",
+        "source": "Viewport corner the button is anchored to."
+      }
+    }
+  },
+  "MsField": {
+    "props": {
+      "description": {
+        "text": "Texto de ajuda abaixo do controle.",
+        "source": "Helper text below the control."
+      },
+      "error": {
+        "text": "Texto de erro; é renderizado abaixo e marca os controles como inválidos.",
+        "source": "Error text; renders below and marks controls invalid."
+      },
+      "label": {
+        "text": "Rótulo acessível acima do controle.",
+        "source": "Accessible label above the control."
+      },
+      "optional": {
+        "text": "Exibe o texto indicador de opcional.",
+        "source": "Shows optional indicator text."
+      },
+      "orientation": {
+        "text": "Orientação do layout: \"vertical\" (padrão) ou \"horizontal\".",
+        "source": "Layout orientation: \"vertical\" (default) or \"horizontal\"."
+      },
+      "required": {
+        "text": "Marca o rótulo com o indicador de obrigatório.",
+        "source": "Marks the label with the required indicator."
+      },
+      "size": {
+        "text": "Escala de tamanho do texto: \"sm\", \"md\" (padrão), \"lg\".",
+        "source": "Text sizing scale: \"sm\", \"md\" (default), \"lg\"."
+      }
+    }
+  },
+  "MsFileInput": {
+    "props": {
+      "accept": {
+        "text": "Formatos de arquivo aceitos (ex.: '.pdf,image/*').",
+        "source": "Accepted file formats (e.g. '.pdf,image/*')."
+      },
+      "disabled": {
+        "text": "Se o input está desabilitado.",
+        "source": "Whether the input is disabled."
+      },
+      "hint": {
+        "text": "Texto de dica de apoio abaixo do rótulo.",
+        "source": "Supporting hint text below label."
+      },
+      "label": {
+        "text": "Rótulo de chamada principal da área de soltar.",
+        "source": "Dropzone headline prompt label."
+      },
+      "maxSize": {
+        "text": "Tamanho máximo permitido por arquivo, em bytes.",
+        "source": "Maximum single file size allowed in bytes."
+      },
+      "modelValue": {
+        "text": "Arquivo ou array de arquivos vinculado (v-model).",
+        "source": "Bound file or array of files (v-model)."
+      },
+      "multiple": {
+        "text": "Permite selecionar vários arquivos.",
+        "source": "Allow selecting multiple files."
+      },
+      "showFileList": {
+        "text": "Se deve exibir a pré-visualização da lista de arquivos selecionados.",
+        "source": "Whether to display the selected files list preview."
+      }
+    }
+  },
+  "MsFooter": {
+    "props": {
+      "columns": {
+        "text": "Colunas de links renderizadas na grade (podem ser substituídas pelo slot `columns`).",
+        "source": "Link columns rendered in the grid (overridable via the `columns` slot)."
+      },
+      "container": {
+        "text": "Envolve o conteúdo em um contêiner com largura máxima; `true` usa \"xl\".",
+        "source": "Wraps content in a max-width container; `true` uses \"xl\"."
+      },
+      "copyright": {
+        "text": "Texto de copyright na área inferior (pode ser substituído pelo slot `copyright`).",
+        "source": "Copyright text in the bottom area (overridable via the `copyright` slot)."
+      },
+      "fixed": {
+        "text": "Atalho para `position=\"fixed\"` (tem precedência sobre `position`).",
+        "source": "Shorthand for `position=\"fixed\"` (takes precedence over `position`)."
+      },
+      "layout": {
+        "text": "Layout do conteúdo.",
+        "source": "Content layout."
+      },
+      "position": {
+        "text": "Modo de posicionamento CSS.",
+        "source": "CSS positioning mode."
+      },
+      "shadow": {
+        "text": "Elevação; `true` corresponde a \"md\", `\"none\"`/`false` não renderizam sombra.",
+        "source": "Elevation; `true` maps to \"md\", `\"none\"`/`false` render no shadow."
+      },
+      "tone": {
+        "text": "Papel de cor.",
+        "source": "Color role."
+      },
+      "variant": {
+        "text": "Estilo de superfície.",
+        "source": "Surface style."
+      }
+    }
+  },
+  "MsFormWizard": {
+    "props": {
+      "beforeChange": {
+        "text": "Guarda chamada antes de mudar de etapa (e antes de `finish`, com índices iguais); resolva `false` para cancelar.",
+        "source": "Guard called before changing steps (and before `finish`, with equal indexes); resolve `false` to cancel."
+      },
+      "finishText": {
+        "text": "Rótulo do botão de avançar na última etapa.",
+        "source": "Label of the next button on the last step."
+      },
+      "linear": {
+        "text": "Impede avançar mais de uma etapa por vez.",
+        "source": "Prevents skipping ahead more than one step at a time."
+      },
+      "modelValue": {
+        "text": "Índice (a partir de zero) da etapa ativa (`v-model`).",
+        "source": "Zero-based index of the active step (`v-model`)."
+      },
+      "nextText": {
+        "text": "Rótulo do botão de avançar.",
+        "source": "Label of the next button."
+      },
+      "prevText": {
+        "text": "Rótulo do botão de voltar.",
+        "source": "Label of the previous button."
+      },
+      "steps": {
+        "text": "Lista ordenada de etapas do wizard.",
+        "source": "Ordered list of wizard steps."
+      }
+    }
+  },
+  "MsGlimpse": {
+    "props": {
+      "badge": {
+        "text": "Rótulo do badge (ex.: Docs, v1.2, Repo)",
+        "source": "Badge label (e.g. Docs, v1.2, Repo)"
+      },
+      "description": {
+        "text": "Descrição da pré-visualização",
+        "source": "Preview description"
+      },
+      "disabled": {
+        "text": "Se a pré-visualização ao passar o mouse está desabilitada",
+        "source": "Whether preview hover is disabled"
+      },
+      "domain": {
+        "text": "Exibição de domínio personalizado (ex.: github.com)",
+        "source": "Custom domain display (e.g. github.com)"
+      },
+      "favicon": {
+        "text": "URL do favicon",
+        "source": "Favicon URL"
+      },
+      "hideDelay": {
+        "text": "Atraso em ms antes de fechar o hovercard",
+        "source": "Delay in ms before closing hovercard"
+      },
+      "href": {
+        "text": "URL do link de destino",
+        "source": "Target link URL"
+      },
+      "image": {
+        "text": "URL da imagem OpenGraph / miniatura da pré-visualização",
+        "source": "Preview OpenGraph / Thumbnail image URL"
+      },
+      "label": {
+        "text": "Rótulo da âncora do link",
+        "source": "Link anchor label"
+      },
+      "loading": {
+        "text": "Se os dados da pré-visualização estão carregando",
+        "source": "Whether preview data is currently loading"
+      },
+      "placement": {
+        "text": "Posicionamento flutuante",
+        "source": "Floating placement"
+      },
+      "rel": {
+        "text": "Atributo rel do link",
+        "source": "Rel attribute for link"
+      },
+      "showDelay": {
+        "text": "Atraso em ms antes de abrir o hovercard",
+        "source": "Delay in ms before opening hovercard"
+      },
+      "target": {
+        "text": "Atributo target do link",
+        "source": "Target attribute for link"
+      },
+      "title": {
+        "text": "Título da pré-visualização",
+        "source": "Preview title"
+      }
+    }
+  },
+  "MsGrid": {
+    "props": {
+      "align": {
+        "text": "Alinhamento vertical dos filhos",
+        "source": "Vertical alignment of children"
+      },
+      "gutter": {
+        "text": "Espaçamento em pixels (horizontal ou [horizontal, vertical])",
+        "source": "Spacing in pixels (horizontal or [horizontal, vertical])"
+      },
+      "justify": {
+        "text": "Alinhamento horizontal dos filhos",
+        "source": "Horizontal alignment of children"
+      },
+      "wrap": {
+        "text": "Permite quebra de linha (padrão: true)",
+        "source": "Allows wrapping (default: true)"
+      }
+    }
+  },
+  "MsHoverCard": {
+    "props": {
+      "closeDelay": {
+        "text": "Atraso em ms antes de fechar depois que o ponteiro sai",
+        "source": "Delay in ms before closing after the pointer leaves"
+      },
+      "openDelay": {
+        "text": "Atraso em ms antes de abrir",
+        "source": "Delay in ms before opening"
+      },
+      "placement": {
+        "text": "Posicionamento do card flutuante em relação ao gatilho",
+        "source": "Placement of the floating card relative to the trigger"
+      },
+      "width": {
+        "text": "Largura personalizada do card (ex.: \"320px\")",
+        "source": "Custom card width (e.g. \"320px\")"
+      }
+    }
+  },
+  "MsIconButton": {
+    "props": {
+      "active": {
+        "text": "Estado pressionado/ativo; quando definido, define `aria-pressed` (botão de alternância).",
+        "source": "Pressed/active state; when defined, sets `aria-pressed` (toggle button)."
+      },
+      "ariaLabel": {
+        "text": "Nome acessível do botão. `aria-label=\"…\"` nos templates é vinculado a esta prop.",
+        "source": "Accessible name of the button. `aria-label=\"…\"` in templates binds to this prop."
+      },
+      "circle": {
+        "text": "Atalho para `shape=\"circle\"` (ignorado quando `shape` está definido).",
+        "source": "Shorthand for `shape=\"circle\"` (ignored when `shape` is set)."
+      },
+      "disabled": {
+        "text": "Desabilita o botão.",
+        "source": "Disables the button."
+      },
+      "label": {
+        "text": "Nome acessível do botão. Conteúdo só com ícone não tem texto, então é preciso fornecer `label` ou `aria-label`/`ariaLabel`.",
+        "source": "Accessible name of the button. Icon-only content has no text, so either `label` or `aria-label`/`ariaLabel` must be provided."
+      },
+      "loading": {
+        "text": "Exibe um spinner no lugar do ícone e bloqueia a interação.",
+        "source": "Shows a spinner instead of the icon and blocks interaction."
+      },
+      "shape": {
+        "text": "Geometria do border-radius; tem precedência sobre `circle`. O fallback é \"rounded\".",
+        "source": "Border-radius geometry; takes precedence over `circle`. Falls back to \"rounded\"."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Size scale."
+      },
+      "tone": {
+        "text": "Papel de cor semântico.",
+        "source": "Semantic color role."
+      },
+      "type": {
+        "text": "Tipo nativo do botão.",
+        "source": "Native button type."
+      },
+      "variant": {
+        "text": "Estilo visual.",
+        "source": "Visual style."
+      }
+    }
+  },
+  "MsIconPicker": {
+    "props": {
+      "placeholder": {
+        "text": "Texto do gatilho quando nada está selecionado.",
+        "source": "Trigger text when nothing is selected."
+      }
+    }
+  },
+  "MsInput": {
+    "props": {
+      "clearable": {
+        "text": "Exibe um botão de limpar quando há texto.",
+        "source": "Displays a clear button when text is present."
+      },
+      "floatingLabel": {
+        "text": "Rótulo flutuante opcional (o placeholder deve permanecer vazio).",
+        "source": "Opt-in floating label (placeholder must stay empty)."
+      },
+      "invalid": {
+        "text": "Marca o controle como inválido (o erro do field conecta isso automaticamente).",
+        "source": "Marks the control invalid (field error wires this automatically)."
+      },
+      "passwordToggle": {
+        "text": "Exibe um botão de olho para mostrar/ocultar a senha quando type é password.",
+        "source": "Shows an eye button to reveal/hide password when type is password."
+      },
+      "pill": {
+        "text": "Estilo de input em formato de pílula totalmente arredondada.",
+        "source": "Fully rounded pill input style."
+      },
+      "processing": {
+        "text": "Exibe um spinner no sufixo e bloqueia a entrada.",
+        "source": "Shows a spinner in the suffix and blocks input."
+      },
+      "tone": {
+        "text": "Tom da borda/foco.",
+        "source": "Border/focus tint."
+      },
+      "variant": {
+        "text": "Variante visual: \"outline\" | \"filled\" | \"flushed\".",
+        "source": "Visual variant: \"outline\" | \"filled\" | \"flushed\"."
+      }
+    }
+  },
+  "MsKbd": {
+    "props": {
+      "size": {
+        "text": "Escala de tamanho do badge de tecla",
+        "source": "Keycap badge size scale"
+      },
+      "tone": {
+        "text": "Tom de cor semântico",
+        "source": "Semantic color tone"
+      },
+      "variant": {
+        "text": "Variante de estilo visual",
+        "source": "Visual style variant"
+      }
+    }
+  },
+  "MsLabel": {
+    "props": {
+      "disabled": {
+        "text": "Renderiza o rótulo no estilo desabilitado.",
+        "source": "Renders the label in its disabled style."
+      },
+      "for": {
+        "text": "Id do controle de formulário associado (atributo nativo `for`).",
+        "source": "Id of the associated form control (native `for` attribute)."
+      },
+      "optional": {
+        "text": "Exibe uma dica de \"opcional\" (ignorada quando `required` está definido).",
+        "source": "Shows an \"optional\" hint (ignored when `required` is set)."
+      },
+      "optionalText": {
+        "text": "Texto da dica de opcional.",
+        "source": "Text of the optional hint."
+      },
+      "required": {
+        "text": "Exibe um asterisco de obrigatório.",
+        "source": "Shows a required asterisk."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Size scale."
+      },
+      "tooltip": {
+        "text": "Texto do tooltip exibido em um ícone de ajuda ao lado do rótulo.",
+        "source": "Tooltip text shown on a help icon next to the label."
+      }
+    }
+  },
+  "MsLightbox": {
+    "props": {
+      "index": {
+        "text": "Índice (a partir de zero) da imagem exibida (`v-model:index`).",
+        "source": "Zero-based index of the displayed image (`v-model:index`)."
+      },
+      "items": {
+        "text": "Imagens a navegar.",
+        "source": "Images to browse."
+      },
+      "modelValue": {
+        "text": "Estado aberto (`v-model`).",
+        "source": "Open state (`v-model`)."
+      }
+    }
+  },
+  "MsLink": {
+    "props": {
+      "disabled": {
+        "text": "Desabilita o link: remove href/target, define `aria-disabled` e bloqueia cliques.",
+        "source": "Disables the link: removes href/target, sets `aria-disabled` and blocks clicks."
+      },
+      "download": {
+        "text": "Atributo nativo `download` (`true` ou um nome de arquivo sugerido).",
+        "source": "Native `download` attribute (`true` or a suggested file name)."
+      },
+      "external": {
+        "text": "Marca o link como externo (nova aba + ícone de externo); quando omitido, é inferido a partir de um href absoluto `http(s)://` ou `//`.",
+        "source": "Marks the link as external (new tab + external icon); when omitted it is inferred from an absolute `http(s)://` or `//` href."
+      },
+      "href": {
+        "text": "URL do link (sanitizada antes da renderização).",
+        "source": "Link URL (sanitized before rendering)."
+      },
+      "rel": {
+        "text": "`rel` nativo; links externos usam por padrão \"noopener noreferrer\", que é sempre adicionado com `target=\"_blank\"`.",
+        "source": "Native `rel`; external links default to \"noopener noreferrer\", which is always added for `target=\"_blank\"`."
+      },
+      "target": {
+        "text": "`target` nativo; links externos usam \"_blank\" por padrão.",
+        "source": "Native `target`; external links default to \"_blank\"."
+      },
+      "underline": {
+        "text": "Quando o sublinhado é exibido.",
+        "source": "When the underline is shown."
+      },
+      "variant": {
+        "text": "Estilo de cor.",
+        "source": "Color style."
+      }
+    }
+  },
+  "MsList": {
+    "props": {
+      "size": {
+        "text": "Escala de tamanho para padding e tipografia.",
+        "source": "Sizing scale for padding and typography."
+      },
+      "variant": {
+        "text": "Variante de enquadramento visual.",
+        "source": "Visual framing variant."
+      }
+    }
+  },
+  "MsListGroup": {
+    "props": {
+      "title": {
+        "text": "Rótulo do cabeçalho do grupo.",
+        "source": "Group header label."
+      }
+    }
+  },
+  "MsListItem": {
+    "props": {
+      "active": {
+        "text": "Se este item representa o item ativo ou selecionado.",
+        "source": "Whether this item represents the active or selected item."
+      },
+      "as": {
+        "text": "Tag HTML a renderizar para o item.",
+        "source": "HTML tag to render for the item."
+      },
+      "description": {
+        "text": "Linha de descrição de apoio.",
+        "source": "Supporting description line."
+      },
+      "disabled": {
+        "text": "Se este item está desabilitado.",
+        "source": "Whether this item is disabled."
+      },
+      "interactive": {
+        "text": "Se o item é interativo (efeitos de hover e foco).",
+        "source": "Whether the item is interactive (hover and focus effects)."
+      },
+      "title": {
+        "text": "Título principal ou rótulo de texto.",
+        "source": "Primary title or text label."
+      }
+    }
+  },
+  "MsMarquee": {
+    "props": {
+      "fade": {
+        "text": "Esmaece o conteúdo nas duas bordas.",
+        "source": "Fades the content out at both edges."
+      },
+      "gap": {
+        "text": "Espaço entre os itens repetidos (qualquer comprimento CSS).",
+        "source": "Gap between repeated items (any CSS length)."
+      },
+      "pauseOnHover": {
+        "text": "Pausa a animação enquanto o mouse está sobre o componente.",
+        "source": "Pauses the animation while hovered."
+      },
+      "reverse": {
+        "text": "Rola na direção oposta.",
+        "source": "Scrolls in the opposite direction."
+      },
+      "speed": {
+        "text": "Duração de um ciclo completo de rolagem, em segundos (valores maiores são mais lentos).",
+        "source": "Duration of one full scroll cycle, in seconds (higher is slower)."
+      }
+    }
+  },
+  "MsMaskedInput": {
+    "props": {
+      "clearable": {
+        "text": "Exibe um botão de limpar enquanto o input tem valor.",
+        "source": "Shows a clear button while the input has a value."
+      },
+      "disabled": {
+        "text": "Desabilita o input.",
+        "source": "Disables the input."
+      },
+      "invalid": {
+        "text": "Marca o input como inválido (também herdado de um field pai).",
+        "source": "Marks the input as invalid (also inherited from a parent field)."
+      },
+      "mask": {
+        "text": "Nome de preset ou padrão personalizado em que `9` corresponde a um dígito e qualquer outro caractere é literal; vazio desabilita a máscara.",
+        "source": "Preset name or custom pattern where `9` matches a digit and any other character is a literal; empty disables masking."
+      },
+      "modelValue": {
+        "text": "Valor com máscara (`v-model`).",
+        "source": "Masked value (`v-model`)."
+      },
+      "placeholder": {
+        "text": "Texto de placeholder; o fallback é o padrão da máscara ativa.",
+        "source": "Placeholder text; falls back to the active mask pattern."
+      },
+      "readonly": {
+        "text": "Torna o input somente leitura.",
+        "source": "Makes the input read-only."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Size scale."
+      },
+      "unmasked": {
+        "text": "Valor só com dígitos, sem os caracteres da máscara (`v-model:unmasked`); apenas saída, não é lido pelo componente.",
+        "source": "Digits-only value without mask characters (`v-model:unmasked`); output only, not read by the component."
+      }
+    }
+  },
+  "MsMenu": {
+    "props": {
+      "anchor": {
+        "text": "Elemento tratado como parte do menu para o clique externo (normalmente o wrapper do gatilho).",
+        "source": "Element treated as part of the menu for outside-click (usually the trigger wrapper)."
+      },
+      "initialFocus": {
+        "text": "Qual item habilitado recebe o foco quando o menu abre.",
+        "source": "Which enabled item receives focus when the menu opens."
+      }
+    }
+  },
+  "MsNativeSelect": {
+    "props": {
+      "pill": {
+        "text": "Arredondamento total em pílula.",
+        "source": "Full pill rounding."
+      },
+      "tone": {
+        "text": "Tom semântico da borda.",
+        "source": "Semantic border tone."
+      },
+      "variant": {
+        "text": "Variante visual: \"outline\", \"filled\", \"flushed\".",
+        "source": "Visual variant: \"outline\", \"filled\", \"flushed\"."
+      }
+    }
+  },
+  "MsNavbar": {
+    "props": {
+      "container": {
+        "text": "Envolve o conteúdo em um contêiner com largura máxima; `true` usa \"xl\".",
+        "source": "Wraps content in a max-width container; `true` uses \"xl\"."
+      },
+      "fixed": {
+        "text": "Atalho para `position=\"fixed\"` (tem precedência sobre `position`).",
+        "source": "Shorthand for `position=\"fixed\"` (takes precedence over `position`)."
+      },
+      "floating": {
+        "text": "Estilo de navbar destacada e flutuante.",
+        "source": "Detached, floating navbar style."
+      },
+      "mobileMenuOpen": {
+        "text": "Estado aberto do menu móvel (`v-model:mobileMenuOpen`), refletido no `aria-expanded` do botão de alternância.",
+        "source": "Mobile menu open state (`v-model:mobileMenuOpen`), reflected in the toggle's `aria-expanded`."
+      },
+      "position": {
+        "text": "Modo de posicionamento CSS.",
+        "source": "CSS positioning mode."
+      },
+      "shadow": {
+        "text": "Elevação; `true` corresponde a \"md\", `\"none\"`/`false` não renderizam sombra.",
+        "source": "Elevation; `true` maps to \"md\", `\"none\"`/`false` render no shadow."
+      },
+      "size": {
+        "text": "Escala de altura.",
+        "source": "Height scale."
+      },
+      "tone": {
+        "text": "Papel de cor.",
+        "source": "Color role."
+      },
+      "variant": {
+        "text": "Estilo de superfície.",
+        "source": "Surface style."
+      }
+    }
+  },
+  "MsNavigationRail": {
+    "props": {
+      "width": {
+        "text": "Largura do rail (qualquer comprimento CSS).",
+        "source": "Rail width (any CSS length)."
+      }
+    }
+  },
+  "MsPage": {
+    "props": {
+      "compact": {
+        "text": "Usa um espaçamento de página mais compacto.",
+        "source": "Uses tighter page spacing."
+      },
+      "fluid": {
+        "text": "Remove a restrição de largura máxima para que a página ocupe toda a largura.",
+        "source": "Removes the max-width constraint so the page spans the full width."
+      }
+    }
+  },
+  "MsPageActions": {
+    "props": {
+      "align": {
+        "text": "Alinhamento horizontal das ações.",
+        "source": "Horizontal alignment of the actions."
+      }
+    }
+  },
+  "MsPageHeader": {
+    "props": {
+      "description": {
+        "text": "Texto de apoio abaixo do título (pode ser substituído pelo slot `description`).",
+        "source": "Supporting text under the title (overridable via the `description` slot)."
+      },
+      "title": {
+        "text": "Título da página renderizado como `h1` (pode ser substituído pelo slot `title`).",
+        "source": "Page title rendered as an `h1` (overridable via the `title` slot)."
+      }
+    }
+  },
+  "MsPagination": {
+    "props": {
+      "currentPage": {
+        "text": "Página atual, a partir de 1 (`v-model:currentPage`).",
+        "source": "Current 1-based page (`v-model:currentPage`)."
+      },
+      "disabled": {
+        "text": "Desabilita todos os controles.",
+        "source": "Disables all controls."
+      },
+      "pageSize": {
+        "text": "Itens por página, usado para calcular o número de páginas.",
+        "source": "Items per page, used to compute the page count."
+      },
+      "showEdges": {
+        "text": "Exibe os botões de primeira/última página.",
+        "source": "Shows the first/last page buttons."
+      },
+      "showJumper": {
+        "text": "Exibe um input de \"ir para a página\".",
+        "source": "Shows a \"go to page\" input."
+      },
+      "showTotal": {
+        "text": "Exibe a contagem total de itens (pode ser substituída pelo slot `total`).",
+        "source": "Shows the total item count (overridable via the `total` slot)."
+      },
+      "siblingCount": {
+        "text": "Número de botões de página exibidos de cada lado da página atual antes de recolher em reticências.",
+        "source": "Number of page buttons shown on each side of the current page before collapsing into ellipses."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Size scale."
+      },
+      "total": {
+        "text": "Número total de itens.",
+        "source": "Total number of items."
+      }
+    }
+  },
+  "MsParallax": {
+    "props": {
+      "height": {
+        "text": "Altura do contêiner (número em pixels ou qualquer comprimento CSS).",
+        "source": "Container height (number in pixels or any CSS length)."
+      },
+      "speed": {
+        "text": "Fator de rolagem aplicado ao deslocamento da camada `background` (valores maiores a movem mais).",
+        "source": "Scroll factor applied to the `background` layer offset (larger values move it more)."
+      }
+    }
+  },
+  "MsPinInput": {
+    "props": {
+      "autoFocus": {
+        "text": "Foca a primeira caixa ao montar.",
+        "source": "Focuses the first box on mount."
+      },
+      "disabled": {
+        "text": "Desabilita todas as caixas.",
+        "source": "Disables all boxes."
+      },
+      "length": {
+        "text": "Número de caixas de um caractere.",
+        "source": "Number of single-character boxes."
+      },
+      "mask": {
+        "text": "Oculta os caracteres digitados (caixas de senha).",
+        "source": "Hides the entered characters (password boxes)."
+      },
+      "modelValue": {
+        "text": "Código digitado (`v-model`).",
+        "source": "Entered code (`v-model`)."
+      },
+      "separator": {
+        "text": "Texto renderizado entre as caixas; vazio não renderiza nada.",
+        "source": "Text rendered between boxes; empty renders none."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Size scale."
+      },
+      "type": {
+        "text": "Caracteres aceitos: somente dígitos, ou letras ASCII e dígitos.",
+        "source": "Accepted characters: digits only, or ASCII letters and digits."
+      }
+    }
+  },
+  "MsPointer": {
+    "props": {
+      "disabled": {
+        "text": "Oculta o seguidor e para de rastrear o mouse.",
+        "source": "Hides the follower and stops tracking the mouse."
+      },
+      "variant": {
+        "text": "Estilo visual do seguidor do cursor.",
+        "source": "Visual style of the cursor follower."
+      }
+    }
+  },
+  "MsPopover": {
+    "props": {
+      "closeOnClickOutside": {
+        "text": "Se clicar fora do popover o fecha.",
+        "source": "Whether clicking outside the popover closes it."
+      },
+      "closeOnEscape": {
+        "text": "Se pressionar a tecla Escape fecha o popover.",
+        "source": "Whether pressing Escape key closes the popover."
+      },
+      "disabled": {
+        "text": "Se o gatilho do popover está desabilitado.",
+        "source": "Whether the popover trigger is disabled."
+      },
+      "open": {
+        "text": "Estado aberto controlado (suporta v-model:open).",
+        "source": "Controlled open state (supports v-model:open)."
+      },
+      "placement": {
+        "text": "Posicionamento em relação ao gatilho âncora.",
+        "source": "Placement relative to the anchor trigger."
+      },
+      "title": {
+        "text": "String de título opcional exibida no cabeçalho do popover.",
+        "source": "Optional title string displayed in the popover header."
+      },
+      "trigger": {
+        "text": "Modo de gatilho da interação.",
+        "source": "Interaction trigger mode."
+      },
+      "width": {
+        "text": "Preset de largura do painel do popover.",
+        "source": "Preset width for the popover panel."
+      }
+    }
+  },
+  "MsProgress": {
+    "props": {
+      "animated": {
+        "text": "Anima listras ao longo da barra de progresso.",
+        "source": "Animates stripes across the progress bar."
+      },
+      "gradient": {
+        "text": "Se deve aplicar um gradiente vibrante em dois tons à barra de progresso.",
+        "source": "Whether to apply a dual-tone vibrant gradient to the progress bar."
+      },
+      "indeterminate": {
+        "text": "Se o progresso está em estado indeterminado/de carregamento contínuo.",
+        "source": "Whether the progress is in an indeterminate/continuous loading state."
+      },
+      "inlineValue": {
+        "text": "Se deve renderizar o valor percentual diretamente dentro da barra de progresso. Funciona melhor com os tamanhos \"lg\", \"xl\" ou \"2xl\".",
+        "source": "Whether to render the percentage value directly inside the progress bar. Best used with sizes \"lg\", \"xl\", or \"2xl\"."
+      },
+      "label": {
+        "text": "Descrição acessível da tarefa em andamento.",
+        "source": "Accessible description of the task in progress."
+      },
+      "max": {
+        "text": "Valor máximo possível. Padrão: 100.",
+        "source": "Maximum possible value. Default: 100."
+      },
+      "min": {
+        "text": "Valor mínimo possível. Padrão: 0.",
+        "source": "Minimum possible value. Default: 0."
+      },
+      "modelValue": {
+        "text": "Valor numérico atual do progresso. Se indefinido e indeterminate for true, exibe a animação indeterminada.",
+        "source": "Current numeric progress value. If undefined and indeterminate is true, displays indeterminate animation."
+      },
+      "shape": {
+        "text": "Formato da trilha e da barra: - \"pill\": totalmente arredondado (padrão) - \"rounded\": raio de canto sutil - \"square\": raio 0",
+        "source": "Shape of the track and bar: - \"pill\": fully rounded (default) - \"rounded\": subtle corner radius - \"square\": 0 radius"
+      },
+      "showValue": {
+        "text": "Se deve exibir o valor percentual ao lado do rótulo.",
+        "source": "Whether to display the percentage value next to the label."
+      },
+      "size": {
+        "text": "Tamanho da escala: - \"2xs\": 2px - \"xs\": 4px - \"sm\": 6px - \"md\": 8px (padrão) - \"lg\": 12px - \"xl\": 16px - \"2xl\": 24px",
+        "source": "Scale size: - \"2xs\": 2px - \"xs\": 4px - \"sm\": 6px - \"md\": 8px (default) - \"lg\": 12px - \"xl\": 16px - \"2xl\": 24px"
+      },
+      "striped": {
+        "text": "Aplica um padrão listrado ao indicador de progresso.",
+        "source": "Applies striped pattern to the progress indicator."
+      },
+      "tone": {
+        "text": "Tom semântico: \"primary\", \"accent\", \"neutral\", \"success\", \"warning\", \"danger\". Padrão: \"primary\".",
+        "source": "Semantic tone: \"primary\", \"accent\", \"neutral\", \"success\", \"warning\", \"danger\". Default: \"primary\"."
+      }
+    }
+  },
+  "MsProgressRadial": {
+    "props": {
+      "indeterminate": {
+        "text": "Se deve girar continuamente no modo indeterminado.",
+        "source": "Whether to spin continuously in indeterminate mode."
+      },
+      "max": {
+        "text": "Valor máximo possível, que representa 100%.",
+        "source": "Maximum potential value representing 100%."
+      },
+      "showValue": {
+        "text": "Se deve exibir o rótulo de porcentagem no centro.",
+        "source": "Whether to display the percentage label in center."
+      },
+      "size": {
+        "text": "Preset de escala de tamanho.",
+        "source": "Sizing scale preset."
+      },
+      "strokeWidth": {
+        "text": "Largura do traço em pixels.",
+        "source": "Stroke width in pixels."
+      },
+      "tone": {
+        "text": "Cor do tom semântico.",
+        "source": "Semantic tone color."
+      },
+      "value": {
+        "text": "Valor atual do progresso, entre 0 e max.",
+        "source": "Current progress value between 0 and max."
+      }
+    }
+  },
+  "MsProvider": {
+    "props": {
+      "as": {
+        "text": "Tag HTML ao renderizar o contêiner. Padrão: \"div\".",
+        "source": "HTML element tag when rendering container. Default: \"div\"."
+      },
+      "colorMode": {
+        "text": "Preferência de modo de cor: \"light\", \"dark\" ou \"system\". No DOM, \"system\" é resolvido para \"light\" ou \"dark\". Padrão: \"system\".",
+        "source": "Color mode preference: \"light\", \"dark\", or \"system\". In DOM, \"system\" is resolved to \"light\" or \"dark\". Default: \"system\"."
+      },
+      "contrast": {
+        "text": "Nível de contraste: \"normal\", \"high\". Padrão: \"normal\".",
+        "source": "Contrast level: \"normal\", \"high\". Default: \"normal\"."
+      },
+      "density": {
+        "text": "Ajuste da escala de densidade espacial: \"compact\", \"comfortable\", \"spacious\". Padrão: \"comfortable\".",
+        "source": "Spatial density scale dial: \"compact\", \"comfortable\", \"spacious\". Default: \"comfortable\"."
+      },
+      "dir": {
+        "text": "Direção do texto: \"ltr\", \"rtl\". Padrão: \"ltr\".",
+        "source": "Text direction: \"ltr\", \"rtl\". Default: \"ltr\"."
+      },
+      "locale": {
+        "text": "Idioma das strings embutidas dos componentes e da formatação Intl (BCP 47). Dicionários embutidos: inglês (padrão), português e espanhol. Quando omitido, é herdado de um provider ancestral ou de `createMsI18n`.",
+        "source": "Language of the components' built-in strings and Intl formatting (BCP 47). Built-in dictionaries: English (default), Portuguese and Spanish. Inherits from an ancestor provider or `createMsI18n` when omitted."
+      },
+      "messages": {
+        "text": "Substituições parciais das strings embutidas, ex.: `{ select: { empty: \"…\" } }`.",
+        "source": "Partial overrides for built-in strings, e.g. `{ select: { empty: \"…\" } }`."
+      },
+      "overrides": {
+        "text": "Personalização do tema em tempo de execução: valores do contrato (veja MS_THEME_CONTRACT) aplicados como variáveis CSS neste escopo. Tudo o que é derivado (hover, subtle, text…) acompanha.",
+        "source": "Runtime theme customization: contract values (see MS_THEME_CONTRACT) applied as CSS variables on this scope. Everything derived (hover, subtle, text…) follows."
+      },
+      "radius": {
+        "text": "Ajuste do raio dos cantos: \"sharp\", \"subtle\", \"medium\", \"rounded\". Padrão: \"medium\".",
+        "source": "Corner radius dial: \"sharp\", \"subtle\", \"medium\", \"rounded\". Default: \"medium\"."
+      },
+      "target": {
+        "text": "Elemento de destino onde os atributos de dados do tema são aplicados. \"root\" aplica os atributos a document.documentElement (útil para o app de nível superior). \"wrapper\" aplica os atributos diretamente ao elemento contêiner renderizado. Padrão: \"wrapper\".",
+        "source": "Target element to apply theme data attributes. \"root\" applies attributes to document.documentElement (useful for top-level app). \"wrapper\" applies attributes directly to the rendered container element. Default: \"wrapper\"."
+      },
+      "theme": {
+        "text": "Paleta do tema visual. Padrão: \"magic\".",
+        "source": "Visual theme palette. Default: \"magic\"."
+      }
+    }
+  },
+  "MsRadioGroup": {
+    "props": {
+      "modelValue": {
+        "text": "Valor selecionado (v-model).",
+        "source": "Selected value (v-model)."
+      }
+    }
+  },
+  "MsRange": {
+    "props": {
+      "disabled": {
+        "text": "Se o slider está desabilitado.",
+        "source": "Whether the slider is disabled."
+      },
+      "max": {
+        "text": "Valor máximo permitido.",
+        "source": "Maximum allowable value."
+      },
+      "min": {
+        "text": "Valor mínimo permitido.",
+        "source": "Minimum allowable value."
+      },
+      "modelValue": {
+        "text": "Valor numérico atual do slider.",
+        "source": "Current slider numeric value."
+      },
+      "showValue": {
+        "text": "Se deve exibir o valor numérico ao lado do slider.",
+        "source": "Whether to display the numerical value alongside the slider."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Sizing scale."
+      },
+      "step": {
+        "text": "Incremento do passo de granularidade.",
+        "source": "Granularity step increment."
+      },
+      "tone": {
+        "text": "Cor do tom semântico.",
+        "source": "Semantic tone color."
+      }
+    }
+  },
+  "MsRating": {
+    "props": {
+      "disabled": {
+        "text": "Se a avaliação está desabilitada.",
+        "source": "Whether the rating is disabled."
+      },
+      "max": {
+        "text": "Número máximo de estrelas da avaliação.",
+        "source": "Maximum number of rating stars."
+      },
+      "modelValue": {
+        "text": "Valor atual da avaliação.",
+        "source": "Current rating value."
+      },
+      "readonly": {
+        "text": "Se a avaliação é somente leitura.",
+        "source": "Whether the rating is read-only."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Sizing scale."
+      },
+      "tone": {
+        "text": "Tom semântico.",
+        "source": "Semantic tone."
+      }
+    }
+  },
+  "MsRow": {
+    "props": {
+      "align": {
+        "text": "Alinhamento vertical dos filhos",
+        "source": "Vertical alignment of children"
+      },
+      "gutter": {
+        "text": "Espaçamento em pixels (horizontal ou [horizontal, vertical])",
+        "source": "Spacing in pixels (horizontal or [horizontal, vertical])"
+      },
+      "justify": {
+        "text": "Alinhamento horizontal dos filhos",
+        "source": "Horizontal alignment of children"
+      },
+      "wrap": {
+        "text": "Permite quebra de linha (padrão: true)",
+        "source": "Allows wrapping (default: true)"
+      }
+    }
+  },
+  "MsScrollSpy": {
+    "props": {
+      "items": {
+        "text": "Lista de IDs das seções observadas e rótulos de navegação.",
+        "source": "List of observed section IDs and navigation labels."
+      },
+      "offset": {
+        "text": "Deslocamento limite em pixels a partir do topo da viewport.",
+        "source": "Pixel threshold offset from top of viewport."
+      }
+    }
+  },
+  "MsScrollbar": {
+    "props": {
+      "arrows": {
+        "text": "Habilita o estilo dos botões de seta da barra de rolagem.",
+        "source": "Enables the scrollbar arrow-button styling."
+      },
+      "maxHeight": {
+        "text": "Altura máxima do contêiner (número em pixels ou qualquer comprimento CSS).",
+        "source": "Maximum container height (number in pixels or any CSS length)."
+      },
+      "maxWidth": {
+        "text": "Largura máxima do contêiner (número em pixels ou qualquer comprimento CSS).",
+        "source": "Maximum container width (number in pixels or any CSS length)."
+      },
+      "orientation": {
+        "text": "Eixo (ou eixos) de rolagem.",
+        "source": "Scroll axis (or axes)."
+      },
+      "radius": {
+        "text": "Raio da borda da barra de rolagem (número em pixels ou qualquer comprimento CSS); fallback de `thumbRadius`.",
+        "source": "Scrollbar border radius (number in pixels or any CSS length); fallback for `thumbRadius`."
+      },
+      "size": {
+        "text": "Espessura da barra de rolagem.",
+        "source": "Scrollbar thickness."
+      },
+      "tag": {
+        "text": "Tag do elemento raiz.",
+        "source": "Root element tag."
+      },
+      "thumbColor": {
+        "text": "Cor personalizada do thumb (qualquer cor CSS); a cor de hover é derivada dela.",
+        "source": "Custom thumb color (any CSS color); the hover color is derived from it."
+      },
+      "thumbRadius": {
+        "text": "Raio da borda do thumb (número em pixels ou qualquer comprimento CSS); tem precedência sobre `radius`.",
+        "source": "Thumb border radius (number in pixels or any CSS length); takes precedence over `radius`."
+      },
+      "tone": {
+        "text": "Papel de cor do thumb.",
+        "source": "Color role of the thumb."
+      },
+      "trackColor": {
+        "text": "Cor personalizada da trilha (qualquer cor CSS).",
+        "source": "Custom track color (any CSS color)."
+      },
+      "visibility": {
+        "text": "Visibilidade; \"auto\" revela a barra de rolagem durante a rolagem e a oculta 1s depois que ela para.",
+        "source": "Visibility; \"auto\" reveals the scrollbar while scrolling and hides it 1s after it stops."
+      }
+    }
+  },
+  "MsSegmentedControl": {
+    "props": {
+      "disabled": {
+        "text": "Desabilita todos os segmentos.",
+        "source": "Disables all segments."
+      },
+      "fullWidth": {
+        "text": "Estende o controle até a largura do contêiner.",
+        "source": "Stretches the control to the container width."
+      },
+      "modelValue": {
+        "text": "Valor selecionado (`v-model`).",
+        "source": "Selected value (`v-model`)."
+      },
+      "name": {
+        "text": "Nome do campo de formulário; quando definido, um input oculto envia o valor selecionado com o formulário.",
+        "source": "Form field name; when set, a hidden input submits the selected value with the form."
+      },
+      "options": {
+        "text": "Segmentos a renderizar.",
+        "source": "Segments to render."
+      },
+      "shape": {
+        "text": "Geometria do border-radius.",
+        "source": "Border-radius geometry."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Size scale."
+      },
+      "tone": {
+        "text": "Papel de cor do segmento ativo.",
+        "source": "Color role of the active segment."
+      }
+    },
+    "events": {
+      "change": {
+        "text": "Disparado junto com `update:modelValue`; o payload é o valor selecionado.",
+        "source": "Fires alongside `update:modelValue`; payload is the selected value."
+      },
+      "update:modelValue": {
+        "text": "Disparado quando um segmento é selecionado por clique ou pelas teclas de seta; o payload é o valor dele.",
+        "source": "Fires when a segment is selected by click or arrow keys; payload is its value."
+      }
+    }
+  },
+  "MsSeparator": {
+    "props": {
+      "align": {
+        "text": "Alinhamento do rótulo de texto incorporado: \"center\" | \"start\" | \"end\". Padrão: \"center\".",
+        "source": "Alignment of embedded text label: \"center\" | \"start\" | \"end\". Default: \"center\"."
+      },
+      "decorative": {
+        "text": "Se true, o separador é ocultado da árvore de acessibilidade (decorativo). Padrão: true.",
+        "source": "If true, separator is hidden from accessibility tree (decorative). Default: true."
+      },
+      "label": {
+        "text": "Rótulo de texto opcional a renderizar incorporado em um separador horizontal (ex.: \"OU\").",
+        "source": "Optional text label to render embedded in a horizontal separator (e.g. \"OU\")."
+      },
+      "orientation": {
+        "text": "Direção do layout: \"horizontal\" | \"vertical\". Padrão: \"horizontal\".",
+        "source": "Layout direction: \"horizontal\" | \"vertical\". Default: \"horizontal\"."
+      },
+      "spacing": {
+        "text": "Margem ao redor do separador: \"none\" | \"sm\" | \"md\" | \"lg\". Padrão: \"none\".",
+        "source": "Margin spacing around separator: \"none\" | \"sm\" | \"md\" | \"lg\". Default: \"none\"."
+      },
+      "thickness": {
+        "text": "Espessura da linha em pixels: 1 | 2 | 4. Padrão: 1.",
+        "source": "Line thickness in pixels: 1 | 2 | 4. Default: 1."
+      },
+      "tone": {
+        "text": "Tom de cor: \"neutral\" | \"muted\" | \"strong\" | \"primary\" | \"accent\" | \"success\" | \"warning\" | \"danger\". Padrão: \"neutral\".",
+        "source": "Color tone: \"neutral\" | \"muted\" | \"strong\" | \"primary\" | \"accent\" | \"success\" | \"warning\" | \"danger\". Default: \"neutral\"."
+      },
+      "variant": {
+        "text": "Estilo visual da linha: \"default\" | \"subtle\" | \"strong\" | \"dashed\" | \"dotted\" | \"gradient\". Padrão: \"default\".",
+        "source": "Visual line style: \"default\" | \"subtle\" | \"strong\" | \"dashed\" | \"dotted\" | \"gradient\". Default: \"default\"."
+      }
+    }
+  },
+  "MsSidebar": {
+    "props": {
+      "collapsed": {
+        "text": "Estado recolhido (`v-model:collapsed`); quando definido explicitamente, sobrescreve o contexto de um `MsAppShell` envolvente.",
+        "source": "Collapsed state (`v-model:collapsed`); when set explicitly it overrides an enclosing `MsAppShell` context."
+      },
+      "position": {
+        "text": "Modo de posicionamento CSS.",
+        "source": "CSS positioning mode."
+      },
+      "showToggle": {
+        "text": "Exibe um botão de alternância para recolher/expandir no cabeçalho.",
+        "source": "Shows a collapse/expand toggle button in the header."
+      },
+      "side": {
+        "text": "Lado do layout ao qual a sidebar é fixada.",
+        "source": "Side of the layout the sidebar is attached to."
+      },
+      "tone": {
+        "text": "Papel de cor.",
+        "source": "Color role."
+      },
+      "variant": {
+        "text": "Estilo de superfície.",
+        "source": "Surface style."
+      },
+      "width": {
+        "text": "Preset de largura.",
+        "source": "Preset width."
+      }
+    }
+  },
+  "MsSidebarMenu": {
+    "props": {
+      "accordion": {
+        "text": "Abrir um submenu fecha os outros submenus abertos.",
+        "source": "Opening a submenu closes the other open submenus."
+      },
+      "collapsed": {
+        "text": "Renderiza o menu no estilo recolhido (somente ícones).",
+        "source": "Renders the menu in its collapsed (icon-only) style."
+      },
+      "density": {
+        "text": "Espaçamento vertical dos itens.",
+        "source": "Vertical spacing of the items."
+      },
+      "items": {
+        "text": "Itens e grupos a renderizar quando nenhum conteúdo é fornecido no slot padrão.",
+        "source": "Items and groups to render when no default slot content is given."
+      },
+      "modelValue": {
+        "text": "Id do item ativo (`v-model`).",
+        "source": "Id of the active item (`v-model`)."
+      },
+      "shape": {
+        "text": "Geometria do border-radius dos itens.",
+        "source": "Border-radius geometry of the items."
+      },
+      "tone": {
+        "text": "Papel de cor do item ativo.",
+        "source": "Color role of the active item."
+      }
+    }
+  },
+  "MsSidebarMenuGroup": {
+    "props": {
+      "title": {
+        "text": "Título do grupo (pode ser substituído pelo slot `title`).",
+        "source": "Group heading (overridable via the `title` slot)."
+      }
+    }
+  },
+  "MsSidebarMenuItem": {
+    "props": {
+      "active": {
+        "text": "Força o estilo ativo independentemente do id selecionado.",
+        "source": "Forces the active style regardless of the selected id."
+      },
+      "badge": {
+        "text": "Conteúdo do badge exibido após o rótulo (pode ser substituído pelo slot `badge`).",
+        "source": "Badge content shown after the label (overridable via the `badge` slot)."
+      },
+      "badgeTone": {
+        "text": "Papel de cor do badge.",
+        "source": "Color role of the badge."
+      },
+      "disabled": {
+        "text": "Desabilita o item.",
+        "source": "Disables the item."
+      },
+      "hasChildren": {
+        "text": "Marca o item como pai de um submenu: exibe uma seta e alterna o slot `sub` ao clicar.",
+        "source": "Marks the item as a submenu parent: shows an arrow and toggles the `sub` slot on click."
+      },
+      "href": {
+        "text": "URL do link; renderiza o item como uma âncora sanitizada em vez de um botão.",
+        "source": "Link URL; renders the item as a sanitized anchor instead of a button."
+      },
+      "icon": {
+        "text": "Texto/glifo do ícone exibido antes do rótulo (pode ser substituído pelo slot `icon`).",
+        "source": "Icon text/glyph shown before the label (overridable via the `icon` slot)."
+      },
+      "id": {
+        "text": "Id do item; necessário para participar da seleção e do estado aberto do menu pai.",
+        "source": "Item id; required to take part in the parent menu's selection and open state."
+      },
+      "label": {
+        "text": "Texto do item (pode ser substituído pelo slot padrão).",
+        "source": "Item text (overridable via the default slot)."
+      },
+      "open": {
+        "text": "Estado aberto do submenu quando o item não é controlado por um menu pai.",
+        "source": "Open state of the submenu when the item is not controlled by a parent menu."
+      }
+    }
+  },
+  "MsSkeleton": {
+    "props": {
+      "animation": {
+        "text": "Animação visual de carregamento: - \"shimmer\": varredura contínua de gradiente - \"pulse\": oscilação sutil de opacidade (padrão) - \"none\": fundo de placeholder estático",
+        "source": "Visual loading animation: - \"shimmer\": continuous gradient sweep - \"pulse\": subtle opacity oscillation (default) - \"none\": static placeholder background"
+      },
+      "count": {
+        "text": "Número de linhas de skeleton a renderizar (útil para texto em várias linhas). Padrão: 1.",
+        "source": "Number of skeleton lines to render (useful for multi-line text). Default: 1."
+      },
+      "height": {
+        "text": "Altura explícita (ex.: \"24px\", \"100%\" ou número em pixels).",
+        "source": "Explicit height (e.g. \"24px\", \"100%\", or number in pixels)."
+      },
+      "radius": {
+        "text": "Substituição opcional e personalizada do raio da borda.",
+        "source": "Optional custom border radius override."
+      },
+      "speed": {
+        "text": "Velocidade da animação: - \"fast\": 1.0s - \"normal\": 1.6s - \"slow\": 2.4s Padrão: \"normal\".",
+        "source": "Animation speed: - \"fast\": 1.0s - \"normal\": 1.6s - \"slow\": 2.4s Default: \"normal\"."
+      },
+      "tone": {
+        "text": "Tom/contraste da cor: - \"default\": cinza neutro padrão - \"subtle\": superfície rebaixada suave e clara - \"contrast\": cinza de maior contraste - \"primary\": tonalidade primária da marca Padrão: \"default\".",
+        "source": "Color tone/contrast: - \"default\": standard neutral gray - \"subtle\": soft light sunken surface - \"contrast\": higher contrast gray - \"primary\": brand primary tint Default: \"default\"."
+      },
+      "variant": {
+        "text": "Formato geométrico ou preset de componente para o skeleton: - \"text\": linha horizontal arredondada com margem inferior - \"circle\": círculo padrão (40x40) - \"avatar\": círculo de avatar maior (48x48) - \"button\": formato de botão (100x38) - \"card\": banner de card (100%x160) - \"rect\": caixa retangular (100%x100) Padrão: \"text\".",
+        "source": "Geometric shape or component preset for the skeleton: - \"text\": rounded horizontal line with bottom margin - \"circle\": standard circle (40x40) - \"avatar\": larger avatar circle (48x48) - \"button\": button shape (100x38) - \"card\": card banner (100%x160) - \"rect\": rectangular box (100%x100) Default: \"text\"."
+      },
+      "width": {
+        "text": "Largura explícita (ex.: \"120px\", \"80%\" ou número em pixels).",
+        "source": "Explicit width (e.g. \"120px\", \"80%\", or number in pixels)."
+      }
+    }
+  },
+  "MsSnippet": {
+    "props": {
+      "activeTab": {
+        "text": "Índice ou ID da aba ativa (suporta v-model:activeTab)",
+        "source": "Active tab index or ID (supports v-model:activeTab)"
+      },
+      "code": {
+        "text": "Trecho de código ou comando único",
+        "source": "Single code snippet or command"
+      },
+      "copyPrompt": {
+        "text": "Se deve copiar o símbolo do prompt junto com o código",
+        "source": "Whether to copy the prompt symbol along with the code"
+      },
+      "copyTimeout": {
+        "text": "Tempo em ms para redefinir o estado do botão de copiar",
+        "source": "Timeout in ms to reset copy button state"
+      },
+      "copyable": {
+        "text": "Se o botão de copiar está visível",
+        "source": "Whether copy button is visible"
+      },
+      "prompt": {
+        "text": "Símbolo do prompt de comando (padrão \"$ \")",
+        "source": "Command prompt symbol (default \"$ \")"
+      },
+      "size": {
+        "text": "Tamanho do componente",
+        "source": "Component size"
+      },
+      "tabs": {
+        "text": "Array de trechos em várias abas (ex.: pnpm, npm, yarn, bun)",
+        "source": "Multi-tab snippets array (e.g. pnpm, npm, yarn, bun)"
+      },
+      "tone": {
+        "text": "Tom de destaque semântico",
+        "source": "Semantic tone accent"
+      },
+      "variant": {
+        "text": "Variante visual",
+        "source": "Visual variant"
+      },
+      "wrapLines": {
+        "text": "Permite quebra de texto",
+        "source": "Allow text wrapping"
+      }
+    }
+  },
+  "MsSpinner": {
+    "props": {
+      "label": {
+        "text": "Descrição acessível para leitores de tela, anunciada via aria-live.",
+        "source": "Accessible screen-reader description announced via aria-live."
+      },
+      "size": {
+        "text": "Dimensão do spinner: - \"2xs\": 8px - \"xs\": 12px - \"sm\": 16px - \"md\": 24px (padrão) - \"lg\": 32px - \"xl\": 48px - \"2xl\": 64px",
+        "source": "Dimension of the spinner: - \"2xs\": 8px - \"xs\": 12px - \"sm\": 16px - \"md\": 24px (default) - \"lg\": 32px - \"xl\": 48px - \"2xl\": 64px"
+      },
+      "speed": {
+        "text": "Velocidade de rotação da animação: \"fast\", \"normal\", \"slow\". Padrão: \"normal\".",
+        "source": "Animation rotation speed: \"fast\", \"normal\", \"slow\". Default: \"normal\"."
+      },
+      "thickness": {
+        "text": "Espessura do traço: \"thin\", \"normal\", \"thick\". Padrão: \"normal\".",
+        "source": "Stroke thickness: \"thin\", \"normal\", \"thick\". Default: \"normal\"."
+      },
+      "tone": {
+        "text": "Tom semântico: \"primary\", \"neutral\", \"success\", \"warning\", \"danger\", \"current\". Padrão: \"primary\".",
+        "source": "Semantic tone: \"primary\", \"neutral\", \"success\", \"warning\", \"danger\", \"current\". Default: \"primary\"."
+      }
+    }
+  },
+  "MsSplitPane": {
+    "props": {
+      "direction": {
+        "text": "Eixo do layout: \"horizontal\" coloca os painéis lado a lado, \"vertical\" os empilha.",
+        "source": "Layout axis: \"horizontal\" places panes side by side, \"vertical\" stacks them."
+      },
+      "max": {
+        "text": "Tamanho máximo do primeiro painel, em porcentagem.",
+        "source": "Maximum first-pane size, in percent."
+      },
+      "min": {
+        "text": "Tamanho mínimo do primeiro painel, em porcentagem.",
+        "source": "Minimum first-pane size, in percent."
+      },
+      "split": {
+        "text": "Tamanho do primeiro painel como porcentagem do contêiner (`v-model:split`).",
+        "source": "Size of the first pane as a percentage of the container (`v-model:split`)."
+      }
+    }
+  },
+  "MsStatus": {
+    "props": {
+      "label": {
+        "text": "Rótulo de texto que acompanha o ponto de status.",
+        "source": "Text label accompanying the status dot."
+      },
+      "pulse": {
+        "text": "Se deve animar um anel de radar pulsante ao redor do ponto de status.",
+        "source": "Whether to animate a live pulsing radar ring around the status dot."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Sizing scale."
+      },
+      "tone": {
+        "text": "Cor do tom semântico.",
+        "source": "Semantic tone color."
+      }
+    }
+  },
+  "MsStatusBar": {
+    "props": {
+      "tone": {
+        "text": "Papel de cor semântico.",
+        "source": "Semantic color role."
+      }
+    }
+  },
+  "MsStep": {
+    "props": {
+      "disabled": {
+        "text": "Se esta etapa está desabilitada.",
+        "source": "Whether this step is disabled."
+      },
+      "index": {
+        "text": "Índice da etapa (a partir de 0).",
+        "source": "Step index (0-indexed)."
+      },
+      "status": {
+        "text": "Substituição explícita do status.",
+        "source": "Explicit status override."
+      },
+      "subtitle": {
+        "text": "Texto de apoio secundário.",
+        "source": "Secondary supporting text."
+      },
+      "title": {
+        "text": "Título principal da etapa.",
+        "source": "Primary title of the step."
+      }
+    }
+  },
+  "MsStepper": {
+    "props": {
+      "clickable": {
+        "text": "Se as etapas podem ser clicadas para navegar.",
+        "source": "Whether steps can be clicked to navigate."
+      },
+      "direction": {
+        "text": "Direção do layout.",
+        "source": "Layout direction."
+      },
+      "modelValue": {
+        "text": "Índice da etapa ativa (a partir de 0).",
+        "source": "Active step index (0-indexed)."
+      }
+    }
+  },
+  "MsSwitch": {
+    "props": {
+      "checked": {
+        "text": "Estado marcado para `v-model:checked`. `modelValue` prevalece quando ambos estão vinculados.",
+        "source": "Checked state for `v-model:checked`. `modelValue` wins when both are bound."
+      },
+      "description": {
+        "text": "Descrição secundária ou texto de ajuda.",
+        "source": "Secondary description or helper text."
+      },
+      "disabled": {
+        "text": "Estado desabilitado.",
+        "source": "Disabled state."
+      },
+      "label": {
+        "text": "Texto do rótulo principal.",
+        "source": "Primary label text."
+      },
+      "labelPlacement": {
+        "text": "Posição do rótulo em relação à trilha.",
+        "source": "Label position relative to track."
+      },
+      "modelValue": {
+        "text": "Estado marcado para `v-model` (ex.: `v-model=\"form.remember\"`).",
+        "source": "Checked state for `v-model` (e.g. `v-model=\"form.remember\"`)."
+      },
+      "name": {
+        "text": "Atributo name do formulário.",
+        "source": "Form name attribute."
+      },
+      "size": {
+        "text": "Escala de tamanho: \"sm\" | \"md\" | \"lg\".",
+        "source": "Sizing scale: \"sm\" | \"md\" | \"lg\"."
+      },
+      "tone": {
+        "text": "Tom semântico quando ativo.",
+        "source": "Semantic active tone."
+      },
+      "value": {
+        "text": "Atributo value do formulário.",
+        "source": "Form value attribute."
+      }
+    }
+  },
+  "MsTab": {
+    "props": {
+      "disabled": {
+        "text": "Estado desabilitado que impede a seleção e a interação.",
+        "source": "Disabled state preventing selection and interaction."
+      },
+      "value": {
+        "text": "Identificador único correspondente ao MsTabPanel.",
+        "source": "Unique identifier matching corresponding MsTabPanel."
+      }
+    }
+  },
+  "MsTabPanel": {
+    "props": {
+      "lazy": {
+        "text": "Se true, desmonta o painel quando inativo em vez de ocultá-lo com display: none.",
+        "source": "If true, unmounts panel when inactive instead of hiding via display: none."
+      },
+      "value": {
+        "text": "Valor correspondente ao gatilho MsTab associado.",
+        "source": "Value corresponding to the associated MsTab trigger."
+      }
+    }
+  },
+  "MsTable": {
+    "props": {
+      "bordered": {
+        "text": "Habilita bordas em todas as células",
+        "source": "Enables borders around all cells"
+      },
+      "caption": {
+        "text": "Legenda acessível opcional da tabela",
+        "source": "Optional accessible table caption"
+      },
+      "density": {
+        "text": "Controla o padding e a escala de fonte da tabela.",
+        "source": "Controls table padding and font scale."
+      },
+      "hoverable": {
+        "text": "Habilita o efeito de destaque ao passar o mouse sobre as linhas.",
+        "source": "Enables hover highlight effect on rows."
+      },
+      "stickyHeader": {
+        "text": "Mantém a linha de cabeçalho fixa durante a rolagem vertical",
+        "source": "Keeps header row fixed during vertical scroll"
+      },
+      "striped": {
+        "text": "Habilita listras zebradas alternadas nas linhas",
+        "source": "Enables alternating zebra stripes on rows"
+      },
+      "variant": {
+        "text": "Estilo visual da superfície do contêiner: \"default\", \"surface\", \"flush\".",
+        "source": "Visual container surface style: \"default\", \"surface\", \"flush\"."
+      }
+    }
+  },
+  "MsTableCell": {
+    "props": {
+      "align": {
+        "text": "Alinhamento do texto da célula.",
+        "source": "Cell text alignment."
+      }
+    }
+  },
+  "MsTableHeaderCell": {
+    "props": {
+      "align": {
+        "text": "Alinhamento do texto da célula.",
+        "source": "Cell text alignment."
+      },
+      "sortDirection": {
+        "text": "Direção de ordenação atual.",
+        "source": "Current sorting direction."
+      },
+      "sortable": {
+        "text": "Habilita o indicador de ordenação no cabeçalho",
+        "source": "Enables sortable header indicator"
+      },
+      "width": {
+        "text": "Largura explícita opcional (ex.: \"120px\", \"20%\")",
+        "source": "Optional explicit width (e.g. \"120px\", \"20%\")"
+      }
+    }
+  },
+  "MsTableRow": {
+    "props": {
+      "clickable": {
+        "text": "Adiciona cursor de ponteiro e feedback interativo",
+        "source": "Adds pointer cursor and interactive feedback"
+      },
+      "selected": {
+        "text": "Destaca a linha como selecionada",
+        "source": "Highlights the row as selected"
+      }
+    }
+  },
+  "MsTabs": {
+    "props": {
+      "activationMode": {
+        "text": "Comportamento de ativação das abas ao navegar com as teclas de seta: - \"automatic\": as teclas de seta selecionam e focam a próxima aba imediatamente. - \"manual\": as teclas de seta movem o foco; Enter ou Space ativa a aba.",
+        "source": "Tab activation behavior when navigating with arrow keys: - \"automatic\": arrow keys immediately select and focus next tab. - \"manual\": arrow keys move focus; Enter or Space activates the tab."
+      },
+      "defaultValue": {
+        "text": "Valor inicial da aba ativa quando não controlado.",
+        "source": "Initial active tab value when uncontrolled."
+      },
+      "fitted": {
+        "text": "Se as abas se estendem igualmente para preencher a largura do contêiner.",
+        "source": "Whether tabs stretch equally to fill container width."
+      },
+      "modelValue": {
+        "text": "Valor controlado da aba ativa.",
+        "source": "Controlled active tab value."
+      },
+      "orientation": {
+        "text": "Orientação do layout: \"horizontal\" | \"vertical\".",
+        "source": "Layout orientation: \"horizontal\" | \"vertical\"."
+      },
+      "scrollable": {
+        "text": "Permite rolagem horizontal no contêiner das abas quando elas excedem a largura disponível.",
+        "source": "Allow horizontal scrolling on tabs container when tabs exceed available width."
+      },
+      "showArrows": {
+        "text": "Exibe botões de seta de navegação à esquerda/direita quando há overflow rolável.",
+        "source": "Show left/right navigation arrow buttons when scrollable overflow exists."
+      },
+      "size": {
+        "text": "Tamanho da escala: \"sm\" | \"md\" | \"lg\".",
+        "source": "Scale size: \"sm\" | \"md\" | \"lg\"."
+      },
+      "variant": {
+        "text": "Variante visual.",
+        "source": "Visual variant."
+      }
+    }
+  },
+  "MsTag": {
+    "props": {
+      "clickable": {
+        "text": "Se clicar na tag dispara ações interativas. Padrão: false.",
+        "source": "Whether clicking the tag triggers interactive actions. Default: false."
+      },
+      "closable": {
+        "text": "Se deve exibir um botão interativo de fechar/remover. Padrão: false.",
+        "source": "Whether to display an interactive close/remove button. Default: false."
+      },
+      "disabled": {
+        "text": "Desabilita a interação com a tag. Padrão: false.",
+        "source": "Disables tag interaction. Default: false."
+      },
+      "dot": {
+        "text": "Exibe um pequeno ponto indicador colorido antes do conteúdo da tag. Padrão: false.",
+        "source": "Displays a small colored dot indicator before tag content. Default: false."
+      },
+      "shape": {
+        "text": "Formato geométrico: \"rounded\" | \"pill\" | \"square\". Padrão: \"rounded\".",
+        "source": "Geometry shape: \"rounded\" | \"pill\" | \"square\". Default: \"rounded\"."
+      },
+      "size": {
+        "text": "Escala dimensional: \"sm\" | \"md\" | \"lg\". Padrão: \"md\".",
+        "source": "Dimensional scale: \"sm\" | \"md\" | \"lg\". Default: \"md\"."
+      },
+      "tone": {
+        "text": "Tom semântico: \"neutral\", \"primary\", \"accent\", \"success\", \"warning\", \"danger\", \"info\". Padrão: \"neutral\".",
+        "source": "Semantic tone: \"neutral\", \"primary\", \"accent\", \"success\", \"warning\", \"danger\", \"info\". Default: \"neutral\"."
+      },
+      "variant": {
+        "text": "Variante visual: - \"soft\": fundo sutilmente tingido com texto correspondente (padrão) - \"solid\": preenchimento total no tom com texto invertido - \"outline\": fundo transparente com borda semântica",
+        "source": "Visual variant: - \"soft\": subtle tinted background with matching text (default) - \"solid\": full tone fill with inverse text - \"outline\": transparent background with semantic border"
+      }
+    }
+  },
+  "MsTextarea": {
+    "props": {
+      "autoGrow": {
+        "text": "Aumenta a altura para acomodar o conteúdo.",
+        "source": "Grows the height to fit the content."
+      },
+      "disabled": {
+        "text": "Desabilita o textarea.",
+        "source": "Disables the textarea."
+      },
+      "invalid": {
+        "text": "Marca o textarea como inválido (também herdado de um field pai).",
+        "source": "Marks the textarea as invalid (also inherited from a parent field)."
+      },
+      "maxLength": {
+        "text": "Número máximo de caracteres (`maxlength` nativo; também exibido pelo contador).",
+        "source": "Maximum number of characters (native `maxlength`; also shown by the counter)."
+      },
+      "maxRows": {
+        "text": "Número máximo de linhas para `autoGrow`; atualmente não é aplicado pelo componente.",
+        "source": "Maximum rows for `autoGrow`; currently not applied by the component."
+      },
+      "modelValue": {
+        "text": "Valor do texto (`v-model`).",
+        "source": "Text value (`v-model`)."
+      },
+      "name": {
+        "text": "Nome nativo do campo de formulário.",
+        "source": "Native form field name."
+      },
+      "placeholder": {
+        "text": "Texto de placeholder nativo.",
+        "source": "Native placeholder text."
+      },
+      "readonly": {
+        "text": "Torna o textarea somente leitura.",
+        "source": "Makes the textarea read-only."
+      },
+      "resize": {
+        "text": "Direções em que o usuário pode redimensionar o textarea.",
+        "source": "Directions in which the user can resize the textarea."
+      },
+      "rows": {
+        "text": "Linhas de texto visíveis.",
+        "source": "Visible text rows."
+      },
+      "showCount": {
+        "text": "Exibe um contador de caracteres no rodapé.",
+        "source": "Shows a character counter in the footer."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Size scale."
+      },
+      "tone": {
+        "text": "Papel de cor semântico (forçado para \"danger\" enquanto inválido).",
+        "source": "Semantic color role (forced to \"danger\" while invalid)."
+      }
+    }
+  },
+  "MsThemeScope": {
+    "props": {
+      "as": {
+        "text": "Tag a renderizar para o contêiner do escopo. Padrão: \"div\".",
+        "source": "Tag to render for the scope container. Default: \"div\"."
+      },
+      "colorMode": {
+        "text": "Sobrescreve a preferência de modo de cor: \"light\", \"dark\" ou \"system\".",
+        "source": "Override color mode preference: \"light\", \"dark\", or \"system\"."
+      },
+      "contrast": {
+        "text": "Sobrescreve o nível de contraste: \"normal\", \"high\".",
+        "source": "Override contrast level: \"normal\", \"high\"."
+      },
+      "density": {
+        "text": "Sobrescreve a escala de densidade: \"compact\", \"comfortable\", \"spacious\".",
+        "source": "Override density scale: \"compact\", \"comfortable\", \"spacious\"."
+      },
+      "dir": {
+        "text": "Sobrescreve a direção: \"ltr\", \"rtl\".",
+        "source": "Override direction: \"ltr\", \"rtl\"."
+      },
+      "overrides": {
+        "text": "Personalização do tema em tempo de execução: valores do contrato (veja MS_THEME_CONTRACT) aplicados como variáveis CSS neste escopo. Tudo o que é derivado (hover, subtle, text…) acompanha.",
+        "source": "Runtime theme customization: contract values (see MS_THEME_CONTRACT) applied as CSS variables on this scope. Everything derived (hover, subtle, text…) follows."
+      },
+      "radius": {
+        "text": "Sobrescreve o ajuste de raio dos cantos: \"sharp\", \"subtle\", \"medium\", \"rounded\".",
+        "source": "Override corner radius dial: \"sharp\", \"subtle\", \"medium\", \"rounded\"."
+      },
+      "theme": {
+        "text": "Sobrescreve o tema visual deste escopo.",
+        "source": "Override visual theme for this scope."
+      }
+    }
+  },
+  "MsTimeline": {
+    "props": {
+      "direction": {
+        "text": "Direção do layout dos marcos.",
+        "source": "Layout direction of milestones."
+      }
+    }
+  },
+  "MsTimelineItem": {
+    "props": {
+      "description": {
+        "text": "Texto do conteúdo da descrição.",
+        "source": "Description content text."
+      },
+      "timestamp": {
+        "text": "Rótulo opcional de data e hora ou data.",
+        "source": "Optional timestamp or date label."
+      },
+      "title": {
+        "text": "Texto do título do marco.",
+        "source": "Title text of the milestone."
+      },
+      "tone": {
+        "text": "Tom de cor semântico do marcador indicador do marco.",
+        "source": "Semantic color tone for the milestone indicator bullet."
+      }
+    }
+  },
+  "MsToast": {
+    "props": {
+      "announce": {
+        "text": "Renderiza o toast como sua própria live region (status/alert). O MsToastContainer desabilita isso e anuncia por meio de live regions persistentes.",
+        "source": "Render the toast as its own live region (status/alert). MsToastContainer disables it and announces through persistent live regions instead."
+      }
+    }
+  },
+  "MsToggleGroup": {
+    "props": {
+      "disabled": {
+        "text": "Desabilita todos os itens.",
+        "source": "Disables all items."
+      },
+      "items": {
+        "text": "Itens a renderizar quando nenhum conteúdo é fornecido no slot padrão.",
+        "source": "Items to render when no default slot content is given."
+      },
+      "mandatory": {
+        "text": "Impede desmarcar o último item selecionado.",
+        "source": "Prevents deselecting the last selected item."
+      },
+      "modelValue": {
+        "text": "Valor selecionado (`v-model`): uma string, ou um array de strings quando `multiple` está definido.",
+        "source": "Selected value (`v-model`): a string, or an array of strings when `multiple` is set."
+      },
+      "multiple": {
+        "text": "Permite selecionar vários itens ao mesmo tempo.",
+        "source": "Allows selecting several items at once."
+      },
+      "size": {
+        "text": "Escala de tamanho.",
+        "source": "Size scale."
+      },
+      "variant": {
+        "text": "Estilo visual.",
+        "source": "Visual style."
+      }
+    }
+  },
+  "MsTooltip": {
+    "props": {
+      "arrow": {
+        "text": "Exibe a seta indicadora direcional. Padrão: true.",
+        "source": "Displays the directional pointer arrow. Default: true."
+      },
+      "content": {
+        "text": "Mensagem de texto do tooltip a exibir. Também pode ser fornecida pelo slot #content.",
+        "source": "Tooltip text message to display. Can also be supplied via #content slot."
+      },
+      "disabled": {
+        "text": "Desabilita a exibição do tooltip. Padrão: false.",
+        "source": "Disables tooltip display. Default: false."
+      },
+      "hideDelay": {
+        "text": "Atraso em milissegundos antes de ocultar o tooltip ao sair/perder o foco. Padrão: 100.",
+        "source": "Delay in milliseconds before hiding tooltip on leave/blur. Default: 100."
+      },
+      "maxWidth": {
+        "text": "Largura máxima opcional (ex.: 240, \"200px\"), permitindo quebra em várias linhas.",
+        "source": "Optional maximum width (e.g. 240, \"200px\") allowing multiline wrapping."
+      },
+      "placement": {
+        "text": "Posicionamento em relação ao elemento gatilho: \"top\", \"bottom\", \"left\", \"right\". Padrão: \"top\".",
+        "source": "Placement relative to the trigger element: \"top\", \"bottom\", \"left\", \"right\". Default: \"top\"."
+      },
+      "showDelay": {
+        "text": "Atraso em milissegundos antes de exibir o tooltip ao passar o mouse/focar. Padrão: 150.",
+        "source": "Delay in milliseconds before showing tooltip on hover/focus. Default: 150."
+      },
+      "size": {
+        "text": "Escala dimensional: \"sm\", \"md\", \"lg\". Padrão: \"md\".",
+        "source": "Dimensional scale: \"sm\", \"md\", \"lg\". Default: \"md\"."
+      },
+      "tone": {
+        "text": "Tom visual da superfície: \"dark\", \"light\", \"primary\". Padrão: \"primary\".",
+        "source": "Visual surface tone: \"dark\", \"light\", \"primary\". Default: \"primary\"."
+      }
+    }
+  },
+  "MsTopbar": {
+    "props": {
+      "fixed": {
+        "text": "Mantém a topbar fixa enquanto o conteúdo rola.",
+        "source": "Fixes the topbar in place while content scrolls."
+      }
+    }
+  },
+  "MsTree": {
+    "props": {
+      "expandedKeys": {
+        "text": "Conjunto de chaves dos nós expandidos.",
+        "source": "Set of expanded node keys."
+      },
+      "items": {
+        "text": "Dados hierárquicos dos nós da árvore.",
+        "source": "Tree hierarchical nodes data."
+      },
+      "selectedKey": {
+        "text": "Chave do nó selecionado no momento.",
+        "source": "Currently selected node key."
+      }
+    }
+  }
+}
