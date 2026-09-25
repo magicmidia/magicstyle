@@ -1,5 +1,5 @@
 import type { DtcgToken, TokenTree } from "./dtcg.ts";
-import { flatten } from "./dtcg.ts";
+import { DTCG_TOKEN_TYPES, EXTENSION_NAMESPACE, flatten } from "./dtcg.ts";
 
 export const MAX_ALIAS_DEPTH = 4;
 
@@ -59,7 +59,10 @@ export function resolveAliases(tree: TokenTree): ResolveResult {
         diagnostics.push({ path, message: `unresolved alias: {${alias}}` });
         return value;
       }
-      return resolveValue(`${path} -> {${alias}}`, target.$value, [...chain, alias]);
+      const resolved = resolveValue(`${path} -> {${alias}}`, target.$value, [...chain, alias]);
+      // Unit-carrying numbers (e.g. em letter-spacing) resolve to a CSS length inside composites.
+      const unit = target.$extensions?.[EXTENSION_NAMESPACE]?.["unit"];
+      return typeof unit === "string" ? `${String(resolved)}${unit}` : resolved;
     }
     if (Array.isArray(value)) {
       return value.map((layer) => {
@@ -82,6 +85,9 @@ export function resolveAliases(tree: TokenTree): ResolveResult {
   }
 
   for (const [path, token] of flat) {
+    if (!DTCG_TOKEN_TYPES.includes(token.$type)) {
+      diagnostics.push({ path, message: `unknown DTCG $type "${String(token.$type)}"` });
+    }
     tokens.set(path, {
       ...token,
       $value: resolveValue(path, token.$value, [path]) as DtcgToken["$value"],

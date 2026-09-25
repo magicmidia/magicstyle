@@ -8,7 +8,7 @@
 [![Architecture Baseline](https://img.shields.io/badge/baseline-1.2%20normativa-purple.svg?style=flat-square)](docs/baseline/Magic-Style-Architecture-Baseline-1.2/)
 [![Components](https://img.shields.io/badge/components-95%20prontos-emerald.svg?style=flat-square)](apps/preview/components.html)
 [![Themes](https://img.shields.io/badge/themes-10%20autênticos-indigo.svg?style=flat-square)](#-10-temas-autênticos-além-da-cor)
-[![Design Tokens](https://img.shields.io/badge/tokens-201%20DTCG-cyan.svg?style=flat-square)](packages/internal/tokens/)
+[![Design Tokens](https://img.shields.io/badge/tokens-199%20DTCG-cyan.svg?style=flat-square)](packages/internal/tokens/)
 [![Accessibility](https://img.shields.io/badge/a11y-WCAG%202.2%20AA-green.svg?style=flat-square)](docs/baseline/Magic-Style-Architecture-Baseline-1.2/11-Accessibility-Specification.md)
 [![TypeScript](https://img.shields.io/badge/typescript-strict%205.9-blue.svg?style=flat-square)](tsconfig.base.json)
 [![Node](https://img.shields.io/badge/node-%3E%3D24-brightgreen.svg?style=flat-square)](package.json)
@@ -32,7 +32,7 @@ Diferente de bibliotecas convencionais que limitam temas a simples substituiçõ
 
 - 🧩 **95 Componentes Enterprise:** Do atômico (`MsButton`, `MsBadge`) a subsistemas complexos (`MsSelect` unificado, `MsAppShell`, `MsTable`, `MsSplitPane`, `MsFormWizard`, `MsCommandPalette`).
 - 🎨 **10 Temas Autênticos Curados:** _Shadcn_, _Bootstrap 5_, _MaterialUI (M3)_, _GitHub Primer_, _Linear_, _Vercel Geist_, _Supabase Studio_, _Nord Arctic_, _Graphite_ e _Magic_.
-- 📐 **201 Design Tokens DTCG + contrato de 27 variáveis por tema:** primitivas em **OKLCH** no formato do W3C Design Tokens Community Group. Cada tema define só 27 variáveis, e os ~150 tokens semânticos (hover, subtle, texto, bordas…) são derivados em tempo real.
+- 📐 **199 Design Tokens DTCG + contrato de 27 variáveis por tema:** primitivas em **OKLCH** no formato do W3C Design Tokens Community Group. Cada tema define só 27 variáveis, e os ~150 tokens semânticos (hover, subtle, texto, bordas…) são derivados em tempo real.
 - ♿ **Acessibilidade Inegociável:** Totalmente navegável por teclado, foco visível de alto contraste, semântica ARIA e suporte nativo bidirecional LTR / RTL (WCAG 2.2 AA).
 - ⚡ **Zero Bloat de Runtime:** Camada visual pura em `@magic-style/css` que funciona com ou sem Vue; componentes Vue SFC com tipagem integral em TypeScript strict.
 - 🛡️ **Governança Estrita ("No Fake Green"):** Verificação arquitetural automatizada de arestas proibidas, testes unitários rigorosos e versionamento coordenado via Changesets.

@@ -7,11 +7,11 @@ export type {
   DtcgToken,
   DtcgTokenType,
   DtcgValue,
+  DtcgTypography,
   ShadowLayer,
-  TypographyRole,
   TokenTree,
 } from "./lib/dtcg.ts";
-export { flatten, isToken } from "./lib/dtcg.ts";
+export { DTCG_TOKEN_TYPES, EXTENSION_NAMESPACE, flatten, isToken } from "./lib/dtcg.ts";
 export { cssVarName, cssVarValue, emitCss };
 export {
   MAX_ALIAS_DEPTH,

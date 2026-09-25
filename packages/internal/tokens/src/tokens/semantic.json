@@ -36,89 +36,98 @@
   },
   "role": {
     "display": {
-      "$type": "typography-role",
+      "$type": "typography",
       "$value": {
-        "family": "{font.display}",
-        "size": "{typography.size.4xl}",
-        "line-height": "{typography.line-height.tight}",
-        "weight": "{typography.weight.semibold}",
-        "tracking": "{typography.letter-spacing.tight}"
+        "fontFamily": "{font.display}",
+        "fontSize": "{typography.size.4xl}",
+        "lineHeight": "{typography.line-height.tight}",
+        "fontWeight": "{typography.weight.semibold}",
+        "letterSpacing": "{typography.letter-spacing.tight}"
       }
     },
     "heading": {
-      "$type": "typography-role",
+      "$type": "typography",
       "$value": {
-        "family": "{font.sans}",
-        "size": "{typography.size.xl}",
-        "line-height": "{typography.line-height.tight}",
-        "weight": "{typography.weight.semibold}",
-        "tracking": "{typography.letter-spacing.tight}"
+        "fontFamily": "{font.sans}",
+        "fontSize": "{typography.size.xl}",
+        "lineHeight": "{typography.line-height.tight}",
+        "fontWeight": "{typography.weight.semibold}",
+        "letterSpacing": "{typography.letter-spacing.tight}"
       }
     },
     "title": {
-      "$type": "typography-role",
+      "$type": "typography",
       "$value": {
-        "family": "{font.sans}",
-        "size": "{typography.size.lg}",
-        "line-height": "{typography.line-height.tight}",
-        "weight": "{typography.weight.medium}"
+        "fontFamily": "{font.sans}",
+        "fontSize": "{typography.size.lg}",
+        "lineHeight": "{typography.line-height.tight}",
+        "fontWeight": "{typography.weight.medium}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
       }
     },
     "body": {
-      "$type": "typography-role",
+      "$type": "typography",
       "$value": {
-        "family": "{font.sans}",
-        "size": "{typography.size.md}",
-        "line-height": "{typography.line-height.base}",
-        "weight": "{typography.weight.regular}"
+        "fontFamily": "{font.sans}",
+        "fontSize": "{typography.size.md}",
+        "lineHeight": "{typography.line-height.base}",
+        "fontWeight": "{typography.weight.regular}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
       }
     },
     "label": {
-      "$type": "typography-role",
+      "$type": "typography",
       "$value": {
-        "family": "{font.sans}",
-        "size": "{typography.size.sm}",
-        "line-height": "{typography.line-height.base}",
-        "weight": "{typography.weight.medium}",
-        "tracking": "{typography.letter-spacing.wide}"
+        "fontFamily": "{font.sans}",
+        "fontSize": "{typography.size.sm}",
+        "lineHeight": "{typography.line-height.base}",
+        "fontWeight": "{typography.weight.medium}",
+        "letterSpacing": "{typography.letter-spacing.wide}"
       }
     },
     "caption": {
-      "$type": "typography-role",
+      "$type": "typography",
       "$value": {
-        "family": "{font.sans}",
-        "size": "{typography.size.xs}",
-        "line-height": "{typography.line-height.relaxed}",
-        "weight": "{typography.weight.regular}"
+        "fontFamily": "{font.sans}",
+        "fontSize": "{typography.size.xs}",
+        "lineHeight": "{typography.line-height.relaxed}",
+        "fontWeight": "{typography.weight.regular}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
       }
     },
     "micro": {
-      "$type": "typography-role",
+      "$type": "typography",
       "$value": {
-        "family": "{font.mono}",
-        "size": "{typography.size.2xs}",
-        "line-height": "{typography.line-height.base}",
-        "weight": "{typography.weight.medium}",
-        "tracking": "{typography.letter-spacing.micro}"
+        "fontFamily": "{font.mono}",
+        "fontSize": "{typography.size.2xs}",
+        "lineHeight": "{typography.line-height.base}",
+        "fontWeight": "{typography.weight.medium}",
+        "letterSpacing": "{typography.letter-spacing.micro}"
       }
     },
     "code": {
-      "$type": "typography-role",
+      "$type": "typography",
       "$value": {
-        "family": "{font.mono}",
-        "size": "{typography.size.sm}",
-        "line-height": "{typography.line-height.base}",
-        "weight": "{typography.weight.regular}"
+        "fontFamily": "{font.mono}",
+        "fontSize": "{typography.size.sm}",
+        "lineHeight": "{typography.line-height.base}",
+        "fontWeight": "{typography.weight.regular}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
       }
     },
     "numeric": {
-      "$type": "typography-role",
+      "$type": "typography",
       "$value": {
-        "family": "{font.sans}",
-        "size": "{typography.size.md}",
-        "line-height": "{typography.line-height.base}",
-        "weight": "{typography.weight.medium}",
-        "feature": "{typography.feature.tabular-nums}"
+        "fontFamily": "{font.sans}",
+        "fontSize": "{typography.size.md}",
+        "lineHeight": "{typography.line-height.base}",
+        "fontWeight": "{typography.weight.medium}",
+        "letterSpacing": "{typography.letter-spacing.normal}"
+      },
+      "$extensions": {
+        "dev.magic-style": {
+          "fontFeatureSettings": "\"tnum\" 1"
+        }
       }
     }
   }

@@ -44,6 +44,12 @@ select {
 }
 
 :root {
+  /* OpenType features (no DTCG token type exists for font-feature-settings). */
+  --ms-typography-feature-tabular-nums: "tnum" 1;
+  --ms-typography-feature-contextual: "calt" 1;
+}
+
+:root {
   --ms-motion-scale: 1;
 }
 
