@@ -1,0 +1,17 @@
+{
+  "demos": [
+    {
+      "file": "Block",
+      "title": {
+        "pt-BR": "Caixa de entrada",
+        "en-US": "Inbox",
+        "es-ES": "Bandeja de entrada"
+      },
+      "description": {
+        "pt-BR": "Cliente de e-mail com pastas, lista de conversas com contagem de não lidas, painel de leitura com resposta e estado vazio nas pastas sem mensagens.",
+        "en-US": "Mail client with folders, a conversation list with unread counts, a reading pane with a reply box and an empty state for folders without messages.",
+        "es-ES": "Cliente de correo con carpetas, lista de conversaciones con no leídos, panel de lectura con respuesta y estado vacío en las carpetas sin mensajes."
+      }
+    }
+  ]
+}

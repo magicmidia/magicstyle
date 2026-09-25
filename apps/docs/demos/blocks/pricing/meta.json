@@ -1,0 +1,17 @@
+{
+  "demos": [
+    {
+      "file": "Block",
+      "title": {
+        "pt-BR": "Preços",
+        "en-US": "Pricing",
+        "es-ES": "Precios"
+      },
+      "description": {
+        "pt-BR": "Três planos com alternância mensal/anual que recalcula os preços, plano popular em destaque e perguntas frequentes em acordeão.",
+        "en-US": "Three tiers with a monthly/yearly toggle that updates prices, a highlighted popular plan and an FAQ accordion.",
+        "es-ES": "Tres planes con alternancia mensual/anual que recalcula los precios, plan popular destacado y preguntas frecuentes en acordeón."
+      }
+    }
+  ]
+}

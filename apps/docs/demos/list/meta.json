@@ -7,7 +7,11 @@
   "demos": [
     {
       "file": "Basic",
-      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "title": {
+        "pt-BR": "Básico",
+        "en-US": "Basic",
+        "es-ES": "Básico"
+      },
       "description": {
         "pt-BR": "Cada `MsListItem` recebe `title` e `description`.",
         "en-US": "Each `MsListItem` takes a `title` and a `description`.",
@@ -38,6 +42,19 @@
         "pt-BR": "`variant` aceita `default`, `divided` e `bordered`; `size` ajusta espaçamento e tipografia.",
         "en-US": "`variant` accepts `default`, `divided` and `bordered`; `size` adjusts spacing and type.",
         "es-ES": "`variant` acepta `default`, `divided` y `bordered`; `size` ajusta el espaciado y la tipografía."
+      }
+    },
+    {
+      "file": "Separated",
+      "title": {
+        "pt-BR": "Separada",
+        "en-US": "Separated",
+        "es-ES": "Separada"
+      },
+      "description": {
+        "pt-BR": "`variant=\"separated\"` transforma cada item em um cartão próprio, com espaço entre eles.",
+        "en-US": "`variant=\"separated\"` turns each item into its own card, with space between them.",
+        "es-ES": "`variant=\"separated\"` convierte cada elemento en su propia tarjeta, con espacio entre ellos."
       }
     },
     {

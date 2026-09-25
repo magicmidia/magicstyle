@@ -1,3 +1,5 @@
+import { postcssIsolateStyles } from "vitepress";
+
 /**
  * VitePress' default theme ships unlayered CSS, and unlayered rules always beat
  * layered ones. Wrapping it in `@layer vp` (declared before `ms`) lets
@@ -28,4 +30,6 @@ const layerVitepress = () => ({
 });
 layerVitepress.postcss = true;
 
-export default { plugins: [layerVitepress()] };
+// A custom PostCSS config replaces VitePress' own, so re-add style isolation:
+// `.vp-doc` article styles (tables, paragraphs, lists) must not reach `.vp-raw` demos.
+export default { plugins: [postcssIsolateStyles(), layerVitepress()] };

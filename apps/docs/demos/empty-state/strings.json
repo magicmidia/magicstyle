@@ -18,7 +18,14 @@
     "inboxZeroDescription": "Você respondeu todas as mensagens. Aproveite o café.",
     "loadErrorTitle": "Não foi possível carregar",
     "loadErrorDescription": "Verifique sua conexão e tente novamente.",
-    "tryAgain": "Tentar novamente"
+    "tryAgain": "Tentar novamente",
+    "inviteTitle": "Convide seu time",
+    "inviteDescription": "Projetos rendem mais com mais gente. Convide até 5 pessoas grátis.",
+    "invite": "Convidar pessoas",
+    "storageTitle": "Armazenamento quase cheio",
+    "storageDescription": "Você usou 9,4 de 10 GB. Libere espaço ou faça upgrade.",
+    "archiveTitle": "Nada arquivado",
+    "archiveDescription": "Conversas arquivadas aparecem aqui."
   },
   "en-US": {
     "noProjectsTitle": "No projects yet",
@@ -39,7 +46,14 @@
     "inboxZeroDescription": "You have replied to every message. Enjoy your coffee.",
     "loadErrorTitle": "Couldn't load this page",
     "loadErrorDescription": "Check your connection and try again.",
-    "tryAgain": "Try again"
+    "tryAgain": "Try again",
+    "inviteTitle": "Invite your team",
+    "inviteDescription": "Projects go further together. Invite up to 5 people for free.",
+    "invite": "Invite people",
+    "storageTitle": "Storage almost full",
+    "storageDescription": "You've used 9.4 of 10 GB. Free up space or upgrade.",
+    "archiveTitle": "Nothing archived",
+    "archiveDescription": "Archived conversations show up here."
   },
   "es-ES": {
     "noProjectsTitle": "Aún no hay proyectos",
@@ -60,6 +74,13 @@
     "inboxZeroDescription": "Respondiste todos los mensajes. Disfruta del café.",
     "loadErrorTitle": "No se pudo cargar",
     "loadErrorDescription": "Revisa tu conexión e inténtalo de nuevo.",
-    "tryAgain": "Reintentar"
+    "tryAgain": "Reintentar",
+    "inviteTitle": "Invita a tu equipo",
+    "inviteDescription": "Los proyectos avanzan más en equipo. Invita hasta a 5 personas gratis.",
+    "invite": "Invitar personas",
+    "storageTitle": "Almacenamiento casi lleno",
+    "storageDescription": "Usaste 9,4 de 10 GB. Libera espacio o mejora tu plan.",
+    "archiveTitle": "Nada archivado",
+    "archiveDescription": "Las conversaciones archivadas aparecen aquí."
   }
 }

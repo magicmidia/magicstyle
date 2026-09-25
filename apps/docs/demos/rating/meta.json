@@ -7,7 +7,11 @@
   "demos": [
     {
       "file": "Basic",
-      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "title": {
+        "pt-BR": "Básico",
+        "en-US": "Basic",
+        "es-ES": "Básico"
+      },
       "description": {
         "pt-BR": "`v-model` guarda o número de estrelas; passe um `aria-label` descrevendo o que está sendo avaliado.",
         "en-US": "`v-model` holds the number of stars; pass an `aria-label` describing what is being rated.",
@@ -16,7 +20,11 @@
     },
     {
       "file": "ReadOnly",
-      "title": { "pt-BR": "Somente leitura", "en-US": "Read-only", "es-ES": "Solo lectura" },
+      "title": {
+        "pt-BR": "Somente leitura",
+        "en-US": "Read-only",
+        "es-ES": "Solo lectura"
+      },
       "description": {
         "pt-BR": "`readonly` exibe uma nota sem permitir mudanças, ideal para a média de um produto.",
         "en-US": "`readonly` shows a score without allowing changes, ideal for a product average.",
@@ -25,11 +33,28 @@
     },
     {
       "file": "Sizes",
-      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "title": {
+        "pt-BR": "Tamanhos",
+        "en-US": "Sizes",
+        "es-ES": "Tamaños"
+      },
       "description": {
         "pt-BR": "`size` aceita `sm`, `md` e `lg`.",
         "en-US": "`size` accepts `sm`, `md` and `lg`.",
         "es-ES": "`size` acepta `sm`, `md` y `lg`."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": {
+        "pt-BR": "Tons",
+        "en-US": "Tones",
+        "es-ES": "Tonos"
+      },
+      "description": {
+        "pt-BR": "`tone` troca a cor das estrelas preenchidas; o padrão é `warning`.",
+        "en-US": "`tone` changes the color of the filled stars; the default is `warning`.",
+        "es-ES": "`tone` cambia el color de las estrellas rellenas; el valor por defecto es `warning`."
       }
     },
     {

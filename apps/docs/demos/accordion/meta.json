@@ -7,7 +7,11 @@
   "demos": [
     {
       "file": "Basic",
-      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "title": {
+        "pt-BR": "Básico",
+        "en-US": "Basic",
+        "es-ES": "Básico"
+      },
       "description": {
         "pt-BR": "Por padrão só uma seção fica aberta por vez; o `v-model` guarda o `value` do item expandido.",
         "en-US": "By default only one section is open at a time; `v-model` holds the `value` of the expanded item.",
@@ -35,9 +39,9 @@
         "es-ES": "Variantes y tamaños"
       },
       "description": {
-        "pt-BR": "`variant` alterna entre `default`, `bordered`, `separated` e `flush`; `size` ajusta espaçamento e tipografia.",
-        "en-US": "`variant` switches between `default`, `bordered`, `separated` and `flush`; `size` adjusts spacing and type.",
-        "es-ES": "`variant` alterna entre `default`, `bordered`, `separated` y `flush`; `size` ajusta el espaciado y la tipografía."
+        "pt-BR": "`variant` alterna entre `default`, `bordered`, `separated` e `flush`; em `separated`, o item aberto ganha borda em tom primário e sombra maior. `size` ajusta espaçamento e tipografia.",
+        "en-US": "`variant` switches between `default`, `bordered`, `separated` and `flush`; in `separated`, the open item gets a primary-tinted border and a deeper shadow. `size` adjusts spacing and type.",
+        "es-ES": "`variant` alterna entre `default`, `bordered`, `separated` y `flush`; en `separated`, el elemento abierto recibe un borde en tono primario y una sombra mayor. `size` ajusta el espaciado y la tipografía."
       }
     },
     {

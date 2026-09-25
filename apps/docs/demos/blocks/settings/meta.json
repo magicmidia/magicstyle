@@ -1,0 +1,17 @@
+{
+  "demos": [
+    {
+      "file": "Block",
+      "title": {
+        "pt-BR": "Configurações",
+        "en-US": "Settings",
+        "es-ES": "Configuración"
+      },
+      "description": {
+        "pt-BR": "Configurações da conta em abas (Perfil, Notificações, Segurança) com campos, switches, selects e rodapé de salvar/cancelar.",
+        "en-US": "Tabbed account settings (Profile, Notifications, Security) with fields, switches, selects and a save/cancel footer.",
+        "es-ES": "Configuración de la cuenta en pestañas (Perfil, Notificaciones, Seguridad) con campos, interruptores, selects y pie de guardar/cancelar."
+      }
+    }
+  ]
+}

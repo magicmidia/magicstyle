@@ -1,0 +1,17 @@
+{
+  "demos": [
+    {
+      "file": "Block",
+      "title": {
+        "pt-BR": "Dashboard",
+        "en-US": "Dashboard",
+        "es-ES": "Panel"
+      },
+      "description": {
+        "pt-BR": "Shell de aplicação com menu lateral, barra superior com busca e menu da conta, quatro KPIs, tabela de pedidos recentes e feed de atividade.",
+        "en-US": "App shell with a sidebar, a top bar with search and an account menu, four KPIs, a recent orders table and an activity feed.",
+        "es-ES": "Estructura de aplicación con menú lateral, barra superior con búsqueda y menú de cuenta, cuatro KPI, tabla de pedidos recientes y actividad."
+      }
+    }
+  ]
+}

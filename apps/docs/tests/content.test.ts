@@ -7,7 +7,7 @@ import { GUIDES } from "../.vitepress/config/guides.ts";
 import { LANDING } from "../.vitepress/theme/landing/copy.ts";
 import { PAGES } from "../.vitepress/theme/pages/strings.ts";
 import { UI } from "../.vitepress/theme/i18n/ui.ts";
-import { checkSlug } from "../scripts/check-demos.ts";
+import { blockSlugs, checkSlug } from "../scripts/check-demos.ts";
 
 const LOCALES = ["en-US", "pt-BR", "es-ES"] as const;
 const ROOT = join(import.meta.dirname, "../../..");
@@ -58,6 +58,16 @@ describe("component catalog", () => {
   });
 });
 
+describe("blocks", () => {
+  it("has blocks", () => {
+    expect(blockSlugs().length).toBeGreaterThanOrEqual(6);
+  });
+
+  it.each(blockSlugs())("demos/blocks/%s is complete and valid", (slug) => {
+    expect(checkSlug(`blocks/${slug}`, { catalog: false })).toEqual([]);
+  });
+});
+
 describe("site content", () => {
   it.each(GUIDES.map((guide) => guide.slug))("guide %s exists in the 3 languages", (slug) => {
     for (const dir of ["guide", "pt/guide", "es/guide"]) {
@@ -66,7 +76,7 @@ describe("site content", () => {
   });
 
   it("has the landing, themes and tokens pages in the 3 languages", () => {
-    for (const page of ["index.md", "themes.md", "tokens.md"]) {
+    for (const page of ["index.md", "themes.md", "tokens.md", "blocks.md"]) {
       for (const dir of ["", "pt", "es"]) {
         expect(existsSync(join(SRC, dir, page)), join(dir, page)).toBe(true);
       }

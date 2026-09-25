@@ -1,0 +1,13 @@
+{
+  "demos": [
+    {
+      "file": "Block",
+      "title": { "pt-BR": "Cadastro", "en-US": "Sign up", "es-ES": "Registro" },
+      "description": {
+        "pt-BR": "Tela em duas colunas: painel de marketing com depoimento à esquerda e formulário de cadastro com força da senha e aceite dos termos.",
+        "en-US": "Two-column screen: a marketing panel with a testimonial and a sign-up form with password strength and terms acceptance.",
+        "es-ES": "Pantalla en dos columnas: panel de marketing con testimonio y formulario de registro con fuerza de contraseña y aceptación de términos."
+      }
+    }
+  ]
+}
