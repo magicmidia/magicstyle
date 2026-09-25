@@ -1,6 +1,6 @@
 import { fileURLToPath } from "node:url";
 import { defineConfig, type HeadConfig } from "vitepress";
-import { LOCALES, SITE_URL, head, localeFreePath, localizedUrl } from "./shared.ts";
+import { LOCALES, REPO_URL, SITE_URL, head, localeFreePath, localizedUrl } from "./shared.ts";
 import { SEARCH_TRANSLATIONS, localeConfig } from "./locale.ts";
 import { demoPlugin } from "../plugins/demo.ts";
 
@@ -21,7 +21,7 @@ export default defineConfig({
   themeConfig: {
     logo: { src: "/logo.svg", alt: "" },
     siteTitle: "Magic-Style",
-    socialLinks: [{ icon: "github", link: "https://github.com/magicmidia/magicstyle" }],
+    socialLinks: [{ icon: "github", link: REPO_URL }],
     search: {
       provider: "local",
       options: {
@@ -57,6 +57,10 @@ export default defineConfig({
     return tags;
   },
   vite: {
+    // MS_DOCS_HYDRATION_DEBUG=1 vitepress build: production build with detailed mismatch logs.
+    define: process.env.MS_DOCS_HYDRATION_DEBUG
+      ? { __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: "true" }
+      : {},
     resolve: {
       dedupe: ["vue"],
       alias: { "@demos": alias("../../demos"), "@catalog": alias("../../catalog") },

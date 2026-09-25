@@ -263,3 +263,39 @@
   align-items: center;
   gap: 6px;
 }
+
+/* Component page header */
+.docs-component-header {
+  margin-block: 16px 8px;
+}
+
+.docs-component-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  font-size: var(--ms-typography-size-sm);
+}
+
+.vp-doc .docs-component-header__meta a {
+  color: var(--ms-color-text-muted);
+  text-decoration: none;
+}
+
+.vp-doc .docs-component-header__meta a:hover {
+  color: var(--ms-color-text-primary);
+}
+
+.vp-doc .docs-component-header__import {
+  margin-block: 16px 0;
+}
+
+/* Wide reference pages (themes, tokens) */
+.docs-wide .VPDoc:not(.has-sidebar) .container,
+.docs-wide .VPDoc:not(.has-sidebar) .content {
+  max-inline-size: 1200px;
+}
+
+.docs-wide .VPDoc.has-sidebar .content-container {
+  max-inline-size: 1040px;
+}

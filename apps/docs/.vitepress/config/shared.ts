@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 import { NO_FLASH_SCRIPT } from "../theme/composables/useSitePrefs.ts";
 
 export const SITE_URL = process.env.MS_DOCS_URL ?? "https://magic-style.dev";
-export const REPO_URL = "https://github.com/magicmidia/magicstyle";
+export { REPO_URL } from "../theme/site.ts";
 
 const vuePkg = JSON.parse(
   readFileSync(

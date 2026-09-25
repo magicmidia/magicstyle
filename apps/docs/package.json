@@ -9,9 +9,10 @@
     "build": "node scripts/gen-api.ts && vitepress build",
     "preview": "vitepress preview --port 4173",
     "typecheck": "vue-tsc -p tsconfig.json --noEmit",
+    "e2e": "node scripts/e2e.ts",
     "test": "vitest run --passWithNoTests",
     "gen:api": "node scripts/gen-api.ts",
-    "gen:pages": "node scripts/gen-pages.ts"
+    "check:demos": "node scripts/check-demos.ts"
   },
   "dependencies": {
     "@magic-style/css": "workspace:*",
@@ -19,6 +20,8 @@
   },
   "devDependencies": {
     "@types/node": "^26.3.0",
+    "axe-core": "^4.13.0",
+    "playwright-core": "1.63.0",
     "typescript": "~5.9.3",
     "vite": "^8.2.2",
     "vitepress": "2.0.0-alpha.20",
