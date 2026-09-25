@@ -11,6 +11,7 @@ interface Copy {
   components: string;
   themes: string;
   gallery: string;
+  blocks: string;
   tokens: string;
   start: string;
   foundations: string;
@@ -38,6 +39,7 @@ const COPY: Record<Locale, Copy> = {
     components: "Componentes",
     themes: "Temas",
     gallery: "Galeria de temas",
+    blocks: "Blocks",
     tokens: "Tokens",
     start: "Primeiros passos",
     foundations: "Fundamentos",
@@ -63,6 +65,7 @@ const COPY: Record<Locale, Copy> = {
     components: "Components",
     themes: "Themes",
     gallery: "Theme gallery",
+    blocks: "Blocks",
     tokens: "Tokens",
     start: "Getting started",
     foundations: "Foundations",
@@ -88,6 +91,7 @@ const COPY: Record<Locale, Copy> = {
     components: "Componentes",
     themes: "Temas",
     gallery: "Galería de temas",
+    blocks: "Bloques",
     tokens: "Tokens",
     start: "Primeros pasos",
     foundations: "Fundamentos",
@@ -156,6 +160,7 @@ export function localeConfig(
           link: `${base}components/${firstComponent}`,
           activeMatch: `^${base}components/`,
         },
+        { text: c.blocks, link: `${base}blocks` },
         { text: c.themes, link: `${base}themes` },
         {
           text: `v${VERSION}`,

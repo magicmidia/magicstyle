@@ -408,3 +408,13 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+.docs-builder__export-hint {
+  margin: 12px 0;
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text-muted);
+}
+
+.docs-builder__output .ms-tab-panel > .ms-button {
+  margin-block-start: 12px;
+}

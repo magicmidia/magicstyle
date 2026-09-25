@@ -4,16 +4,17 @@ import type { MarkdownRenderer } from "vitepress";
 import { demoSource } from "./demo-source.ts";
 
 const DEMOS = join(import.meta.dirname, "../../demos");
-const TAG = /^<Demo\s+src="([\w/-]+)"\s*\/>\s*$/;
+const TAG = /^<Demo\s+src="([\w/-]+)"(\s+wide)?\s*\/>\s*$/;
 
-function localeOf(relativePath: string): string {
-  if (relativePath.startsWith("en/")) return "en-US";
+/** English lives at the site root; Portuguese under pt/, Spanish under es/. */
+export function localeOf(relativePath: string): string {
+  if (relativePath.startsWith("pt/")) return "pt-BR";
   if (relativePath.startsWith("es/")) return "es-ES";
-  return "pt-BR";
+  return "en-US";
 }
 
 /**
- * `<Demo src="button/basic" />` → live demo + build-time highlighted source for the
+ * `<Demo src="button/basic" />` (or `<Demo src="blocks/login/Block" wide />`) → live demo + build-time highlighted source for the
  * page locale (no runtime highlighter, no v-html).
  */
 export function demoPlugin(md: MarkdownRenderer): void {
@@ -26,6 +27,7 @@ export function demoPlugin(md: MarkdownRenderer): void {
         const match = TAG.exec(token.content.trim());
         if (!match) continue;
         const src = match[1]!;
+        const wide = match[2] ? " wide" : "";
         const file = join(DEMOS, `${src}.vue`);
         if (!existsSync(file)) {
           throw new Error(`[demo] ${src}.vue not found (${state.env.relativePath})`);
@@ -34,7 +36,7 @@ export function demoPlugin(md: MarkdownRenderer): void {
         const highlighted = md.options.highlight?.(code, "vue", "") ?? md.utils.escapeHtml(code);
         const b64 = Buffer.from(code, "utf8").toString("base64");
         token.content =
-          `<Demo src="${src}" code="${b64}">` +
+          `<Demo src="${src}" code="${b64}"${wide}>` +
           `<template #code><div class="language-vue vp-adaptive-theme" v-pre>${highlighted}</div></template>` +
           `</Demo>\n`;
       }

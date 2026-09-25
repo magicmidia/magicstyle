@@ -1,6 +1,14 @@
 import { fileURLToPath } from "node:url";
 import { defineConfig, type HeadConfig } from "vitepress";
-import { LOCALES, REPO_URL, SITE_URL, head, localeFreePath, localizedUrl } from "./shared.ts";
+import {
+  LOCALES,
+  REPO_URL,
+  SITE_URL,
+  VERSION,
+  head,
+  localeFreePath,
+  localizedUrl,
+} from "./shared.ts";
 import { SEARCH_TRANSLATIONS, localeConfig } from "./locale.ts";
 import { demoPlugin } from "../plugins/demo.ts";
 
@@ -58,9 +66,14 @@ export default defineConfig({
   },
   vite: {
     // MS_DOCS_HYDRATION_DEBUG=1 vitepress build: production build with detailed mismatch logs.
-    define: process.env.MS_DOCS_HYDRATION_DEBUG
-      ? { __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: "true" }
-      : {},
+    define: {
+      __MS_VERSION__: JSON.stringify(VERSION),
+      // "Open in StackBlitz" installs @magic-style/* from npm: enable once published.
+      __MS_PLAYGROUND__: JSON.stringify(process.env.MS_DOCS_PLAYGROUND === "1"),
+      ...(process.env.MS_DOCS_HYDRATION_DEBUG
+        ? { __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: "true" }
+        : {}),
+    },
     resolve: {
       dedupe: ["vue"],
       alias: { "@demos": alias("../../demos"), "@catalog": alias("../../catalog") },

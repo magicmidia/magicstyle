@@ -24,6 +24,9 @@ export interface PageStrings {
     preview: string;
     definition: string;
     css: string;
+    download: string;
+    dtcgHint: string;
+    studioHint: string;
     contrastOk: string;
     contrastIssues: string;
     contrastFg: string;
@@ -111,6 +114,11 @@ export const PAGES: Record<SiteLang, PageStrings> = {
       soft: "Suaves",
       preview: "Prévia",
       definition: "Definição (TypeScript)",
+      download: "Baixar JSON",
+      dtcgHint:
+        "Tokens no formato DTCG (W3C Design Tokens), com o tema completo por modo. Funciona com Style Dictionary e outras ferramentas DTCG.",
+      studioHint:
+        "Conjuntos global, light e dark com $themes, prontos para importar no plugin Tokens Studio do Figma.",
       css: "CSS gerado",
       contrastOk: "Contraste AA verificado nos modos claro e escuro.",
       contrastIssues: "problemas de contraste",
@@ -220,6 +228,11 @@ export const PAGES: Record<SiteLang, PageStrings> = {
       soft: "Soft",
       preview: "Preview",
       definition: "Definition (TypeScript)",
+      download: "Download JSON",
+      dtcgHint:
+        "Tokens in the DTCG format (W3C Design Tokens) with the full theme per mode. Works with Style Dictionary and other DTCG tools.",
+      studioHint:
+        "Global, light and dark sets with $themes, ready to import in the Tokens Studio for Figma plugin.",
       css: "Generated CSS",
       contrastOk: "AA contrast verified in light and dark modes.",
       contrastIssues: "contrast issues",
@@ -328,6 +341,11 @@ export const PAGES: Record<SiteLang, PageStrings> = {
       soft: "Suaves",
       preview: "Vista previa",
       definition: "Definición (TypeScript)",
+      download: "Descargar JSON",
+      dtcgHint:
+        "Tokens en formato DTCG (W3C Design Tokens), con el tema completo por modo. Funciona con Style Dictionary y otras herramientas DTCG.",
+      studioHint:
+        "Conjuntos global, light y dark con $themes, listos para importar en el plugin Tokens Studio de Figma.",
       css: "CSS generado",
       contrastOk: "Contraste AA verificado en los modos claro y oscuro.",
       contrastIssues: "problemas de contraste",

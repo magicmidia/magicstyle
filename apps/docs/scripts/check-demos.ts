@@ -15,10 +15,17 @@ const only = process.argv.slice(2);
 const problems: string[] = [];
 const slugs = new Set(COMPONENTS.map((c) => c.slug));
 
-export function checkSlug(slug: string): string[] {
+/** Blocks live in demos/blocks/<slug>/ and are not catalog components. */
+export function blockSlugs(): string[] {
+  const dir = join(root, "blocks");
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir).filter((d) => existsSync(join(dir, d, "meta.json")));
+}
+
+export function checkSlug(slug: string, options: { catalog?: boolean } = {}): string[] {
   const out: string[] = [];
   const dir = join(root, slug);
-  if (!slugs.has(slug)) out.push(`${slug}: not in catalog`);
+  if (options.catalog !== false && !slugs.has(slug)) out.push(`${slug}: not in catalog`);
   const metaFile = join(dir, "meta.json");
   if (!existsSync(metaFile)) return [...out, `${slug}: missing meta.json`];
   const meta = JSON.parse(readFileSync(metaFile, "utf8")) as DemoMeta;
@@ -76,6 +83,10 @@ if (import.meta.main) {
       ? only
       : readdirSync(root).filter((d) => existsSync(join(root, d, "meta.json")));
   for (const slug of targets) problems.push(...checkSlug(slug));
+  if (only.length === 0) {
+    for (const block of blockSlugs())
+      problems.push(...checkSlug(`blocks/${block}`, { catalog: false }));
+  }
   if (problems.length > 0) {
     console.error(problems.join("\n"));
     process.exit(1);

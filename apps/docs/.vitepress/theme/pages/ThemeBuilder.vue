@@ -29,6 +29,7 @@ import { THEMES } from "../composables/themes.ts";
 import { data as themes } from "./themes.data.ts";
 import { PAGES } from "./strings.ts";
 import { siteLang } from "../i18n/ui.ts";
+import { downloadJson, toDtcg, toTokensStudio, type ResolvedTheme } from "./theme-export.ts";
 
 // Tailwind 600 (light) and 400 (dark) steps: sensible primaries with AA-ready contents.
 const LIGHT_SWATCHES = [
@@ -188,6 +189,20 @@ const tsCode = computed(
   () =>
     `import { defineMsTheme } from "@magic-style/vue";\n\nexport const ${definition.value.name.replace(/-(\w)/g, (_, c: string) => c.toUpperCase())} = defineMsTheme(${JSON.stringify(definition.value, null, 2).replace(/"([a-z]+)":/g, "$1:")});\n`,
 );
+/** Base theme + generator overrides, per mode: what design tools need. */
+const resolved = computed<ResolvedTheme>(() => {
+  const base = themes.find((theme) => theme.name === state.base) ?? themes[0]!;
+  return {
+    name: definition.value.name,
+    shared: { ...base.shared, ...(definition.value.shared as Record<string, string>) },
+    light: { ...base.light, ...(definition.value.light as Record<string, string>) },
+    dark: { ...base.dark, ...(definition.value.dark as Record<string, string>) },
+  };
+});
+const dtcg = computed(() => toDtcg(resolved.value));
+const tokensStudio = computed(() => toTokensStudio(resolved.value));
+const json = (data: unknown) => `${JSON.stringify(data, null, 2)}\n`;
+
 const cssCode = computed(() => {
   try {
     return msThemeToCss(definition.value);
@@ -265,6 +280,8 @@ const cssCode = computed(() => {
         <MsTabList :aria-label="s.builder.definition">
           <MsTab value="ts">{{ s.builder.definition }}</MsTab>
           <MsTab value="css">{{ s.builder.css }}</MsTab>
+          <MsTab value="dtcg">DTCG</MsTab>
+          <MsTab value="studio">Tokens Studio</MsTab>
         </MsTabList>
         <MsTabPanels>
           <MsTabPanel value="ts">
@@ -282,6 +299,40 @@ const cssCode = computed(() => {
               :filename="`${definition.name}.css`"
               max-height="360px"
             />
+          </MsTabPanel>
+          <MsTabPanel value="dtcg">
+            <p class="docs-builder__export-hint">{{ s.builder.dtcgHint }}</p>
+            <MsCodeBlock
+              :code="json(dtcg)"
+              language="json"
+              :filename="`${definition.name}.tokens.json`"
+              max-height="360px"
+            />
+            <MsButton
+              size="sm"
+              variant="outline"
+              tone="neutral"
+              @click="downloadJson(`${definition.name}.tokens.json`, dtcg)"
+            >
+              {{ s.builder.download }}
+            </MsButton>
+          </MsTabPanel>
+          <MsTabPanel value="studio">
+            <p class="docs-builder__export-hint">{{ s.builder.studioHint }}</p>
+            <MsCodeBlock
+              :code="json(tokensStudio)"
+              language="json"
+              :filename="`${definition.name}.tokens-studio.json`"
+              max-height="360px"
+            />
+            <MsButton
+              size="sm"
+              variant="outline"
+              tone="neutral"
+              @click="downloadJson(`${definition.name}.tokens-studio.json`, tokensStudio)"
+            >
+              {{ s.builder.download }}
+            </MsButton>
           </MsTabPanel>
         </MsTabPanels>
       </MsTabs>

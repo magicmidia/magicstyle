@@ -247,6 +247,33 @@
   background-size: 16px 16px;
 }
 
+.docs-demo__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Wide demos (blocks): full-width frame, resizable to common breakpoints. */
+.docs-demo--wide .docs-demo__preview {
+  display: block;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.docs-demo__frame {
+  container-type: inline-size;
+  max-inline-size: 100%;
+  margin-inline: auto;
+  overflow: hidden;
+  background: var(--ms-color-surface-default);
+  border: 1px solid var(--ms-color-border-default);
+  border-radius: var(--ms-radius-lg);
+  box-shadow: var(--ms-elevation-sm);
+  transition: inline-size calc(200ms * var(--ms-motion-scale, 1)) ease;
+}
+
 .docs-demo__code {
   overflow: hidden;
   border: 1px solid var(--ms-color-border-default);

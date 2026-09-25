@@ -28,6 +28,9 @@ export interface UiStrings {
   viewSource: string;
   reportIssue: string;
   import: string;
+  openStackBlitz: string;
+  viewport: string;
+  viewports: { desktop: string; tablet: string; mobile: string };
 }
 
 export const UI: Record<SiteLang, UiStrings> = {
@@ -58,6 +61,9 @@ export const UI: Record<SiteLang, UiStrings> = {
     viewSource: "Código-fonte",
     reportIssue: "Reportar problema",
     import: "Importação",
+    openStackBlitz: "Abrir no StackBlitz",
+    viewport: "Largura da prévia",
+    viewports: { desktop: "Desktop", tablet: "Tablet", mobile: "Celular" },
   },
   "en-US": {
     customize: "Customize",
@@ -86,6 +92,9 @@ export const UI: Record<SiteLang, UiStrings> = {
     viewSource: "Source",
     reportIssue: "Report an issue",
     import: "Import",
+    openStackBlitz: "Open in StackBlitz",
+    viewport: "Preview width",
+    viewports: { desktop: "Desktop", tablet: "Tablet", mobile: "Mobile" },
   },
   "es-ES": {
     customize: "Personalizar",
@@ -114,6 +123,9 @@ export const UI: Record<SiteLang, UiStrings> = {
     viewSource: "Código fuente",
     reportIssue: "Reportar un problema",
     import: "Importación",
+    openStackBlitz: "Abrir en StackBlitz",
+    viewport: "Ancho de la vista previa",
+    viewports: { desktop: "Escritorio", tablet: "Tableta", mobile: "Móvil" },
   },
 };
 
