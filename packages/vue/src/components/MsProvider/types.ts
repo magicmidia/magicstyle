@@ -47,7 +47,7 @@ export interface MsProviderProps {
 
   /**
    * Language of the components' built-in strings and Intl formatting (BCP 47).
-   * Built-in dictionaries: Portuguese (default) and English. Inherits from an
+   * Built-in dictionaries: Portuguese (default), English and Spanish. Inherits from an
    * ancestor provider or `createMsI18n` when omitted.
    */
   locale?: string;

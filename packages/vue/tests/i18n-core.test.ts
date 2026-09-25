@@ -6,6 +6,7 @@ import {
   createMsI18n,
   mergeMsMessages,
   msMessagesEn,
+  msMessagesEs,
   msMessagesForLocale,
   msMessagesPtBR,
   useMsMessages,
@@ -30,6 +31,15 @@ describe("built-in messages", () => {
     expect(msMessagesEn.passwordInput.levels).toHaveLength(
       msMessagesPtBR.passwordInput.levels.length,
     );
+  });
+
+  it("Spanish covers exactly the Portuguese keys and resolves by language", () => {
+    expect(shape(msMessagesEs)).toEqual(shape(msMessagesPtBR));
+    expect(msMessagesEs.passwordInput.levels).toHaveLength(
+      msMessagesPtBR.passwordInput.levels.length,
+    );
+    expect(msMessagesForLocale("es-MX").select.empty).toBe(msMessagesEs.select.empty);
+    expect(msMessagesForLocale("es-MX").locale).toBe("es-MX");
   });
 
   it("picks a dictionary by language and keeps the requested tag for Intl", () => {
