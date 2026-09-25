@@ -57,7 +57,7 @@
 
 .ms-banner__title {
   font-weight: var(--ms-typography-weight-semibold);
-  margin-right: var(--ms-space-2);
+  margin-inline-end: var(--ms-space-2);
 }
 
 .ms-banner__actions {

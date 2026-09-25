@@ -88,7 +88,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--ms-space-1);
-  margin-left: var(--ms-space-2);
+  margin-inline-start: var(--ms-space-2);
   font-size: var(--ms-typography-size-xs);
   color: var(--ms-color-text-secondary);
 }
@@ -112,5 +112,5 @@
 .ms-pagination__total {
   font-size: var(--ms-typography-size-xs);
   color: var(--ms-color-text-muted);
-  margin-right: var(--ms-space-2);
+  margin-inline-end: var(--ms-space-2);
 }

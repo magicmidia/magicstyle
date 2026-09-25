@@ -157,12 +157,12 @@
 .ms-select--variant-flushed .ms-select__control {
   background-color: transparent;
   border-top: none;
-  border-left: none;
-  border-right: none;
+  border-inline-start: none;
+  border-inline-end: none;
   border-bottom: 2px solid var(--ms-color-border-default);
   border-radius: 0;
-  padding-left: 0;
-  padding-right: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
 }
 .ms-select[data-variant="flushed"] .ms-select__control:focus-visible,
 .ms-select[data-variant="flushed"] .ms-select__control[aria-expanded="true"],
@@ -339,7 +339,7 @@
   align-items: center;
   gap: var(--ms-space-1-5, 6px);
   flex-shrink: 0;
-  margin-left: var(--ms-space-2);
+  margin-inline-start: var(--ms-space-2);
   color: var(--ms-color-text-muted);
 }
 
@@ -514,7 +514,7 @@
   display: inline-flex;
   align-items: center;
   color: var(--ms-color-primary);
-  margin-left: var(--ms-space-2);
+  margin-inline-start: var(--ms-space-2);
   flex-shrink: 0;
 }
 
@@ -592,7 +592,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-right: var(--ms-space-2);
+  margin-inline-end: var(--ms-space-2);
   color: var(--ms-color-text-muted);
   font-size: 1.1em;
   flex-shrink: 0;
@@ -605,7 +605,7 @@
 
 .ms-select__floating-label {
   position: absolute;
-  left: var(--ms-space-3);
+  inset-inline-start: var(--ms-space-3);
   top: 50%;
   transform: translateY(-50%);
   font-size: var(--ms-font-size-body-sm, 0.8125rem);
@@ -629,6 +629,10 @@
   transform-origin: left top;
   color: var(--_ms-select-accent, var(--ms-color-primary));
   font-weight: 600;
+}
+
+.ms-select--floating[data-has-value="true"] .ms-select__floating-label:dir(rtl) {
+  transform-origin: right top;
 }
 
 /* --- Custom Option Styles with Avatars --- */

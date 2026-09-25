@@ -16,7 +16,7 @@
 .ms-table {
   width: 100%;
   border-collapse: collapse;
-  text-align: left;
+  text-align: start;
   font-family: inherit;
   font-size: var(--ms-font-size-body-md, 0.9375rem);
   color: var(--ms-color-text-primary);
@@ -36,7 +36,12 @@
   font-size: var(--ms-font-size-body-sm, 0.8125rem);
   font-weight: 600;
   color: var(--ms-color-text-muted);
-  text-align: left;
+  text-align: start;
+}
+
+/* Header cells follow the table alignment (the UA centers th unless the parent is not "start"). */
+.ms-table :where(th) {
+  text-align: inherit;
 }
 
 /* --- Table Head --- */

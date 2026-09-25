@@ -130,7 +130,7 @@
   font-size: var(--_ms-smenu-font-size);
   font-weight: 500;
   line-height: 1.4;
-  text-align: left;
+  text-align: start;
   text-decoration: none;
   cursor: pointer;
   outline: none;

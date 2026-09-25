@@ -69,11 +69,11 @@
 
 /* Bubble Tail Corners */
 .ms-chat-bubble-wrapper--start .ms-chat-bubble {
-  border-bottom-left-radius: var(--ms-radius-xs);
+  border-end-start-radius: var(--ms-radius-xs);
 }
 
 .ms-chat-bubble-wrapper--end .ms-chat-bubble {
-  border-bottom-right-radius: var(--ms-radius-xs);
+  border-end-end-radius: var(--ms-radius-xs);
 }
 
 /* Variants & Tones */

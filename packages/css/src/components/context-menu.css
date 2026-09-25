@@ -71,8 +71,8 @@
 .ms-context-menu-item__shortcut {
   font-size: var(--ms-typography-size-xs);
   color: var(--ms-color-text-muted);
-  margin-left: auto;
-  padding-left: var(--ms-space-4);
+  margin-inline-start: auto;
+  padding-inline-start: var(--ms-space-4);
 }
 
 .ms-context-menu-divider {

@@ -9,8 +9,9 @@
   position: relative;
   list-style: none;
   margin: 0;
-  padding: 0 0 0 var(--ms-space-3);
-  border-left: 2px solid var(--ms-color-border);
+  padding: 0;
+  padding-inline-start: var(--ms-space-3);
+  border-inline-start: 2px solid var(--ms-color-border);
 }
 
 .ms-scroll-spy__item {
@@ -44,7 +45,7 @@
 .ms-scroll-spy__item--active::before {
   content: "";
   position: absolute;
-  left: calc(-1 * var(--ms-space-3) - 2px);
+  inset-inline-start: calc(-1 * var(--ms-space-3) - 2px);
   top: 0;
   bottom: 0;
   width: 2px;

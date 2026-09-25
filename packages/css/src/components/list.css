@@ -103,7 +103,7 @@
   align-items: center;
   gap: var(--ms-space-2);
   flex-shrink: 0;
-  margin-left: auto;
+  margin-inline-start: auto;
   color: var(--ms-color-text-muted);
 }
 

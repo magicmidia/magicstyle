@@ -14,14 +14,14 @@
 
 .ms-dock-container--bottom {
   bottom: var(--ms-space-4);
-  left: 0;
-  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
 }
 
 .ms-dock-container--top {
   top: var(--ms-space-4);
-  left: 0;
-  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
 }
 
 .ms-dock-container--left {

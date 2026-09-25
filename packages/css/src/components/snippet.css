@@ -100,7 +100,7 @@
   display: flex;
   align-items: center;
   gap: var(--ms-space-2);
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 /* Body */
@@ -210,17 +210,17 @@
 
 /* Tones */
 .ms-snippet--tone-primary {
-  border-left: 3px solid var(--ms-color-brand-primary);
+  border-inline-start: 3px solid var(--ms-color-brand-primary);
 }
 .ms-snippet--tone-success {
-  border-left: 3px solid var(--ms-color-brand-success);
+  border-inline-start: 3px solid var(--ms-color-brand-success);
 }
 .ms-snippet--tone-warning {
-  border-left: 3px solid var(--ms-color-brand-warning);
+  border-inline-start: 3px solid var(--ms-color-brand-warning);
 }
 .ms-snippet--tone-danger {
-  border-left: 3px solid var(--ms-color-brand-danger);
+  border-inline-start: 3px solid var(--ms-color-brand-danger);
 }
 .ms-snippet--tone-info {
-  border-left: 3px solid var(--ms-color-brand-info);
+  border-inline-start: 3px solid var(--ms-color-brand-info);
 }

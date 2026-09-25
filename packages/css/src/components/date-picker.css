@@ -20,7 +20,8 @@
 .ms-date-picker__input {
   width: 100%;
   height: var(--ms-control-height-lg);
-  padding: 0 var(--ms-space-8) 0 var(--ms-space-3);
+  padding-block: 0;
+  padding-inline: var(--ms-space-3) var(--ms-space-8);
   font-family: var(--ms-font-sans);
   font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-primary);
@@ -39,7 +40,7 @@
 
 .ms-date-picker__icon {
   position: absolute;
-  right: var(--ms-space-3);
+  inset-inline-end: var(--ms-space-3);
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
@@ -49,7 +50,7 @@
 .ms-date-picker__dropdown {
   position: absolute;
   top: calc(100% + 4px);
-  left: 0;
+  inset-inline-start: 0;
   z-index: 50;
   width: 290px;
   background-color: var(--ms-color-surface-raised);
@@ -180,16 +181,16 @@
 .ms-date-picker__day--range-start {
   background-color: var(--ms-color-interactive-primary);
   color: var(--ms-color-text-inverse);
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
   font-weight: var(--ms-typography-weight-semibold);
 }
 
 .ms-date-picker__day--range-end {
   background-color: var(--ms-color-interactive-primary);
   color: var(--ms-color-text-inverse);
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
   font-weight: var(--ms-typography-weight-semibold);
 }
 
@@ -250,7 +251,7 @@
 
 .ms-date-picker__clear-btn {
   position: absolute;
-  right: 28px;
+  inset-inline-end: 28px;
   top: 50%;
   transform: translateY(-50%);
   background: none;

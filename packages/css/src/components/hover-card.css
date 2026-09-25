@@ -43,13 +43,13 @@
 /* Placements */
 .ms-hover-card__content--placement-bottom {
   top: calc(100% + 8px);
-  left: 0;
+  inset-inline-start: 0;
   transform-origin: top left;
 }
 
 .ms-hover-card__content--placement-top {
   bottom: calc(100% + 8px);
-  left: 0;
+  inset-inline-start: 0;
   transform-origin: bottom left;
 }
 

@@ -48,27 +48,27 @@
 .ms-search-field--sm .ms-search-field__input {
   height: 32px;
   font-size: var(--ms-typography-size-xs);
-  padding-left: 36px; /* 10px offset + 16px icon + 10px buffer */
-  padding-right: 36px;
+  padding-inline-start: 36px; /* 10px offset + 16px icon + 10px buffer */
+  padding-inline-end: 36px;
 }
 
 .ms-search-field--md .ms-search-field__input {
   height: 40px;
   font-size: var(--ms-typography-size-sm);
-  padding-left: 44px; /* 12px offset + 18px icon + 14px buffer */
-  padding-right: 44px;
+  padding-inline-start: 44px; /* 12px offset + 18px icon + 14px buffer */
+  padding-inline-end: 44px;
 }
 
 .ms-search-field--lg .ms-search-field__input {
   height: 48px;
   font-size: var(--ms-typography-size-md);
-  padding-left: 52px; /* 16px offset + 20px icon + 16px buffer */
-  padding-right: 52px;
+  padding-inline-start: 52px; /* 16px offset + 20px icon + 16px buffer */
+  padding-inline-end: 52px;
 }
 
 /* When suffix shortcut badge or clear button is present, ensure right padding */
 .ms-search-field--has-shortcut .ms-search-field__input {
-  padding-right: 68px;
+  padding-inline-end: 68px;
 }
 
 /* Search Icon Prefix — vertically centered */
@@ -85,19 +85,19 @@
 }
 
 .ms-search-field--sm .ms-search-field__icon {
-  left: 10px;
+  inset-inline-start: 10px;
   width: 16px;
   height: 16px;
 }
 
 .ms-search-field--md .ms-search-field__icon {
-  left: 12px;
+  inset-inline-start: 12px;
   width: 18px;
   height: 18px;
 }
 
 .ms-search-field--lg .ms-search-field__icon {
-  left: 16px;
+  inset-inline-start: 16px;
   width: 20px;
   height: 20px;
 }
@@ -107,7 +107,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: var(--ms-space-2);
+  inset-inline-end: var(--ms-space-2);
   display: inline-flex;
   align-items: center;
   gap: var(--ms-space-1);
@@ -168,14 +168,14 @@
 
 .ms-search-field--flushed .ms-search-field__input {
   border-radius: 0;
-  border-left: none;
-  border-right: none;
+  border-inline-start: none;
+  border-inline-end: none;
   border-top: none;
   border-bottom: 1px solid var(--ms-color-border-default);
   background: transparent;
-  padding-left: 28px;
+  padding-inline-start: 28px;
 }
 
 .ms-search-field--flushed .ms-search-field__icon {
-  left: 2px;
+  inset-inline-start: 2px;
 }

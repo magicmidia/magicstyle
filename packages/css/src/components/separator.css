@@ -47,7 +47,7 @@
 
 .ms-separator--dashed.ms-separator--vertical {
   background-color: transparent;
-  border-right: var(--_ms-sep-thickness) dashed var(--_ms-sep-color);
+  border-inline-end: var(--_ms-sep-thickness) dashed var(--_ms-sep-color);
 }
 
 .ms-separator--dotted.ms-separator--horizontal {
@@ -57,7 +57,7 @@
 
 .ms-separator--dotted.ms-separator--vertical {
   background-color: transparent;
-  border-right: var(--_ms-sep-thickness) dotted var(--_ms-sep-color);
+  border-inline-end: var(--_ms-sep-thickness) dotted var(--_ms-sep-color);
 }
 
 .ms-separator--gradient.ms-separator--horizontal {

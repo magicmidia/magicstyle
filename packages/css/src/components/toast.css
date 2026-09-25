@@ -112,7 +112,7 @@
   .ms-toast--tone-warning,
   .ms-toast--tone-danger
 ) {
-  border-left: 4px solid var(--ms-tone);
+  border-inline-start: 4px solid var(--ms-tone);
 }
 
 .ms-toast__icon {
@@ -151,7 +151,7 @@
   color: var(--ms-color-text-secondary);
   border-radius: var(--ms-radius-sm);
   padding: 2px;
-  margin-left: auto;
+  margin-inline-start: auto;
   flex-shrink: 0;
   line-height: 1;
   font-size: var(--ms-typography-size-sm);

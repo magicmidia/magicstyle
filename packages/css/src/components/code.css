@@ -173,7 +173,7 @@
   background: transparent;
   border: none;
   padding: 1px 2px;
-  margin-left: var(--ms-space-1);
+  margin-inline-start: var(--ms-space-1);
   color: inherit;
   opacity: 0.65;
   cursor: pointer;

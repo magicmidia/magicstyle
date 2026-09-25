@@ -65,10 +65,7 @@
 .ms-footer[data-position="fixed"] {
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
-  inset-inline-start: 0;
-  inset-inline-end: 0;
+  inset-inline: 0;
   inset-block-end: 0;
   z-index: var(--ms-z-index-sticky);
 }

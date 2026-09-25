@@ -156,6 +156,6 @@
   font-variant-numeric: tabular-nums;
   color: var(--ms-color-text-primary);
   min-width: 36px;
-  text-align: right;
+  text-align: end;
   flex-shrink: 0;
 }

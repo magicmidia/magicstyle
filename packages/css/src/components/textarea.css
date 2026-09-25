@@ -94,7 +94,7 @@
 }
 
 .ms-textarea__counter {
-  margin-left: auto;
+  margin-inline-start: auto;
   font-family: var(--ms-font-mono);
   font-size: 0.75rem;
 }

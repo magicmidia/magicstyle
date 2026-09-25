@@ -59,7 +59,7 @@
   justify-content: space-between;
   width: 100%;
   box-sizing: border-box;
-  text-align: left;
+  text-align: start;
   cursor: pointer;
   background: transparent;
   color: var(--ms-color-text-primary);
@@ -130,8 +130,8 @@
   display: flex;
   align-items: center;
   gap: var(--ms-space-2);
-  margin-left: auto;
-  padding-left: var(--ms-space-3);
+  margin-inline-start: auto;
+  padding-inline-start: var(--ms-space-3);
 }
 
 .ms-accordion-item__chevron {

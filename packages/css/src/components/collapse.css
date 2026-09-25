@@ -37,7 +37,7 @@
   background: transparent;
   border: none;
   width: 100%;
-  text-align: left;
+  text-align: start;
   font-family: var(--ms-font-sans);
   font-size: var(--ms-typography-size-sm);
   font-weight: var(--ms-typography-weight-medium);

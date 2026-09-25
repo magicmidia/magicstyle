@@ -45,7 +45,7 @@
 .ms-timeline--direction-vertical .ms-timeline-item__connector {
   top: 24px;
   bottom: 0;
-  left: 15px;
+  inset-inline-start: 15px;
   width: 2px;
 }
 
@@ -55,8 +55,8 @@
 
 .ms-timeline--direction-horizontal .ms-timeline-item__connector {
   top: 15px;
-  left: 32px;
-  right: 0;
+  inset-inline-start: 32px;
+  inset-inline-end: 0;
   height: 2px;
 }
 
@@ -136,12 +136,12 @@
 /* Content Container */
 .ms-timeline-item__content {
   flex-grow: 1;
-  padding-left: var(--ms-space-4);
+  padding-inline-start: var(--ms-space-4);
   padding-top: 4px;
 }
 
 .ms-timeline--direction-horizontal .ms-timeline-item__content {
-  padding-left: 0;
+  padding-inline-start: 0;
   padding-top: var(--ms-space-3);
 }
 

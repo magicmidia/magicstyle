@@ -99,8 +99,9 @@ onBeforeUnmount(() => {
   stopAutoplay();
 });
 
+/** The CSS turns the index into a translate, flipping the sign in RTL. */
 const trackStyle = computed(() => ({
-  transform: `translateX(-${current.value * 100}%)`,
+  "--ms-carousel-index": current.value,
 }));
 </script>
 

@@ -61,7 +61,7 @@
 
 .ms-masked-input__clear {
   position: absolute;
-  right: var(--ms-space-2);
+  inset-inline-end: var(--ms-space-2);
   top: 50%;
   transform: translateY(-50%);
   display: inline-flex;

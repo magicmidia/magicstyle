@@ -27,7 +27,8 @@
   animation-direction: reverse;
 }
 
-.ms-marquee--pause-hover:hover .ms-marquee__track {
+.ms-marquee--pause-hover:hover .ms-marquee__track,
+.ms-marquee--pause-hover:focus-within .ms-marquee__track {
   animation-play-state: paused;
 }
 
@@ -42,11 +43,18 @@
   );
 }
 
+/* Content scrolls toward the inline start, so RTL runs the animation mirrored. */
+.ms-marquee:dir(rtl) {
+  --_ms-marquee-direction: -1;
+}
+
 @keyframes ms-marquee-scroll {
   from {
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc(-100% - var(--ms-marquee-gap, 1.5rem)));
+    transform: translateX(
+      calc((-100% - var(--ms-marquee-gap, 1.5rem)) * var(--_ms-marquee-direction, 1))
+    );
   }
 }

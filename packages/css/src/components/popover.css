@@ -33,12 +33,12 @@
 
 .ms-popover-panel--placement-bottom-start {
   top: calc(100% + 8px);
-  left: 0;
+  inset-inline-start: 0;
 }
 
 .ms-popover-panel--placement-bottom-end {
   top: calc(100% + 8px);
-  right: 0;
+  inset-inline-end: 0;
 }
 
 .ms-popover-panel--placement-top {
@@ -49,12 +49,12 @@
 
 .ms-popover-panel--placement-top-start {
   bottom: calc(100% + 8px);
-  left: 0;
+  inset-inline-start: 0;
 }
 
 .ms-popover-panel--placement-top-end {
   bottom: calc(100% + 8px);
-  right: 0;
+  inset-inline-end: 0;
 }
 
 .ms-popover-panel--placement-left {
@@ -111,8 +111,8 @@
   padding: var(--ms-space-2) var(--ms-space-4);
   border-top: 1px solid var(--ms-color-border-subtle);
   background-color: var(--ms-color-surface-sunken);
-  border-bottom-left-radius: inherit;
-  border-bottom-right-radius: inherit;
+  border-end-start-radius: inherit;
+  border-end-end-radius: inherit;
 }
 
 @keyframes ms-popover-appear {

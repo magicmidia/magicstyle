@@ -16,14 +16,14 @@
 
 /* Variant: Bordered (Default) */
 .ms-blockquote--bordered {
-  border-left: 3px solid var(--ms-color-border-strong);
+  border-inline-start: 3px solid var(--ms-color-border-strong);
   background-color: transparent;
 }
 
 /* Variant: Card */
 .ms-blockquote--card {
   border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
-  border-left: 4px solid var(--ms-color-interactive-primary);
+  border-inline-start: 4px solid var(--ms-color-interactive-primary);
   background-color: var(--ms-color-surface-raised);
   border-radius: var(--ms-radius-md);
   box-shadow: var(--ms-elevation-1);
@@ -32,7 +32,7 @@
 /* Variant: Minimal */
 .ms-blockquote--minimal {
   border: none;
-  padding-left: var(--ms-space-2);
+  padding-inline-start: var(--ms-space-2);
   background-color: transparent;
   font-style: italic;
 }
@@ -46,19 +46,19 @@
 
 /* Tones (affects border-left or accent quote) */
 .ms-blockquote--primary {
-  border-left-color: var(--ms-color-interactive-primary);
+  border-inline-start-color: var(--ms-color-interactive-primary);
 }
 
 .ms-blockquote--accent {
-  border-left-color: var(--ms-color-interactive-secondary);
+  border-inline-start-color: var(--ms-color-interactive-secondary);
 }
 
 .ms-blockquote--warning {
-  border-left-color: var(--ms-color-status-warning);
+  border-inline-start-color: var(--ms-color-status-warning);
 }
 
 .ms-blockquote--info {
-  border-left-color: var(--ms-color-status-info);
+  border-inline-start-color: var(--ms-color-status-info);
 }
 
 /* Sizes */

@@ -79,9 +79,10 @@
 .ms-tree-node__children {
   list-style: none;
   margin: 0;
-  padding: 0 0 0 var(--ms-space-4);
-  border-left: 1px dashed var(--ms-color-border);
-  margin-left: 9px;
+  padding: 0;
+  padding-inline-start: var(--ms-space-4);
+  border-inline-start: 1px dashed var(--ms-color-border);
+  margin-inline-start: 9px;
 }
 
 /* Roving-focus treeitems: show the ring on the row, not around the whole subtree. */

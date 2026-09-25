@@ -3,7 +3,9 @@
  * Syntax and multi-line code block display with line numbers, copy button, and expandable collapse.
  */
 
+/* Code reads left-to-right even inside RTL pages (gutter stays on the left). */
 .ms-code-block {
+  direction: ltr;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

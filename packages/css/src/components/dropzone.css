@@ -93,7 +93,7 @@
   background-color: var(--ms-color-surface-raised);
   border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
   border-radius: var(--ms-radius-md);
-  text-align: left;
+  text-align: start;
 }
 
 .ms-dropzone__file-info {

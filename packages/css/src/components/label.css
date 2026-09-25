@@ -33,14 +33,14 @@
 .ms-label__required {
   color: var(--ms-color-status-danger);
   font-weight: var(--ms-typography-weight-bold);
-  margin-left: 2px;
+  margin-inline-start: 2px;
 }
 
 .ms-label__optional {
   font-size: 0.85em;
   font-weight: var(--ms-typography-weight-regular);
   color: var(--ms-color-text-muted);
-  margin-left: var(--ms-space-1);
+  margin-inline-start: var(--ms-space-1);
 }
 
 /* Tooltip Trigger */
@@ -53,7 +53,7 @@
   background: transparent;
   border: none;
   padding: 0;
-  margin-left: 2px;
+  margin-inline-start: 2px;
   line-height: 1;
 }
 
