@@ -1,5 +1,6 @@
 import { THEME_CONTRACT, type ColorMode, type ThemeSource, type ThemeValues } from "./contract.ts";
-import { DERIVED, exprToCss } from "./derive.ts";
+import { DERIVED, TONE_DERIVED, exprToCss } from "./derive.ts";
+import { CONTRACT_COLOR_ROLES } from "./contract.ts";
 import { DEFAULT_THEME, DIALS, THEMES, resolveThemeMode } from "./themes.ts";
 
 /** Selectors on which derived tokens re-resolve (so nested theme scopes work). */
@@ -87,6 +88,24 @@ export function emitThemesCss(): string {
   );
   const themes = THEMES.map((theme) => themeToCss(theme, THEMES));
 
+  const toneEngine = [
+    rule(
+      [':where([class*="ms-"], [data-tone])'],
+      TONE_DERIVED.map(([name, expr]) => [`--ms-${name}`, exprToCss(expr)] as const),
+    ),
+    ...CONTRACT_COLOR_ROLES.map((role) =>
+      rule(
+        [`[data-tone="${role}"]`],
+        [
+          ["--ms-tone", `var(--ms-color-${role})`],
+          ["--ms-tone-content", `var(--ms-color-${role}-content)`],
+          // Neutral has no hue (it can be a light gray): tinted text uses the ink.
+          ...(role === "neutral" ? [["--ms-tone-text-mix", "0%"] as const] : []),
+        ],
+      ),
+    ),
+  ];
+
   const highContrast = rule(
     ['[data-ms-contrast="high"]'],
     [
@@ -129,6 +148,8 @@ export function emitThemesCss(): string {
     "",
     "/* Derived tokens (computed from the theme contract) */",
     derived,
+    "/* Tone engine: [data-tone] or a component sets --ms-tone/--ms-tone-content; states derive here */",
+    ...toneEngine,
     ...themes.map((t) => t.base),
     '/* data-ms-color-mode="system": follows the OS preference without JavaScript */',
     `@media (prefers-color-scheme: dark) {\n${themes.map((t) => t.system).join("\n")}}\n`,

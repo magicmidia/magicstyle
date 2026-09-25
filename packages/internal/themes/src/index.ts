@@ -16,6 +16,7 @@ export {
   DERIVED,
   OPTIONAL_DEFAULTS,
   RATIOS,
+  TONE_DERIVED,
   checkContrast,
   evaluateColor,
   exprToCss,

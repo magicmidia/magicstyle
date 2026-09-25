@@ -153,24 +153,31 @@ A lista completa, com tipos, está em `@magic-style/vue` (`MS_THEME_CONTRACT`) e
 
 As proporções ficam num único lugar (`RATIOS`, em `packages/internal/themes/src/lib/derive.ts`). O mesmo código gera o CSS e calcula os valores que o teste de contraste valida.
 
-## 6. Padrão para componentes
+## 6. Tons nos componentes (tone engine)
 
-Um componente com tons define **duas variáveis locais por tom** e deriva os estados:
+Os tons (`primary`, `success`…) funcionam do mesmo jeito em todos os componentes. `[data-tone="success"]` define `--ms-tone` e `--ms-tone-content`, e o motor (em `themes.css`) deriva `--ms-tone-hover`, `--ms-tone-active`, `--ms-tone-subtle`, `--ms-tone-border` e `--ms-tone-text` com as mesmas proporções da seção 5. O componente só lê essas variáveis:
 
 ```css
-.ms-button {
-  --_ms-btn-color: var(--ms-color-primary);
-  --_ms-btn-content: var(--ms-color-primary-content);
-  --_ms-btn-accent-hover: color-mix(
-    in oklab,
-    var(--_ms-btn-color) 86%,
-    var(--ms-color-base-content)
-  );
-}
-.ms-button[data-tone="success"] {
-  --_ms-btn-color: var(--ms-color-success);
-  --_ms-btn-content: var(--ms-color-success-content);
+.ms-badge:is([data-tone], :not([data-tone])) {
+  --_ms-badge-solid-bg: var(--ms-tone);
+  --_ms-badge-solid-fg: var(--ms-tone-content);
+  --_ms-badge-soft-bg: var(--ms-tone-subtle);
+  --_ms-badge-soft-fg: var(--ms-tone-text);
 }
 ```
 
-Com isso, um tom novo ou a cor de uma marca é só um bloco de duas linhas.
+Tom próprio ou cor de marca pontual, em qualquer componente:
+
+```css
+.ms-button[data-tone="brand"],
+.ms-badge[data-tone="brand"] {
+  --ms-tone: #7c3aed;
+  --ms-tone-content: #ffffff;
+}
+```
+
+Regras:
+
+- **Texto usa `--ms-tone-text`**, nunca o tom puro, porque é ele que garante AA. O tom puro fica para preenchimentos, bordas e indicadores.
+- Componentes com tom por classe (ex.: `.ms-tag--success`) definem as duas variáveis por classe, em 2 linhas por tom.
+- `neutral` define `--ms-tone-text-mix: 0%` (texto = tinta da base), porque em alguns temas ele é um cinza claro.

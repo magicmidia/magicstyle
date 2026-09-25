@@ -59,38 +59,52 @@
   opacity: 0.45;
   animation: ms-status-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
-
-/* Tones */
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
 .ms-status--tone-primary {
-  color: var(--ms-color-primary);
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
 }
-
 .ms-status--tone-secondary {
-  color: var(--ms-color-secondary);
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
 }
-
 .ms-status--tone-accent {
-  color: var(--ms-color-accent);
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
 }
-
 .ms-status--tone-neutral {
-  color: var(--ms-color-neutral);
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
 }
-
-.ms-status--tone-success {
-  color: var(--ms-color-success);
-}
-
 .ms-status--tone-info {
-  color: var(--ms-color-info);
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
 }
-
+.ms-status--tone-success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
 .ms-status--tone-warning {
-  color: var(--ms-color-warning);
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
+}
+.ms-status--tone-danger {
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
 }
 
-.ms-status--tone-danger {
-  color: var(--ms-color-danger);
+:is(
+  .ms-status--tone-primary,
+  .ms-status--tone-secondary,
+  .ms-status--tone-accent,
+  .ms-status--tone-neutral,
+  .ms-status--tone-info,
+  .ms-status--tone-success,
+  .ms-status--tone-warning,
+  .ms-status--tone-danger
+) {
+  color: var(--ms-tone);
 }
 
 .ms-status__label {

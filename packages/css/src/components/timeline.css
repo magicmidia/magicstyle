@@ -82,54 +82,55 @@
   flex-shrink: 0;
   box-shadow: 0 0 0 4px var(--ms-color-surface-default);
 }
-
-/* Bullet Tones */
-.ms-timeline-item--tone-primary .ms-timeline-item__node {
-  border-color: var(--ms-color-primary);
-  background-color: var(--ms-color-primary-subtle);
-  color: var(--ms-color-primary);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-timeline-item--tone-primary {
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
+}
+.ms-timeline-item--tone-secondary {
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
+}
+.ms-timeline-item--tone-accent {
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
+}
+.ms-timeline-item--tone-neutral {
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
+}
+.ms-timeline-item--tone-info {
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
+}
+.ms-timeline-item--tone-success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
+.ms-timeline-item--tone-warning {
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
+}
+.ms-timeline-item--tone-danger {
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
 }
 
-.ms-timeline-item--tone-secondary .ms-timeline-item__node {
-  border-color: var(--ms-color-secondary);
-  background-color: var(--ms-color-secondary-subtle);
-  color: var(--ms-color-secondary);
-}
-
-.ms-timeline-item--tone-accent .ms-timeline-item__node {
-  border-color: var(--ms-color-accent);
-  background-color: var(--ms-color-accent-subtle);
-  color: var(--ms-color-accent);
-}
-
-.ms-timeline-item--tone-neutral .ms-timeline-item__node {
-  border-color: var(--ms-color-neutral);
-  background-color: var(--ms-color-neutral-subtle);
-  color: var(--ms-color-neutral);
-}
-
-.ms-timeline-item--tone-success .ms-timeline-item__node {
-  border-color: var(--ms-color-success);
-  background-color: var(--ms-color-success-subtle);
-  color: var(--ms-color-success);
-}
-
-.ms-timeline-item--tone-info .ms-timeline-item__node {
-  border-color: var(--ms-color-info);
-  background-color: var(--ms-color-info-subtle);
-  color: var(--ms-color-info);
-}
-
-.ms-timeline-item--tone-warning .ms-timeline-item__node {
-  border-color: var(--ms-color-warning);
-  background-color: var(--ms-color-warning-subtle);
-  color: var(--ms-color-warning);
-}
-
-.ms-timeline-item--tone-danger .ms-timeline-item__node {
-  border-color: var(--ms-color-danger);
-  background-color: var(--ms-color-danger-subtle);
-  color: var(--ms-color-danger);
+:is(
+    .ms-timeline-item--tone-primary,
+    .ms-timeline-item--tone-secondary,
+    .ms-timeline-item--tone-accent,
+    .ms-timeline-item--tone-neutral,
+    .ms-timeline-item--tone-info,
+    .ms-timeline-item--tone-success,
+    .ms-timeline-item--tone-warning,
+    .ms-timeline-item--tone-danger
+  )
+  .ms-timeline-item__node {
+  border-color: var(--ms-tone);
+  background-color: var(--ms-tone-subtle);
+  color: var(--ms-tone-text);
 }
 
 /* Content Container */

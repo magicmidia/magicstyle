@@ -143,80 +143,18 @@
 .ms-alert-close:focus:not(:focus-visible) {
   outline: none;
 }
-
-/* ---------- Tones & Variants ---------- */
-
-/* INFO */
-.ms-alert[data-tone="info"],
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
 .ms-alert:not([data-tone]) {
-  --_ms-alert-bg: var(--ms-color-feedback-info-bg);
-  --_ms-alert-border: var(--ms-color-feedback-info-border);
-  --_ms-alert-fg: var(--ms-color-feedback-info-text);
-  --_ms-alert-solid-bg: var(--ms-color-feedback-info-solid);
-  --_ms-alert-solid-fg: var(--ms-color-feedback-info-solid-fg);
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
 }
 
-/* SUCCESS */
-.ms-alert[data-tone="success"] {
-  --_ms-alert-bg: var(--ms-color-feedback-success-bg);
-  --_ms-alert-border: var(--ms-color-feedback-success-border);
-  --_ms-alert-fg: var(--ms-color-feedback-success-text);
-  --_ms-alert-solid-bg: var(--ms-color-feedback-success-solid);
-  --_ms-alert-solid-fg: var(--ms-color-feedback-success-solid-fg);
-}
-
-/* WARNING */
-.ms-alert[data-tone="warning"] {
-  --_ms-alert-bg: var(--ms-color-feedback-warning-bg);
-  --_ms-alert-border: var(--ms-color-feedback-warning-border);
-  --_ms-alert-fg: var(--ms-color-feedback-warning-text);
-  --_ms-alert-solid-bg: var(--ms-color-feedback-warning-solid);
-  --_ms-alert-solid-fg: var(--ms-color-feedback-warning-solid-fg);
-}
-
-/* DANGER */
-.ms-alert[data-tone="danger"] {
-  --_ms-alert-bg: var(--ms-color-feedback-danger-bg);
-  --_ms-alert-border: var(--ms-color-feedback-danger-border);
-  --_ms-alert-fg: var(--ms-color-feedback-danger-text);
-  --_ms-alert-solid-bg: var(--ms-color-feedback-danger-solid);
-  --_ms-alert-solid-fg: var(--ms-color-feedback-danger-solid-fg);
-}
-
-/* PRIMARY */
-.ms-alert[data-tone="primary"] {
-  --_ms-alert-bg: var(--ms-color-interactive-primary-subtle);
-  --_ms-alert-border: color-mix(in oklch, var(--ms-color-interactive-primary) 25%, transparent);
-  --_ms-alert-fg: var(--ms-color-interactive-primary-text);
-  --_ms-alert-solid-bg: var(--ms-color-interactive-primary);
-  --_ms-alert-solid-fg: var(--ms-color-text-on-accent);
-}
-
-/* SECONDARY */
-.ms-alert[data-tone="secondary"] {
-  --_ms-alert-bg: var(--ms-color-interactive-secondary-subtle);
-  --_ms-alert-border: color-mix(in oklch, var(--ms-color-interactive-secondary) 25%, transparent);
-  --_ms-alert-fg: var(--ms-color-interactive-secondary-text);
-  --_ms-alert-solid-bg: var(--ms-color-interactive-secondary);
-  --_ms-alert-solid-fg: var(--ms-color-text-on-accent);
-}
-
-/* ACCENT */
-.ms-alert[data-tone="accent"] {
-  --_ms-alert-bg: var(--ms-color-interactive-accent-subtle);
-  --_ms-alert-border: color-mix(in oklch, var(--ms-color-interactive-accent) 25%, transparent);
-  --_ms-alert-fg: var(--ms-color-interactive-accent-text);
-  --_ms-alert-solid-bg: var(--ms-color-interactive-accent);
-  --_ms-alert-solid-fg: var(--ms-color-text-on-accent);
-}
-
-/* NEUTRAL */
-.ms-alert[data-tone="neutral"] {
-  --_ms-alert-bg: var(--ms-color-interactive-neutral-subtle);
-  --_ms-alert-border: var(--ms-color-border-default);
-  --_ms-alert-fg: var(--ms-color-text-primary);
-  --_ms-alert-solid-bg: var(--ms-color-interactive-neutral);
-  --_ms-alert-solid-fg: var(--ms-color-interactive-neutral-fg);
+.ms-alert:is([data-tone], :not([data-tone])) {
+  --_ms-alert-bg: var(--ms-tone-subtle);
+  --_ms-alert-border: var(--ms-tone-border);
+  --_ms-alert-fg: var(--ms-tone-text);
+  --_ms-alert-solid-bg: var(--ms-tone);
+  --_ms-alert-solid-fg: var(--ms-tone-content);
 }
 
 /* Soft Variant (Default) */

@@ -171,55 +171,55 @@
   border-bottom-color: var(--_ms-select-accent, var(--ms-color-primary));
   box-shadow: none;
 }
-
-/* --- 8 Semantic Brand Tones --- */
-.ms-select[data-tone="primary"],
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
 .ms-select--tone-primary {
-  --_ms-select-accent: var(--ms-color-primary);
-  --_ms-select-accent-content: var(--ms-color-primary-content);
-  --_ms-select-ring: rgba(46, 134, 222, 0.25);
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
 }
-.ms-select[data-tone="secondary"],
 .ms-select--tone-secondary {
-  --_ms-select-accent: var(--ms-color-secondary);
-  --_ms-select-accent-content: var(--ms-color-secondary-content);
-  --_ms-select-ring: rgba(225, 95, 65, 0.25);
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
 }
-.ms-select[data-tone="accent"],
 .ms-select--tone-accent {
-  --_ms-select-accent: var(--ms-color-accent);
-  --_ms-select-accent-content: var(--ms-color-accent-content);
-  --_ms-select-ring: rgba(52, 31, 151, 0.25);
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
 }
-.ms-select[data-tone="neutral"],
 .ms-select--tone-neutral {
-  --_ms-select-accent: var(--ms-color-neutral);
-  --_ms-select-accent-content: var(--ms-color-neutral-content);
-  --_ms-select-ring: rgba(34, 47, 62, 0.25);
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
 }
-.ms-select[data-tone="success"],
-.ms-select--tone-success {
-  --_ms-select-accent: var(--ms-color-success);
-  --_ms-select-accent-content: var(--ms-color-success-content);
-  --_ms-select-ring: rgba(16, 172, 132, 0.25);
-}
-.ms-select[data-tone="info"],
 .ms-select--tone-info {
-  --_ms-select-accent: var(--ms-color-info);
-  --_ms-select-accent-content: var(--ms-color-info-content);
-  --_ms-select-ring: rgba(10, 189, 227, 0.25);
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
 }
-.ms-select[data-tone="warning"],
+.ms-select--tone-success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
 .ms-select--tone-warning {
-  --_ms-select-accent: var(--ms-color-warning);
-  --_ms-select-accent-content: var(--ms-color-warning-content);
-  --_ms-select-ring: rgba(255, 159, 67, 0.25);
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
 }
-.ms-select[data-tone="danger"],
 .ms-select--tone-danger {
-  --_ms-select-accent: var(--ms-color-danger);
-  --_ms-select-accent-content: var(--ms-color-danger-content);
-  --_ms-select-ring: rgba(238, 82, 83, 0.25);
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
+}
+
+.ms-select[data-tone],
+:is(
+  .ms-select--tone-primary,
+  .ms-select--tone-secondary,
+  .ms-select--tone-accent,
+  .ms-select--tone-neutral,
+  .ms-select--tone-info,
+  .ms-select--tone-success,
+  .ms-select--tone-warning,
+  .ms-select--tone-danger
+) {
+  --_ms-select-accent: var(--ms-tone);
+  --_ms-select-accent-content: var(--ms-tone-content);
+  --_ms-select-ring: color-mix(in oklab, var(--ms-tone) 25%, transparent);
 }
 
 .ms-select[data-tone] .ms-select__control:focus-visible,

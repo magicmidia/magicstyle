@@ -40,140 +40,87 @@
   padding: 0 var(--ms-space-3);
   font-size: var(--ms-typography-size-sm);
 }
-
-/* Variant: Soft (Default) */
-.ms-tag--soft.ms-tag--neutral {
-  background-color: var(--ms-color-text-secondary);
-  color: var(--ms-color-surface-sunken);
-  border-color: var(--ms-color-border-subtle);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-tag--primary {
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
+}
+.ms-tag--secondary {
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
+}
+.ms-tag--accent {
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
+}
+.ms-tag--neutral {
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
+}
+.ms-tag--info {
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
+}
+.ms-tag--success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
+.ms-tag--warning {
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
+}
+.ms-tag--danger {
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
 }
 
-.ms-tag--soft.ms-tag--primary {
-  background-color: var(--ms-color-interactive-primary);
-  color: color-mix(in oklch, var(--ms-color-interactive-primary) 12%, transparent);
-  border-color: color-mix(in oklch, var(--ms-color-interactive-primary) 20%, transparent);
+.ms-tag--soft:is(
+  .ms-tag--primary,
+  .ms-tag--secondary,
+  .ms-tag--accent,
+  .ms-tag--neutral,
+  .ms-tag--info,
+  .ms-tag--success,
+  .ms-tag--warning,
+  .ms-tag--danger
+) {
+  background-color: var(--ms-tone-text);
+  color: var(--ms-tone-subtle);
+  border-color: var(--ms-tone-border);
 }
-
-.ms-tag--soft.ms-tag--secondary {
-  background-color: var(--ms-color-interactive-secondary);
-  color: color-mix(in oklch, var(--ms-color-interactive-secondary) 12%, transparent);
-  border-color: color-mix(in oklch, var(--ms-color-interactive-secondary) 20%, transparent);
-}
-
-.ms-tag--soft.ms-tag--accent {
-  background-color: var(--ms-color-interactive-accent);
-  color: color-mix(in oklch, var(--ms-color-interactive-accent) 12%, transparent);
-  border-color: color-mix(in oklch, var(--ms-color-interactive-accent) 20%, transparent);
-}
-
-.ms-tag--soft.ms-tag--success {
-  background-color: var(--ms-color-feedback-success-text);
-  color: var(--ms-color-feedback-success-bg);
-  border-color: var(--ms-color-feedback-success-border);
-}
-
-.ms-tag--soft.ms-tag--warning {
-  background-color: var(--ms-color-feedback-warning-text);
-  color: var(--ms-color-feedback-warning-bg);
-  border-color: var(--ms-color-feedback-warning-border);
-}
-
-.ms-tag--soft.ms-tag--danger {
-  background-color: var(--ms-color-feedback-danger-text);
-  color: var(--ms-color-feedback-danger-bg);
-  border-color: var(--ms-color-feedback-danger-border);
-}
-
-.ms-tag--soft.ms-tag--info {
-  background-color: var(--ms-color-feedback-info-text);
-  color: var(--ms-color-feedback-info-bg);
-  border-color: var(--ms-color-feedback-info-border);
-}
-
-/* Variant: Solid */
-.ms-tag--solid.ms-tag--neutral {
-  background-color: var(--ms-color-neutral-700);
-  color: var(--ms-color-neutral-0);
-}
-
-.ms-tag--solid.ms-tag--primary {
-  background-color: var(--ms-color-interactive-primary);
-  color: var(--ms-color-neutral-0);
-}
-
-.ms-tag--solid.ms-tag--secondary {
-  background-color: var(--ms-color-interactive-secondary);
-  color: var(--ms-color-neutral-0);
-}
-
-.ms-tag--solid.ms-tag--accent {
-  background-color: var(--ms-color-interactive-accent);
-  color: var(--ms-color-neutral-0);
-}
-
-.ms-tag--solid.ms-tag--success {
-  background-color: var(--ms-color-feedback-success-solid);
-  color: var(--ms-color-feedback-success-solid-fg);
-}
-
-.ms-tag--solid.ms-tag--warning {
-  background-color: var(--ms-color-feedback-warning-solid);
-  color: var(--ms-color-feedback-warning-solid-fg);
-}
-
-.ms-tag--solid.ms-tag--danger {
-  background-color: var(--ms-color-feedback-danger-solid);
-  color: var(--ms-color-feedback-danger-solid-fg);
-}
-
-.ms-tag--solid.ms-tag--info {
-  background-color: var(--ms-color-feedback-info-solid);
-  color: var(--ms-color-feedback-info-solid-fg);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-tag--solid:is(
+  .ms-tag--primary,
+  .ms-tag--secondary,
+  .ms-tag--accent,
+  .ms-tag--neutral,
+  .ms-tag--info,
+  .ms-tag--success,
+  .ms-tag--warning,
+  .ms-tag--danger
+) {
+  background-color: var(--ms-tone);
+  color: var(--ms-tone-content);
 }
 
 /* Variant: Outline */
 .ms-tag--outline {
   background-color: transparent;
 }
-
-.ms-tag--outline.ms-tag--neutral {
-  color: var(--ms-color-text-secondary);
-  border-color: var(--ms-color-border-default);
-}
-
-.ms-tag--outline.ms-tag--primary {
-  color: var(--ms-color-interactive-primary);
-  border-color: var(--ms-color-interactive-primary);
-}
-
-.ms-tag--outline.ms-tag--secondary {
-  color: var(--ms-color-interactive-secondary);
-  border-color: var(--ms-color-interactive-secondary);
-}
-
-.ms-tag--outline.ms-tag--accent {
-  color: var(--ms-color-interactive-accent);
-  border-color: var(--ms-color-interactive-accent);
-}
-
-.ms-tag--outline.ms-tag--success {
-  color: var(--ms-color-feedback-success-solid);
-  border-color: var(--ms-color-feedback-success-solid);
-}
-
-.ms-tag--outline.ms-tag--warning {
-  color: var(--ms-color-feedback-warning-text);
-  border-color: var(--ms-color-feedback-warning-solid);
-}
-
-.ms-tag--outline.ms-tag--danger {
-  color: var(--ms-color-feedback-danger-solid);
-  border-color: var(--ms-color-feedback-danger-solid);
-}
-
-.ms-tag--outline.ms-tag--info {
-  color: var(--ms-color-feedback-info-solid);
-  border-color: var(--ms-color-feedback-info-solid);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-tag--outline:is(
+  .ms-tag--primary,
+  .ms-tag--secondary,
+  .ms-tag--accent,
+  .ms-tag--neutral,
+  .ms-tag--info,
+  .ms-tag--success,
+  .ms-tag--warning,
+  .ms-tag--danger
+) {
+  color: var(--ms-tone-text);
+  border-color: var(--ms-tone);
 }
 
 /* Icon / Prefix */

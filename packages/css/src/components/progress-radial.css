@@ -27,38 +27,53 @@
   transition: stroke-dashoffset var(--ms-transition-duration-normal, 300ms)
     cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-/* Tone Colors */
-.ms-progress-radial--tone-primary .ms-progress-radial__fill {
-  stroke: var(--ms-color-primary);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-progress-radial--tone-primary {
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
+}
+.ms-progress-radial--tone-secondary {
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
+}
+.ms-progress-radial--tone-accent {
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
+}
+.ms-progress-radial--tone-neutral {
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
+}
+.ms-progress-radial--tone-info {
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
+}
+.ms-progress-radial--tone-success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
+.ms-progress-radial--tone-warning {
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
+}
+.ms-progress-radial--tone-danger {
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
 }
 
-.ms-progress-radial--tone-secondary .ms-progress-radial__fill {
-  stroke: var(--ms-color-secondary);
-}
-
-.ms-progress-radial--tone-accent .ms-progress-radial__fill {
-  stroke: var(--ms-color-accent);
-}
-
-.ms-progress-radial--tone-neutral .ms-progress-radial__fill {
-  stroke: var(--ms-color-neutral);
-}
-
-.ms-progress-radial--tone-success .ms-progress-radial__fill {
-  stroke: var(--ms-color-success);
-}
-
-.ms-progress-radial--tone-info .ms-progress-radial__fill {
-  stroke: var(--ms-color-info);
-}
-
-.ms-progress-radial--tone-warning .ms-progress-radial__fill {
-  stroke: var(--ms-color-warning);
-}
-
-.ms-progress-radial--tone-danger .ms-progress-radial__fill {
-  stroke: var(--ms-color-danger);
+:is(
+    .ms-progress-radial--tone-primary,
+    .ms-progress-radial--tone-secondary,
+    .ms-progress-radial--tone-accent,
+    .ms-progress-radial--tone-neutral,
+    .ms-progress-radial--tone-info,
+    .ms-progress-radial--tone-success,
+    .ms-progress-radial--tone-warning,
+    .ms-progress-radial--tone-danger
+  )
+  .ms-progress-radial__fill {
+  stroke: var(--ms-tone);
 }
 
 /* Centered Label */

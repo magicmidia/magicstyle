@@ -116,71 +116,14 @@
   color: var(--ms-color-text-muted);
   flex-shrink: 0;
 }
-
-/* ---------- Tone variations (border + focus follow the tone) ---------- */
-
-.ms-input[data-tone="primary"] {
-  border-color: var(--ms-color-primary);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-input[data-tone] {
+  border-color: var(--ms-tone);
 }
-.ms-input[data-tone="primary"]:focus-within {
-  border-color: var(--ms-color-primary);
-  box-shadow: 0 0 0 1px var(--ms-color-primary);
-}
-
-.ms-input[data-tone="secondary"] {
-  border-color: var(--ms-color-secondary);
-}
-.ms-input[data-tone="secondary"]:focus-within {
-  border-color: var(--ms-color-secondary);
-  box-shadow: 0 0 0 1px var(--ms-color-secondary);
-}
-
-.ms-input[data-tone="accent"] {
-  border-color: var(--ms-color-accent);
-}
-.ms-input[data-tone="accent"]:focus-within {
-  border-color: var(--ms-color-accent);
-  box-shadow: 0 0 0 1px var(--ms-color-accent);
-}
-
-.ms-input[data-tone="neutral"] {
-  border-color: var(--ms-color-neutral);
-}
-.ms-input[data-tone="neutral"]:focus-within {
-  border-color: var(--ms-color-neutral);
-  box-shadow: 0 0 0 1px var(--ms-color-neutral);
-}
-
-.ms-input[data-tone="success"] {
-  border-color: var(--ms-color-success);
-}
-.ms-input[data-tone="success"]:focus-within {
-  border-color: var(--ms-color-success);
-  box-shadow: 0 0 0 1px var(--ms-color-success);
-}
-
-.ms-input[data-tone="info"] {
-  border-color: var(--ms-color-info);
-}
-.ms-input[data-tone="info"]:focus-within {
-  border-color: var(--ms-color-info);
-  box-shadow: 0 0 0 1px var(--ms-color-info);
-}
-
-.ms-input[data-tone="warning"] {
-  border-color: var(--ms-color-warning);
-}
-.ms-input[data-tone="warning"]:focus-within {
-  border-color: var(--ms-color-warning);
-  box-shadow: 0 0 0 1px var(--ms-color-warning);
-}
-
-.ms-input[data-tone="danger"] {
-  border-color: var(--ms-color-danger);
-}
-.ms-input[data-tone="danger"]:focus-within {
-  border-color: var(--ms-color-danger);
-  box-shadow: 0 0 0 1px var(--ms-color-danger);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-input[data-tone]:focus-within {
+  border-color: var(--ms-tone);
+  box-shadow: 0 0 0 1px var(--ms-tone);
 }
 
 /* ---------- Addons: integrated input groups (shared silhouette) ---------- */

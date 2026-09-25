@@ -99,53 +99,16 @@
   border-radius: inherit;
   text-transform: uppercase;
 }
-
-/* Fallback Tones */
-.ms-avatar[data-tone="primary"] .ms-avatar-fallback {
-  background-color: var(--ms-color-interactive-primary-subtle);
-  color: var(--ms-color-interactive-primary-text);
-}
-
-.ms-avatar[data-tone="accent"] .ms-avatar-fallback {
-  background-color: var(--ms-color-interactive-accent-subtle);
-  color: var(--ms-color-interactive-accent-text);
-}
-
-.ms-avatar[data-tone="neutral"] .ms-avatar-fallback,
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
 .ms-avatar:not([data-tone]) .ms-avatar-fallback {
-  background-color: var(--ms-color-surface-sunken);
-  color: var(--ms-color-text-secondary);
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
 }
 
-.ms-avatar[data-tone="secondary"] .ms-avatar-fallback {
-  background-color: var(
-    --ms-color-interactive-secondary-subtle,
-    color-mix(in oklch, var(--ms-color-secondary) 15%, transparent)
-  );
-  color: var(--ms-color-interactive-secondary-text);
-}
-
-.ms-avatar[data-tone="info"] .ms-avatar-fallback {
-  background-color: var(
-    --ms-color-feedback-info-bg,
-    color-mix(in oklch, var(--ms-color-info) 15%, transparent)
-  );
-  color: var(--ms-color-feedback-info-text);
-}
-
-.ms-avatar[data-tone="success"] .ms-avatar-fallback {
-  background-color: var(--ms-color-feedback-success-bg);
-  color: var(--ms-color-feedback-success-text);
-}
-
-.ms-avatar[data-tone="warning"] .ms-avatar-fallback {
-  background-color: var(--ms-color-feedback-warning-bg);
-  color: var(--ms-color-feedback-warning-text);
-}
-
-.ms-avatar[data-tone="danger"] .ms-avatar-fallback {
-  background-color: var(--ms-color-feedback-danger-bg);
-  color: var(--ms-color-feedback-danger-text);
+.ms-avatar:is([data-tone], :not([data-tone])) .ms-avatar-fallback {
+  background-color: var(--ms-tone-subtle);
+  color: var(--ms-tone-text);
 }
 
 /* Status Indicator Dot */

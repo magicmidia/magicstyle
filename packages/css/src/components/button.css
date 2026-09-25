@@ -199,65 +199,21 @@
 }
 
 /* ---------- Tones ----------
- * A tone sets only its color and content color (theme contract). Every state is
- * derived here, so a new tone or a custom brand color needs no extra tokens:
- *   .ms-button[data-tone="brand"] { --_ms-btn-color: #7c3aed; --_ms-btn-content: #fff; }
+ * [data-tone] sets --ms-tone/--ms-tone-content (tone engine in themes.css) and every
+ * state below is derived from it. A custom tone is one rule:
+ *   .ms-button[data-tone="brand"] { --ms-tone: #7c3aed; --ms-tone-content: #fff; }
  */
-.ms-button {
-  --_ms-btn-color: var(--ms-color-primary);
-  --_ms-btn-content: var(--ms-color-primary-content);
-  --_ms-btn-text: oklch(
-    from
-      color-mix(in oklab, var(--_ms-btn-color) 40%, oklch(from var(--ms-color-base-content) l 0 h))
-      l calc(c * 2) h
-  );
-  --_ms-btn-accent: var(--_ms-btn-color);
-  --_ms-btn-accent-hover: color-mix(
-    in oklab,
-    var(--_ms-btn-color) 86%,
-    var(--ms-color-base-content)
-  );
-  --_ms-btn-accent-subtle: oklch(
-    from color-mix(in oklab, var(--_ms-btn-color) 14%, oklch(from var(--ms-color-base-100) l 0 h)) l
-      calc(c * 2.2) h
-  );
-  --_ms-btn-accent-fg: var(--_ms-btn-content);
-  --_ms-btn-accent-fg-muted: var(--_ms-btn-text);
+.ms-button:not([data-tone]) {
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
 }
 
-.ms-button[data-tone="primary"] {
-  --_ms-btn-color: var(--ms-color-primary);
-  --_ms-btn-content: var(--ms-color-primary-content);
-}
-.ms-button[data-tone="secondary"] {
-  --_ms-btn-color: var(--ms-color-secondary);
-  --_ms-btn-content: var(--ms-color-secondary-content);
-}
-.ms-button[data-tone="accent"] {
-  --_ms-btn-color: var(--ms-color-accent);
-  --_ms-btn-content: var(--ms-color-accent-content);
-}
-.ms-button[data-tone="neutral"] {
-  --_ms-btn-color: var(--ms-color-neutral);
-  --_ms-btn-content: var(--ms-color-neutral-content);
-  /* Neutral has no hue: tinted text uses the theme ink. */
-  --_ms-btn-text: var(--ms-color-base-content);
-}
-.ms-button[data-tone="success"] {
-  --_ms-btn-color: var(--ms-color-success);
-  --_ms-btn-content: var(--ms-color-success-content);
-}
-.ms-button[data-tone="info"] {
-  --_ms-btn-color: var(--ms-color-info);
-  --_ms-btn-content: var(--ms-color-info-content);
-}
-.ms-button[data-tone="warning"] {
-  --_ms-btn-color: var(--ms-color-warning);
-  --_ms-btn-content: var(--ms-color-warning-content);
-}
-.ms-button[data-tone="danger"] {
-  --_ms-btn-color: var(--ms-color-danger);
-  --_ms-btn-content: var(--ms-color-danger-content);
+.ms-button {
+  --_ms-btn-accent: var(--ms-tone);
+  --_ms-btn-accent-hover: var(--ms-tone-hover);
+  --_ms-btn-accent-subtle: var(--ms-tone-subtle);
+  --_ms-btn-accent-fg: var(--ms-tone-content);
+  --_ms-btn-accent-fg-muted: var(--ms-tone-text);
 }
 
 /* ---------- Variants ---------- */

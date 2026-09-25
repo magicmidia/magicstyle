@@ -41,47 +41,11 @@
   color: var(--ms-color-text-primary);
   user-select: none;
 }
-
-/* ---------- Tones ---------- */
-.ms-sidebar-menu[data-tone="primary"] {
-  --_ms-smenu-tone-bg: var(--ms-color-primary);
-  --_ms-smenu-tone-subtle: color-mix(in srgb, var(--ms-color-primary) 12%, transparent);
-  --_ms-smenu-tone-fg: var(--ms-color-primary);
-}
-.ms-sidebar-menu[data-tone="secondary"] {
-  --_ms-smenu-tone-bg: var(--ms-color-secondary);
-  --_ms-smenu-tone-subtle: color-mix(in srgb, var(--ms-color-secondary) 12%, transparent);
-  --_ms-smenu-tone-fg: var(--ms-color-secondary);
-}
-.ms-sidebar-menu[data-tone="accent"] {
-  --_ms-smenu-tone-bg: var(--ms-color-accent);
-  --_ms-smenu-tone-subtle: color-mix(in srgb, var(--ms-color-accent) 12%, transparent);
-  --_ms-smenu-tone-fg: var(--ms-color-accent);
-}
-.ms-sidebar-menu[data-tone="neutral"] {
-  --_ms-smenu-tone-bg: var(--ms-color-neutral);
-  --_ms-smenu-tone-subtle: color-mix(in srgb, var(--ms-color-neutral) 12%, transparent);
-  --_ms-smenu-tone-fg: var(--ms-color-neutral);
-}
-.ms-sidebar-menu[data-tone="success"] {
-  --_ms-smenu-tone-bg: var(--ms-color-success);
-  --_ms-smenu-tone-subtle: color-mix(in srgb, var(--ms-color-success) 12%, transparent);
-  --_ms-smenu-tone-fg: var(--ms-color-success);
-}
-.ms-sidebar-menu[data-tone="info"] {
-  --_ms-smenu-tone-bg: var(--ms-color-info);
-  --_ms-smenu-tone-subtle: color-mix(in srgb, var(--ms-color-info) 12%, transparent);
-  --_ms-smenu-tone-fg: var(--ms-color-info);
-}
-.ms-sidebar-menu[data-tone="warning"] {
-  --_ms-smenu-tone-bg: var(--ms-color-warning);
-  --_ms-smenu-tone-subtle: color-mix(in srgb, var(--ms-color-warning) 14%, transparent);
-  --_ms-smenu-tone-fg: var(--ms-color-warning);
-}
-.ms-sidebar-menu[data-tone="danger"] {
-  --_ms-smenu-tone-bg: var(--ms-color-danger);
-  --_ms-smenu-tone-subtle: color-mix(in srgb, var(--ms-color-danger) 12%, transparent);
-  --_ms-smenu-tone-fg: var(--ms-color-danger);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-sidebar-menu[data-tone] {
+  --_ms-smenu-tone-bg: var(--ms-tone);
+  --_ms-smenu-tone-subtle: color-mix(in oklab, var(--ms-tone) 12%, transparent);
+  --_ms-smenu-tone-fg: var(--ms-tone);
 }
 
 /* ---------- Densities ---------- */

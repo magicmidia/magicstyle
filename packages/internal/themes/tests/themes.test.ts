@@ -3,6 +3,8 @@ import { describe, expect, it } from "vitest";
 import {
   CONTRACT_KEYS,
   DERIVED,
+  RATIOS,
+  TONE_DERIVED,
   REQUIRED_CONTRACT_KEYS,
   THEMES,
   emitThemesCss,
@@ -118,5 +120,33 @@ describe("theme contract", () => {
         key,
       ).toBe(true);
     }
+  });
+
+  it("tinted tokens and the tone engine share one formula (chroma restored)", () => {
+    const expr = (name: string) => DERIVED.find(([n]) => n === name)?.[1];
+    for (const role of ["primary", "accent", "success", "danger"]) {
+      const family = ["info", "success", "warning", "danger"].includes(role)
+        ? "feedback"
+        : "interactive";
+      const subtle = expr(
+        family === "feedback" ? `color-feedback-${role}-bg` : `color-interactive-${role}-subtle`,
+      );
+      const text = expr(`color-${family}-${role}-text`);
+      expect(subtle, `${role} subtle`).toMatchObject({ chroma: RATIOS.tintChroma });
+      expect(text, `${role} text`).toMatchObject({ chroma: RATIOS.textChroma });
+    }
+    const tone = Object.fromEntries(TONE_DERIVED);
+    expect(tone["tone-subtle"]).toMatchObject({ chroma: RATIOS.tintChroma });
+    expect(tone["tone-text"]).toMatchObject({ chroma: RATIOS.textChroma });
+  });
+
+  it("every emitted color-mix has explicit percentages (guards generator regressions)", () => {
+    const total = css.match(/color-mix\(in oklab, var\(/g)?.length ?? 0;
+    const valid =
+      css.match(/color-mix\(in oklab, var\([^)]*\) (?:\d+%|var\(--ms-[\w-]+, \d+%\)), /g)?.length ??
+      0;
+    expect(total).toBeGreaterThan(30);
+    expect(valid).toBe(total);
+    expect(css).toContain("var(--ms-tone-text-mix, 40%)");
   });
 });

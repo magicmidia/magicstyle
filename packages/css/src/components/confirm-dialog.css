@@ -56,45 +56,54 @@
   background-color: var(--ms-color-danger-subtle);
   color: var(--ms-color-danger);
 }
-
-.ms-confirm-dialog--tone-primary .ms-confirm-dialog__icon {
-  background-color: var(--ms-color-primary-subtle);
-  color: var(--ms-color-primary);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-confirm-dialog--tone-primary {
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
+}
+.ms-confirm-dialog--tone-secondary {
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
+}
+.ms-confirm-dialog--tone-accent {
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
+}
+.ms-confirm-dialog--tone-neutral {
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
+}
+.ms-confirm-dialog--tone-info {
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
+}
+.ms-confirm-dialog--tone-success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
+.ms-confirm-dialog--tone-warning {
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
+}
+.ms-confirm-dialog--tone-danger {
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
 }
 
-.ms-confirm-dialog--tone-secondary .ms-confirm-dialog__icon {
-  background-color: var(--ms-color-secondary-subtle);
-  color: var(--ms-color-secondary);
-}
-
-.ms-confirm-dialog--tone-accent .ms-confirm-dialog__icon {
-  background-color: var(--ms-color-accent-subtle);
-  color: var(--ms-color-accent);
-}
-
-.ms-confirm-dialog--tone-neutral .ms-confirm-dialog__icon {
-  background-color: var(--ms-color-neutral-subtle);
-  color: var(--ms-color-neutral);
-}
-
-.ms-confirm-dialog--tone-success .ms-confirm-dialog__icon {
-  background-color: var(--ms-color-success-subtle);
-  color: var(--ms-color-success);
-}
-
-.ms-confirm-dialog--tone-info .ms-confirm-dialog__icon {
-  background-color: var(--ms-color-info-subtle);
-  color: var(--ms-color-info);
-}
-
-.ms-confirm-dialog--tone-warning .ms-confirm-dialog__icon {
-  background-color: var(--ms-color-warning-subtle);
-  color: var(--ms-color-warning);
-}
-
-.ms-confirm-dialog--tone-danger .ms-confirm-dialog__icon {
-  background-color: var(--ms-color-danger-subtle);
-  color: var(--ms-color-danger);
+:is(
+    .ms-confirm-dialog--tone-primary,
+    .ms-confirm-dialog--tone-secondary,
+    .ms-confirm-dialog--tone-accent,
+    .ms-confirm-dialog--tone-neutral,
+    .ms-confirm-dialog--tone-info,
+    .ms-confirm-dialog--tone-success,
+    .ms-confirm-dialog--tone-warning,
+    .ms-confirm-dialog--tone-danger
+  )
+  .ms-confirm-dialog__icon {
+  background-color: var(--ms-tone-subtle);
+  color: var(--ms-tone-text);
 }
 
 .ms-confirm-dialog__text-group {

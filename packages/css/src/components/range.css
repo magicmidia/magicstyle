@@ -40,38 +40,52 @@
   --ms-range-height: 8px;
   --ms-range-thumb-size: 24px;
 }
-
-/* Tones */
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
 .ms-range--tone-primary {
-  --ms-range-fill-color: var(--ms-color-primary);
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
 }
-
 .ms-range--tone-secondary {
-  --ms-range-fill-color: var(--ms-color-secondary);
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
 }
-
 .ms-range--tone-accent {
-  --ms-range-fill-color: var(--ms-color-accent);
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
 }
-
 .ms-range--tone-neutral {
-  --ms-range-fill-color: var(--ms-color-neutral);
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
 }
-
-.ms-range--tone-success {
-  --ms-range-fill-color: var(--ms-color-success);
-}
-
 .ms-range--tone-info {
-  --ms-range-fill-color: var(--ms-color-info);
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
 }
-
+.ms-range--tone-success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
 .ms-range--tone-warning {
-  --ms-range-fill-color: var(--ms-color-warning);
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
+}
+.ms-range--tone-danger {
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
 }
 
-.ms-range--tone-danger {
-  --ms-range-fill-color: var(--ms-color-danger);
+:is(
+  .ms-range--tone-primary,
+  .ms-range--tone-secondary,
+  .ms-range--tone-accent,
+  .ms-range--tone-neutral,
+  .ms-range--tone-info,
+  .ms-range--tone-success,
+  .ms-range--tone-warning,
+  .ms-range--tone-danger
+) {
+  --ms-range-fill-color: var(--ms-tone);
 }
 
 /* WebKit Track */

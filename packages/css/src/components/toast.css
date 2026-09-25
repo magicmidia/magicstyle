@@ -67,31 +67,52 @@
   overflow: hidden;
   transition: all var(--ms-transition-duration-normal, 200ms) cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-/* Tones */
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
 .ms-toast--tone-primary {
-  border-left: 4px solid var(--ms-color-primary);
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
 }
 .ms-toast--tone-secondary {
-  border-left: 4px solid var(--ms-color-secondary);
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
 }
 .ms-toast--tone-accent {
-  border-left: 4px solid var(--ms-color-accent);
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
 }
 .ms-toast--tone-neutral {
-  border-left: 4px solid var(--ms-color-neutral);
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
 }
 .ms-toast--tone-info {
-  border-left: 4px solid var(--ms-color-info);
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
 }
 .ms-toast--tone-success {
-  border-left: 4px solid var(--ms-color-success);
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
 }
 .ms-toast--tone-warning {
-  border-left: 4px solid var(--ms-color-warning);
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
 }
 .ms-toast--tone-danger {
-  border-left: 4px solid var(--ms-color-danger);
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
+}
+
+:is(
+  .ms-toast--tone-primary,
+  .ms-toast--tone-secondary,
+  .ms-toast--tone-accent,
+  .ms-toast--tone-neutral,
+  .ms-toast--tone-info,
+  .ms-toast--tone-success,
+  .ms-toast--tone-warning,
+  .ms-toast--tone-danger
+) {
+  border-left: 4px solid var(--ms-tone);
 }
 
 .ms-toast__icon {

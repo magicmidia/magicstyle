@@ -12,7 +12,12 @@ export type Expr =
    * color-mix(in oklab). With `chroma`, the target is neutralized first (so the hue
    * always comes from the role color) and the lost saturation is restored.
    */
-  | { readonly mix: readonly [string, number, string]; readonly chroma?: number }
+  | {
+      readonly mix: readonly [string, number, string];
+      readonly chroma?: number;
+      /** CSS variable that can override the percentage at runtime (inherited). */
+      readonly pctVar?: string;
+    }
   | { readonly css: string };
 
 const ref = (name: string): Expr => ({ ref: name });
@@ -46,11 +51,14 @@ const interactive = (role: string): Array<[string, Expr]> => [
   [`color-interactive-${role}`, ref(`color-${role}`)],
   [`color-interactive-${role}-hover`, mix(`color-${role}`, RATIOS.hover, INK)],
   [`color-interactive-${role}-active`, mix(`color-${role}`, RATIOS.active, INK)],
-  [`color-interactive-${role}-subtle`, mix(`color-${role}`, RATIOS.subtle, BASE)],
+  [
+    `color-interactive-${role}-subtle`,
+    mix(`color-${role}`, RATIOS.subtle, BASE, RATIOS.tintChroma),
+  ],
   // Neutral has no hue (it can even be a light gray): its tinted text is the ink itself.
   [
     `color-interactive-${role}-text`,
-    role === "neutral" ? ref(INK) : mix(`color-${role}`, RATIOS.text, INK),
+    role === "neutral" ? ref(INK) : mix(`color-${role}`, RATIOS.text, INK, RATIOS.textChroma),
   ],
   [`color-interactive-${role}-fg`, ref(`color-${role}-content`)],
 ];
@@ -185,6 +193,23 @@ export const DERIVED: ReadonlyArray<readonly [string, Expr]> = [
   ["color-danger-soft-fg", ref("color-feedback-danger-bg")],
 ];
 
+/**
+ * Tone engine: a component (or `[data-tone]`) sets `--ms-tone` and
+ * `--ms-tone-content`; these states derive from it with the same ratios as the
+ * role tokens above, so every toned component shares one formula set.
+ */
+export const TONE_DERIVED: ReadonlyArray<readonly [string, Expr]> = [
+  ["tone-hover", mix("tone", RATIOS.hover, INK)],
+  ["tone-active", mix("tone", RATIOS.active, INK)],
+  ["tone-subtle", mix("tone", RATIOS.subtle, BASE, RATIOS.tintChroma)],
+  ["tone-border", mix("tone", RATIOS.border, BASE, RATIOS.borderChroma)],
+  // Neutral sets --ms-tone-text-mix: 0% (pure ink); it inherits, so descendants agree.
+  [
+    "tone-text",
+    { ...mix("tone", RATIOS.text, INK, RATIOS.textChroma), pctVar: "--ms-tone-text-mix" },
+  ],
+];
+
 /** Defaults for optional contract keys (emitted when a theme omits them). */
 export const OPTIONAL_DEFAULTS: Readonly<Record<string, string>> = {
   "color-base-raised": "var(--ms-color-base-100)",
@@ -195,11 +220,13 @@ export const OPTIONAL_DEFAULTS: Readonly<Record<string, string>> = {
 export function exprToCss(expr: Expr): string {
   if ("ref" in expr) return `var(--ms-${expr.ref})`;
   if ("mix" in expr) {
-    const [a, pct, b] = expr.mix;
-    if (expr.chroma === undefined)
-      return `color-mix(in oklab, var(--ms-${a}) ${pct}%, var(--ms-${b}))`;
+    const [a, num, b] = expr.mix;
+    const pct = expr.pctVar ? `var(${expr.pctVar}, ${num}%)` : `${num}%`;
+    if (expr.chroma === undefined) {
+      return `color-mix(in oklab, var(--ms-${a}) ${pct}, var(--ms-${b}))`;
+    }
     const target = `oklch(from var(--ms-${b}) l 0 h)`;
-    return `oklch(from color-mix(in oklab, var(--ms-${a}) ${pct}%, ${target}) l calc(c * ${expr.chroma}) h)`;
+    return `oklch(from color-mix(in oklab, var(--ms-${a}) ${pct}, ${target}) l calc(c * ${expr.chroma}) h)`;
   }
   return expr.css;
 }

@@ -153,41 +153,10 @@
 .ms-card[data-variant="soft"] {
   box-shadow: none;
 }
-.ms-card[data-variant="soft"][data-tone="primary"] {
-  background-color: color-mix(in oklch, var(--ms-color-primary) 8%, var(--ms-color-surface-raised));
-  border-color: color-mix(in oklch, var(--ms-color-primary) 22%, transparent);
-}
-.ms-card[data-variant="soft"][data-tone="secondary"] {
-  background-color: color-mix(
-    in oklch,
-    var(--ms-color-secondary) 8%,
-    var(--ms-color-surface-raised)
-  );
-  border-color: color-mix(in oklch, var(--ms-color-secondary) 22%, transparent);
-}
-.ms-card[data-variant="soft"][data-tone="accent"] {
-  background-color: color-mix(in oklch, var(--ms-color-accent) 8%, var(--ms-color-surface-raised));
-  border-color: color-mix(in oklch, var(--ms-color-accent) 22%, transparent);
-}
-.ms-card[data-variant="soft"][data-tone="neutral"] {
-  background-color: color-mix(in oklch, var(--ms-color-neutral) 8%, var(--ms-color-surface-raised));
-  border-color: color-mix(in oklch, var(--ms-color-neutral) 22%, transparent);
-}
-.ms-card[data-variant="soft"][data-tone="success"] {
-  background-color: color-mix(in oklch, var(--ms-color-success) 8%, var(--ms-color-surface-raised));
-  border-color: color-mix(in oklch, var(--ms-color-success) 22%, transparent);
-}
-.ms-card[data-variant="soft"][data-tone="info"] {
-  background-color: color-mix(in oklch, var(--ms-color-info) 8%, var(--ms-color-surface-raised));
-  border-color: color-mix(in oklch, var(--ms-color-info) 22%, transparent);
-}
-.ms-card[data-variant="soft"][data-tone="warning"] {
-  background-color: color-mix(in oklch, var(--ms-color-warning) 8%, var(--ms-color-surface-raised));
-  border-color: color-mix(in oklch, var(--ms-color-warning) 22%, transparent);
-}
-.ms-card[data-variant="soft"][data-tone="danger"] {
-  background-color: color-mix(in oklch, var(--ms-color-danger) 8%, var(--ms-color-surface-raised));
-  border-color: color-mix(in oklch, var(--ms-color-danger) 22%, transparent);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-card[data-variant="soft"][data-tone] {
+  background-color: color-mix(in oklch, var(--ms-tone) 8%, var(--ms-color-surface-raised));
+  border-color: color-mix(in oklab, var(--ms-tone) 22%, transparent);
 }
 
 /* Hoverable (lift on hover) */
@@ -267,39 +236,53 @@
   flex-direction: column;
   flex: 1;
 }
-
-/* ---------- 8 Semantic Brand Tones (Top Accent Strip) ---------- */
-.ms-card[data-tone="primary"]:not([data-variant="soft"]),
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
 .ms-card--tone-primary {
-  border-top: 3px solid var(--ms-color-primary);
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
 }
-.ms-card[data-tone="secondary"]:not([data-variant="soft"]),
 .ms-card--tone-secondary {
-  border-top: 3px solid var(--ms-color-secondary);
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
 }
-.ms-card[data-tone="accent"]:not([data-variant="soft"]),
 .ms-card--tone-accent {
-  border-top: 3px solid var(--ms-color-accent);
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
 }
-.ms-card[data-tone="neutral"]:not([data-variant="soft"]),
 .ms-card--tone-neutral {
-  border-top: 3px solid var(--ms-color-neutral);
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
 }
-.ms-card[data-tone="success"]:not([data-variant="soft"]),
-.ms-card--tone-success {
-  border-top: 3px solid var(--ms-color-success);
-}
-.ms-card[data-tone="info"]:not([data-variant="soft"]),
 .ms-card--tone-info {
-  border-top: 3px solid var(--ms-color-info);
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
 }
-.ms-card[data-tone="warning"]:not([data-variant="soft"]),
+.ms-card--tone-success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
 .ms-card--tone-warning {
-  border-top: 3px solid var(--ms-color-warning);
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
 }
-.ms-card[data-tone="danger"]:not([data-variant="soft"]),
 .ms-card--tone-danger {
-  border-top: 3px solid var(--ms-color-danger);
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
+}
+
+.ms-card[data-tone]:not([data-variant="soft"]),
+:is(
+  .ms-card--tone-primary,
+  .ms-card--tone-secondary,
+  .ms-card--tone-accent,
+  .ms-card--tone-neutral,
+  .ms-card--tone-info,
+  .ms-card--tone-success,
+  .ms-card--tone-warning,
+  .ms-card--tone-danger
+) {
+  border-top: 3px solid var(--ms-tone);
 }
 
 /* Glass Variant (Modern Frosted Glass) */

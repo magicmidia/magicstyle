@@ -205,52 +205,52 @@
     scrollbar-width: none !important;
   }
 }
-
-/* 8 Semantic Brand Tones for Thumb */
-.ms-scrollbar--tone-primary,
-.ms-scrollbar[data-tone="primary"] {
-  --ms-scrollbar-thumb: var(--ms-color-primary);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-primary) 80%, black 20%);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-scrollbar--tone-primary {
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
+}
+.ms-scrollbar--tone-secondary {
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
+}
+.ms-scrollbar--tone-accent {
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
+}
+.ms-scrollbar--tone-neutral {
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
+}
+.ms-scrollbar--tone-info {
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
+}
+.ms-scrollbar--tone-success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
+.ms-scrollbar--tone-warning {
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
+}
+.ms-scrollbar--tone-danger {
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
 }
 
-.ms-scrollbar--tone-secondary,
-.ms-scrollbar[data-tone="secondary"] {
-  --ms-scrollbar-thumb: var(--ms-color-secondary);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-secondary) 80%, black 20%);
-}
-
-.ms-scrollbar--tone-accent,
-.ms-scrollbar[data-tone="accent"] {
-  --ms-scrollbar-thumb: var(--ms-color-accent);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-accent) 80%, black 20%);
-}
-
-.ms-scrollbar--tone-neutral,
-.ms-scrollbar[data-tone="neutral"] {
-  --ms-scrollbar-thumb: var(--ms-color-neutral);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-neutral) 80%, black 20%);
-}
-
-.ms-scrollbar--tone-success,
-.ms-scrollbar[data-tone="success"] {
-  --ms-scrollbar-thumb: var(--ms-color-success);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-success) 80%, black 20%);
-}
-
-.ms-scrollbar--tone-info,
-.ms-scrollbar[data-tone="info"] {
-  --ms-scrollbar-thumb: var(--ms-color-info);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-info) 80%, black 20%);
-}
-
-.ms-scrollbar--tone-warning,
-.ms-scrollbar[data-tone="warning"] {
-  --ms-scrollbar-thumb: var(--ms-color-warning);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-warning) 80%, black 20%);
-}
-
-.ms-scrollbar--tone-danger,
-.ms-scrollbar[data-tone="danger"] {
-  --ms-scrollbar-thumb: var(--ms-color-danger);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-danger) 80%, black 20%);
+:is(
+  .ms-scrollbar--tone-primary,
+  .ms-scrollbar--tone-secondary,
+  .ms-scrollbar--tone-accent,
+  .ms-scrollbar--tone-neutral,
+  .ms-scrollbar--tone-info,
+  .ms-scrollbar--tone-success,
+  .ms-scrollbar--tone-warning,
+  .ms-scrollbar--tone-danger
+),
+.ms-scrollbar[data-tone] {
+  --ms-scrollbar-thumb: var(--ms-tone);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-tone) 80%, black 20%);
 }

@@ -101,97 +101,68 @@
 .ms-banner__close:hover {
   opacity: 1;
 }
-
-/* --- TONES & VARIANTS --- */
-
-/* Soft Variant (Default) */
-.ms-banner--variant-soft.ms-banner--tone-primary {
-  background-color: var(--ms-color-interactive-primary-text);
-  color: var(--ms-color-primary-subtle);
-  border-bottom: 1px solid var(--ms-color-primary-200);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-banner--tone-primary {
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
+}
+.ms-banner--tone-secondary {
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
+}
+.ms-banner--tone-accent {
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
+}
+.ms-banner--tone-neutral {
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
+}
+.ms-banner--tone-info {
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
+}
+.ms-banner--tone-success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
+.ms-banner--tone-warning {
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
+}
+.ms-banner--tone-danger {
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
 }
 
-.ms-banner--variant-soft.ms-banner--tone-secondary {
-  background-color: var(--ms-color-interactive-secondary-text);
-  color: var(--ms-color-secondary-subtle);
-  border-bottom: 1px solid var(--ms-color-secondary-200);
+.ms-banner--variant-soft:is(
+  .ms-banner--tone-primary,
+  .ms-banner--tone-secondary,
+  .ms-banner--tone-accent,
+  .ms-banner--tone-neutral,
+  .ms-banner--tone-info,
+  .ms-banner--tone-success,
+  .ms-banner--tone-warning,
+  .ms-banner--tone-danger
+) {
+  background-color: var(--ms-tone-text);
+  color: var(--ms-tone-subtle);
+  border-bottom: 1px solid var(--ms-tone-border);
 }
-
-.ms-banner--variant-soft.ms-banner--tone-accent {
-  background-color: var(--ms-color-interactive-accent-text);
-  color: var(--ms-color-accent-subtle);
-  border-bottom: 1px solid var(--ms-color-accent-200);
-}
-
-.ms-banner--variant-soft.ms-banner--tone-neutral {
-  background-color: var(--ms-color-interactive-neutral-text);
-  color: var(--ms-color-neutral-subtle);
-  border-bottom: 1px solid var(--ms-color-border-default);
-}
-
-.ms-banner--variant-soft.ms-banner--tone-info {
-  background-color: var(--ms-color-feedback-info-text);
-  color: var(--ms-color-info-subtle);
-  border-bottom: 1px solid var(--ms-color-feedback-info-border);
-}
-
-.ms-banner--variant-soft.ms-banner--tone-success {
-  background-color: var(--ms-color-feedback-success-text);
-  color: var(--ms-color-success-subtle);
-  border-bottom: 1px solid var(--ms-color-feedback-success-border);
-}
-
-.ms-banner--variant-soft.ms-banner--tone-warning {
-  background-color: var(--ms-color-feedback-warning-text);
-  color: var(--ms-color-warning-subtle);
-  border-bottom: 1px solid var(--ms-color-feedback-warning-border);
-}
-
-.ms-banner--variant-soft.ms-banner--tone-danger {
-  background-color: var(--ms-color-feedback-danger-text);
-  color: var(--ms-color-danger-subtle);
-  border-bottom: 1px solid var(--ms-color-feedback-danger-border);
-}
-
-/* Solid Variant */
-.ms-banner--variant-solid.ms-banner--tone-primary {
-  background-color: var(--ms-color-primary);
-  color: var(--ms-color-text-on-accent);
-}
-
-.ms-banner--variant-solid.ms-banner--tone-secondary {
-  background-color: var(--ms-color-secondary);
-  color: var(--ms-color-text-on-accent);
-}
-
-.ms-banner--variant-solid.ms-banner--tone-accent {
-  background-color: var(--ms-color-accent);
-  color: var(--ms-color-text-on-accent);
-}
-
-.ms-banner--variant-solid.ms-banner--tone-neutral {
-  background-color: var(--ms-color-neutral);
-  color: var(--ms-color-text-on-accent);
-}
-
-.ms-banner--variant-solid.ms-banner--tone-info {
-  background-color: var(--ms-color-info);
-  color: var(--ms-color-text-on-accent);
-}
-
-.ms-banner--variant-solid.ms-banner--tone-success {
-  background-color: var(--ms-color-success);
-  color: var(--ms-color-text-on-accent);
-}
-
-.ms-banner--variant-solid.ms-banner--tone-warning {
-  background-color: var(--ms-color-warning);
-  color: var(--ms-color-text-primary);
-}
-
-.ms-banner--variant-solid.ms-banner--tone-danger {
-  background-color: var(--ms-color-danger);
-  color: var(--ms-color-text-on-accent);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-banner--variant-solid:is(
+  .ms-banner--tone-primary,
+  .ms-banner--tone-secondary,
+  .ms-banner--tone-accent,
+  .ms-banner--tone-neutral,
+  .ms-banner--tone-info,
+  .ms-banner--tone-success,
+  .ms-banner--tone-warning,
+  .ms-banner--tone-danger
+) {
+  background-color: var(--ms-tone);
+  color: var(--ms-tone-content);
 }
 
 /* Outline Variant */
@@ -199,43 +170,17 @@
   background-color: var(--ms-color-surface-default);
   border: 1px solid var(--ms-color-border-default);
 }
-
-.ms-banner--variant-outline.ms-banner--tone-primary {
-  color: var(--ms-color-primary);
-  border-color: var(--ms-color-primary);
-}
-
-.ms-banner--variant-outline.ms-banner--tone-secondary {
-  color: var(--ms-color-secondary);
-  border-color: var(--ms-color-secondary);
-}
-
-.ms-banner--variant-outline.ms-banner--tone-accent {
-  color: var(--ms-color-accent);
-  border-color: var(--ms-color-accent);
-}
-
-.ms-banner--variant-outline.ms-banner--tone-neutral {
-  color: var(--ms-color-neutral);
-  border-color: var(--ms-color-border-strong);
-}
-
-.ms-banner--variant-outline.ms-banner--tone-info {
-  color: var(--ms-color-info);
-  border-color: var(--ms-color-info);
-}
-
-.ms-banner--variant-outline.ms-banner--tone-success {
-  color: var(--ms-color-success);
-  border-color: var(--ms-color-success);
-}
-
-.ms-banner--variant-outline.ms-banner--tone-warning {
-  color: var(--ms-color-warning);
-  border-color: var(--ms-color-warning);
-}
-
-.ms-banner--variant-outline.ms-banner--tone-danger {
-  color: var(--ms-color-danger);
-  border-color: var(--ms-color-danger);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-banner--variant-outline:is(
+  .ms-banner--tone-primary,
+  .ms-banner--tone-secondary,
+  .ms-banner--tone-accent,
+  .ms-banner--tone-neutral,
+  .ms-banner--tone-info,
+  .ms-banner--tone-success,
+  .ms-banner--tone-warning,
+  .ms-banner--tone-danger
+) {
+  color: var(--ms-tone-text);
+  border-color: var(--ms-tone);
 }
