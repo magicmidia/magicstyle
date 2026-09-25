@@ -3,6 +3,7 @@ import { computed, onMounted, ref } from "vue";
 import { useData, withBase } from "vitepress";
 import {
   MsBadge,
+  MsButton,
   MsCodeBlock,
   MsProvider,
   MsSegmentedControl,
@@ -15,7 +16,6 @@ import {
 } from "@magic-style/vue";
 import AppPreview from "./AppPreview.vue";
 import FeatureIcon from "./FeatureIcon.vue";
-import LinkButton from "./LinkButton.vue";
 import StatNumber from "./StatNumber.vue";
 import { LANDING } from "./copy.ts";
 import { INSTALL_SNIPPETS, SETUP_CODE } from "./snippets.ts";
@@ -96,13 +96,13 @@ const FEATURE_ICONS = [
         </h1>
         <p class="landing-hero__subtitle">{{ copy.hero.subtitle }}</p>
         <div class="landing-actions">
-          <LinkButton :href="link('/guide/introduction')" size="lg">
+          <MsButton :href="link('/guide/introduction')" size="lg">
             {{ copy.hero.start }}
             <span aria-hidden="true">→</span>
-          </LinkButton>
-          <LinkButton :href="link('/components/button')" variant="outline" size="lg">
+          </MsButton>
+          <MsButton :href="link('/components/button')" variant="outline" tone="neutral" size="lg">
             {{ copy.hero.browse }}
-          </LinkButton>
+          </MsButton>
         </div>
         <MsSnippet class="landing-hero__snippet" :tabs="INSTALL_SNIPPETS" prompt="$" />
       </div>
@@ -213,12 +213,12 @@ const FEATURE_ICONS = [
           </h2>
           <p class="landing-heading__subtitle">{{ copy.install.subtitle }}</p>
           <div class="landing-actions landing-actions--start">
-            <LinkButton :href="link('/guide/installation')" variant="outline">
+            <MsButton :href="link('/guide/installation')" variant="outline" tone="neutral">
               {{ copy.hero.start }}
-            </LinkButton>
-            <LinkButton :href="link('/guide/laravel-inertia')" variant="ghost">
+            </MsButton>
+            <MsButton :href="link('/guide/laravel-inertia')" variant="ghost" tone="neutral">
               {{ copy.install.inertia }} →
-            </LinkButton>
+            </MsButton>
           </div>
         </header>
         <MsTabs default-value="vite" class="landing-install__tabs">
@@ -253,12 +253,17 @@ const FEATURE_ICONS = [
           <h2 class="landing-cta__title">{{ copy.cta.title }}</h2>
           <p class="landing-cta__subtitle">{{ copy.cta.subtitle }}</p>
           <div class="landing-actions">
-            <LinkButton :href="link('/guide/introduction')" size="lg">{{
-              copy.cta.start
-            }}</LinkButton>
-            <LinkButton :href="REPO_URL" variant="outline" size="lg" external>
+            <MsButton :href="link('/guide/introduction')" size="lg">{{ copy.cta.start }}</MsButton>
+            <MsButton
+              :href="REPO_URL"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="outline"
+              tone="neutral"
+              size="lg"
+            >
               {{ copy.cta.github }}
-            </LinkButton>
+            </MsButton>
           </div>
         </div>
       </div>

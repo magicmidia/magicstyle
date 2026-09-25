@@ -34,7 +34,7 @@ Os componentes Vue não trazem estilo próprio. Todo o visual vem do `@magic-sty
 - **Tema por contrato.** Um tema define 27 variáveis. Hover, foco, bordas, textos e sombras são derivados delas no próprio CSS. Veja [Temas](/pt/guide/theming).
 - **Acessível por padrão.** Os componentes seguem os padrões WAI-ARIA APG e miram WCAG 2.2 AA, com auditoria axe-core e testes de contraste em todos os temas. Veja [Acessibilidade](/pt/guide/accessibility).
 - **SSR de primeira.** Todos os componentes renderizam no servidor, e o modo de cor `system` é resolvido em CSS, sem flash nem hydration mismatch. Veja [SSR](/pt/guide/ssr).
-- **Três idiomas embutidos.** Os textos gerados pelos componentes saem em português por padrão, com inglês e espanhol inclusos. Veja [Idiomas](/pt/guide/i18n).
+- **Três idiomas embutidos.** Os textos gerados pelos componentes saem em inglês por padrão, com português e espanhol inclusos. Veja [Idiomas](/pt/guide/i18n).
 - **RTL real.** O CSS usa propriedades lógicas. Veja [RTL](/pt/guide/rtl).
 - **Sobrescrevível.** Todo o CSS fica na cascade layer `ms`, então o CSS da sua aplicação sempre vence.
 

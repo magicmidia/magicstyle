@@ -30,7 +30,7 @@ Resumo das mudanças já no `main`, agrupadas por tema. Para atualizar um app ex
 ### Idiomas (i18n)
 
 - Textos embutidos de cerca de 45 componentes saem de um dicionário tipado (`MsMessages`), com `createMsI18n`, `MsProvider locale` e `useMsMessages`.
-- Português por padrão, com inglês e espanhol inclusos.
+- Inglês por padrão, com português e espanhol inclusos.
 - `MsDatePicker` gera nomes de mês e dia com `Intl` no idioma ativo.
 - `MsCommandPalette` sem `items` mostra o estado vazio, em vez de comandos de demonstração.
 

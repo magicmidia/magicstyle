@@ -48,7 +48,21 @@
     "viewPlans": "Ver planos",
     "dangerTitle": "Excluir projeto",
     "dangerDesc": "Remove permanentemente o projeto, os deploys e os domínios associados.",
-    "deleteProject": "Excluir projeto"
+    "deleteProject": "Excluir projeto",
+    "linkInstallTitle": "Instalação",
+    "linkInstallDesc": "Adicione a biblioteca ao seu app Vue em poucos minutos.",
+    "linkThemingTitle": "Temas",
+    "linkThemingDesc": "Troque cores, raios e densidade com tokens CSS.",
+    "linkVueTitle": "Guia do Vue",
+    "linkVueDesc": "Documentação oficial do Vue 3, em uma nova aba.",
+    "softTipTitle": "Dica",
+    "softTipDesc": "Pressione Ctrl + K para buscar em qualquer página.",
+    "softDeployTitle": "Deploy concluído",
+    "softDeployDesc": "A versão 2.4.0 está no ar há 3 minutos.",
+    "softQuotaTitle": "Cota quase no limite",
+    "softQuotaDesc": "Você usou 92% dos minutos de build deste mês.",
+    "softPaymentTitle": "Pagamento recusado",
+    "softPaymentDesc": "Atualize o cartão para evitar a suspensão do plano."
   },
   "en-US": {
     "createTitle": "Create project",
@@ -99,7 +113,21 @@
     "viewPlans": "View plans",
     "dangerTitle": "Delete project",
     "dangerDesc": "Permanently removes the project, its deployments and linked domains.",
-    "deleteProject": "Delete project"
+    "deleteProject": "Delete project",
+    "linkInstallTitle": "Installation",
+    "linkInstallDesc": "Add the library to your Vue app in a few minutes.",
+    "linkThemingTitle": "Theming",
+    "linkThemingDesc": "Change colors, radius and density with CSS tokens.",
+    "linkVueTitle": "Vue guide",
+    "linkVueDesc": "The official Vue 3 documentation, in a new tab.",
+    "softTipTitle": "Tip",
+    "softTipDesc": "Press Ctrl + K to search from any page.",
+    "softDeployTitle": "Deployment ready",
+    "softDeployDesc": "Version 2.4.0 went live 3 minutes ago.",
+    "softQuotaTitle": "Quota almost reached",
+    "softQuotaDesc": "You've used 92% of this month's build minutes.",
+    "softPaymentTitle": "Payment declined",
+    "softPaymentDesc": "Update your card to avoid a plan suspension."
   },
   "es-ES": {
     "createTitle": "Crear proyecto",
@@ -150,6 +178,20 @@
     "viewPlans": "Ver planes",
     "dangerTitle": "Eliminar proyecto",
     "dangerDesc": "Elimina de forma permanente el proyecto, sus despliegues y los dominios asociados.",
-    "deleteProject": "Eliminar proyecto"
+    "deleteProject": "Eliminar proyecto",
+    "linkInstallTitle": "Instalación",
+    "linkInstallDesc": "Añade la biblioteca a tu app Vue en pocos minutos.",
+    "linkThemingTitle": "Temas",
+    "linkThemingDesc": "Cambia colores, radios y densidad con tokens CSS.",
+    "linkVueTitle": "Guía de Vue",
+    "linkVueDesc": "La documentación oficial de Vue 3, en una pestaña nueva.",
+    "softTipTitle": "Consejo",
+    "softTipDesc": "Pulsa Ctrl + K para buscar desde cualquier página.",
+    "softDeployTitle": "Despliegue listo",
+    "softDeployDesc": "La versión 2.4.0 está en línea desde hace 3 minutos.",
+    "softQuotaTitle": "Cuota casi agotada",
+    "softQuotaDesc": "Has usado el 92 % de los minutos de build de este mes.",
+    "softPaymentTitle": "Pago rechazado",
+    "softPaymentDesc": "Actualiza la tarjeta para evitar la suspensión del plan."
   }
 }

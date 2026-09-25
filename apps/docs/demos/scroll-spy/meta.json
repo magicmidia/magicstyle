@@ -1,8 +1,8 @@
 {
   "intro": {
-    "pt-BR": "O scroll spy lista as seções de uma página longa e destaca a que está em leitura. Ele observa a rolagem da janela (`window`), não de um contêiner com rolagem própria: role esta página para ver o destaque mudar.",
-    "en-US": "Scroll spy lists the sections of a long page and highlights the one being read. It tracks the window scroll, not a scrollable container: scroll this page to see the highlight move.",
-    "es-ES": "El scroll spy lista las secciones de una página larga y resalta la que se está leyendo. Observa el desplazamiento de la ventana (`window`), no de un contenedor con scroll propio: desplaza esta página para ver cómo cambia."
+    "pt-BR": "O scroll spy lista as seções de um conteúdo longo e destaca a que está em leitura. Por padrão ele observa a rolagem da janela; com `container`, observa um elemento com rolagem própria, como nas demos abaixo.",
+    "en-US": "Scroll spy lists the sections of long content and highlights the one being read. By default it tracks the window scroll; with `container`, it tracks an element that scrolls on its own, as in the demos below.",
+    "es-ES": "El scroll spy lista las secciones de un contenido largo y resalta la que se está leyendo. Por defecto observa el desplazamiento de la ventana; con `container`, observa un elemento con scroll propio, como en las demos de abajo."
   },
   "demos": [
     {
@@ -13,9 +13,9 @@
         "es-ES": "Índice de la página"
       },
       "description": {
-        "pt-BR": "Cada item de `items` aponta para o `id` de uma seção; clicar rola suavemente até ela, descontando `offset` pixels do topo.",
-        "en-US": "Each entry in `items` points to a section `id`; clicking smooth-scrolls to it, minus `offset` pixels from the top.",
-        "es-ES": "Cada entrada de `items` apunta al `id` de una sección; al hacer clic se desplaza suavemente hasta ella, descontando `offset` píxeles desde arriba."
+        "pt-BR": "Cada item de `items` aponta para o `id` de uma seção; `container` recebe o elemento com rolagem (um ref, um elemento ou um seletor CSS) e clicar rola suavemente até a seção, descontando `offset` pixels do topo.",
+        "en-US": "Each entry in `items` points to a section `id`; `container` takes the scrolling element (a ref, an element or a CSS selector) and clicking smooth-scrolls to the section, minus `offset` pixels from the top.",
+        "es-ES": "Cada entrada de `items` apunta al `id` de una sección; `container` recibe el elemento con scroll (un ref, un elemento o un selector CSS) y al hacer clic se desplaza suavemente hasta la sección, descontando `offset` píxeles desde arriba."
       }
     },
     {

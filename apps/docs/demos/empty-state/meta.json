@@ -40,9 +40,18 @@
       "file": "IconTones",
       "title": { "pt-BR": "Tons do ícone", "en-US": "Icon tones", "es-ES": "Tonos del icono" },
       "description": {
-        "pt-BR": "`icon-tone` colore o selo do ícone: `neutral`, `primary`, `success`, `warning` ou `danger`.",
-        "en-US": "`icon-tone` colors the icon badge: `neutral`, `primary`, `success`, `warning` or `danger`.",
-        "es-ES": "`icon-tone` colorea la insignia del icono: `neutral`, `primary`, `success`, `warning` o `danger`."
+        "pt-BR": "`icon-tone` colore o selo do ícone: `neutral` (padrão), `primary`, `secondary`, `accent`, `info`, `success`, `warning` ou `danger`.",
+        "en-US": "`icon-tone` colors the icon badge: `neutral` (default), `primary`, `secondary`, `accent`, `info`, `success`, `warning` or `danger`.",
+        "es-ES": "`icon-tone` colorea la insignia del icono: `neutral` (predeterminado), `primary`, `secondary`, `accent`, `info`, `success`, `warning` o `danger`."
+      }
+    },
+    {
+      "file": "Ring",
+      "title": { "pt-BR": "Halo no ícone", "en-US": "Icon ring", "es-ES": "Halo en el icono" },
+      "description": {
+        "pt-BR": "`ring` adiciona um halo suave na cor do ícone; aqui com os tons `secondary`, `accent` e `info`.",
+        "en-US": "`ring` adds a soft halo in the icon's color; shown here with the `secondary`, `accent` and `info` tones.",
+        "es-ES": "`ring` añade un halo suave del color del icono; aquí con los tonos `secondary`, `accent` e `info`."
       }
     }
   ]

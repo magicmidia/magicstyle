@@ -30,7 +30,7 @@ Resumen de los cambios que ya están en `main`, agrupados por tema. Para actuali
 ### Idiomas (i18n)
 
 - Los textos incluidos de unos 45 componentes salen de un diccionario tipado (`MsMessages`), con `createMsI18n`, `MsProvider locale` y `useMsMessages`.
-- Portugués por defecto, con inglés y español incluidos.
+- Inglés por defecto, con portugués y español incluidos.
 - `MsDatePicker` genera los nombres de meses y días con `Intl` en el idioma activo.
 - `MsCommandPalette` sin `items` muestra su estado vacío en lugar de comandos de demostración.
 

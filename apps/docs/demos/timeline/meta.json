@@ -22,9 +22,9 @@
         "es-ES": "Seguimiento de pedido"
       },
       "description": {
-        "pt-BR": "`tone` colore o marcador de cada etapa; o slot padrão substitui `description`.",
-        "en-US": "`tone` colors each step's marker; the default slot replaces `description`.",
-        "es-ES": "`tone` colorea el marcador de cada etapa; el slot por defecto reemplaza a `description`."
+        "pt-BR": "`solid` preenche o marcador das etapas concluídas, `active` destaca a etapa atual com um halo pulsante e `aria-current=\"step\"`, e `title-tag=\"p\"` evita que os títulos entrem na hierarquia de cabeçalhos.",
+        "en-US": "`solid` fills the marker of completed steps, `active` highlights the current step with a pulsing halo and `aria-current=\"step\"`, and `title-tag=\"p\"` keeps the titles out of the heading outline.",
+        "es-ES": "`solid` rellena el marcador de las etapas completadas, `active` destaca la etapa actual con un halo pulsante y `aria-current=\"step\"`, y `title-tag=\"p\"` evita que los títulos entren en la jerarquía de encabezados."
       }
     },
     {
@@ -51,8 +51,8 @@
     }
   ],
   "a11y": {
-    "pt-BR": "- Renderiza uma lista ordenada (`<ol>`) com um `<li>` por evento, preservando a ordem para leitores de tela.\n- Marcador e conector são `aria-hidden=\"true\"`: o conteúdo do slot `node` e a cor do `tone` não são anunciados, então descreva o estado no texto.\n- O título é sempre um `<h4>`; verifique se esse nível faz sentido na hierarquia de cabeçalhos da página.",
-    "en-US": "- Renders an ordered list (`<ol>`) with one `<li>` per event, preserving order for screen readers.\n- The marker and connector are `aria-hidden=\"true\"`: the `node` slot content and the `tone` color aren't announced, so describe the state in text.\n- The title is always an `<h4>`; check that this level fits the page's heading hierarchy.",
-    "es-ES": "- Renderiza una lista ordenada (`<ol>`) con un `<li>` por evento, conservando el orden para los lectores de pantalla.\n- El marcador y el conector son `aria-hidden=\"true\"`: el contenido del slot `node` y el color del `tone` no se anuncian, así que describe el estado en el texto.\n- El título siempre es un `<h4>`; verifica que ese nivel encaje en la jerarquía de encabezados de la página."
+    "pt-BR": "- Renderiza uma lista ordenada (`<ol>`) com um `<li>` por evento, preservando a ordem para leitores de tela.\n- Marcador e conector são `aria-hidden=\"true\"`: o conteúdo do slot `node` e a cor do `tone` não são anunciados, então descreva o estado no texto.\n- `active` marca o item com `aria-current=\"step\"`.\n- O título é um `<h4>` por padrão; use `title-tag` para escolher o nível que se encaixa na página, ou `p`/`span` quando os marcos não devem ser cabeçalhos.",
+    "en-US": "- Renders an ordered list (`<ol>`) with one `<li>` per event, preserving order for screen readers.\n- The marker and connector are `aria-hidden=\"true\"`: the `node` slot content and the `tone` color aren't announced, so describe the state in text.\n- `active` marks the item with `aria-current=\"step\"`.\n- The title is an `<h4>` by default; use `title-tag` to pick the level that fits the page, or `p`/`span` when milestones shouldn't be headings.",
+    "es-ES": "- Renderiza una lista ordenada (`<ol>`) con un `<li>` por evento, conservando el orden para los lectores de pantalla.\n- El marcador y el conector son `aria-hidden=\"true\"`: el contenido del slot `node` y el color del `tone` no se anuncian, así que describe el estado en el texto.\n- `active` marca el elemento con `aria-current=\"step\"`.\n- El título es un `<h4>` por defecto; usa `title-tag` para elegir el nivel que encaje en la página, o `p`/`span` cuando los hitos no deban ser encabezados."
   }
 }

@@ -30,7 +30,7 @@ A summary of the changes already on `main`, grouped by theme. To upgrade an exis
 ### Internationalization
 
 - Built-in strings of about 45 components come from a typed dictionary (`MsMessages`), with `createMsI18n`, `MsProvider locale` and `useMsMessages`.
-- Portuguese by default, with English and Spanish included.
+- English by default, with Portuguese and Spanish included.
 - `MsDatePicker` builds month and day names with `Intl` in the active locale.
 - `MsCommandPalette` without `items` shows its empty state instead of demo commands.
 

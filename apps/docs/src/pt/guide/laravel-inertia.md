@@ -243,6 +243,26 @@ A prop `required` do `MsField` só mostra o indicador no rótulo. Se quiser tamb
 
 `MsCheckbox` e `MsSwitch` aceitam `v-model` direto em campos booleanos do `useForm`, como `form.remember`.
 
+## 8. Links com Inertia
+
+O `MsButton` renderiza qualquer componente via `as`. Passe o `Link` do Inertia para ter o visual de botão com as visitas do Inertia, sem recarregar a página:
+
+```vue
+<script setup lang="ts">
+import { Link } from "@inertiajs/vue3";
+import { MsButton } from "@magic-style/vue";
+</script>
+
+<template>
+  <MsButton :as="Link" href="/dashboard">Ir para o painel</MsButton>
+  <MsButton :as="Link" href="/settings" variant="outline" tone="neutral" preserve-scroll>
+    Configurações
+  </MsButton>
+</template>
+```
+
+`href` e qualquer outro atributo, como `preserve-scroll`, chegam ao `Link`. Com `disabled`, o botão recebe `aria-disabled="true"`, sai da ordem de tabulação e bloqueia a visita. Para um link comum para outro site, basta `href`, que renderiza um `<a>`.
+
 ## Veja também
 
 - [Idiomas (i18n)](/pt/guide/i18n)

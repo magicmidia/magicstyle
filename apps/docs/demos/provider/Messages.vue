@@ -12,7 +12,7 @@ const messages = computed<MsMessagesOverride>(() => ({
 </script>
 
 <template>
-  <MsProvider :messages="messages">
+  <MsProvider :messages="messages" color-mode="inherit">
     <MsPagination v-model:current-page="page" :total="64" show-jumper :show-total="false" />
   </MsProvider>
 </template>

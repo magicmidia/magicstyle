@@ -13,9 +13,9 @@
         "es-ES": "Logos de clientes"
       },
       "description": {
-        "pt-BR": "Por padrão, as bordas esmaecem (`fade`) e a animação pausa quando o cursor está sobre a faixa (`pause-on-hover`).",
-        "en-US": "By default, the edges fade out (`fade`) and the animation pauses while the pointer is over the strip (`pause-on-hover`).",
-        "es-ES": "Por defecto, los bordes se difuminan (`fade`) y la animación se pausa mientras el cursor está sobre la franja (`pause-on-hover`)."
+        "pt-BR": "Por padrão, as bordas esmaecem (`fade`), a animação pausa quando o cursor está sobre a faixa (`pause-on-hover`) e um botão de pausar/reproduzir fica no canto (`controls`).",
+        "en-US": "By default, the edges fade out (`fade`), the animation pauses while the pointer is over the strip (`pause-on-hover`) and a pause/play button sits at the edge (`controls`).",
+        "es-ES": "Por defecto, los bordes se difuminan (`fade`), la animación se pausa mientras el cursor está sobre la franja (`pause-on-hover`) y un botón de pausa/reproducción queda en el borde (`controls`)."
       }
     },
     {
@@ -42,8 +42,8 @@
     }
   ],
   "a11y": {
-    "pt-BR": "- O conteúdo é renderizado duas vezes para o loop; a cópia tem `aria-hidden=\"true\"`, então leitores de tela leem os itens uma única vez.\n- A animação pausa com o cursor sobre a faixa ou com foco dentro dela (`pause-on-hover`).\n- Não há botão de pausa nem tratamento próprio de `prefers-reduced-motion`: evite colocar conteúdo essencial ou interativo na faixa.",
-    "en-US": "- Content is rendered twice for the loop; the copy is `aria-hidden=\"true\"`, so screen readers read the items only once.\n- The animation pauses on hover or when focus is inside the strip (`pause-on-hover`).\n- There is no pause button and no built-in `prefers-reduced-motion` handling: avoid placing essential or interactive content in the strip.",
-    "es-ES": "- El contenido se renderiza dos veces para el bucle; la copia tiene `aria-hidden=\"true\"`, así que los lectores de pantalla leen los elementos una sola vez.\n- La animación se pausa con el cursor sobre la franja o con el foco dentro de ella (`pause-on-hover`).\n- No hay botón de pausa ni manejo propio de `prefers-reduced-motion`: evita poner contenido esencial o interactivo en la franja."
+    "pt-BR": "- O conteúdo é renderizado duas vezes para o loop; a cópia tem `aria-hidden=\"true\"`, então leitores de tela leem os itens uma única vez.\n- Um botão nativo de pausar/reproduzir aparece por padrão (WCAG 2.2.2), com rótulo traduzido (mensagens `marquee.pause` e `marquee.play`); `Tab` chega nele e `Enter` ou `Espaço` alternam. Só use `:controls=\"false\"` se oferecer outro controle de pausa.\n- Com `prefers-reduced-motion: reduce`, a faixa começa pausada.\n- A animação também pausa com o cursor sobre a faixa ou com foco dentro dela (`pause-on-hover`).\n- Evite colocar conteúdo essencial ou interativo na faixa.",
+    "en-US": "- Content is rendered twice for the loop; the copy is `aria-hidden=\"true\"`, so screen readers read the items only once.\n- A native pause/play button is shown by default (WCAG 2.2.2), with a translated label (messages `marquee.pause` and `marquee.play`); `Tab` reaches it and `Enter` or `Space` toggles it. Only use `:controls=\"false\"` when you provide another pause control.\n- With `prefers-reduced-motion: reduce`, the strip starts paused.\n- The animation also pauses on hover or when focus is inside the strip (`pause-on-hover`).\n- Avoid placing essential or interactive content in the strip.",
+    "es-ES": "- El contenido se renderiza dos veces para el bucle; la copia tiene `aria-hidden=\"true\"`, así que los lectores de pantalla leen los elementos una sola vez.\n- Un botón nativo de pausa/reproducción aparece por defecto (WCAG 2.2.2), con etiqueta traducida (mensajes `marquee.pause` y `marquee.play`); `Tab` llega a él y `Enter` o `Espacio` lo alternan. Usa `:controls=\"false\"` solo si ofreces otro control de pausa.\n- Con `prefers-reduced-motion: reduce`, la franja empieza en pausa.\n- La animación también se pausa con el cursor sobre la franja o con el foco dentro de ella (`pause-on-hover`).\n- Evita poner contenido esencial o interactivo en la franja."
   }
 }

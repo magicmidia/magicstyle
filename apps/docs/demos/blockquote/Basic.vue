@@ -7,9 +7,13 @@ const t = useDemoStrings(strings);
 
 <template>
   <div style="max-width: 560px">
-    <MsBlockquote author="Fernanda Lopes" :author-role="t.designLead">
+    <MsBlockquote
+      author="Fernanda Lopes"
+      :author-role="t.designLead"
+      :cite="t.sourceTalk"
+      cite-url="https://example.com/talks/design-systems-2025"
+    >
       <p>{{ t.quoteDesign }}</p>
-      <template #cite>{{ t.sourceTalk }}</template>
     </MsBlockquote>
   </div>
 </template>

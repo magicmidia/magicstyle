@@ -243,6 +243,26 @@ How server errors map:
 
 `MsCheckbox` and `MsSwitch` accept plain `v-model` on boolean `useForm` fields such as `form.remember`.
 
+## 8. Links with Inertia
+
+`MsButton` renders any component through `as`. Pass Inertia's `Link` to get button styling with Inertia visits, without a full page reload:
+
+```vue
+<script setup lang="ts">
+import { Link } from "@inertiajs/vue3";
+import { MsButton } from "@magic-style/vue";
+</script>
+
+<template>
+  <MsButton :as="Link" href="/dashboard">Go to dashboard</MsButton>
+  <MsButton :as="Link" href="/settings" variant="outline" tone="neutral" preserve-scroll>
+    Settings
+  </MsButton>
+</template>
+```
+
+`href` and any other attribute, such as `preserve-scroll`, reach `Link`. With `disabled`, the button gets `aria-disabled="true"`, leaves the tab order and blocks the visit. For a plain link to another site, `href` alone renders an `<a>`.
+
 ## See also
 
 - [Internationalization](/guide/i18n)

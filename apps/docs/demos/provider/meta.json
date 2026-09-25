@@ -26,9 +26,9 @@
         "es-ES": "Idioma de los componentes"
       },
       "description": {
-        "pt-BR": "`locale` troca os textos internos dos componentes (total, \"ir para\", rótulos de acessibilidade); os três paginadores compartilham o mesmo estado.",
-        "en-US": "`locale` switches the components' built-in strings (total, \"go to\", accessibility labels); the three paginators share the same state.",
-        "es-ES": "`locale` cambia los textos internos de los componentes (total, \"ir a\", etiquetas de accesibilidad); los tres paginadores comparten el mismo estado."
+        "pt-BR": "`locale` troca os textos internos dos componentes (total, \"ir para\", rótulos de acessibilidade); `color-mode=\"inherit\"` faz o provider aninhado seguir o modo claro/escuro do ancestral em vez de impor `system`.",
+        "en-US": "`locale` switches the components' built-in strings (total, \"go to\", accessibility labels); `color-mode=\"inherit\"` makes the nested provider follow its ancestor's light/dark mode instead of forcing `system`.",
+        "es-ES": "`locale` cambia los textos internos de los componentes (total, \"ir a\", etiquetas de accesibilidad); `color-mode=\"inherit\"` hace que el provider anidado siga el modo claro/oscuro del ancestro en lugar de imponer `system`."
       }
     },
     {
@@ -39,9 +39,9 @@
         "es-ES": "Sobrescribir mensajes"
       },
       "description": {
-        "pt-BR": "`messages` aceita um objeto parcial (`MsMessagesOverride`) mesclado sobre o idioma atual; aqui mudam o texto do campo e os rótulos de anterior e próxima.",
-        "en-US": "`messages` takes a partial object (`MsMessagesOverride`) merged over the current locale; here the jump field text and the previous and next labels change.",
-        "es-ES": "`messages` acepta un objeto parcial (`MsMessagesOverride`) que se fusiona con el idioma actual; aquí cambian el texto del campo y las etiquetas de anterior y siguiente."
+        "pt-BR": "`messages` aceita um objeto parcial (`MsMessagesOverride`) mesclado sobre o idioma atual; aqui mudam o texto do campo e os rótulos de anterior e próxima, e `color-mode=\"inherit\"` mantém o modo de cor da página.",
+        "en-US": "`messages` takes a partial object (`MsMessagesOverride`) merged over the current locale; here the jump field text and the previous and next labels change, and `color-mode=\"inherit\"` keeps the page's color mode.",
+        "es-ES": "`messages` acepta un objeto parcial (`MsMessagesOverride`) que se fusiona con el idioma actual; aquí cambian el texto del campo y las etiquetas de anterior y siguiente, y `color-mode=\"inherit\"` mantiene el modo de color de la página."
       }
     },
     {

@@ -5,6 +5,8 @@ import strings from "./strings.json";
 import { useDemoStrings } from "../../.vitepress/theme/composables/useDemoStrings.ts";
 const t = useDemoStrings(strings);
 
+const scrollBox = ref<HTMLElement | null>(null);
+
 const items = computed<MsScrollSpyItem[]>(() => [
   { id: "spy-profile", label: t.profile },
   { id: "spy-security", label: t.security },
@@ -25,10 +27,19 @@ const currentLabel = computed(() => items.value.find((i) => i.id === current.val
     "
   >
     <aside style="display: grid; gap: 12px; align-content: start">
-      <MsScrollSpy :items="items" :offset="120" @active-change="current = $event" />
+      <MsScrollSpy
+        :items="items"
+        :container="scrollBox"
+        :offset="16"
+        @active-change="current = $event"
+      />
       <MsTag tone="primary" size="sm" dot>{{ currentLabel }}</MsTag>
     </aside>
-    <div style="display: grid; gap: 24px">
+    <div
+      ref="scrollBox"
+      class="ms-u-border ms-u-rounded-lg"
+      style="display: grid; gap: 24px; height: 280px; overflow-y: auto; padding: 16px 16px 200px"
+    >
       <section id="spy-profile">
         <h4 style="margin: 0 0 8px">{{ t.profile }}</h4>
         <p style="margin: 0; line-height: 1.7">{{ t.profileBody }}</p>

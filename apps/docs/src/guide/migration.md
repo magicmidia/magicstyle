@@ -35,14 +35,14 @@ Without `items`, the palette now shows its empty state. It used to show 6 built-
 <MsCommandPalette v-model="open" :items="commands" />
 ```
 
-### Built-in strings in Portuguese
+### Built-in strings in English by default
 
-Strings that came out in English in the middle of a Portuguese UI now come from the language dictionary, in pt-BR by default: `MsSelect` (placeholder, search, clear, empty, create, remove option), `MsDrawer`, `MsNavbar`, `MsSidebar`, `MsSidebarMenu`, `MsTabs` and `MsBreadcrumbs`.
+Strings that used to come out in English in the middle of a Portuguese UI now come from the language dictionary: `MsSelect` (placeholder, search, clear, empty, create, remove option), `MsDrawer`, `MsNavbar`, `MsSidebar`, `MsSidebarMenu`, `MsTabs` and `MsBreadcrumbs`.
 
-If your app is in English, turn on the English dictionary:
+The default dictionary is now English (`en-US`). If your app is in Portuguese or Spanish, set the locale when you install the plugin:
 
 ```ts
-app.use(createMsI18n({ locale: "en-US" }));
+app.use(createMsI18n({ locale: "pt-BR" }));
 ```
 
 See [Internationalization](/guide/i18n) to tweak individual strings.
@@ -61,6 +61,52 @@ See [Internationalization](/guide/i18n) to tweak individual strings.
 ### `MsDrawer` close icon
 
 The close button uses an SVG icon instead of the `✕` character. Fill the `close` slot to use a different icon.
+
+## Markup and API changes
+
+### `MsButton` and `aria-expanded`
+
+`MsButton` no longer renders `aria-expanded="false"` on every button. The attribute only appears when you pass `open`, so menu and popover triggers must bind it:
+
+```vue
+<MsButton caret :open="menuOpen" @click="menuOpen = !menuOpen">Options</MsButton>
+```
+
+`MsButton` can now also render a link: `href` gives an `<a>`, and `as` takes a tag or a component such as `RouterLink` or Inertia's `Link`.
+
+### `MsPagination` without `update:pageSize`
+
+`MsPagination` no longer declares the `update:pageSize` event, which was never emitted. Replace `v-model:page-size` with the `page-size` prop and your own page-size selector.
+
+### `MsTag` clickable and closable
+
+A tag that is both `clickable` and `closable` no longer puts the close button inside a `role="button"`. The clickable part is now a sibling `span.ms-tag__action` with `role="button"`, next to the close button, and the root has no role. Update CSS selectors and tests that targeted `.ms-tag[role="button"]` for these tags.
+
+### `MsList` groups and `aria-current`
+
+- `MsListGroup` must be a child of `MsList`. It renders an `<li role="none">` with a nested `<ul role="group">`, labeled by its header. Move groups that wrapped a whole `MsList` inside it.
+- `active` on `MsListItem` now maps to `aria-current="true"` (it used to be `aria-selected`). For a single-select list, use the new `selectable` prop, which turns the list into a `role="listbox"` with `aria-selected` options.
+
+### `MsIconButton` `label`
+
+`MsIconButton` takes its accessible name in the new `label` prop. The `ariaLabel` prop is deprecated; the plain `aria-label="…"` attribute keeps working.
+
+```vue
+<MsIconButton label="Close"><XIcon /></MsIconButton>
+```
+
+### App shell classes
+
+The `MsAppShell` sidebar and footer classes no longer clash with `MsSidebar` and `MsFooter`. Update custom CSS:
+
+| Before                   | Now                                 |
+| :----------------------- | :---------------------------------- |
+| `.ms-sidebar`            | `.ms-app-shell__sidebar`            |
+| `.ms-sidebar--collapsed` | `.ms-app-shell__sidebar--collapsed` |
+| `.ms-sidebar__header`    | `.ms-app-shell__sidebar-header`     |
+| `.ms-sidebar__content`   | `.ms-app-shell__sidebar-content`    |
+| `.ms-sidebar__footer`    | `.ms-app-shell__sidebar-footer`     |
+| `.ms-footer`             | `.ms-app-shell__footer`             |
 
 ## Visual changes
 
@@ -98,5 +144,7 @@ These apply to every theme. Each theme still only swaps colors, radii, depth and
 1. Upgrade `@magic-style/vue` and `@magic-style/css` together. Both packages are versioned in lockstep.
 2. Look for `MsBadge`, `MsTabs`, `MsAlert`, `MsTooltip`, `MsSkeleton` and `MsHoverCard` without the prop from the table above, and decide whether you want the new default.
 3. Pass `items` to every `MsCommandPalette`.
-4. If your app isn't in Portuguese, install `createMsI18n` with your `locale`.
+4. If your app isn't in English, install `createMsI18n` with your `locale` (for example `pt-BR`).
 5. Review CSS overrides that relied on `!important` or on old shadow and focus tokens.
+6. Pass `:open` to every `MsButton` that opens a menu or popover, and replace `v-model:page-size` on `MsPagination`.
+7. Move `MsListGroup` inside `MsList`, switch `MsIconButton` to `label` and rename app shell classes in your CSS.

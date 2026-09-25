@@ -1,8 +1,8 @@
 {
   "intro": {
-    "pt-BR": "Mostra um conjunto de slides um de cada vez, com setas e indicadores. Informe `total-slides` com a quantidade de `MsCarouselSlide` renderizados.",
-    "en-US": "Shows a set of slides one at a time, with arrows and indicators. Set `total-slides` to the number of rendered `MsCarouselSlide` elements.",
-    "es-ES": "Muestra un conjunto de diapositivas de a una, con flechas e indicadores. Indica en `total-slides` la cantidad de `MsCarouselSlide` renderizados."
+    "pt-BR": "Mostra um conjunto de slides um de cada vez, com setas e indicadores. A quantidade de slides vem dos `MsCarouselSlide` filhos; com SSR, informe `total-slides` para que setas, indicadores e rótulos \"N de M\" já saiam no HTML do servidor.",
+    "en-US": "Shows a set of slides one at a time, with arrows and indicators. The slide count comes from the child `MsCarouselSlide` elements; with SSR, set `total-slides` so arrows, indicators and \"N of M\" labels are already in the server HTML.",
+    "es-ES": "Muestra un conjunto de diapositivas de a una, con flechas e indicadores. La cantidad de diapositivas se obtiene de los `MsCarouselSlide` hijos; con SSR, indica `total-slides` para que las flechas, los indicadores y las etiquetas \"N de M\" ya salgan en el HTML del servidor."
   },
   "demos": [
     {

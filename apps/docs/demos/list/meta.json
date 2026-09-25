@@ -7,11 +7,7 @@
   "demos": [
     {
       "file": "Basic",
-      "title": {
-        "pt-BR": "Básico",
-        "en-US": "Basic",
-        "es-ES": "Básico"
-      },
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
       "description": {
         "pt-BR": "Cada `MsListItem` recebe `title` e `description`.",
         "en-US": "Each `MsListItem` takes a `title` and a `description`.",
@@ -46,11 +42,7 @@
     },
     {
       "file": "Separated",
-      "title": {
-        "pt-BR": "Separada",
-        "en-US": "Separated",
-        "es-ES": "Separada"
-      },
+      "title": { "pt-BR": "Separada", "en-US": "Separated", "es-ES": "Separada" },
       "description": {
         "pt-BR": "`variant=\"separated\"` transforma cada item em um cartão próprio, com espaço entre eles.",
         "en-US": "`variant=\"separated\"` turns each item into its own card, with space between them.",
@@ -65,15 +57,28 @@
         "es-ES": "Navegación agrupada"
       },
       "description": {
-        "pt-BR": "`MsListGroup` adiciona um cabeçalho de grupo; `interactive`, `active` e `disabled` estilizam os estados, e os links dão suporte ao teclado.",
-        "en-US": "`MsListGroup` adds a group header; `interactive`, `active` and `disabled` style the states, and the links provide keyboard support.",
-        "es-ES": "`MsListGroup` agrega un encabezado de grupo; `interactive`, `active` y `disabled` dan estilo a los estados, y los enlaces aportan soporte de teclado."
+        "pt-BR": "`MsListGroup` fica dentro do `MsList` e rotula um subgrupo; itens `interactive` recebem foco, respondem a `Enter` e `Espaço`, e `active` marca o atual com `aria-current`.",
+        "en-US": "`MsListGroup` goes inside `MsList` and labels a sub-group; `interactive` items take focus and respond to `Enter` and `Space`, and `active` marks the current one with `aria-current`.",
+        "es-ES": "`MsListGroup` va dentro de `MsList` y etiqueta un subgrupo; los elementos `interactive` reciben foco y responden a `Enter` y `Espacio`, y `active` marca el actual con `aria-current`."
+      }
+    },
+    {
+      "file": "Selectable",
+      "title": {
+        "pt-BR": "Seleção única",
+        "en-US": "Single selection",
+        "es-ES": "Selección única"
+      },
+      "description": {
+        "pt-BR": "`selectable` transforma a lista em um `listbox`: `active` vira `aria-selected`, as setas movem o foco e `Enter` ou `Espaço` escolhem a opção. Dê um nome com `aria-label`.",
+        "en-US": "`selectable` turns the list into a `listbox`: `active` becomes `aria-selected`, arrow keys move focus and `Enter` or `Space` pick the option. Name it with `aria-label`.",
+        "es-ES": "`selectable` convierte la lista en un `listbox`: `active` pasa a ser `aria-selected`, las flechas mueven el foco y `Enter` o `Espacio` eligen la opción. Dale un nombre con `aria-label`."
       }
     }
   ],
   "a11y": {
-    "pt-BR": "- `MsList` renderiza `<ul role=\"list\">` e cada item um `<li>` (altere com `as`).\n- `interactive` é apenas visual: o item não recebe foco nem responde ao teclado. Para itens clicáveis, coloque um `<a>` ou `<button>` dentro dele.\n- `active` e `disabled` são expostos como `aria-selected` e `aria-disabled` no item.\n- `MsListGroup` é um `role=\"group\"`; o cabeçalho não é associado ao grupo por `aria-labelledby`.",
-    "en-US": "- `MsList` renders `<ul role=\"list\">` and each item an `<li>` (change it with `as`).\n- `interactive` is visual only: the item doesn't take focus or respond to the keyboard. For clickable items, put an `<a>` or `<button>` inside.\n- `active` and `disabled` are exposed as `aria-selected` and `aria-disabled` on the item.\n- `MsListGroup` is a `role=\"group\"`; its header isn't linked to the group through `aria-labelledby`.",
-    "es-ES": "- `MsList` renderiza `<ul role=\"list\">` y cada elemento un `<li>` (cámbialo con `as`).\n- `interactive` es solo visual: el elemento no recibe foco ni responde al teclado. Para elementos clicables, coloca un `<a>` o `<button>` dentro.\n- `active` y `disabled` se exponen como `aria-selected` y `aria-disabled` en el elemento.\n- `MsListGroup` es un `role=\"group\"`; su encabezado no se asocia al grupo mediante `aria-labelledby`."
+    "pt-BR": "- `MsList` renderiza `<ul role=\"list\">` e cada item um `<li>`.\n- Itens `interactive` recebem `tabindex=\"0\"`; `Enter` e `Espaço` disparam `click`. `active` vira `aria-current=\"true\"` e `disabled` vira `aria-disabled=\"true\"`.\n- `MsListGroup` é um `<li>` com uma lista aninhada `role=\"group\"`, rotulada pelo cabeçalho via `aria-labelledby`.\n- Com `selectable`, a lista vira `role=\"listbox\"` e os itens `role=\"option\"` com `aria-selected`:\n- `Tab`: entra na opção selecionada (ou na lista, que passa o foco para a primeira opção).\n- `↑` / `↓`: movem o foco entre as opções habilitadas; `Home` / `End` vão para a primeira e a última.\n- `Enter` / `Espaço`: ativam a opção focada.",
+    "en-US": "- `MsList` renders `<ul role=\"list\">` and each item an `<li>`.\n- `interactive` items get `tabindex=\"0\"`; `Enter` and `Space` fire `click`. `active` becomes `aria-current=\"true\"` and `disabled` becomes `aria-disabled=\"true\"`.\n- `MsListGroup` is an `<li>` holding a nested `role=\"group\"` list, labeled by its header through `aria-labelledby`.\n- With `selectable`, the list becomes a `role=\"listbox\"` and items become `role=\"option\"` with `aria-selected`:\n- `Tab`: moves to the selected option (or to the list, which forwards focus to the first option).\n- `↑` / `↓`: move focus between enabled options; `Home` / `End` jump to the first and last.\n- `Enter` / `Space`: activate the focused option.",
+    "es-ES": "- `MsList` renderiza `<ul role=\"list\">` y cada elemento un `<li>`.\n- Los elementos `interactive` reciben `tabindex=\"0\"`; `Enter` y `Espacio` disparan `click`. `active` pasa a `aria-current=\"true\"` y `disabled` a `aria-disabled=\"true\"`.\n- `MsListGroup` es un `<li>` con una lista anidada `role=\"group\"`, etiquetada por su encabezado mediante `aria-labelledby`.\n- Con `selectable`, la lista pasa a `role=\"listbox\"` y los elementos a `role=\"option\"` con `aria-selected`:\n- `Tab`: va a la opción seleccionada (o a la lista, que pasa el foco a la primera opción).\n- `↑` / `↓`: mueven el foco entre las opciones habilitadas; `Home` / `End` saltan a la primera y la última.\n- `Enter` / `Espacio`: activan la opción enfocada."
   }
 }

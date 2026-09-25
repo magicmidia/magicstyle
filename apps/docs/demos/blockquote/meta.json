@@ -9,9 +9,9 @@
       "file": "Basic",
       "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
       "description": {
-        "pt-BR": "`author` e `author-role` compõem o rodapé; o slot `cite` mostra o título da fonte dentro de um `<cite>`.",
-        "en-US": "`author` and `author-role` build the footer; the `cite` slot shows the source title inside a `<cite>`.",
-        "es-ES": "`author` y `author-role` forman el pie; el slot `cite` muestra el título de la fuente dentro de un `<cite>`."
+        "pt-BR": "`author` e `author-role` compõem o rodapé; `cite` mostra o título da fonte num `<cite>` (ou use o slot `cite`) e `cite-url` guarda a URL da fonte no atributo `cite` do `<blockquote>`.",
+        "en-US": "`author` and `author-role` build the footer; `cite` shows the source title in a `<cite>` (or use the `cite` slot) and `cite-url` stores the source URL in the `<blockquote>` `cite` attribute.",
+        "es-ES": "`author` y `author-role` forman el pie; `cite` muestra el título de la fuente en un `<cite>` (o usa el slot `cite`) y `cite-url` guarda la URL de la fuente en el atributo `cite` del `<blockquote>`."
       }
     },
     {
@@ -43,8 +43,8 @@
     }
   ],
   "a11y": {
-    "pt-BR": "- Renderiza um `<blockquote>` nativo com rodapé em `<footer>` e a fonte em `<cite>`.\n- O ícone de aspas é decorativo (`aria-hidden=\"true\"`).\n- A prop `cite` também vira o atributo `cite` do `<blockquote>`, que por especificação deve ser uma URL; para títulos de obras, prefira o slot `cite`.",
-    "en-US": "- Renders a native `<blockquote>` with a `<footer>` and the source in `<cite>`.\n- The quote icon is decorative (`aria-hidden=\"true\"`).\n- The `cite` prop is also set as the `<blockquote>` `cite` attribute, which the spec expects to be a URL; for work titles, prefer the `cite` slot.",
-    "es-ES": "- Renderiza un `<blockquote>` nativo con un `<footer>` y la fuente en `<cite>`.\n- El icono de comillas es decorativo (`aria-hidden=\"true\"`).\n- La prop `cite` también se aplica como atributo `cite` del `<blockquote>`, que según la especificación debe ser una URL; para títulos de obras, prefiere el slot `cite`."
+    "pt-BR": "- Renderiza um `<blockquote>` nativo com rodapé em `<footer>` e a fonte em `<cite>`.\n- O ícone de aspas é decorativo (`aria-hidden=\"true\"`).\n- `cite-url` vira o atributo `cite` do `<blockquote>`; ele não é visível nem anunciado, então mostre a fonte também em `cite`.",
+    "en-US": "- Renders a native `<blockquote>` with a `<footer>` and the source in `<cite>`.\n- The quote icon is decorative (`aria-hidden=\"true\"`).\n- `cite-url` becomes the `<blockquote>` `cite` attribute; it isn't visible or announced, so also show the source in `cite`.",
+    "es-ES": "- Renderiza un `<blockquote>` nativo con un `<footer>` y la fuente en `<cite>`.\n- El icono de comillas es decorativo (`aria-hidden=\"true\"`).\n- `cite-url` se convierte en el atributo `cite` del `<blockquote>`; no es visible ni se anuncia, así que muestra también la fuente en `cite`."
   }
 }

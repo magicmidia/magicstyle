@@ -14,5 +14,7 @@ const t = useDemoStrings(strings);
     <MsChatBubble variant="soft" tone="warning">{{ t.warningMsg }}</MsChatBubble>
     <MsChatBubble variant="soft" tone="danger">{{ t.dangerMsg }}</MsChatBubble>
     <MsChatBubble variant="outline" tone="info">{{ t.infoMsg }}</MsChatBubble>
+    <MsChatBubble variant="soft" tone="secondary">{{ t.secondaryMsg }}</MsChatBubble>
+    <MsChatBubble variant="soft" tone="accent">{{ t.accentMsg }}</MsChatBubble>
   </div>
 </template>

@@ -8,45 +8,29 @@ const current = ref("profile");
 </script>
 
 <template>
-  <nav :aria-label="t.settingsNav" style="display: grid; gap: 16px; width: 100%; max-width: 320px">
-    <MsListGroup :title="t.accountGroup">
-      <MsList size="sm">
-        <MsListItem interactive :active="current === 'profile'">
-          <template #title>
-            <a
-              href="#profile"
-              :aria-current="current === 'profile' ? 'page' : undefined"
-              @click.prevent="current = 'profile'"
-            >
-              {{ t.profile }}
-            </a>
-          </template>
-        </MsListItem>
-        <MsListItem interactive :active="current === 'security'">
-          <template #title>
-            <a
-              href="#security"
-              :aria-current="current === 'security' ? 'page' : undefined"
-              @click.prevent="current = 'security'"
-            >
-              {{ t.security }}
-            </a>
-          </template>
-        </MsListItem>
-      </MsList>
-    </MsListGroup>
-    <MsListGroup :title="t.workspaceGroup">
-      <MsList size="sm">
-        <MsListItem interactive :active="current === 'members'">
-          <template #title>
-            <a
-              href="#members"
-              :aria-current="current === 'members' ? 'page' : undefined"
-              @click.prevent="current = 'members'"
-            >
-              {{ t.members }}
-            </a>
-          </template>
+  <nav :aria-label="t.settingsNav" style="width: 100%; max-width: 320px">
+    <MsList size="sm">
+      <MsListGroup :title="t.accountGroup">
+        <MsListItem
+          interactive
+          :title="t.profile"
+          :active="current === 'profile'"
+          @click="current = 'profile'"
+        />
+        <MsListItem
+          interactive
+          :title="t.security"
+          :active="current === 'security'"
+          @click="current = 'security'"
+        />
+      </MsListGroup>
+      <MsListGroup :title="t.workspaceGroup">
+        <MsListItem
+          interactive
+          :title="t.members"
+          :active="current === 'members'"
+          @click="current = 'members'"
+        >
           <template #trailing>
             <MsBadge variant="soft" size="xs" pill>12</MsBadge>
           </template>
@@ -56,7 +40,7 @@ const current = ref("profile");
             <MsBadge variant="outline" tone="neutral" size="xs">{{ t.enterprise }}</MsBadge>
           </template>
         </MsListItem>
-      </MsList>
-    </MsListGroup>
+      </MsListGroup>
+    </MsList>
   </nav>
 </template>

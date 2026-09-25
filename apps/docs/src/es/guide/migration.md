@@ -35,17 +35,17 @@ Sin `items`, la paleta ahora muestra su estado vacío. Antes mostraba 6 comandos
 <MsCommandPalette v-model="open" :items="commands" />
 ```
 
-### Textos incluidos en portugués
+### Textos incluidos en inglés por defecto
 
-Los textos que salían en inglés en medio de una interfaz en portugués ahora vienen del diccionario de idiomas, en pt-BR por defecto: `MsSelect` (placeholder, búsqueda, limpiar, vacío, crear, quitar opción), `MsDrawer`, `MsNavbar`, `MsSidebar`, `MsSidebarMenu`, `MsTabs` y `MsBreadcrumbs`.
+Los textos que salían en inglés en medio de una interfaz en portugués ahora vienen del diccionario de idiomas: `MsSelect` (placeholder, búsqueda, limpiar, vacío, crear, quitar opción), `MsDrawer`, `MsNavbar`, `MsSidebar`, `MsSidebarMenu`, `MsTabs` y `MsBreadcrumbs`.
 
-Si tu app está en español, activa el diccionario en español:
+El diccionario por defecto ahora es el inglés (`en-US`). Si tu app está en español o en portugués, define el idioma al instalar el plugin:
 
 ```ts
 app.use(createMsI18n({ locale: "es-ES" }));
 ```
 
-Consulta [Idiomas (i18n)](/es/guide/i18n) para ajustar textos concretos.
+Para portugués, usa `createMsI18n({ locale: "pt-BR" })`. Consulta [Idiomas (i18n)](/es/guide/i18n) para ajustar textos concretos.
 
 ### `v-model` en checkbox y switch
 
@@ -61,6 +61,52 @@ Consulta [Idiomas (i18n)](/es/guide/i18n) para ajustar textos concretos.
 ### Icono de cerrar de `MsDrawer`
 
 El botón de cerrar usa un icono SVG en lugar del carácter `✕`. Para usar otro icono, rellena el slot `close`.
+
+## Cambios de marcado y de API
+
+### `MsButton` y `aria-expanded`
+
+`MsButton` ya no renderiza `aria-expanded="false"` en cada botón. El atributo solo aparece cuando pasas `open`, así que los disparadores de menús y popovers deben enlazarlo:
+
+```vue
+<MsButton caret :open="menuAbierto" @click="menuAbierto = !menuAbierto">Opciones</MsButton>
+```
+
+`MsButton` ahora también renderiza enlaces: `href` genera un `<a>`, y `as` acepta una etiqueta o un componente como `RouterLink` o el `Link` de Inertia.
+
+### `MsPagination` sin `update:pageSize`
+
+`MsPagination` ya no declara el evento `update:pageSize`, que nunca se emitía. Sustituye `v-model:page-size` por la prop `page-size` y un selector de tamaño de página propio.
+
+### `MsTag` clicable y eliminable
+
+Una etiqueta `clickable` y `closable` a la vez ya no coloca el botón de cerrar dentro de un `role="button"`. La parte clicable ahora es un `span.ms-tag__action` con `role="button"`, hermano del botón de cerrar, y la raíz no tiene rol. Actualiza los selectores de CSS y las pruebas que apuntaban a `.ms-tag[role="button"]` en esas etiquetas.
+
+### Grupos de `MsList` y `aria-current`
+
+- `MsListGroup` debe ser hijo de `MsList`. Renderiza un `<li role="none">` con un `<ul role="group">` anidado, etiquetado por su encabezado. Mueve dentro de `MsList` los grupos que envolvían una lista entera.
+- `active` en `MsListItem` ahora se expone como `aria-current="true"` (antes era `aria-selected`). Para selección única, usa la nueva prop `selectable`, que convierte la lista en un `role="listbox"` con opciones `aria-selected`.
+
+### `label` en `MsIconButton`
+
+`MsIconButton` recibe el nombre accesible en la nueva prop `label`. La prop `ariaLabel` queda obsoleta; el atributo `aria-label="…"` sigue funcionando.
+
+```vue
+<MsIconButton label="Cerrar"><XIcon /></MsIconButton>
+```
+
+### Clases del app shell
+
+Las clases de la barra lateral y del pie de `MsAppShell` ya no chocan con `MsSidebar` y `MsFooter`. Actualiza tu CSS:
+
+| Antes                    | Ahora                               |
+| :----------------------- | :---------------------------------- |
+| `.ms-sidebar`            | `.ms-app-shell__sidebar`            |
+| `.ms-sidebar--collapsed` | `.ms-app-shell__sidebar--collapsed` |
+| `.ms-sidebar__header`    | `.ms-app-shell__sidebar-header`     |
+| `.ms-sidebar__content`   | `.ms-app-shell__sidebar-content`    |
+| `.ms-sidebar__footer`    | `.ms-app-shell__sidebar-footer`     |
+| `.ms-footer`             | `.ms-app-shell__footer`             |
 
 ## Cambios visuales
 
@@ -98,5 +144,7 @@ Aplican a todos los temas. Cada tema sigue cambiando solo colores, radios, profu
 1. Actualiza `@magic-style/vue` y `@magic-style/css` a la vez. Los dos paquetes se versionan juntos.
 2. Busca `MsBadge`, `MsTabs`, `MsAlert`, `MsTooltip`, `MsSkeleton` y `MsHoverCard` sin la prop de la tabla de arriba y decide si quieres el nuevo valor por defecto.
 3. Pasa `items` a cada `MsCommandPalette`.
-4. Si tu app no está en portugués, instala `createMsI18n` con tu `locale`.
+4. Si tu app no está en inglés, instala `createMsI18n` con tu `locale` (por ejemplo `es-ES`).
 5. Revisa las sobrescrituras de CSS que dependían de `!important` o de tokens antiguos de sombra y foco.
+6. Pasa `:open` a cada `MsButton` que abre un menú o popover y sustituye `v-model:page-size` en `MsPagination`.
+7. Mueve `MsListGroup` dentro de `MsList`, usa `label` en `MsIconButton` y renombra las clases del app shell en tu CSS.

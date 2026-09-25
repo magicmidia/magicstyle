@@ -26,7 +26,11 @@
     "subscribe": "Assinar",
     "filters": "Filtros",
     "getStarted": "Começar agora",
-    "signIn": "Entrar"
+    "signIn": "Entrar",
+    "viewPricing": "Ver preços",
+    "readDocs": "Ler a documentação",
+    "invoices": "Faturas",
+    "billing": "Cobrança"
   },
   "en-US": {
     "primary": "Save",
@@ -55,7 +59,11 @@
     "subscribe": "Subscribe",
     "filters": "Filters",
     "getStarted": "Get started",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "viewPricing": "View pricing",
+    "readDocs": "Read the docs",
+    "invoices": "Invoices",
+    "billing": "Billing"
   },
   "es-ES": {
     "primary": "Guardar",
@@ -84,6 +92,10 @@
     "subscribe": "Suscribirse",
     "filters": "Filtros",
     "getStarted": "Empezar ahora",
-    "signIn": "Iniciar sesión"
+    "signIn": "Iniciar sesión",
+    "viewPricing": "Ver precios",
+    "readDocs": "Leer la documentación",
+    "invoices": "Facturas",
+    "billing": "Facturación"
   }
 }

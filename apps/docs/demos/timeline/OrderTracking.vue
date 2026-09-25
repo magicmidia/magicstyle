@@ -8,16 +8,39 @@ const t = useDemoStrings(strings);
 <template>
   <div style="width: 100%; max-width: 480px">
     <MsTimeline>
-      <MsTimelineItem tone="success" :title="t.orderPlaced" :timestamp="t.orderPlacedAt">
+      <MsTimelineItem
+        tone="success"
+        solid
+        title-tag="p"
+        :title="t.orderPlaced"
+        :timestamp="t.orderPlacedAt"
+      >
         {{ t.orderPlacedDesc }}
       </MsTimelineItem>
-      <MsTimelineItem tone="success" :title="t.paymentApproved" :timestamp="t.paymentApprovedAt">
+      <MsTimelineItem
+        tone="success"
+        solid
+        title-tag="p"
+        :title="t.paymentApproved"
+        :timestamp="t.paymentApprovedAt"
+      >
         {{ t.paymentApprovedDesc }}
       </MsTimelineItem>
-      <MsTimelineItem tone="warning" :title="t.delayed" :timestamp="t.delayedAt">
+      <MsTimelineItem
+        tone="warning"
+        active
+        title-tag="p"
+        :title="t.delayed"
+        :timestamp="t.delayedAt"
+      >
         {{ t.delayedDesc }}
       </MsTimelineItem>
-      <MsTimelineItem tone="neutral" :title="t.outForDelivery" :timestamp="t.expected">
+      <MsTimelineItem
+        tone="neutral"
+        title-tag="p"
+        :title="t.outForDelivery"
+        :timestamp="t.expected"
+      >
         {{ t.outForDeliveryDesc }}
       </MsTimelineItem>
     </MsTimeline>

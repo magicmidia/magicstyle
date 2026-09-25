@@ -60,6 +60,15 @@
       }
     },
     {
+      "file": "AsLink",
+      "title": { "pt-BR": "Como link", "en-US": "As a link", "es-ES": "Como enlace" },
+      "description": {
+        "pt-BR": "Com `href`, o botão vira um `<a>` com visual de botão; `disabled` remove o `href` e aplica `aria-disabled`. Use `as` para trocar o elemento: `as=\"a\"` ou `:as=\"Link\"` com o `Link` do Inertia ou o `RouterLink` do Vue Router (passe `href` ou `to`).",
+        "en-US": "With `href`, the button renders an `<a>` styled as a button; `disabled` drops the `href` and sets `aria-disabled`. Use `as` to swap the element: `as=\"a\"` or `:as=\"Link\"` with Inertia's `Link` or Vue Router's `RouterLink` (pass `href` or `to`).",
+        "es-ES": "Con `href`, el botón se renderiza como un `<a>` con aspecto de botón; `disabled` quita el `href` y aplica `aria-disabled`. Usa `as` para cambiar el elemento: `as=\"a\"` o `:as=\"Link\"` con el `Link` de Inertia o el `RouterLink` de Vue Router (pasa `href` o `to`)."
+      }
+    },
+    {
       "file": "Shapes",
       "title": {
         "pt-BR": "Formato e largura",
@@ -74,8 +83,8 @@
     }
   ],
   "a11y": {
-    "pt-BR": "- Renderiza um `<button>` nativo com `type=\"button\"` por padrão: `Enter` e `Espaço` ativam a ação.\n- `loading` define `aria-busy=\"true\"` e desabilita o botão; `disabled` usa o atributo nativo.\n- Com `open` definido, o botão expõe `aria-expanded` para menus e popovers.\n- Botões só com ícone precisam de nome acessível: prefira o `MsIconButton`, que recebe o nome em `label`.",
-    "en-US": "- Renders a native `<button>` with `type=\"button\"` by default: `Enter` and `Space` trigger the action.\n- `loading` sets `aria-busy=\"true\"` and disables the button; `disabled` uses the native attribute.\n- When `open` is set, the button exposes `aria-expanded` for menus and popovers.\n- Icon-only buttons need an accessible name: prefer `MsIconButton`, which takes the name in `label`.",
-    "es-ES": "- Renderiza un `<button>` nativo con `type=\"button\"` por defecto: `Enter` y `Espacio` ejecutan la acción.\n- `loading` define `aria-busy=\"true\"` y deshabilita el botón; `disabled` usa el atributo nativo.\n- Con `open` definido, el botón expone `aria-expanded` para menús y popovers.\n- Los botones solo con icono necesitan un nombre accesible: prefiere `MsIconButton`, que recibe el nombre en `label`."
+    "pt-BR": "- Renderiza um `<button>` nativo com `type=\"button\"` por padrão: `Enter` e `Espaço` ativam a ação.\n- Com `href` (ou `as`), renderiza um link ou o componente indicado: `Enter` segue o link. Desabilitado, perde o `href`, recebe `aria-disabled=\"true\"` e `tabindex=\"-1\"` e ignora cliques.\n- `loading` define `aria-busy=\"true\"` e desabilita o botão; `disabled` usa o atributo nativo.\n- `aria-expanded` só aparece quando `open` é passado, para menus e popovers.\n- Botões só com ícone precisam de nome acessível: prefira o `MsIconButton`, que recebe o nome em `label`.",
+    "en-US": "- Renders a native `<button>` with `type=\"button\"` by default: `Enter` and `Space` trigger the action.\n- With `href` (or `as`), it renders a link or the given component: `Enter` follows the link. When disabled it loses the `href`, gets `aria-disabled=\"true\"` and `tabindex=\"-1\"`, and ignores clicks.\n- `loading` sets `aria-busy=\"true\"` and disables the button; `disabled` uses the native attribute.\n- `aria-expanded` is only rendered when `open` is passed, for menus and popovers.\n- Icon-only buttons need an accessible name: prefer `MsIconButton`, which takes the name in `label`.",
+    "es-ES": "- Renderiza un `<button>` nativo con `type=\"button\"` por defecto: `Enter` y `Espacio` ejecutan la acción.\n- Con `href` (o `as`), renderiza un enlace o el componente indicado: `Enter` sigue el enlace. Deshabilitado, pierde el `href`, recibe `aria-disabled=\"true\"` y `tabindex=\"-1\"` e ignora los clics.\n- `loading` define `aria-busy=\"true\"` y deshabilita el botón; `disabled` usa el atributo nativo.\n- `aria-expanded` solo aparece cuando se pasa `open`, para menús y popovers.\n- Los botones solo con icono necesitan un nombre accesible: prefiere `MsIconButton`, que recibe el nombre en `label`."
   }
 }

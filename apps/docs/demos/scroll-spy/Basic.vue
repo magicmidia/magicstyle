@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { MsScrollSpy, type MsScrollSpyItem } from "@magic-style/vue";
 import strings from "./strings.json";
 import { useDemoStrings } from "../../.vitepress/theme/composables/useDemoStrings.ts";
 const t = useDemoStrings(strings);
+
+const scrollBox = ref<HTMLElement | null>(null);
 
 const sections = computed(() => [
   { id: "spy-install", label: t.install, body: t.installBody },
@@ -28,9 +30,13 @@ const items = computed<MsScrollSpyItem[]>(() =>
   >
     <aside>
       <p class="ms-u-text-muted ms-u-font-semibold ms-u-mb-2">{{ t.onThisPage }}</p>
-      <MsScrollSpy :items="items" :offset="120" />
+      <MsScrollSpy :items="items" :container="scrollBox" :offset="16" />
     </aside>
-    <article style="display: grid; gap: 32px">
+    <article
+      ref="scrollBox"
+      class="ms-u-border ms-u-rounded-lg"
+      style="display: grid; gap: 32px; height: 320px; overflow-y: auto; padding: 16px 16px 240px"
+    >
       <section v-for="section in sections" :id="section.id" :key="section.id">
         <h4 style="margin: 0 0 8px">{{ section.label }}</h4>
         <p style="margin: 0; line-height: 1.7">{{ section.body }}</p>

@@ -20,7 +20,19 @@
     "workspaceGroup": "Workspace",
     "members": "Membros",
     "auditLog": "Log de auditoria",
-    "enterprise": "Enterprise"
+    "enterprise": "Enterprise",
+    "shippingLabel": "Forma de entrega",
+    "standard": "Padrão",
+    "standardDesc": "Chega em 5 a 7 dias úteis.",
+    "standardPrice": "Grátis",
+    "express": "Expressa",
+    "expressDesc": "Chega em 1 a 2 dias úteis.",
+    "expressPrice": "R$ 24,90",
+    "pickup": "Retirar na loja",
+    "pickupDesc": "Pronto para retirada amanhã, a partir das 10h.",
+    "pickupPrice": "Grátis",
+    "drone": "Entrega por drone",
+    "droneDesc": "Indisponível para o seu CEP."
   },
   "en-US": {
     "feature1": "Automatic backups",
@@ -43,7 +55,19 @@
     "workspaceGroup": "Workspace",
     "members": "Members",
     "auditLog": "Audit log",
-    "enterprise": "Enterprise"
+    "enterprise": "Enterprise",
+    "shippingLabel": "Shipping method",
+    "standard": "Standard",
+    "standardDesc": "Arrives in 5–7 business days.",
+    "standardPrice": "Free",
+    "express": "Express",
+    "expressDesc": "Arrives in 1–2 business days.",
+    "expressPrice": "$12.00",
+    "pickup": "Store pickup",
+    "pickupDesc": "Ready for pickup tomorrow from 10 a.m.",
+    "pickupPrice": "Free",
+    "drone": "Drone delivery",
+    "droneDesc": "Not available for your ZIP code."
   },
   "es-ES": {
     "feature1": "Copias de seguridad automáticas",
@@ -66,6 +90,18 @@
     "workspaceGroup": "Espacio de trabajo",
     "members": "Miembros",
     "auditLog": "Registro de auditoría",
-    "enterprise": "Enterprise"
+    "enterprise": "Enterprise",
+    "shippingLabel": "Método de envío",
+    "standard": "Estándar",
+    "standardDesc": "Llega en 5 a 7 días hábiles.",
+    "standardPrice": "Gratis",
+    "express": "Exprés",
+    "expressDesc": "Llega en 1 a 2 días hábiles.",
+    "expressPrice": "12,00 €",
+    "pickup": "Recoger en tienda",
+    "pickupDesc": "Listo para recoger mañana a partir de las 10 h.",
+    "pickupPrice": "Gratis",
+    "drone": "Entrega con dron",
+    "droneDesc": "No disponible para tu código postal."
   }
 }

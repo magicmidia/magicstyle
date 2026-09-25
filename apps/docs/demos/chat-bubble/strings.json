@@ -18,7 +18,13 @@
     "botName": "Assistente Aurora",
     "botGreeting": "Olá! Sou a assistente virtual da loja. Como posso ajudar com o seu pedido?",
     "placeholder": "Digite sua mensagem",
-    "send": "Enviar"
+    "send": "Enviar",
+    "secondaryMsg": "Marina entrou no grupo pelo link de convite.",
+    "accentMsg": "Novo: agora você pode fixar mensagens importantes.",
+    "typingQuestion": "Rafael, o relatório de vendas de agosto já saiu?",
+    "typingAnswer": "Saiu agora há pouco! Te mandei o PDF no e-mail.",
+    "showReply": "Mostrar resposta",
+    "showTyping": "Mostrar digitando"
   },
   "en-US": {
     "you": "You",
@@ -39,7 +45,13 @@
     "botName": "Aurora Assistant",
     "botGreeting": "Hi! I'm the store's virtual assistant. How can I help with your order?",
     "placeholder": "Type your message",
-    "send": "Send"
+    "send": "Send",
+    "secondaryMsg": "Marina joined the group via the invite link.",
+    "accentMsg": "New: you can now pin important messages.",
+    "typingQuestion": "Rafael, is the August sales report out yet?",
+    "typingAnswer": "It just came out! I sent you the PDF by email.",
+    "showReply": "Show reply",
+    "showTyping": "Show typing"
   },
   "es-ES": {
     "you": "Tú",
@@ -60,6 +72,12 @@
     "botName": "Asistente Aurora",
     "botGreeting": "¡Hola! Soy la asistente virtual de la tienda. ¿Cómo puedo ayudarte con tu pedido?",
     "placeholder": "Escribe tu mensaje",
-    "send": "Enviar"
+    "send": "Enviar",
+    "secondaryMsg": "Marina se unió al grupo con el enlace de invitación.",
+    "accentMsg": "Novedad: ahora puedes fijar los mensajes importantes.",
+    "typingQuestion": "Rafael, ¿ya salió el informe de ventas de agosto?",
+    "typingAnswer": "¡Acaba de salir! Te envié el PDF por correo.",
+    "showReply": "Mostrar respuesta",
+    "showTyping": "Mostrar escribiendo"
   }
 }

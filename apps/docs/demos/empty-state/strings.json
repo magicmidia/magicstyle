@@ -25,7 +25,14 @@
     "storageTitle": "Armazenamento quase cheio",
     "storageDescription": "Você usou 9,4 de 10 GB. Libere espaço ou faça upgrade.",
     "archiveTitle": "Nada arquivado",
-    "archiveDescription": "Conversas arquivadas aparecem aqui."
+    "archiveDescription": "Conversas arquivadas aparecem aqui.",
+    "calendarTitle": "Nenhuma reunião marcada",
+    "calendarDescription": "Sua agenda desta semana está livre.",
+    "schedule": "Agendar reunião",
+    "favoritesTitle": "Sem favoritos ainda",
+    "favoritesDescription": "Marque projetos com a estrela para encontrá-los mais rápido.",
+    "updatesTitle": "Tudo em dia",
+    "updatesDescription": "Não há novidades desde a sua última visita."
   },
   "en-US": {
     "noProjectsTitle": "No projects yet",
@@ -53,7 +60,14 @@
     "storageTitle": "Storage almost full",
     "storageDescription": "You've used 9.4 of 10 GB. Free up space or upgrade.",
     "archiveTitle": "Nothing archived",
-    "archiveDescription": "Archived conversations show up here."
+    "archiveDescription": "Archived conversations show up here.",
+    "calendarTitle": "No meetings scheduled",
+    "calendarDescription": "Your calendar is clear this week.",
+    "schedule": "Schedule a meeting",
+    "favoritesTitle": "No favorites yet",
+    "favoritesDescription": "Star projects to find them faster.",
+    "updatesTitle": "You're all caught up",
+    "updatesDescription": "There's nothing new since your last visit."
   },
   "es-ES": {
     "noProjectsTitle": "Aún no hay proyectos",
@@ -81,6 +95,13 @@
     "storageTitle": "Almacenamiento casi lleno",
     "storageDescription": "Usaste 9,4 de 10 GB. Libera espacio o mejora tu plan.",
     "archiveTitle": "Nada archivado",
-    "archiveDescription": "Las conversaciones archivadas aparecen aquí."
+    "archiveDescription": "Las conversaciones archivadas aparecen aquí.",
+    "calendarTitle": "No hay reuniones programadas",
+    "calendarDescription": "Tu agenda de esta semana está libre.",
+    "schedule": "Programar reunión",
+    "favoritesTitle": "Aún no hay favoritos",
+    "favoritesDescription": "Marca proyectos con la estrella para encontrarlos más rápido.",
+    "updatesTitle": "Todo al día",
+    "updatesDescription": "No hay novedades desde tu última visita."
   }
 }

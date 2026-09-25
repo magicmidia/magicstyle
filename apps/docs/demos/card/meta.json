@@ -46,11 +46,7 @@
     },
     {
       "file": "Variants",
-      "title": {
-        "pt-BR": "Variantes",
-        "en-US": "Variants",
-        "es-ES": "Variantes"
-      },
+      "title": { "pt-BR": "Variantes", "en-US": "Variants", "es-ES": "Variantes" },
       "description": {
         "pt-BR": "`raised` (padrão), `outline`, `flat`, `sunken` e `glass`.",
         "en-US": "`raised` (default), `outline`, `flat`, `sunken` and `glass`.",
@@ -58,12 +54,21 @@
       }
     },
     {
-      "file": "WithCover",
+      "file": "Soft",
       "title": {
-        "pt-BR": "Com capa",
-        "en-US": "With cover",
-        "es-ES": "Con portada"
+        "pt-BR": "Suave com tons",
+        "en-US": "Soft with tones",
+        "es-ES": "Suave con tonos"
       },
+      "description": {
+        "pt-BR": "`variant=\"soft\"` com `tone` pinta a superfície inteira com o tom, bom para avisos e destaques; nas outras variantes o `tone` vira uma borda superior.",
+        "en-US": "`variant=\"soft\"` with a `tone` tints the whole surface, good for notices and highlights; on other variants `tone` becomes a top accent border.",
+        "es-ES": "`variant=\"soft\"` con un `tone` tiñe toda la superficie, útil para avisos y destacados; en las demás variantes `tone` se convierte en un borde superior."
+      }
+    },
+    {
+      "file": "WithCover",
+      "title": { "pt-BR": "Com capa", "en-US": "With cover", "es-ES": "Con portada" },
       "description": {
         "pt-BR": "`cover-src` adiciona uma imagem; `orientation=\"horizontal\"` a coloca ao lado, `hoverable` reforça a sombra no hover e `interactive` torna o card focável e clicável.",
         "en-US": "`cover-src` adds an image; `orientation=\"horizontal\"` places it on the side, `hoverable` deepens the shadow on hover and `interactive` makes the card focusable and clickable.",
@@ -71,12 +76,17 @@
       }
     },
     {
+      "file": "LinkCards",
+      "title": { "pt-BR": "Cards de link", "en-US": "Link cards", "es-ES": "Tarjetas de enlace" },
+      "description": {
+        "pt-BR": "Com `href`, o card inteiro vira um `<a>` com foco e hover; atributos como `target` e `rel` passam direto. Para rotas do app, use `as` com `RouterLink` e `to`.",
+        "en-US": "With `href`, the whole card renders an `<a>` with focus and hover styles; attributes such as `target` and `rel` pass through. For app routes, use `as` with `RouterLink` and `to`.",
+        "es-ES": "Con `href`, toda la tarjeta se renderiza como un `<a>` con estilos de foco y hover; atributos como `target` y `rel` se transmiten. Para rutas de la app, usa `as` con `RouterLink` y `to`."
+      }
+    },
+    {
       "file": "Dividers",
-      "title": {
-        "pt-BR": "Divisores",
-        "en-US": "Dividers",
-        "es-ES": "Divisores"
-      },
+      "title": { "pt-BR": "Divisores", "en-US": "Dividers", "es-ES": "Divisores" },
       "description": {
         "pt-BR": "`header-divider` e `footer-divider` traçam linhas entre cabeçalho, conteúdo e rodapé, úteis em zonas de perigo e cards de plano.",
         "en-US": "`header-divider` and `footer-divider` draw lines between header, content and footer, handy for danger zones and plan cards.",
@@ -85,8 +95,8 @@
     }
   ],
   "a11y": {
-    "pt-BR": "- O card é um `<div>` sem papel próprio; o título não é um heading, então use o slot `title` com `<h2>`–`<h4>` quando o card abrir uma seção.\n- Com `interactive`, o card recebe `tabindex=\"0\"` e emite `click`, mas não reage a `Enter` nem `Espaço`; prefira colocar um link ou botão real dentro dele para ações navegáveis por teclado.\n- A imagem de capa usa `cover-alt` como texto alternativo (vazio por padrão, tratada como decorativa).",
-    "en-US": "- The card is a `<div>` with no role; the title is not a heading, so use the `title` slot with `<h2>`–`<h4>` when the card opens a section.\n- With `interactive`, the card gets `tabindex=\"0\"` and emits `click`, but does not react to `Enter` or `Space`; prefer a real link or button inside it for keyboard-operable actions.\n- The cover image uses `cover-alt` as alt text (empty by default, treated as decorative).",
-    "es-ES": "- La tarjeta es un `<div>` sin rol; el título no es un encabezado, así que usa el slot `title` con `<h2>`–`<h4>` cuando la tarjeta abra una sección.\n- Con `interactive`, la tarjeta recibe `tabindex=\"0\"` y emite `click`, pero no reacciona a `Enter` ni `Espacio`; prefiere un enlace o botón real dentro de ella para acciones operables con teclado.\n- La imagen de portada usa `cover-alt` como texto alternativo (vacío por defecto, tratada como decorativa)."
+    "pt-BR": "- Por padrão o card é um `<div>` sem papel próprio; o título não é um heading, então use o slot `title` com `<h2>`–`<h4>` quando o card abrir uma seção.\n- Com `href`, o card é um `<a>` nativo: `Enter` segue o link e o conteúdo inteiro vira o nome acessível, então mantenha o texto curto e não coloque botões ou links dentro dele.\n- Com `interactive`, o card recebe `tabindex=\"0\"` e emite `click` no clique, em `Enter` e em `Espaço`, mas não tem `role=\"button\"`; para ações de verdade, prefira um botão dentro do card.\n- A imagem de capa usa `cover-alt` como texto alternativo (vazio por padrão, tratada como decorativa).",
+    "en-US": "- By default the card is a `<div>` with no role; the title is not a heading, so use the `title` slot with `<h2>`–`<h4>` when the card opens a section.\n- With `href`, the card is a native `<a>`: `Enter` follows the link and the whole content becomes its accessible name, so keep the text short and don't nest buttons or links inside it.\n- With `interactive`, the card gets `tabindex=\"0\"` and emits `click` on click, `Enter` and `Space`, but has no `role=\"button\"`; for real actions, prefer a button inside the card.\n- The cover image uses `cover-alt` as alt text (empty by default, treated as decorative).",
+    "es-ES": "- Por defecto la tarjeta es un `<div>` sin rol; el título no es un encabezado, así que usa el slot `title` con `<h2>`–`<h4>` cuando la tarjeta abra una sección.\n- Con `href`, la tarjeta es un `<a>` nativo: `Enter` sigue el enlace y todo el contenido se convierte en su nombre accesible, así que mantén el texto corto y no anides botones ni enlaces.\n- Con `interactive`, la tarjeta recibe `tabindex=\"0\"` y emite `click` al hacer clic, con `Enter` y con `Espacio`, pero no tiene `role=\"button\"`; para acciones reales, prefiere un botón dentro de la tarjeta.\n- La imagen de portada usa `cover-alt` como texto alternativo (vacío por defecto, tratada como decorativa)."
   }
 }
