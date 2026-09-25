@@ -99,6 +99,12 @@
 
 .ms-date-picker__days {
   display: grid;
+  gap: 2px;
+}
+
+/* One row per week (role="row"), so the grid is navigable by assistive tech. */
+.ms-date-picker__week {
+  display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 2px;
 }
@@ -119,7 +125,7 @@
     color var(--ms-motion-duration-fast) ease;
 }
 
-.ms-date-picker__day:hover:not(:disabled):not(.ms-date-picker__day--selected) {
+.ms-date-picker__day:hover:not([aria-disabled="true"]):not(.ms-date-picker__day--selected) {
   background-color: var(--ms-color-surface-sunken);
 }
 
@@ -138,7 +144,12 @@
   opacity: 0.4;
 }
 
-.ms-date-picker__day:disabled {
+.ms-date-picker__day:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: 1px;
+}
+
+.ms-date-picker__day[aria-disabled="true"] {
   opacity: 0.25;
   cursor: not-allowed;
 }

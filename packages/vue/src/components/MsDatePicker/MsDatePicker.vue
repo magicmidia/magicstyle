@@ -1,17 +1,21 @@
 <template>
-  <div class="ms-date-picker">
+  <div ref="rootRef" class="ms-date-picker" @focusout="onFocusout">
     <div class="ms-date-picker__input-wrapper">
       <input
+        ref="inputRef"
         type="text"
         class="ms-date-picker__input"
         :value="displayValue"
         :placeholder="props.placeholder || defaultPlaceholder"
         :disabled="props.disabled"
         readonly
+        aria-haspopup="dialog"
+        :aria-expanded="isOpen"
+        :aria-controls="isOpen ? dialogId : undefined"
         @click="toggleDropdown"
         @keydown.space.prevent="toggleDropdown"
         @keydown.enter.prevent="toggleDropdown"
-        @keydown.esc="isOpen = false"
+        @keydown.down.prevent="openDropdown"
       />
       <button
         v-if="clearable && displayValue && !disabled"
@@ -54,7 +58,13 @@
       </span>
     </div>
 
-    <div v-if="isOpen" class="ms-date-picker__dropdown">
+    <div
+      v-if="isOpen"
+      :id="dialogId"
+      class="ms-date-picker__dropdown"
+      role="dialog"
+      :aria-label="dialogLabel"
+    >
       <!-- Calendar View (for date, range, datetime) -->
       <template v-if="mode !== 'time'">
         <div class="ms-date-picker__header">
@@ -66,7 +76,9 @@
           >
             ‹
           </button>
-          <div class="ms-date-picker__title">{{ headerTitle }}</div>
+          <div :id="titleId" class="ms-date-picker__title" aria-live="polite">
+            {{ headerTitle }}
+          </div>
           <button
             type="button"
             class="ms-date-picker__nav-btn"
@@ -77,25 +89,36 @@
           </button>
         </div>
 
-        <div class="ms-date-picker__weekdays">
-          <span v-for="d in ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']" :key="d">
-            {{ d }}
-          </span>
-        </div>
+        <div ref="gridRef" role="grid" :aria-labelledby="titleId" @keydown="onGridKeydown">
+          <div class="ms-date-picker__weekdays" role="row">
+            <span v-for="w in weekdays" :key="w.short" role="columnheader" :abbr="w.long">
+              {{ w.short }}
+            </span>
+          </div>
 
-        <div class="ms-date-picker__days">
-          <button
-            v-for="(dayObj, idx) in daysInMonth"
-            :key="idx"
-            type="button"
-            class="ms-date-picker__day"
-            :class="getDayClasses(dayObj)"
-            :disabled="isDateDisabled(dayObj)"
-            @click="handleDayClick(dayObj)"
-            @mouseenter="handleDayHover(dayObj)"
-          >
-            {{ dayObj.day }}
-          </button>
+          <div class="ms-date-picker__days">
+            <div v-for="(week, w) in weeks" :key="w" class="ms-date-picker__week" role="row">
+              <button
+                v-for="dayObj in week"
+                :key="dayObj.dateString"
+                type="button"
+                role="gridcell"
+                class="ms-date-picker__day"
+                :class="getDayClasses(dayObj)"
+                :data-date="dayObj.dateString"
+                :tabindex="dayObj.dateString === tabbableDate ? 0 : -1"
+                :aria-label="formatLongDate(dayObj)"
+                :aria-selected="isDaySelected(dayObj)"
+                :aria-current="dayObj.dateString === todayStr ? 'date' : undefined"
+                :aria-disabled="isDateDisabled(dayObj) || undefined"
+                @click="handleDayClick(dayObj)"
+                @mouseenter="handleDayHover(dayObj)"
+                @focus="focusedDate = dayObj.dateString"
+              >
+                {{ dayObj.day }}
+              </button>
+            </div>
+          </div>
         </div>
       </template>
 
@@ -160,8 +183,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, nextTick, onMounted, ref, watch } from "vue";
 import type { MsDatePickerProps, MsDatePickerEmits } from "./types.ts";
+import { useMsId } from "../../composables/use-ms-id.ts";
+import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
 
 defineOptions({
   name: "MsDatePicker",
@@ -182,6 +207,14 @@ const props = withDefaults(defineProps<MsDatePickerProps>(), {
 const emit = defineEmits<MsDatePickerEmits>();
 
 const isOpen = ref(false);
+const rootRef = ref<HTMLElement | null>(null);
+const inputRef = ref<HTMLInputElement | null>(null);
+const gridRef = ref<HTMLElement | null>(null);
+const dialogId = useMsId("ms-date-picker-dialog");
+const titleId = useMsId("ms-date-picker-title");
+
+/** Day that owns the roving tabindex inside the grid ("YYYY-MM-DD"). */
+const focusedDate = ref("");
 
 // Range state
 const rangeStart = ref<string>("");
@@ -317,6 +350,22 @@ const headerTitle = computed(() => {
   return `${monthNames[currentMonth.value]} ${currentYear.value}`;
 });
 
+const weekdays = [
+  { short: "Dom", long: "Domingo" },
+  { short: "Seg", long: "Segunda-feira" },
+  { short: "Ter", long: "Terça-feira" },
+  { short: "Qua", long: "Quarta-feira" },
+  { short: "Qui", long: "Quinta-feira" },
+  { short: "Sex", long: "Sexta-feira" },
+  { short: "Sáb", long: "Sábado" },
+];
+
+const dialogLabel = computed(() => {
+  if (props.mode === "range") return "Escolher período";
+  if (props.mode === "time") return "Escolher horário";
+  return "Escolher data";
+});
+
 // Hours are stored as 0-23; the 12h format only changes presentation (1-12 + AM/PM).
 const hourOptions = computed(() =>
   props.format24h
@@ -354,6 +403,7 @@ const minuteOptions = computed(() => {
 });
 
 function prevMonth() {
+  shiftFocusedMonth(-1);
   if (currentMonth.value === 0) {
     currentMonth.value = 11;
     currentYear.value--;
@@ -363,12 +413,21 @@ function prevMonth() {
 }
 
 function nextMonth() {
+  shiftFocusedMonth(1);
   if (currentMonth.value === 11) {
     currentMonth.value = 0;
     currentYear.value++;
   } else {
     currentMonth.value++;
   }
+}
+
+/** Header month buttons carry the focused day along, so the grid keeps a sensible tab stop. */
+function shiftFocusedMonth(months: number) {
+  const date = focusedDate.value ? parseLocalDate(focusedDate.value) : null;
+  if (!date) return;
+  const next = addMonths(date, months);
+  focusedDate.value = formatDateStr(next.getFullYear(), next.getMonth(), next.getDate());
 }
 
 interface DayItem {
@@ -428,13 +487,42 @@ const daysInMonth = computed<DayItem[]>(() => {
   return days;
 });
 
+const weeks = computed<DayItem[][]>(() =>
+  Array.from({ length: 6 }, (_, w) => daysInMonth.value.slice(w * 7, w * 7 + 7)),
+);
+
+/** The roving tab stop: the focused day when visible, else the selected day, today or the 1st. */
+const tabbableDate = computed(() => {
+  const visible = daysInMonth.value.filter((d) => !d.isOtherMonth).map((d) => d.dateString);
+  const candidates = [focusedDate.value, selectedDateStr(), todayStr.value];
+  return candidates.find((c) => c && visible.includes(c)) ?? visible[0] ?? "";
+});
+
+function formatLongDate(dayObj: DayItem): string {
+  return `${dayObj.day} de ${monthNames[dayObj.month]!.toLowerCase()} de ${dayObj.year}`;
+}
+
+function selectedDateStr(): string {
+  if (props.mode === "range") return rangeStart.value;
+  return typeof props.modelValue === "string" ? props.modelValue.slice(0, 10) : "";
+}
+
+function isDaySelected(dayObj: DayItem): boolean {
+  if (props.mode === "range") {
+    if (!rangeStart.value) return false;
+    const end = rangeEnd.value || rangeStart.value;
+    return dayObj.dateString >= rangeStart.value && dayObj.dateString <= end;
+  }
+  return Boolean(props.modelValue) && String(props.modelValue).startsWith(dayObj.dateString);
+}
+
 function formatDateStr(y: number, m: number, d: number): string {
   const mm = String(m + 1).padStart(2, "0");
   const dd = String(d).padStart(2, "0");
   return `${y}-${mm}-${dd}`;
 }
 
-function isDateDisabled(dayObj: DayItem): boolean {
+function isDateDisabled(dayObj: Pick<DayItem, "dateString">): boolean {
   if (props.minDate && dayObj.dateString < props.minDate) return true;
   if (props.maxDate && dayObj.dateString > props.maxDate) return true;
   return false;
@@ -487,19 +575,19 @@ function handleDayClick(dayObj: DayItem) {
       const rangeResult: [string, string] = [rangeStart.value, rangeEnd.value];
       emit("update:modelValue", rangeResult);
       emit("change", rangeResult);
-      isOpen.value = false;
+      close(true);
     }
   } else if (props.mode === "datetime") {
     const timeStr = `${String(selectedHour.value).padStart(2, "0")}:${String(selectedMinute.value).padStart(2, "0")}`;
     const result = `${dayObj.dateString} ${timeStr}`;
     emit("update:modelValue", result);
     emit("change", result);
-    isOpen.value = false;
+    close(true);
   } else {
     // single date
     emit("update:modelValue", dayObj.dateString);
     emit("change", dayObj.dateString);
-    isOpen.value = false;
+    close(true);
   }
 }
 
@@ -528,7 +616,7 @@ function selectPreset(type: "today" | "tomorrow") {
   const str = formatDateStr(target.getFullYear(), target.getMonth(), target.getDate());
   emit("update:modelValue", str);
   emit("change", str);
-  isOpen.value = false;
+  close(true);
 }
 
 function selectRangePreset(days: number) {
@@ -544,7 +632,7 @@ function selectRangePreset(days: number) {
   const result: [string, string] = [startStr, endStr];
   emit("update:modelValue", result);
   emit("change", result);
-  isOpen.value = false;
+  close(true);
 }
 
 function handleClear() {
@@ -555,7 +643,105 @@ function handleClear() {
 }
 
 function toggleDropdown() {
-  if (props.disabled) return;
-  isOpen.value = !isOpen.value;
+  if (isOpen.value) close(false);
+  else openDropdown();
+}
+
+/** Opens the calendar and moves focus to the selected day (or today), per the APG date picker. */
+function openDropdown() {
+  if (props.disabled || isOpen.value) return;
+  isOpen.value = true;
+  if (props.mode === "time") return;
+  const start = selectedDateStr() || todayStr.value;
+  const date = start ? parseLocalDate(start) : null;
+  if (date) {
+    currentYear.value = date.getFullYear();
+    currentMonth.value = date.getMonth();
+  }
+  focusedDate.value = start;
+  focusDay();
+}
+
+function close(restoreFocus: boolean) {
+  if (!isOpen.value) return;
+  isOpen.value = false;
+  hoveredDate.value = "";
+  if (restoreFocus) void nextTick(() => inputRef.value?.focus());
+}
+
+useDismissableLayer({
+  active: isOpen,
+  inside: [rootRef],
+  onDismiss: (reason) => close(reason === "escape"),
+});
+
+/** Keyboard focus leaving the whole picker (Tab past the last control) closes it. */
+function onFocusout(event: FocusEvent) {
+  const next = event.relatedTarget;
+  if (isOpen.value && next instanceof Node && !rootRef.value?.contains(next)) close(false);
+}
+
+function focusDay() {
+  void nextTick(() => {
+    gridRef.value?.querySelector<HTMLElement>(`[data-date="${tabbableDate.value}"]`)?.focus();
+  });
+}
+
+/** Moves the focused day, switching the visible month when the target falls outside it. */
+function moveFocus(to: Date) {
+  const str = formatDateStr(to.getFullYear(), to.getMonth(), to.getDate());
+  currentYear.value = to.getFullYear();
+  currentMonth.value = to.getMonth();
+  focusedDate.value = str;
+  if (props.mode === "range" && rangeStart.value && !rangeEnd.value) hoveredDate.value = str;
+  focusDay();
+}
+
+function addMonths(date: Date, months: number): Date {
+  const target = new Date(date.getFullYear(), date.getMonth() + months, 1);
+  const lastDay = new Date(target.getFullYear(), target.getMonth() + 1, 0).getDate();
+  target.setDate(Math.min(date.getDate(), lastDay));
+  return target;
+}
+
+function onGridKeydown(event: KeyboardEvent) {
+  const target = event.target as HTMLElement;
+  const current = target.dataset.date ? parseLocalDate(target.dataset.date) : null;
+  if (!current) return;
+  const rtl = getComputedStyle(target).direction === "rtl";
+  const day = (offset: number) =>
+    new Date(current.getFullYear(), current.getMonth(), current.getDate() + offset);
+
+  let next: Date;
+  switch (event.key) {
+    case "ArrowLeft":
+      next = day(rtl ? 1 : -1);
+      break;
+    case "ArrowRight":
+      next = day(rtl ? -1 : 1);
+      break;
+    case "ArrowUp":
+      next = day(-7);
+      break;
+    case "ArrowDown":
+      next = day(7);
+      break;
+    case "Home":
+      next = day(-current.getDay());
+      break;
+    case "End":
+      next = day(6 - current.getDay());
+      break;
+    case "PageUp":
+      next = addMonths(current, event.shiftKey ? -12 : -1);
+      break;
+    case "PageDown":
+      next = addMonths(current, event.shiftKey ? 12 : 1);
+      break;
+    default:
+      return;
+  }
+  event.preventDefault();
+  moveFocus(next);
 }
 </script>
