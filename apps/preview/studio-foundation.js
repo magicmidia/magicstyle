@@ -684,10 +684,14 @@ export function useFoundationStudio() {
       window.document.documentElement.dataset.msColorMode = selectedMode.value;
       window.document.documentElement.dataset.msDensity = selectedDensity.value;
       window.document.documentElement.dataset.msRadius = selectedRadius.value;
-      window.localStorage.setItem("ms-theme", selectedTheme.value);
-      window.localStorage.setItem("ms-color-mode", selectedMode.value);
-      window.localStorage.setItem("ms-density", selectedDensity.value);
-      window.localStorage.setItem("ms-radius", selectedRadius.value);
+      try {
+        window.localStorage.setItem("ms-theme", selectedTheme.value);
+        window.localStorage.setItem("ms-color-mode", selectedMode.value);
+        window.localStorage.setItem("ms-density", selectedDensity.value);
+        window.localStorage.setItem("ms-radius", selectedRadius.value);
+      } catch {
+        /* storage unavailable: preferences just won't persist */
+      }
     }
   };
 

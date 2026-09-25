@@ -721,3 +721,70 @@ export type { MsAspectRatioProps, MsAspectRatioPreset } from "./components/MsAsp
 
 export { default as MsHoverCard } from "./components/MsHoverCard/MsHoverCard.vue";
 export type { MsHoverCardProps, MsHoverCardPlacement } from "./components/MsHoverCard/types.ts";
+
+// Additional public types (variants, sizes, tones, value shapes).
+export type { MsAlertSize, MsAlertAlign, MsAlertIconStyle } from "./components/MsAlert/types.ts";
+export type { MsBadgePlacement } from "./components/MsBadge/types.ts";
+export type {
+  MsBreadcrumbsVariant,
+  MsBreadcrumbsSize,
+  MsBreadcrumbsSeparatorType,
+} from "./components/MsBreadcrumbs/types.ts";
+export type { MsButtonShape } from "./components/MsButton/types.ts";
+export type { MsCardOrientation } from "./components/MsCard/types.ts";
+export type { MsCheckboxSize, MsCheckboxTone } from "./components/MsCheckbox/types.ts";
+export type {
+  MsDatePickerMode,
+  MsDatePickerRangeValue,
+  MsDatePickerModelValue,
+} from "./components/MsDatePicker/types.ts";
+export type { MsEmptyStateVariant, MsEmptyStateIconTone } from "./components/MsEmptyState/types.ts";
+export type { MsGridGap } from "./components/MsGrid/types.ts";
+export type { MsIconButtonShape } from "./components/MsIconButton/types.ts";
+export type { MsInputVariant } from "./components/MsInput/types.ts";
+export type {
+  MsNativeSelectVariant,
+  MsNativeSelectTone,
+} from "./components/MsNativeSelect/types.ts";
+export type { MsProgressShape } from "./components/MsProgress/types.ts";
+export type { MsSearchFieldVariant } from "./components/MsSearchField/types.ts";
+export type {
+  MsSelectTone,
+  MsSelectVariant,
+  MsSelectShape,
+  MsSelectPlacement,
+} from "./components/MsSelect/types.ts";
+export type {
+  MsSeparatorTone,
+  MsSeparatorThickness,
+  MsSeparatorSpacing,
+  MsSeparatorAlign,
+} from "./components/MsSeparator/types.ts";
+export type { MsSkeletonTone, MsSkeletonSpeed } from "./components/MsSkeleton/types.ts";
+export type {
+  MsSwitchSize,
+  MsSwitchTone,
+  MsSwitchLabelPlacement,
+} from "./components/MsSwitch/types.ts";
+export type { MsTextareaResize, MsTextareaEmits } from "./components/MsTextarea/types.ts";
+export type { MsToggleGroupKey } from "./components/MsToggleGroup/types.ts";
+export { defaultCriteria as msPasswordDefaultCriteria } from "./components/MsPasswordInput/types.ts";
+
+// Building blocks for custom components (same primitives the library uses).
+export {
+  FIELD_CONTEXT_KEY,
+  useFieldContext,
+  useFieldControl,
+  type MsFieldContext,
+  type MsFieldControl,
+} from "./composables/use-field-context.ts";
+export { THEME_CONTEXT_KEY } from "./composables/use-theme-context.ts";
+export { useFocusTrap, type FocusTrapOptions } from "./composables/use-focus-trap.ts";
+export {
+  useDismissableLayer,
+  type DismissReason,
+  type DismissableLayerOptions,
+} from "./composables/use-dismissable-layer.ts";
+export { useScrollLock } from "./composables/use-scroll-lock.ts";
+export { safeHref, safeRel } from "./composables/safe-url.ts";
+export { sanitizeSvg } from "./composables/sanitize-svg.ts";

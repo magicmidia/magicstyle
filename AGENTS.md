@@ -1,6 +1,6 @@
 # Magic-Style — AGENTS.md (repo `magic-style`)
 
-Configuração de IA compartilhada vive na raiz do workspace (`C:\Repositórios\MagicStyle\AGENTS.md` + `.opencode/`). Este arquivo cobre apenas o repo fonte.
+Configuração de IA compartilhada pode viver no diretório pai do workspace local (`AGENTS.md` + `.opencode/`, fora deste repositório). Este arquivo cobre apenas o repo fonte.
 
 ## Baseline
 
@@ -8,8 +8,8 @@ Normativo: **Architecture Baseline 1.2** em `docs/baseline/Magic-Style-Architect
 
 ## Comandos
 
-- `pnpm install` — frozen lockfile, engine-strict Node 24
-- `pnpm validate` — health gate completo: format/lint/architecture/type/unit/build (doc 25 §4)
+- `pnpm install` — frozen lockfile, engine-strict Node ≥24
+- `pnpm validate` — health gate completo: format/lint (ESLint + Stylelint)/architecture/docs stats/type/unit/build (doc 25 §4)
 - `pnpm build`, `pnpm test`, `pnpm lint`, `pnpm typecheck`, `pnpm architecture`
 - `pnpm changeset` — toda mudança em package público exige changeset
 

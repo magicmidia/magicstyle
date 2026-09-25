@@ -6,9 +6,9 @@
 
 [![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?style=flat-square)](https://github.com/magicmidia/magicstyle)
 [![Architecture Baseline](https://img.shields.io/badge/baseline-1.2%20normativa-purple.svg?style=flat-square)](docs/baseline/Magic-Style-Architecture-Baseline-1.2/)
-[![Components](https://img.shields.io/badge/components-82%20prontos-emerald.svg?style=flat-square)](apps/preview/components.html)
+[![Components](https://img.shields.io/badge/components-95%20prontos-emerald.svg?style=flat-square)](apps/preview/components.html)
 [![Themes](https://img.shields.io/badge/themes-10%20autênticos-indigo.svg?style=flat-square)](#-10-temas-autênticos-além-da-cor)
-[![Design Tokens](https://img.shields.io/badge/tokens-277%20DTCG-cyan.svg?style=flat-square)](packages/internal/tokens/)
+[![Design Tokens](https://img.shields.io/badge/tokens-285%20DTCG-cyan.svg?style=flat-square)](packages/internal/tokens/)
 [![Accessibility](https://img.shields.io/badge/a11y-WCAG%202.2%20AA-green.svg?style=flat-square)](docs/baseline/Magic-Style-Architecture-Baseline-1.2/11-Accessibility-Specification.md)
 [![TypeScript](https://img.shields.io/badge/typescript-strict%205.9-blue.svg?style=flat-square)](tsconfig.base.json)
 [![Node](https://img.shields.io/badge/node-%3E%3D24-brightgreen.svg?style=flat-square)](package.json)
@@ -16,7 +16,7 @@
 
 <br />
 
-[**Landing Page Oficial**](http://localhost:4173/) • [**Enterprise Component Studio**](http://localhost:4173/components.html) • [**Changelog & Releases**](CHANGELOG.md) • [**Guia de Theming & Dials**](http://localhost:4173/components.html#theming) • [**Architecture Baseline 1.2**](docs/baseline/Magic-Style-Architecture-Baseline-1.2/)
+[**Landing Page & Component Studio**](#️-comandos-de-desenvolvimento) (local: `pnpm preview`) • [**Changelog & Releases**](CHANGELOG.md) • [**Theming & Dials**](#4-cascade-layers-e-modo-de-cor-do-sistema) • [**Architecture Baseline 1.2**](docs/baseline/Magic-Style-Architecture-Baseline-1.2/)
 
 </div>
 
@@ -30,9 +30,9 @@ Diferente de bibliotecas convencionais que limitam temas a simples substituiçõ
 
 ### Por que Magic-Style?
 
-- 🧩 **82 Componentes Enterprise:** Do atômico (`MsButton`, `MsBadge`) a subsistemas complexos (`MsSelect` unificado, `MsAppShell`, `MsTable`, `MsSplitPane`, `MsFormWizard`, `MsCommandPalette`).
+- 🧩 **95 Componentes Enterprise:** Do atômico (`MsButton`, `MsBadge`) a subsistemas complexos (`MsSelect` unificado, `MsAppShell`, `MsTable`, `MsSplitPane`, `MsFormWizard`, `MsCommandPalette`).
 - 🎨 **10 Temas Autênticos Curados:** _Shadcn_, _Bootstrap 5_, _MaterialUI (M3)_, _GitHub Primer_, _Linear_, _Vercel Geist_, _Supabase Studio_, _Nord Arctic_, _Graphite_ e _Magic_.
-- 📐 **277 Design Tokens DTCG:** Conforme a especificação W3C Design Tokens Community Group, calculados no modelo perceptual **OKLCH**.
+- 📐 **285 Design Tokens DTCG:** Conforme a especificação W3C Design Tokens Community Group, calculados no modelo perceptual **OKLCH**.
 - ♿ **Acessibilidade Inegociável:** Totalmente navegável por teclado, foco visível de alto contraste, semântica ARIA e suporte nativo bidirecional LTR / RTL (WCAG 2.2 AA).
 - ⚡ **Zero Bloat de Runtime:** Camada visual pura em `@magic-style/css` que funciona com ou sem Vue; componentes Vue SFC com tipagem integral em TypeScript strict.
 - 🛡️ **Governança Estrita ("No Fake Green"):** Verificação arquitetural automatizada de arestas proibidas, testes unitários rigorosos e versionamento coordenado via Changesets.
@@ -155,31 +155,35 @@ Para seguir a preferência do sistema operacional sem JavaScript (SSR e primeiro
 
 ---
 
-## 🧩 Catálogo dos 82 Componentes
+## 🧩 Catálogo dos 95 Componentes
 
-Os 82 componentes cobrem todo o ciclo de vida de aplicações corporativas de grande porte:
+Os 95 componentes (135 exports Vue, contando subcomponentes como `MsTab` e `MsTableRow`) cobrem todo o ciclo de vida de aplicações corporativas:
 
 ```
-├── Controles de Formulário (14)
-│   ├── MsInput · MsSelect (Unified Engine) · MsNativeSelect · MsCheckbox · MsRadio · MsRadioGroup
-│   ├── MsSwitch · MsTextarea · MsSearchField · MsPinInput · MsPasswordInput · MsMaskedInput
-│   └── MsFileInput · MsColorPicker · MsDatePicker
+├── Formulários (20)
+│   ├── MsField · MsLabel · MsInput · MsTextarea · MsSelect · MsNativeSelect · MsCheckbox
+│   ├── MsRadio · MsRadioGroup · MsSwitch · MsRange · MsSearchField · MsPinInput
+│   └── MsPasswordInput · MsMaskedInput · MsFileInput · MsColorPicker · MsDatePicker · MsEmojiPicker · MsIconPicker
 ├── Ações & Gatilhos (8)
 │   ├── MsButton · MsButtonGroup · MsIconButton · MsDropdownButton · MsMenu
 │   └── MsFab · MsSegmentedControl · MsToggleGroup
-├── Layout, Shell & Navegação (12)
-│   ├── MsAppShell · MsPage · MsContainer · MsNavbar · MsSidebar · MsSidebarMenu
-│   └── MsFooter · MsBreadcrumbs · MsPagination · MsTabs · MsStepper · MsDock · MsScrollSpy
-├── Feedback, Diálogos & Overlays (10)
-│   ├── MsAlert · MsBanner · MsToast · MsDialog · MsConfirmDialog
-│   └── MsDrawer · MsPopover · MsTooltip · MsStatus · MsContextMenu
-├── Apresentação de Dados & Conteúdo (14)
-│   ├── MsCard · MsTable · MsBadge · MsTag · MsAvatar · MsTimeline · MsTree
-│   └── MsList · MsProgress · MsProgressRadial · MsSkeleton · MsSpinner · MsAnimatedNumber · MsEmptyState
-└── Avançados & Mídia Especializada (12)
-    ├── MsCommandPalette · MsSplitPane · MsFormWizard · MsCode · MsCodeBlock
-    └── MsDropzone · MsLightbox · MsCarousel · MsChatBubble · MsChoicebox · MsGlimpse · MsMarquee · MsRating
+├── Layout, Shell & Navegação (17)
+│   ├── MsAppShell · MsPage · MsContainer · MsGrid · MsAspectRatio · MsSeparator · MsNavbar · MsSidebar
+│   └── MsSidebarMenu · MsFooter · MsBreadcrumbs · MsPagination · MsTabs · MsStepper · MsDock · MsScrollSpy · MsLink
+├── Feedback, Diálogos & Overlays (11)
+│   ├── MsAlert · MsBanner · MsToast · MsStatus · MsDialog · MsConfirmDialog
+│   └── MsDrawer · MsPopover · MsTooltip · MsHoverCard · MsContextMenu
+├── Dados & Conteúdo (19)
+│   ├── MsCard · MsTable · MsList · MsTree · MsTimeline · MsBadge · MsTag · MsAvatar · MsAccordion · MsCollapse
+│   └── MsProgress · MsProgressRadial · MsSkeleton · MsSpinner · MsAnimatedNumber · MsEmptyState · MsBlockquote · MsKbd · MsTruncate
+├── Avançados & Mídia (18)
+│   ├── MsCommandPalette · MsSplitPane · MsFormWizard · MsCode · MsCodeBlock · MsSnippet · MsDropzone · MsLightbox · MsCarousel
+│   └── MsChatBubble · MsChoicebox · MsGlimpse · MsMarquee · MsRating · MsCanvas · MsParallax · MsPointer · MsScrollbar
+└── Theming (2)
+    └── MsProvider · MsThemeScope
 ```
+
+Os números acima são verificados por `node scripts/stats.mjs --check` no `pnpm validate`.
 
 ---
 
@@ -212,16 +216,17 @@ scripts/
 
 ## 🛠️ Comandos de Desenvolvimento
 
-| Comando             | Descrição                                                                       |
-| :------------------ | :------------------------------------------------------------------------------ |
-| `pnpm install`      | Instalação com frozen lockfile e engine-strict (Node ≥24).                      |
-| `pnpm validate`     | **Health gate completo:** Prettier, ESLint, arquitetura, types, testes e build. |
-| `pnpm dev:preview`  | Inicia o servidor local de Landing Page e Studio em `http://localhost:4173`.    |
-| `pnpm test`         | Executa todos os testes unitários via Vitest nos 4 pacotes.                     |
-| `pnpm typecheck`    | Checagem de tipagem estrita via TypeScript em todo o monorepo.                  |
-| `pnpm lint`         | Checagem de formatação e regras via ESLint 10.                                  |
-| `pnpm architecture` | Valida se há importações proibidas entre as camadas do monorepo.                |
-| `pnpm changeset`    | Cria declaração semver para mudanças em pacotes públicos.                       |
+| Comando             | Descrição                                                                                        |
+| :------------------ | :----------------------------------------------------------------------------------------------- |
+| `pnpm install`      | Instalação com frozen lockfile e engine-strict (Node ≥24).                                       |
+| `pnpm validate`     | **Health gate completo:** Prettier, ESLint, Stylelint, arquitetura, docs, types, testes e build. |
+| `pnpm dev:preview`  | Inicia o servidor local de Landing Page e Studio em `http://localhost:4173`.                     |
+| `pnpm test`         | Executa todos os testes unitários via Vitest nos 4 pacotes.                                      |
+| `pnpm typecheck`    | Checagem de tipagem estrita via TypeScript em todo o monorepo.                                   |
+| `pnpm lint`         | ESLint 10 (TypeScript, JavaScript e SFCs `.vue`).                                                |
+| `pnpm lint:css`     | Stylelint com regras de correção para o CSS.                                                     |
+| `pnpm architecture` | Valida se há importações proibidas entre as camadas do monorepo.                                 |
+| `pnpm changeset`    | Cria declaração semver para mudanças em pacotes públicos.                                        |
 
 ---
 

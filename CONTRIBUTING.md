@@ -43,11 +43,11 @@ magic-style/
 ├── apps/
 │   └── preview/           # Interactive documentation, component studio & changelog
 ├── packages/
-│   ├── vue/               # @magic-style/vue (82 Accessible Vue 3 components)
+│   ├── vue/               # @magic-style/vue (95 accessible Vue 3 components)
 │   ├── css/               # @magic-style/css (Modular CSS, reset, utility tokens)
 │   └── internal/
-│       ├── tokens/        # @magic-style/tokens (DTCG design tokens)
-│       └── themes/        # @magic-style/themes (10 authentic curated themes)
+│       ├── tokens/        # @magic-style-internal/tokens (private: DTCG design tokens)
+│       └── themes/        # @magic-style-internal/themes (private: 10 curated themes)
 ├── docs/
 │   └── baseline/          # Architecture Baseline 1.2 canonical specs
 ├── scripts/

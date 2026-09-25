@@ -1,6 +1,23 @@
 /* Magic-Style preview: comprehensive theme/dial controls, viewport simulator & LiveReload. */
 (() => {
   const root = document.documentElement;
+  // Storage can be unavailable (private mode, blocked site data): never let it break the page.
+  const store = {
+    get(key) {
+      try {
+        return localStorage.getItem(key);
+      } catch {
+        return null;
+      }
+    },
+    set(key, value) {
+      try {
+        localStorage.setItem(key, value);
+      } catch {
+        /* preference just won't persist */
+      }
+    },
+  };
   const KEYS = {
     mode: "ms-color-mode",
     contrast: "ms-contrast",
@@ -12,15 +29,13 @@
   };
 
   function applySettings() {
-    const mode =
-      localStorage.getItem(KEYS.mode) || root.getAttribute("data-ms-color-mode") || "dark";
-    const contrast = localStorage.getItem(KEYS.contrast) || "default";
-    const theme = localStorage.getItem(KEYS.theme) || "magic";
-    const density = localStorage.getItem(KEYS.density) || "comfortable";
-    const radius = localStorage.getItem(KEYS.radius) || "medium";
-    const viewport = localStorage.getItem(KEYS.viewport) || "100%";
-    const motion =
-      localStorage.getItem(KEYS.motion) || root.getAttribute("data-ms-motion") || "default";
+    const mode = store.get(KEYS.mode) || root.getAttribute("data-ms-color-mode") || "dark";
+    const contrast = store.get(KEYS.contrast) || "default";
+    const theme = store.get(KEYS.theme) || "magic";
+    const density = store.get(KEYS.density) || "comfortable";
+    const radius = store.get(KEYS.radius) || "medium";
+    const viewport = store.get(KEYS.viewport) || "100%";
+    const motion = store.get(KEYS.motion) || root.getAttribute("data-ms-motion") || "default";
 
     root.dataset.msColorMode = mode;
     if (contrast === "high") {
@@ -94,7 +109,7 @@
     document.querySelectorAll("[data-mode-toggle]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const next = root.dataset.msColorMode === "dark" ? "light" : "dark";
-        localStorage.setItem(KEYS.mode, next);
+        store.set(KEYS.mode, next);
         applySettings();
       });
     });
@@ -102,7 +117,7 @@
     // Theme selector
     document.querySelectorAll("[data-theme-select]").forEach((sel) => {
       sel.addEventListener("change", (e) => {
-        localStorage.setItem(KEYS.theme, e.target.value);
+        store.set(KEYS.theme, e.target.value);
         applySettings();
       });
     });
@@ -110,7 +125,7 @@
     // Contrast selector
     document.querySelectorAll("[data-contrast-select]").forEach((sel) => {
       sel.addEventListener("change", (e) => {
-        localStorage.setItem(KEYS.contrast, e.target.value);
+        store.set(KEYS.contrast, e.target.value);
         applySettings();
       });
     });
@@ -118,7 +133,7 @@
     // Density selector
     document.querySelectorAll("[data-density-select]").forEach((sel) => {
       sel.addEventListener("change", (e) => {
-        localStorage.setItem(KEYS.density, e.target.value);
+        store.set(KEYS.density, e.target.value);
         applySettings();
       });
     });
@@ -126,7 +141,7 @@
     // Radius selector
     document.querySelectorAll("[data-radius-select]").forEach((sel) => {
       sel.addEventListener("change", (e) => {
-        localStorage.setItem(KEYS.radius, e.target.value);
+        store.set(KEYS.radius, e.target.value);
         applySettings();
       });
     });
@@ -134,7 +149,7 @@
     // Viewport simulator
     document.querySelectorAll("[data-viewport-select]").forEach((sel) => {
       sel.addEventListener("change", (e) => {
-        localStorage.setItem(KEYS.viewport, e.target.value);
+        store.set(KEYS.viewport, e.target.value);
         applySettings();
       });
     });
@@ -142,7 +157,7 @@
     // Motion controls (Fluid vs Reduced)
     document.querySelectorAll("[data-motion-select]").forEach((sel) => {
       sel.addEventListener("change", (e) => {
-        localStorage.setItem(KEYS.motion, e.target.value);
+        store.set(KEYS.motion, e.target.value);
         applySettings();
       });
     });
@@ -151,7 +166,7 @@
       btn.addEventListener("click", () => {
         const current = root.dataset.msMotion === "reduced" ? "reduced" : "default";
         const next = current === "reduced" ? "default" : "reduced";
-        localStorage.setItem(KEYS.motion, next);
+        store.set(KEYS.motion, next);
         applySettings();
       });
     });
@@ -178,8 +193,9 @@
     });
   });
 
-  // LiveReload via Server-Sent Events
-  if (window.EventSource) {
+  // LiveReload via Server-Sent Events (one connection per page, even if loaded twice)
+  if (window.EventSource && !window.__msPreviewLiveReload) {
+    window.__msPreviewLiveReload = true;
     try {
       const sse = new EventSource("/events");
       sse.onmessage = (e) => {

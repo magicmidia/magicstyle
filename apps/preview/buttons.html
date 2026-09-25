@@ -1089,13 +1089,5 @@
     </main>
 
     <script src="/theme-toggle.js"></script>
-    <script>
-      const evtSource = new EventSource("/events");
-      evtSource.onmessage = (event) => {
-        if (event.data === "reload") {
-          window.location.reload();
-        }
-      };
-    </script>
   </body>
 </html>

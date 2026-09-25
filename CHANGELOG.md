@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Enterprise Baseline 1.2 Initial Release
 
-This landmark release establishes the complete foundation and component platform for Magic-Style, compliant with Architecture Baseline 1.2 across `@magic-style/vue`, `@magic-style/css`, `@magic-style/tokens`, and `@magic-style/themes`.
+This landmark release establishes the complete foundation and component platform for Magic-Style, compliant with Architecture Baseline 1.2 across `@magic-style/vue` and `@magic-style/css`, built on the private `@magic-style-internal/tokens` and `@magic-style-internal/themes` foundations.
 
 #### ✨ Key Highlights
 

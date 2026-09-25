@@ -15,14 +15,20 @@
     "dist"
   ],
   "scripts": {
-    "build": "node scripts/clean.mjs && vite build",
+    "build": "node scripts/clean.mjs && vite build && node scripts/check-dts.mjs",
     "typecheck": "vue-tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "lint": "eslint ."
   },
   "sideEffects": false,
   "peerDependencies": {
+    "@magic-style/css": "workspace:^",
     "vue": "^3.5.0"
+  },
+  "peerDependenciesMeta": {
+    "@magic-style/css": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@types/node": "^26.3.0",

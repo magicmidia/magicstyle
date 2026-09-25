@@ -12,6 +12,16 @@ export default defineConfig(({ mode }) => ({
             tsconfigPath: "./tsconfig.json",
             exclude: ["tests", "scripts", "vite.config.ts"],
             include: ["src/**/*.ts", "src/**/*.vue"],
+            // Rewrite relative specifiers to .js so every moduleResolution (bundler,
+            // node16, nodenext) maps them to the emitted .d.ts files.
+            beforeWriteFile: (filePath, content) => ({
+              filePath,
+              content: content.replace(
+                /(["'])(\.{1,2}\/[^"']+?)(\.(?:ts|vue|js))?\1/g,
+                (_match, quote: string, path: string, ext: string | undefined) =>
+                  `${quote}${path}${ext === ".vue" ? ".vue" : ""}.js${quote}`,
+              ),
+            }),
           }),
         ]),
   ],

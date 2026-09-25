@@ -858,7 +858,11 @@ import "@magic-style/css";
       const currentMode = root.getAttribute("data-ms-color-mode") || "dark";
       const nextMode = currentMode === "dark" ? "light" : "dark";
       root.setAttribute("data-ms-color-mode", nextMode);
-      localStorage.setItem("ms-color-mode", nextMode);
+      try {
+        localStorage.setItem("ms-color-mode", nextMode);
+      } catch {
+        /* storage unavailable: preference just won't persist */
+      }
     });
   }
 
