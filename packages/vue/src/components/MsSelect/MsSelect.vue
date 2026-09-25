@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
-import { useFieldContext } from "../../composables/use-field-context.ts";
-import { useMsId } from "../../composables/use-ms-id.ts";
+import { useFieldControl } from "../../composables/use-field-context.ts";
 import type {
   MsSelectEmits,
   MsSelectGroup,
@@ -53,12 +52,11 @@ const searchInputRef = ref<HTMLInputElement | null>(null);
 const triggerRef = ref<HTMLElement | null>(null);
 const dropdownRef = ref<HTMLElement | null>(null);
 
-const field = useFieldContext();
-const baseId = useMsId("ms-select");
-const resolvedId = computed(() => field?.controlId ?? baseId);
+const fieldControl = useFieldControl("ms-select");
+const resolvedId = computed(() => fieldControl.id);
 const listboxId = computed(() => `${resolvedId.value}-listbox`);
-const describedBy = computed(() => field?.describedBy());
-const isInvalid = computed(() => props.invalid === true || field?.invalid() === true);
+const describedBy = computed(() => fieldControl.describedBy.value);
+const isInvalid = computed(() => props.invalid === true || fieldControl.fieldInvalid.value);
 
 const effectiveShape = computed(() => (props.pill ? "pill" : props.shape || "rounded"));
 
@@ -222,8 +220,13 @@ function isSelected(opt: MsSelectOption): boolean {
   return selectedValues.value.includes(opt.value);
 }
 
+/** Deterministic, collision-free id: "a b" and "a_b" (or 1 and "1") map to different ids. */
 function getOptionId(val: string | number): string {
-  return `${resolvedId.value}-opt-${String(val).replace(/[^a-zA-Z0-9-_]/g, "_")}`;
+  const encoded = String(val).replace(
+    /[^a-zA-Z0-9-]/g,
+    (char) => `_${char.charCodeAt(0).toString(16)}`,
+  );
+  return `${resolvedId.value}-opt-${typeof val === "number" ? "n" : "s"}${encoded}`;
 }
 
 const activeOptionId = computed(() => {
@@ -278,8 +281,10 @@ function handleWindowUpdate(): void {
 
 function setOpen(open: boolean): void {
   if (props.disabled) return;
-  if (internalOpen.value !== open) {
-    internalOpen.value = open;
+  // Compare with the effective state so a controlled parent always gets the request.
+  const changed = isDropdownOpen.value !== open;
+  internalOpen.value = open;
+  if (changed) {
     emit("update:open", open);
     emit("open-change", open);
   }
@@ -367,6 +372,12 @@ function onSearchInput(event: Event): void {
 function onTriggerKeyDown(event: KeyboardEvent): void {
   if (props.disabled) return;
 
+  // Select-only combobox: while open, focus stays on the trigger, so it drives the listbox.
+  if (isDropdownOpen.value && !props.searchable && event.key !== "Backspace") {
+    onDropdownKeyDown(event);
+    return;
+  }
+
   switch (event.key) {
     case "ArrowDown":
     case "ArrowUp":
@@ -419,6 +430,19 @@ function onDropdownKeyDown(event: KeyboardEvent): void {
       highlightedIndex.value = prev;
       break;
     }
+    case "Home":
+    case "End": {
+      event.preventDefault();
+      const enabled = options.flatMap((o, i) => (o.disabled ? [] : [i]));
+      if (enabled.length > 0) {
+        highlightedIndex.value = event.key === "Home" ? enabled[0]! : enabled[enabled.length - 1]!;
+      }
+      break;
+    }
+    case " ":
+      // Space types into the search box; in a select-only combobox it selects like Enter.
+      if (props.searchable) break;
+    // falls through
     case "Enter": {
       event.preventDefault();
       if (highlightedIndex.value >= 0 && highlightedIndex.value < count) {
@@ -681,6 +705,7 @@ onUnmounted(() => {
         :class="{ 'ms-select__dropdown--teleported': Boolean(teleportTarget) }"
         :style="teleportTarget ? dropdownStyle : undefined"
         :data-placement="props.placement"
+        data-ms-floating
         @keydown="onDropdownKeyDown"
       >
         <slot name="header" />
@@ -691,6 +716,12 @@ onUnmounted(() => {
             ref="searchInputRef"
             type="text"
             class="ms-select__search-input"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-expanded="true"
+            :aria-controls="listboxId"
+            :aria-activedescendant="activeOptionId"
+            :aria-label="props.searchPlaceholder"
             :placeholder="props.searchPlaceholder"
             :value="searchQuery"
             @input="onSearchInput"

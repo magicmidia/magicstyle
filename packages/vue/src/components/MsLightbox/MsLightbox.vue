@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted } from "vue";
 import type { MsLightboxProps, MsLightboxEmits } from "./types.ts";
+import { useScrollLock } from "../../composables/use-scroll-lock.ts";
+import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
+import { useFocusTrap } from "../../composables/use-focus-trap.ts";
 
 const props = withDefaults(defineProps<MsLightboxProps>(), {
   modelValue: false,
@@ -41,9 +44,20 @@ const prev = () => {
   }
 };
 
+const isOpen = computed(() => props.modelValue && currentItem.value !== null);
+const dialogRef = ref<HTMLElement | null>(null);
+
+useScrollLock(isOpen);
+useFocusTrap(dialogRef, isOpen);
+useDismissableLayer({
+  active: isOpen,
+  inside: [dialogRef],
+  onDismiss: close,
+  closeOnOutside: () => false,
+});
+
 const handleKeyDown = (e: KeyboardEvent) => {
-  if (!props.modelValue) return;
-  if (e.key === "Escape") close();
+  if (!isOpen.value) return;
   if (e.key === "ArrowRight") next();
   if (e.key === "ArrowLeft") prev();
 };
@@ -60,10 +74,13 @@ onUnmounted(() => {
 <template>
   <Teleport to="body">
     <div
-      v-if="props.modelValue && currentItem"
+      v-if="isOpen && currentItem"
+      ref="dialogRef"
       class="ms-lightbox-backdrop"
       role="dialog"
       aria-modal="true"
+      aria-label="Visualizador de imagens"
+      tabindex="-1"
       @click.self="close"
     >
       <div class="ms-lightbox__topbar">

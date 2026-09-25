@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from "vue";
-import { useFieldContext } from "../../composables/use-field-context.ts";
-import { useMsId } from "../../composables/use-ms-id.ts";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
 import type { MsTextareaEmits, MsTextareaProps } from "./types.ts";
+
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<MsTextareaProps>(), {
   modelValue: "",
@@ -26,12 +27,11 @@ defineSlots<{
 }>();
 
 const textareaRef = ref<HTMLTextAreaElement | null>(null);
-const field = useFieldContext();
-const fallbackId = useMsId("ms-textarea");
+const fieldControl = useFieldControl("ms-textarea");
 
-const resolvedId = computed(() => field?.controlId ?? fallbackId);
-const describedBy = computed(() => field?.describedBy());
-const isInvalid = computed(() => props.invalid === true || field?.invalid() === true);
+const resolvedId = computed(() => fieldControl.id);
+const describedBy = computed(() => fieldControl.describedBy.value);
+const isInvalid = computed(() => props.invalid === true || fieldControl.fieldInvalid.value);
 const resolvedTone = computed(() => (isInvalid.value ? "danger" : props.tone));
 
 const currentLength = computed(() => props.modelValue?.length ?? 0);
@@ -71,6 +71,7 @@ onMounted(() => {
 
 <template>
   <div
+    v-bind="rootAttrs($attrs)"
     class="ms-input ms-textarea"
     :class="[`ms-textarea--${props.size}`, `ms-textarea--resize-${props.resize}`]"
     :data-size="props.size"
@@ -94,6 +95,7 @@ onMounted(() => {
       :aria-describedby="describedBy"
       @input="onInput"
       @change="onChange"
+      v-bind="controlAttrs($attrs)"
     />
 
     <div v-if="props.showCount || $slots.helper || $slots.footer" class="ms-textarea__footer">

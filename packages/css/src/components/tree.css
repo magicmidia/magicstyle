@@ -83,3 +83,13 @@
   border-left: 1px dashed var(--ms-color-border, #e2e8f0);
   margin-left: 9px;
 }
+
+/* Roving-focus treeitems: show the ring on the row, not around the whole subtree. */
+.ms-tree-node:focus-visible {
+  outline: none;
+}
+
+.ms-tree-node:focus-visible > .ms-tree-node__row {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: calc(var(--ms-focus-ring-width) * -1);
+}

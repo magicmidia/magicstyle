@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { useFieldContext } from "../../composables/use-field-context.ts";
-import { useMsId } from "../../composables/use-ms-id.ts";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
 import type { MsInputProps } from "./types.ts";
 
 defineOptions({
+  inheritAttrs: false,
   name: "MsInput",
 });
 
@@ -44,17 +44,17 @@ function onClear(): void {
   emit("clear");
 }
 
-const field = useFieldContext();
-const fallbackId = useMsId("ms-input");
+const fieldControl = useFieldControl("ms-input");
 
-const resolvedId = computed(() => field?.controlId ?? fallbackId);
-const describedBy = computed(() => field?.describedBy());
-const isInvalid = computed(() => props.invalid === true || field?.invalid() === true);
+const resolvedId = computed(() => fieldControl.id);
+const describedBy = computed(() => fieldControl.describedBy.value);
+const isInvalid = computed(() => props.invalid === true || fieldControl.fieldInvalid.value);
 const resolvedTone = computed(() => (isInvalid.value ? "danger" : props.tone));
 </script>
 
 <template>
   <div
+    v-bind="rootAttrs($attrs)"
     class="ms-input"
     :data-variant="props.variant !== 'outline' ? props.variant : undefined"
     :data-pill="props.pill || undefined"
@@ -84,6 +84,7 @@ const resolvedTone = computed(() => (isInvalid.value ? "danger" : props.tone));
         emit('update:modelValue', ($event.target as HTMLInputElement).value);
         emit('input', ($event.target as HTMLInputElement).value);
       "
+      v-bind="controlAttrs($attrs)"
     />
     <label v-if="props.floatingLabel" class="ms-input-floating-label" :for="resolvedId">
       {{ props.floatingLabel }}

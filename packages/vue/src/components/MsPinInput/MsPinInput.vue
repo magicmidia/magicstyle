@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, nextTick, onMounted } from "vue";
 import type { MsPinInputProps, MsPinInputEmits } from "./types.ts";
+import { useFieldControl } from "../../composables/use-field-context.ts";
 
 const props = withDefaults(defineProps<MsPinInputProps>(), {
   modelValue: "",
@@ -14,6 +15,8 @@ const props = withDefaults(defineProps<MsPinInputProps>(), {
 });
 
 const emit = defineEmits<MsPinInputEmits>();
+
+const fieldControl = useFieldControl("ms-pin-input");
 
 const inputRefs = ref<HTMLInputElement[]>([]);
 const values = ref<string[]>(Array(props.length).fill(""));
@@ -115,10 +118,18 @@ const classes = computed(() => [
 </script>
 
 <template>
-  <div :class="classes" :data-size="props.size">
+  <div
+    :class="classes"
+    :data-size="props.size"
+    role="group"
+    :aria-labelledby="fieldControl.labelledBy.value"
+    :aria-describedby="fieldControl.describedBy.value"
+  >
     <template v-for="(_, index) in props.length" :key="index">
       <input
         ref="inputRefs"
+        :id="index === 0 ? fieldControl.id : undefined"
+        :aria-invalid="fieldControl.fieldInvalid.value || undefined"
         :type="props.mask ? 'password' : 'text'"
         :inputmode="props.type === 'numeric' ? 'numeric' : 'text'"
         maxlength="1"

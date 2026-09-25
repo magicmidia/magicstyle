@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { computed, watch, onMounted, onBeforeUnmount } from "vue";
+import { computed, ref, toRef } from "vue";
 import type { MsConfirmDialogProps, MsConfirmDialogEmits } from "./types.ts";
 import MsButton from "../MsButton/MsButton.vue";
 import { useMsId } from "../../composables/use-ms-id.ts";
+import { useScrollLock } from "../../composables/use-scroll-lock.ts";
+import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
+import { useFocusTrap } from "../../composables/use-focus-trap.ts";
 
 const props = withDefaults(defineProps<MsConfirmDialogProps>(), {
   open: false,
@@ -55,33 +58,20 @@ const handleBackdropClick = (event: MouseEvent) => {
   }
 };
 
-const handleKeydown = (event: KeyboardEvent) => {
-  if (props.open && props.closeOnEscape && event.key === "Escape") {
-    handleCancel();
-  }
-};
+const isOpen = toRef(props, "open");
+const dialogRef = ref<HTMLElement | null>(null);
 
-watch(
-  () => props.open,
-  (isOpen) => {
-    if (typeof document !== "undefined") {
-      document.body.style.overflow = isOpen ? "hidden" : "";
-    }
-  },
-  { immediate: true },
-);
-
-onMounted(() => {
-  if (typeof window !== "undefined") {
-    window.addEventListener("keydown", handleKeydown);
-  }
+useScrollLock(isOpen);
+// APG alertdialog: initial focus on the least destructive action.
+useFocusTrap(dialogRef, isOpen, {
+  initialFocus: () => dialogRef.value?.querySelector<HTMLElement>("[data-ms-confirm-cancel]"),
 });
-
-onBeforeUnmount(() => {
-  if (typeof window !== "undefined") {
-    window.removeEventListener("keydown", handleKeydown);
-    document.body.style.overflow = "";
-  }
+useDismissableLayer({
+  active: isOpen,
+  inside: [dialogRef],
+  onDismiss: handleCancel,
+  closeOnEscape: () => props.closeOnEscape,
+  closeOnOutside: () => false,
 });
 
 const dialogClasses = computed(() => [
@@ -100,13 +90,14 @@ const dialogClasses = computed(() => [
         @click="handleBackdropClick"
       >
         <div
+          ref="dialogRef"
           :class="dialogClasses"
           role="alertdialog"
           aria-modal="true"
           :aria-labelledby="titleId"
           :aria-describedby="message || $slots.default ? messageId : undefined"
           data-ms-confirm-dialog
-          @click.stop
+          tabindex="-1"
         >
           <div class="ms-confirm-dialog__body">
             <div class="ms-confirm-dialog__icon" aria-hidden="true">
@@ -128,7 +119,13 @@ const dialogClasses = computed(() => [
 
           <div class="ms-confirm-dialog__footer">
             <slot name="footer">
-              <MsButton variant="outline" size="sm" :disabled="props.loading" @click="handleCancel">
+              <MsButton
+                variant="outline"
+                size="sm"
+                :disabled="props.loading"
+                data-ms-confirm-cancel
+                @click="handleCancel"
+              >
                 {{ props.cancelLabel }}
               </MsButton>
               <MsButton

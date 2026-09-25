@@ -81,28 +81,75 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
-function highlightCode(src: string, _lang?: string): string {
-  if (!src) return "";
-  const escaped = escapeHtml(src);
+const HASH_COMMENT_LANGS = new Set([
+  "sh",
+  "bash",
+  "shell",
+  "zsh",
+  "python",
+  "py",
+  "yaml",
+  "yml",
+  "toml",
+  "ruby",
+  "rb",
+  "dockerfile",
+  "makefile",
+  "powershell",
+  "ps1",
+  "r",
+  "ini",
+  "conf",
+]);
 
-  const masterRegex =
-    /(\/\/[^\n]*|\/\*[\s\S]*?\*\/|<!--[\s\S]*?-->|#[^\n]*)|(`(?:\\.|[^`\\])*`|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')|(&lt;\/?[a-zA-Z0-9_\-]+(?:\s|&gt;|\/)?|&gt;)|(\b[a-zA-Z0-9_:@.\-]+(?==["']))|(\b(?:const|let|var|function|return|if|else|for|while|switch|case|break|default|new|try|catch|finally|throw|class|extends|import|export|from|as|async|await|typeof|instanceof|interface|type|enum|implements|public|private|protected|readonly|static|get|set|def)\b)|(\b(?:true|false|null|undefined)\b)|(\b(?:string|number|boolean|any|void|unknown|never|Record|Array|Promise|Ref|ComputedRef|HTMLElement|object)\b)|(\b\d+(?:\.\d+)?\b)|(\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*\())/g;
+const TOKEN_CLASSES = [
+  "comment",
+  "string",
+  "tag",
+  "attr",
+  "keyword",
+  "boolean",
+  "type",
+  "number",
+  "function",
+] as const;
 
-  return escaped.replace(
-    masterRegex,
-    (_match, comment, str, tag, attr, kw, bool, type, num, fn) => {
-      if (comment) return `<span class="ms-code-token--comment">${comment}</span>`;
-      if (str) return `<span class="ms-code-token--string">${str}</span>`;
-      if (tag) return `<span class="ms-code-token--tag">${tag}</span>`;
-      if (attr) return `<span class="ms-code-token--attr">${attr}</span>`;
-      if (kw) return `<span class="ms-code-token--keyword">${kw}</span>`;
-      if (bool) return `<span class="ms-code-token--boolean">${bool}</span>`;
-      if (type) return `<span class="ms-code-token--type">${type}</span>`;
-      if (num) return `<span class="ms-code-token--number">${num}</span>`;
-      if (fn) return `<span class="ms-code-token--function">${fn}</span>`;
-      return _match;
-    },
+function tokenRegex(lang?: string): RegExp {
+  const hashComment = lang && HASH_COMMENT_LANGS.has(lang.toLowerCase()) ? "|#[^\\n]*" : "";
+  return new RegExp(
+    [
+      `(\\/\\/[^\\n]*|\\/\\*[\\s\\S]*?\\*\\/|<!--[\\s\\S]*?-->${hashComment})`,
+      "(`(?:\\\\.|[^`\\\\])*`|\"(?:\\\\.|[^\"\\\\\\n])*\"|'(?:\\\\.|[^'\\\\\\n])*')",
+      "(<\\/?[a-zA-Z0-9_\\-]+|\\/?>)",
+      "(\\b[a-zA-Z0-9_:@.\\-]+(?==[\"']))",
+      "(\\b(?:const|let|var|function|return|if|else|for|while|switch|case|break|default|new|try|catch|finally|throw|class|extends|import|export|from|as|async|await|typeof|instanceof|interface|type|enum|implements|public|private|protected|readonly|static|get|set|def)\\b)",
+      "(\\b(?:true|false|null|undefined)\\b)",
+      "(\\b(?:string|number|boolean|any|void|unknown|never|Record|Array|Promise|Ref|ComputedRef|HTMLElement|object)\\b)",
+      "(\\b\\d+(?:\\.\\d+)?\\b)",
+      "(\\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\\s*\\())",
+    ].join("|"),
+    "g",
   );
+}
+
+/**
+ * Tokenizes the raw source first and escapes every piece afterwards, so
+ * escaped entities (&#39;, &quot;) can never be re-matched as tokens.
+ */
+function highlightCode(src: string, lang?: string): string {
+  if (!src) return "";
+  let html = "";
+  let last = 0;
+  for (const match of src.matchAll(tokenRegex(lang))) {
+    const index = match.index ?? 0;
+    html += escapeHtml(src.slice(last, index));
+    const group = match.slice(1).findIndex((value) => value !== undefined);
+    const text = escapeHtml(match[0]);
+    html +=
+      group === -1 ? text : `<span class="ms-code-token--${TOKEN_CLASSES[group]}">${text}</span>`;
+    last = index + match[0].length;
+  }
+  return html + escapeHtml(src.slice(last));
 }
 
 const highlightedCode = computed(() => highlightCode(props.code, props.language));

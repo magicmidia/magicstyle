@@ -39,6 +39,9 @@ export interface MsTreeContext {
   isExpanded(key: MsTreeKey): boolean;
   selectNode(node: MsTreeNodeData): void;
   toggleExpand(node: MsTreeNodeData): void;
+  /** Roving tabindex: only the focused treeitem is in the tab order. */
+  isFocused(key: MsTreeKey): boolean;
+  setFocused(key: MsTreeKey): void;
 }
 
 export const MS_TREE_KEY: InjectionKey<MsTreeContext> = Symbol("MS_TREE_KEY");

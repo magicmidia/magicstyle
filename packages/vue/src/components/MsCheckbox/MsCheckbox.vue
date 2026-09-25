@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
-import { useFieldContext } from "../../composables/use-field-context.ts";
-import { useMsId } from "../../composables/use-ms-id.ts";
+import { computed, onMounted, ref, watch } from "vue";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
 import type { MsCheckboxProps } from "./types.ts";
 
 defineOptions({
+  inheritAttrs: false,
   name: "MsCheckbox",
 });
 
@@ -24,19 +24,18 @@ defineSlots<{
   description?(): unknown;
 }>();
 
-const field = useFieldContext();
-const fallbackId = useMsId("ms-checkbox");
+const fieldControl = useFieldControl("ms-checkbox");
 const inputRef = ref<HTMLInputElement | null>(null);
 
-const resolvedId = computed(() => field?.controlId ?? fallbackId);
+const resolvedId = computed(() => fieldControl.id);
 
-watch(
-  () => props.indeterminate,
-  (value) => {
-    if (inputRef.value !== null) inputRef.value.indeterminate = value === true;
-  },
-  { immediate: true },
-);
+// `indeterminate` is a DOM property, not an attribute: apply it once the input exists and on
+// every change (the browser also clears it on user clicks, so re-sync after checked changes).
+function syncIndeterminate(): void {
+  if (inputRef.value !== null) inputRef.value.indeterminate = props.indeterminate === true;
+}
+onMounted(syncIndeterminate);
+watch(() => [props.indeterminate, props.checked], syncIndeterminate, { flush: "post" });
 
 function onChange(event: Event): void {
   const checked = (event.target as HTMLInputElement).checked;
@@ -47,6 +46,7 @@ function onChange(event: Event): void {
 
 <template>
   <label
+    v-bind="rootAttrs($attrs)"
     class="ms-checkbox"
     :data-size="props.size"
     :data-tone="props.tone"
@@ -62,8 +62,11 @@ function onChange(event: Event): void {
       :disabled="props.disabled"
       :name="props.name"
       :value="props.value"
-      :aria-checked="props.indeterminate ? 'mixed' : props.checked"
+      :aria-checked="props.indeterminate ? 'mixed' : undefined"
+      :aria-invalid="fieldControl.fieldInvalid.value || undefined"
+      :aria-describedby="fieldControl.describedBy.value"
       @change="onChange"
+      v-bind="controlAttrs($attrs)"
     />
     <span class="ms-checkbox-box" aria-hidden="true" />
     <div

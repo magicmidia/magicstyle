@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import type { MsMaskedInputProps, MsMaskedInputEmits } from "./types.ts";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
+
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<MsMaskedInputProps>(), {
   modelValue: "",
@@ -15,6 +18,9 @@ const props = withDefaults(defineProps<MsMaskedInputProps>(), {
 });
 
 const emit = defineEmits<MsMaskedInputEmits>();
+
+const fieldControl = useFieldControl("ms-masked-input");
+const isInvalid = computed(() => props.invalid === true || fieldControl.fieldInvalid.value);
 
 const maskPatterns: Record<string, string> = {
   cpf: "999.999.999-99",
@@ -87,16 +93,20 @@ const classes = computed(() => [
 </script>
 
 <template>
-  <div :class="classes" :data-invalid="props.invalid ? '' : undefined">
+  <div v-bind="rootAttrs($attrs)" :class="classes" :data-invalid="props.invalid ? '' : undefined">
     <input
       type="text"
       class="ms-masked-input__field"
+      :id="fieldControl.id"
+      :aria-invalid="isInvalid || undefined"
+      :aria-describedby="fieldControl.describedBy.value"
       :value="props.modelValue"
       :placeholder="props.placeholder || activePattern"
       :disabled="props.disabled"
       :readonly="props.readonly"
       :data-size="props.size"
       @input="handleInput"
+      v-bind="controlAttrs($attrs)"
     />
 
     <button

@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, watch } from "vue";
 import { type MsPasswordInputProps, type MsPasswordInputEmits, defaultCriteria } from "./types.ts";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
+
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<MsPasswordInputProps>(), {
   modelValue: "",
@@ -14,6 +17,9 @@ const props = withDefaults(defineProps<MsPasswordInputProps>(), {
 });
 
 const emit = defineEmits<MsPasswordInputEmits>();
+
+const fieldControl = useFieldControl("ms-password-input");
+const isInvalid = computed(() => props.invalid === true || fieldControl.fieldInvalid.value);
 
 const isVisible = ref(false);
 
@@ -57,6 +63,7 @@ const handleInput = (event: Event) => {
 
 <template>
   <div
+    v-bind="rootAttrs($attrs)"
     class="ms-password-input"
     :class="`ms-password-input--${props.size}`"
     :data-invalid="props.invalid ? '' : undefined"
@@ -64,12 +71,16 @@ const handleInput = (event: Event) => {
     <div class="ms-password-input__wrapper">
       <input
         :type="isVisible ? 'text' : 'password'"
+        :id="fieldControl.id"
+        :aria-invalid="isInvalid || undefined"
+        :aria-describedby="fieldControl.describedBy.value"
         class="ms-password-input__field"
         :value="props.modelValue"
         :placeholder="props.placeholder"
         :disabled="props.disabled"
         :data-size="props.size"
         @input="handleInput"
+        v-bind="controlAttrs($attrs)"
       />
 
       <button

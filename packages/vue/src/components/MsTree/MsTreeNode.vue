@@ -17,6 +17,7 @@ const tree = inject(MS_TREE_KEY, null);
 const hasChildren = computed(() => Boolean(props.node.children && props.node.children.length > 0));
 const isExpanded = computed(() => (tree ? tree.isExpanded(props.node.key) : false));
 const isSelected = computed(() => (tree ? tree.isSelected(props.node.key) : false));
+const isTabStop = computed(() => (tree ? tree.isFocused(props.node.key) : false));
 
 const handleRowClick = () => {
   if (props.node.disabled || !tree) return;
@@ -41,9 +42,13 @@ const nodeClasses = computed(() => [
   <li
     :class="nodeClasses"
     role="treeitem"
+    :tabindex="isTabStop ? 0 : -1"
     :aria-expanded="hasChildren ? isExpanded : undefined"
     :aria-selected="isSelected"
+    :aria-disabled="props.node.disabled || undefined"
+    :data-ms-tree-key="String(props.node.key)"
     data-ms-tree-node
+    @focus.self="tree?.setFocused(props.node.key)"
   >
     <div class="ms-tree-node__row" @click="handleRowClick">
       <!-- Chevron Toggle or Placeholder -->
@@ -51,7 +56,8 @@ const nodeClasses = computed(() => [
         v-if="hasChildren"
         type="button"
         class="ms-tree-node__toggle"
-        aria-label="Alternar expansão do nó"
+        tabindex="-1"
+        aria-hidden="true"
         @click="handleToggle"
       >
         <svg

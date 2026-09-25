@@ -2,6 +2,7 @@
 import { provide } from "vue";
 import { useMsId } from "../../composables/use-ms-id.ts";
 import type { MsRadioGroupContext, MsRadioGroupProps } from "./types.ts";
+import { useFieldControl } from "../../composables/use-field-context.ts";
 
 const props = defineProps<MsRadioGroupProps>();
 
@@ -14,6 +15,7 @@ defineSlots<{
 }>();
 
 const groupName = useMsId("ms-radio");
+const fieldControl = useFieldControl("ms-radio-group");
 
 provide<MsRadioGroupContext>("ms-radio-group", {
   get name() {
@@ -42,6 +44,9 @@ provide<MsRadioGroupContext>("ms-radio-group", {
   <div
     :class="['ms-radio-group', `ms-radio-group--${props.orientation ?? 'horizontal'}`]"
     role="radiogroup"
+    :aria-labelledby="fieldControl.labelledBy.value"
+    :aria-describedby="fieldControl.describedBy.value"
+    :aria-invalid="fieldControl.fieldInvalid.value || undefined"
   >
     <slot />
   </div>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from "vue";
+import { ref, computed, nextTick } from "vue";
 import type { MsContextMenuProps, MsContextMenuEmits, MsContextMenuItem } from "./types.ts";
+import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
+import { useMenuNavigation } from "../../composables/use-menu-navigation.ts";
 
 const props = withDefaults(defineProps<MsContextMenuProps>(), {
   items: () => [],
@@ -18,34 +20,53 @@ const isOpen = ref(false);
 const posX = ref(0);
 const posY = ref(0);
 const menuRef = ref<HTMLElement | null>(null);
+let returnFocusTo: HTMLElement | null = null;
 
-const handleContextMenu = async (event: MouseEvent) => {
-  if (props.disabled) return;
-  event.preventDefault();
+const VIEWPORT_MARGIN = 8;
 
-  posX.value = event.clientX;
-  posY.value = event.clientY;
+const openAt = async (x: number, y: number) => {
+  returnFocusTo = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+  posX.value = x;
+  posY.value = y;
   isOpen.value = true;
 
   await nextTick();
 
   if (menuRef.value && typeof window !== "undefined") {
     const rect = menuRef.value.getBoundingClientRect();
-    const maxX = window.innerWidth - rect.width - 8;
-    const maxY = window.innerHeight - rect.height - 8;
+    const maxX = window.innerWidth - rect.width - VIEWPORT_MARGIN;
+    const maxY = window.innerHeight - rect.height - VIEWPORT_MARGIN;
+    // Never position off-screen, even when the menu is larger than the viewport.
+    posX.value = Math.max(VIEWPORT_MARGIN, Math.min(posX.value, maxX));
+    posY.value = Math.max(VIEWPORT_MARGIN, Math.min(posY.value, maxY));
+  }
+  navigation.focusFirst();
+};
 
-    if (posX.value > maxX) {
-      posX.value = maxX;
-    }
-    if (posY.value > maxY) {
-      posY.value = maxY;
-    }
+const handleContextMenu = (event: MouseEvent) => {
+  if (props.disabled) return;
+  event.preventDefault();
+  void openAt(event.clientX, event.clientY);
+};
+
+/** Keyboard equivalents of right-click: Shift+F10 and the ContextMenu key. */
+const handleTriggerKeydown = (event: KeyboardEvent) => {
+  if (props.disabled) return;
+  if (event.key === "ContextMenu" || (event.shiftKey && event.key === "F10")) {
+    event.preventDefault();
+    const target = event.target instanceof HTMLElement ? event.target : null;
+    const rect = target?.getBoundingClientRect();
+    void openAt(rect ? rect.left : 0, rect ? rect.bottom : 0);
   }
 };
 
-const closeMenu = () => {
+const closeMenu = (restoreFocus = true) => {
   isOpen.value = false;
+  if (restoreFocus && returnFocusTo?.isConnected) returnFocusTo.focus();
+  returnFocusTo = null;
 };
+
+const navigation = useMenuNavigation(menuRef, { onClose: () => closeMenu(false) });
 
 const handleItemClick = (item: MsContextMenuItem) => {
   if (item.disabled || item.divider) return;
@@ -56,41 +77,10 @@ const handleItemClick = (item: MsContextMenuItem) => {
   closeMenu();
 };
 
-const handleDocumentClick = (event: MouseEvent) => {
-  if (isOpen.value) {
-    const target = event.target as Node | null;
-    if (menuRef.value && !menuRef.value.contains(target)) {
-      closeMenu();
-    }
-  }
-};
-
-const handleKeydown = (event: KeyboardEvent) => {
-  if (isOpen.value && event.key === "Escape") {
-    closeMenu();
-  }
-};
-
-watch(
-  isOpen,
-  (val) => {
-    if (typeof document === "undefined") return;
-    if (val) {
-      document.addEventListener("click", handleDocumentClick);
-      document.addEventListener("keydown", handleKeydown);
-    } else {
-      document.removeEventListener("click", handleDocumentClick);
-      document.removeEventListener("keydown", handleKeydown);
-    }
-  },
-  { immediate: true },
-);
-
-onBeforeUnmount(() => {
-  if (typeof document !== "undefined") {
-    document.removeEventListener("click", handleDocumentClick);
-    document.removeEventListener("keydown", handleKeydown);
-  }
+useDismissableLayer({
+  active: isOpen,
+  inside: [menuRef],
+  onDismiss: (reason) => closeMenu(reason === "escape"),
 });
 
 const menuStyle = computed(() => ({
@@ -104,6 +94,7 @@ const menuStyle = computed(() => ({
     class="ms-context-menu-wrapper"
     data-ms-context-menu-trigger
     @contextmenu="handleContextMenu"
+    @keydown="handleTriggerKeydown"
   >
     <slot />
 
@@ -113,9 +104,10 @@ const menuStyle = computed(() => ({
         ref="menuRef"
         class="ms-context-menu-panel"
         role="menu"
+        tabindex="-1"
         :style="menuStyle"
         data-ms-context-menu
-        @click.stop
+        @keydown="navigation.onKeydown"
       >
         <template v-for="(item, idx) in props.items" :key="item.id || idx">
           <li v-if="item.divider" class="ms-context-menu-divider" role="separator" />
@@ -127,7 +119,8 @@ const menuStyle = computed(() => ({
               'ms-context-menu-item--danger': item.danger,
             }"
             role="menuitem"
-            :aria-disabled="item.disabled"
+            tabindex="-1"
+            :aria-disabled="item.disabled || undefined"
             @click="handleItemClick(item)"
           >
             <slot name="item" :item="item">

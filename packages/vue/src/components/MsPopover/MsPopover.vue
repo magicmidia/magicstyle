@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { ref, computed, watch, getCurrentInstance, onMounted, onBeforeUnmount } from "vue";
+import { ref, computed, watch, watchPostEffect, onBeforeUnmount } from "vue";
 import type { MsPopoverProps, MsPopoverEmits } from "./types.ts";
 import { useMsId } from "../../composables/use-ms-id.ts";
+import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
 
 const props = withDefaults(defineProps<MsPopoverProps>(), {
+  // Explicit undefined keeps Vue from casting an absent boolean prop to false (uncontrolled mode).
+  open: undefined,
   placement: "bottom",
   trigger: "click",
   width: "auto",
@@ -21,30 +24,19 @@ defineSlots<{
   footer?(): unknown;
 }>();
 
-const instance = getCurrentInstance();
 const rootRef = ref<HTMLElement | null>(null);
+const triggerRef = ref<HTMLElement | null>(null);
 const internalOpen = ref(false);
 
-const isControlled = computed(() => {
-  const vnodeProps = instance?.vnode.props;
-  return Boolean(vnodeProps && ("open" in vnodeProps || "onUpdate:open" in vnodeProps));
-});
-
-watch(
-  () => props.open,
-  (val) => {
-    if (val !== undefined) {
-      internalOpen.value = val;
-    }
-  },
-);
-
+/** Controlled only when the parent passes `open`; listening to update:open alone stays uncontrolled. */
+const isControlled = computed(() => props.open !== undefined);
 const isOpen = computed(() => (isControlled.value ? Boolean(props.open) : internalOpen.value));
 
 const titleId = useMsId("ms-popover-title");
+const panelId = useMsId("ms-popover-panel");
 
 const setOpen = (value: boolean) => {
-  if (props.disabled) return;
+  if (props.disabled || value === isOpen.value) return;
   internalOpen.value = value;
   emit("update:open", value);
   if (value) {
@@ -54,7 +46,24 @@ const setOpen = (value: boolean) => {
   }
 };
 
+/*
+ * The wrapper toggles on click, and the slot also receives `toggle`. When a
+ * slotted button calls toggle() itself, skip the wrapper's toggle for that
+ * same click so the two do not cancel out.
+ */
+let toggledBySlot = false;
 const toggle = () => {
+  toggledBySlot = true;
+  setTimeout(() => (toggledBySlot = false), 0);
+  setOpen(!isOpen.value);
+};
+
+const onTriggerClick = () => {
+  if (props.trigger !== "click") return;
+  if (toggledBySlot) {
+    toggledBySlot = false;
+    return;
+  }
   setOpen(!isOpen.value);
 };
 
@@ -72,40 +81,39 @@ const handleMouseLeave = () => {
   hoverTimer = setTimeout(() => setOpen(false), 200);
 };
 
-const handleDocumentClick = (event: MouseEvent) => {
-  if (!props.closeOnClickOutside || !isOpen.value) return;
-  const target = event.target as Node | null;
-  if (!target || !rootRef.value) return;
-  if (rootRef.value.contains(target)) return;
-  setOpen(false);
-};
+/** The focusable element rendered in the trigger slot (falls back to the wrapper). */
+const triggerElement = (): HTMLElement | null =>
+  triggerRef.value?.querySelector<HTMLElement>(
+    "button, a[href], input, [tabindex]:not([tabindex='-1'])",
+  ) ?? triggerRef.value;
 
-const handleKeydown = (event: KeyboardEvent) => {
-  if (props.closeOnEscape && isOpen.value && event.key === "Escape") {
+useDismissableLayer({
+  active: isOpen,
+  inside: [rootRef],
+  closeOnEscape: () => props.closeOnEscape,
+  closeOnOutside: () => props.closeOnClickOutside,
+  onDismiss: (reason) => {
     setOpen(false);
-  }
-};
+    if (reason === "escape") triggerElement()?.focus();
+  },
+});
+
+// ARIA belongs on the real control inside the trigger slot, not on the wrapper div.
+watchPostEffect(() => {
+  const element = triggerElement();
+  if (!element) return;
+  element.setAttribute("aria-haspopup", "dialog");
+  element.setAttribute("aria-expanded", String(isOpen.value));
+  if (isOpen.value) element.setAttribute("aria-controls", panelId);
+  else element.removeAttribute("aria-controls");
+});
 
 watch(
-  isOpen,
-  (val) => {
-    if (typeof document === "undefined") return;
-    if (val) {
-      document.addEventListener("click", handleDocumentClick);
-      document.addEventListener("keydown", handleKeydown);
-    } else {
-      document.removeEventListener("click", handleDocumentClick);
-      document.removeEventListener("keydown", handleKeydown);
-    }
-  },
-  { immediate: true },
+  () => props.disabled,
+  (disabled) => disabled && isOpen.value && setOpen(false),
 );
 
 onBeforeUnmount(() => {
-  if (typeof document !== "undefined") {
-    document.removeEventListener("click", handleDocumentClick);
-    document.removeEventListener("keydown", handleKeydown);
-  }
   if (hoverTimer) clearTimeout(hoverTimer);
 });
 
@@ -121,23 +129,18 @@ const panelClasses = computed(() => [
     ref="rootRef"
     class="ms-popover-wrapper"
     data-ms-popover
-    @click.stop
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
     <!-- Trigger slot or wrapper -->
-    <div
-      class="ms-popover__trigger"
-      aria-haspopup="dialog"
-      :aria-expanded="isOpen"
-      @click="props.trigger === 'click' ? toggle() : undefined"
-    >
+    <div ref="triggerRef" class="ms-popover__trigger" @click="onTriggerClick">
       <slot name="trigger" :is-open="isOpen" :toggle="toggle" />
     </div>
 
     <!-- Popover floating panel -->
     <div
       v-if="isOpen"
+      :id="panelId"
       :class="panelClasses"
       role="dialog"
       :aria-labelledby="props.title || $slots.title ? titleId : undefined"

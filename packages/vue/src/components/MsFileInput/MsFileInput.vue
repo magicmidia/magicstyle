@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import type { MsFileInputProps, MsFileInputEmits } from "./types.ts";
+import { useFieldControl } from "../../composables/use-field-context.ts";
 
 const props = withDefaults(defineProps<MsFileInputProps>(), {
   multiple: false,
@@ -10,6 +11,8 @@ const props = withDefaults(defineProps<MsFileInputProps>(), {
 });
 
 const emit = defineEmits<MsFileInputEmits>();
+
+const fieldControl = useFieldControl("ms-file-input");
 
 defineSlots<{
   default?(): unknown;
@@ -111,6 +114,7 @@ const dropzoneClasses = computed(() => [
     data-ms-file-input
   >
     <input
+      :id="fieldControl.id"
       ref="inputRef"
       type="file"
       class="ms-file-input__hidden"
@@ -124,6 +128,9 @@ const dropzoneClasses = computed(() => [
       :class="dropzoneClasses"
       tabindex="0"
       role="button"
+      :aria-labelledby="fieldControl.labelledBy.value"
+      :aria-describedby="fieldControl.describedBy.value"
+      :aria-disabled="props.disabled || undefined"
       @click="triggerClick"
       @keydown.enter.prevent="triggerClick"
       @keydown.space.prevent="triggerClick"

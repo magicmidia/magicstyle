@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted, nextTick } from "vue";
 import type { MsCommandPaletteProps, MsCommandPaletteEmits, MsCommandItem } from "./types.ts";
+import { useMsId } from "../../composables/use-ms-id.ts";
+import { useScrollLock } from "../../composables/use-scroll-lock.ts";
+import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
+import { useFocusTrap } from "../../composables/use-focus-trap.ts";
 
 const defaultCommands: MsCommandItem[] = [
   { id: "docs", label: "Ir para Documentação", group: "Navegação", shortcut: "G D" },
@@ -15,6 +19,7 @@ const props = withDefaults(defineProps<MsCommandPaletteProps>(), {
   modelValue: false,
   placeholder: "Digite um comando ou pesquise...",
   emptyText: "Nenhum comando encontrado.",
+  hotkey: true,
 });
 
 const emit = defineEmits<MsCommandPaletteEmits>();
@@ -23,18 +28,14 @@ const isOpen = ref(props.modelValue);
 const search = ref("");
 const activeIndex = ref(0);
 const searchInput = ref<HTMLInputElement | null>(null);
+const dialogRef = ref<HTMLElement | null>(null);
+const listboxId = useMsId("ms-command-listbox");
+const optionIdPrefix = useMsId("ms-command-option");
 
 watch(
   () => props.modelValue,
   (val) => {
     isOpen.value = val;
-    if (val) {
-      search.value = "";
-      activeIndex.value = 0;
-      nextTick(() => {
-        searchInput.value?.focus();
-      });
-    }
   },
 );
 
@@ -58,6 +59,32 @@ const groupedCommands = computed(() => {
   return groups;
 });
 
+/** Commands in rendered (grouped) order, so arrow keys follow what the user sees. */
+const orderedCommands = computed(() => Object.values(groupedCommands.value).flat());
+const activeCommand = computed(() => orderedCommands.value[activeIndex.value]);
+const optionId = (cmd: MsCommandItem): string => `${optionIdPrefix}-${cmd.id}`;
+
+function firstEnabledFrom(start: number, step: 1 | -1): number {
+  const list = orderedCommands.value;
+  for (let offset = 0; offset < list.length; offset++) {
+    const index = (start + step * offset + list.length * list.length) % list.length;
+    if (!list[index]?.disabled) return index;
+  }
+  return -1;
+}
+
+watch(orderedCommands, () => {
+  activeIndex.value = Math.max(0, firstEnabledFrom(0, 1));
+});
+
+watch(isOpen, (open) => {
+  if (!open) return;
+  search.value = "";
+  activeIndex.value = Math.max(0, firstEnabledFrom(0, 1));
+  // Focus the search input however the palette was opened (v-model or hotkey).
+  void nextTick(() => searchInput.value?.focus());
+});
+
 const close = () => {
   isOpen.value = false;
   emit("update:modelValue", false);
@@ -69,25 +96,33 @@ const selectCommand = (cmd: MsCommandItem) => {
   close();
 };
 
-const handleKeyDown = (e: KeyboardEvent) => {
-  if (!isOpen.value) return;
+useScrollLock(isOpen);
+useFocusTrap(dialogRef, isOpen, { initialFocus: () => searchInput.value });
+useDismissableLayer({
+  active: isOpen,
+  inside: [dialogRef],
+  onDismiss: close,
+  closeOnOutside: () => false,
+});
 
-  if (e.key === "Escape") {
-    close();
-  } else if (e.key === "ArrowDown") {
+const handleKeyDown = (e: KeyboardEvent) => {
+  if (!isOpen.value || orderedCommands.value.length === 0) return;
+
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
     e.preventDefault();
-    if (filteredCommands.value.length > 0) {
-      activeIndex.value = (activeIndex.value + 1) % filteredCommands.value.length;
-    }
-  } else if (e.key === "ArrowUp") {
+    const step = e.key === "ArrowDown" ? 1 : -1;
+    const next = firstEnabledFrom(activeIndex.value + step, step);
+    if (next !== -1) activeIndex.value = next;
+  } else if (e.key === "Home" || e.key === "End") {
     e.preventDefault();
-    if (filteredCommands.value.length > 0) {
-      activeIndex.value =
-        (activeIndex.value - 1 + filteredCommands.value.length) % filteredCommands.value.length;
-    }
+    const next =
+      e.key === "Home"
+        ? firstEnabledFrom(0, 1)
+        : firstEnabledFrom(orderedCommands.value.length - 1, -1);
+    if (next !== -1) activeIndex.value = next;
   } else if (e.key === "Enter") {
     e.preventDefault();
-    const current = filteredCommands.value[activeIndex.value];
+    const current = activeCommand.value;
     if (current) {
       selectCommand(current);
     }
@@ -95,6 +130,8 @@ const handleKeyDown = (e: KeyboardEvent) => {
 };
 
 const handleGlobalKey = (e: KeyboardEvent) => {
+  // defaultPrevented: another mounted palette already handled this shortcut.
+  if (!props.hotkey || e.defaultPrevented) return;
   if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
     e.preventDefault();
     isOpen.value = !isOpen.value;
@@ -120,10 +157,12 @@ onUnmounted(() => {
       @keydown="handleKeyDown"
     >
       <div
+        ref="dialogRef"
         class="ms-command-palette"
         role="dialog"
         aria-modal="true"
         aria-label="Paleta de Comandos"
+        tabindex="-1"
       >
         <div class="ms-command-palette__search-wrapper">
           <svg
@@ -134,6 +173,7 @@ onUnmounted(() => {
             fill="none"
             stroke="currentColor"
             stroke-width="2"
+            aria-hidden="true"
           >
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -143,41 +183,72 @@ onUnmounted(() => {
             v-model="search"
             type="text"
             class="ms-command-palette__search-input"
+            role="combobox"
+            aria-autocomplete="list"
+            :aria-label="props.placeholder"
+            :aria-expanded="orderedCommands.length > 0"
+            :aria-controls="listboxId"
+            :aria-activedescendant="activeCommand ? optionId(activeCommand) : undefined"
             :placeholder="props.placeholder"
           />
-          <span class="ms-command-palette__kbd">ESC</span>
+          <span class="ms-command-palette__kbd" aria-hidden="true">ESC</span>
         </div>
 
-        <ul v-if="filteredCommands.length > 0" class="ms-command-palette__results" role="listbox">
-          <template v-for="(cmds, groupName) in groupedCommands" :key="groupName">
-            <li class="ms-command-palette__group-title">{{ groupName }}</li>
-            <li
-              v-for="cmd in cmds"
-              :key="cmd.id"
-              class="ms-command-palette__item"
-              :class="{
-                'ms-command-palette__item--active': filteredCommands[activeIndex]?.id === cmd.id,
-              }"
-              role="option"
-              :aria-selected="filteredCommands[activeIndex]?.id === cmd.id"
-              @click="selectCommand(cmd)"
+        <ul
+          v-if="orderedCommands.length > 0"
+          :id="listboxId"
+          class="ms-command-palette__results"
+          role="listbox"
+          :aria-label="props.placeholder"
+        >
+          <li
+            v-for="(cmds, groupName, groupIndex) in groupedCommands"
+            :key="groupName"
+            role="presentation"
+          >
+            <ul
+              class="ms-command-palette__group"
+              role="group"
+              :aria-labelledby="`${listboxId}-group-${groupIndex}`"
             >
-              <div class="ms-command-palette__item-main">
-                <span class="ms-command-palette__item-icon">❖</span>
-                <span>{{ cmd.label }}</span>
-              </div>
-              <span v-if="cmd.shortcut" class="ms-command-palette__kbd">
-                {{ cmd.shortcut }}
-              </span>
-            </li>
-          </template>
+              <li
+                :id="`${listboxId}-group-${groupIndex}`"
+                class="ms-command-palette__group-title"
+                role="presentation"
+              >
+                {{ groupName }}
+              </li>
+              <li
+                v-for="cmd in cmds"
+                :id="optionId(cmd)"
+                :key="cmd.id"
+                class="ms-command-palette__item"
+                :class="{
+                  'ms-command-palette__item--active': activeCommand?.id === cmd.id,
+                  'ms-command-palette__item--disabled': cmd.disabled,
+                }"
+                role="option"
+                :aria-selected="activeCommand?.id === cmd.id"
+                :aria-disabled="cmd.disabled || undefined"
+                @click="selectCommand(cmd)"
+              >
+                <div class="ms-command-palette__item-main">
+                  <span class="ms-command-palette__item-icon" aria-hidden="true">❖</span>
+                  <span>{{ cmd.label }}</span>
+                </div>
+                <span v-if="cmd.shortcut" class="ms-command-palette__kbd">
+                  {{ cmd.shortcut }}
+                </span>
+              </li>
+            </ul>
+          </li>
         </ul>
 
-        <div v-else class="ms-command-palette__empty">
+        <div v-else class="ms-command-palette__empty" role="status">
           {{ props.emptyText }}
         </div>
 
-        <div class="ms-command-palette__footer">
+        <div class="ms-command-palette__footer" aria-hidden="true">
           <span>Navegar com ↑ ↓</span>
           <span>Executar com ↵</span>
         </div>

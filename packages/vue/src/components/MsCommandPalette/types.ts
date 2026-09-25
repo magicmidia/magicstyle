@@ -12,6 +12,11 @@ export interface MsCommandPaletteProps {
   items?: MsCommandItem[];
   placeholder?: string;
   emptyText?: string;
+  /**
+   * Registers the global Ctrl/⌘+K shortcut. Disable on secondary instances.
+   * @default true
+   */
+  hotkey?: boolean;
 }
 
 export interface MsCommandPaletteEmits {

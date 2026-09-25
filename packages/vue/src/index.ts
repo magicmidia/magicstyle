@@ -652,6 +652,7 @@ export type {
   MsDropzoneProps,
   MsDropzoneFile,
   MsDropzoneEmits,
+  MsDropzoneRejection,
 } from "./components/MsDropzone/types.ts";
 
 export { default as MsMarquee } from "./components/MsMarquee/MsMarquee.vue";

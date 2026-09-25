@@ -28,6 +28,7 @@
 }
 
 .ms-split-pane__gutter {
+  touch-action: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,6 +46,11 @@
 .ms-split-pane--vertical > .ms-split-pane__gutter {
   height: 6px;
   cursor: row-resize;
+}
+
+.ms-split-pane__gutter:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: calc(var(--ms-focus-ring-width) * -1);
 }
 
 .ms-split-pane__gutter:hover,

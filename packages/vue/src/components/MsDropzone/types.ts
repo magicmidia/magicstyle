@@ -13,7 +13,14 @@ export interface MsDropzoneProps {
   disabled?: boolean;
 }
 
+export interface MsDropzoneRejection {
+  file: File;
+  /** type: fails `accept`; size: exceeds `maxSize`; multiple: extra file when `multiple` is false. */
+  reason: "type" | "size" | "multiple";
+}
+
 export interface MsDropzoneEmits {
   (e: "files-dropped", files: File[]): void;
+  (e: "files-rejected", rejections: MsDropzoneRejection[]): void;
   (e: "file-removed", file: MsDropzoneFile): void;
 }

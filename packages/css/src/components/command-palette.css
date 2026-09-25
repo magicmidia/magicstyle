@@ -135,3 +135,14 @@
   font-size: var(--ms-typography-size-2xs);
   color: var(--ms-color-text-muted);
 }
+
+.ms-command-palette__group {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ms-command-palette__item--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

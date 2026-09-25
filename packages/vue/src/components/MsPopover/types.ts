@@ -8,7 +8,7 @@ export interface MsPopoverProps {
   /**
    * Controlled open state (supports v-model:open).
    */
-  open?: boolean;
+  open?: boolean | undefined;
 
   /**
    * Placement relative to the anchor trigger.

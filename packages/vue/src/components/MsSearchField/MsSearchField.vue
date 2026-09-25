@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import type { MsSearchFieldEmits, MsSearchFieldProps } from "./types.ts";
-import { useMsId } from "../../composables/use-ms-id.ts";
 import MsSpinner from "../MsSpinner/MsSpinner.vue";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
+
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<MsSearchFieldProps>(), {
   modelValue: "",
@@ -23,7 +25,8 @@ defineSlots<{
   actions?(): unknown;
 }>();
 
-const inputId = props.id || useMsId("ms-search");
+const fieldControl = useFieldControl("ms-search");
+const inputId = computed(() => props.id || fieldControl.id);
 const inputRef = ref<HTMLInputElement | null>(null);
 
 const classes = computed(() => [
@@ -63,7 +66,7 @@ const showClearButton = computed(() => {
 </script>
 
 <template>
-  <div :class="classes">
+  <div v-bind="rootAttrs($attrs)" :class="classes">
     <span class="ms-search-field__icon" aria-hidden="true">
       <slot name="icon">
         <svg
@@ -93,11 +96,14 @@ const showClearButton = computed(() => {
       :readonly="readonly"
       :autofocus="autofocus"
       role="searchbox"
-      aria-label="Pesquisar"
+      :aria-label="fieldControl.field ? undefined : 'Pesquisar'"
+      :aria-describedby="fieldControl.describedBy.value"
+      :aria-invalid="fieldControl.fieldInvalid.value || undefined"
       @input="handleInput"
       @keydown="handleKeyDown"
       @focus="emit('focus', $event)"
       @blur="emit('blur', $event)"
+      v-bind="controlAttrs($attrs)"
     />
 
     <div class="ms-search-field__actions">

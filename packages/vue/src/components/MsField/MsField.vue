@@ -14,11 +14,25 @@ defineSlots<{
 }>();
 
 const controlId = useMsId("ms-field");
+const labelId = useMsId("ms-field-label");
 const descriptionId = useMsId("ms-field-desc");
 const errorId = useMsId("ms-field-error");
 
+let controlIdClaimed = false;
+
 provideFieldContext({
   controlId,
+  get labelId() {
+    return props.label ? labelId : undefined;
+  },
+  claimControlId: () => {
+    if (controlIdClaimed) return false;
+    controlIdClaimed = true;
+    return true;
+  },
+  releaseControlId: () => {
+    controlIdClaimed = false;
+  },
   describedBy: () => {
     const hasDesc = Boolean(props.description);
     const hasError = Boolean(props.error);
@@ -39,7 +53,7 @@ const fieldClasses = computed(() => [
 
 <template>
   <div :class="fieldClasses" :data-required="props.required || undefined">
-    <label v-if="props.label" class="ms-field-label" :for="controlId">
+    <label v-if="props.label" :id="labelId" class="ms-field-label" :for="controlId">
       {{ props.label }}
       <span v-if="props.optional && !props.required" class="ms-field-optional">(opcional)</span>
     </label>

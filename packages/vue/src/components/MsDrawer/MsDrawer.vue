@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { computed, watch, onMounted, onBeforeUnmount } from "vue";
+import { computed, ref, toRef, watch } from "vue";
 import type { MsDrawerProps, MsDrawerEmits } from "./types.ts";
 import { useMsId } from "../../composables/use-ms-id.ts";
+import { useScrollLock } from "../../composables/use-scroll-lock.ts";
+import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
+import { useFocusTrap } from "../../composables/use-focus-trap.ts";
 
 const props = withDefaults(defineProps<MsDrawerProps>(), {
   open: false,
@@ -44,41 +47,20 @@ const handleBackdropClick = (event: MouseEvent) => {
   }
 };
 
-const handleKeydown = (event: KeyboardEvent) => {
-  if (props.open && props.closeOnEscape && event.key === "Escape") {
-    event.stopPropagation();
-    handleClose();
-  }
-};
+const isOpen = toRef(props, "open");
+const panelRef = ref<HTMLElement | null>(null);
 
-watch(
-  () => props.open,
-  (isOpen) => {
-    if (isOpen) {
-      emit("open");
-      if (typeof document !== "undefined") {
-        document.body.style.overflow = "hidden";
-      }
-    } else {
-      if (typeof document !== "undefined") {
-        document.body.style.overflow = "";
-      }
-    }
-  },
-  { immediate: true },
-);
+watch(isOpen, (open) => open && emit("open"), { immediate: true });
 
-onMounted(() => {
-  if (typeof window !== "undefined") {
-    window.addEventListener("keydown", handleKeydown);
-  }
-});
-
-onBeforeUnmount(() => {
-  if (typeof window !== "undefined") {
-    window.removeEventListener("keydown", handleKeydown);
-    document.body.style.overflow = "";
-  }
+useScrollLock(isOpen);
+useFocusTrap(panelRef, isOpen);
+useDismissableLayer({
+  active: isOpen,
+  inside: [panelRef],
+  onDismiss: handleClose,
+  closeOnEscape: () => props.closeOnEscape,
+  // The backdrop click is handled by handleBackdropClick.
+  closeOnOutside: () => false,
 });
 </script>
 
@@ -92,13 +74,14 @@ onBeforeUnmount(() => {
         @click="handleBackdropClick"
       >
         <div
+          ref="panelRef"
           :class="drawerClasses"
           role="dialog"
           aria-modal="true"
           :aria-labelledby="title || $slots.title ? titleId : undefined"
           :aria-describedby="description || $slots.description ? descriptionId : undefined"
           data-ms-drawer
-          @click.stop
+          tabindex="-1"
         >
           <!-- Header -->
           <header
@@ -131,9 +114,9 @@ onBeforeUnmount(() => {
           </header>
 
           <!-- Body Content -->
-          <main class="ms-drawer__body">
+          <div class="ms-drawer__body">
             <slot />
-          </main>
+          </div>
 
           <!-- Footer Actions -->
           <footer v-if="$slots.footer" class="ms-drawer__footer">

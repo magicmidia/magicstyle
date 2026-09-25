@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import type { MsDropzoneProps, MsDropzoneEmits, MsDropzoneFile } from "./types.ts";
+import type {
+  MsDropzoneProps,
+  MsDropzoneEmits,
+  MsDropzoneFile,
+  MsDropzoneRejection,
+} from "./types.ts";
 
 const props = withDefaults(defineProps<MsDropzoneProps>(), {
   accept: "*/*",
@@ -27,26 +32,60 @@ const triggerBrowse = () => {
   inputRef.value?.click();
 };
 
+/** Mirrors the native `accept` attribute: extensions, exact MIME types and `type/*` wildcards. */
+const matchesAccept = (file: File): boolean => {
+  const tokens = props.accept
+    .split(",")
+    .map((token) => token.trim().toLowerCase())
+    .filter(Boolean);
+  if (tokens.length === 0 || tokens.includes("*/*") || tokens.includes("*")) return true;
+  const name = file.name.toLowerCase();
+  const type = (file.type || "").toLowerCase();
+  return tokens.some((token) => {
+    if (token.startsWith(".")) return name.endsWith(token);
+    if (token.endsWith("/*")) return type.startsWith(token.slice(0, -1));
+    return type === token;
+  });
+};
+
 const processFiles = (rawFiles: FileList | null) => {
   if (!rawFiles || rawFiles.length === 0) return;
   const validFiles: File[] = [];
+  const rejected: MsDropzoneRejection[] = [];
+  // Dropped files bypass the input's accept/multiple, so enforce them here.
+  const candidates = Array.from(rawFiles);
+  if (!props.multiple && candidates.length > 1) {
+    for (const file of candidates.slice(1)) rejected.push({ file, reason: "multiple" });
+    candidates.length = 1;
+  }
 
-  for (let i = 0; i < rawFiles.length; i++) {
-    const f = rawFiles[i]!;
-    if (props.maxSize && f.size > props.maxSize) continue;
+  candidates.forEach((f, i) => {
+    if (!matchesAccept(f)) {
+      rejected.push({ file: f, reason: "type" });
+      return;
+    }
+    if (props.maxSize && f.size > props.maxSize) {
+      rejected.push({ file: f, reason: "size" });
+      return;
+    }
 
     validFiles.push(f);
-    fileList.value.push({
+    const entry: MsDropzoneFile = {
       id: `${f.name}-${Date.now()}-${i}`,
       name: f.name,
       size: f.size,
       formattedSize: formatBytes(f.size),
       file: f,
-    });
-  }
+    };
+    if (props.multiple) fileList.value.push(entry);
+    else fileList.value = [entry];
+  });
 
   if (validFiles.length > 0) {
     emit("files-dropped", validFiles);
+  }
+  if (rejected.length > 0) {
+    emit("files-rejected", rejected);
   }
 };
 
@@ -95,6 +134,7 @@ const removeFile = (item: MsDropzoneFile) => {
       ref="inputRef"
       type="file"
       class="ms-dropzone__input"
+      aria-label="Selecionar arquivos"
       :accept="props.accept"
       :multiple="props.multiple"
       :disabled="props.disabled"
@@ -104,6 +144,7 @@ const removeFile = (item: MsDropzoneFile) => {
 
     <svg
       class="ms-dropzone__icon"
+      aria-hidden="true"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -138,6 +179,7 @@ const removeFile = (item: MsDropzoneFile) => {
           type="button"
           class="ms-dropzone__remove-btn"
           title="Remover arquivo"
+          :aria-label="`Remover ${item.name}`"
           @click="removeFile(item)"
         >
           ✕

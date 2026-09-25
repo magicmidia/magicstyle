@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useFieldContext } from "../../composables/use-field-context.ts";
-import { useMsId } from "../../composables/use-ms-id.ts";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
 import type { MsSwitchProps } from "./types.ts";
 
 defineOptions({
+  inheritAttrs: false,
   name: "MsSwitch",
 });
 
@@ -24,9 +24,8 @@ defineSlots<{
   description?(): unknown;
 }>();
 
-const field = useFieldContext();
-const fallbackId = useMsId("ms-switch");
-const controlId = computed(() => field?.controlId ?? fallbackId);
+const fieldControl = useFieldControl("ms-switch");
+const controlId = computed(() => fieldControl.id);
 
 function onChange(event: Event): void {
   const isChecked = (event.target as HTMLInputElement).checked;
@@ -37,6 +36,7 @@ function onChange(event: Event): void {
 
 <template>
   <label
+    v-bind="rootAttrs($attrs)"
     class="ms-switch"
     :data-size="props.size"
     :data-tone="props.tone"
@@ -52,8 +52,10 @@ function onChange(event: Event): void {
       :disabled="props.disabled"
       :name="props.name"
       :value="props.value"
-      :aria-checked="props.checked"
+      :aria-invalid="fieldControl.fieldInvalid.value || undefined"
+      :aria-describedby="fieldControl.describedBy.value"
       @change="onChange"
+      v-bind="controlAttrs($attrs)"
     />
     <span class="ms-switch-track" aria-hidden="true" />
     <div
