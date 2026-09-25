@@ -147,6 +147,7 @@ const toggleDropdown = () => {
       @click="toggleDropdown"
     >
       <span class="ms-icon-picker__preview">
+        <!-- eslint-disable vue/no-v-html -- built-in paths or sanitizeSvg() allowlist output -->
         <svg
           v-if="props.modelValue && getIconContent(props.modelValue)"
           width="18"
@@ -159,6 +160,7 @@ const toggleDropdown = () => {
           stroke-linejoin="round"
           v-html="getIconContent(props.modelValue)"
         />
+        <!-- eslint-enable vue/no-v-html -->
         <span v-else>❖</span>
       </span>
       <span>{{ props.modelValue || props.placeholder }}</span>
@@ -195,6 +197,7 @@ const toggleDropdown = () => {
           :title="icon.name"
           @click="selectIcon(icon)"
         >
+          <!-- eslint-disable vue/no-v-html -- built-in paths or sanitizeSvg() allowlist output -->
           <svg
             v-if="getIconContent(icon.id)"
             width="18"
@@ -207,6 +210,7 @@ const toggleDropdown = () => {
             stroke-linejoin="round"
             v-html="getIconContent(icon.id)"
           />
+          <!-- eslint-enable vue/no-v-html -->
           <span v-else>❖</span>
         </button>
       </div>

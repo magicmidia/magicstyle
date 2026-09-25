@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, provide, onMounted, onBeforeUnmount, toRef } from "vue";
+import { ref, computed, watch, provide, onMounted, onBeforeUnmount } from "vue";
 import type { MsCarouselProps, MsCarouselEmits } from "./types.ts";
 import { MS_CAROUSEL_KEY } from "./types.ts";
 

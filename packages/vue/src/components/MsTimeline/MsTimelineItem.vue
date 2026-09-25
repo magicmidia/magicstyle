@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed, inject } from "vue";
+import { computed } from "vue";
 import type { MsTimelineItemProps } from "./types.ts";
-import { MS_TIMELINE_KEY } from "./types.ts";
 
 const props = withDefaults(defineProps<MsTimelineItemProps>(), {
   tone: "primary",
@@ -13,8 +12,6 @@ defineSlots<{
   title?(): unknown;
   timestamp?(): unknown;
 }>();
-
-const timeline = inject(MS_TIMELINE_KEY, null);
 
 const itemClasses = computed(() => ["ms-timeline-item", `ms-timeline-item--tone-${props.tone}`]);
 </script>

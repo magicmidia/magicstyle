@@ -4,8 +4,8 @@ import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-
 import type { MsSwitchProps } from "./types.ts";
 
 defineOptions({
-  inheritAttrs: false,
   name: "MsSwitch",
+  inheritAttrs: false,
 });
 
 const props = withDefaults(defineProps<MsSwitchProps>(), {
@@ -54,8 +54,8 @@ function onChange(event: Event): void {
       :value="props.value"
       :aria-invalid="fieldControl.fieldInvalid.value || undefined"
       :aria-describedby="fieldControl.describedBy.value"
-      @change="onChange"
       v-bind="controlAttrs($attrs)"
+      @change="onChange"
     />
     <span class="ms-switch-track" aria-hidden="true" />
     <div

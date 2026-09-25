@@ -4,8 +4,8 @@ import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-
 import type { MsCheckboxProps } from "./types.ts";
 
 defineOptions({
-  inheritAttrs: false,
   name: "MsCheckbox",
+  inheritAttrs: false,
 });
 
 const props = withDefaults(defineProps<MsCheckboxProps>(), {
@@ -65,8 +65,8 @@ function onChange(event: Event): void {
       :aria-checked="props.indeterminate ? 'mixed' : undefined"
       :aria-invalid="fieldControl.fieldInvalid.value || undefined"
       :aria-describedby="fieldControl.describedBy.value"
-      @change="onChange"
       v-bind="controlAttrs($attrs)"
+      @change="onChange"
     />
     <span class="ms-checkbox-box" aria-hidden="true" />
     <div

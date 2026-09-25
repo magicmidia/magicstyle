@@ -58,6 +58,13 @@ export function emitThemesCss(): string {
         deltaAgainst(base, resolveTheme(theme.name, "dark")),
       ),
     ),
+    block(
+      '[data-ms-color-mode="system"][data-ms-contrast="high"]',
+      deltaAgainst(
+        resolveTheme("magic", "dark"),
+        resolveTheme("magic", "dark", CONTRAST_HIGH.dark),
+      ),
+    ),
   ].filter((part) => part !== "");
   parts.push(`@media (prefers-color-scheme: dark) {\n${systemDark.join("\n")}}\n`);
 

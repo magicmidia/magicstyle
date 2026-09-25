@@ -23,6 +23,12 @@ export interface MsToastItem extends MsToastOptions {
 
 export interface MsToastProps {
   toast: MsToastItem;
+  /**
+   * Render the toast as its own live region (status/alert). MsToastContainer
+   * disables it and announces through persistent live regions instead.
+   * @default true
+   */
+  announce?: boolean;
 }
 
 export interface MsToastEmits {

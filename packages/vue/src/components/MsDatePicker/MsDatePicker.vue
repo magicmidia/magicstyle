@@ -103,7 +103,12 @@
       <div v-if="mode === 'time' || mode === 'datetime'" class="ms-date-picker__time-panel">
         <div class="ms-date-picker__time-header">Horário</div>
         <div class="ms-date-picker__time-selectors">
-          <select v-model="selectedHour" class="ms-date-picker__time-select" @change="onTimeChange">
+          <select
+            v-model="displayHour"
+            class="ms-date-picker__time-select"
+            aria-label="Hora"
+            @change="onTimeChange"
+          >
             <option v-for="h in hourOptions" :key="h" :value="h">
               {{ String(h).padStart(2, "0") }}
             </option>
@@ -112,11 +117,22 @@
           <select
             v-model="selectedMinute"
             class="ms-date-picker__time-select"
+            aria-label="Minutos"
             @change="onTimeChange"
           >
             <option v-for="m in minuteOptions" :key="m" :value="m">
               {{ String(m).padStart(2, "0") }}
             </option>
+          </select>
+          <select
+            v-if="!props.format24h"
+            v-model="meridiem"
+            class="ms-date-picker__time-select"
+            aria-label="AM ou PM"
+            @change="onTimeChange"
+          >
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
           </select>
         </div>
       </div>
@@ -144,8 +160,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
-import type { MsDatePickerProps, MsDatePickerEmits, MsDatePickerModelValue } from "./types.ts";
+import { computed, onMounted, ref, watch } from "vue";
+import type { MsDatePickerProps, MsDatePickerEmits } from "./types.ts";
 
 defineOptions({
   name: "MsDatePicker",
@@ -180,6 +196,27 @@ const selectedMinute = ref<number>(0);
 const now = new Date();
 const currentYear = ref(now.getFullYear());
 const currentMonth = ref(now.getMonth());
+/** "Today" is only known on the client (server timezone may differ): set after mount. */
+const todayStr = ref("");
+onMounted(() => {
+  const today = new Date();
+  todayStr.value = formatDateStr(today.getFullYear(), today.getMonth(), today.getDate());
+});
+
+/**
+ * Parses "YYYY-MM-DD" and "YYYY-MM-DD HH:mm" (the formats this component emits) as
+ * local time. `new Date("YYYY-MM-DD")` is UTC (off by a day west of Greenwich) and
+ * Safari rejects "YYYY-MM-DD HH:mm".
+ */
+function parseLocalDate(value: string): Date | null {
+  const match = /^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/.exec(value.trim());
+  if (match) {
+    const [, y, mo, d, h, mi] = match;
+    return new Date(Number(y), Number(mo) - 1, Number(d), Number(h ?? 0), Number(mi ?? 0));
+  }
+  const fallback = new Date(value);
+  return isNaN(fallback.getTime()) ? null : fallback;
+}
 
 function parseInitialValue() {
   if (!props.modelValue) return;
@@ -196,6 +233,11 @@ function parseInitialValue() {
       rangeStart.value = parts[0]?.trim() || "";
       rangeEnd.value = parts[1]?.trim() || "";
     }
+    const start = rangeStart.value ? parseLocalDate(rangeStart.value) : null;
+    if (start) {
+      currentYear.value = start.getFullYear();
+      currentMonth.value = start.getMonth();
+    }
   } else if (props.mode === "time") {
     if (typeof props.modelValue === "string" && props.modelValue.includes(":")) {
       const parts = props.modelValue.split(":").map(Number);
@@ -207,8 +249,8 @@ function parseInitialValue() {
   } else {
     // date or datetime
     if (typeof props.modelValue === "string") {
-      const d = new Date(props.modelValue);
-      if (!isNaN(d.getTime())) {
+      const d = parseLocalDate(props.modelValue);
+      if (d) {
         currentYear.value = d.getFullYear();
         currentMonth.value = d.getMonth();
         selectedHour.value = d.getHours();
@@ -275,9 +317,31 @@ const headerTitle = computed(() => {
   return `${monthNames[currentMonth.value]} ${currentYear.value}`;
 });
 
-const hourOptions = computed(() => {
-  const max = props.format24h ? 24 : 12;
-  return Array.from({ length: max }, (_, i) => i);
+// Hours are stored as 0-23; the 12h format only changes presentation (1-12 + AM/PM).
+const hourOptions = computed(() =>
+  props.format24h
+    ? Array.from({ length: 24 }, (_, i) => i)
+    : Array.from({ length: 12 }, (_, i) => i + 1),
+);
+
+const displayHour = computed<number>({
+  get: () => (props.format24h ? selectedHour.value : selectedHour.value % 12 || 12),
+  set: (hour) => {
+    if (props.format24h) {
+      selectedHour.value = hour;
+      return;
+    }
+    const pm = selectedHour.value >= 12;
+    selectedHour.value = (hour % 12) + (pm ? 12 : 0);
+  },
+});
+
+const meridiem = computed<"AM" | "PM">({
+  get: () => (selectedHour.value >= 12 ? "PM" : "AM"),
+  set: (value) => {
+    const base = selectedHour.value % 12;
+    selectedHour.value = value === "PM" ? base + 12 : base;
+  },
 });
 
 const minuteOptions = computed(() => {
@@ -377,8 +441,7 @@ function isDateDisabled(dayObj: DayItem): boolean {
 }
 
 function getDayClasses(dayObj: DayItem) {
-  const todayStr = formatDateStr(now.getFullYear(), now.getMonth(), now.getDate());
-  const isToday = dayObj.dateString === todayStr;
+  const isToday = todayStr.value !== "" && dayObj.dateString === todayStr.value;
 
   if (props.mode === "range") {
     const isStart = rangeStart.value && dayObj.dateString === rangeStart.value;

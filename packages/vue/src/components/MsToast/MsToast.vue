@@ -2,7 +2,7 @@
 import { computed, onMounted, onBeforeUnmount } from "vue";
 import type { MsToastProps, MsToastEmits } from "./types.ts";
 
-const props = defineProps<MsToastProps>();
+const props = withDefaults(defineProps<MsToastProps>(), { announce: true });
 const emit = defineEmits<MsToastEmits>();
 
 let timer: ReturnType<typeof setTimeout> | null = null;
@@ -57,11 +57,12 @@ onBeforeUnmount(() => {
 <template>
   <div
     :class="toastClasses"
-    role="status"
-    aria-live="polite"
+    :role="props.announce ? (props.toast.tone === 'danger' ? 'alert' : 'status') : undefined"
     data-ms-toast
     @mouseenter="pauseTimer"
     @mouseleave="resumeTimer"
+    @focusin="pauseTimer"
+    @focusout="resumeTimer"
   >
     <span class="ms-toast__icon" aria-hidden="true">
       {{ defaultIcons[props.toast.tone] }}

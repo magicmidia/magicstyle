@@ -109,7 +109,9 @@ const effectiveDir = computed<Direction>(() => {
 const resolvedAttributes = computed<Record<string, string>>(() => {
   return {
     "data-ms-theme": effectiveTheme.value,
-    "data-ms-color-mode": effectiveResolvedColorMode.value,
+    // "system" is resolved by CSS (prefers-color-scheme): identical SSR/client markup, no flash.
+    "data-ms-color-mode":
+      effectiveColorModePref.value === "system" ? "system" : effectiveResolvedColorMode.value,
     "data-ms-density": effectiveDensity.value,
     "data-ms-contrast": effectiveContrast.value,
     "data-ms-radius": effectiveRadius.value,

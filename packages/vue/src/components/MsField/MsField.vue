@@ -60,20 +60,20 @@ const fieldClasses = computed(() => [
 
     <div v-if="props.orientation === 'horizontal'" class="ms-field-content">
       <slot />
-      <p v-if="props.description" class="ms-field-description" :id="descriptionId">
+      <p v-if="props.description" :id="descriptionId" class="ms-field-description">
         {{ props.description }}
       </p>
-      <p v-if="props.error" class="ms-field-error" :id="errorId" aria-live="polite">
+      <p v-if="props.error" :id="errorId" class="ms-field-error" aria-live="polite">
         {{ props.error }}
       </p>
     </div>
 
     <template v-else>
       <slot />
-      <p v-if="props.description" class="ms-field-description" :id="descriptionId">
+      <p v-if="props.description" :id="descriptionId" class="ms-field-description">
         {{ props.description }}
       </p>
-      <p v-if="props.error" class="ms-field-error" :id="errorId" aria-live="polite">
+      <p v-if="props.error" :id="errorId" class="ms-field-error" aria-live="polite">
         {{ props.error }}
       </p>
     </template>

@@ -26,8 +26,8 @@
     <!-- Floating Preview Hovercard -->
     <div
       v-if="!disabled"
-      ref="cardRef"
       :id="cardId"
+      ref="cardRef"
       role="dialog"
       aria-label="Pré-visualização do link"
       :class="cardClasses"

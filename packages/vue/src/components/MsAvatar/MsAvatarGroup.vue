@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, provide, toRef } from "vue";
+import { computed, provide } from "vue";
 import MsAvatar from "./MsAvatar.vue";
 import {
   AVATAR_GROUP_CONTEXT_KEY,

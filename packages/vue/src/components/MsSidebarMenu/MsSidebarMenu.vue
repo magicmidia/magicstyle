@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, provide, ref, toRef, watch } from "vue";
+import { provide, ref, toRef, watch } from "vue";
 import {
   type MsSidebarMenuProps,
   type MsSidebarMenuEmits,
@@ -127,8 +127,8 @@ function isGroup(
           <MsSidebarMenuGroup v-if="isGroup(entry)" :title="entry.title">
             <MsSidebarMenuItem
               v-for="item in entry.items"
-              :key="item.id"
               :id="item.id"
+              :key="item.id"
               :label="item.label"
               :icon="item.icon"
               :badge="item.badge"
@@ -142,8 +142,8 @@ function isGroup(
               <template v-if="item.children && item.children.length > 0" #sub>
                 <MsSidebarMenuItem
                   v-for="child in item.children"
-                  :key="child.id"
                   :id="child.id"
+                  :key="child.id"
                   :label="child.label"
                   :icon="child.icon"
                   :badge="child.badge"
@@ -186,8 +186,8 @@ function isGroup(
               >
                 <MsSidebarMenuItem
                   v-for="child in (entry as MsSidebarMenuItemData).children"
-                  :key="child.id"
                   :id="child.id"
+                  :key="child.id"
                   :label="child.label"
                   :icon="child.icon"
                   :badge="child.badge"

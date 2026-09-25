@@ -230,9 +230,11 @@ const highlightedCode = computed(() => highlightCode(props.code, props.language)
       <div v-if="props.showLineNumbers" class="ms-code-block__lines" aria-hidden="true">
         <span v-for="line in lines" :key="line">{{ line }}</span>
       </div>
+      <!-- eslint-disable vue/no-v-html -- highlightCode escapes every token (tested) -->
       <pre
         class="ms-code-block__pre"
       ><code v-if="props.code" v-html="highlightedCode" /><code v-else><slot /></code></pre>
+      <!-- eslint-enable vue/no-v-html -->
 
       <div
         v-if="props.collapsible && isCollapsed"

@@ -2,8 +2,8 @@
   <template v-if="lazy">
     <div
       v-if="isSelected"
-      role="tabpanel"
       :id="panelId"
+      role="tabpanel"
       :aria-labelledby="tabId"
       tabindex="0"
       :class="classes"
@@ -14,8 +14,8 @@
   <template v-else>
     <div
       v-show="isSelected"
-      role="tabpanel"
       :id="panelId"
+      role="tabpanel"
       :aria-labelledby="tabId"
       tabindex="0"
       :class="classes"

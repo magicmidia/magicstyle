@@ -4,8 +4,8 @@ import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-
 import type { MsInputProps } from "./types.ts";
 
 defineOptions({
-  inheritAttrs: false,
   name: "MsInput",
+  inheritAttrs: false,
 });
 
 const props = withDefaults(defineProps<MsInputProps>(), {
@@ -80,11 +80,11 @@ const resolvedTone = computed(() => (isInvalid.value ? "danger" : props.tone));
       :autocomplete="props.autocomplete"
       :aria-invalid="isInvalid || undefined"
       :aria-describedby="describedBy"
+      v-bind="controlAttrs($attrs)"
       @input="
         emit('update:modelValue', ($event.target as HTMLInputElement).value);
         emit('input', ($event.target as HTMLInputElement).value);
       "
-      v-bind="controlAttrs($attrs)"
     />
     <label v-if="props.floatingLabel" class="ms-input-floating-label" :for="resolvedId">
       {{ props.floatingLabel }}

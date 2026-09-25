@@ -235,3 +235,22 @@
   border-radius: 10px;
   box-shadow: 0 4px 12px 0 rgba(46, 52, 64, 0.15);
 }
+
+/* data-ms-color-mode="system": same dark rules, resolved by the OS preference. */
+@media (prefers-color-scheme: dark) {
+  :is([data-ms-theme="bootstrap"], [data-theme="bootstrap"])[data-ms-color-mode="system"]
+    .ms-input:focus-within,
+  :is([data-ms-theme="bootstrap"], [data-theme="bootstrap"])[data-ms-color-mode="system"]
+    .ms-textarea:focus,
+  :is([data-ms-theme="bootstrap"], [data-theme="bootstrap"])[data-ms-color-mode="system"]
+    .ms-native-select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
+  }
+
+  :is([data-ms-theme="github"], [data-theme="github"])[data-ms-color-mode="system"]
+    .ms-button[data-variant="solid"] {
+    box-shadow: 0 0 transparent;
+    border-color: rgba(240, 246, 252, 0.1);
+  }
+}

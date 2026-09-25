@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, useSlots, onBeforeUnmount } from "vue";
+import { ref, computed, onBeforeUnmount } from "vue";
 import type { MsCodeProps, MsCodeEmits } from "./types.ts";
 
 const props = withDefaults(defineProps<MsCodeProps>(), {
@@ -10,7 +10,6 @@ const props = withDefaults(defineProps<MsCodeProps>(), {
 });
 
 const emit = defineEmits<MsCodeEmits>();
-const slots = useSlots();
 const copied = ref(false);
 const codeEl = ref<HTMLElement | null>(null);
 let copyTimer: ReturnType<typeof setTimeout> | null = null;

@@ -25,7 +25,7 @@ const style = computed(() => {
 });
 
 const columns = computed(() => {
-  const result: any[][] = Array.from({ length: props.cols }, () => []);
+  const result: (typeof props.items)[number][][] = Array.from({ length: props.cols }, () => []);
   props.items.forEach((item, index) => {
     const colIndex = index % props.cols;
     result[colIndex]!.push(item);

@@ -93,9 +93,9 @@ onMounted(() => {
       :name="props.name"
       :aria-invalid="isInvalid || undefined"
       :aria-describedby="describedBy"
+      v-bind="controlAttrs($attrs)"
       @input="onInput"
       @change="onChange"
-      v-bind="controlAttrs($attrs)"
     />
 
     <div v-if="props.showCount || $slots.helper || $slots.footer" class="ms-textarea__footer">

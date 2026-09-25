@@ -95,9 +95,9 @@ const classes = computed(() => [
 <template>
   <div v-bind="rootAttrs($attrs)" :class="classes" :data-invalid="props.invalid ? '' : undefined">
     <input
+      :id="fieldControl.id"
       type="text"
       class="ms-masked-input__field"
-      :id="fieldControl.id"
       :aria-invalid="isInvalid || undefined"
       :aria-describedby="fieldControl.describedBy.value"
       :value="props.modelValue"
@@ -105,8 +105,8 @@ const classes = computed(() => [
       :disabled="props.disabled"
       :readonly="props.readonly"
       :data-size="props.size"
-      @input="handleInput"
       v-bind="controlAttrs($attrs)"
+      @input="handleInput"
     />
 
     <button

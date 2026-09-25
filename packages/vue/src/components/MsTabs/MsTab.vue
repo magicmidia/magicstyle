@@ -1,9 +1,9 @@
 <template>
   <button
+    :id="tabId"
     ref="buttonRef"
     type="button"
     role="tab"
-    :id="tabId"
     :aria-selected="isSelected"
     :aria-controls="panelId"
     :tabindex="isSelected ? 0 : -1"

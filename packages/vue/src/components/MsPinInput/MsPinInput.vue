@@ -127,8 +127,8 @@ const classes = computed(() => [
   >
     <template v-for="(_, index) in props.length" :key="index">
       <input
-        ref="inputRefs"
         :id="index === 0 ? fieldControl.id : undefined"
+        ref="inputRefs"
         :aria-invalid="fieldControl.fieldInvalid.value || undefined"
         :type="props.mask ? 'password' : 'text'"
         :inputmode="props.type === 'numeric' ? 'numeric' : 'text'"

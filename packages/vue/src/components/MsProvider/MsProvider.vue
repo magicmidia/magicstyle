@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch, watchEffect, onUnmounted } from "vue";
+import { computed, ref, watch, watchEffect, onBeforeUnmount } from "vue";
 import type { MsProviderProps } from "./types.ts";
 import {
   provideThemeContext,
@@ -90,7 +90,8 @@ const resolvedColorMode = computed<ColorMode>(() => {
 const resolvedAttributes = computed<Record<string, string>>(() => {
   return {
     "data-ms-theme": internalTheme.value,
-    "data-ms-color-mode": resolvedColorMode.value,
+    // "system" is resolved by CSS (prefers-color-scheme): identical SSR/client markup, no flash.
+    "data-ms-color-mode": internalColorMode.value === "system" ? "system" : resolvedColorMode.value,
     "data-ms-density": internalDensity.value,
     "data-ms-contrast": internalContrast.value,
     "data-ms-radius": internalRadius.value,
@@ -109,21 +110,27 @@ const classes = computed(() => {
   return ["ms-provider"];
 });
 
-// If target is root, sync attributes to document.documentElement
+// If target is root, sync attributes to document.documentElement (and undo on unmount).
+const appliedRootAttributes = new Map<string, string | null>();
+
 watchEffect(() => {
   if (props.target === "root" && typeof document !== "undefined") {
     const el = document.documentElement;
-    const attrs = resolvedAttributes.value;
-    for (const [key, value] of Object.entries(attrs)) {
+    for (const [key, value] of Object.entries(resolvedAttributes.value)) {
+      if (!appliedRootAttributes.has(key)) appliedRootAttributes.set(key, el.getAttribute(key));
       el.setAttribute(key, value);
     }
   }
 });
 
-onUnmounted(() => {
-  if (props.target === "root" && typeof document !== "undefined") {
-    // Optionally clean up attributes if this provider unmounts
+onBeforeUnmount(() => {
+  if (typeof document === "undefined") return;
+  const el = document.documentElement;
+  for (const [key, previous] of appliedRootAttributes) {
+    if (previous === null) el.removeAttribute(key);
+    else el.setAttribute(key, previous);
   }
+  appliedRootAttributes.clear();
 });
 
 const context: MsThemeContext = {

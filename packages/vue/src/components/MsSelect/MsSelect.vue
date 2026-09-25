@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, getCurrentInstance, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
-import { useFieldControl } from "../../composables/use-field-context.ts";
+import { computed, getCurrentInstance, nextTick, onUnmounted, ref, watch } from "vue";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
 import type {
   MsSelectEmits,
   MsSelectGroup,
@@ -8,6 +8,8 @@ import type {
   MsSelectOptionOrGroup,
   MsSelectProps,
 } from "./types.ts";
+
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<MsSelectProps>(), {
   size: "md",
@@ -516,6 +518,7 @@ onUnmounted(() => {
 
 <template>
   <div
+    v-bind="rootAttrs($attrs)"
     ref="rootRef"
     class="ms-select"
     :class="rootClasses"
@@ -550,10 +553,12 @@ onUnmounted(() => {
       :aria-activedescendant="activeOptionId"
       :aria-invalid="isInvalid || undefined"
       :aria-describedby="describedBy"
+      :aria-labelledby="fieldControl.labelledBy.value"
       :aria-disabled="props.disabled || undefined"
       :data-invalid="isInvalid || undefined"
       :data-disabled="props.disabled || undefined"
       :data-focused="isDropdownOpen || undefined"
+      v-bind="controlAttrs($attrs)"
       @click="toggleOpen"
       @keydown="onTriggerKeyDown"
     >

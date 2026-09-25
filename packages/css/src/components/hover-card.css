@@ -75,3 +75,14 @@
     transform: scale(1) translateY(0);
   }
 }
+
+/* data-ms-color-mode="system": same dark rules, resolved by the OS preference. */
+@media (prefers-color-scheme: dark) {
+  :root[data-ms-color-mode="system"] .ms-hover-card__content {
+    background-color: var(--ms-color-surface-raised, #18181b);
+    border-color: var(--ms-color-border-subtle, #27272a);
+    box-shadow:
+      0 10px 25px -5px rgba(0, 0, 0, 0.5),
+      0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  }
+}

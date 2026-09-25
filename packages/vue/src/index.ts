@@ -322,7 +322,13 @@ export type { MsRatingProps, MsRatingEmits, MsRatingSize } from "./components/Ms
 
 export { default as MsToast } from "./components/MsToast/MsToast.vue";
 export { default as MsToastContainer } from "./components/MsToast/MsToastContainer.vue";
-export { useToast } from "./components/MsToast/useToast.ts";
+export {
+  useToast,
+  createMsToast,
+  createToastStore,
+  TOAST_STORE_KEY,
+  type MsToastStore,
+} from "./components/MsToast/useToast.ts";
 export type {
   MsToastProps,
   MsToastEmits,

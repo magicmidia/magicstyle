@@ -54,8 +54,8 @@ const rangeClasses = computed(() => [
 <template>
   <div v-bind="rootAttrs($attrs)" class="ms-range-wrapper" data-ms-range-wrapper>
     <input
-      type="range"
       :id="fieldControl.id"
+      type="range"
       :aria-invalid="isInvalid || undefined"
       :aria-describedby="fieldControl.describedBy.value"
       :class="rangeClasses"
@@ -66,9 +66,9 @@ const rangeClasses = computed(() => [
       :disabled="props.disabled"
       :style="{ '--ms-range-percent': `${percentage}%` }"
       data-ms-range
+      v-bind="controlAttrs($attrs)"
       @input="handleInput"
       @change="handleChange"
-      v-bind="controlAttrs($attrs)"
     />
 
     <span v-if="props.showValue || $slots.value" class="ms-range__value">

@@ -51,8 +51,8 @@ function onChange(event: Event): void {
       :name="props.name"
       :aria-invalid="isInvalid || undefined"
       :aria-describedby="describedBy"
-      @change="onChange"
       v-bind="controlAttrs($attrs)"
+      @change="onChange"
     >
       <option
         v-if="props.placeholder"

@@ -99,11 +99,11 @@ const showClearButton = computed(() => {
       :aria-label="fieldControl.field ? undefined : 'Pesquisar'"
       :aria-describedby="fieldControl.describedBy.value"
       :aria-invalid="fieldControl.fieldInvalid.value || undefined"
+      v-bind="controlAttrs($attrs)"
       @input="handleInput"
       @keydown="handleKeyDown"
       @focus="emit('focus', $event)"
       @blur="emit('blur', $event)"
-      v-bind="controlAttrs($attrs)"
     />
 
     <div class="ms-search-field__actions">

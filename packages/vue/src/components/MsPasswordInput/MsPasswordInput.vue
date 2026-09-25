@@ -70,8 +70,8 @@ const handleInput = (event: Event) => {
   >
     <div class="ms-password-input__wrapper">
       <input
-        :type="isVisible ? 'text' : 'password'"
         :id="fieldControl.id"
+        :type="isVisible ? 'text' : 'password'"
         :aria-invalid="isInvalid || undefined"
         :aria-describedby="fieldControl.describedBy.value"
         class="ms-password-input__field"
@@ -79,8 +79,8 @@ const handleInput = (event: Event) => {
         :placeholder="props.placeholder"
         :disabled="props.disabled"
         :data-size="props.size"
-        @input="handleInput"
         v-bind="controlAttrs($attrs)"
+        @input="handleInput"
       />
 
       <button

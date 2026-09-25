@@ -908,7 +908,6 @@ body.lp-body {
   box-shadow: var(--lp-card-shadow), var(--lp-card-specular);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  divide-x: 1px solid var(--lp-card-border);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }

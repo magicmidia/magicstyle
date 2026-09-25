@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from "vue";
+import { ref, computed } from "vue";
 import type { MsPaginationProps, MsPaginationEmits } from "./types.ts";
 
 const props = withDefaults(defineProps<MsPaginationProps>(), {
