@@ -22,7 +22,7 @@
   font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-primary);
   background-color: var(--ms-color-surface-raised);
-  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-field);
   border-radius: var(--ms-control-radius);
   cursor: pointer;
   outline: none;
@@ -32,7 +32,7 @@
 }
 
 .ms-native-select:hover:not(:disabled):not([data-invalid]) {
-  border-color: var(--ms-color-border-strong);
+  border-color: var(--ms-color-border-field-hover);
 }
 
 .ms-native-select:focus-visible {
@@ -76,12 +76,12 @@
   background-color: transparent;
   border-inline: none;
   border-block-start: none;
-  border-block-end: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border-block-end: var(--ms-border-hairline) solid var(--ms-color-border-field);
   border-radius: 0;
   padding-inline-start: 0;
 }
 .ms-native-select[data-variant="flushed"]:hover:not(:disabled) {
-  border-block-end-color: var(--ms-color-border-strong);
+  border-block-end-color: var(--ms-color-border-field-hover);
 }
 .ms-native-select[data-variant="flushed"]:focus-visible {
   border-block-end-color: var(--ms-focus-ring-color);

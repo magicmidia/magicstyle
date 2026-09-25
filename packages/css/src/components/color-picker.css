@@ -54,7 +54,7 @@
   font-size: var(--ms-typography-size-sm);
   text-transform: uppercase;
   padding: var(--ms-space-1) var(--ms-space-2);
-  border: 1px solid var(--ms-color-border-default);
+  border: 1px solid var(--ms-color-border-field);
   border-radius: var(--ms-radius-md);
   width: 100px;
   background-color: var(--ms-color-surface-sunken);

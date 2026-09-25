@@ -41,6 +41,9 @@ export const RATIOS = {
   textSubtle: 52,
   borderSubtle: 55,
   borderStrong: 65,
+  /** Form control boundaries (WCAG 1.4.11): 3:1 against every surface in every theme. */
+  borderField: 50,
+  borderFieldHover: 30,
   /** Chroma restored after mixing (tints keep ~30% and shades ~80% of the role's saturation). */
   tintChroma: 2.2,
   textChroma: 2,
@@ -89,6 +92,8 @@ export const DERIVED: ReadonlyArray<readonly [string, Expr]> = [
   ["color-border-subtle", mix("color-base-300", RATIOS.borderSubtle, BASE)],
   ["color-border-default", ref("color-base-300")],
   ["color-border-strong", mix("color-base-300", RATIOS.borderStrong, INK)],
+  ["color-border-field", mix("color-base-300", RATIOS.borderField, INK)],
+  ["color-border-field-hover", mix("color-base-300", RATIOS.borderFieldHover, INK)],
   ["color-border-focus", ref("color-primary")],
   ["focus-ring-color", ref("color-primary")],
   // Roles
@@ -272,6 +277,10 @@ export const CONTRAST_PAIRS: ReadonlyArray<readonly [fg: string, bg: string, min
   ["color-text-primary", "color-surface-default", 4.5],
   ["color-text-secondary", "color-surface-default", 4.5],
   ["color-text-primary", "color-surface-sunken", 4.5],
+  // Non-text contrast of form control boundaries (WCAG 1.4.11).
+  ["color-border-field", "color-surface-default", 3],
+  ["color-border-field", "color-surface-raised", 3],
+  ["color-border-field", "color-surface-sunken", 3],
   ...["primary", "secondary", "accent", "neutral"].flatMap((role) => [
     [`color-interactive-${role}-text`, "color-surface-default", 4.5] as const,
     [`color-interactive-${role}-text`, `color-interactive-${role}-subtle`, 4.5] as const,

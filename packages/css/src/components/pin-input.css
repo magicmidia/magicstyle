@@ -19,7 +19,7 @@
   font-weight: var(--ms-typography-weight-semibold);
   color: var(--ms-color-text-primary);
   background-color: var(--ms-color-surface-raised);
-  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-field);
   border-radius: var(--ms-radius-md);
   outline: none;
   box-sizing: border-box;
@@ -34,7 +34,7 @@
 }
 
 .ms-pin-input__box--filled {
-  border-color: var(--ms-color-border-strong);
+  border-color: var(--ms-color-border-field-hover);
 }
 
 /* Sizes */

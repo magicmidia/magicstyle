@@ -30,7 +30,7 @@
   min-height: 40px;
   padding: 0 var(--ms-space-3);
   background-color: var(--ms-color-surface-default);
-  border: 1px solid var(--ms-color-border-default);
+  border: 1px solid var(--ms-color-border-field);
   border-radius: var(--ms-radius-md);
   cursor: pointer;
   user-select: none;
@@ -41,7 +41,7 @@
 }
 
 .ms-select__control:hover:not([data-disabled="true"]) {
-  border-color: var(--ms-color-border-hover);
+  border-color: var(--ms-color-border-field-hover);
 }
 
 .ms-select__control:focus-visible,
@@ -159,7 +159,7 @@
   border-top: none;
   border-inline-start: none;
   border-inline-end: none;
-  border-bottom: 2px solid var(--ms-color-border-default);
+  border-bottom: 2px solid var(--ms-color-border-field);
   border-radius: 0;
   padding-inline-start: 0;
   padding-inline-end: 0;
@@ -445,7 +445,7 @@
   width: 100%;
   padding: var(--ms-space-1-5, 6px) var(--ms-space-2-5, 10px);
   background-color: var(--ms-color-surface-default);
-  border: 1px solid var(--ms-color-border-default);
+  border: 1px solid var(--ms-color-border-field);
   border-radius: var(--ms-radius-sm);
   font-family: inherit;
   font-size: var(--ms-font-size-body-sm, 0.8125rem);

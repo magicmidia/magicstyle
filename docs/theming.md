@@ -141,17 +141,27 @@ A lista completa, com tipos, está em `@magic-style/vue` (`MS_THEME_CONTRACT`) e
 
 ## 5. Como os tokens são derivados
 
-| Token                                                                 | Fórmula                                                                                       |
-| :-------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| `--ms-color-interactive-<cor>-hover`                                  | 86% da cor + 14% do `base-content` (escurece no claro, clareia no escuro)                     |
-| `--ms-color-interactive-<cor>-active`                                 | 74% da cor + 26% do `base-content`                                                            |
-| `--ms-color-interactive-<cor>-subtle`, `--ms-color-feedback-<cor>-bg` | 14% da cor sobre a base, com saturação restaurada (×2,2)                                      |
-| `--ms-color-interactive-<cor>-text`, `--ms-color-feedback-<cor>-text` | 40% da cor sobre o `base-content`, com saturação restaurada (×2). Passa AA em todos os temas. |
-| `--ms-color-text-secondary` / `-muted` / `-subtle`                    | 80% / 66% / 52% do `base-content` sobre a base                                                |
-| `--ms-radius-sm` / `-md` / `-lg` / `-xl`                              | `selector` / `field` / `box` / `box × 1.5`                                                    |
-| `--ms-elevation-1…3`                                                  | Sombras multiplicadas por `--ms-depth`                                                        |
+| Token                                                                 | Fórmula                                                                                                   |
+| :-------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------- |
+| `--ms-color-interactive-<cor>-hover`                                  | 86% da cor + 14% do `base-content` (escurece no claro, clareia no escuro)                                 |
+| `--ms-color-interactive-<cor>-active`                                 | 74% da cor + 26% do `base-content`                                                                        |
+| `--ms-color-interactive-<cor>-subtle`, `--ms-color-feedback-<cor>-bg` | 14% da cor sobre a base, com saturação restaurada (×2,2)                                                  |
+| `--ms-color-interactive-<cor>-text`, `--ms-color-feedback-<cor>-text` | 40% da cor sobre o `base-content`, com saturação restaurada (×2). Passa AA em todos os temas.             |
+| `--ms-color-text-secondary` / `-muted` / `-subtle`                    | 80% / 66% / 52% do `base-content` sobre a base                                                            |
+| `--ms-color-border-field` / `-hover`                                  | 50% / 30% do `base-300` sobre o `base-content`: borda de campos, 3:1 em qualquer superfície (WCAG 1.4.11) |
+| `--ms-radius-sm` / `-md` / `-lg` / `-xl`                              | `selector` / `field` / `box` / `box × 1.5`                                                                |
+| `--ms-elevation-1…3`                                                  | Sombras multiplicadas por `--ms-depth`                                                                    |
 
 As proporções ficam num único lugar (`RATIOS`, em `packages/internal/themes/src/lib/derive.ts`). O mesmo código gera o CSS e calcula os valores que o teste de contraste valida.
+
+Qualquer token derivado pode ser sobrescrito como uma variável comum. Por exemplo, para bordas de campo mais suaves (abaixo de 3:1, fora da WCAG 1.4.11):
+
+```css
+:root {
+  --ms-color-border-field: var(--ms-color-base-300);
+  --ms-color-border-field-hover: var(--ms-color-border-strong);
+}
+```
 
 ## 6. Tons nos componentes (tone engine)
 

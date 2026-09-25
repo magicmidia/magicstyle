@@ -15,7 +15,7 @@
   width: 100%;
   font-family: inherit;
   border-radius: var(--ms-radius-md);
-  border: 1px solid var(--ms-color-border-default);
+  border: 1px solid var(--ms-color-border-field);
   background-color: var(--ms-color-surface-default);
   color: var(--ms-color-text-primary);
   transition-property: border-color, box-shadow, background-color;
@@ -171,7 +171,7 @@
   border-inline-start: none;
   border-inline-end: none;
   border-top: none;
-  border-bottom: 1px solid var(--ms-color-border-default);
+  border-bottom: 1px solid var(--ms-color-border-field);
   background: transparent;
   padding-inline-start: 28px;
 }

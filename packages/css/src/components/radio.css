@@ -18,7 +18,7 @@
   block-size: 16px;
   inline-size: 16px;
   flex-shrink: 0;
-  border: var(--ms-border-hairline) solid var(--ms-color-border-strong);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-field);
   border-radius: var(--ms-radius-full);
   background-color: var(--ms-color-surface-raised);
   transition:

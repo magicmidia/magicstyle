@@ -10,7 +10,7 @@
   gap: var(--ms-space-2);
   block-size: var(--ms-control-height-md);
   padding-inline: var(--ms-space-3);
-  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-field);
   border-radius: var(--ms-control-radius);
   background-color: var(--ms-color-surface-raised);
   transition:
@@ -19,7 +19,7 @@
 }
 
 .ms-input:hover:not([data-disabled]):not([data-invalid]) {
-  border-color: var(--ms-color-border-strong);
+  border-color: var(--ms-color-border-field-hover);
 }
 
 .ms-input:focus-within {
@@ -363,7 +363,7 @@
   box-shadow: none;
 }
 .ms-input[data-nofocus]:hover {
-  border-color: var(--ms-color-border-default);
+  border-color: var(--ms-color-border-field);
 }
 .ms-input[data-nofocus]:focus-within,
 .ms-input[data-nofocus][data-tone]:focus-within {

@@ -113,7 +113,7 @@
 
 :is([data-ms-theme="shadcn"], [data-theme="shadcn"]) .ms-input {
   border-radius: 6px;
-  border-color: var(--ms-color-border-default);
+  border-color: var(--ms-color-border-field);
 }
 
 :is([data-ms-theme="shadcn"], [data-theme="shadcn"]) .ms-input:focus-within {
