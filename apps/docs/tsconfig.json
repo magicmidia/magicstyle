@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "jsx": "preserve",
+    "types": ["node", "vite/client"],
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "paths": {
+      "@demos/*": ["./demos/*"],
+      "@catalog/*": ["./catalog/*"]
+    }
+  },
+  "include": [
+    ".vitepress/**/*.ts",
+    ".vitepress/**/*.vue",
+    "catalog/**/*.ts",
+    "demos/**/*.ts",
+    "demos/**/*.vue",
+    "scripts/**/*.ts",
+    "tests/**/*.ts"
+  ],
+  "exclude": [".vitepress/cache", ".vitepress/dist"]
+}

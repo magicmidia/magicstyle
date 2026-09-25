@@ -1,0 +1,2 @@
+/* Must load first: VitePress' theme (layer vp) < @magic-style/css (layer ms) < docs overrides (unlayered). */
+@layer vp, ms;

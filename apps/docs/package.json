@@ -1,0 +1,30 @@
+{
+  "name": "magic-style-docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Magic-Style documentation site and landing page (VitePress, pt-BR / en / es).",
+  "scripts": {
+    "dev": "node scripts/gen-api.ts --if-stale && vitepress dev",
+    "build": "node scripts/gen-api.ts && vitepress build",
+    "preview": "vitepress preview --port 4173",
+    "typecheck": "vue-tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --passWithNoTests",
+    "gen:api": "node scripts/gen-api.ts",
+    "gen:pages": "node scripts/gen-pages.ts"
+  },
+  "dependencies": {
+    "@magic-style/css": "workspace:*",
+    "@magic-style/vue": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^26.3.0",
+    "typescript": "~5.9.3",
+    "vite": "^8.2.2",
+    "vitepress": "2.0.0-alpha.20",
+    "vitest": "^4.1.11",
+    "vue": "^3.5.41",
+    "vue-component-meta": "3.3.11",
+    "vue-tsc": "^3.3.11"
+  }
+}

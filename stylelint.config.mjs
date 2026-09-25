@@ -3,7 +3,13 @@
  * The undefined custom-property contract is enforced by packages/css/tests.
  */
 export default {
-  ignoreFiles: ["**/node_modules/**", "**/dist/**", "**/coverage/**", "docs/**"],
+  ignoreFiles: [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/coverage/**",
+    "docs/**",
+    "**/.vitepress/cache/**",
+  ],
   rules: {
     "annotation-no-unknown": true,
     "at-rule-no-unknown": [true, { ignoreAtRules: ["layer", "property", "container"] }],

@@ -1,0 +1,12 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".vitepress/dist/**", ".vitepress/generated/**"],
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/CHANGELOG.md", "$TURBO_ROOT$/scripts/stats.mjs"]
+    },
+    "typecheck": { "dependsOn": ["^build"] },
+    "test": { "dependsOn": ["^build"] }
+  }
+}

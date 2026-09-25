@@ -4,7 +4,14 @@ import pluginVue from "eslint-plugin-vue";
 
 export default tseslint.config(
   {
-    ignores: ["**/node_modules/**", "**/dist/**", "**/coverage/**", "**/.turbo/**"],
+    ignores: [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/coverage/**",
+      "**/.turbo/**",
+      "**/.vitepress/cache/**",
+      "apps/docs/.vitepress/generated/**",
+    ],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
@@ -71,5 +78,10 @@ export default tseslint.config(
         navigator: "readonly",
       },
     },
+  },
+  {
+    // VitePress theme files (Layout, Demo) and demo SFCs are named by convention.
+    files: ["apps/docs/**/*.{vue,ts}"],
+    rules: { "vue/multi-word-component-names": "off" },
   },
 );

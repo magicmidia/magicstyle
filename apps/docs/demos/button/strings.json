@@ -1,0 +1,26 @@
+{
+  "pt-BR": {
+    "primary": "Salvar",
+    "outline": "Cancelar",
+    "soft": "Rascunho",
+    "ghost": "Mais tarde",
+    "link": "Saiba mais",
+    "danger": "Excluir"
+  },
+  "en-US": {
+    "primary": "Save",
+    "outline": "Cancel",
+    "soft": "Draft",
+    "ghost": "Later",
+    "link": "Learn more",
+    "danger": "Delete"
+  },
+  "es-ES": {
+    "primary": "Guardar",
+    "outline": "Cancelar",
+    "soft": "Borrador",
+    "ghost": "Más tarde",
+    "link": "Más información",
+    "danger": "Eliminar"
+  }
+}
