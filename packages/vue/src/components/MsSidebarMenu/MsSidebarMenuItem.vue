@@ -139,14 +139,19 @@ function handleClick(evt: MouseEvent) {
     </component>
 
     <!-- Submenu Accordion -->
+    <!-- Closed submenus are inert (out of the tab order and the a11y tree) but stay
+         rendered so the grid-rows accordion animation keeps working. The <ul> keeps
+         nested <li> items valid HTML (a bare <li> in a <div> breaks SSR hydration). -->
     <div
       v-if="hasChildren"
       class="ms-sidebar-menu-sub"
       :class="{ 'is-open': isOpen }"
-      :aria-hidden="!isOpen"
+      :inert="!isOpen || undefined"
     >
       <div class="ms-sidebar-menu-sub-inner">
-        <slot name="sub" />
+        <ul class="ms-sidebar-menu-list ms-sidebar-menu-sub-list" role="list">
+          <slot name="sub" />
+        </ul>
       </div>
     </div>
   </li>

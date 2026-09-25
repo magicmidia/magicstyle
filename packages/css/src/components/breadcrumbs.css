@@ -44,7 +44,8 @@
 .ms-breadcrumbs__item {
   display: inline-flex;
   align-items: center;
-  gap: var(--ms-space-1-5, 6px);
+  /* Separators sit inside the item: keep the list's spacing between them. */
+  gap: inherit;
 }
 
 .ms-breadcrumbs__link,

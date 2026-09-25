@@ -118,6 +118,11 @@ export interface MsTabsContext {
   registerTab: (item: TabRegistryItem) => void;
   unregisterTab: (value: string | number) => void;
   updateTabElement: (value: string | number, el: HTMLElement | null, disabled: boolean) => void;
+  /** Panels register after mount so tabs only point `aria-controls` at panels that exist. */
+  registerPanel?: (value: string | number, lazy: boolean) => void;
+  unregisterPanel?: (value: string | number) => void;
+  /** True when the panel for `value` is in the DOM (lazy panels only while selected). */
+  hasPanel?: (value: string | number) => boolean;
   onKeyDown: (event: KeyboardEvent, currentValue: string | number) => void;
 }
 

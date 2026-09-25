@@ -4,8 +4,7 @@
     :tabindex="clickable && !disabled ? 0 : undefined"
     :role="clickable ? 'button' : undefined"
     @click="handleClick"
-    @keydown.enter.prevent="handleKeyEnter"
-    @keydown.space.prevent="handleKeyEnter"
+    @keydown="handleKeydown"
   >
     <span v-if="props.dot" class="ms-tag__dot" aria-hidden="true" />
 
@@ -15,7 +14,7 @@
       </slot>
     </span>
 
-    <span class="ms-tag__content">
+    <span ref="contentRef" class="ms-tag__content">
       <slot />
     </span>
 
@@ -27,7 +26,7 @@
       v-if="closable"
       type="button"
       class="ms-tag__close"
-      :aria-label="t.tag.remove"
+      :aria-label="removeLabel"
       :disabled="disabled"
       @click.stop="handleClose"
     >
@@ -48,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onMounted, onUpdated, ref } from "vue";
 import type { MsTagEmits, MsTagProps } from "./types.ts";
 import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
@@ -78,8 +77,26 @@ function handleClick(event: MouseEvent) {
   }
 }
 
-function handleKeyEnter(event: Event) {
+const contentRef = ref<HTMLElement | null>(null);
+const contentText = ref("");
+const syncContentText = () => {
+  contentText.value = contentRef.value?.textContent?.trim() ?? "";
+};
+onMounted(syncContentText);
+onUpdated(syncContentText);
+
+/** "Remove <tag text>" once the text is known; the generic label otherwise (e.g. during SSR). */
+const removeLabel = computed(() =>
+  contentText.value ? t.value.tag.removeLabel(contentText.value) : t.value.tag.remove,
+);
+
+function handleKeydown(event: KeyboardEvent) {
+  // Only the tag itself acts as a button; keys from the close button must keep their default.
+  if (event.target !== event.currentTarget) return;
   if (props.disabled || !props.clickable) return;
+  const key = event.key.toLowerCase();
+  if (key !== "enter" && key !== " " && key !== "space" && key !== "spacebar") return;
+  event.preventDefault();
   emit("click", event as unknown as MouseEvent);
 }
 

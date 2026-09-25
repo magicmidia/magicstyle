@@ -5,7 +5,7 @@ defineProps<MsFooterProps>();
 </script>
 
 <template>
-  <footer class="ms-footer">
+  <footer class="ms-app-shell__footer">
     <slot />
   </footer>
 </template>

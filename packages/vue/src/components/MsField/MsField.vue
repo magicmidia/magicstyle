@@ -2,6 +2,7 @@
 import { computed } from "vue";
 import { provideFieldContext } from "../../composables/use-field-context.ts";
 import { useMsId } from "../../composables/use-ms-id.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsFieldProps } from "./types.ts";
 
 const props = withDefaults(defineProps<MsFieldProps>(), {
@@ -12,6 +13,8 @@ const props = withDefaults(defineProps<MsFieldProps>(), {
 defineSlots<{
   default?(): unknown;
 }>();
+
+const t = useMsMessages();
 
 const controlId = useMsId("ms-field");
 const labelId = useMsId("ms-field-label");
@@ -55,7 +58,9 @@ const fieldClasses = computed(() => [
   <div :class="fieldClasses" :data-required="props.required || undefined">
     <label v-if="props.label" :id="labelId" class="ms-field-label" :for="controlId">
       {{ props.label }}
-      <span v-if="props.optional && !props.required" class="ms-field-optional">(opcional)</span>
+      <span v-if="props.optional && !props.required" class="ms-field-optional">{{
+        t.label.optional
+      }}</span>
     </label>
 
     <div v-if="props.orientation === 'horizontal'" class="ms-field-content">

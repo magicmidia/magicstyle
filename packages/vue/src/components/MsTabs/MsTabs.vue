@@ -67,6 +67,22 @@ function unregisterTab(value: string | number) {
   registeredTabs.value = registeredTabs.value.filter((t) => t.value !== value);
 }
 
+const registeredPanels = ref(new Map<string | number, { lazy: boolean }>());
+
+function registerPanel(value: string | number, lazy: boolean) {
+  registeredPanels.value.set(value, { lazy });
+}
+
+function unregisterPanel(value: string | number) {
+  registeredPanels.value.delete(value);
+}
+
+function hasPanel(value: string | number): boolean {
+  const panel = registeredPanels.value.get(value);
+  if (!panel) return false;
+  return !panel.lazy || internalActiveTab.value === value;
+}
+
 function updateTabElement(value: string | number, el: HTMLElement | null, disabled: boolean) {
   const item = registeredTabs.value.find((t) => t.value === value);
   if (item) {
@@ -157,6 +173,9 @@ const context: MsTabsContext = {
   registerTab,
   unregisterTab,
   updateTabElement,
+  registerPanel,
+  unregisterPanel,
+  hasPanel,
   onKeyDown,
 };
 

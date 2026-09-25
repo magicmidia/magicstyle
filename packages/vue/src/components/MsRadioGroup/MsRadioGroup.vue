@@ -42,6 +42,7 @@ provide<MsRadioGroupContext>("ms-radio-group", {
 
 <template>
   <div
+    :id="fieldControl.id"
     :class="['ms-radio-group', `ms-radio-group--${props.orientation ?? 'horizontal'}`]"
     role="radiogroup"
     :aria-labelledby="fieldControl.labelledBy.value"

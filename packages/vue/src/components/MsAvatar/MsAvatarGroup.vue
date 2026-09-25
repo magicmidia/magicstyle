@@ -71,7 +71,8 @@ const excessCount = computed(() => {
         class="ms-avatar ms-avatar--excess"
         :data-size="props.size"
         :data-bordered="props.bordered || undefined"
-        :aria-label="t.avatar.more"
+        role="img"
+        :aria-label="t.avatar.moreCount(excessCount)"
       >
         +{{ excessCount }}
       </div>

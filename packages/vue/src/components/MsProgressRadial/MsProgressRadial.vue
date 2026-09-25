@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsProgressRadialProps } from "./types.ts";
 
 const props = withDefaults(defineProps<MsProgressRadialProps>(), {
@@ -27,10 +28,13 @@ const diameter = computed(() => sizeDimensions[props.size] || 64);
 const radius = computed(() => (diameter.value - props.strokeWidth) / 2);
 const circumference = computed(() => 2 * Math.PI * radius.value);
 
+const t = useMsMessages();
+
+const clampedValue = computed(() => Math.min(Math.max(props.value, 0), Math.max(props.max, 0)));
+
 const percentage = computed(() => {
   if (props.max <= 0) return 0;
-  const clamped = Math.min(Math.max(props.value, 0), props.max);
-  return Math.round((clamped / props.max) * 100);
+  return Math.round((clampedValue.value / props.max) * 100);
 });
 
 const strokeDashoffset = computed(() => {
@@ -50,9 +54,10 @@ const radialClasses = computed(() => [
   <div
     :class="radialClasses"
     role="progressbar"
-    :aria-valuenow="props.indeterminate ? undefined : percentage"
+    :aria-valuenow="props.indeterminate ? undefined : clampedValue"
     :aria-valuemin="0"
     :aria-valuemax="props.max"
+    :aria-valuetext="props.indeterminate ? t.progress.loading : `${percentage}%`"
     data-ms-progress-radial
   >
     <svg

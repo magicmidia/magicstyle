@@ -37,6 +37,8 @@ const defaultIcons: Record<string, string> = {
   danger: "🚫",
   success: "✅",
   neutral: "📢",
+  secondary: "ℹ️",
+  accent: "ℹ️",
 };
 
 const handleDismiss = () => {

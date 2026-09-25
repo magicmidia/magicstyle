@@ -14,6 +14,11 @@
   box-sizing: border-box;
 }
 
+.ms-table-container:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
+}
+
 .ms-table {
   width: 100%;
   border-collapse: collapse;
@@ -102,6 +107,23 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
+}
+
+.ms-table__sort-button {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: var(--ms-radius-xs);
+  cursor: pointer;
+}
+
+.ms-table__sort-button:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
 }
 
 .ms-table__sort-icon {

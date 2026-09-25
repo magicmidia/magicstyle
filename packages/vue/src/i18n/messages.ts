@@ -12,7 +12,7 @@ export interface MsMessages {
   locale: string;
   alert: { dismiss: string };
   appShell: { rail: string };
-  avatar: { fallback: string; more: string };
+  avatar: { fallback: string; more: string; moreCount: (count: number) => string };
   banner: { dismiss: string };
   breadcrumbs: { label: string; showAll: string };
   carousel: {
@@ -27,8 +27,9 @@ export interface MsMessages {
     roleDescription: string;
     slideRoleDescription: string;
   };
+  chatBubble: { sending: string; sent: string; read: string };
   code: { copy: string; copied: string };
-  codeBlock: { copy: string; copied: string; expand: string; collapse: string };
+  codeBlock: { label: string; copy: string; copied: string; expand: string; collapse: string };
   colorPicker: { pick: string; hex: string };
   commandPalette: {
     label: string;
@@ -103,6 +104,7 @@ export interface MsMessages {
     };
   };
   progress: { loading: string };
+  rating: { star: (index: number, max: number) => string };
   scrollSpy: { label: string };
   searchField: { label: string; placeholder: string; clear: string };
   select: {
@@ -121,8 +123,9 @@ export interface MsMessages {
   spinner: { label: string };
   splitPane: { resize: string };
   stepper: { label: string };
+  table: { label: string };
   tabs: { previous: string; next: string };
-  tag: { remove: string };
+  tag: { remove: string; removeLabel: (label: string) => string };
   toast: { dismiss: string };
   truncate: { more: string; less: string };
 }
@@ -131,7 +134,11 @@ export const msMessagesPtBR: MsMessages = {
   locale: "pt-BR",
   alert: { dismiss: "Fechar alerta" },
   appShell: { rail: "Navegação compacta" },
-  avatar: { fallback: "Avatar", more: "Mais membros" },
+  avatar: {
+    fallback: "Avatar",
+    more: "Mais membros",
+    moreCount: (count) => (count === 1 ? "Mais 1 membro" : `Mais ${count} membros`),
+  },
   banner: { dismiss: "Fechar aviso" },
   breadcrumbs: { label: "Navegação estrutural", showAll: "Mostrar todos os níveis" },
   carousel: {
@@ -146,8 +153,10 @@ export const msMessagesPtBR: MsMessages = {
     roleDescription: "carrossel",
     slideRoleDescription: "slide",
   },
+  chatBubble: { sending: "Enviando", sent: "Enviada", read: "Lida" },
   code: { copy: "Copiar código", copied: "Copiado!" },
   codeBlock: {
+    label: "Código",
     copy: "Copiar",
     copied: "Copiado",
     expand: "Mostrar mais linhas",
@@ -241,6 +250,7 @@ export const msMessagesPtBR: MsMessages = {
     },
   },
   progress: { loading: "Carregando..." },
+  rating: { star: (index, max) => `${index} de ${max} estrelas` },
   scrollSpy: { label: "Navegação na página" },
   searchField: { label: "Pesquisar", placeholder: "Pesquisar...", clear: "Limpar pesquisa" },
   select: {
@@ -265,8 +275,9 @@ export const msMessagesPtBR: MsMessages = {
   spinner: { label: "Carregando..." },
   splitPane: { resize: "Redimensionar painéis" },
   stepper: { label: "Passos do processo" },
+  table: { label: "Tabela" },
   tabs: { previous: "Abas anteriores", next: "Próximas abas" },
-  tag: { remove: "Remover" },
+  tag: { remove: "Remover", removeLabel: (label) => `Remover ${label}` },
   toast: { dismiss: "Fechar notificação" },
   truncate: { more: "Ver mais", less: "Ver menos" },
 };
@@ -275,7 +286,11 @@ export const msMessagesEn: MsMessages = {
   locale: "en-US",
   alert: { dismiss: "Dismiss alert" },
   appShell: { rail: "Compact navigation" },
-  avatar: { fallback: "Avatar", more: "More members" },
+  avatar: {
+    fallback: "Avatar",
+    more: "More members",
+    moreCount: (count) => (count === 1 ? "1 more member" : `${count} more members`),
+  },
   banner: { dismiss: "Dismiss notice" },
   breadcrumbs: { label: "Breadcrumb", showAll: "Show all breadcrumb items" },
   carousel: {
@@ -290,8 +305,10 @@ export const msMessagesEn: MsMessages = {
     roleDescription: "carousel",
     slideRoleDescription: "slide",
   },
+  chatBubble: { sending: "Sending", sent: "Sent", read: "Read" },
   code: { copy: "Copy code", copied: "Copied!" },
   codeBlock: {
+    label: "Code",
     copy: "Copy",
     copied: "Copied",
     expand: "Show more lines",
@@ -377,6 +394,7 @@ export const msMessagesEn: MsMessages = {
     },
   },
   progress: { loading: "Loading..." },
+  rating: { star: (index, max) => `${index} of ${max} stars` },
   scrollSpy: { label: "On this page" },
   searchField: { label: "Search", placeholder: "Search...", clear: "Clear search" },
   select: {
@@ -401,8 +419,9 @@ export const msMessagesEn: MsMessages = {
   spinner: { label: "Loading..." },
   splitPane: { resize: "Resize panels" },
   stepper: { label: "Process steps" },
+  table: { label: "Table" },
   tabs: { previous: "Previous tabs", next: "Next tabs" },
-  tag: { remove: "Remove" },
+  tag: { remove: "Remove", removeLabel: (label) => `Remove ${label}` },
   toast: { dismiss: "Dismiss notification" },
   truncate: { more: "Show more", less: "Show less" },
 };
@@ -411,7 +430,11 @@ export const msMessagesEs: MsMessages = {
   locale: "es-ES",
   alert: { dismiss: "Cerrar alerta" },
   appShell: { rail: "Navegación compacta" },
-  avatar: { fallback: "Avatar", more: "Más miembros" },
+  avatar: {
+    fallback: "Avatar",
+    more: "Más miembros",
+    moreCount: (count) => (count === 1 ? "1 miembro más" : `${count} miembros más`),
+  },
   banner: { dismiss: "Cerrar aviso" },
   breadcrumbs: { label: "Ruta de navegación", showAll: "Mostrar todos los niveles" },
   carousel: {
@@ -426,8 +449,10 @@ export const msMessagesEs: MsMessages = {
     roleDescription: "carrusel",
     slideRoleDescription: "diapositiva",
   },
+  chatBubble: { sending: "Enviando", sent: "Enviado", read: "Leído" },
   code: { copy: "Copiar código", copied: "¡Copiado!" },
   codeBlock: {
+    label: "Código",
     copy: "Copiar",
     copied: "Copiado",
     expand: "Mostrar más líneas",
@@ -525,6 +550,7 @@ export const msMessagesEs: MsMessages = {
     },
   },
   progress: { loading: "Cargando..." },
+  rating: { star: (index, max) => `${index} de ${max} estrellas` },
   scrollSpy: { label: "En esta página" },
   searchField: { label: "Buscar", placeholder: "Buscar...", clear: "Borrar búsqueda" },
   select: {
@@ -549,8 +575,9 @@ export const msMessagesEs: MsMessages = {
   spinner: { label: "Cargando..." },
   splitPane: { resize: "Redimensionar paneles" },
   stepper: { label: "Pasos del proceso" },
+  table: { label: "Tabla" },
   tabs: { previous: "Pestañas anteriores", next: "Pestañas siguientes" },
-  tag: { remove: "Quitar" },
+  tag: { remove: "Quitar", removeLabel: (label) => `Quitar ${label}` },
   toast: { dismiss: "Cerrar notificación" },
   truncate: { more: "Ver más", less: "Ver menos" },
 };

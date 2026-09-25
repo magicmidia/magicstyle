@@ -5,7 +5,7 @@
     type="button"
     role="tab"
     :aria-selected="isSelected"
-    :aria-controls="panelId"
+    :aria-controls="context?.hasPanel?.(props.value) ? panelId : undefined"
     :tabindex="isSelected ? 0 : -1"
     :disabled="disabled"
     :class="classes"

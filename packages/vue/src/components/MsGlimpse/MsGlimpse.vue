@@ -1,7 +1,8 @@
 <template>
-  <div ref="rootRef" class="ms-glimpse" @keydown.esc="handleCloseImmediate">
+  <span ref="rootRef" class="ms-glimpse" @keydown.esc="handleCloseImmediate">
+    <!-- Phrasing content only (spans): MsGlimpse is meant to sit inline inside a <p>. -->
     <!-- Trigger link / anchor -->
-    <div
+    <span
       class="ms-glimpse__trigger"
       :aria-expanded="isOpen"
       :aria-haspopup="'dialog'"
@@ -21,10 +22,10 @@
           {{ label || href }}
         </a>
       </slot>
-    </div>
+    </span>
 
     <!-- Floating Preview Hovercard -->
-    <div
+    <span
       v-if="!disabled"
       :id="cardId"
       ref="cardRef"
@@ -37,18 +38,18 @@
       <slot name="preview" :loading="loading" :open="isOpen">
         <!-- Skeleton loading state -->
         <template v-if="loading">
-          <div class="ms-glimpse__skeleton-image" />
-          <div class="ms-glimpse__content">
-            <div class="ms-glimpse__skeleton-line" style="width: 40%; margin-bottom: 4px" />
-            <div class="ms-glimpse__skeleton-line" style="width: 90%; margin-bottom: 2px" />
-            <div class="ms-glimpse__skeleton-line" style="width: 70%" />
-          </div>
+          <span class="ms-glimpse__skeleton-image" />
+          <span class="ms-glimpse__content">
+            <span class="ms-glimpse__skeleton-line" style="width: 40%; margin-bottom: 4px" />
+            <span class="ms-glimpse__skeleton-line" style="width: 90%; margin-bottom: 2px" />
+            <span class="ms-glimpse__skeleton-line" style="width: 70%" />
+          </span>
         </template>
 
         <!-- Normal preview state -->
         <template v-else>
           <!-- Thumbnail Image -->
-          <div v-if="image || $slots.image" class="ms-glimpse__image-wrapper">
+          <span v-if="image || $slots.image" class="ms-glimpse__image-wrapper">
             <slot name="image">
               <img
                 :src="image"
@@ -57,14 +58,14 @@
                 loading="lazy"
               />
             </slot>
-          </div>
+          </span>
 
           <!-- Metadata content -->
-          <div class="ms-glimpse__content">
+          <span class="ms-glimpse__content">
             <!-- Site & Domain header -->
-            <div v-if="computedDomain || badge || $slots.meta" class="ms-glimpse__site-header">
+            <span v-if="computedDomain || badge || $slots.meta" class="ms-glimpse__site-header">
               <slot name="meta">
-                <div class="ms-glimpse__domain-wrap">
+                <span class="ms-glimpse__domain-wrap">
                   <img
                     v-if="favicon"
                     :src="favicon"
@@ -73,25 +74,25 @@
                     aria-hidden="true"
                   />
                   <span>{{ computedDomain }}</span>
-                </div>
+                </span>
                 <span v-if="badge" class="ms-glimpse__badge">{{ badge }}</span>
               </slot>
-            </div>
+            </span>
 
             <!-- Title -->
-            <h4 v-if="title || $slots.title" class="ms-glimpse__title">
+            <span v-if="title || $slots.title" class="ms-glimpse__title">
               <slot name="title">{{ title }}</slot>
-            </h4>
+            </span>
 
             <!-- Description -->
-            <p v-if="description || $slots.description" class="ms-glimpse__description">
+            <span v-if="description || $slots.description" class="ms-glimpse__description">
               <slot name="description">{{ description }}</slot>
-            </p>
-          </div>
+            </span>
+          </span>
         </template>
       </slot>
-    </div>
-  </div>
+    </span>
+  </span>
 </template>
 
 <script setup lang="ts">

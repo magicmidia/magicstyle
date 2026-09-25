@@ -188,12 +188,14 @@
   width: 100%;
 }
 
+.ms-col--span-auto,
 .ms-col--auto {
   flex: 0 0 auto;
   width: auto;
   max-width: none;
 }
 
+.ms-col--span-flex-1,
 .ms-col--flex-1 {
   flex: 1 1 0%;
   max-width: 100%;

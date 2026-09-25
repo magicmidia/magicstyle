@@ -227,7 +227,9 @@ onUnmounted(() => {
                 @click="selectCommand(cmd)"
               >
                 <div class="ms-command-palette__item-main">
-                  <span class="ms-command-palette__item-icon" aria-hidden="true">❖</span>
+                  <span class="ms-command-palette__item-icon" aria-hidden="true">{{
+                    cmd.icon || "❖"
+                  }}</span>
                   <span>{{ cmd.label }}</span>
                 </div>
                 <span v-if="cmd.shortcut" class="ms-command-palette__kbd">

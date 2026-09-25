@@ -18,6 +18,8 @@
       </span>
       <slot />
     </span>
+    <!-- Separators live inside the <li>: an <ol> may only contain <li> children. -->
+    <slot name="separator" />
   </li>
 </template>
 

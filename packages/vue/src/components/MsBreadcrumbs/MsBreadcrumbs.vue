@@ -25,8 +25,10 @@
               :icon="entry.item.icon"
             >
               {{ entry.item.label }}
+              <template v-if="!entry.isLast" #separator>
+                <MsBreadcrumbSeparator />
+              </template>
             </MsBreadcrumbItem>
-            <MsBreadcrumbSeparator v-if="!entry.isLast" />
           </template>
         </template>
       </template>

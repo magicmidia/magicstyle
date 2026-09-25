@@ -19,6 +19,8 @@ const defaultIcons: Record<string, string> = {
   danger: "🚫",
   primary: "✨",
   neutral: "💬",
+  secondary: "ℹ️",
+  accent: "ℹ️",
 };
 
 const toastClasses = computed(() => ["ms-toast", `ms-toast--tone-${props.toast.tone}`]);

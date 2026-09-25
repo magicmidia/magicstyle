@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { mount } from "@vue/test-utils";
+import { nextTick } from "vue";
 import { MsIconPicker } from "../src/index.ts";
 
 describe("MsIconPicker component", () => {
@@ -36,7 +37,7 @@ describe("MsIconPicker component", () => {
     expect(previewSvg.exists()).toBe(true);
   });
 
-  it("sanitizes malicious script and onload/onerror attributes in custom icons", () => {
+  it("sanitizes malicious script and onload/onerror attributes in custom icons", async () => {
     const maliciousIcons = [
       {
         id: "xss-icon",
@@ -51,6 +52,7 @@ describe("MsIconPicker component", () => {
         modelValue: "xss-icon",
       },
     });
+    await nextTick(); // custom SVGs render after mount (SSR-safe)
     const html = wrapper.html();
     expect(html).not.toContain("<script>");
     expect(html).not.toContain("alert(");
@@ -59,7 +61,7 @@ describe("MsIconPicker component", () => {
     expect(html).toContain('<path d="M10 10"');
   });
 
-  it("does not render executable payloads from custom icon markup", () => {
+  it("does not render executable payloads from custom icon markup", async () => {
     const wrapper = mount(MsIconPicker, {
       props: {
         icons: [
@@ -73,6 +75,7 @@ describe("MsIconPicker component", () => {
         modelValue: "evil",
       },
     });
+    await nextTick();
     const html = wrapper.find(".ms-icon-picker__preview").html();
     expect(html).not.toContain("javascript:");
     expect(html).not.toContain("foreignObject");

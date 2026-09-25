@@ -40,7 +40,8 @@ function onClick(event: MouseEvent): void {
     :style="props.width ? { width: props.width } : undefined"
     @click="onClick"
   >
-    <div v-if="props.sortable" class="ms-table__th-inner">
+    <!-- A real button gives keyboard access (Enter/Space); its click bubbles to the th. -->
+    <button v-if="props.sortable" type="button" class="ms-table__th-inner ms-table__sort-button">
       <slot />
       <slot name="sortIcon" :direction="props.sortDirection">
         <span class="ms-table__sort-icon" aria-hidden="true">
@@ -85,7 +86,7 @@ function onClick(event: MouseEvent): void {
           </svg>
         </span>
       </slot>
-    </div>
+    </button>
     <slot v-else />
   </th>
 </template>

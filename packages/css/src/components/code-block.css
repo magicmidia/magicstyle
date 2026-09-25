@@ -119,6 +119,11 @@
   scrollbar-color: var(--ms-color-border-strong) transparent;
 }
 
+.ms-code-block__body:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: calc(var(--ms-focus-ring-width) * -1);
+}
+
 .ms-code-block__lines {
   display: flex;
   flex-direction: column;
@@ -205,43 +210,47 @@
   text-decoration: underline;
 }
 
-/* Syntax Highlighting Tokens */
+/*
+ * Syntax Highlighting Tokens
+ * Text-safe role tokens (interactive-*-text / feedback-*-text) that the theme engine
+ * mixes toward the ink color, so they keep AA contrast in light and dark modes.
+ */
 .ms-code-token--comment {
-  color: var(--ms-color-text-muted);
+  color: var(--ms-color-text-secondary);
   font-style: italic;
 }
 
 .ms-code-token--string {
-  color: var(--ms-color-brand-success);
+  color: var(--ms-color-feedback-success-text);
 }
 
 .ms-code-token--tag {
-  color: var(--ms-color-brand-danger);
+  color: var(--ms-color-feedback-danger-text);
   font-weight: var(--ms-typography-weight-semibold);
 }
 
 .ms-code-token--attr {
-  color: var(--ms-color-brand-warning);
+  color: var(--ms-color-feedback-warning-text);
 }
 
 .ms-code-token--keyword {
-  color: var(--ms-color-brand-secondary);
+  color: var(--ms-color-interactive-secondary-text);
   font-weight: var(--ms-typography-weight-semibold);
 }
 
 .ms-code-token--boolean {
-  color: var(--ms-color-brand-accent);
+  color: var(--ms-color-interactive-accent-text);
   font-weight: var(--ms-typography-weight-semibold);
 }
 
 .ms-code-token--type {
-  color: var(--ms-color-brand-info);
+  color: var(--ms-color-feedback-info-text);
 }
 
 .ms-code-token--number {
-  color: var(--ms-color-brand-warning);
+  color: var(--ms-color-feedback-warning-text);
 }
 
 .ms-code-token--function {
-  color: var(--ms-color-brand-primary);
+  color: var(--ms-color-interactive-primary-text);
 }

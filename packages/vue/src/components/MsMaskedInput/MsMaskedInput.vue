@@ -89,14 +89,14 @@ const classes = computed(() => [
   "ms-masked-input",
   `ms-masked-input--${props.size}`,
   {
-    "ms-masked-input--invalid": props.invalid,
+    "ms-masked-input--invalid": isInvalid.value,
     "ms-masked-input--disabled": props.disabled,
   },
 ]);
 </script>
 
 <template>
-  <div v-bind="rootAttrs($attrs)" :class="classes" :data-invalid="props.invalid ? '' : undefined">
+  <div v-bind="rootAttrs($attrs)" :class="classes" :data-invalid="isInvalid ? '' : undefined">
     <input
       :id="fieldControl.id"
       type="text"

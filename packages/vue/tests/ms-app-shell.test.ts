@@ -24,9 +24,9 @@ describe("MsAppShell Suite", () => {
     expect(wrapper.classes()).toContain("ms-app-shell");
     expect(wrapper.classes()).toContain("ms-app-shell--full-height");
     expect(wrapper.find(".ms-topbar").exists()).toBe(true);
-    expect(wrapper.find(".ms-sidebar").exists()).toBe(true);
+    expect(wrapper.find(".ms-app-shell__sidebar").exists()).toBe(true);
     expect(wrapper.find(".ms-content").exists()).toBe(true);
-    expect(wrapper.find(".ms-footer").exists()).toBe(true);
+    expect(wrapper.find(".ms-app-shell__footer").exists()).toBe(true);
     expect(wrapper.find(".ms-status-bar").exists()).toBe(true);
     expect(wrapper.find(".ms-status-bar").classes()).toContain("ms-status-bar--success");
   });
@@ -50,10 +50,14 @@ describe("MsAppShell Suite", () => {
       },
     });
 
-    expect(wrapper.find(".ms-sidebar").classes()).not.toContain("ms-sidebar--collapsed");
+    expect(wrapper.find(".ms-app-shell__sidebar").classes()).not.toContain(
+      "ms-app-shell__sidebar--collapsed",
+    );
 
     await wrapper.setProps({ sidebarCollapsed: true });
-    expect(wrapper.find(".ms-sidebar").classes()).toContain("ms-sidebar--collapsed");
+    expect(wrapper.find(".ms-app-shell__sidebar").classes()).toContain(
+      "ms-app-shell__sidebar--collapsed",
+    );
   });
 
   it("renders navigation rail with proper aria-label", () => {

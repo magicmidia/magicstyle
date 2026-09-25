@@ -302,12 +302,18 @@
   text-overflow: ellipsis;
 }
 
+/*
+ * Target size (WCAG 2.5.8): the button box is 24px, and negative margins keep
+ * its layout footprint at the old 14px so the chip height does not grow.
+ */
 .ms-select__tag-remove {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  inline-size: 14px;
-  block-size: 14px;
+  inline-size: 24px;
+  block-size: 24px;
+  margin: -5px;
   padding: 0;
   background: transparent;
   border: none;
@@ -348,12 +354,15 @@
   color: var(--ms-color-text-muted);
 }
 
+/* 24px target (WCAG 2.5.8) with an 18px layout footprint. */
 .ms-select__clear {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  inline-size: 18px;
-  block-size: 18px;
+  inline-size: 24px;
+  block-size: 24px;
+  margin: -3px;
   padding: 0;
   background: transparent;
   border: none;

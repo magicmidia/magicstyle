@@ -9,8 +9,16 @@ export type MsIconButtonSize = "2xs" | "xs" | "sm" | "md" | "lg" | "xl";
 export type MsIconButtonShape = "rounded" | "circle" | "square";
 
 export interface MsIconButtonProps {
-  /** Accessible name of the button (required, since the content is icon-only). */
-  ariaLabel: string;
+  /**
+   * Accessible name of the button. Icon-only content has no text, so either
+   * `label` or `aria-label`/`ariaLabel` must be provided.
+   */
+  label?: string | undefined;
+  /**
+   * Accessible name of the button. `aria-label="…"` in templates binds to this prop.
+   * @deprecated Prefer `label` (or the plain `aria-label` attribute).
+   */
+  ariaLabel?: string | undefined;
   /** Visual style. @default "solid" */
   variant?: MsIconButtonVariant;
   /** Semantic color role. @default "primary" */

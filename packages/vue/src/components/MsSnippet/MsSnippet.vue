@@ -7,6 +7,7 @@
           v-for="(tab, index) in tabs"
           :id="`${snippetId}-tab-${index}`"
           :key="tab.id || index"
+          :ref="(el) => setItemRef(el, index)"
           type="button"
           role="tab"
           class="ms-snippet__tab"
@@ -16,6 +17,8 @@
           @click="selectTab(index)"
           @keydown.arrow-left.prevent="navigateTab(-1)"
           @keydown.arrow-right.prevent="navigateTab(1)"
+          @keydown.home.prevent="focusTab(0)"
+          @keydown.end.prevent="focusTab(tabs.length - 1)"
         >
           <slot name="tab" :tab="tab" :active="currentTabIndex === index" :index="index">
             {{ tab.label }}
@@ -136,7 +139,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, nextTick, ref, watch } from "vue";
 import { useMsId } from "../../composables/use-ms-id.ts";
 import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsSnippetProps, MsSnippetEmits } from "./types.ts";
@@ -221,11 +224,22 @@ function selectTab(index: number) {
   emit("tab-change", item, index);
 }
 
+const tabRefs: (HTMLButtonElement | undefined)[] = [];
+const setItemRef = (el: unknown, index: number) => {
+  tabRefs[index] = el instanceof HTMLButtonElement ? el : undefined;
+};
+
+/** Selects a tab and moves focus to it (roving tabindex, WAI-ARIA tabs pattern). */
+function focusTab(index: number) {
+  selectTab(index);
+  void nextTick(() => tabRefs[index]?.focus());
+}
+
 function navigateTab(delta: number) {
   if (!props.tabs || props.tabs.length === 0) return;
   const count = props.tabs.length;
   const nextIndex = (internalActiveIndex.value + delta + count) % count;
-  selectTab(nextIndex);
+  focusTab(nextIndex);
 }
 
 let copyTimer: ReturnType<typeof setTimeout> | null = null;

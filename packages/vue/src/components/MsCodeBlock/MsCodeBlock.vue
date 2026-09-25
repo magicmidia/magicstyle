@@ -228,7 +228,14 @@ const highlightedCode = computed(() => highlightCode(props.code, props.language)
       </div>
     </div>
 
-    <div class="ms-code-block__body" :style="{ maxHeight: formattedMaxHeight }">
+    <!-- Scrollable region: focusable so keyboard users can scroll it (axe scrollable-region-focusable). -->
+    <div
+      class="ms-code-block__body"
+      role="region"
+      tabindex="0"
+      :aria-label="props.filename || t.codeBlock.label"
+      :style="{ maxHeight: formattedMaxHeight }"
+    >
       <div v-if="props.showLineNumbers" class="ms-code-block__lines" aria-hidden="true">
         <span v-for="line in lines" :key="line">{{ line }}</span>
       </div>

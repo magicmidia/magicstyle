@@ -2,6 +2,7 @@ export interface MsCommandItem {
   id: string;
   label: string;
   group?: string;
+  /** Icon text/glyph shown before the label. @default "❖" */
   icon?: string;
   shortcut?: string;
   disabled?: boolean;

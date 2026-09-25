@@ -72,7 +72,7 @@ const classes = computed(() => [
         v-if="showToggle"
         type="button"
         class="ms-sidebar__collapse-btn"
-        :aria-label="collapsed ? t.sidebar.expand : t.sidebar.collapse"
+        :aria-label="isCollapsed ? t.sidebar.expand : t.sidebar.collapse"
         @click="handleToggle"
       >
         <slot name="toggle-icon">

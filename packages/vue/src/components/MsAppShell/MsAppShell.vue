@@ -4,17 +4,18 @@ import { type MsAppShellProps, type MsAppShellEmits, MS_APP_SHELL_KEY } from "./
 
 const props = withDefaults(defineProps<MsAppShellProps>(), {
   fullHeight: true,
-  sidebarCollapsed: false,
+  // undefined (not false) so the shell is uncontrolled when v-model is not used.
+  sidebarCollapsed: undefined,
 });
 
 const emit = defineEmits<MsAppShellEmits>();
 
-const internalCollapsed = ref(props.sidebarCollapsed);
+const internalCollapsed = ref(props.sidebarCollapsed ?? false);
 
 watch(
   () => props.sidebarCollapsed,
   (newVal) => {
-    internalCollapsed.value = newVal ?? false;
+    if (typeof newVal === "boolean") internalCollapsed.value = newVal;
   },
 );
 

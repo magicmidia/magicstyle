@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { sanitizeSvg } from "../../composables/sanitize-svg.ts";
 import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsIconPickerProps, MsIconPickerEmits, MsIconItem } from "./types.ts";
@@ -105,9 +105,19 @@ const selectedCategory = ref(ALL_CATEGORIES);
 
 const activeIcons = computed(() => props.icons || defaultIcons);
 
+/**
+ * sanitizeSvg() needs DOMParser, which the server lacks (it returns ""). Custom SVGs
+ * therefore render only after mount, so SSR and the hydrating render both show the
+ * fallback glyph and there is no hydration mismatch.
+ */
+const isMounted = ref(false);
+onMounted(() => {
+  isMounted.value = true;
+});
+
 const getIconContent = (id: string): string => {
   const custom = activeIcons.value.find((i) => i.id === id);
-  if (custom?.svg) return sanitizeSvg(custom.svg);
+  if (custom?.svg) return isMounted.value ? sanitizeSvg(custom.svg) : "";
   return ICON_PATHS[id] || "";
 };
 

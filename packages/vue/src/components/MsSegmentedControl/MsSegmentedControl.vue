@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends string | number">
-import { computed } from "vue";
+import { computed, nextTick } from "vue";
 import type {
   MsSegmentedControlProps,
   MsSegmentedControlEmits,
@@ -27,49 +27,77 @@ const classes = computed(() => [
   },
 ]);
 
+const itemRefs: (HTMLButtonElement | undefined)[] = [];
+const setItemRef = (el: unknown, index: number) => {
+  itemRefs[index] = el instanceof HTMLButtonElement ? el : undefined;
+};
+
+/** Roving tab stop: the selected segment, or the first enabled one when nothing is selected. */
+const tabbableIndex = computed(() => {
+  const selected = props.options.findIndex(
+    (opt) => opt.value === props.modelValue && !opt.disabled,
+  );
+  if (selected !== -1) return selected;
+  return props.options.findIndex((opt) => !opt.disabled);
+});
+
 const selectOption = (option: MsSegmentedControlOption<T>) => {
   if (props.disabled || option.disabled) return;
   emit("update:modelValue", option.value);
   emit("change", option.value);
 };
 
+const findEnabled = (from: number, step: 1 | -1): number => {
+  const count = props.options.length;
+  for (let i = 1; i <= count; i++) {
+    const index = (from + step * i + count * count) % count;
+    if (!props.options[index]?.disabled) return index;
+  }
+  return -1;
+};
+
 const handleKeyDown = (event: KeyboardEvent, currentIndex: number) => {
   if (props.disabled) return;
-  const enabledOptions = props.options.filter((opt) => !opt.disabled);
-  if (enabledOptions.length === 0) return;
-
-  let nextIndex = currentIndex;
+  const count = props.options.length;
+  let nextIndex = -1;
 
   if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-    event.preventDefault();
-    nextIndex = (currentIndex + 1) % props.options.length;
-    while (props.options[nextIndex]?.disabled && nextIndex !== currentIndex) {
-      nextIndex = (nextIndex + 1) % props.options.length;
-    }
+    nextIndex = findEnabled(currentIndex, 1);
   } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-    event.preventDefault();
-    nextIndex = (currentIndex - 1 + props.options.length) % props.options.length;
-    while (props.options[nextIndex]?.disabled && nextIndex !== currentIndex) {
-      nextIndex = (nextIndex - 1 + props.options.length) % props.options.length;
-    }
+    nextIndex = findEnabled(currentIndex, -1);
+  } else if (event.key === "Home") {
+    nextIndex = findEnabled(count - 1, 1);
+  } else if (event.key === "End") {
+    nextIndex = findEnabled(0, -1);
+  } else {
+    return;
   }
 
+  event.preventDefault();
   const targetOption = props.options[nextIndex];
-  if (targetOption && !targetOption.disabled) {
-    selectOption(targetOption);
-  }
+  if (!targetOption || targetOption.disabled) return;
+  selectOption(targetOption);
+  void nextTick(() => itemRefs[nextIndex]?.focus());
 };
 </script>
 
 <template>
   <div :class="classes" role="radiogroup" :aria-disabled="disabled ? 'true' : undefined">
+    <input
+      v-if="props.name"
+      type="hidden"
+      :name="props.name"
+      :value="modelValue ?? ''"
+      :disabled="disabled || undefined"
+    />
     <button
       v-for="(option, index) in options"
       :key="String(option.value)"
+      :ref="(el) => setItemRef(el, index)"
       type="button"
       role="radio"
       :aria-checked="modelValue === option.value"
-      :tabindex="modelValue === option.value ? 0 : -1"
+      :tabindex="index === tabbableIndex ? 0 : -1"
       :disabled="disabled || option.disabled"
       class="ms-segmented-control__item"
       :class="{ 'is-active': modelValue === option.value }"

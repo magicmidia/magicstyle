@@ -36,6 +36,14 @@ function onClick(event: MouseEvent): void {
   }
 }
 
+/** Interactive cards are focusable, so Enter/Space must activate them like a click. */
+function onKeydown(event: KeyboardEvent): void {
+  if (!props.interactive || event.target !== event.currentTarget) return;
+  if (event.key !== "Enter" && event.key !== " ") return;
+  event.preventDefault();
+  emit("click", event as unknown as MouseEvent);
+}
+
 const cardClasses = computed(() =>
   [
     "ms-card",
@@ -60,6 +68,7 @@ const cardClasses = computed(() =>
     :data-footer-divider="props.footerDivider || undefined"
     :tabindex="props.interactive ? 0 : undefined"
     @click="onClick"
+    @keydown="onKeydown"
   >
     <!-- Cover Media -->
     <div v-if="$slots.cover || props.coverSrc" class="ms-card__cover">

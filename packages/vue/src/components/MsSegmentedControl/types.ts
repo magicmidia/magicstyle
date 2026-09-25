@@ -32,7 +32,7 @@ export interface MsSegmentedControlProps<T = string | number> {
   fullWidth?: boolean | undefined;
   /** Disables all segments. @default false */
   disabled?: boolean | undefined;
-  /** Group name; currently not applied by the component. */
+  /** Form field name; when set, a hidden input submits the selected value with the form. */
   name?: string | undefined;
 }
 

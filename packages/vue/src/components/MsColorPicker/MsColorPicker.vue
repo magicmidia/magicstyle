@@ -91,6 +91,7 @@ const handleInput = (event: Event) => {
         }"
         :style="{ backgroundColor: color }"
         :aria-label="`${t.colorPicker.pick} ${color}`"
+        :aria-pressed="props.modelValue.toLowerCase() === color.toLowerCase()"
         :disabled="props.disabled"
         @click="updateColor(color)"
       />

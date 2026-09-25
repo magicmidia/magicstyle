@@ -75,7 +75,7 @@ const handleInput = (event: Event) => {
     v-bind="rootAttrs($attrs)"
     class="ms-password-input"
     :class="`ms-password-input--${props.size}`"
-    :data-invalid="props.invalid ? '' : undefined"
+    :data-invalid="isInvalid ? '' : undefined"
   >
     <div class="ms-password-input__wrapper">
       <input

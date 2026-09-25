@@ -72,7 +72,7 @@ const containerClasses = computed(() => {
     :class="classes"
     :data-position="effectivePosition"
     :data-variant="variant"
-    :data-tone="tone"
+    :data-tone="tone !== 'default' ? tone : undefined"
     :data-size="size"
     :data-shadow="effectiveShadow"
     :data-floating="floating ? 'true' : undefined"

@@ -19,9 +19,9 @@ const isCollapsed = computed(() => {
 });
 
 const classes = computed(() => [
-  "ms-sidebar",
+  "ms-app-shell__sidebar",
   {
-    "ms-sidebar--collapsed": isCollapsed.value,
+    "ms-app-shell__sidebar--collapsed": isCollapsed.value,
   },
 ]);
 
@@ -39,13 +39,13 @@ const style = computed(() => {
 
 <template>
   <aside :class="classes" :style="style">
-    <div v-if="$slots.header" class="ms-sidebar__header">
+    <div v-if="$slots.header" class="ms-app-shell__sidebar-header">
       <slot name="header" :collapsed="isCollapsed" />
     </div>
-    <div class="ms-sidebar__content">
+    <div class="ms-app-shell__sidebar-content">
       <slot :collapsed="isCollapsed" />
     </div>
-    <div v-if="$slots.footer" class="ms-sidebar__footer">
+    <div v-if="$slots.footer" class="ms-app-shell__sidebar-footer">
       <slot name="footer" :collapsed="isCollapsed" />
     </div>
   </aside>

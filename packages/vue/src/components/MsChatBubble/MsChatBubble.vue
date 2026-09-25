@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsChatBubbleProps } from "./types.ts";
 
 const props = withDefaults(defineProps<MsChatBubbleProps>(), {
@@ -26,6 +27,8 @@ const bubbleClasses = computed(() => [
   `ms-chat-bubble--variant-${props.variant}`,
   `ms-chat-bubble--tone-${props.tone}`,
 ]);
+
+const t = useMsMessages();
 
 const statusIcons: Record<string, string> = {
   sending: "⏳",
@@ -61,7 +64,12 @@ const statusIcons: Record<string, string> = {
       <div v-if="props.status || $slots.footer || $slots.status" class="ms-chat-bubble-footer">
         <slot name="footer">
           <slot name="status">
-            <span v-if="props.status" class="ms-chat-bubble-status" :aria-label="props.status">
+            <span
+              v-if="props.status"
+              class="ms-chat-bubble-status"
+              role="img"
+              :aria-label="t.chatBubble[props.status] ?? props.status"
+            >
               {{ statusIcons[props.status] || props.status }}
             </span>
           </slot>
