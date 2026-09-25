@@ -55,39 +55,39 @@ function track<T extends VueWrapper>(wrapper: T): T {
 
 describe("MsField optional hint", () => {
   it("reads the optional hint from the messages", () => {
-    const pt = track(mount(MsField, { props: { label: "Apelido", optional: true } }));
-    expect(pt.find(".ms-field-optional").text()).toBe("(opcional)");
+    const en = track(mount(MsField, { props: { label: "Nickname", optional: true } }));
+    expect(en.find(".ms-field-optional").text()).toBe("(optional)");
 
-    const en = track(
+    const pt = track(
       mount(MsProvider, {
-        props: { locale: "en-US" },
-        slots: { default: () => h(MsField, { label: "Nickname", optional: true }) },
+        props: { locale: "pt-BR" },
+        slots: { default: () => h(MsField, { label: "Apelido", optional: true }) },
       }),
     );
-    expect(en.find(".ms-field-optional").text()).toBe("(optional)");
+    expect(pt.find(".ms-field-optional").text()).toBe("(opcional)");
   });
 });
 
 describe("MsRating", () => {
   it("localizes the star labels", () => {
-    const en = track(
-      mount(MsProvider, {
-        props: { locale: "en-US" },
-        slots: { default: () => h(MsRating, { modelValue: 2, max: 3 }) },
-      }),
-    );
+    const en = track(mount(MsRating, { props: { modelValue: 2, max: 3 } }));
     const stars = en.findAll(".ms-rating__item");
     expect(stars[0]!.attributes("aria-label")).toBe("1 of 3 stars");
     expect(en.find("[role='slider']").attributes("aria-valuetext")).toBe("2 of 3 stars");
 
-    const pt = track(mount(MsRating, { props: { max: 5 } }));
+    const pt = track(
+      mount(MsProvider, {
+        props: { locale: "pt-BR" },
+        slots: { default: () => h(MsRating, { max: 5 }) },
+      }),
+    );
     expect(pt.findAll(".ms-rating__item")[4]!.attributes("aria-label")).toBe("5 de 5 estrelas");
   });
 
   it("wires into MsField (id, label, description, error)", () => {
     const wrapper = track(
       mount(MsField, {
-        props: { label: "Nota", description: "De 1 a 5", error: "Obrigatório" },
+        props: { label: "Score", description: "From 1 to 5", error: "Required" },
         slots: { default: () => h(MsRating) },
       }),
     );
@@ -181,8 +181,8 @@ describe("MsCommandPalette item icons", () => {
         props: {
           modelValue: true,
           items: [
-            { id: "a", label: "Com ícone", icon: "★" },
-            { id: "b", label: "Sem ícone" },
+            { id: "a", label: "With icon", icon: "★" },
+            { id: "b", label: "Without icon" },
           ],
         },
         attachTo: document.body,
@@ -199,7 +199,7 @@ describe("invalid state from MsField", () => {
   it("MsMaskedInput and MsPasswordInput show the field error state", () => {
     const masked = track(
       mount(MsField, {
-        props: { label: "CPF", error: "Inválido" },
+        props: { label: "CPF", error: "Invalid" },
         slots: { default: () => h(MsMaskedInput, { mask: "cpf" }) },
       }),
     );
@@ -208,7 +208,7 @@ describe("invalid state from MsField", () => {
 
     const password = track(
       mount(MsField, {
-        props: { label: "Senha", error: "Curta demais" },
+        props: { label: "Password", error: "Too short" },
         slots: { default: () => h(MsPasswordInput) },
       }),
     );
@@ -220,7 +220,7 @@ describe("invalid state from MsField", () => {
 describe("secondary/accent tones have default icons", () => {
   it("MsBanner and MsToast render an icon for every tone", () => {
     for (const tone of ["secondary", "accent"] as const) {
-      const banner = track(mount(MsBanner, { props: { tone }, slots: { default: "Aviso" } }));
+      const banner = track(mount(MsBanner, { props: { tone }, slots: { default: "Notice" } }));
       expect(banner.find(".ms-banner__icon").text()).not.toBe("");
 
       const toast = track(
@@ -229,7 +229,7 @@ describe("secondary/accent tones have default icons", () => {
             toast: {
               id: "t",
               tone,
-              message: "Oi",
+              message: "Hi",
               duration: 0,
               placement: "top-right",
               dismissible: true,
@@ -245,14 +245,14 @@ describe("secondary/accent tones have default icons", () => {
 describe("MsIconButton accessible name", () => {
   it("accepts `label`, `ariaLabel` and the kebab-case aria-label attribute", () => {
     const warn = vi.spyOn(console, "warn").mockImplementation(() => undefined);
-    const byLabel = track(mount(MsIconButton, { props: { label: "Fechar" } }));
-    expect(byLabel.attributes("aria-label")).toBe("Fechar");
+    const byLabel = track(mount(MsIconButton, { props: { label: "Close" } }));
+    expect(byLabel.attributes("aria-label")).toBe("Close");
 
-    const byProp = track(mount(MsIconButton, { props: { ariaLabel: "Abrir" } }));
-    expect(byProp.attributes("aria-label")).toBe("Abrir");
+    const byProp = track(mount(MsIconButton, { props: { ariaLabel: "Open" } }));
+    expect(byProp.attributes("aria-label")).toBe("Open");
 
-    const byAttr = track(mount(() => h(MsIconButton, { "aria-label": "Salvar" })));
-    expect(byAttr.find("button").attributes("aria-label")).toBe("Salvar");
+    const byAttr = track(mount(() => h(MsIconButton, { "aria-label": "Save" })));
+    expect(byAttr.find("button").attributes("aria-label")).toBe("Save");
     expect(warn).not.toHaveBeenCalled();
 
     track(mount(MsIconButton));
@@ -276,7 +276,7 @@ describe("MsRadioGroup inside MsField", () => {
   it("gives the group root the id the label points to", () => {
     const wrapper = track(
       mount(MsField, {
-        props: { label: "Plano" },
+        props: { label: "Plan" },
         slots: {
           default: () =>
             h(MsRadioGroup, null, () => [
@@ -312,18 +312,18 @@ describe("MsTag keyboard and remove label", () => {
   });
 
   it("names the remove button after the tag text", async () => {
-    const pt = track(mount(MsTag, { props: { closable: true }, slots: { default: () => "Vue" } }));
+    const en = track(mount(MsTag, { props: { closable: true }, slots: { default: () => "Vue" } }));
     await nextTick();
-    expect(pt.find(".ms-tag__close").attributes("aria-label")).toBe("Remover Vue");
+    expect(en.find(".ms-tag__close").attributes("aria-label")).toBe("Remove Vue");
 
-    const en = track(
+    const pt = track(
       mount(MsProvider, {
-        props: { locale: "en-US" },
+        props: { locale: "pt-BR" },
         slots: { default: () => h(MsTag, { closable: true }, () => "Design") },
       }),
     );
     await nextTick();
-    expect(en.find(".ms-tag__close").attributes("aria-label")).toBe("Remove Design");
+    expect(pt.find(".ms-tag__close").attributes("aria-label")).toBe("Remover Design");
   });
 });
 
@@ -358,7 +358,7 @@ describe("MsTableHeaderCell sorting", () => {
     const wrapper = track(
       mount(MsTableHeaderCell, {
         props: { sortable: true, sortDirection: "desc" },
-        slots: { default: () => "Nome" },
+        slots: { default: () => "Name" },
       }),
     );
     expect(wrapper.element.tagName).toBe("TH");
@@ -371,7 +371,7 @@ describe("MsTableHeaderCell sorting", () => {
   });
 
   it("does not render a button when not sortable", () => {
-    const wrapper = track(mount(MsTableHeaderCell, { slots: { default: () => "Nome" } }));
+    const wrapper = track(mount(MsTableHeaderCell, { slots: { default: () => "Name" } }));
     expect(wrapper.find("button").exists()).toBe(false);
     expect(wrapper.attributes("aria-sort")).toBeUndefined();
   });
@@ -379,18 +379,18 @@ describe("MsTableHeaderCell sorting", () => {
 
 describe("MsChatBubble status", () => {
   it("announces a localized status", () => {
-    const pt = track(mount(MsChatBubble, { props: { status: "read" }, slots: { default: "Oi" } }));
-    const status = pt.find(".ms-chat-bubble-status");
+    const en = track(mount(MsChatBubble, { props: { status: "read" }, slots: { default: "Hi" } }));
+    const status = en.find(".ms-chat-bubble-status");
     expect(status.attributes("role")).toBe("img");
-    expect(status.attributes("aria-label")).toBe("Lida");
+    expect(status.attributes("aria-label")).toBe("Read");
 
-    const en = track(
+    const pt = track(
       mount(MsProvider, {
-        props: { locale: "en-US" },
-        slots: { default: () => h(MsChatBubble, { status: "sent" }, () => "Hi") },
+        props: { locale: "pt-BR" },
+        slots: { default: () => h(MsChatBubble, { status: "sent" }, () => "Oi") },
       }),
     );
-    expect(en.find(".ms-chat-bubble-status").attributes("aria-label")).toBe("Sent");
+    expect(pt.find(".ms-chat-bubble-status").attributes("aria-label")).toBe("Enviada");
   });
 });
 
@@ -404,7 +404,7 @@ describe("MsAvatarGroup excess counter", () => {
     const excess = wrapper.find(".ms-avatar--excess");
     expect(excess.text()).toBe("+2");
     expect(excess.attributes("role")).toBe("img");
-    expect(excess.attributes("aria-label")).toBe("Mais 2 membros");
+    expect(excess.attributes("aria-label")).toBe("2 more members");
   });
 });
 
@@ -417,7 +417,7 @@ describe("MsTabs aria-controls", () => {
             h(MsTab, { value: "a" }, () => "A"),
             h(MsTab, { value: "b" }, () => "B"),
           ]),
-          h(MsTabPanel, { value: "a" }, () => "Painel A"),
+          h(MsTabPanel, { value: "a" }, () => "Panel A"),
         ]),
       ),
     );
@@ -448,14 +448,14 @@ describe("scrollable regions", () => {
     const body = plain.find(".ms-code-block__body");
     expect(body.attributes("tabindex")).toBe("0");
     expect(body.attributes("role")).toBe("region");
-    expect(body.attributes("aria-label")).toBe("Código");
+    expect(body.attributes("aria-label")).toBe("Code");
 
     const named = track(mount(MsCodeBlock, { props: { code: "x", filename: "main.ts" } }));
     expect(named.find(".ms-code-block__body").attributes("aria-label")).toBe("main.ts");
   });
 
   it("MsTable container becomes a region only when it overflows", async () => {
-    const plain = track(mount(MsTable, { props: { caption: "Vendas" } }));
+    const plain = track(mount(MsTable, { props: { caption: "Sales" } }));
     expect(plain.attributes("role")).toBeUndefined();
     expect(plain.attributes("tabindex")).toBeUndefined();
 
@@ -465,7 +465,7 @@ describe("scrollable regions", () => {
     const clientWidth = vi
       .spyOn(HTMLElement.prototype, "clientWidth", "get")
       .mockImplementation(() => 300);
-    const withCaption = track(mount(MsTable, { props: { caption: "Vendas" } }));
+    const withCaption = track(mount(MsTable, { props: { caption: "Sales" } }));
     const noCaption = track(mount(MsTable));
     await nextTick();
     scrollWidth.mockRestore();
@@ -476,7 +476,7 @@ describe("scrollable regions", () => {
     expect(withCaption.attributes("aria-labelledby")).toBe(
       withCaption.find("caption").attributes("id"),
     );
-    expect(noCaption.attributes("aria-label")).toBe("Tabela");
+    expect(noCaption.attributes("aria-label")).toBe("Table");
   });
 
   it("MsTable container is a region when it scrolls vertically (sticky header)", async () => {
@@ -502,7 +502,7 @@ describe("MsAppShell", () => {
       mount(MsAppShell, {
         slots: {
           sidebar: () => h(MsAppShellSidebar, () => "Menu"),
-          footer: () => h(MsAppShellFooter, () => "Rodapé"),
+          footer: () => h(MsAppShellFooter, () => "Footer"),
         },
       }),
     );
@@ -556,7 +556,7 @@ describe("MsNavbar tone", () => {
 describe("keyboard activation of role=button surfaces", () => {
   it("MsDockItem activates with Enter and Space", async () => {
     const onClick = vi.fn();
-    const wrapper = track(mount(MsDockItem, { props: { label: "Início" }, attrs: { onClick } }));
+    const wrapper = track(mount(MsDockItem, { props: { label: "Home" }, attrs: { onClick } }));
     await wrapper.trigger("keydown", { key: "Enter" });
     await wrapper.trigger("keydown", { key: " " });
     expect(onClick).toHaveBeenCalledTimes(2);
@@ -583,7 +583,7 @@ describe("MsSidebar toggle label", () => {
       }),
     );
     expect(wrapper.find(".ms-sidebar__collapse-btn").attributes("aria-label")).toBe(
-      "Expandir barra lateral",
+      "Expand sidebar",
     );
   });
 });
@@ -612,8 +612,8 @@ describe("MsSidebarMenu submenus", () => {
       items: [
         {
           id: "settings",
-          label: "Configurações",
-          children: [{ id: "profile", label: "Perfil", href: "/perfil" }],
+          label: "Settings",
+          children: [{ id: "profile", label: "Profile", href: "/profile" }],
         },
       ],
     },
@@ -631,7 +631,7 @@ describe("MsSidebarMenu submenus", () => {
 
   it("keeps labels in the DOM in collapsed mode (visually hidden via CSS)", () => {
     const wrapper = track(mount(MsSidebarMenu, { props: { items, collapsed: true } }));
-    expect(wrapper.find(".ms-sidebar-menu-label").text()).toBe("Configurações");
+    expect(wrapper.find(".ms-sidebar-menu-label").text()).toBe("Settings");
   });
 });
 
@@ -654,7 +654,7 @@ describe("MsGlimpse phrasing content", () => {
   it("renders only spans so it can live inside a <p>", () => {
     const wrapper = track(
       mount(MsGlimpse, {
-        props: { href: "https://example.com", title: "Exemplo", description: "Desc" },
+        props: { href: "https://example.com", title: "Example", description: "Desc" },
       }),
     );
     expect(wrapper.element.tagName).toBe("SPAN");

@@ -55,13 +55,14 @@ describe("i18n group B", () => {
     );
   });
 
-  it("applies :messages overrides while explicit props still win", async () => {
+  it("applies :messages overrides on top of pt-BR while explicit props still win", async () => {
     const wrapper = mount(
       defineComponent(
         () => () =>
           h(
             MsProvider,
             {
+              locale: "pt-BR",
               messages: {
                 formWizard: { previous: "Anterior", next: "Seguir" },
                 datePicker: { nextMonth: "Mês seguinte", rangeSeparator: " → " },

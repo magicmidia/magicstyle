@@ -11,13 +11,13 @@ import {
 import {
   mergeMsMessages,
   msMessagesForLocale,
-  msMessagesPtBR,
+  msMessagesEn,
   type MsMessages,
   type MsMessagesOverride,
 } from "../i18n/messages.ts";
 
 export interface MsI18nOptions {
-  /** BCP 47 tag; picks the built-in dictionary ("pt-BR", "en-US"…) and the Intl locale. */
+  /** BCP 47 tag; picks the built-in dictionary ("en-US", "pt-BR", "es-ES"…) and the Intl locale. */
   locale?: string | undefined;
   /** Partial overrides on top of the locale's dictionary. */
   messages?: MsMessagesOverride | undefined;
@@ -25,14 +25,14 @@ export interface MsI18nOptions {
 
 export const MS_MESSAGES_KEY: InjectionKey<ComputedRef<MsMessages>> = Symbol("ms-messages");
 
-const defaultMessages = computed(() => msMessagesPtBR);
+const defaultMessages = computed(() => msMessagesEn);
 
 function resolve(options: MsI18nOptions, parent?: MsMessages): MsMessages {
-  const base = options.locale ? msMessagesForLocale(options.locale) : (parent ?? msMessagesPtBR);
+  const base = options.locale ? msMessagesForLocale(options.locale) : (parent ?? msMessagesEn);
   return mergeMsMessages(base, options.messages);
 }
 
-/** Strings for the nearest MsProvider / createMsI18n (Portuguese by default). */
+/** Strings for the nearest MsProvider / createMsI18n (English by default). */
 export function useMsMessages(): ComputedRef<MsMessages> {
   return inject(MS_MESSAGES_KEY, defaultMessages);
 }

@@ -25,8 +25,8 @@ describe("MsDrawer", () => {
     mount(MsDrawer, {
       props: {
         open: true,
-        title: "Menu Lateral",
-        description: "Navegação principal",
+        title: "Side menu",
+        description: "Main navigation",
         placement: "left",
         size: "sm",
       },
@@ -44,14 +44,14 @@ describe("MsDrawer", () => {
     expect(drawer?.classList.contains("ms-drawer--size-sm")).toBe(true);
 
     const title = document.querySelector(".ms-drawer__title");
-    expect(title?.textContent).toContain("Menu Lateral");
+    expect(title?.textContent).toContain("Side menu");
   });
 
   it("emits update:open and close when close button is clicked", async () => {
     const wrapper = mount(MsDrawer, {
       props: {
         open: true,
-        title: "Filtros",
+        title: "Filters",
       },
       slots: { default: () => "Body" },
     });

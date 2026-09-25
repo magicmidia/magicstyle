@@ -45,7 +45,7 @@ describe("MsCodeBlock component", () => {
     expect(wrapper.classes()).toContain("ms-code-block--collapsed");
     const toggleBtn = wrapper.find("button.ms-code-block__collapse-btn");
     expect(toggleBtn.exists()).toBe(true);
-    expect(toggleBtn.text()).toContain("Mostrar mais");
+    expect(toggleBtn.text()).toContain("Show more");
 
     await toggleBtn.trigger("click");
     expect(wrapper.emitted("toggle-collapse")).toBeTruthy();

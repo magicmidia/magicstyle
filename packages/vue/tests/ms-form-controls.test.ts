@@ -14,7 +14,7 @@ import {
 describe("MsField wiring", () => {
   it("links label to the control id and marks required", () => {
     const wrapper = mount(MsField, {
-      props: { label: "Nome", required: true },
+      props: { label: "Name", required: true },
       slots: { default: () => "control" },
     });
     expect(wrapper.find(".ms-field-label").attributes("for")).toMatch(/^ms-field-/);
@@ -23,11 +23,11 @@ describe("MsField wiring", () => {
 
   it("wires error into inputs via field context", async () => {
     const wrapper = mount(MsField, {
-      props: { label: "Email", error: "Inválido" },
+      props: { label: "Email", error: "Invalid" },
       slots: { default: () => h(MsInput, { modelValue: "" }) },
     });
     await nextTick();
-    expect(wrapper.find(".ms-field-error").text()).toBe("Inválido");
+    expect(wrapper.find(".ms-field-error").text()).toBe("Invalid");
     expect(wrapper.find("input").attributes("aria-invalid")).toBe("true");
   });
 
@@ -43,12 +43,12 @@ describe("MsField wiring", () => {
 
   it("supports horizontal orientation and wraps content", () => {
     const wrapper = mount(MsField, {
-      props: { label: "Bio", orientation: "horizontal", description: "Breve biografia" },
+      props: { label: "Bio", orientation: "horizontal", description: "Short bio" },
       slots: { default: () => h("input") },
     });
     expect(wrapper.classes()).toContain("ms-field--horizontal");
     expect(wrapper.find(".ms-field-content").exists()).toBe(true);
-    expect(wrapper.find(".ms-field-content .ms-field-description").text()).toBe("Breve biografia");
+    expect(wrapper.find(".ms-field-content .ms-field-description").text()).toBe("Short bio");
   });
 
   it("renders optional indicator when optional is true and not required", () => {
@@ -57,7 +57,7 @@ describe("MsField wiring", () => {
       slots: { default: () => h("input") },
     });
     expect(wrapper.find(".ms-field-optional").exists()).toBe(true);
-    expect(wrapper.find(".ms-field-optional").text()).toBe("(opcional)");
+    expect(wrapper.find(".ms-field-optional").text()).toBe("(optional)");
   });
 
   it("applies size classes for sm and lg", () => {
@@ -121,7 +121,7 @@ describe("MsInput", () => {
     expect(filled.find(".ms-input").attributes("data-variant")).toBe("filled");
     expect(filled.find(".ms-input").attributes("data-pill")).toBe("true");
 
-    const clearable = mount(MsInput, { props: { modelValue: "Texto", clearable: true } });
+    const clearable = mount(MsInput, { props: { modelValue: "Text", clearable: true } });
     const clearBtn = clearable.find(".ms-input-action-btn");
     expect(clearBtn.exists()).toBe(true);
     await clearBtn.trigger("click");
@@ -155,7 +155,7 @@ describe("MsTextarea", () => {
   it("supports size, resize, and character count display", () => {
     const wrapper = mount(MsTextarea, {
       props: {
-        modelValue: "Texto teste",
+        modelValue: "Sample text",
         size: "lg",
         resize: "both",
         showCount: true,
@@ -171,7 +171,7 @@ describe("MsTextarea", () => {
 
 describe("MsCheckbox", () => {
   it("emits update:checked and sets aria-checked mixed when indeterminate", async () => {
-    const wrapper = mount(MsCheckbox, { props: { label: "Aceito" } });
+    const wrapper = mount(MsCheckbox, { props: { label: "I agree" } });
     await wrapper.find("input").setValue(true);
     expect(wrapper.emitted("update:checked")?.at(-1)?.[0]).toBe(true);
 
@@ -182,8 +182,8 @@ describe("MsCheckbox", () => {
   it("supports sizes, tones, card mode, and description", () => {
     const wrapper = mount(MsCheckbox, {
       props: {
-        label: "Plano Pro",
-        description: "Acesso a todos os recursos premium",
+        label: "Pro plan",
+        description: "Access to all premium features",
         size: "lg",
         tone: "accent",
         card: true,
@@ -193,10 +193,8 @@ describe("MsCheckbox", () => {
     expect(wrapper.attributes("data-size")).toBe("lg");
     expect(wrapper.attributes("data-tone")).toBe("accent");
     expect(wrapper.attributes("data-card")).toBe("true");
-    expect(wrapper.find(".ms-checkbox-label").text()).toBe("Plano Pro");
-    expect(wrapper.find(".ms-checkbox-description").text()).toBe(
-      "Acesso a todos os recursos premium",
-    );
+    expect(wrapper.find(".ms-checkbox-label").text()).toBe("Pro plan");
+    expect(wrapper.find(".ms-checkbox-description").text()).toBe("Access to all premium features");
   });
 });
 
@@ -257,8 +255,8 @@ describe("MsRadioGroup/MsRadio", () => {
       },
       slots: {
         default: () => [
-          h(MsRadio, { value: "free", label: "Starter", description: "Gratuito" }),
-          h(MsRadio, { value: "pro", label: "Pro", description: "Profissional" }),
+          h(MsRadio, { value: "free", label: "Starter", description: "Free" }),
+          h(MsRadio, { value: "pro", label: "Pro", description: "Professional" }),
         ],
       },
     });
@@ -269,13 +267,13 @@ describe("MsRadioGroup/MsRadio", () => {
     expect(radios[0]!.classes()).toContain("ms-radio--success");
     expect(radios[0]!.classes()).toContain("ms-radio--card");
     expect(radios[1]!.attributes("data-checked")).toBeDefined();
-    expect(radios[0]!.find(".ms-radio-description").text()).toBe("Gratuito");
+    expect(radios[0]!.find(".ms-radio-description").text()).toBe("Free");
   });
 });
 
 describe("MsSwitch", () => {
   it("uses role=switch and emits update:checked", async () => {
-    const wrapper = mount(MsSwitch, { props: { label: "Ativo" } });
+    const wrapper = mount(MsSwitch, { props: { label: "Active" } });
     const input = wrapper.find('input[type="checkbox"]');
     expect(input.attributes("role")).toBe("switch");
     await input.setValue(true);
@@ -285,8 +283,8 @@ describe("MsSwitch", () => {
   it("supports sizes, tones, labelPlacement and description", () => {
     const wrapper = mount(MsSwitch, {
       props: {
-        label: "Notificações",
-        description: "Receba alertas no desktop",
+        label: "Notifications",
+        description: "Get desktop alerts",
         size: "lg",
         tone: "success",
         labelPlacement: "left",
@@ -296,7 +294,7 @@ describe("MsSwitch", () => {
     expect(wrapper.attributes("data-size")).toBe("lg");
     expect(wrapper.attributes("data-tone")).toBe("success");
     expect(wrapper.attributes("data-label-placement")).toBe("left");
-    expect(wrapper.find(".ms-switch-label").text()).toBe("Notificações");
-    expect(wrapper.find(".ms-switch-description").text()).toBe("Receba alertas no desktop");
+    expect(wrapper.find(".ms-switch-label").text()).toBe("Notifications");
+    expect(wrapper.find(".ms-switch-description").text()).toBe("Get desktop alerts");
   });
 });

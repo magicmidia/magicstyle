@@ -57,21 +57,21 @@ const cases: Array<[string, () => ReturnType<typeof h>]> = [
     "form controls inside MsField",
     () =>
       h("main", [
-        h(MsField, { label: "Nome", description: "Obrigatório", error: "Campo inválido" }, () =>
+        h(MsField, { label: "Name", description: "Required", error: "Invalid field" }, () =>
           h(MsInput, { modelValue: "" }),
         ),
         h(MsField, { label: "Bio" }, () => h(MsTextarea, { modelValue: "" })),
-        h(MsField, { label: "Plano" }, () =>
+        h(MsField, { label: "Plan" }, () =>
           h(MsSelect, {
             options: [
-              { label: "Básico", value: "b" },
+              { label: "Basic", value: "b" },
               { label: "Pro", value: "p" },
             ],
           }),
         ),
-        h(MsCheckbox, { label: "Aceito os termos" }),
-        h(MsSwitch, { label: "Notificações" }),
-        h(MsField, { label: "Tamanho" }, () =>
+        h(MsCheckbox, { label: "I accept the terms" }),
+        h(MsSwitch, { label: "Notifications" }),
+        h(MsField, { label: "Size" }, () =>
           h(MsRadioGroup, { modelValue: "m" }, () => [
             h(MsRadio, { value: "p", label: "P" }),
             h(MsRadio, { value: "m", label: "M" }),
@@ -84,10 +84,10 @@ const cases: Array<[string, () => ReturnType<typeof h>]> = [
     () =>
       h("main", [
         h(MsSelect, {
-          "aria-label": "Plano",
+          "aria-label": "Plan",
           open: true,
           options: [
-            { label: "Básico", value: "b" },
+            { label: "Basic", value: "b" },
             { label: "Pro", value: "p" },
           ],
         }),
@@ -95,7 +95,7 @@ const cases: Array<[string, () => ReturnType<typeof h>]> = [
   ],
   [
     "open dialog",
-    () => h(MsDialog, { open: true, title: "Título", description: "Texto" }, () => "Corpo"),
+    () => h(MsDialog, { open: true, title: "Title", description: "Text" }, () => "Body"),
   ],
   [
     "open command palette",
@@ -103,9 +103,9 @@ const cases: Array<[string, () => ReturnType<typeof h>]> = [
       h(MsCommandPalette, {
         modelValue: true,
         items: [
-          { id: "docs", label: "Documentação", group: "Navegação" },
-          { id: "theme", label: "Alternar tema", group: "Ações" },
-          { id: "off", label: "Indisponível", disabled: true },
+          { id: "docs", label: "Documentation", group: "Navigation" },
+          { id: "theme", label: "Toggle theme", group: "Actions" },
+          { id: "off", label: "Unavailable", disabled: true },
         ],
       }),
   ],
@@ -114,10 +114,10 @@ const cases: Array<[string, () => ReturnType<typeof h>]> = [
     "navigation and disclosure",
     () =>
       h("main", [
-        h(MsButton, null, () => "Salvar"),
-        h(MsAlert, { title: "Atenção" }, () => "Mensagem"),
+        h(MsButton, null, () => "Save"),
+        h(MsAlert, { title: "Heads up" }, () => "Message"),
         h(MsBreadcrumbs, {
-          items: [{ label: "Início", href: "/" }, { label: "Atual" }],
+          items: [{ label: "Home", href: "/" }, { label: "Current" }],
         }),
         h(MsPagination, { total: 50, pageSize: 10, modelValue: 1 }),
         h(MsTree, {
@@ -125,15 +125,15 @@ const cases: Array<[string, () => ReturnType<typeof h>]> = [
           expandedKeys: ["a"],
         }),
         h(MsAccordion, {
-          items: [{ id: "one", title: "Pergunta", content: "Resposta" }],
+          items: [{ id: "one", title: "Question", content: "Answer" }],
         }),
         h(MsTabs, { modelValue: "a" }, () => [
           h(MsTabList, null, () => [
             h(MsTab, { value: "a" }, () => "A"),
             h(MsTab, { value: "b" }, () => "B"),
           ]),
-          h(MsTabPanel, { value: "a" }, () => "Painel A"),
-          h(MsTabPanel, { value: "b" }, () => "Painel B"),
+          h(MsTabPanel, { value: "a" }, () => "Panel A"),
+          h(MsTabPanel, { value: "b" }, () => "Panel B"),
         ]),
       ]),
   ],
@@ -149,7 +149,7 @@ describe("axe-core audit", () => {
 
   it("open dropdown menu has no violations", async () => {
     const wrapper = mount(MsDropdownButton, {
-      props: { label: "Ações", items: [{ label: "Editar", value: "e" }] },
+      props: { label: "Actions", items: [{ label: "Edit", value: "e" }] },
       attachTo: document.body,
     });
     await wrapper.find("button").trigger("click");

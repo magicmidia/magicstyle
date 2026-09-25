@@ -15,9 +15,9 @@ const Host = defineComponent({
   setup: () => ({ index: ref(0) }),
   template: `
     <MsCarousel v-model="index" :total-slides="3" :autoplay="autoplay" :interval="1000">
-      <MsCarouselSlide>Um</MsCarouselSlide>
-      <MsCarouselSlide>Dois</MsCarouselSlide>
-      <MsCarouselSlide>Três</MsCarouselSlide>
+      <MsCarouselSlide>One</MsCarouselSlide>
+      <MsCarouselSlide>Two</MsCarouselSlide>
+      <MsCarouselSlide>Three</MsCarouselSlide>
     </MsCarousel>`,
 });
 
@@ -49,9 +49,9 @@ describe("MsCarousel rotation (WCAG 2.2.2)", () => {
     expect(indexOf(wrapper)).toBe(1);
 
     const toggle = wrapper.find(".ms-carousel__rotation");
-    expect(toggle.attributes("aria-label")).toBe("Pausar rotação automática");
+    expect(toggle.attributes("aria-label")).toBe("Pause automatic rotation");
     await toggle.trigger("click");
-    expect(toggle.attributes("aria-label")).toBe("Iniciar rotação automática");
+    expect(toggle.attributes("aria-label")).toBe("Start automatic rotation");
     expect(track.attributes("aria-live")).toBe("polite");
     vi.advanceTimersByTime(2000);
     await nextTick();
@@ -90,7 +90,7 @@ describe("MsCarousel rotation (WCAG 2.2.2)", () => {
     await nextTick();
     expect(indexOf(wrapper)).toBe(0);
     expect(wrapper.find(".ms-carousel__rotation").attributes("aria-label")).toBe(
-      "Iniciar rotação automática",
+      "Start automatic rotation",
     );
   });
 
@@ -99,7 +99,7 @@ describe("MsCarousel rotation (WCAG 2.2.2)", () => {
     const wrapper = mount(Host, { props: { autoplay: false } });
     await nextTick();
     const slides = wrapper.findAll(".ms-carousel-slide");
-    expect(slides.map((s) => s.attributes("aria-label"))).toEqual(["1 de 3", "2 de 3", "3 de 3"]);
+    expect(slides.map((s) => s.attributes("aria-label"))).toEqual(["1 of 3", "2 of 3", "3 of 3"]);
     expect(slides[0]!.attributes("inert")).toBeUndefined();
     expect(slides[1]!.attributes("inert")).toBeDefined();
     const indicators = wrapper.findAll(".ms-carousel__indicator");
@@ -112,7 +112,7 @@ describe("MsCarousel rotation (WCAG 2.2.2)", () => {
 describe("MsCollapse disclosure", () => {
   it("points the header at the content and keeps closed content out of the tab order", async () => {
     const wrapper = mount(MsCollapse, {
-      props: { title: "Detalhes", modelValue: false },
+      props: { title: "Details", modelValue: false },
       slots: { default: '<a href="#x">Link interno</a>' },
     });
     const header = wrapper.find("button.ms-collapse__header");
@@ -161,12 +161,12 @@ describe("MsContextMenu keyboard", () => {
       attachTo: document.body,
       props: {
         items: [
-          { id: "edit", label: "Editar" },
+          { id: "edit", label: "Edit" },
           { divider: true },
-          { id: "delete", label: "Excluir" },
+          { id: "delete", label: "Delete" },
         ],
       },
-      slots: { default: () => "Área" },
+      slots: { default: () => "Area" },
     });
     const trigger = wrapper.find("[data-ms-context-menu-trigger]");
     (trigger.element as HTMLElement).focus();
@@ -177,7 +177,7 @@ describe("MsContextMenu keyboard", () => {
     const menu = document.querySelector<HTMLElement>('[role="menu"]');
     expect(menu).not.toBeNull();
     const items = [...menu!.querySelectorAll<HTMLElement>('[role="menuitem"]')];
-    expect(items.map((i) => i.textContent?.trim())).toEqual(["Editar", "Excluir"]);
+    expect(items.map((i) => i.textContent?.trim())).toEqual(["Edit", "Delete"]);
     expect(document.activeElement).toBe(items[0]);
 
     items[0]!.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }));

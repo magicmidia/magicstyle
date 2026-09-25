@@ -21,14 +21,14 @@ describe("MsBanner", () => {
       props: {
         tone: "danger",
         variant: "solid",
-        title: "Alerta de Manutenção",
+        title: "Maintenance alert",
       },
-      slots: { default: () => "Servidores indisponíveis." },
+      slots: { default: () => "Servers unavailable." },
     });
 
     expect(wrapper.classes()).toContain("ms-banner--tone-danger");
     expect(wrapper.classes()).toContain("ms-banner--variant-solid");
-    expect(wrapper.text()).toContain("Alerta de Manutenção");
+    expect(wrapper.text()).toContain("Maintenance alert");
   });
 
   it("emits dismiss and hides when dismiss button is clicked", async () => {
@@ -50,7 +50,7 @@ describe("MsBanner", () => {
   it("emits action event when action button is clicked", async () => {
     const wrapper = mount(MsBanner, {
       props: {
-        actionLabel: "Ver detalhes",
+        actionLabel: "View details",
       },
       slots: { default: () => "Action banner" },
     });

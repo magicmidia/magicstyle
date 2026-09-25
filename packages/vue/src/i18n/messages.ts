@@ -3,7 +3,8 @@
  * placeholders, empty states). Component props still win: a prop such as
  * `placeholder` or `emptyText` overrides the message for that instance.
  *
- * Provide a locale or partial overrides with `<MsProvider locale="en-US">` /
+ * English (en-US) is the default. Provide a locale or partial overrides with
+ * `<MsProvider locale="pt-BR">` /
  * `<MsProvider :messages="{ select: { empty: '…' } }">`, or app-wide with
  * `app.use(createMsI18n({ locale, messages }))`.
  */
@@ -70,7 +71,19 @@ export interface MsMessages {
     remove: string;
     removeFile: (name: string) => string;
   };
-  emojiPicker: { search: string };
+  emojiPicker: {
+    search: string;
+    categories: {
+      all: string;
+      smileys: string;
+      gestures: string;
+      animals: string;
+      food: string;
+      travel: string;
+      objects: string;
+      symbols: string;
+    };
+  };
   fileInput: { prompt: string; remove: string };
   formWizard: { previous: string; next: string; finish: string; progress: string };
   glimpse: { label: string };
@@ -202,7 +215,19 @@ export const msMessagesPtBR: MsMessages = {
     remove: "Remover arquivo",
     removeFile: (name) => `Remover ${name}`,
   },
-  emojiPicker: { search: "Buscar emoji..." },
+  emojiPicker: {
+    search: "Buscar emoji...",
+    categories: {
+      all: "Todos",
+      smileys: "Carinhas",
+      gestures: "Gestos",
+      animals: "Animais",
+      food: "Comidas",
+      travel: "Viagens",
+      objects: "Objetos",
+      symbols: "Símbolos",
+    },
+  },
   fileInput: {
     prompt: "Arraste e solte arquivos aqui, ou clique para selecionar",
     remove: "Remover arquivo",
@@ -354,7 +379,19 @@ export const msMessagesEn: MsMessages = {
     remove: "Remove file",
     removeFile: (name) => `Remove ${name}`,
   },
-  emojiPicker: { search: "Search emoji..." },
+  emojiPicker: {
+    search: "Search emoji...",
+    categories: {
+      all: "All",
+      smileys: "Smileys",
+      gestures: "Gestures",
+      animals: "Animals",
+      food: "Food",
+      travel: "Travel",
+      objects: "Objects",
+      symbols: "Symbols",
+    },
+  },
   fileInput: { prompt: "Drag and drop files here, or click to select", remove: "Remove file" },
   formWizard: { previous: "Back", next: "Next", finish: "Finish", progress: "Form progress" },
   glimpse: { label: "Link preview" },
@@ -498,7 +535,19 @@ export const msMessagesEs: MsMessages = {
     remove: "Quitar archivo",
     removeFile: (name) => `Quitar ${name}`,
   },
-  emojiPicker: { search: "Buscar emoji..." },
+  emojiPicker: {
+    search: "Buscar emoji...",
+    categories: {
+      all: "Todos",
+      smileys: "Caritas",
+      gestures: "Gestos",
+      animals: "Animales",
+      food: "Comida",
+      travel: "Viajes",
+      objects: "Objetos",
+      symbols: "Símbolos",
+    },
+  },
   fileInput: {
     prompt: "Arrastra y suelta archivos aquí, o haz clic para seleccionar",
     remove: "Quitar archivo",
@@ -602,10 +651,10 @@ type DeepPartial<T> = {
 /** Partial overrides: set only the strings you want to change. */
 export type MsMessagesOverride = DeepPartial<MsMessages>;
 
-/** Built-in dictionary for a BCP 47 tag, falling back to Portuguese. */
+/** Built-in dictionary for a BCP 47 tag, falling back to English. */
 export function msMessagesForLocale(locale: string): MsMessages {
-  const language = locale.toLowerCase().split("-")[0] ?? "pt";
-  const base = MS_BUILTIN_MESSAGES[language] ?? msMessagesPtBR;
+  const language = locale.toLowerCase().split("-")[0] ?? "en";
+  const base = MS_BUILTIN_MESSAGES[language] ?? msMessagesEn;
   return base.locale === locale ? base : { ...base, locale };
 }
 

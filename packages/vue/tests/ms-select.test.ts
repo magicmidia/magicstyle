@@ -195,7 +195,7 @@ describe("MsSelect (Doc 04 §9, Doc 05 §6, Doc 27 §6)", () => {
 
     const createBtn = wrapper.find(".ms-select__create");
     expect(createBtn.exists()).toBe(true);
-    expect(createBtn.text()).toContain('Criar "SolidJS"');
+    expect(createBtn.text()).toContain('Create "SolidJS"');
 
     await createBtn.trigger("click");
     expect(wrapper.emitted("create")?.[0]).toEqual(["SolidJS"]);
@@ -290,7 +290,7 @@ describe("MsSelect (Doc 04 §9, Doc 05 §6, Doc 27 §6)", () => {
         modelValue: ["vue", "react", "svelte"],
       },
     });
-    expect(wrapperCounter.find(".ms-select__counter").text()).toContain("3 selecionados");
+    expect(wrapperCounter.find(".ms-select__counter").text()).toContain("3 selected");
 
     const wrapperConditional = mount(MsSelect, {
       props: {
@@ -302,7 +302,7 @@ describe("MsSelect (Doc 04 §9, Doc 05 §6, Doc 27 §6)", () => {
     });
     const tags = wrapperConditional.findAll(".ms-select__tag");
     expect(tags.length).toBe(1);
-    expect(wrapperConditional.find(".ms-select__counter").text()).toContain("+2 mais");
+    expect(wrapperConditional.find(".ms-select__counter").text()).toContain("+2 more");
   });
 
   it("supports search limit and minimal search length", async () => {

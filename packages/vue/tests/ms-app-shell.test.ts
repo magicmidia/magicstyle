@@ -13,10 +13,10 @@ describe("MsAppShell Suite", () => {
   it("renders complete app shell structure with slots", () => {
     const wrapper = mount(MsAppShell, {
       slots: {
-        topbar: () => h(MsTopbar, () => "Topo"),
+        topbar: () => h(MsTopbar, () => "Top"),
         sidebar: () => h(MsSidebar, () => "Menu"),
-        default: () => h(MsContent, () => "Conteúdo Principal"),
-        footer: () => h(MsFooter, () => "Rodapé"),
+        default: () => h(MsContent, () => "Main content"),
+        footer: () => h(MsFooter, () => "Footer"),
         statusbar: () => h(MsStatusBar, { tone: "success" }, () => "Online"),
       },
     });
@@ -68,6 +68,6 @@ describe("MsAppShell Suite", () => {
     });
 
     expect(wrapper.classes()).toContain("ms-navigation-rail");
-    expect(wrapper.attributes("aria-label")).toBe("Navegação compacta");
+    expect(wrapper.attributes("aria-label")).toBe("Compact navigation");
   });
 });

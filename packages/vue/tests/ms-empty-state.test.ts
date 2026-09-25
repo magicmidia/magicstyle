@@ -8,8 +8,8 @@ describe("MsEmptyState (doc 05 §8)", () => {
   it("renders with title and description props", () => {
     const wrapper = mount(MsEmptyState, {
       props: {
-        title: "Nenhum dado encontrado",
-        description: "Tente refinar sua pesquisa ou filtros.",
+        title: "No data found",
+        description: "Try refining your search or filters.",
         size: "lg",
       },
     });
@@ -18,10 +18,10 @@ describe("MsEmptyState (doc 05 §8)", () => {
     expect(wrapper.classes()).toContain("ms-empty-state--lg");
 
     const title = wrapper.find(".ms-empty-state__title");
-    expect(title.text()).toBe("Nenhum dado encontrado");
+    expect(title.text()).toBe("No data found");
 
     const description = wrapper.find(".ms-empty-state__description");
-    expect(description.text()).toBe("Tente refinar sua pesquisa ou filtros.");
+    expect(description.text()).toBe("Try refining your search or filters.");
 
     // Default icon
     expect(wrapper.find("svg.ms-empty-state__default-icon").exists()).toBe(true);
@@ -31,19 +31,19 @@ describe("MsEmptyState (doc 05 §8)", () => {
     const wrapper = mount(MsEmptyState, {
       slots: {
         icon: () => h("span", { class: "custom-icon" }, "🔍"),
-        title: () => "Título do Slot",
-        description: () => "Descrição do Slot",
-        actions: () => h(MsButton, { tone: "primary" }, () => "Novo Item"),
+        title: () => "Slot title",
+        description: () => "Slot description",
+        actions: () => h(MsButton, { tone: "primary" }, () => "New item"),
       },
     });
 
     expect(wrapper.find(".custom-icon").text()).toBe("🔍");
-    expect(wrapper.find(".ms-empty-state__title").text()).toBe("Título do Slot");
-    expect(wrapper.find(".ms-empty-state__description").text()).toBe("Descrição do Slot");
+    expect(wrapper.find(".ms-empty-state__title").text()).toBe("Slot title");
+    expect(wrapper.find(".ms-empty-state__description").text()).toBe("Slot description");
 
     const btn = wrapper.findComponent(MsButton);
     expect(btn.exists()).toBe(true);
-    expect(btn.text()).toBe("Novo Item");
+    expect(btn.text()).toBe("New item");
   });
 
   it("supports variant card and iconTone warning", () => {

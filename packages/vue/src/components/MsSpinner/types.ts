@@ -36,7 +36,7 @@ export interface MsSpinnerProps {
 
   /**
    * Accessible screen-reader description announced via aria-live.
-   * @default messages `spinner.label` ("Carregando..." in pt-BR)
+   * @default messages `spinner.label` ("Loading..." in en-US)
    */
   label?: string;
 }

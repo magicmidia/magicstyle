@@ -6,9 +6,9 @@ import MsField from "../src/components/MsField/MsField.vue";
 
 describe("MsNativeSelect", () => {
   const sampleOptions = [
-    { label: "Opção 1", value: "opt1" },
-    { label: "Opção 2", value: "opt2" },
-    { label: "Opção 3 (desabilitada)", value: "opt3", disabled: true },
+    { label: "Option 1", value: "opt1" },
+    { label: "Option 2", value: "opt2" },
+    { label: "Option 3 (disabled)", value: "opt3", disabled: true },
   ];
 
   it("renders options from options prop", () => {
@@ -25,7 +25,7 @@ describe("MsNativeSelect", () => {
 
     const options = wrapper.findAll("option");
     expect(options).toHaveLength(3);
-    expect(options[0]!.text()).toBe("Opção 1");
+    expect(options[0]!.text()).toBe("Option 1");
     expect(options[2]!.attributes("disabled")).toBeDefined();
   });
 
@@ -65,12 +65,12 @@ describe("MsNativeSelect", () => {
     const wrapper = mount(MsNativeSelect, {
       props: {
         options: sampleOptions,
-        placeholder: "Selecione um item...",
+        placeholder: "Select an item...",
       },
     });
 
     const firstOption = wrapper.find("option");
-    expect(firstOption.text()).toBe("Selecione um item...");
+    expect(firstOption.text()).toBe("Select an item...");
     expect(firstOption.attributes("disabled")).toBeDefined();
   });
 
@@ -101,9 +101,9 @@ describe("MsNativeSelect", () => {
   it("integrates seamlessly into MsField context", async () => {
     const wrapper = mount(MsField, {
       props: {
-        label: "País",
-        description: "Selecione seu país de residência",
-        error: "Seleção obrigatória",
+        label: "Country",
+        description: "Select your country of residence",
+        error: "Selection required",
       },
       slots: {
         default: () => h(MsNativeSelect, { options: sampleOptions }),

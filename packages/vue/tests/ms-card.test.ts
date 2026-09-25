@@ -7,29 +7,29 @@ describe("MsCard", () => {
   it("renders with default props and content", () => {
     const wrapper = mount(MsCard, {
       slots: {
-        default: () => "Conteúdo do card",
+        default: () => "Card content",
       },
     });
 
     expect(wrapper.classes()).toContain("ms-card");
     expect(wrapper.attributes("data-variant")).toBe("raised");
     expect(wrapper.attributes("data-padding")).toBe("md");
-    expect(wrapper.find(".ms-card-content").text()).toBe("Conteúdo do card");
+    expect(wrapper.find(".ms-card-content").text()).toBe("Card content");
   });
 
   it("renders header with title and description", () => {
     const wrapper = mount(MsCard, {
       props: {
-        title: "Visão Geral",
-        description: "Métricas consolidadas do workspace",
+        title: "Overview",
+        description: "Consolidated workspace metrics",
       },
       slots: {
-        default: () => "Dados",
+        default: () => "Data",
       },
     });
 
-    expect(wrapper.find(".ms-card-title").text()).toBe("Visão Geral");
-    expect(wrapper.find(".ms-card-description").text()).toBe("Métricas consolidadas do workspace");
+    expect(wrapper.find(".ms-card-title").text()).toBe("Overview");
+    expect(wrapper.find(".ms-card-description").text()).toBe("Consolidated workspace metrics");
   });
 
   it("applies variants and padding scales correctly", () => {
@@ -50,7 +50,7 @@ describe("MsCard", () => {
         interactive: true,
       },
       slots: {
-        default: () => "Card Clicável",
+        default: () => "Clickable card",
       },
     });
 
@@ -64,12 +64,12 @@ describe("MsCard", () => {
   it("renders footer slot", () => {
     const wrapper = mount(MsCard, {
       slots: {
-        footer: () => h("button", "Salvar"),
+        footer: () => h("button", "Save"),
       },
     });
 
     expect(wrapper.find(".ms-card-footer").exists()).toBe(true);
-    expect(wrapper.find(".ms-card-footer button").text()).toBe("Salvar");
+    expect(wrapper.find(".ms-card-footer button").text()).toBe("Save");
   });
 
   it("supports glass variant, xl padding, hoverable, dividers, and cover media", () => {

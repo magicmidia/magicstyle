@@ -4,9 +4,9 @@ import { MsToggleGroup, MsToggleGroupItem } from "../src/index.ts";
 
 describe("MsToggleGroup component", () => {
   const items = [
-    { value: "bold", label: "Negrito" },
-    { value: "italic", label: "Itálico" },
-    { value: "underline", label: "Sublinhado" },
+    { value: "bold", label: "Bold" },
+    { value: "italic", label: "Italic" },
+    { value: "underline", label: "Underline" },
   ];
 
   it("renders toggle items with single selection", async () => {

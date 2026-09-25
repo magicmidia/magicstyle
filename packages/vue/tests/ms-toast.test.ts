@@ -13,9 +13,9 @@ describe("MsToast & useToast", () => {
   it("manages toast queue via useToast composable", () => {
     expect(toasts.value.length).toBe(0);
 
-    const id = info("Operação realizada com sucesso!", { title: "Aviso" });
+    const id = info("Operation completed successfully!", { title: "Notice" });
     expect(toasts.value.length).toBe(1);
-    expect(toasts.value[0]!.title).toBe("Aviso");
+    expect(toasts.value[0]!.title).toBe("Notice");
     expect(toasts.value[0]!.tone).toBe("info");
 
     remove(id);
@@ -25,8 +25,8 @@ describe("MsToast & useToast", () => {
   it("renders toast card and handles dismiss emit", async () => {
     const toastItem = {
       id: "test-toast-1",
-      title: "Salvo",
-      message: "Seus dados foram atualizados",
+      title: "Saved",
+      message: "Your data was updated",
       tone: "success" as const,
       placement: "top-right" as const,
       duration: 5000,
@@ -41,8 +41,8 @@ describe("MsToast & useToast", () => {
 
     expect(wrapper.classes()).toContain("ms-toast");
     expect(wrapper.classes()).toContain("ms-toast--tone-success");
-    expect(wrapper.text()).toContain("Salvo");
-    expect(wrapper.text()).toContain("Seus dados foram atualizados");
+    expect(wrapper.text()).toContain("Saved");
+    expect(wrapper.text()).toContain("Your data was updated");
 
     const closeBtn = wrapper.find(".ms-toast__close");
     expect(closeBtn.exists()).toBe(true);

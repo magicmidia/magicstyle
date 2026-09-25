@@ -9,7 +9,7 @@ describe("MsProgress (doc 05 §8)", () => {
         modelValue: 40,
         min: 0,
         max: 100,
-        label: "Progresso do Upload",
+        label: "Upload progress",
         showValue: true,
       },
     });
@@ -20,13 +20,13 @@ describe("MsProgress (doc 05 §8)", () => {
     expect(progressbar.attributes("aria-valuemin")).toBe("0");
     expect(progressbar.attributes("aria-valuemax")).toBe("100");
     expect(progressbar.attributes("aria-valuetext")).toBe("40%");
-    expect(progressbar.attributes("aria-label")).toBe("Progresso do Upload");
+    expect(progressbar.attributes("aria-label")).toBe("Upload progress");
 
     const bar = wrapper.find(".ms-progress__bar");
     expect(bar.attributes("style")).toContain("width: 40%;");
 
     const label = wrapper.find(".ms-progress__label");
-    expect(label.text()).toBe("Progresso do Upload");
+    expect(label.text()).toBe("Upload progress");
 
     const value = wrapper.find(".ms-progress__value");
     expect(value.text()).toBe("40%");

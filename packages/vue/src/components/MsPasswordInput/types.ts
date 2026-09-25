@@ -11,13 +11,13 @@ export interface MsPasswordCriterion {
  * validators with labels from the messages (`passwordInput.criteria[id]`).
  */
 export const defaultCriteria: MsPasswordCriterion[] = [
-  { id: "length", label: "Mínimo de 8 caracteres", validator: (p) => p.length >= 8 },
-  { id: "lowercase", label: "Pelo menos 1 letra minúscula", validator: (p) => /[a-z]/.test(p) },
-  { id: "uppercase", label: "Pelo menos 1 letra maiúscula", validator: (p) => /[A-Z]/.test(p) },
-  { id: "number", label: "Pelo menos 1 número", validator: (p) => /[0-9]/.test(p) },
+  { id: "length", label: "At least 8 characters", validator: (p) => p.length >= 8 },
+  { id: "lowercase", label: "At least 1 lowercase letter", validator: (p) => /[a-z]/.test(p) },
+  { id: "uppercase", label: "At least 1 uppercase letter", validator: (p) => /[A-Z]/.test(p) },
+  { id: "number", label: "At least 1 number", validator: (p) => /[0-9]/.test(p) },
   {
     id: "symbol",
-    label: "Pelo menos 1 caractere especial",
+    label: "At least 1 special character",
     validator: (p) => /[^A-Za-z0-9]/.test(p),
   },
 ];

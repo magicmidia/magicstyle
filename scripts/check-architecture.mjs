@@ -2,11 +2,11 @@
 /**
  * Architecture checker (doc 25 §6).
  * Impede forbidden package edges no workspace:
- *   - browser packages não dependem de tooling Node-only
- *   - core (L3) não depende de subsistemas standalone (L4)
- *   - subsystem → foundation only (não depende de outro subsystem)
- *   - internal foundation nunca depende de pacotes públicos
- *   - pacotes publicáveis não declaram pacotes privados como dependência de runtime
+ *   - browser packages do not depend on Node-only tooling
+ *   - core (L3) does not depend on standalone subsystems (L4)
+ *   - subsystem → foundation only (never another subsystem)
+ *   - internal foundation never depends on public packages
+ *   - publishable packages never declare private packages as runtime dependencies
  */
 import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -65,7 +65,7 @@ for (const pkg of packages) {
   if (!pkg.private) {
     for (const dep of Object.keys(runtimeDeps)) {
       if (privateNames.has(dep))
-        violations.push(`pacote publicável -> pacote privado em runtime: ${pkg.name} -> ${dep}`);
+        violations.push(`publishable package -> private package at runtime: ${pkg.name} -> ${dep}`);
     }
   }
   {
@@ -75,25 +75,25 @@ for (const pkg of packages) {
       const to = classify(dep);
       const edge = `${pkg.name} -> ${dep}`;
       if (from === "core" && to === "standalone")
-        violations.push(`core -> standalone proibido: ${edge}`);
+        violations.push(`forbidden core -> standalone: ${edge}`);
       if (from === "standalone" && to === "standalone")
-        violations.push(`subsystem -> subsystem proibido: ${edge}`);
+        violations.push(`forbidden subsystem -> subsystem: ${edge}`);
       if ((from === "core" || from === "standalone") && to === "node")
-        violations.push(`browser package -> node tooling proibido: ${edge}`);
+        violations.push(`forbidden browser package -> node tooling: ${edge}`);
       if (from === "internal" && (to === "core" || to === "standalone" || to === "node"))
-        violations.push(`internal -> public proibido: ${edge}`);
+        violations.push(`forbidden internal -> public: ${edge}`);
     }
   }
 }
 
-console.log(`[architecture] ${packages.length} pacote(s) de workspace verificados.`);
+console.log(`[architecture] ${packages.length} workspace package(s) checked.`);
 if (packages.length === 0) {
-  console.error("[architecture] nenhum pacote encontrado — verificação não executada.");
+  console.error("[architecture] no packages found — check not run.");
   process.exit(1);
 }
 if (violations.length > 0) {
-  console.error(`[architecture] VIOLAÇÕES (${violations.length}):`);
+  console.error(`[architecture] VIOLATIONS (${violations.length}):`);
   for (const v of violations) console.error(`  - ${v}`);
   process.exit(1);
 }
-console.log("[architecture] OK — nenhuma aresta proibida.");
+console.log("[architecture] OK — no forbidden edges.");

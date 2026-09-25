@@ -2,181 +2,182 @@
 import { ref, computed } from "vue";
 import type { MsEmojiPickerProps, MsEmojiPickerEmits, MsEmojiItem } from "./types.ts";
 import { useMsMessages } from "../../composables/use-ms-messages.ts";
+import type { MsMessages } from "../../i18n/messages.ts";
 
 const emojiList: MsEmojiItem[] = [
-  // Smileys & Emoções
-  { emoji: "😀", name: "Sorriso", category: "smileys" },
-  { emoji: "😃", name: "Rosto Feliz", category: "smileys" },
-  { emoji: "😄", name: "Gargalhada", category: "smileys" },
-  { emoji: "😁", name: "Sorriso Largo", category: "smileys" },
-  { emoji: "😆", name: "Olhos Fechados", category: "smileys" },
-  { emoji: "😅", name: "Suor Frio", category: "smileys" },
-  { emoji: "🤣", name: "Rolando de Rir", category: "smileys" },
-  { emoji: "😂", name: "Chorando de Rir", category: "smileys" },
-  { emoji: "🙂", name: "Sorriso Leve", category: "smileys" },
-  { emoji: "🙃", name: "De Ponta Cabeça", category: "smileys" },
-  { emoji: "😉", name: "Piscadela", category: "smileys" },
-  { emoji: "😊", name: "Bochechas Rosadas", category: "smileys" },
-  { emoji: "😇", name: "Anjinho", category: "smileys" },
-  { emoji: "🥰", name: "Apaixonado", category: "smileys" },
-  { emoji: "😍", name: "Olhos de Coração", category: "smileys" },
-  { emoji: "🤩", name: "Estrelas nos Olhos", category: "smileys" },
-  { emoji: "😘", name: "Beijo com Coração", category: "smileys" },
-  { emoji: "😋", name: "Delícia / Língua", category: "smileys" },
-  { emoji: "😜", name: "Piscadela com Língua", category: "smileys" },
-  { emoji: "🤪", name: "Maluquinho", category: "smileys" },
-  { emoji: "😎", name: "Óculos de Sol", category: "smileys" },
+  // Smileys & Emotion
+  { emoji: "😀", name: "Grinning Face", category: "smileys" },
+  { emoji: "😃", name: "Happy Face", category: "smileys" },
+  { emoji: "😄", name: "Big Grin", category: "smileys" },
+  { emoji: "😁", name: "Beaming Smile", category: "smileys" },
+  { emoji: "😆", name: "Squinting Laugh", category: "smileys" },
+  { emoji: "😅", name: "Grin with Sweat", category: "smileys" },
+  { emoji: "🤣", name: "Rolling on the Floor Laughing", category: "smileys" },
+  { emoji: "😂", name: "Tears of Joy", category: "smileys" },
+  { emoji: "🙂", name: "Slight Smile", category: "smileys" },
+  { emoji: "🙃", name: "Upside-Down Face", category: "smileys" },
+  { emoji: "😉", name: "Wink", category: "smileys" },
+  { emoji: "😊", name: "Smiling with Blush", category: "smileys" },
+  { emoji: "😇", name: "Angel / Halo", category: "smileys" },
+  { emoji: "🥰", name: "In Love", category: "smileys" },
+  { emoji: "😍", name: "Heart Eyes", category: "smileys" },
+  { emoji: "🤩", name: "Star-Struck", category: "smileys" },
+  { emoji: "😘", name: "Blowing a Kiss", category: "smileys" },
+  { emoji: "😋", name: "Yum / Tongue", category: "smileys" },
+  { emoji: "😜", name: "Winking with Tongue", category: "smileys" },
+  { emoji: "🤪", name: "Zany Face", category: "smileys" },
+  { emoji: "😎", name: "Sunglasses", category: "smileys" },
   { emoji: "🤓", name: "Nerd", category: "smileys" },
-  { emoji: "🧐", name: "Monóculo", category: "smileys" },
-  { emoji: "🥳", name: "Festa", category: "smileys" },
-  { emoji: "😏", name: "Sorriso Malicioso", category: "smileys" },
-  { emoji: "😒", name: "Descontente", category: "smileys" },
-  { emoji: "🤔", name: "Pensativo", category: "smileys" },
-  { emoji: "🤫", name: "Silêncio", category: "smileys" },
-  { emoji: "😴", name: "Dormindo", category: "smileys" },
-  { emoji: "🤯", name: "Mente Explodindo", category: "smileys" },
-  { emoji: "🥺", name: "Por Favorzinho", category: "smileys" },
-  { emoji: "😭", name: "Choro Alto", category: "smileys" },
-  { emoji: "😱", name: "Grito de Pavor", category: "smileys" },
-  { emoji: "😡", name: "Bravo", category: "smileys" },
-  { emoji: "💀", name: "Caveira / Morto", category: "smileys" },
-  { emoji: "💩", name: "Cocozinho", category: "smileys" },
-  { emoji: "🤡", name: "Palhaço", category: "smileys" },
-  { emoji: "👻", name: "Fantasma", category: "smileys" },
-  { emoji: "🤖", name: "Robô", category: "smileys" },
+  { emoji: "🧐", name: "Monocle", category: "smileys" },
+  { emoji: "🥳", name: "Party Face", category: "smileys" },
+  { emoji: "😏", name: "Smirk", category: "smileys" },
+  { emoji: "😒", name: "Unamused", category: "smileys" },
+  { emoji: "🤔", name: "Thinking", category: "smileys" },
+  { emoji: "🤫", name: "Shushing", category: "smileys" },
+  { emoji: "😴", name: "Sleeping", category: "smileys" },
+  { emoji: "🤯", name: "Mind Blown", category: "smileys" },
+  { emoji: "🥺", name: "Pleading Face", category: "smileys" },
+  { emoji: "😭", name: "Loudly Crying", category: "smileys" },
+  { emoji: "😱", name: "Screaming in Fear", category: "smileys" },
+  { emoji: "😡", name: "Angry", category: "smileys" },
+  { emoji: "💀", name: "Skull / Dead", category: "smileys" },
+  { emoji: "💩", name: "Pile of Poo", category: "smileys" },
+  { emoji: "🤡", name: "Clown", category: "smileys" },
+  { emoji: "👻", name: "Ghost", category: "smileys" },
+  { emoji: "🤖", name: "Robot", category: "smileys" },
 
   // Gestos & Pessoas
-  { emoji: "👋", name: "Aceno", category: "gestures" },
-  { emoji: "✋", name: "Mão Levantada", category: "gestures" },
-  { emoji: "👌", name: "Ok / Perfeito", category: "gestures" },
-  { emoji: "🤌", name: "Gesto Italiano", category: "gestures" },
-  { emoji: "✌️", name: "Paz e Amor", category: "gestures" },
-  { emoji: "🤞", name: "Dedos Cruzados", category: "gestures" },
-  { emoji: "🤟", name: "Te Amo", category: "gestures" },
-  { emoji: "🤘", name: "Rock", category: "gestures" },
-  { emoji: "🤙", name: "Chama no Whats", category: "gestures" },
-  { emoji: "👍", name: "Joinha / Positivo", category: "gestures" },
-  { emoji: "👎", name: "Descurtir / Negativo", category: "gestures" },
-  { emoji: "👊", name: "Soco / Tamo Junto", category: "gestures" },
-  { emoji: "👏", name: "Palmas", category: "gestures" },
-  { emoji: "🙌", name: "Comemoração", category: "gestures" },
-  { emoji: "🤝", name: "Aperto de Mão", category: "gestures" },
-  { emoji: "🙏", name: "Oração / Por Favor", category: "gestures" },
-  { emoji: "💪", name: "Músculo / Força", category: "gestures" },
-  { emoji: "🧠", name: "Cérebro", category: "gestures" },
-  { emoji: "👀", name: "Olhos Atentos", category: "gestures" },
+  { emoji: "👋", name: "Waving Hand", category: "gestures" },
+  { emoji: "✋", name: "Raised Hand", category: "gestures" },
+  { emoji: "👌", name: "OK / Perfect", category: "gestures" },
+  { emoji: "🤌", name: "Pinched Fingers", category: "gestures" },
+  { emoji: "✌️", name: "Peace / Victory", category: "gestures" },
+  { emoji: "🤞", name: "Crossed Fingers", category: "gestures" },
+  { emoji: "🤟", name: "Love-You Gesture", category: "gestures" },
+  { emoji: "🤘", name: "Rock On", category: "gestures" },
+  { emoji: "🤙", name: "Call Me", category: "gestures" },
+  { emoji: "👍", name: "Thumbs Up", category: "gestures" },
+  { emoji: "👎", name: "Thumbs Down", category: "gestures" },
+  { emoji: "👊", name: "Fist Bump", category: "gestures" },
+  { emoji: "👏", name: "Clapping", category: "gestures" },
+  { emoji: "🙌", name: "Raising Hands / Celebration", category: "gestures" },
+  { emoji: "🤝", name: "Handshake", category: "gestures" },
+  { emoji: "🙏", name: "Folded Hands / Please", category: "gestures" },
+  { emoji: "💪", name: "Flexed Biceps / Strength", category: "gestures" },
+  { emoji: "🧠", name: "Brain", category: "gestures" },
+  { emoji: "👀", name: "Eyes", category: "gestures" },
 
   // Animais & Natureza
-  { emoji: "🐶", name: "Cachorro", category: "animals" },
-  { emoji: "🐱", name: "Gato", category: "animals" },
-  { emoji: "🐭", name: "Rato", category: "animals" },
-  { emoji: "🐰", name: "Coelho", category: "animals" },
-  { emoji: "🦊", name: "Raposa", category: "animals" },
-  { emoji: "🐻", name: "Urso", category: "animals" },
+  { emoji: "🐶", name: "Dog", category: "animals" },
+  { emoji: "🐱", name: "Cat", category: "animals" },
+  { emoji: "🐭", name: "Mouse", category: "animals" },
+  { emoji: "🐰", name: "Rabbit", category: "animals" },
+  { emoji: "🦊", name: "Fox", category: "animals" },
+  { emoji: "🐻", name: "Bear", category: "animals" },
   { emoji: "🐼", name: "Panda", category: "animals" },
-  { emoji: "🦁", name: "Leão", category: "animals" },
-  { emoji: "🐯", name: "Tigre", category: "animals" },
-  { emoji: "🦄", name: "Unicórnio", category: "animals" },
-  { emoji: "🐸", name: "Sapo", category: "animals" },
-  { emoji: "🐵", name: "Macaco", category: "animals" },
-  { emoji: "🐔", name: "Galinha", category: "animals" },
-  { emoji: "🐧", name: "Pinguim", category: "animals" },
-  { emoji: "🦅", name: "Águia", category: "animals" },
-  { emoji: "🦉", name: "Coruja", category: "animals" },
-  { emoji: "🦋", name: "Borboleta", category: "animals" },
-  { emoji: "🐝", name: "Abelha", category: "animals" },
-  { emoji: "🐢", name: "Tartaruga", category: "animals" },
-  { emoji: "🐍", name: "Cobra", category: "animals" },
-  { emoji: "🐙", name: "Polvo", category: "animals" },
-  { emoji: "🐬", name: "Golfinho", category: "animals" },
-  { emoji: "🦈", name: "Tubarão", category: "animals" },
+  { emoji: "🦁", name: "Lion", category: "animals" },
+  { emoji: "🐯", name: "Tiger", category: "animals" },
+  { emoji: "🦄", name: "Unicorn", category: "animals" },
+  { emoji: "🐸", name: "Frog", category: "animals" },
+  { emoji: "🐵", name: "Monkey", category: "animals" },
+  { emoji: "🐔", name: "Chicken", category: "animals" },
+  { emoji: "🐧", name: "Penguin", category: "animals" },
+  { emoji: "🦅", name: "Eagle", category: "animals" },
+  { emoji: "🦉", name: "Owl", category: "animals" },
+  { emoji: "🦋", name: "Butterfly", category: "animals" },
+  { emoji: "🐝", name: "Bee", category: "animals" },
+  { emoji: "🐢", name: "Turtle", category: "animals" },
+  { emoji: "🐍", name: "Snake", category: "animals" },
+  { emoji: "🐙", name: "Octopus", category: "animals" },
+  { emoji: "🐬", name: "Dolphin", category: "animals" },
+  { emoji: "🦈", name: "Shark", category: "animals" },
 
   // Comida & Bebida
-  { emoji: "🍏", name: "Maçã Verde", category: "food" },
-  { emoji: "🍎", name: "Maçã Vermelha", category: "food" },
+  { emoji: "🍏", name: "Green Apple", category: "food" },
+  { emoji: "🍎", name: "Red Apple", category: "food" },
   { emoji: "🍌", name: "Banana", category: "food" },
-  { emoji: "🍉", name: "Melancia", category: "food" },
-  { emoji: "🍇", name: "Uva", category: "food" },
-  { emoji: "🍓", name: "Morango", category: "food" },
-  { emoji: "🍒", name: "Cereja", category: "food" },
-  { emoji: "🥑", name: "Abacate", category: "food" },
-  { emoji: "🍔", name: "Hambúrguer", category: "food" },
-  { emoji: "🍟", name: "Batata Frita", category: "food" },
+  { emoji: "🍉", name: "Watermelon", category: "food" },
+  { emoji: "🍇", name: "Grapes", category: "food" },
+  { emoji: "🍓", name: "Strawberry", category: "food" },
+  { emoji: "🍒", name: "Cherries", category: "food" },
+  { emoji: "🥑", name: "Avocado", category: "food" },
+  { emoji: "🍔", name: "Hamburger", category: "food" },
+  { emoji: "🍟", name: "French Fries", category: "food" },
   { emoji: "🍕", name: "Pizza", category: "food" },
-  { emoji: "🌭", name: "Cachorro Quente", category: "food" },
-  { emoji: "🥪", name: "Sanduíche", category: "food" },
+  { emoji: "🌭", name: "Hot Dog", category: "food" },
+  { emoji: "🥪", name: "Sandwich", category: "food" },
   { emoji: "🌮", name: "Taco", category: "food" },
   { emoji: "🍣", name: "Sushi", category: "food" },
-  { emoji: "🍜", name: "Lámen", category: "food" },
-  { emoji: "🍝", name: "Espaguete", category: "food" },
-  { emoji: "🍩", name: "Donut", category: "food" },
+  { emoji: "🍜", name: "Ramen", category: "food" },
+  { emoji: "🍝", name: "Spaghetti", category: "food" },
+  { emoji: "🍩", name: "Doughnut", category: "food" },
   { emoji: "🍪", name: "Cookie", category: "food" },
-  { emoji: "🎂", name: "Bolo de Aniversário", category: "food" },
+  { emoji: "🎂", name: "Birthday Cake", category: "food" },
   { emoji: "🍫", name: "Chocolate", category: "food" },
-  { emoji: "☕", name: "Café", category: "food" },
-  { emoji: "🧃", name: "Suco", category: "food" },
-  { emoji: "🍺", name: "Cerveja", category: "food" },
-  { emoji: "🍷", name: "Vinho", category: "food" },
+  { emoji: "☕", name: "Coffee", category: "food" },
+  { emoji: "🧃", name: "Juice Box", category: "food" },
+  { emoji: "🍺", name: "Beer", category: "food" },
+  { emoji: "🍷", name: "Wine", category: "food" },
 
   // Viagens & Lugares
-  { emoji: "🚗", name: "Carro", category: "travel" },
-  { emoji: "🏎️", name: "Carro de Corrida", category: "travel" },
-  { emoji: "🏍️", name: "Moto", category: "travel" },
-  { emoji: "🚲", name: "Bicicleta", category: "travel" },
-  { emoji: "✈️", name: "Avião", category: "travel" },
-  { emoji: "🚀", name: "Foguete", category: "travel" },
-  { emoji: "🛸", name: "Disco Voador", category: "travel" },
-  { emoji: "🚢", name: "Navio", category: "travel" },
-  { emoji: "🏰", name: "Castelo", category: "travel" },
-  { emoji: "🗼", name: "Torre de Tóquio", category: "travel" },
-  { emoji: "🗽", name: "Estátua da Liberdade", category: "travel" },
-  { emoji: "🏖️", name: "Praia com Guarda-Sol", category: "travel" },
-  { emoji: "🏕️", name: "Acampamento", category: "travel" },
-  { emoji: "🏔️", name: "Montanha Nevada", category: "travel" },
+  { emoji: "🚗", name: "Car", category: "travel" },
+  { emoji: "🏎️", name: "Racing Car", category: "travel" },
+  { emoji: "🏍️", name: "Motorcycle", category: "travel" },
+  { emoji: "🚲", name: "Bicycle", category: "travel" },
+  { emoji: "✈️", name: "Airplane", category: "travel" },
+  { emoji: "🚀", name: "Rocket", category: "travel" },
+  { emoji: "🛸", name: "Flying Saucer", category: "travel" },
+  { emoji: "🚢", name: "Ship", category: "travel" },
+  { emoji: "🏰", name: "Castle", category: "travel" },
+  { emoji: "🗼", name: "Tokyo Tower", category: "travel" },
+  { emoji: "🗽", name: "Statue of Liberty", category: "travel" },
+  { emoji: "🏖️", name: "Beach with Umbrella", category: "travel" },
+  { emoji: "🏕️", name: "Camping", category: "travel" },
+  { emoji: "🏔️", name: "Snow-Capped Mountain", category: "travel" },
 
-  // Objetos & Tecnologia
-  { emoji: "💻", name: "Notebook", category: "objects" },
-  { emoji: "🖥️", name: "Computador", category: "objects" },
-  { emoji: "📱", name: "Celular", category: "objects" },
-  { emoji: "⌨️", name: "Teclado", category: "objects" },
-  { emoji: "💡", name: "Lâmpada / Ideia", category: "objects" },
-  { emoji: "🔦", name: "Lanterna", category: "objects" },
-  { emoji: "💸", name: "Dinheiro Voando", category: "objects" },
-  { emoji: "💵", name: "Nota de Dólar", category: "objects" },
-  { emoji: "💳", name: "Cartão de Crédito", category: "objects" },
-  { emoji: "💎", name: "Diamante", category: "objects" },
-  { emoji: "🔑", name: "Chave", category: "objects" },
-  { emoji: "🔒", name: "Cadeado Fechado", category: "objects" },
-  { emoji: "🔓", name: "Cadeado Aberto", category: "objects" },
-  { emoji: "🔨", name: "Martelo", category: "objects" },
-  { emoji: "🔧", name: "Chave Inglesa", category: "objects" },
-  { emoji: "📦", name: "Caixa / Encomenda", category: "objects" },
-  { emoji: "✉️", name: "Carta / Email", category: "objects" },
-  { emoji: "📸", name: "Câmera", category: "objects" },
-  { emoji: "🎮", name: "Controle de Game", category: "objects" },
+  // Objects & Technology
+  { emoji: "💻", name: "Laptop", category: "objects" },
+  { emoji: "🖥️", name: "Desktop Computer", category: "objects" },
+  { emoji: "📱", name: "Mobile Phone", category: "objects" },
+  { emoji: "⌨️", name: "Keyboard", category: "objects" },
+  { emoji: "💡", name: "Light Bulb / Idea", category: "objects" },
+  { emoji: "🔦", name: "Flashlight", category: "objects" },
+  { emoji: "💸", name: "Money with Wings", category: "objects" },
+  { emoji: "💵", name: "Dollar Banknote", category: "objects" },
+  { emoji: "💳", name: "Credit Card", category: "objects" },
+  { emoji: "💎", name: "Gem Stone", category: "objects" },
+  { emoji: "🔑", name: "Key", category: "objects" },
+  { emoji: "🔒", name: "Locked", category: "objects" },
+  { emoji: "🔓", name: "Unlocked", category: "objects" },
+  { emoji: "🔨", name: "Hammer", category: "objects" },
+  { emoji: "🔧", name: "Wrench", category: "objects" },
+  { emoji: "📦", name: "Package", category: "objects" },
+  { emoji: "✉️", name: "Envelope / Email", category: "objects" },
+  { emoji: "📸", name: "Camera", category: "objects" },
+  { emoji: "🎮", name: "Video Game", category: "objects" },
 
-  // Símbolos & Corações
-  { emoji: "❤️", name: "Coração Vermelho", category: "symbols" },
-  { emoji: "🧡", name: "Coração Laranja", category: "symbols" },
-  { emoji: "💛", name: "Coração Amarelo", category: "symbols" },
-  { emoji: "💚", name: "Coração Verde", category: "symbols" },
-  { emoji: "💙", name: "Coração Azul", category: "symbols" },
-  { emoji: "💜", name: "Coração Roxo", category: "symbols" },
-  { emoji: "🖤", name: "Coração Preto", category: "symbols" },
-  { emoji: "🤍", name: "Coração Branco", category: "symbols" },
-  { emoji: "💔", name: "Coração Partido", category: "symbols" },
-  { emoji: "🔥", name: "Fogo / Em Alta", category: "symbols" },
-  { emoji: "✨", name: "Brilhos / Mágico", category: "symbols" },
-  { emoji: "🎉", name: "Festa / Confetes", category: "symbols" },
-  { emoji: "⭐", name: "Estrela Amarela", category: "symbols" },
-  { emoji: "⚡", name: "Raio", category: "symbols" },
-  { emoji: "📌", name: "Alfinete", category: "symbols" },
-  { emoji: "🎯", name: "Alvo no Centro", category: "symbols" },
-  { emoji: "✅", name: "Confirmado / Check", category: "symbols" },
-  { emoji: "❌", name: "Erro / Cancelar", category: "symbols" },
-  { emoji: "⚠️", name: "Atenção / Alerta", category: "symbols" },
-  { emoji: "💯", name: "Cem Pontos / Perfeito", category: "symbols" },
-  { emoji: "🔔", name: "Sininho / Notificação", category: "symbols" },
+  // Symbols & Hearts
+  { emoji: "❤️", name: "Red Heart", category: "symbols" },
+  { emoji: "🧡", name: "Orange Heart", category: "symbols" },
+  { emoji: "💛", name: "Yellow Heart", category: "symbols" },
+  { emoji: "💚", name: "Green Heart", category: "symbols" },
+  { emoji: "💙", name: "Blue Heart", category: "symbols" },
+  { emoji: "💜", name: "Purple Heart", category: "symbols" },
+  { emoji: "🖤", name: "Black Heart", category: "symbols" },
+  { emoji: "🤍", name: "White Heart", category: "symbols" },
+  { emoji: "💔", name: "Broken Heart", category: "symbols" },
+  { emoji: "🔥", name: "Fire / Trending", category: "symbols" },
+  { emoji: "✨", name: "Sparkles / Magic", category: "symbols" },
+  { emoji: "🎉", name: "Party Popper / Confetti", category: "symbols" },
+  { emoji: "⭐", name: "Star", category: "symbols" },
+  { emoji: "⚡", name: "Lightning", category: "symbols" },
+  { emoji: "📌", name: "Pushpin", category: "symbols" },
+  { emoji: "🎯", name: "Bullseye", category: "symbols" },
+  { emoji: "✅", name: "Check Mark", category: "symbols" },
+  { emoji: "❌", name: "Cross Mark / Cancel", category: "symbols" },
+  { emoji: "⚠️", name: "Warning / Alert", category: "symbols" },
+  { emoji: "💯", name: "Hundred Points / Perfect", category: "symbols" },
+  { emoji: "🔔", name: "Bell / Notification", category: "symbols" },
 ];
 
 const props = withDefaults(defineProps<MsEmojiPickerProps>(), {
@@ -189,9 +190,23 @@ const emit = defineEmits<MsEmojiPickerEmits>();
 
 const t = useMsMessages();
 
+type MsEmojiCategoryId = keyof MsMessages["emojiPicker"]["categories"];
+
+/** Category filter buttons; their titles come from the messages. */
+const categories: { id: MsEmojiCategoryId; icon: string }[] = [
+  { id: "all", icon: "🌐" },
+  { id: "smileys", icon: "😀" },
+  { id: "gestures", icon: "👍" },
+  { id: "animals", icon: "🐶" },
+  { id: "food", icon: "🍔" },
+  { id: "travel", icon: "🚀" },
+  { id: "objects", icon: "💡" },
+  { id: "symbols", icon: "✨" },
+];
+
 const isOpen = ref(false);
 const searchQuery = ref("");
-const activeCategory = ref("all");
+const activeCategory = ref<MsEmojiCategoryId>("all");
 
 const filteredEmojis = computed(() => {
   let list = emojiList;
@@ -238,76 +253,15 @@ const toggleDropdown = () => {
 
       <div class="ms-emoji-picker__categories">
         <button
+          v-for="category in categories"
+          :key="category.id"
           type="button"
           class="ms-emoji-picker__category-btn"
-          :class="{ 'ms-emoji-picker__category-btn--active': activeCategory === 'all' }"
-          title="Todos"
-          @click="activeCategory = 'all'"
+          :class="{ 'ms-emoji-picker__category-btn--active': activeCategory === category.id }"
+          :title="t.emojiPicker.categories[category.id]"
+          @click="activeCategory = category.id"
         >
-          🌐
-        </button>
-        <button
-          type="button"
-          class="ms-emoji-picker__category-btn"
-          :class="{ 'ms-emoji-picker__category-btn--active': activeCategory === 'smileys' }"
-          title="Carinhas"
-          @click="activeCategory = 'smileys'"
-        >
-          😀
-        </button>
-        <button
-          type="button"
-          class="ms-emoji-picker__category-btn"
-          :class="{ 'ms-emoji-picker__category-btn--active': activeCategory === 'gestures' }"
-          title="Gestos"
-          @click="activeCategory = 'gestures'"
-        >
-          👍
-        </button>
-        <button
-          type="button"
-          class="ms-emoji-picker__category-btn"
-          :class="{ 'ms-emoji-picker__category-btn--active': activeCategory === 'animals' }"
-          title="Animais"
-          @click="activeCategory = 'animals'"
-        >
-          🐶
-        </button>
-        <button
-          type="button"
-          class="ms-emoji-picker__category-btn"
-          :class="{ 'ms-emoji-picker__category-btn--active': activeCategory === 'food' }"
-          title="Comidas"
-          @click="activeCategory = 'food'"
-        >
-          🍔
-        </button>
-        <button
-          type="button"
-          class="ms-emoji-picker__category-btn"
-          :class="{ 'ms-emoji-picker__category-btn--active': activeCategory === 'travel' }"
-          title="Viagens"
-          @click="activeCategory = 'travel'"
-        >
-          🚀
-        </button>
-        <button
-          type="button"
-          class="ms-emoji-picker__category-btn"
-          :class="{ 'ms-emoji-picker__category-btn--active': activeCategory === 'objects' }"
-          title="Objetos"
-          @click="activeCategory = 'objects'"
-        >
-          💡
-        </button>
-        <button
-          type="button"
-          class="ms-emoji-picker__category-btn"
-          :class="{ 'ms-emoji-picker__category-btn--active': activeCategory === 'symbols' }"
-          title="Símbolos"
-          @click="activeCategory = 'symbols'"
-        >
-          ✨
+          {{ category.icon }}
         </button>
       </div>
 

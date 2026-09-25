@@ -19,13 +19,13 @@ const components: Array<[string, Component]> = Object.entries(
 
 /** Minimal props for components whose required props would otherwise throw. */
 const fixtures: Record<string, Record<string, unknown>> = {
-  MsMenu: { items: [{ label: "Um", value: 1 }], open: true },
-  MsDropdownButton: { label: "Ações", items: [{ label: "Um", value: 1 }] },
-  MsToast: { toast: { id: "t", message: "Olá", tone: "info", duration: 0, dismissible: true } },
+  MsMenu: { items: [{ label: "One", value: 1 }], open: true },
+  MsDropdownButton: { label: "Actions", items: [{ label: "One", value: 1 }] },
+  MsToast: { toast: { id: "t", message: "Hello", tone: "info", duration: 0, dismissible: true } },
   MsTreeNode: { node: { key: "a", label: "A" } },
   MsAnimatedNumber: { value: 42 },
   MsScrollSpy: { items: [{ id: "intro", label: "Intro" }] },
-  MsFormWizard: { steps: [{ id: "one", title: "Um" }] },
+  MsFormWizard: { steps: [{ id: "one", title: "One" }] },
 };
 
 describe("server-side rendering", () => {

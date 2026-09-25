@@ -6,10 +6,10 @@ import { MsIconPicker } from "../src/index.ts";
 describe("MsIconPicker component", () => {
   it("renders trigger and opens icon grid on click", async () => {
     const wrapper = mount(MsIconPicker, {
-      props: { placeholder: "Escolha um ícone" },
+      props: { placeholder: "Pick an icon" },
     });
     const trigger = wrapper.find("button.ms-icon-picker__trigger");
-    expect(trigger.text()).toContain("Escolha um ícone");
+    expect(trigger.text()).toContain("Pick an icon");
 
     await trigger.trigger("click");
     const dropdown = wrapper.find(".ms-icon-picker__dropdown");

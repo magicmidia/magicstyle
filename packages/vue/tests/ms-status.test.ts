@@ -21,7 +21,7 @@ describe("MsStatus", () => {
       props: {
         tone: "danger",
         pulse: true,
-        label: "Em Alerta",
+        label: "On alert",
       },
     });
 

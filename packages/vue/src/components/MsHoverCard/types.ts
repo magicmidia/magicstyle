@@ -1,12 +1,12 @@
 export type MsHoverCardPlacement = "bottom" | "top" | "left" | "right";
 
 export interface MsHoverCardProps {
-  /** Tempo de espera em ms antes de abrir */
+  /** Delay in ms before opening */
   openDelay?: number;
-  /** Tempo de espera em ms antes de fechar após saída do cursor */
+  /** Delay in ms before closing after the pointer leaves */
   closeDelay?: number;
-  /** Posicionamento do cartão flutuante em relação ao gatilho */
+  /** Placement of the floating card relative to the trigger */
   placement?: MsHoverCardPlacement;
-  /** Largura customizada do cartão (ex: "320px") */
+  /** Custom card width (e.g. "320px") */
   width?: string | number;
 }

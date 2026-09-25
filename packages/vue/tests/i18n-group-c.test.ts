@@ -82,23 +82,23 @@ describe("group C components read strings from messages", () => {
   it("applies partial :messages overrides on top of the default locale", () => {
     const wrapper = mountIn(
       {
-        messages: { pagination: { next: "Avançar página" } },
+        messages: { pagination: { next: "Forward" } },
       },
       MsPagination,
       { total: 50 },
     );
-    expect(wrapper.find(".ms-pagination__next").attributes("aria-label")).toBe("Avançar página");
-    // Untouched keys keep the Portuguese defaults.
-    expect(wrapper.find(".ms-pagination__prev").attributes("aria-label")).toBe("Página anterior");
+    expect(wrapper.find(".ms-pagination__next").attributes("aria-label")).toBe("Forward");
+    // Untouched keys keep the English defaults.
+    expect(wrapper.find(".ms-pagination__prev").attributes("aria-label")).toBe("Previous page");
 
     const password = mountIn(
-      { messages: { passwordInput: { strength: "Força:", criteria: { length: "8+" } } } },
+      { messages: { passwordInput: { strength: "Strength:", criteria: { length: "8+" } } } },
       MsPasswordInput,
       { modelValue: "", showStrengthMeter: true, showCriteria: true },
     );
-    expect(password.find(".ms-password-input__strength-label").text()).toContain("Força:");
+    expect(password.find(".ms-password-input__strength-label").text()).toContain("Strength:");
     const criteria = password.findAll(".ms-password-input__criterion").map((li) => li.text());
     expect(criteria[0]).toBe("8+");
-    expect(criteria[1]).toBe("Pelo menos 1 letra minúscula");
+    expect(criteria[1]).toBe("At least 1 lowercase letter");
   });
 });

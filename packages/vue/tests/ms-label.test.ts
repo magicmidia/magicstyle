@@ -6,18 +6,18 @@ describe("MsLabel component", () => {
   it("renders label with text and for attribute", () => {
     const wrapper = mount(MsLabel, {
       props: { for: "user-email" },
-      slots: { default: "E-mail de Acesso" },
+      slots: { default: "Login email" },
     });
     const label = wrapper.find("label.ms-label");
     expect(label.exists()).toBe(true);
-    expect(label.text()).toContain("E-mail de Acesso");
+    expect(label.text()).toContain("Login email");
     expect(label.attributes("for")).toBe("user-email");
   });
 
   it("shows required mark when required is true", () => {
     const wrapper = mount(MsLabel, {
       props: { required: true },
-      slots: { default: "Nome Completo" },
+      slots: { default: "Full name" },
     });
     const req = wrapper.find(".ms-label__required");
     expect(req.exists()).toBe(true);
@@ -28,20 +28,20 @@ describe("MsLabel component", () => {
   it("shows optional text when optional is true", () => {
     const wrapper = mount(MsLabel, {
       props: { optional: true },
-      slots: { default: "Telefone Secundário" },
+      slots: { default: "Secondary phone" },
     });
     const opt = wrapper.find(".ms-label__optional");
     expect(opt.exists()).toBe(true);
-    expect(opt.text()).toBe("(opcional)");
+    expect(opt.text()).toBe("(optional)");
   });
 
   it("renders tooltip trigger when tooltip prop is provided", () => {
     const wrapper = mount(MsLabel, {
-      props: { tooltip: "Instruções de preenchimento" },
+      props: { tooltip: "Filling instructions" },
       slots: { default: "CPF" },
     });
     const tt = wrapper.find(".ms-label__tooltip-trigger");
     expect(tt.exists()).toBe(true);
-    expect(tt.attributes("title")).toBe("Instruções de preenchimento");
+    expect(tt.attributes("title")).toBe("Filling instructions");
   });
 });

@@ -49,9 +49,9 @@ const stats = { components: componentDirs, vueExports, themes, tokens, cssVars }
 
 if (process.argv.includes("--check")) {
   const expectations = [
-    ["README.md", new RegExp(`\\b${componentDirs} componentes`, "i")],
-    ["README.md", new RegExp(`\\b${themes} temas`, "i")],
-    ["README.md", new RegExp(`\\b${tokens} (design )?tokens`, "i")],
+    ["README.md", new RegExp(`\\b${componentDirs} components\\b`, "i")],
+    ["README.md", new RegExp(`\\b${themes} themes\\b`, "i")],
+    ["README.md", new RegExp(`\\b${tokens} (DTCG |design )?tokens\\b`, "i")],
     ["package.json", new RegExp(`${componentDirs} accessible components`)],
     ["package.json", new RegExp(`${tokens} DTCG tokens`)],
   ];

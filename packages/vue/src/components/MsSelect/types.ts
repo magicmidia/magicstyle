@@ -31,9 +31,9 @@ export interface MsSelectProps {
   creatable?: boolean | undefined;
   disabled?: boolean | undefined;
   invalid?: boolean | undefined;
-  /** @default messages `select.placeholder` ("Selecione..." in pt-BR) */
+  /** @default messages `select.placeholder` ("Select..." in en-US) */
   placeholder?: string | undefined;
-  /** @default messages `select.searchPlaceholder` ("Buscar..." in pt-BR) */
+  /** @default messages `select.searchPlaceholder` ("Search..." in en-US) */
   searchPlaceholder?: string | undefined;
   size?: MsSelectSize | undefined;
   tone?: MsSelectTone | undefined;

@@ -6,12 +6,12 @@ describe("MsBadge", () => {
   it("renders with default props and slot content", () => {
     const wrapper = mount(MsBadge, {
       slots: {
-        default: () => "Novo",
+        default: () => "New",
       },
     });
 
     expect(wrapper.classes()).toContain("ms-badge");
-    expect(wrapper.text()).toBe("Novo");
+    expect(wrapper.text()).toBe("New");
     expect(wrapper.attributes("data-variant")).toBe("solid");
     expect(wrapper.attributes("data-tone")).toBe("primary");
     expect(wrapper.attributes("data-size")).toBe("md");
@@ -25,7 +25,7 @@ describe("MsBadge", () => {
         size: "sm",
       },
       slots: {
-        default: () => "Ativo",
+        default: () => "Active",
       },
     });
 

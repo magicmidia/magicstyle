@@ -15,7 +15,7 @@ export interface MsConfirmDialogProps {
 
   /**
    * Header title text.
-   * @default messages `confirmDialog.title` ("Confirmar ação" in pt-BR)
+   * @default messages `confirmDialog.title` ("Confirm action" in en-US)
    */
   title?: string;
 
@@ -26,13 +26,13 @@ export interface MsConfirmDialogProps {
 
   /**
    * Label for the confirmation action button.
-   * @default messages `confirmDialog.confirm` ("Confirmar" in pt-BR)
+   * @default messages `confirmDialog.confirm` ("Confirm" in en-US)
    */
   confirmLabel?: string;
 
   /**
    * Label for the cancel button.
-   * @default messages `confirmDialog.cancel` ("Cancelar" in pt-BR)
+   * @default messages `confirmDialog.cancel` ("Cancel" in en-US)
    */
   cancelLabel?: string;
 

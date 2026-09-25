@@ -11,7 +11,7 @@ describe.each([
     const Host = defineComponent({
       components: { Component },
       setup: () => ({ remember: ref(false) }),
-      template: `<Component v-model="remember" label="Lembrar" />`,
+      template: `<Component v-model="remember" label="Remember me" />`,
     });
     const wrapper = mount(Host);
     const input = wrapper.find("input");

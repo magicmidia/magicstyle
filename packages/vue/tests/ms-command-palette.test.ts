@@ -3,9 +3,9 @@ import { mount } from "@vue/test-utils";
 import { MsCommandPalette } from "../src/index.ts";
 
 const items = [
-  { id: "docs", label: "Ir para Documentação", group: "Navegação" },
-  { id: "tokens", label: "Inspecionar Design Tokens", group: "Navegação" },
-  { id: "theme", label: "Alternar tema", group: "Ações Rápidas" },
+  { id: "docs", label: "Go to documentation", group: "Navigation" },
+  { id: "tokens", label: "Inspect design tokens", group: "Navigation" },
+  { id: "theme", label: "Toggle theme", group: "Quick actions" },
 ];
 
 describe("MsCommandPalette component", () => {
@@ -16,11 +16,11 @@ describe("MsCommandPalette component", () => {
     });
     const palette = document.querySelector(".ms-command-palette");
     expect(palette).not.toBeNull();
-    expect(palette?.getAttribute("aria-label")).toBe("Paleta de comandos");
+    expect(palette?.getAttribute("aria-label")).toBe("Command palette");
     expect(document.querySelectorAll(".ms-command-palette__item")).toHaveLength(3);
     const footer = document.querySelector(".ms-command-palette__footer");
-    expect(footer?.textContent).toContain("Navegar com ↑ ↓");
-    expect(footer?.textContent).toContain("Executar com ↵");
+    expect(footer?.textContent).toContain("Navigate with ↑ ↓");
+    expect(footer?.textContent).toContain("Run with ↵");
     wrapper.unmount();
   });
 
@@ -40,7 +40,7 @@ describe("MsCommandPalette component", () => {
     await wrapper.vm.$nextTick();
     const found = document.querySelectorAll(".ms-command-palette__item");
     expect(found.length).toBe(1);
-    expect(found[0]?.textContent).toContain("Tokens");
+    expect(found[0]?.textContent).toContain("tokens");
 
     wrapper.unmount();
   });
@@ -53,23 +53,23 @@ describe("MsCommandPalette component", () => {
     expect(document.querySelectorAll(".ms-command-palette__item")).toHaveLength(0);
     expect(document.querySelector(".ms-command-palette__results")).toBeNull();
     expect(document.querySelector(".ms-command-palette__empty")?.textContent?.trim()).toBe(
-      "Nenhum comando encontrado.",
+      "No commands found.",
     );
     const input = document.querySelector<HTMLInputElement>(".ms-command-palette__search-input");
-    expect(input?.placeholder).toBe("Digite um comando ou pesquise...");
+    expect(input?.placeholder).toBe("Type a command or search...");
     wrapper.unmount();
   });
 
   it("placeholder and emptyText props win over the messages", () => {
     const wrapper = mount(MsCommandPalette, {
-      props: { modelValue: true, placeholder: "Buscar ação", emptyText: "Nada aqui" },
+      props: { modelValue: true, placeholder: "Search actions", emptyText: "Nothing here" },
       attachTo: document.body,
     });
     const input = document.querySelector<HTMLInputElement>(".ms-command-palette__search-input");
-    expect(input?.placeholder).toBe("Buscar ação");
-    expect(input?.getAttribute("aria-label")).toBe("Buscar ação");
+    expect(input?.placeholder).toBe("Search actions");
+    expect(input?.getAttribute("aria-label")).toBe("Search actions");
     expect(document.querySelector(".ms-command-palette__empty")?.textContent?.trim()).toBe(
-      "Nada aqui",
+      "Nothing here",
     );
     wrapper.unmount();
   });

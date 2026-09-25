@@ -38,13 +38,13 @@ describe("MsTag (doc 05 §10)", () => {
         closable: true,
       },
       slots: {
-        default: () => "Filtro Ativo",
+        default: () => "Active filter",
       },
     });
 
     const closeBtn = wrapper.find("button.ms-tag__close");
     expect(closeBtn.exists()).toBe(true);
-    expect(closeBtn.attributes("aria-label")).toBe("Remover");
+    expect(closeBtn.attributes("aria-label")).toBe("Remove");
 
     await closeBtn.trigger("click");
     expect(wrapper.emitted("close")).toHaveLength(1);
@@ -56,7 +56,7 @@ describe("MsTag (doc 05 §10)", () => {
         clickable: true,
       },
       slots: {
-        default: () => "Clicável",
+        default: () => "Clickable",
       },
     });
 
@@ -79,7 +79,7 @@ describe("MsTag (doc 05 §10)", () => {
         disabled: true,
       },
       slots: {
-        default: () => "Bloqueado",
+        default: () => "Blocked",
       },
     });
 

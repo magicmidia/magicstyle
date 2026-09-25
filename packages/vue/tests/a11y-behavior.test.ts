@@ -166,28 +166,28 @@ describe("MsPopover", () => {
 
 describe("MsDropdownButton / MsMenu", () => {
   const items = [
-    { label: "Editar", value: "edit" },
-    { label: "Duplicar", value: "dup" },
-    { label: "Excluir", value: "del", disabled: true },
+    { label: "Edit", value: "edit" },
+    { label: "Duplicate", value: "dup" },
+    { label: "Delete", value: "del", disabled: true },
   ];
 
   it("focuses menu items and moves with arrows; Escape returns focus to the trigger", async () => {
     const wrapper = attach(
-      mount(MsDropdownButton, { props: { label: "Ações", items }, attachTo: document.body }),
+      mount(MsDropdownButton, { props: { label: "Actions", items }, attachTo: document.body }),
     );
     const trigger = wrapper.find("button").element as HTMLButtonElement;
     trigger.focus();
     key(trigger, "ArrowDown");
     await flush();
-    expect(document.activeElement?.textContent).toContain("Editar");
+    expect(document.activeElement?.textContent).toContain("Edit");
 
     key(document.activeElement!, "ArrowDown");
     await flush();
-    expect(document.activeElement?.textContent).toContain("Duplicar");
+    expect(document.activeElement?.textContent).toContain("Duplicate");
     // Disabled item is skipped and navigation wraps.
     key(document.activeElement!, "ArrowDown");
     await flush();
-    expect(document.activeElement?.textContent).toContain("Editar");
+    expect(document.activeElement?.textContent).toContain("Edit");
 
     key(document.activeElement!, "Escape");
     await flush();
@@ -197,7 +197,7 @@ describe("MsDropdownButton / MsMenu", () => {
 
   it("clicking the trigger again closes the menu", async () => {
     const wrapper = attach(
-      mount(MsDropdownButton, { props: { label: "Ações", items }, attachTo: document.body }),
+      mount(MsDropdownButton, { props: { label: "Actions", items }, attachTo: document.body }),
     );
     const trigger = wrapper.find("button");
     await trigger.trigger("click");
@@ -214,8 +214,8 @@ describe("MsSelect (select-only combobox)", () => {
       mount(MsSelect, {
         props: {
           options: [
-            { label: "Um", value: 1 },
-            { label: "Dois", value: 2 },
+            { label: "One", value: 1 },
+            { label: "Two", value: 2 },
           ],
         },
         attachTo: document.body,
@@ -235,7 +235,7 @@ describe("form controls", () => {
   it("gives each control in one MsField a unique id and forwards attrs to the native input", () => {
     const wrapper = attach(
       mount(MsField, {
-        props: { label: "Nome", description: "Como no documento" },
+        props: { label: "Name", description: "As on your ID" },
         slots: {
           default: () => [
             h(MsInput, { "aria-label": "primeiro", required: true, autocomplete: "given-name" }),

@@ -4,10 +4,10 @@ export type MsKbdTone =
   "primary" | "secondary" | "accent" | "neutral" | "success" | "info" | "warning" | "danger";
 
 export interface MsKbdProps {
-  /** Escala de tamanho do keycap badge */
+  /** Keycap badge size scale */
   size?: MsKbdSize;
-  /** Variante visual de estilo */
+  /** Visual style variant */
   variant?: MsKbdVariant;
-  /** Tom semântico de cor */
+  /** Semantic color tone */
   tone?: MsKbdTone;
 }

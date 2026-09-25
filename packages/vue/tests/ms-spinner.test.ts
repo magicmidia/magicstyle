@@ -16,7 +16,7 @@ describe("MsSpinner (doc 05 §8)", () => {
 
     const hiddenText = wrapper.find(".ms-visually-hidden");
     expect(hiddenText.exists()).toBe(true);
-    expect(hiddenText.text()).toBe("Carregando...");
+    expect(hiddenText.text()).toBe("Loading...");
   });
 
   it("applies custom size and tone classes", () => {

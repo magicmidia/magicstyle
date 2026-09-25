@@ -111,7 +111,7 @@ describe("theme contract", () => {
     expect(JSON.parse(committed)).toEqual(themeJsonSchema());
   });
 
-  it.each(["guide", "en/guide", "es/guide"])(
+  it.each(["guide", "pt/guide", "es/guide"])(
     "the theming guide (%s) documents every contract key",
     (dir) => {
       const docs = readFileSync(

@@ -9,8 +9,8 @@ describe("MsTimeline & MsTimelineItem", () => {
       components: { MsTimeline, MsTimelineItem },
       template: `
         <MsTimeline direction="vertical">
-          <MsTimelineItem title="Passo 1" timestamp="10:00" tone="success">Início</MsTimelineItem>
-          <MsTimelineItem title="Passo 2" timestamp="11:00" tone="primary">Meio</MsTimelineItem>
+          <MsTimelineItem title="Step 1" timestamp="10:00" tone="success">Home</MsTimelineItem>
+          <MsTimelineItem title="Step 2" timestamp="11:00" tone="primary">Meio</MsTimelineItem>
         </MsTimeline>
       `,
     });
@@ -21,7 +21,7 @@ describe("MsTimeline & MsTimelineItem", () => {
     const items = wrapper.findAll(".ms-timeline-item");
     expect(items.length).toBe(2);
     expect(items[0]!.classes()).toContain("ms-timeline-item--tone-success");
-    expect(items[0]!.text()).toContain("Passo 1");
+    expect(items[0]!.text()).toContain("Step 1");
     expect(items[0]!.text()).toContain("10:00");
   });
 
@@ -30,7 +30,7 @@ describe("MsTimeline & MsTimelineItem", () => {
       components: { MsTimeline, MsTimelineItem },
       template: `
         <MsTimeline direction="horizontal">
-          <MsTimelineItem title="Marco 1" />
+          <MsTimelineItem title="Milestone 1" />
         </MsTimeline>
       `,
     });

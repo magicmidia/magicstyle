@@ -6,10 +6,10 @@ import { MsDatePicker } from "../src/index.ts";
 describe("MsDatePicker component", () => {
   it("renders input field and opens calendar on click", async () => {
     const wrapper = mount(MsDatePicker, {
-      props: { placeholder: "Escolha uma data" },
+      props: { placeholder: "Pick a date" },
     });
     const input = wrapper.find("input.ms-date-picker__input");
-    expect(input.attributes("placeholder")).toBe("Escolha uma data");
+    expect(input.attributes("placeholder")).toBe("Pick a date");
 
     await input.trigger("click");
     const dropdown = wrapper.find(".ms-date-picker__dropdown");
@@ -88,7 +88,7 @@ describe("MsDatePicker keyboard grid (APG date picker)", () => {
     expect(wrapper.findAll('[role="row"]')).toHaveLength(7);
     expect(active().dataset.date).toBe("2026-01-31");
     expect(active().getAttribute("aria-selected")).toBe("true");
-    expect(active().getAttribute("aria-label")).toBe("31 de janeiro de 2026");
+    expect(active().getAttribute("aria-label")).toBe("January 31, 2026");
     expect(wrapper.findAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
     wrapper.unmount();
   });
@@ -97,7 +97,7 @@ describe("MsDatePicker keyboard grid (APG date picker)", () => {
     const wrapper = await open();
     await press(wrapper, "ArrowRight");
     expect(active().dataset.date).toBe("2026-02-01");
-    expect(wrapper.find(".ms-date-picker__title").text()).toBe("Fevereiro 2026");
+    expect(wrapper.find(".ms-date-picker__title").text()).toBe("February 2026");
     await press(wrapper, "ArrowUp");
     expect(active().dataset.date).toBe("2026-01-25");
     await press(wrapper, "End");

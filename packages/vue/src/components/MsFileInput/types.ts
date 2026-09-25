@@ -22,7 +22,7 @@ export interface MsFileInputProps {
 
   /**
    * Dropzone headline prompt label.
-   * @default messages `fileInput.prompt` ("Arraste e solte arquivos aqui, ou clique para selecionar" in pt-BR)
+   * @default messages `fileInput.prompt` ("Drag and drop files here, or click to select" in en-US)
    */
   label?: string;
 

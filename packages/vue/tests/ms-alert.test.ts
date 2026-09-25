@@ -7,7 +7,7 @@ describe("MsAlert", () => {
   it("renders with default props and slot content", () => {
     const wrapper = mount(MsAlert, {
       slots: {
-        default: () => "Mensagem informativa",
+        default: () => "Informational message",
       },
     });
 
@@ -15,22 +15,20 @@ describe("MsAlert", () => {
     expect(wrapper.attributes("role")).toBe("alert");
     expect(wrapper.attributes("data-tone")).toBe("neutral");
     expect(wrapper.attributes("data-variant")).toBe("soft");
-    expect(wrapper.text()).toContain("Mensagem informativa");
+    expect(wrapper.text()).toContain("Informational message");
   });
 
   it("renders title and description via props", () => {
     const wrapper = mount(MsAlert, {
       props: {
-        title: "Atenção necessária",
-        description: "Os dados serão sincronizados em instantes.",
+        title: "Attention needed",
+        description: "Data will sync in a moment.",
         tone: "warning",
       },
     });
 
-    expect(wrapper.find(".ms-alert-title").text()).toBe("Atenção necessária");
-    expect(wrapper.find(".ms-alert-description").text()).toBe(
-      "Os dados serão sincronizados em instantes.",
-    );
+    expect(wrapper.find(".ms-alert-title").text()).toBe("Attention needed");
+    expect(wrapper.find(".ms-alert-description").text()).toBe("Data will sync in a moment.");
     expect(wrapper.attributes("data-tone")).toBe("warning");
   });
 
@@ -50,7 +48,7 @@ describe("MsAlert", () => {
     const wrapper = mount(MsAlert, {
       props: {
         dismissible: true,
-        title: "Alerta Fechável",
+        title: "Dismissible alert",
       },
     });
 
@@ -67,7 +65,7 @@ describe("MsAlert", () => {
   it("renders custom actions slot", () => {
     const wrapper = mount(MsAlert, {
       slots: {
-        actions: () => h("button", { class: "action-btn" }, "Desfazer"),
+        actions: () => h("button", { class: "action-btn" }, "Undo"),
       },
     });
 

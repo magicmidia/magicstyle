@@ -9,13 +9,13 @@ describe("MsBreadcrumbs (doc 05 §7)", () => {
   it("renders slot-based breadcrumb trail with correct WAI-ARIA structure", () => {
     const wrapper = mount(MsBreadcrumbs, {
       props: {
-        ariaLabel: "Trilha de navegação",
+        ariaLabel: "Navigation trail",
       },
       slots: {
         default: () => [
-          h(MsBreadcrumbItem, { href: "/" }, () => "Início"),
+          h(MsBreadcrumbItem, { href: "/" }, () => "Home"),
           h(MsBreadcrumbSeparator),
-          h(MsBreadcrumbItem, { href: "/projetos" }, () => "Projetos"),
+          h(MsBreadcrumbItem, { href: "/projetos" }, () => "Projects"),
           h(MsBreadcrumbSeparator),
           h(MsBreadcrumbItem, { current: true }, () => "Design System"),
         ],
@@ -24,7 +24,7 @@ describe("MsBreadcrumbs (doc 05 §7)", () => {
 
     const nav = wrapper.find("nav.ms-breadcrumbs");
     expect(nav.exists()).toBe(true);
-    expect(nav.attributes("aria-label")).toBe("Trilha de navegação");
+    expect(nav.attributes("aria-label")).toBe("Navigation trail");
 
     const list = wrapper.find("ol.ms-breadcrumbs__list");
     expect(list.exists()).toBe(true);
@@ -51,8 +51,8 @@ describe("MsBreadcrumbs (doc 05 §7)", () => {
         separator: "/",
         items: [
           { label: "Dashboard", href: "/admin" },
-          { label: "Usuários", href: "/admin/users" },
-          { label: "Perfil" },
+          { label: "Users", href: "/admin/users" },
+          { label: "Profile" },
         ],
       },
     });
@@ -62,7 +62,7 @@ describe("MsBreadcrumbs (doc 05 §7)", () => {
 
     // Last item automatically marked as current
     const current = wrapper.find(".ms-breadcrumbs__current");
-    expect(current.text()).toBe("Perfil");
+    expect(current.text()).toBe("Profile");
     expect(current.attributes("aria-current")).toBe("page");
 
     // Separators
@@ -75,7 +75,7 @@ describe("MsBreadcrumbs (doc 05 §7)", () => {
     const wrapper = mount(MsBreadcrumbs, {
       slots: {
         default: () => [
-          h(MsBreadcrumbItem, { href: "/item", disabled: true }, () => "Item Desabilitado"),
+          h(MsBreadcrumbItem, { href: "/item", disabled: true }, () => "Disabled item"),
         ],
       },
     });

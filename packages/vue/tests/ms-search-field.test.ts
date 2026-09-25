@@ -6,7 +6,7 @@ describe("MsSearchField", () => {
   it("renders search input with searchbox role", () => {
     const wrapper = mount(MsSearchField, {
       props: {
-        placeholder: "Buscar itens...",
+        placeholder: "Search items...",
       },
     });
 
@@ -14,7 +14,7 @@ describe("MsSearchField", () => {
     const input = wrapper.find("input");
     expect(input.attributes("type")).toBe("search");
     expect(input.attributes("role")).toBe("searchbox");
-    expect(input.attributes("placeholder")).toBe("Buscar itens...");
+    expect(input.attributes("placeholder")).toBe("Search items...");
   });
 
   it("handles input updates and v-model emission", async () => {

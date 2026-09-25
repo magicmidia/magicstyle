@@ -4,7 +4,7 @@ export type MsSearchFieldVariant = "outline" | "filled" | "flushed";
 export interface MsSearchFieldProps {
   id?: string | undefined;
   modelValue?: string | undefined;
-  /** @default messages `searchField.placeholder` ("Pesquisar..." in pt-BR) */
+  /** @default messages `searchField.placeholder` ("Search..." in en-US) */
   placeholder?: string | undefined;
   size?: MsSearchFieldSize | undefined;
   variant?: MsSearchFieldVariant | undefined;

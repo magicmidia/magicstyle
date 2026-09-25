@@ -4,7 +4,7 @@ import { MsTruncate } from "../src/index.ts";
 
 describe("MsTruncate component", () => {
   const longText =
-    "Este é um texto longo que precisa ser truncado de maneira elegante pela biblioteca Magic-Style.";
+    "This is a long text that needs to be truncated gracefully by the Magic-Style library.";
 
   it("renders single-line truncation with tooltip title by default", () => {
     const wrapper = mount(MsTruncate, {
@@ -39,11 +39,11 @@ describe("MsTruncate component", () => {
     });
     const btn = wrapper.find("button.ms-truncate__toggle");
     expect(btn.exists()).toBe(true);
-    expect(btn.text()).toBe("Ver mais");
+    expect(btn.text()).toBe("Show more");
 
     await btn.trigger("click");
     expect(wrapper.emitted("update:expanded")?.[0]).toEqual([true]);
     expect(wrapper.emitted("toggle")?.[0]).toEqual([true]);
-    expect(btn.text()).toBe("Ver menos");
+    expect(btn.text()).toBe("Show less");
   });
 });

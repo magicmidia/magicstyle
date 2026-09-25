@@ -6,13 +6,13 @@ describe("MsDropzone component", () => {
   it("renders upload trigger with title and subtitle", () => {
     const wrapper = mount(MsDropzone, {
       slots: {
-        title: "Envie seus documentos",
-        subtitle: "Formatos aceitos: PDF, PNG, JPG",
+        title: "Upload your documents",
+        subtitle: "Accepted formats: PDF, PNG, JPG",
       },
     });
     expect(wrapper.classes()).toContain("ms-dropzone");
-    expect(wrapper.text()).toContain("Envie seus documentos");
-    expect(wrapper.text()).toContain("Formatos aceitos: PDF, PNG, JPG");
+    expect(wrapper.text()).toContain("Upload your documents");
+    expect(wrapper.text()).toContain("Accepted formats: PDF, PNG, JPG");
   });
 
   it("handles drop event with files", async () => {

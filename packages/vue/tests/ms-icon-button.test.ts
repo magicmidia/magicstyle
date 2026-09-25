@@ -6,7 +6,7 @@ describe("MsIconButton", () => {
   it("renders with aria-label and default styling classes", () => {
     const wrapper = mount(MsIconButton, {
       props: {
-        ariaLabel: "Configurações",
+        ariaLabel: "Settings",
       },
       slots: {
         default: "⚙️",
@@ -14,7 +14,7 @@ describe("MsIconButton", () => {
     });
 
     expect(wrapper.element.tagName).toBe("BUTTON");
-    expect(wrapper.attributes("aria-label")).toBe("Configurações");
+    expect(wrapper.attributes("aria-label")).toBe("Settings");
     expect(wrapper.classes()).toContain("ms-icon-button");
     expect(wrapper.classes()).toContain("ms-icon-button--solid");
     expect(wrapper.classes()).toContain("ms-icon-button--primary");
@@ -25,7 +25,7 @@ describe("MsIconButton", () => {
   it("applies circle shape and variant/tone props", () => {
     const wrapper = mount(MsIconButton, {
       props: {
-        ariaLabel: "Fechar",
+        ariaLabel: "Close",
         variant: "ghost",
         tone: "danger",
         size: "sm",
@@ -42,7 +42,7 @@ describe("MsIconButton", () => {
   it("emits click when clicked", async () => {
     const wrapper = mount(MsIconButton, {
       props: {
-        ariaLabel: "Adicionar",
+        ariaLabel: "Add",
       },
     });
 
@@ -53,7 +53,7 @@ describe("MsIconButton", () => {
   it("prevents click and disables button when disabled is true", async () => {
     const wrapper = mount(MsIconButton, {
       props: {
-        ariaLabel: "Adicionar",
+        ariaLabel: "Add",
         disabled: true,
       },
     });
@@ -66,7 +66,7 @@ describe("MsIconButton", () => {
   it("shows spinner and sets aria-busy when loading", () => {
     const wrapper = mount(MsIconButton, {
       props: {
-        ariaLabel: "Processando",
+        ariaLabel: "Processing",
         loading: true,
       },
     });
@@ -79,7 +79,7 @@ describe("MsIconButton", () => {
   it("supports shape square and active toggle state", () => {
     const wrapper = mount(MsIconButton, {
       props: {
-        ariaLabel: "Favorito",
+        ariaLabel: "Favorite",
         shape: "square",
         size: "2xs",
         active: true,

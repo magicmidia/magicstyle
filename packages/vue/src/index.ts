@@ -804,7 +804,7 @@ export {
   type MsThemeValues,
 } from "./theming.ts";
 
-// i18n: built-in component strings (Portuguese default; English and Spanish included).
+// i18n: built-in component strings (English default; Portuguese and Spanish included).
 export {
   MS_MESSAGES_KEY,
   createMsI18n,

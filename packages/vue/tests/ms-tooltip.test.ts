@@ -14,14 +14,14 @@ describe("MsTooltip (doc 05 §7)", () => {
   it("renders trigger element and does not render tooltip initially", () => {
     const wrapper = mount(MsTooltip, {
       props: {
-        content: "Dica de Ajuda",
+        content: "Help tip",
       },
       slots: {
-        default: () => h("button", "Passe o mouse"),
+        default: () => h("button", "Hover me"),
       },
     });
 
-    expect(wrapper.text()).toContain("Passe o mouse");
+    expect(wrapper.text()).toContain("Hover me");
     expect(shown(wrapper)).toBe(false);
     expect(wrapper.attributes("aria-describedby")).toBeUndefined();
     // Described on the focusable trigger from the start (not on the wrapper).
@@ -35,12 +35,12 @@ describe("MsTooltip (doc 05 §7)", () => {
 
     const wrapper = mount(MsTooltip, {
       props: {
-        content: "Dica de Ajuda",
+        content: "Help tip",
         showDelay: 100,
         placement: "bottom",
       },
       slots: {
-        default: () => h("button", "Ação"),
+        default: () => h("button", "Action"),
       },
     });
 
@@ -50,7 +50,7 @@ describe("MsTooltip (doc 05 §7)", () => {
 
     const tooltip = wrapper.find('[role="tooltip"]');
     expect(shown(wrapper)).toBe(true);
-    expect(tooltip.text()).toBe("Dica de Ajuda");
+    expect(tooltip.text()).toBe("Help tip");
     expect(tooltip.classes()).toContain("ms-tooltip--bottom");
 
     // Check aria-describedby
@@ -66,12 +66,12 @@ describe("MsTooltip (doc 05 §7)", () => {
 
     const wrapper = mount(MsTooltip, {
       props: {
-        content: "Atalho ⌘S",
+        content: "Shortcut ⌘S",
         showDelay: 0,
         hideDelay: 50,
       },
       slots: {
-        default: () => h("button", "Salvar"),
+        default: () => h("button", "Save"),
       },
     });
 
@@ -97,7 +97,7 @@ describe("MsTooltip (doc 05 §7)", () => {
   it("does not show tooltip when disabled", async () => {
     const wrapper = mount(MsTooltip, {
       props: {
-        content: "Desabilitado",
+        content: "Disabled",
         showDelay: 0,
         disabled: true,
       },
@@ -113,7 +113,7 @@ describe("MsTooltip (doc 05 §7)", () => {
   it("supports tone, size, arrow and maxWidth variations", async () => {
     const wrapper = mount(MsTooltip, {
       props: {
-        content: "Tooltip com variações ricas",
+        content: "Tooltip with rich variations",
         showDelay: 0,
         tone: "light",
         size: "lg",
