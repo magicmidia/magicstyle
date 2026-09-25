@@ -307,7 +307,8 @@ describe("MsTag keyboard and remove label", () => {
     expect(event.defaultPrevented).toBe(false);
     expect(wrapper.emitted("click")).toBeUndefined();
 
-    await wrapper.trigger("keydown", { key: " " });
+    // Clickable + closable: the action span (a sibling of the close button) is the button.
+    await wrapper.find(".ms-tag__action").trigger("keydown", { key: " " });
     expect(wrapper.emitted("click")).toHaveLength(1);
   });
 

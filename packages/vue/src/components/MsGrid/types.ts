@@ -2,21 +2,31 @@ export type MsGridCols = 1 | 2 | 3 | 4 | 5 | 6;
 export type MsGridGap = "xs" | "sm" | "md" | "lg" | "xl" | number;
 
 export interface MsBentoGridProps {
+  /** Number of grid columns. @default 3 */
   cols?: MsGridCols;
+  /** Gap between cells: a spacing token ("xs"–"xl") or pixels. @default "md" */
   gap?: MsGridGap;
+  /** Uses `grid-auto-flow: dense` so smaller items back-fill gaps. @default false */
   dense?: boolean;
 }
 
 export interface MsBentoItemProps {
+  /** Columns the item spans. @default 1 */
   colSpan?: 1 | 2 | 3 | 4 | 5 | 6;
+  /** Rows the item spans. @default 1 */
   rowSpan?: 1 | 2 | 3 | 4;
+  /** Hover lift styling only; put a link or button inside for real interaction. @default false */
   interactive?: boolean;
+  /** Surface style. @default "default" */
   variant?: "default" | "ghost" | "elevated" | "accent";
 }
 
 export interface MsMasonryGridProps {
+  /** Number of columns; items are distributed round-robin. @default 3 */
   cols?: number;
+  /** Gap between items: a spacing token ("xs"–"xl") or pixels. @default "md" */
   gap?: MsGridGap;
+  /** Items to lay out; each is passed to the default slot as `item` with its `index`. @default [] */
   items?: unknown[];
 }
 

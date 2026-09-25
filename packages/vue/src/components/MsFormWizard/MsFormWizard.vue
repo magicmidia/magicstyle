@@ -89,6 +89,9 @@ const handlePrev = async () => {
               >
                 <polyline points="20 6 9 17 4 12" />
               </svg>
+              <span v-else-if="step.icon" class="ms-form-wizard__step-icon" aria-hidden="true">
+                {{ step.icon }}
+              </span>
               <span v-else>{{ idx + 1 }}</span>
             </div>
 

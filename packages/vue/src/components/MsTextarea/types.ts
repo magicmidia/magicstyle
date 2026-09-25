@@ -30,7 +30,10 @@ export interface MsTextareaProps {
   showCount?: boolean | undefined;
   /** Grows the height to fit the content. @default false */
   autoGrow?: boolean | undefined;
-  /** Maximum rows for `autoGrow`; currently not applied by the component. */
+  /**
+   * With `autoGrow`, caps the height at this many text rows (line-height × rows + vertical
+   * padding); longer content scrolls inside the textarea.
+   */
   maxRows?: number | undefined;
 }
 

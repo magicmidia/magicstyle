@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { matchesAccept } from "../../composables/file-accept.ts";
 import { ref } from "vue";
 import type {
   MsDropzoneProps,
@@ -35,21 +36,7 @@ const triggerBrowse = () => {
   inputRef.value?.click();
 };
 
-/** Mirrors the native `accept` attribute: extensions, exact MIME types and `type/*` wildcards. */
-const matchesAccept = (file: File): boolean => {
-  const tokens = props.accept
-    .split(",")
-    .map((token) => token.trim().toLowerCase())
-    .filter(Boolean);
-  if (tokens.length === 0 || tokens.includes("*/*") || tokens.includes("*")) return true;
-  const name = file.name.toLowerCase();
-  const type = (file.type || "").toLowerCase();
-  return tokens.some((token) => {
-    if (token.startsWith(".")) return name.endsWith(token);
-    if (token.endsWith("/*")) return type.startsWith(token.slice(0, -1));
-    return type === token;
-  });
-};
+const fileMatchesAccept = (file: File): boolean => matchesAccept(file, props.accept);
 
 const processFiles = (rawFiles: FileList | null) => {
   if (!rawFiles || rawFiles.length === 0) return;
@@ -63,7 +50,7 @@ const processFiles = (rawFiles: FileList | null) => {
   }
 
   candidates.forEach((f, i) => {
-    if (!matchesAccept(f)) {
+    if (!fileMatchesAccept(f)) {
       rejected.push({ file: f, reason: "type" });
       return;
     }

@@ -171,11 +171,15 @@
   justify-content: space-between;
   padding: var(--ms-space-4) var(--ms-page-gutter, 24px);
   background-color: var(--ms-color-surface-default);
-  border-top: 1px solid var(--ms-color-border-subtle);
   font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-muted);
   flex-shrink: 0;
   box-sizing: border-box;
+}
+
+/* `bordered` (default): hairline separating the footer from the content */
+.ms-app-shell__footer[data-bordered] {
+  border-block-start: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
 }
 
 /* --- STATUS BAR --- */

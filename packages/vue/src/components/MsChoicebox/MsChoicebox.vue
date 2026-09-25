@@ -4,6 +4,7 @@
     :class="classes"
     :role="type === 'radio' ? 'radiogroup' : 'group'"
     :aria-disabled="disabled ? 'true' : undefined"
+    @keydown="onKeydown"
   >
     <slot>
       <!-- Render items prop if no slot provided -->
@@ -20,11 +21,21 @@
         :tone="item.tone"
       />
     </slot>
+    <!-- Native form submission: the items are ARIA widgets, not inputs. -->
+    <template v-if="props.name && !props.disabled">
+      <input
+        v-for="value in submittedValues"
+        :key="String(value)"
+        type="hidden"
+        :name="props.name"
+        :value="value"
+      />
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, provide, ref } from "vue";
+import { computed, provide, reactive, ref } from "vue";
 import { useMsId } from "../../composables/use-ms-id.ts";
 import MsChoiceboxItem from "./MsChoiceboxItem.vue";
 import {
@@ -61,6 +72,12 @@ const classes = computed(() => [
   props.layout === "grid" ? `ms-choicebox--cols-${props.columns}` : undefined,
 ]);
 
+/** Values posted with a surrounding <form> (only when `name` is set). */
+const submittedValues = computed<(string | number)[]>(() => {
+  if (Array.isArray(props.modelValue)) return props.modelValue;
+  return props.modelValue === undefined ? [] : [props.modelValue];
+});
+
 function isSelected(value: string | number): boolean {
   if (props.type === "radio") {
     return props.modelValue === value;
@@ -90,6 +107,55 @@ function toggleValue(value: string | number) {
   }
 }
 
+/** Items in registration (= render) order, for the radio group's single tab stop. */
+const registered = reactive<{ value: string | number; disabled: () => boolean }[]>([]);
+
+function register(value: string | number, disabled: () => boolean): () => void {
+  const entry = { value, disabled };
+  registered.push(entry);
+  return () => {
+    const index = registered.indexOf(entry);
+    if (index !== -1) registered.splice(index, 1);
+  };
+}
+
+/** Radio mode (APG radio group): Tab enters on the checked item, else the first enabled one. */
+const tabbableValue = computed<string | number | undefined>(() => {
+  const enabled = registered.filter((entry) => !entry.disabled());
+  const checked = enabled.find((entry) => entry.value === props.modelValue);
+  return (checked ?? enabled[0])?.value;
+});
+
+/** Radio mode: arrow keys move focus and selection to the previous/next enabled item (wrapping). */
+function onKeydown(event: KeyboardEvent): void {
+  if (props.type !== "radio" || props.disabled || !rootRef.value) return;
+  const keys: Record<string, number> = {
+    ArrowDown: 1,
+    ArrowRight: 1,
+    ArrowUp: -1,
+    ArrowLeft: -1,
+  };
+  if (!(event.key in keys) && event.key !== "Home" && event.key !== "End") return;
+  const radios = Array.from(
+    rootRef.value.querySelectorAll<HTMLElement>('[role="radio"]:not([aria-disabled="true"])'),
+  );
+  if (radios.length === 0) return;
+  const current = radios.findIndex((radio) => radio.contains(event.target as Node));
+  let next: number;
+  if (event.key === "Home") next = 0;
+  else if (event.key === "End") next = radios.length - 1;
+  else {
+    const rtl = getComputedStyle(rootRef.value).direction === "rtl";
+    let delta = keys[event.key]!;
+    if (rtl && (event.key === "ArrowLeft" || event.key === "ArrowRight")) delta = -delta;
+    next = current === -1 ? 0 : (current + delta + radios.length) % radios.length;
+  }
+  event.preventDefault();
+  const target = radios[next]!;
+  target.focus();
+  target.click();
+}
+
 const context: MsChoiceboxContext = {
   get type() {
     return props.type;
@@ -111,6 +177,8 @@ const context: MsChoiceboxContext = {
   },
   isSelected,
   toggleValue,
+  register,
+  isTabbable: (value) => props.type !== "radio" || tabbableValue.value === value,
 };
 
 provide(MS_CHOICEBOX_KEY, context);

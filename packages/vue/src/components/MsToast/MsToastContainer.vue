@@ -6,6 +6,7 @@ import MsToast from "./MsToast.vue";
 
 const props = withDefaults(
   defineProps<{
+    /** Teleport target (CSS selector) the toast stacks render into. @default "body" */
     teleportTo?: string;
   }>(),
   {

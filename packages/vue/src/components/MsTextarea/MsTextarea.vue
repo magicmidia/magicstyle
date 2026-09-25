@@ -39,11 +39,28 @@ const isExceeded = computed(
   () => props.maxLength !== undefined && currentLength.value > props.maxLength,
 );
 
+/** Height (content + vertical padding, like `scrollHeight`) of `rows` lines of text. */
+function rowsHeight(el: HTMLTextAreaElement, rows: number): number {
+  const style = getComputedStyle(el);
+  const fontSize = parseFloat(style.fontSize) || 16;
+  // "normal" line-height parses to NaN: approximate it like browsers do (~1.2em).
+  const lineHeight = parseFloat(style.lineHeight) || fontSize * 1.2;
+  const padding = (parseFloat(style.paddingTop) || 0) + (parseFloat(style.paddingBottom) || 0);
+  return lineHeight * rows + padding;
+}
+
 function adjustHeight(): void {
   if (!props.autoGrow || !textareaRef.value) return;
   const el = textareaRef.value;
   el.style.height = "auto";
-  el.style.height = `${el.scrollHeight}px`;
+  let height = el.scrollHeight;
+  // maxRows caps the growth; the rest of the content scrolls.
+  if (props.maxRows !== undefined && props.maxRows > 0) {
+    const max = rowsHeight(el, props.maxRows);
+    el.style.overflowY = height > max ? "auto" : "hidden";
+    height = Math.min(height, max);
+  }
+  el.style.height = `${height}px`;
 }
 
 function onInput(event: Event): void {

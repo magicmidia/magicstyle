@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, nextTick } from "vue";
 import type { MsEmojiPickerProps, MsEmojiPickerEmits, MsEmojiItem } from "./types.ts";
 import { useMsMessages } from "../../composables/use-ms-messages.ts";
+import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
+import { useMsId } from "../../composables/use-ms-id.ts";
 import type { MsMessages } from "../../i18n/messages.ts";
 
 const emojiList: MsEmojiItem[] = [
@@ -220,34 +222,60 @@ const filteredEmojis = computed(() => {
   return list;
 });
 
+const rootRef = ref<HTMLElement | null>(null);
+const triggerRef = ref<HTMLButtonElement | null>(null);
+const searchRef = ref<HTMLInputElement | null>(null);
+const panelId = useMsId("ms-emoji-picker-panel");
+
+/** Closes the panel and hands focus back to the trigger (APG disclosure/dialog pattern). */
+function close(): void {
+  isOpen.value = false;
+  triggerRef.value?.focus();
+}
+
+useDismissableLayer({ active: isOpen, inside: [rootRef], onDismiss: close });
+
 const selectEmoji = (item: MsEmojiItem) => {
   emit("update:modelValue", item.emoji);
   emit("select", item);
-  isOpen.value = false;
+  close();
 };
 
 const toggleDropdown = () => {
   if (props.disabled) return;
   isOpen.value = !isOpen.value;
+  if (isOpen.value) void nextTick(() => searchRef.value?.focus());
 };
 </script>
 
 <template>
-  <div class="ms-emoji-picker">
+  <div ref="rootRef" class="ms-emoji-picker">
     <button
+      ref="triggerRef"
       type="button"
       class="ms-emoji-picker__trigger"
       :disabled="props.disabled"
+      aria-haspopup="dialog"
+      :aria-expanded="isOpen"
+      :aria-controls="isOpen ? panelId : undefined"
       @click="toggleDropdown"
     >
       <span>{{ props.modelValue || props.placeholder }}</span>
     </button>
 
-    <div v-if="isOpen" class="ms-emoji-picker__dropdown">
+    <div
+      v-if="isOpen"
+      :id="panelId"
+      class="ms-emoji-picker__dropdown"
+      role="dialog"
+      :aria-label="t.emojiPicker.label"
+    >
       <input
+        ref="searchRef"
         v-model="searchQuery"
         type="text"
         class="ms-emoji-picker__search"
+        :aria-label="t.emojiPicker.searchLabel"
         :placeholder="t.emojiPicker.search"
       />
 
@@ -259,6 +287,8 @@ const toggleDropdown = () => {
           class="ms-emoji-picker__category-btn"
           :class="{ 'ms-emoji-picker__category-btn--active': activeCategory === category.id }"
           :title="t.emojiPicker.categories[category.id]"
+          :aria-label="t.emojiPicker.categories[category.id]"
+          :aria-pressed="activeCategory === category.id"
           @click="activeCategory = category.id"
         >
           {{ category.icon }}
@@ -272,6 +302,7 @@ const toggleDropdown = () => {
           type="button"
           class="ms-emoji-picker__item"
           :title="item.name"
+          :aria-label="item.name"
           @click="selectEmoji(item)"
         >
           {{ item.emoji }}

@@ -51,13 +51,16 @@
   margin-inline-start: var(--ms-space-1);
 }
 
+/* Rendered as <p>: no UA margins, spacing comes from the field's gap */
 .ms-field-description {
+  margin: 0;
   font-size: var(--ms-typography-size-sm);
   line-height: var(--ms-typography-line-height-base);
   color: var(--ms-color-text-muted);
 }
 
 .ms-field-error {
+  margin: 0;
   font-size: var(--ms-typography-size-sm);
   line-height: var(--ms-typography-line-height-base);
   color: var(--ms-color-feedback-danger-text);

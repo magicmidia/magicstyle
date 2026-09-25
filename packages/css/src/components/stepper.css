@@ -26,8 +26,27 @@
 .ms-step {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   flex: 1;
+}
+
+/* Optional step content (default slot), on its own row below the trigger */
+.ms-step__content {
+  position: relative;
+  z-index: 1;
+  flex-basis: 100%;
+  margin-block-start: var(--ms-space-2);
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text-secondary);
+}
+
+.ms-stepper--direction-vertical .ms-step__content {
+  padding-inline-start: calc(32px + var(--ms-space-3));
+}
+
+.ms-stepper--direction-horizontal .ms-step__content {
+  text-align: center;
 }
 
 .ms-stepper--direction-vertical .ms-step {

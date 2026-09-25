@@ -1,11 +1,12 @@
 export interface MsFileInputProps {
   /**
-   * Bound file or array of files (v-model).
+   * Bound file or array of files (v-model). Setting it to `null` or `[]` clears the list.
    */
   modelValue?: File | File[] | null;
 
   /**
-   * Accepted file formats (e.g. '.pdf,image/*').
+   * Accepted file formats (e.g. '.pdf,image/*'). Also enforced for dropped files, which
+   * are rejected with reason `"accept"`.
    */
   accept?: string;
 
@@ -45,7 +46,10 @@ export interface MsFileInputProps {
 }
 
 export interface MsFileInputEmits {
+  /** New selection: a `File` (single), `File[]` (`multiple`) or `null` after removal. */
   (e: "update:modelValue", files: File | File[] | null): void;
+  /** Fires with the current file list after files are added or removed. */
   (e: "change", files: File[]): void;
+  /** A file was refused: it does not match `accept` or exceeds `maxSize`. */
   (e: "reject", file: File, reason: "maxSize" | "accept"): void;
 }

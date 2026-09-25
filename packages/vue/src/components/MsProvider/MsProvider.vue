@@ -12,6 +12,7 @@ import { provideMsMessages } from "../../composables/use-ms-messages.ts";
 import {
   provideThemeContext,
   useSystemColorMode,
+  useThemeContext,
   type ColorMode,
   type ColorModePreference,
   type Contrast,
@@ -39,7 +40,9 @@ const props = withDefaults(defineProps<MsProviderProps>(), {
 provideMsMessages(() => ({ locale: props.locale, messages: props.messages }));
 
 const internalTheme = ref<string>(props.theme);
-const internalColorMode = ref<ColorModePreference>(props.colorMode);
+const internalColorMode = ref<ColorModePreference | "inherit">(props.colorMode);
+/** Read before providing our own context: the ancestor that "inherit" follows. */
+const parentContext = useThemeContext();
 const internalDensity = ref<Density>(props.density);
 const internalContrast = ref<Contrast>(props.contrast);
 const internalRadius = ref<RadiusDial>(props.radius);
@@ -84,7 +87,24 @@ watch(
 
 const systemColorMode = useSystemColorMode();
 
+/**
+ * Preference exposed to descendants. "inherit" reports the ancestor provider's preference
+ * (or "system" without one); setting it through the context switches to an explicit mode.
+ */
+const colorModePreference = computed<ColorModePreference>({
+  get: () =>
+    internalColorMode.value === "inherit"
+      ? (parentContext?.colorModePreference.value ?? "system")
+      : internalColorMode.value,
+  set: (mode) => {
+    internalColorMode.value = mode;
+  },
+});
+
 const resolvedColorMode = computed<ColorMode>(() => {
+  if (internalColorMode.value === "inherit") {
+    return parentContext?.resolvedColorMode.value ?? systemColorMode.value;
+  }
   if (internalColorMode.value === "system") {
     return systemColorMode.value;
   }
@@ -92,15 +112,24 @@ const resolvedColorMode = computed<ColorMode>(() => {
 });
 
 const resolvedAttributes = computed<Record<string, string>>(() => {
-  return {
-    "data-ms-theme": internalTheme.value,
+  const inherit = internalColorMode.value === "inherit";
+  const attributes: Record<string, string> = {};
+  // A `[data-ms-theme]` scope re-declares the theme's light palette, so "inherit" leaves it
+  // out while the theme matches the inherited one ("magic" without an ancestor provider).
+  if (!inherit || internalTheme.value !== (parentContext?.theme.value ?? "magic")) {
+    attributes["data-ms-theme"] = internalTheme.value;
+  }
+  // "inherit": no attribute, so the nearest ancestor's color mode applies through CSS.
+  if (!inherit) {
     // "system" is resolved by CSS (prefers-color-scheme): identical SSR/client markup, no flash.
-    "data-ms-color-mode": internalColorMode.value === "system" ? "system" : resolvedColorMode.value,
-    "data-ms-density": internalDensity.value,
-    "data-ms-contrast": internalContrast.value,
-    "data-ms-radius": internalRadius.value,
-    dir: internalDir.value,
-  };
+    attributes["data-ms-color-mode"] =
+      internalColorMode.value === "system" ? "system" : resolvedColorMode.value;
+  }
+  attributes["data-ms-density"] = internalDensity.value;
+  attributes["data-ms-contrast"] = internalContrast.value;
+  attributes["data-ms-radius"] = internalRadius.value;
+  attributes.dir = internalDir.value;
+  return attributes;
 });
 
 const wrapperAttributes = computed(() => {
@@ -156,7 +185,7 @@ onBeforeUnmount(() => {
 
 const context: MsThemeContext = {
   theme: internalTheme,
-  colorModePreference: internalColorMode,
+  colorModePreference,
   resolvedColorMode,
   density: internalDensity,
   contrast: internalContrast,

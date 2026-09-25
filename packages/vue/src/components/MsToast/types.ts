@@ -22,6 +22,7 @@ export interface MsToastItem extends MsToastOptions {
 }
 
 export interface MsToastProps {
+  /** The toast to render (usually an item of `useToast().toasts`): message, tone, duration… */
   toast: MsToastItem;
   /**
    * Render the toast as its own live region (status/alert). MsToastContainer

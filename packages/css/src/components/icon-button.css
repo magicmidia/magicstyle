@@ -65,39 +65,52 @@
 
 /* Sizes */
 .ms-icon-button--2xs {
+  --_ms-icon-button-icon: 12px;
   inline-size: calc(var(--ms-control-height-sm) - 12px);
   block-size: calc(var(--ms-control-height-sm) - 12px);
   font-size: var(--ms-typography-size-2xs);
 }
 
 .ms-icon-button--xs {
+  --_ms-icon-button-icon: 14px;
   inline-size: calc(var(--ms-control-height-sm) - 4px);
   block-size: calc(var(--ms-control-height-sm) - 4px);
   font-size: var(--ms-typography-size-xs);
 }
 
 .ms-icon-button--sm {
+  --_ms-icon-button-icon: 16px;
   inline-size: var(--ms-control-height-sm);
   block-size: var(--ms-control-height-sm);
   font-size: var(--ms-typography-size-md);
 }
 
 .ms-icon-button--md {
+  --_ms-icon-button-icon: 16px;
   inline-size: var(--ms-control-height-md);
   block-size: var(--ms-control-height-md);
   font-size: var(--ms-typography-size-md);
 }
 
 .ms-icon-button--lg {
+  --_ms-icon-button-icon: 20px;
   inline-size: var(--ms-control-height-lg);
   block-size: var(--ms-control-height-lg);
   font-size: var(--ms-typography-size-md);
 }
 
 .ms-icon-button--xl {
+  --_ms-icon-button-icon: 24px;
   inline-size: var(--ms-control-height-xl);
   block-size: var(--ms-control-height-xl);
   font-size: var(--ms-typography-size-lg);
+}
+
+/* Slotted SVG icons follow the button size (16/16/20px for sm/md/lg) */
+.ms-icon-button > svg {
+  inline-size: var(--_ms-icon-button-icon, 16px);
+  block-size: var(--_ms-icon-button-icon, 16px);
+  flex-shrink: 0;
 }
 
 /* Variants & Tones */

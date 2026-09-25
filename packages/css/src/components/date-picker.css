@@ -191,8 +191,13 @@
   cursor: pointer;
 }
 
-.ms-date-picker__preset-btn:hover {
+.ms-date-picker__preset-btn:hover:not(:disabled) {
   color: var(--ms-color-text-primary);
+}
+
+.ms-date-picker__preset-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /* Range selection states */

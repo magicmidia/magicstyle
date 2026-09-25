@@ -3,7 +3,9 @@ import { computed, inject } from "vue";
 import { MsToggleGroupKey } from "./types.ts";
 
 export interface MsToggleGroupItemProps {
+  /** Value added to/set on the parent group's `v-model` when the item is pressed. */
   value: string;
+  /** Disables this item (the group's `disabled` also applies). @default false */
   disabled?: boolean;
 }
 

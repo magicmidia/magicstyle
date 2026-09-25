@@ -2,10 +2,10 @@
   <span ref="rootRef" class="ms-glimpse" @keydown.esc="handleCloseImmediate">
     <!-- Phrasing content only (spans): MsGlimpse is meant to sit inline inside a <p>. -->
     <!-- Trigger link / anchor -->
+    <!-- aria-expanded/aria-controls live on the focusable element (the link), not this span. -->
     <span
+      ref="triggerRef"
       class="ms-glimpse__trigger"
-      :aria-expanded="isOpen"
-      :aria-haspopup="'dialog'"
       @mouseenter="handleTriggerEnter"
       @mouseleave="handleTriggerLeave"
       @focusin="handleTriggerEnter"
@@ -18,6 +18,10 @@
           :target="target"
           :rel="safeRel(rel, target)"
           class="ms-link ms-link--primary"
+          aria-haspopup="dialog"
+          :aria-expanded="disabled ? undefined : isOpen"
+          :aria-controls="disabled ? undefined : cardId"
+          data-ms-glimpse-link
         >
           {{ label || href }}
         </a>
@@ -96,7 +100,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onUnmounted, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref, watch } from "vue";
 import { useMsId } from "../../composables/use-ms-id.ts";
 import type { MsGlimpseProps, MsGlimpseEmits } from "./types.ts";
 import { safeHref, safeRel } from "../../composables/safe-url.ts";
@@ -131,6 +135,30 @@ const rootRef = ref<HTMLElement | null>(null);
 const cardRef = ref<HTMLElement | null>(null);
 const cardId = useMsId("glimpse-card");
 const isOpen = ref(false);
+const triggerRef = ref<HTMLElement | null>(null);
+
+const FOCUSABLE = "a[href], button, input, select, textarea, [tabindex]:not([tabindex='-1'])";
+
+/**
+ * Custom trigger content (default slot) gets the disclosure state on its first focusable
+ * element; the built-in link binds it in the template (so it is also in the SSR markup).
+ */
+function syncSlotTriggerAria(): void {
+  const trigger = triggerRef.value?.querySelector<HTMLElement>(FOCUSABLE);
+  if (!trigger || trigger.hasAttribute("data-ms-glimpse-link")) return;
+  if (props.disabled) {
+    for (const name of ["aria-expanded", "aria-controls", "aria-haspopup"]) {
+      trigger.removeAttribute(name);
+    }
+    return;
+  }
+  trigger.setAttribute("aria-haspopup", "dialog");
+  trigger.setAttribute("aria-expanded", String(isOpen.value));
+  trigger.setAttribute("aria-controls", cardId);
+}
+
+onMounted(syncSlotTriggerAria);
+watch([isOpen, () => props.disabled], syncSlotTriggerAria, { flush: "post" });
 
 let openTimer: ReturnType<typeof setTimeout> | null = null;
 let closeTimer: ReturnType<typeof setTimeout> | null = null;

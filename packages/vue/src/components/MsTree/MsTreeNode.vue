@@ -4,11 +4,14 @@ import type { MsTreeNodeData } from "./types.ts";
 import { MS_TREE_KEY } from "./types.ts";
 
 const props = defineProps<{
+  /** Node to render; its `children` render recursively as nested tree items. */
   node: MsTreeNodeData;
 }>();
 
 defineSlots<{
+  /** Node label content (defaults to `node.label`). */
   default?(props: { node: MsTreeNodeData }): unknown;
+  /** Node icon. */
   icon?(props: { node: MsTreeNodeData }): unknown;
 }>();
 

@@ -191,6 +191,7 @@
 }
 
 .ms-timeline-item__title {
+  display: block;
   font-size: var(--ms-typography-size-sm);
   font-weight: var(--ms-typography-weight-medium);
   line-height: var(--ms-typography-line-height-tight);

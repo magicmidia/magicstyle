@@ -1,26 +1,57 @@
 <template>
   <span
     :class="classes"
-    :tabindex="clickable && !disabled ? 0 : undefined"
-    :role="clickable ? 'button' : undefined"
+    :tabindex="rootIsButton && !disabled ? 0 : undefined"
+    :role="rootIsButton ? 'button' : undefined"
     @click="handleClick"
-    @keydown="handleKeydown"
+    @keydown="rootIsButton ? handleKeydown($event) : undefined"
   >
-    <span v-if="props.dot" class="ms-tag__dot" aria-hidden="true" />
+    <!--
+      Clickable + closable: the clickable part and the close button are siblings, so no
+      interactive control is nested inside role="button".
+    -->
+    <span
+      v-if="splitAction"
+      class="ms-tag__action"
+      role="button"
+      :tabindex="disabled ? undefined : 0"
+      :aria-disabled="disabled || undefined"
+      @click="handleActionClick"
+      @keydown="handleKeydown"
+    >
+      <span v-if="props.dot" class="ms-tag__dot" aria-hidden="true" />
 
-    <span v-if="$slots.icon || $slots.prefix" class="ms-tag__icon">
-      <slot name="icon">
-        <slot name="prefix" />
-      </slot>
-    </span>
+      <span v-if="$slots.icon || $slots.prefix" class="ms-tag__icon">
+        <slot name="icon">
+          <slot name="prefix" />
+        </slot>
+      </span>
 
-    <span ref="contentRef" class="ms-tag__content">
-      <slot />
-    </span>
+      <span ref="contentRef" class="ms-tag__content">
+        <slot />
+      </span>
 
-    <span v-if="$slots.suffix" class="ms-tag__suffix">
-      <slot name="suffix" />
+      <span v-if="$slots.suffix" class="ms-tag__suffix">
+        <slot name="suffix" />
+      </span>
     </span>
+    <template v-else>
+      <span v-if="props.dot" class="ms-tag__dot" aria-hidden="true" />
+
+      <span v-if="$slots.icon || $slots.prefix" class="ms-tag__icon">
+        <slot name="icon">
+          <slot name="prefix" />
+        </slot>
+      </span>
+
+      <span ref="contentRef" class="ms-tag__content">
+        <slot />
+      </span>
+
+      <span v-if="$slots.suffix" class="ms-tag__suffix">
+        <slot name="suffix" />
+      </span>
+    </template>
 
     <button
       v-if="closable"
@@ -70,11 +101,29 @@ const emit = defineEmits<MsTagEmits>();
 
 const t = useMsMessages();
 
+defineSlots<{
+  /** Tag text; also used to build the close button's "Remove …" label. */
+  default?(): unknown;
+  /** Leading icon. */
+  icon?(): unknown;
+  /** Leading content (alias of `icon`, used when `icon` is not provided). */
+  prefix?(): unknown;
+  /** Trailing content before the close button. */
+  suffix?(): unknown;
+}>();
+
+/** With a close button, only the inner action span is the button (no nested controls). */
+const splitAction = computed(() => props.clickable && props.closable);
+const rootIsButton = computed(() => props.clickable && !props.closable);
+
 function handleClick(event: MouseEvent) {
+  if (props.disabled || !rootIsButton.value) return;
+  emit("click", event);
+}
+
+function handleActionClick(event: MouseEvent) {
   if (props.disabled) return;
-  if (props.clickable) {
-    emit("click", event);
-  }
+  emit("click", event);
 }
 
 const contentRef = ref<HTMLElement | null>(null);

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed, inject } from "vue";
+import { computed, inject, onBeforeUnmount } from "vue";
 import { MS_CAROUSEL_KEY } from "./types.ts";
 import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineSlots<{
+  /** Slide content. */
   default?(): unknown;
 }>();
 
@@ -11,6 +12,7 @@ const t = useMsMessages();
 
 const carousel = inject(MS_CAROUSEL_KEY, null);
 const index = carousel?.registerSlide?.() ?? -1;
+if (index >= 0 && carousel?.unregisterSlide) onBeforeUnmount(carousel.unregisterSlide);
 const isActive = computed(() => !carousel || index === -1 || carousel.activeSlide.value === index);
 const label = computed(() =>
   index >= 0 && carousel?.totalSlides

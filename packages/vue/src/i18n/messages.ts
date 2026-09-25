@@ -14,7 +14,7 @@ export interface MsMessages {
   alert: { dismiss: string };
   appShell: { rail: string };
   avatar: { fallback: string; more: string; moreCount: (count: number) => string };
-  banner: { dismiss: string };
+  banner: { label: string; dismiss: string };
   breadcrumbs: { label: string; showAll: string };
   carousel: {
     label: string;
@@ -28,7 +28,7 @@ export interface MsMessages {
     roleDescription: string;
     slideRoleDescription: string;
   };
-  chatBubble: { sending: string; sent: string; read: string };
+  chatBubble: { typing: string; sending: string; sent: string; read: string };
   code: { copy: string; copied: string };
   codeBlock: { label: string; copy: string; copied: string; expand: string; collapse: string };
   colorPicker: { pick: string; hex: string };
@@ -72,6 +72,8 @@ export interface MsMessages {
     removeFile: (name: string) => string;
   };
   emojiPicker: {
+    searchLabel: string;
+    label: string;
     search: string;
     categories: {
       all: string;
@@ -87,7 +89,13 @@ export interface MsMessages {
   fileInput: { prompt: string; remove: string };
   formWizard: { previous: string; next: string; finish: string; progress: string };
   glimpse: { label: string };
-  iconPicker: { search: string; placeholder: string; all: string };
+  iconPicker: {
+    searchLabel: string;
+    label: string;
+    search: string;
+    placeholder: string;
+    all: string;
+  };
   input: { clear: string; showPassword: string; hidePassword: string };
   label: { required: string; optional: string };
   lightbox: { label: string; close: string; previous: string; next: string; image: string };
@@ -141,6 +149,7 @@ export interface MsMessages {
   tag: { remove: string; removeLabel: (label: string) => string };
   toast: { dismiss: string };
   truncate: { more: string; less: string };
+  marquee: { play: string; pause: string };
 }
 
 export const msMessagesPtBR: MsMessages = {
@@ -152,7 +161,7 @@ export const msMessagesPtBR: MsMessages = {
     more: "Mais membros",
     moreCount: (count) => (count === 1 ? "Mais 1 membro" : `Mais ${count} membros`),
   },
-  banner: { dismiss: "Fechar aviso" },
+  banner: { label: "Aviso", dismiss: "Fechar aviso" },
   breadcrumbs: { label: "Navegação estrutural", showAll: "Mostrar todos os níveis" },
   carousel: {
     label: "Galeria de slides",
@@ -166,7 +175,7 @@ export const msMessagesPtBR: MsMessages = {
     roleDescription: "carrossel",
     slideRoleDescription: "slide",
   },
-  chatBubble: { sending: "Enviando", sent: "Enviada", read: "Lida" },
+  chatBubble: { typing: "Digitando…", sending: "Enviando", sent: "Enviada", read: "Lida" },
   code: { copy: "Copiar código", copied: "Copiado!" },
   codeBlock: {
     label: "Código",
@@ -216,6 +225,8 @@ export const msMessagesPtBR: MsMessages = {
     removeFile: (name) => `Remover ${name}`,
   },
   emojiPicker: {
+    searchLabel: "Buscar emoji",
+    label: "Seletor de emoji",
     search: "Buscar emoji...",
     categories: {
       all: "Todos",
@@ -239,7 +250,13 @@ export const msMessagesPtBR: MsMessages = {
     progress: "Progresso do formulário",
   },
   glimpse: { label: "Pré-visualização do link" },
-  iconPicker: { search: "Buscar ícones...", placeholder: "Selecione um ícone...", all: "Todos" },
+  iconPicker: {
+    searchLabel: "Buscar ícones",
+    label: "Seletor de ícones",
+    search: "Buscar ícones...",
+    placeholder: "Selecione um ícone...",
+    all: "Todos",
+  },
   input: { clear: "Limpar campo", showPassword: "Exibir senha", hidePassword: "Ocultar senha" },
   label: { required: "Obrigatório", optional: "(opcional)" },
   lightbox: {
@@ -305,6 +322,7 @@ export const msMessagesPtBR: MsMessages = {
   tag: { remove: "Remover", removeLabel: (label) => `Remover ${label}` },
   toast: { dismiss: "Fechar notificação" },
   truncate: { more: "Ver mais", less: "Ver menos" },
+  marquee: { play: "Reproduzir animação", pause: "Pausar animação" },
 };
 
 export const msMessagesEn: MsMessages = {
@@ -316,7 +334,7 @@ export const msMessagesEn: MsMessages = {
     more: "More members",
     moreCount: (count) => (count === 1 ? "1 more member" : `${count} more members`),
   },
-  banner: { dismiss: "Dismiss notice" },
+  banner: { label: "Notice", dismiss: "Dismiss notice" },
   breadcrumbs: { label: "Breadcrumb", showAll: "Show all breadcrumb items" },
   carousel: {
     label: "Slides",
@@ -330,7 +348,7 @@ export const msMessagesEn: MsMessages = {
     roleDescription: "carousel",
     slideRoleDescription: "slide",
   },
-  chatBubble: { sending: "Sending", sent: "Sent", read: "Read" },
+  chatBubble: { typing: "Typing…", sending: "Sending", sent: "Sent", read: "Read" },
   code: { copy: "Copy code", copied: "Copied!" },
   codeBlock: {
     label: "Code",
@@ -380,6 +398,8 @@ export const msMessagesEn: MsMessages = {
     removeFile: (name) => `Remove ${name}`,
   },
   emojiPicker: {
+    searchLabel: "Search emoji",
+    label: "Emoji picker",
     search: "Search emoji...",
     categories: {
       all: "All",
@@ -395,7 +415,13 @@ export const msMessagesEn: MsMessages = {
   fileInput: { prompt: "Drag and drop files here, or click to select", remove: "Remove file" },
   formWizard: { previous: "Back", next: "Next", finish: "Finish", progress: "Form progress" },
   glimpse: { label: "Link preview" },
-  iconPicker: { search: "Search icons...", placeholder: "Select an icon...", all: "All" },
+  iconPicker: {
+    searchLabel: "Search icons",
+    label: "Icon picker",
+    search: "Search icons...",
+    placeholder: "Select an icon...",
+    all: "All",
+  },
   input: { clear: "Clear field", showPassword: "Show password", hidePassword: "Hide password" },
   label: { required: "Required", optional: "(optional)" },
   lightbox: {
@@ -461,6 +487,7 @@ export const msMessagesEn: MsMessages = {
   tag: { remove: "Remove", removeLabel: (label) => `Remove ${label}` },
   toast: { dismiss: "Dismiss notification" },
   truncate: { more: "Show more", less: "Show less" },
+  marquee: { play: "Play animation", pause: "Pause animation" },
 };
 
 export const msMessagesEs: MsMessages = {
@@ -472,7 +499,7 @@ export const msMessagesEs: MsMessages = {
     more: "Más miembros",
     moreCount: (count) => (count === 1 ? "1 miembro más" : `${count} miembros más`),
   },
-  banner: { dismiss: "Cerrar aviso" },
+  banner: { label: "Aviso", dismiss: "Cerrar aviso" },
   breadcrumbs: { label: "Ruta de navegación", showAll: "Mostrar todos los niveles" },
   carousel: {
     label: "Galería de diapositivas",
@@ -486,7 +513,7 @@ export const msMessagesEs: MsMessages = {
     roleDescription: "carrusel",
     slideRoleDescription: "diapositiva",
   },
-  chatBubble: { sending: "Enviando", sent: "Enviado", read: "Leído" },
+  chatBubble: { typing: "Escribiendo…", sending: "Enviando", sent: "Enviado", read: "Leído" },
   code: { copy: "Copiar código", copied: "¡Copiado!" },
   codeBlock: {
     label: "Código",
@@ -536,6 +563,8 @@ export const msMessagesEs: MsMessages = {
     removeFile: (name) => `Quitar ${name}`,
   },
   emojiPicker: {
+    searchLabel: "Buscar emoji",
+    label: "Selector de emoji",
     search: "Buscar emoji...",
     categories: {
       all: "Todos",
@@ -559,7 +588,13 @@ export const msMessagesEs: MsMessages = {
     progress: "Progreso del formulario",
   },
   glimpse: { label: "Vista previa del enlace" },
-  iconPicker: { search: "Buscar iconos...", placeholder: "Selecciona un icono...", all: "Todos" },
+  iconPicker: {
+    searchLabel: "Buscar iconos",
+    label: "Selector de iconos",
+    search: "Buscar iconos...",
+    placeholder: "Selecciona un icono...",
+    all: "Todos",
+  },
   input: {
     clear: "Borrar campo",
     showPassword: "Mostrar contraseña",
@@ -629,6 +664,7 @@ export const msMessagesEs: MsMessages = {
   tag: { remove: "Quitar", removeLabel: (label) => `Quitar ${label}` },
   toast: { dismiss: "Cerrar notificación" },
   truncate: { more: "Ver más", less: "Ver menos" },
+  marquee: { play: "Reproducir animación", pause: "Pausar animación" },
 };
 
 /** Built-in dictionaries by language (the region is ignored: "en-GB" uses English). */

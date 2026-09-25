@@ -17,6 +17,7 @@ const props = withDefaults(defineProps<MsBadgeProps>(), {
   dotOnly: false,
   pulse: false,
   bordered: false,
+  as: "span",
 });
 
 const slots = useSlots();
@@ -76,7 +77,8 @@ const badgeClasses = computed(() =>
     </span>
   </span>
 
-  <span
+  <component
+    :is="props.as"
     v-else-if="shouldRenderBadge"
     :class="badgeClasses"
     :data-variant="props.variant"
@@ -89,5 +91,5 @@ const badgeClasses = computed(() =>
   >
     <span v-if="props.dot && !props.dotOnly" class="ms-badge-dot" aria-hidden="true" />
     <slot>{{ displayContent }}</slot>
-  </span>
+  </component>
 </template>

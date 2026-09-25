@@ -58,7 +58,10 @@ export interface MsAsideProps {
 }
 
 export interface MsAppShellFooterProps {
-  /** Reserved for a bordered footer; currently not applied by the component. */
+  /**
+   * Draws the top border (`--ms-color-border-subtle`) that separates the footer from the
+   * content; set `false` for a borderless footer. @default true
+   */
   bordered?: boolean | undefined;
 }
 /** Props of the app-shell `MsFooter` region. */

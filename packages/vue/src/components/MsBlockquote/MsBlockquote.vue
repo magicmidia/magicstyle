@@ -11,7 +11,21 @@ const props = withDefaults(defineProps<MsBlockquoteProps>(), {
   variant: "bordered",
   size: "md",
   icon: false,
+  citeUrl: "",
 });
+
+defineSlots<{
+  /** The quoted text. */
+  default?(): unknown;
+  /** Custom quote icon (shown even when `icon` is false). */
+  icon?(): unknown;
+  /** Rich author name; replaces `author`. */
+  author?(): unknown;
+  /** Rich author role; replaces `authorRole`. */
+  role?(): unknown;
+  /** Rich source title inside `<cite>`; replaces `cite`. */
+  cite?(): unknown;
+}>();
 
 const classes = computed(() => [
   "ms-blockquote",
@@ -24,7 +38,7 @@ const classes = computed(() => [
 <template>
   <blockquote
     :class="classes"
-    :cite="props.cite || undefined"
+    :cite="props.citeUrl || undefined"
     :data-variant="props.variant"
     :data-tone="props.tone"
     :data-size="props.size"
@@ -44,7 +58,14 @@ const classes = computed(() => [
     </div>
 
     <footer
-      v-if="props.author || props.cite || props.authorRole || $slots.author || $slots.cite"
+      v-if="
+        props.author ||
+        props.cite ||
+        props.authorRole ||
+        $slots.author ||
+        $slots.role ||
+        $slots.cite
+      "
       class="ms-blockquote__footer"
     >
       <img

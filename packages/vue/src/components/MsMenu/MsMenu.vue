@@ -7,7 +7,12 @@ export type MsMenuDismissReason = "escape" | "outside" | "tab" | "select";
 
 const props = withDefaults(
   defineProps<{
+    /** Menu entries, rendered in order as `role="menuitem"` rows. */
     items: readonly MsMenuItem[];
+    /**
+     * Whether the menu is open. Opening focuses the `initialFocus` item; the menu emits
+     * `update:open` false on Escape, Tab and outside clicks. @default false
+     */
     open?: boolean;
     /** Element treated as part of the menu for outside-click (usually the trigger wrapper). */
     anchor?: HTMLElement | null;
@@ -18,8 +23,11 @@ const props = withDefaults(
 );
 
 const emit = defineEmits<{
+  /** An enabled item was activated (click, Enter or Space). */
   select: [item: MsMenuItem];
+  /** Emitted with `false` when the menu asks to close (Escape, Tab, outside click). */
   "update:open": [open: boolean];
+  /** Why the menu is closing: "escape", "outside", "tab" or "select". */
   dismiss: [reason: MsMenuDismissReason];
 }>();
 
@@ -55,13 +63,37 @@ function step(delta: 1 | -1): void {
   moveTo(enabled[next]!);
 }
 
+/** Element focused before the menu took focus (normally its trigger). */
+let returnFocusTo: HTMLElement | null = null;
+
+function focusTarget(): HTMLElement | null {
+  if (returnFocusTo?.isConnected && !root.value?.contains(returnFocusTo)) return returnFocusTo;
+  const anchor = props.anchor;
+  if (!anchor) return null;
+  return anchor.matches("button, a[href], [tabindex]")
+    ? anchor
+    : anchor.querySelector<HTMLElement>("button, a[href], [tabindex]:not([tabindex='-1'])");
+}
+
+/**
+ * Escape and selection hand focus back to the trigger, but only when focus is still in
+ * the menu: Tab and outside clicks already moved it somewhere the user chose.
+ */
+function restoreFocus(): void {
+  if (typeof document === "undefined") return;
+  if (!root.value?.contains(document.activeElement)) return;
+  focusTarget()?.focus();
+}
+
 function dismiss(reason: MsMenuDismissReason): void {
+  if (reason === "escape") restoreFocus();
   emit("dismiss", reason);
   emit("update:open", false);
 }
 
 function onSelect(item: MsMenuItem): void {
   if (item.disabled === true) return;
+  restoreFocus();
   emit("select", item);
   emit("dismiss", "select");
 }
@@ -131,6 +163,10 @@ watch(
   isOpen,
   (open) => {
     if (!open) return;
+    if (typeof document !== "undefined") {
+      const active = document.activeElement;
+      returnFocusTo = active instanceof HTMLElement && active !== document.body ? active : null;
+    }
     activeIndex.value = edgeEnabledIndex(props.initialFocus);
     focusActive();
   },

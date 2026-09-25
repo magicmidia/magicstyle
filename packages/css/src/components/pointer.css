@@ -46,3 +46,10 @@
   transform: translate(-50%, -50%) scale(1.6);
   background-color: color-mix(in oklch, var(--ms-color-interactive-primary) 30%, transparent);
 }
+
+/* Decorative cursor motion is dropped entirely for reduced-motion users. */
+@media (prefers-reduced-motion: reduce) {
+  .ms-pointer {
+    display: none;
+  }
+}

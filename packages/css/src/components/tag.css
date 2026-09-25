@@ -186,6 +186,16 @@
   background-color: var(--ms-color-interactive-neutral-subtle);
 }
 
+/* Clickable + closable: the action span is the button, next to the close button. */
+.ms-tag__action {
+  display: inline-flex;
+  align-items: center;
+  gap: inherit;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.ms-tag__action:focus-visible,
 .ms-tag--clickable:focus-visible {
   outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
   outline-offset: var(--ms-focus-ring-offset);

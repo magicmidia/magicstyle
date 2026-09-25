@@ -44,20 +44,30 @@ const createParts = computed<{ before: string; after: string } | null>(() => {
 });
 
 defineSlots<{
-  default?(): unknown;
+  /** Content of one option in the list (`active` = keyboard-highlighted). */
   option?(props: { option: MsSelectOption; selected: boolean; active: boolean }): unknown;
+  /** Displayed value of a single selection. */
   selectedOption?(props: { option: MsSelectOption }): unknown;
+  /** Replaces the whole value area (tags, counter or single value). */
   value?(props: {
     selectedOptions: MsSelectOption[];
     remove: (val: string | number) => void;
   }): unknown;
+  /** One tag of a multiple selection. */
   tag?(props: { option: MsSelectOption; remove: () => void }): unknown;
+  /** Selection count shown in counter mode. */
   counter?(props: { count: number; total: number }): unknown;
+  /** Leading content of the control (replaces `prefix`). */
   prefix?(): unknown;
+  /** Leading icon (used when the `prefix` slot is not provided). */
   icon?(): unknown;
+  /** Trailing content before the clear button and chevron. */
   suffix?(): unknown;
+  /** Content shown when no option matches. */
   empty?(): unknown;
+  /** Content at the top of the dropdown (above the search box). */
   header?(): unknown;
+  /** Content at the bottom of the dropdown. */
   footer?(): unknown;
 }>();
 

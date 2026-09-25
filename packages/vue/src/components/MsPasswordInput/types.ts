@@ -1,8 +1,12 @@
 export type MsPasswordInputSize = "sm" | "md" | "lg";
 
+/** A password rule shown in the criteria list and counted by the strength meter. */
 export interface MsPasswordCriterion {
+  /** Stable id (built-in ids also select the localized label). */
   id: string;
+  /** Rule text shown in the criteria list. */
   label: string;
+  /** Returns true when the password satisfies the rule. */
   validator: (password: string) => boolean;
 }
 
@@ -23,19 +27,32 @@ export const defaultCriteria: MsPasswordCriterion[] = [
 ];
 
 export interface MsPasswordInputProps {
+  /** Password value (`v-model`). @default "" */
   modelValue?: string;
-  /** @default from messages (`passwordInput.placeholder`) */
+  /** Placeholder text. @default from messages (`passwordInput.placeholder`) */
   placeholder?: string;
+  /** Size scale. @default "md" */
   size?: MsPasswordInputSize;
+  /** Disables the input and the visibility toggle. @default false */
   disabled?: boolean;
+  /** Marks the input invalid (a parent MsField error also does). @default false */
   invalid?: boolean;
+  /** Shows the show/hide password button. @default true */
   showToggle?: boolean;
+  /** Shows a 4-step strength meter based on how many criteria are met. @default false */
   showStrengthMeter?: boolean;
+  /** Lists the criteria with a met/unmet state. @default false */
   showCriteria?: boolean;
+  /** Custom rules; defaults to the built-in `defaultCriteria` with localized labels. */
   criteria?: MsPasswordCriterion[];
 }
 
 export interface MsPasswordInputEmits {
+  /** Fires on every input; payload is the new password. */
   (e: "update:modelValue", value: string): void;
+  /**
+   * The strength score changed: 0 when empty, 1 for ≤1 met criterion, 2 for 2, 3 for 3–4
+   * and 4 for 5 or more.
+   */
   (e: "strength-change", score: number): void;
 }

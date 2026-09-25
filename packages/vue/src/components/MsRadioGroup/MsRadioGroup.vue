@@ -7,10 +7,12 @@ import { useFieldControl } from "../../composables/use-field-context.ts";
 const props = defineProps<MsRadioGroupProps>();
 
 const emit = defineEmits<{
+  /** A radio was chosen; payload is its `value`. */
   "update:modelValue": [value: unknown];
 }>();
 
 defineSlots<{
+  /** `MsRadio` children. */
   default?(): unknown;
 }>();
 

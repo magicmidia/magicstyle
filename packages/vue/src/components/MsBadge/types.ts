@@ -1,3 +1,4 @@
+import type { Component } from "vue";
 import type { MsSize, MsTone } from "../MsButton/types.ts";
 
 export type MsBadgeVariant = "soft" | "solid" | "outline";
@@ -9,7 +10,7 @@ export interface MsBadgeProps {
   /** Visual variant. @default "solid" */
   variant?: MsBadgeVariant;
   /** Semantic tone. @default "primary" */
-  tone?: MsBadgeTone;
+  tone?: MsBadgeTone | undefined;
   /** Size scale. @default "md" */
   size?: MsBadgeSize;
   /** Rounded pill badge. */
@@ -17,7 +18,7 @@ export interface MsBadgeProps {
   /** Displays a small circular dot indicator before content. */
   dot?: boolean;
   /** Numeric counter value to display. */
-  count?: number;
+  count?: number | undefined;
   /** Maximum counter value before displaying '+'. @default 99 */
   maxCount?: number;
   /** Whether to render the badge when count is 0. @default false */
@@ -30,4 +31,10 @@ export interface MsBadgeProps {
   pulse?: boolean;
   /** Inverted outline ring around badge for separation against dark/busy backgrounds. */
   bordered?: boolean;
+  /**
+   * Element tag or component for the standalone badge (e.g. `"a"` or `RouterLink`); extra
+   * attributes such as `href`/`to` are passed through. The corner wrapper mode (with
+   * `placement` and a default slot) always renders spans. @default "span"
+   */
+  as?: string | Component;
 }

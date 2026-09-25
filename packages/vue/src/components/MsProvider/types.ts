@@ -15,11 +15,16 @@ export interface MsProviderProps {
   theme?: string;
 
   /**
-   * Color mode preference: "light", "dark", or "system".
-   * In DOM, "system" is resolved to "light" or "dark".
+   * Color mode preference: "light", "dark", "system" or "inherit".
+   * "system" renders `data-ms-color-mode="system"`, which CSS resolves through
+   * `prefers-color-scheme`. "inherit" (meant for `target="wrapper"`) sets no
+   * `data-ms-color-mode`, so the wrapper follows the nearest ancestor's mode (e.g. a
+   * nested provider that only changes the locale or density). While `theme` equals the
+   * inherited theme, `data-ms-theme` is omitted too, because a theme scope re-declares
+   * its light palette; a different `theme` with "inherit" therefore renders light colors.
    * Default: "system".
    */
-  colorMode?: ColorModePreference;
+  colorMode?: ColorModePreference | "inherit";
 
   /**
    * Spatial density scale dial: "compact", "comfortable", "spacious".

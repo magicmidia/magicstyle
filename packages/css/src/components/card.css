@@ -4,7 +4,7 @@
  *          .ms-card-content, .ms-card-footer, .ms-card-actions.
  * Variants: raised (default), flat, outline, sunken, soft, glass.
  * Padding: none, sm, md (default), lg.
- * States: data-interactive.
+ * States: data-interactive, data-link (link card).
  */
 
 .ms-card {
@@ -163,22 +163,30 @@
   box-shadow: var(--ms-elevation-md);
 }
 
-/* Interactive card */
-.ms-card[data-interactive] {
+/* Interactive card (button semantics) and link card (rendered as <a href>) */
+.ms-card[data-interactive],
+.ms-card[data-link] {
   cursor: pointer;
   user-select: none;
 }
 
-.ms-card[data-interactive]:hover {
+.ms-card[data-link] {
+  text-decoration: none;
+}
+
+.ms-card[data-interactive]:hover,
+.ms-card[data-link]:hover {
   border-color: var(--ms-color-border-strong);
   box-shadow: var(--ms-elevation-md);
 }
 
-.ms-card[data-interactive]:active {
+.ms-card[data-interactive]:active,
+.ms-card[data-link]:active {
   box-shadow: var(--ms-elevation-card);
 }
 
-.ms-card[data-interactive]:focus-visible {
+.ms-card[data-interactive]:focus-visible,
+.ms-card[data-link]:focus-visible {
   outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
   outline-offset: var(--ms-focus-ring-offset);
 }

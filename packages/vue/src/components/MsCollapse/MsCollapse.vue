@@ -49,13 +49,13 @@ const classes = computed(() => [
       :aria-controls="contentId"
       @click="toggle"
     >
-      <div class="ms-collapse__title">
+      <span class="ms-collapse__title">
         <slot name="header">
           <slot name="title">{{ props.title }}</slot>
         </slot>
-      </div>
+      </span>
 
-      <div class="ms-collapse__actions">
+      <span class="ms-collapse__actions">
         <slot name="extra" />
         <slot name="chevron" :open="isOpen">
           <svg
@@ -71,7 +71,7 @@ const classes = computed(() => [
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </slot>
-      </div>
+      </span>
     </button>
 
     <!-- inert: collapsed content is neither focusable nor exposed to assistive tech. -->

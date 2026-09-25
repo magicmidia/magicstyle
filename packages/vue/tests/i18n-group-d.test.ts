@@ -1,6 +1,6 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { mount } from "@vue/test-utils";
-import { h, type Component } from "vue";
+import { h, nextTick, type Component } from "vue";
 import { MsProvider, MsSelect, MsSpinner, MsTruncate } from "../src/index.ts";
 
 const options = [
@@ -47,13 +47,17 @@ describe("group D components read built-in strings from messages", () => {
     expect(create.find("strong").text()).toBe("Solid");
   });
 
-  it("MsSpinner and MsTruncate render English defaults", () => {
+  it("MsSpinner and MsTruncate render English defaults", async () => {
     expect(withProvider({ locale: "en-US" }, MsSpinner).text()).toBe("Loading...");
+    // The toggle only renders for overflowing text; jsdom has no layout, so fake it.
+    const scroll = vi.spyOn(HTMLElement.prototype, "scrollHeight", "get").mockReturnValue(100);
     const truncate = withProvider({ locale: "en-US" }, MsTruncate, {
       text: "Long text",
       expandable: true,
     });
+    await nextTick();
     expect(truncate.find(".ms-truncate__toggle").text()).toBe("Show more");
+    scroll.mockRestore();
   });
 
   it("applies :messages overrides while explicit props still win", () => {

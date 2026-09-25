@@ -10,7 +10,7 @@ export interface MsBannerProps {
   variant?: MsBannerVariant | undefined;
   /** Display positioning: "top" (sticky header), "bottom" (sticky footer), "inline". Default: "inline". */
   position?: MsBannerPosition | undefined;
-  /** Optional title text prefix. */
+  /** Optional bold title before the message; also becomes the region's accessible name. */
   title?: string | undefined;
   /** Optional primary action button label. */
   actionLabel?: string | undefined;
@@ -19,6 +19,8 @@ export interface MsBannerProps {
 }
 
 export interface MsBannerEmits {
+  /** The dismiss button was clicked (the banner hides itself). */
   (e: "dismiss"): void;
+  /** The default `actionLabel` button was clicked. */
   (e: "action"): void;
 }

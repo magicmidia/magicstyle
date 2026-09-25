@@ -13,9 +13,9 @@ export type MsAvatarTone = Extract<
 
 export interface MsAvatarProps {
   /** Image source URL. */
-  src?: string;
+  src?: string | undefined;
   /** Name of the entity for alt text and initials fallback. */
-  name?: string;
+  name?: string | undefined;
   /** Size scale. @default "md" */
   size?: MsAvatarSize;
   /** Shape geometry. @default "circle" */

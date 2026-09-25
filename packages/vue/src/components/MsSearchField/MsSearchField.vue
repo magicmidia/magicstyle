@@ -24,7 +24,9 @@ const t = useMsMessages();
 const placeholderText = computed(() => props.placeholder ?? t.value.searchField.placeholder);
 
 defineSlots<{
+  /** Replaces the leading magnifier icon. */
   icon?(): unknown;
+  /** Extra controls at the end of the field (after spinner/clear/shortcut). */
   actions?(): unknown;
 }>();
 

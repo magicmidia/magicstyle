@@ -24,11 +24,17 @@ const style = computed(() => {
   };
 });
 
+defineSlots<{
+  /** Renders one item; `index` is the item's position in `items` (not within its column). */
+  default?(props: { item: unknown; index: number }): unknown;
+}>();
+
+/** Round-robin distribution; each entry keeps its global index for the slot. */
 const columns = computed(() => {
-  const result: (typeof props.items)[number][][] = Array.from({ length: props.cols }, () => []);
+  const cols = Math.max(1, props.cols);
+  const result: { item: unknown; index: number }[][] = Array.from({ length: cols }, () => []);
   props.items.forEach((item, index) => {
-    const colIndex = index % props.cols;
-    result[colIndex]!.push(item);
+    result[index % cols]!.push({ item, index });
   });
   return result;
 });
@@ -37,9 +43,11 @@ const columns = computed(() => {
 <template>
   <div class="ms-masonry-grid" :style="style">
     <div v-for="(col, colIdx) in columns" :key="colIdx" class="ms-masonry-grid__column">
-      <slot v-for="(item, itemIdx) in col" :key="itemIdx" :item="item" :index="itemIdx">
-        <div class="ms-bento-item">{{ item }}</div>
-      </slot>
+      <template v-for="entry in col" :key="entry.index">
+        <slot :item="entry.item" :index="entry.index">
+          <div class="ms-bento-item">{{ entry.item }}</div>
+        </slot>
+      </template>
     </div>
   </div>
 </template>

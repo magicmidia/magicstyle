@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
+import { matchesAccept } from "../../composables/file-accept.ts";
 import type { MsFileInputProps, MsFileInputEmits } from "./types.ts";
 import { useFieldControl } from "../../composables/use-field-context.ts";
 import { useMsMessages } from "../../composables/use-ms-messages.ts";
@@ -18,13 +19,30 @@ const labelText = computed(() => props.label ?? t.value.fileInput.prompt);
 const fieldControl = useFieldControl("ms-file-input");
 
 defineSlots<{
+  /** Replaces the dropzone prompt text (`label`). */
   default?(): unknown;
+  /** Replaces the default folder icon. */
   icon?(): unknown;
 }>();
 
 const inputRef = ref<HTMLInputElement | null>(null);
 const isDragging = ref(false);
 const selectedFiles = ref<File[]>([]);
+
+/** Keeps the preview list in sync with `v-model`; `null`/`[]` resets it (e.g. after a form reset). */
+watch(
+  () => props.modelValue,
+  (value) => {
+    if (value === undefined && selectedFiles.value.length === 0) return;
+    if (value === null || value === undefined) selectedFiles.value = [];
+    else if (Array.isArray(value)) {
+      if (value !== selectedFiles.value) selectedFiles.value = [...value];
+    } else if (selectedFiles.value.length !== 1 || selectedFiles.value[0] !== value) {
+      selectedFiles.value = [value];
+    }
+  },
+  { immediate: true },
+);
 
 function formatFileSize(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
@@ -39,6 +57,11 @@ function processFiles(fileList: FileList | null) {
   const files = Array.from(fileList);
 
   for (const file of files) {
+    // Dropped files bypass the native picker's `accept` filter, so enforce it here.
+    if (!matchesAccept(file, props.accept)) {
+      emit("reject", file, "accept");
+      continue;
+    }
     if (props.maxSize && file.size > props.maxSize) {
       emit("reject", file, "maxSize");
       continue;

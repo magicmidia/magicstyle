@@ -1,16 +1,21 @@
 /*
  * Magic-Style Marquee layer (doc 05 §10).
  * Infinite continuous looping ticker with GPU acceleration and fade edge masks.
+ * Pausable via the built-in control (WCAG 2.2.2); honors prefers-reduced-motion.
  */
 
 .ms-marquee {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.ms-marquee__viewport {
   display: flex;
   overflow: hidden;
   user-select: none;
   gap: var(--ms-marquee-gap, 1.5rem);
   width: 100%;
-  position: relative;
-  box-sizing: border-box;
 }
 
 .ms-marquee__track {
@@ -28,11 +33,48 @@
 }
 
 .ms-marquee--pause-hover:hover .ms-marquee__track,
-.ms-marquee--pause-hover:focus-within .ms-marquee__track {
+.ms-marquee--pause-hover:focus-within .ms-marquee__track,
+.ms-marquee--paused .ms-marquee__track {
   animation-play-state: paused;
 }
 
-.ms-marquee--fade {
+/* Pause/play control (WCAG 2.2.2), pinned to the inline-end edge above the fade mask. */
+.ms-marquee__control {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: var(--ms-space-1);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 24px;
+  block-size: 24px;
+  padding: 0;
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border-radius: var(--ms-radius-full);
+  background-color: var(--ms-color-surface-raised);
+  color: var(--ms-color-text-secondary);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.ms-marquee__control:hover {
+  color: var(--ms-color-text-primary);
+}
+
+.ms-marquee__control:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
+}
+
+/* Reduced motion: start paused (before hydration too) unless the user pressed play. */
+@media (prefers-reduced-motion: reduce) {
+  .ms-marquee:not(.ms-marquee--playing) .ms-marquee__track {
+    animation-play-state: paused;
+  }
+}
+
+.ms-marquee--fade .ms-marquee__viewport {
   mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
   -webkit-mask-image: linear-gradient(
     to right,

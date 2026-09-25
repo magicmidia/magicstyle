@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, nextTick, onMounted } from "vue";
 import { sanitizeSvg } from "../../composables/sanitize-svg.ts";
 import { useMsMessages } from "../../composables/use-ms-messages.ts";
+import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
+import { useMsId } from "../../composables/use-ms-id.ts";
 import type { MsIconPickerProps, MsIconPickerEmits, MsIconItem } from "./types.ts";
 
 const ICON_PATHS: Record<string, string> = {
@@ -141,27 +143,51 @@ const filteredIcons = computed(() => {
   return list;
 });
 
+/** Human-readable name of the selected icon (falls back to the id for unknown values). */
+const selectedName = computed(() => {
+  if (!props.modelValue) return "";
+  return activeIcons.value.find((i) => i.id === props.modelValue)?.name ?? props.modelValue;
+});
+
+const rootRef = ref<HTMLElement | null>(null);
+const triggerRef = ref<HTMLButtonElement | null>(null);
+const searchRef = ref<HTMLInputElement | null>(null);
+const panelId = useMsId("ms-icon-picker-panel");
+
+/** Closes the panel and hands focus back to the trigger (APG disclosure/dialog pattern). */
+function close(): void {
+  isOpen.value = false;
+  triggerRef.value?.focus();
+}
+
+useDismissableLayer({ active: isOpen, inside: [rootRef], onDismiss: close });
+
 const selectIcon = (icon: MsIconItem) => {
   emit("update:modelValue", icon.id);
   emit("select", icon);
-  isOpen.value = false;
+  close();
 };
 
 const toggleDropdown = () => {
   if (props.disabled) return;
   isOpen.value = !isOpen.value;
+  if (isOpen.value) void nextTick(() => searchRef.value?.focus());
 };
 </script>
 
 <template>
-  <div class="ms-icon-picker">
+  <div ref="rootRef" class="ms-icon-picker">
     <button
+      ref="triggerRef"
       type="button"
       class="ms-icon-picker__trigger"
       :disabled="props.disabled"
+      aria-haspopup="dialog"
+      :aria-expanded="isOpen"
+      :aria-controls="isOpen ? panelId : undefined"
       @click="toggleDropdown"
     >
-      <span class="ms-icon-picker__preview">
+      <span class="ms-icon-picker__preview" aria-hidden="true">
         <!-- eslint-disable vue/no-v-html -- built-in paths or sanitizeSvg() allowlist output -->
         <svg
           v-if="props.modelValue && getIconContent(props.modelValue)"
@@ -178,14 +204,22 @@ const toggleDropdown = () => {
         <!-- eslint-enable vue/no-v-html -->
         <span v-else>❖</span>
       </span>
-      <span>{{ props.modelValue || resolvedPlaceholder }}</span>
+      <span>{{ selectedName || resolvedPlaceholder }}</span>
     </button>
 
-    <div v-if="isOpen" class="ms-icon-picker__dropdown">
+    <div
+      v-if="isOpen"
+      :id="panelId"
+      class="ms-icon-picker__dropdown"
+      role="dialog"
+      :aria-label="t.iconPicker.label"
+    >
       <input
+        ref="searchRef"
         v-model="searchQuery"
         type="text"
         class="ms-icon-picker__search"
+        :aria-label="t.iconPicker.searchLabel"
         :placeholder="t.iconPicker.search"
       />
 
@@ -196,6 +230,7 @@ const toggleDropdown = () => {
           type="button"
           class="ms-icon-picker__category-btn"
           :class="{ 'ms-icon-picker__category-btn--active': selectedCategory === cat }"
+          :aria-pressed="selectedCategory === cat"
           @click="selectedCategory = cat"
         >
           {{ cat === ALL_CATEGORIES ? t.iconPicker.all : cat }}
@@ -210,11 +245,14 @@ const toggleDropdown = () => {
           class="ms-icon-picker__item"
           :class="{ 'ms-icon-picker__item--selected': props.modelValue === icon.id }"
           :title="icon.name"
+          :aria-label="icon.name"
+          :aria-pressed="props.modelValue === icon.id"
           @click="selectIcon(icon)"
         >
           <!-- eslint-disable vue/no-v-html -- built-in paths or sanitizeSvg() allowlist output -->
           <svg
             v-if="getIconContent(icon.id)"
+            aria-hidden="true"
             width="18"
             height="18"
             viewBox="0 0 24 24"

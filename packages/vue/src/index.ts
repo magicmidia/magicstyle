@@ -304,6 +304,7 @@ export type {
   MsTimelineItemProps,
   MsTimelineDirection,
   MsTimelineTone,
+  MsTimelineTitleTag,
   MsTimelineContext,
 } from "./components/MsTimeline/types.ts";
 
@@ -433,6 +434,7 @@ export type {
   MsScrollSpyProps,
   MsScrollSpyEmits,
   MsScrollSpyItem,
+  MsScrollSpyContainer,
 } from "./components/MsScrollSpy/types.ts";
 
 export { default as MsSidebarMenu } from "./components/MsSidebarMenu/MsSidebarMenu.vue";
@@ -786,6 +788,7 @@ export {
   type DismissableLayerOptions,
 } from "./composables/use-dismissable-layer.ts";
 export { useScrollLock } from "./composables/use-scroll-lock.ts";
+export { usePrefersReducedMotion } from "./composables/use-prefers-reduced-motion.ts";
 export { safeHref, safeRel } from "./composables/safe-url.ts";
 export { sanitizeSvg } from "./composables/sanitize-svg.ts";
 

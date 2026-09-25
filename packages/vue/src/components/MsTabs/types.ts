@@ -64,8 +64,17 @@ export interface MsTabsEmits {
 }
 
 export interface MsTabListProps {
+  /** Accessible name of the `role="tablist"` (e.g. "Account settings"). */
   ariaLabel?: string;
+  /**
+   * Scrolls horizontally when tabs overflow. Falls back to the parent `MsTabs` value,
+   * then true.
+   */
   scrollable?: boolean;
+  /**
+   * Shows previous/next arrow buttons while the list overflows (never in vertical
+   * orientation). Falls back to the parent `MsTabs` value, then true.
+   */
   showArrows?: boolean;
 }
 
@@ -82,6 +91,7 @@ export interface MsTabProps {
 }
 
 export interface MsTabPanelsProps {
+  /** Element tag of the panels container. @default "div" */
   as?: string;
 }
 

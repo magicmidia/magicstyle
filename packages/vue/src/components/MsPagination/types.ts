@@ -25,8 +25,6 @@ export interface MsPaginationProps {
 export interface MsPaginationEmits {
   /** Fires when a different valid page is selected; payload is the new 1-based page. */
   (e: "update:currentPage", page: number): void;
-  /** Declared for `v-model:pageSize`; currently not emitted by the component. */
-  (e: "update:pageSize", size: number): void;
   /** Fires alongside `update:currentPage`; payload is the new 1-based page. */
   (e: "change", page: number): void;
 }

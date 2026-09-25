@@ -9,6 +9,7 @@ export interface MsCommandItem {
 }
 
 export interface MsCommandPaletteProps {
+  /** Open state (`v-model`); Ctrl/⌘+K toggles it when `hotkey` is on. @default false */
   modelValue?: boolean;
   /**
    * Commands to list. Without items the palette shows its empty state.
@@ -33,6 +34,8 @@ export interface MsCommandPaletteProps {
 }
 
 export interface MsCommandPaletteEmits {
+  /** The palette opened or closed (hotkey, Escape, selection). */
   (e: "update:modelValue", open: boolean): void;
+  /** A command was chosen (the palette then closes). */
   (e: "select", item: MsCommandItem): void;
 }

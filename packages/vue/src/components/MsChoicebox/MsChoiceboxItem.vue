@@ -4,7 +4,7 @@
     :role="computedType === 'radio' ? 'radio' : 'checkbox'"
     :aria-checked="selected"
     :aria-disabled="computedDisabled ? 'true' : undefined"
-    :tabindex="computedDisabled ? -1 : 0"
+    :tabindex="computedDisabled || !tabbable ? -1 : 0"
     @click="handleClick"
     @keydown.space.prevent="handleClick"
     @keydown.enter.prevent="handleClick"
@@ -62,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject } from "vue";
+import { computed, inject, onBeforeUnmount } from "vue";
 import { MS_CHOICEBOX_KEY, type MsChoiceboxItemProps } from "./types.ts";
 
 defineOptions({
@@ -87,6 +87,12 @@ const computedIndicatorPlacement = computed(
   () => props.indicatorPlacement || group?.indicatorPlacement || "left",
 );
 const computedDisabled = computed(() => props.disabled || group?.disabled || false);
+
+const unregister = group?.register?.(props.value, () => computedDisabled.value);
+if (unregister) onBeforeUnmount(unregister);
+
+/** In a radio group only one item (checked, else first enabled) is in the tab order. */
+const tabbable = computed(() => (group?.isTabbable ? group.isTabbable(props.value) : true));
 
 const selected = computed(() => {
   if (group) {

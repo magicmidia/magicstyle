@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { ref, computed, toRef, watch, provide, onMounted, onBeforeUnmount } from "vue";
+import { ref, computed, watch, provide, onMounted, onBeforeUnmount } from "vue";
 import type { MsCarouselProps, MsCarouselEmits } from "./types.ts";
 import { MS_CAROUSEL_KEY } from "./types.ts";
 import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsCarouselProps>(), {
   modelValue: 0,
-  totalSlides: 1,
   autoplay: false,
   interval: 4000,
   loop: true,
@@ -32,11 +31,16 @@ watch(
   },
 );
 
-let slideCount = 0;
+/** Slides register in mount order; their count is the default for `totalSlides`. */
+const registeredSlides = ref(0);
+const total = computed(() => Math.max(1, props.totalSlides ?? registeredSlides.value));
 provide(MS_CAROUSEL_KEY, {
   activeSlide: current,
-  registerSlide: () => slideCount++,
-  totalSlides: toRef(props, "totalSlides"),
+  registerSlide: () => registeredSlides.value++,
+  unregisterSlide: () => {
+    registeredSlides.value = Math.max(0, registeredSlides.value - 1);
+  },
+  totalSlides: total,
 });
 
 // WCAG 2.2.2: autoplay pauses on hover/focus, has a visible control, and never starts
@@ -50,9 +54,9 @@ const isRotating = computed(() => props.autoplay && !userPaused.value && !intera
 const goTo = (index: number) => {
   let target = index;
   if (target < 0) {
-    target = props.loop ? props.totalSlides - 1 : 0;
-  } else if (target >= props.totalSlides) {
-    target = props.loop ? 0 : props.totalSlides - 1;
+    target = props.loop ? total.value - 1 : 0;
+  } else if (target >= total.value) {
+    target = props.loop ? 0 : total.value - 1;
   }
 
   current.value = target;
@@ -65,7 +69,7 @@ const prev = () => goTo(current.value - 1);
 
 const startAutoplay = () => {
   stopAutoplay();
-  if (!isRotating.value || props.totalSlides <= 1 || prefersReducedMotion()) return;
+  if (!isRotating.value || total.value <= 1 || prefersReducedMotion()) return;
   timer = setInterval(() => {
     next();
   }, props.interval);
@@ -121,7 +125,7 @@ const trackStyle = computed(() => ({
     @focusout="resumeAfterInteraction"
   >
     <button
-      v-if="props.autoplay && props.totalSlides > 1"
+      v-if="props.autoplay && total > 1"
       type="button"
       class="ms-carousel__rotation"
       :aria-label="userPaused ? t.carousel.play : t.carousel.pause"
@@ -136,7 +140,7 @@ const trackStyle = computed(() => ({
     </div>
 
     <!-- Navigation arrows -->
-    <template v-if="props.showArrows && props.totalSlides > 1">
+    <template v-if="props.showArrows && total > 1">
       <button
         type="button"
         class="ms-carousel__arrow ms-carousel__arrow--prev"
@@ -157,12 +161,12 @@ const trackStyle = computed(() => ({
 
     <!-- Indicators -->
     <div
-      v-if="props.showIndicators && props.totalSlides > 1"
+      v-if="props.showIndicators && total > 1"
       class="ms-carousel__indicators"
       :aria-label="t.carousel.indicators"
     >
       <button
-        v-for="index in props.totalSlides"
+        v-for="index in total"
         :key="index"
         type="button"
         class="ms-carousel__indicator"

@@ -128,3 +128,11 @@ describe("useMsId (doc 08 §12)", () => {
     expect(a).not.toBe(b);
   });
 });
+
+describe("MsButton aria-expanded", () => {
+  it("is absent unless `open` is set", () => {
+    expect(mount(MsButton).attributes("aria-expanded")).toBeUndefined();
+    expect(mount(MsButton, { props: { open: false } }).attributes("aria-expanded")).toBe("false");
+    expect(mount(MsButton, { props: { open: true } }).attributes("aria-expanded")).toBe("true");
+  });
+});

@@ -38,7 +38,7 @@ export interface MsSeparatorProps {
   spacing?: MsSeparatorSpacing;
 
   /**
-   * Optional text label to render embedded in a horizontal separator (e.g. "OU").
+   * Optional text label to render embedded in a horizontal separator (e.g. "OR").
    */
   label?: string;
 

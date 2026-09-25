@@ -8,8 +8,10 @@ export type MsBlockquoteTone = "default" | "primary" | "accent" | "warning" | "i
 export type MsBlockquoteSize = "sm" | "md" | "lg";
 
 export interface MsBlockquoteProps {
-  /** Source of the quote: set as the native `cite` attribute and rendered in the footer. @default "" */
+  /** Visible title of the quote's source, rendered in a `<cite>` in the footer. @default "" */
   cite?: string;
+  /** URL of the quote's source, set as the native `cite` attribute of `<blockquote>`. @default "" */
+  citeUrl?: string;
   /** Author name shown in the footer (also the avatar alt text). @default "" */
   author?: string;
   /** Author role or title shown below the name. @default "" */

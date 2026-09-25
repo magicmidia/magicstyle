@@ -12,6 +12,9 @@ export interface MsTimelineProps {
   direction?: MsTimelineDirection;
 }
 
+/** Element used for a timeline item title. */
+export type MsTimelineTitleTag = "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
+
 export interface MsTimelineItemProps {
   /**
    * Semantic color tone for the milestone indicator bullet.
@@ -25,6 +28,13 @@ export interface MsTimelineItemProps {
   title?: string;
 
   /**
+   * Element for the title; pick the heading level that fits the page outline, or
+   * "p"/"span" when milestones should not be headings.
+   * @default 'h4'
+   */
+  titleTag?: MsTimelineTitleTag;
+
+  /**
    * Optional timestamp or date label.
    */
   timestamp?: string;
@@ -33,6 +43,18 @@ export interface MsTimelineItemProps {
    * Description content text.
    */
   description?: string;
+
+  /**
+   * Fills the indicator node with the tone color (e.g. for completed milestones).
+   * @default false
+   */
+  solid?: boolean;
+
+  /**
+   * Marks the current milestone: a pulsing halo on the node and `aria-current="step"`.
+   * @default false
+   */
+  active?: boolean;
 }
 
 export interface MsTimelineContext {

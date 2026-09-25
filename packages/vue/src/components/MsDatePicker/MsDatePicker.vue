@@ -2,9 +2,12 @@
   <div ref="rootRef" class="ms-date-picker" @focusout="onFocusout">
     <div class="ms-date-picker__input-wrapper">
       <input
+        :id="controlId"
         ref="inputRef"
         type="text"
         class="ms-date-picker__input"
+        :aria-describedby="describedBy"
+        :aria-invalid="fieldInvalid || undefined"
         :value="displayValue"
         :placeholder="props.placeholder || defaultPlaceholder"
         :disabled="props.disabled"
@@ -162,19 +165,39 @@
 
       <!-- Quick Presets -->
       <div v-if="mode === 'date'" class="ms-date-picker__presets">
-        <button type="button" class="ms-date-picker__preset-btn" @click="selectPreset('today')">
+        <button
+          type="button"
+          class="ms-date-picker__preset-btn"
+          :disabled="isPresetDisabled(0)"
+          @click="selectPreset(0)"
+        >
           {{ t.datePicker.today }}
         </button>
-        <button type="button" class="ms-date-picker__preset-btn" @click="selectPreset('tomorrow')">
+        <button
+          type="button"
+          class="ms-date-picker__preset-btn"
+          :disabled="isPresetDisabled(1)"
+          @click="selectPreset(1)"
+        >
           {{ t.datePicker.tomorrow }}
         </button>
       </div>
 
       <div v-else-if="mode === 'range'" class="ms-date-picker__presets">
-        <button type="button" class="ms-date-picker__preset-btn" @click="selectRangePreset(7)">
+        <button
+          type="button"
+          class="ms-date-picker__preset-btn"
+          :disabled="isPresetDisabled(0, 7)"
+          @click="selectRangePreset(7)"
+        >
           {{ t.datePicker.nextDays(7) }}
         </button>
-        <button type="button" class="ms-date-picker__preset-btn" @click="selectRangePreset(30)">
+        <button
+          type="button"
+          class="ms-date-picker__preset-btn"
+          :disabled="isPresetDisabled(0, 30)"
+          @click="selectRangePreset(30)"
+        >
           {{ t.datePicker.nextDays(30) }}
         </button>
       </div>
@@ -188,6 +211,7 @@ import type { MsDatePickerProps, MsDatePickerEmits } from "./types.ts";
 import { useMsId } from "../../composables/use-ms-id.ts";
 import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
 import { useMsMessages } from "../../composables/use-ms-messages.ts";
+import { useFieldControl } from "../../composables/use-field-context.ts";
 
 defineOptions({
   name: "MsDatePicker",
@@ -208,6 +232,8 @@ const props = withDefaults(defineProps<MsDatePickerProps>(), {
 const emit = defineEmits<MsDatePickerEmits>();
 
 const t = useMsMessages();
+/** Connects the input to a surrounding MsField (label `for`, description, error). */
+const { id: controlId, describedBy, fieldInvalid } = useFieldControl("ms-date-picker");
 
 const isOpen = ref(false);
 const rootRef = ref<HTMLElement | null>(null);
@@ -582,11 +608,12 @@ function handleDayClick(dayObj: DayItem) {
       close(true);
     }
   } else if (props.mode === "datetime") {
-    const timeStr = `${String(selectedHour.value).padStart(2, "0")}:${String(selectedMinute.value).padStart(2, "0")}`;
-    const result = `${dayObj.dateString} ${timeStr}`;
+    // The time chosen before a date existed is kept and applied here; the panel stays
+    // open so the time can still be adjusted after picking the day.
+    const result = `${dayObj.dateString} ${timeString()}`;
+    focusedDate.value = dayObj.dateString;
     emit("update:modelValue", result);
     emit("change", result);
-    close(true);
   } else {
     // single date
     emit("update:modelValue", dayObj.dateString);
@@ -601,8 +628,13 @@ function handleDayHover(dayObj: DayItem) {
   }
 }
 
+function timeString(): string {
+  return `${String(selectedHour.value).padStart(2, "0")}:${String(selectedMinute.value).padStart(2, "0")}`;
+}
+
+/** Without a date yet (datetime mode), the time is only stored and applied on the next day pick. */
 function onTimeChange() {
-  const timeStr = `${String(selectedHour.value).padStart(2, "0")}:${String(selectedMinute.value).padStart(2, "0")}`;
+  const timeStr = timeString();
   if (props.mode === "time") {
     emit("update:modelValue", timeStr);
     emit("change", timeStr);
@@ -614,16 +646,31 @@ function onTimeChange() {
   }
 }
 
-function selectPreset(type: "today" | "tomorrow") {
+/** Local "YYYY-MM-DD" for today plus `offset` days. */
+function offsetDateStr(offset: number): string {
   const target = new Date();
-  if (type === "tomorrow") target.setDate(target.getDate() + 1);
-  const str = formatDateStr(target.getFullYear(), target.getMonth(), target.getDate());
+  target.setDate(target.getDate() + offset);
+  return formatDateStr(target.getFullYear(), target.getMonth(), target.getDate());
+}
+
+/** A preset (single day, or a start..end range of offsets) is unavailable outside minDate/maxDate. */
+function isPresetDisabled(startOffset: number, endOffset = startOffset): boolean {
+  return (
+    isDateDisabled({ dateString: offsetDateStr(startOffset) }) ||
+    isDateDisabled({ dateString: offsetDateStr(endOffset) })
+  );
+}
+
+function selectPreset(offset: number) {
+  if (isPresetDisabled(offset)) return;
+  const str = offsetDateStr(offset);
   emit("update:modelValue", str);
   emit("change", str);
   close(true);
 }
 
 function selectRangePreset(days: number) {
+  if (isPresetDisabled(0, days)) return;
   const start = new Date();
   const end = new Date();
   end.setDate(end.getDate() + days);

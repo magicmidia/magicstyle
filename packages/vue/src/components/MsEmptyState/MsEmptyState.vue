@@ -50,6 +50,7 @@ const props = withDefaults(defineProps<MsEmptyStateProps>(), {
   size: "md",
   variant: "dashed",
   iconTone: "neutral",
+  ring: false,
 });
 
 const classes = computed(() => {
@@ -60,6 +61,7 @@ const iconClasses = computed(() => {
   return [
     "ms-empty-state__icon",
     props.iconTone !== "neutral" ? `ms-empty-state__icon--${props.iconTone}` : undefined,
+    props.ring ? "ms-empty-state__icon--ring" : undefined,
   ];
 });
 </script>

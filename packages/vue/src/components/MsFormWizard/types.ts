@@ -6,7 +6,7 @@ export interface MsWizardStep {
   title: string;
   /** Secondary text shown under the step title. */
   description?: string;
-  /** Step icon identifier; currently not rendered by the component. */
+  /** Icon text/glyph (e.g. an emoji) shown in the step badge instead of the number until the step is completed. */
   icon?: string;
   /** Prevents navigating to this step. */
   disabled?: boolean;
