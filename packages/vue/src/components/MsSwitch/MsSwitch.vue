@@ -9,12 +9,19 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<MsSwitchProps>(), {
+  // Explicit undefined keeps Vue from casting absent booleans to false (either binding may be used).
+  modelValue: undefined,
+  checked: undefined,
   size: "md",
   tone: "primary",
   labelPlacement: "right",
 });
 
+/** `v-model` and `v-model:checked` are both supported. */
+const isChecked = computed(() => props.modelValue ?? props.checked ?? false);
+
 const emit = defineEmits<{
+  "update:modelValue": [checked: boolean];
   "update:checked": [checked: boolean];
   change: [checked: boolean];
 }>();
@@ -28,9 +35,10 @@ const fieldControl = useFieldControl("ms-switch");
 const controlId = computed(() => fieldControl.id);
 
 function onChange(event: Event): void {
-  const isChecked = (event.target as HTMLInputElement).checked;
-  emit("update:checked", isChecked);
-  emit("change", isChecked);
+  const next = (event.target as HTMLInputElement).checked;
+  emit("update:modelValue", next);
+  emit("update:checked", next);
+  emit("change", next);
 }
 </script>
 
@@ -48,7 +56,7 @@ function onChange(event: Event): void {
       class="ms-switch-native"
       type="checkbox"
       role="switch"
-      :checked="props.checked"
+      :checked="isChecked"
       :disabled="props.disabled"
       :name="props.name"
       :value="props.value"

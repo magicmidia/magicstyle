@@ -9,12 +9,19 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<MsCheckboxProps>(), {
+  // Explicit undefined keeps Vue from casting absent booleans to false (either binding may be used).
+  modelValue: undefined,
+  checked: undefined,
   size: "md",
   tone: "primary",
   card: false,
 });
 
+/** `v-model` and `v-model:checked` are both supported. */
+const isChecked = computed(() => props.modelValue ?? props.checked ?? false);
+
 const emit = defineEmits<{
+  "update:modelValue": [checked: boolean];
   "update:checked": [checked: boolean];
   change: [checked: boolean];
 }>();
@@ -35,10 +42,11 @@ function syncIndeterminate(): void {
   if (inputRef.value !== null) inputRef.value.indeterminate = props.indeterminate === true;
 }
 onMounted(syncIndeterminate);
-watch(() => [props.indeterminate, props.checked], syncIndeterminate, { flush: "post" });
+watch(() => [props.indeterminate, isChecked.value], syncIndeterminate, { flush: "post" });
 
 function onChange(event: Event): void {
   const checked = (event.target as HTMLInputElement).checked;
+  emit("update:modelValue", checked);
   emit("update:checked", checked);
   emit("change", checked);
 }
@@ -58,7 +66,7 @@ function onChange(event: Event): void {
       ref="inputRef"
       class="ms-checkbox-native"
       type="checkbox"
-      :checked="props.checked"
+      :checked="isChecked"
       :disabled="props.disabled"
       :name="props.name"
       :value="props.value"
