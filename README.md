@@ -51,7 +51,7 @@ Diferente de bibliotecas convencionais que limitam temas a simples substituiçõ
 | **Vercel**     | `vercel`             | Vercel Geist             | Geometria **razor-sharp (6px)**                             | **Zero sombras** (completamente plano)        | Alto contraste monocromático puro (`#000000`/`#ffffff`); anel duplo |
 | **Supabase**   | `supabase`           | Supabase Studio          | Raio de **6px / 8px**                                       | Superfícies escuras de estúdio em carvão      | Destaques em **esmeralda neon `#3ecf8e`** e chanfros escuros        |
 | **Nord**       | `nord`               | Nord Arctic Palette      | Contornos suaves de **8px a 10px**                          | Sombras frias ambientais polares              | Noite polar `#2e3440` e ciano glacial `#88c0d0`                     |
-| **Graphite**   | `graphite`           | Editorial Minimalist     | Raio médio de **6px a 8px**                                 | Elevação neutra balanceada                    | Tons grafite e carvão monocromático suave                           |
+| **Graphite**   | `graphite`           | Editorial Minimalist     | Raio compacto de **3px a 6px**                              | Elevação reduzida (`depth` 0.6)               | Neutros grafite de baixa saturação e primário azul-aço              |
 | **Magic**      | `magic`              | Identidade Canônica      | Curvas suaves de **8px / 12px**                             | Elevação adaptativa em 3 níveis               | Electric Indigo, Cyan brilhante e gradiente exclusivo               |
 
 ---
