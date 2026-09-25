@@ -12,36 +12,40 @@
   z-index: var(--ms-z-popover, 1200);
   background-color: var(--ms-color-surface-raised);
   color: var(--ms-color-text-primary);
-  border: 1px solid var(--ms-color-border-subtle);
-  border-radius: var(--ms-radius-lg);
-  box-shadow: var(
-    --ms-elevation-3,
-    0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -4px rgba(0, 0, 0, 0.1)
-  );
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border-radius: var(--ms-radius-md);
+  box-shadow: var(--ms-elevation-dropdown);
   padding: var(--ms-space-1);
-  min-width: 180px;
-  max-width: 280px;
+  min-inline-size: 8rem;
+  max-inline-size: 280px;
   list-style: none;
   margin: 0;
-  animation: ms-context-menu-appear calc(120ms * var(--ms-motion-scale, 1))
-    cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top left;
+  animation: ms-context-menu-appear calc(150ms * var(--ms-motion-scale, 1))
+    var(--ms-motion-easing-standard);
 }
 
 .ms-context-menu-item {
   display: flex;
   align-items: center;
   gap: var(--ms-space-2);
-  padding: var(--ms-space-2) var(--ms-space-3);
-  border-radius: var(--ms-radius-md);
+  padding: 6px var(--ms-space-2);
+  border-radius: var(--ms-radius-sm);
   font-size: var(--ms-typography-size-sm);
-  cursor: pointer;
+  line-height: var(--ms-typography-line-height-tight);
+  cursor: default;
   user-select: none;
-  transition: background-color var(--ms-transition-duration-fast, 120ms);
+  outline: none;
 }
 
-.ms-context-menu-item:hover {
+.ms-context-menu-item:hover,
+.ms-context-menu-item:focus {
   background-color: var(--ms-color-interactive-neutral-subtle);
+}
+
+.ms-context-menu-item:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: -2px;
 }
 
 .ms-context-menu-item--disabled {
@@ -51,11 +55,16 @@
 }
 
 .ms-context-menu-item--danger {
-  color: var(--ms-color-danger);
+  color: var(--ms-color-feedback-danger-text);
 }
 
-.ms-context-menu-item--danger:hover {
-  background-color: var(--ms-color-danger-subtle);
+.ms-context-menu-item--danger:hover,
+.ms-context-menu-item--danger:focus {
+  background-color: color-mix(in oklab, var(--ms-color-danger) 10%, transparent);
+}
+
+.ms-context-menu-item--danger .ms-context-menu-item__icon {
+  color: inherit;
 }
 
 .ms-context-menu-item__icon {
@@ -65,30 +74,37 @@
   flex-shrink: 0;
 }
 
+.ms-context-menu-item__icon :where(svg) {
+  inline-size: var(--ms-space-4);
+  block-size: var(--ms-space-4);
+}
+
 .ms-context-menu-item__label {
   flex-grow: 1;
 }
 
 .ms-context-menu-item__shortcut {
   font-size: var(--ms-typography-size-xs);
+  letter-spacing: 0.1em;
   color: var(--ms-color-text-muted);
   margin-inline-start: auto;
   padding-inline-start: var(--ms-space-4);
 }
 
 .ms-context-menu-divider {
-  height: 1px;
-  background-color: var(--ms-color-border-subtle);
-  margin: var(--ms-space-1) 0;
+  block-size: 1px;
+  background-color: var(--ms-color-border-default);
+  margin-block: var(--ms-space-1);
+  margin-inline: calc(var(--ms-space-1) * -1);
 }
 
 @keyframes ms-context-menu-appear {
   from {
     opacity: 0;
-    transform: scale(0.96);
+    scale: 0.95;
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    scale: 1;
   }
 }

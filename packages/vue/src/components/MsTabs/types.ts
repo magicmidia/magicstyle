@@ -17,9 +17,9 @@ export interface MsTabsProps {
   defaultValue?: string | number;
 
   /**
-   * Visual variant:
-   * - "line": subtle border with colored active indicator bar.
-   * - "pill": segmented capsule background for active tab.
+   * Visual variant. @default "pill"
+   * - "pill": shadcn segmented list — sunken track with a raised active trigger (default).
+   * - "line": underline — subtle border with colored active indicator bar.
    * - "enclosed": folder-like tab cards.
    * - "solid": filled high-contrast segmented container.
    */

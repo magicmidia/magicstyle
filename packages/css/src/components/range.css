@@ -7,13 +7,13 @@
   display: flex;
   align-items: center;
   gap: var(--ms-space-3);
-  width: 100%;
+  inline-size: 100%;
 }
 
 .ms-range {
   -webkit-appearance: none;
   appearance: none;
-  width: 100%;
+  inline-size: 100%;
   background: transparent;
   cursor: pointer;
   outline: none;
@@ -33,12 +33,12 @@
 
 .ms-range--size-md {
   --ms-range-height: 6px;
-  --ms-range-thumb-size: 18px;
+  --ms-range-thumb-size: 16px;
 }
 
 .ms-range--size-lg {
   --ms-range-height: 8px;
-  --ms-range-thumb-size: 24px;
+  --ms-range-thumb-size: 20px;
 }
 /* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
 .ms-range--tone-primary {
@@ -96,8 +96,8 @@
     to right,
     var(--ms-range-fill-color, var(--ms-color-primary)) 0%,
     var(--ms-range-fill-color, var(--ms-color-primary)) var(--ms-range-percent, 0%),
-    var(--ms-color-border-subtle) var(--ms-range-percent, 0%),
-    var(--ms-color-border-subtle) 100%
+    var(--ms-color-interactive-neutral-subtle) var(--ms-range-percent, 0%),
+    var(--ms-color-interactive-neutral-subtle) 100%
   );
 }
 
@@ -105,32 +105,32 @@
 .ms-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: var(--ms-range-thumb-size, 18px);
-  height: var(--ms-range-thumb-size, 18px);
+  width: var(--ms-range-thumb-size, 16px);
+  height: var(--ms-range-thumb-size, 16px);
   border-radius: var(--ms-radius-full);
   background-color: var(--ms-color-surface-raised);
-  border: 2px solid var(--ms-range-fill-color, var(--ms-color-primary));
-  box-shadow: var(--ms-elevation-1);
-  margin-top: calc((var(--ms-range-height, 6px) - var(--ms-range-thumb-size, 18px)) / 2);
-  transition:
-    transform var(--ms-transition-duration-fast, 120ms),
-    box-shadow var(--ms-transition-duration-fast, 120ms);
+  border: var(--ms-border-hairline) solid var(--ms-range-fill-color, var(--ms-color-primary));
+  box-shadow: var(--ms-elevation-sm);
+  margin-block-start: calc((var(--ms-range-height, 6px) - var(--ms-range-thumb-size, 16px)) / 2);
+  transition: box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
+/* Hover/focus: soft 3px halo instead of scaling (shadcn slider) */
 .ms-range::-webkit-slider-thumb:hover {
-  transform: scale(1.15);
+  transform: none;
+  box-shadow: var(--ms-elevation-sm), var(--ms-focus-ring-shadow);
 }
 
 .ms-range:focus-visible::-webkit-slider-thumb {
-  outline: 2px solid var(--ms-range-fill-color, var(--ms-color-primary));
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: var(--ms-elevation-sm), var(--ms-focus-ring-shadow);
 }
 
 /* Firefox Track & Thumb */
 .ms-range::-moz-range-track {
   height: var(--ms-range-height, 6px);
   border-radius: var(--ms-radius-full);
-  background: var(--ms-color-border-subtle);
+  background: var(--ms-color-interactive-neutral-subtle);
 }
 
 .ms-range::-moz-range-progress {
@@ -140,22 +140,32 @@
 }
 
 .ms-range::-moz-range-thumb {
-  width: var(--ms-range-thumb-size, 18px);
-  height: var(--ms-range-thumb-size, 18px);
+  width: var(--ms-range-thumb-size, 16px);
+  height: var(--ms-range-thumb-size, 16px);
+  box-sizing: border-box;
   border-radius: var(--ms-radius-full);
   background-color: var(--ms-color-surface-raised);
-  border: 2px solid var(--ms-range-fill-color, var(--ms-color-primary));
-  box-shadow: var(--ms-elevation-1);
-  transition: transform var(--ms-transition-duration-fast, 120ms);
+  border: var(--ms-border-hairline) solid var(--ms-range-fill-color, var(--ms-color-primary));
+  box-shadow: var(--ms-elevation-sm);
+  transition: box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-range::-moz-range-thumb:hover {
+  box-shadow: var(--ms-elevation-sm), var(--ms-focus-ring-shadow);
+}
+
+.ms-range:focus-visible::-moz-range-thumb {
+  outline: none;
+  box-shadow: var(--ms-elevation-sm), var(--ms-focus-ring-shadow);
 }
 
 /* Value Display Badge */
 .ms-range__value {
   font-size: var(--ms-typography-size-sm);
-  font-weight: var(--ms-typography-weight-semibold);
+  font-weight: var(--ms-typography-weight-medium);
   font-variant-numeric: tabular-nums;
   color: var(--ms-color-text-primary);
-  min-width: 36px;
+  min-inline-size: 36px;
   text-align: end;
   flex-shrink: 0;
 }

@@ -18,15 +18,20 @@
     opacity: 1;
   }
   50% {
-    opacity: 0.35;
+    opacity: 0.5;
   }
 }
 
 .ms-skeleton {
-  --_ms-skel-bg: var(--ms-color-neutral-200);
-  --_ms-skel-highlight: var(--ms-color-surface-raised);
-  --_ms-skel-duration: 1.6s;
+  --_ms-skel-bg: var(--ms-color-interactive-neutral-subtle);
+  --_ms-skel-highlight: color-mix(
+    in oklab,
+    var(--ms-color-interactive-neutral-subtle) 40%,
+    var(--ms-color-surface-raised)
+  );
+  --_ms-skel-duration: 2s;
   display: block;
+  border-radius: var(--ms-radius-md);
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
@@ -43,12 +48,14 @@
     var(--_ms-skel-bg) 100%
   );
   background-size: 200% 100%;
-  animation: ms-skeleton-shimmer var(--_ms-skel-duration) ease-in-out infinite;
+  animation: ms-skeleton-shimmer calc(var(--_ms-skel-duration) * var(--ms-motion-scale, 1))
+    ease-in-out infinite;
 }
 
 .ms-skeleton--pulse {
   background-color: var(--_ms-skel-bg);
-  animation: ms-skeleton-pulse var(--_ms-skel-duration) ease-in-out infinite;
+  animation: ms-skeleton-pulse calc(var(--_ms-skel-duration) * var(--ms-motion-scale, 1))
+    cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .ms-skeleton--none {
@@ -58,22 +65,30 @@
 /* Tones */
 .ms-skeleton--tone-subtle {
   --_ms-skel-bg: var(--ms-color-surface-sunken);
-  --_ms-skel-highlight: var(--ms-color-neutral-0);
+  --_ms-skel-highlight: var(--ms-color-surface-raised);
 }
 
 .ms-skeleton--tone-default {
-  --_ms-skel-bg: var(--ms-color-neutral-200);
-  --_ms-skel-highlight: var(--ms-color-neutral-100);
+  --_ms-skel-bg: var(--ms-color-interactive-neutral-subtle);
+  --_ms-skel-highlight: color-mix(
+    in oklab,
+    var(--ms-color-interactive-neutral-subtle) 40%,
+    var(--ms-color-surface-raised)
+  );
 }
 
 .ms-skeleton--tone-contrast {
-  --_ms-skel-bg: var(--ms-color-neutral-300);
-  --_ms-skel-highlight: var(--ms-color-neutral-100);
+  --_ms-skel-bg: var(--ms-color-border-default);
+  --_ms-skel-highlight: var(--ms-color-interactive-neutral-subtle);
 }
 
 .ms-skeleton--tone-primary {
-  --_ms-skel-bg: var(--ms-color-primary-100);
-  --_ms-skel-highlight: var(--ms-color-primary-50);
+  --_ms-skel-bg: var(--ms-color-interactive-primary-subtle);
+  --_ms-skel-highlight: color-mix(
+    in oklab,
+    var(--ms-color-interactive-primary-subtle) 50%,
+    var(--ms-color-surface-raised)
+  );
 }
 
 /* Speeds */
@@ -82,7 +97,7 @@
 }
 
 .ms-skeleton--speed-normal {
-  --_ms-skel-duration: 1.6s;
+  --_ms-skel-duration: 2s;
 }
 
 .ms-skeleton--speed-slow {
@@ -91,15 +106,15 @@
 
 /* Shapes & Presets */
 .ms-skeleton--text {
-  height: 1.15em;
-  border-radius: var(--ms-radius-sm);
+  height: 1em;
+  border-radius: var(--ms-radius-md);
   margin-bottom: var(--ms-space-2);
 }
 
 .ms-skeleton--circle {
   border-radius: var(--ms-radius-full);
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
 }
 
@@ -112,12 +127,12 @@
 
 .ms-skeleton--button {
   border-radius: var(--ms-control-radius);
-  width: 100px;
-  height: 38px;
+  width: 96px;
+  height: var(--ms-control-height-md);
 }
 
 .ms-skeleton--card {
-  border-radius: var(--ms-radius-md);
+  border-radius: var(--ms-radius-xl);
   width: 100%;
   height: 160px;
 }

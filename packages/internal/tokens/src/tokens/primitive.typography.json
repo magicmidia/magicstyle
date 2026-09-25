@@ -21,7 +21,7 @@
     },
     "xs": {
       "$type": "dimension",
-      "$value": "0.8125rem"
+      "$value": "0.75rem"
     },
     "sm": {
       "$type": "dimension",

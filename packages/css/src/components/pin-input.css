@@ -11,26 +11,37 @@
 }
 
 .ms-pin-input__box {
-  width: 44px;
-  height: 48px;
+  inline-size: var(--ms-control-height-md);
+  block-size: var(--ms-control-height-md);
+  padding: 0;
   text-align: center;
   font-family: var(--ms-font-mono);
-  font-size: var(--ms-typography-size-lg);
-  font-weight: var(--ms-typography-weight-semibold);
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-medium);
   color: var(--ms-color-text-primary);
-  background-color: var(--ms-color-surface-raised);
+  background-color: transparent;
   border: var(--ms-border-hairline) solid var(--ms-color-border-field);
   border-radius: var(--ms-radius-md);
+  box-shadow: var(--ms-elevation-input);
   outline: none;
   box-sizing: border-box;
   transition:
-    border-color var(--ms-motion-duration-fast) ease,
-    box-shadow var(--ms-motion-duration-fast) ease;
+    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-pin-input__box::placeholder {
+  color: var(--ms-color-text-muted);
+}
+
+.ms-pin-input__box:hover:not(:disabled) {
+  border-color: var(--ms-color-border-field-hover);
 }
 
 .ms-pin-input__box:focus {
-  border-color: var(--ms-color-interactive-primary);
-  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ms-color-interactive-primary) 20%, transparent);
+  outline: none;
+  border-color: var(--ms-focus-ring-color);
+  box-shadow: var(--ms-elevation-input), var(--ms-focus-ring-shadow);
 }
 
 .ms-pin-input__box--filled {
@@ -39,17 +50,17 @@
 
 /* Sizes */
 .ms-pin-input--sm .ms-pin-input__box {
-  width: 32px;
-  height: 36px;
+  inline-size: var(--ms-control-height-sm);
+  block-size: var(--ms-control-height-sm);
   font-size: var(--ms-typography-size-sm);
-  border-radius: var(--ms-radius-sm);
+  border-radius: var(--ms-radius-md);
 }
 
 .ms-pin-input--lg .ms-pin-input__box {
-  width: 52px;
-  height: 58px;
-  font-size: var(--ms-typography-size-xl);
-  border-radius: var(--ms-radius-lg);
+  inline-size: var(--ms-control-height-lg);
+  block-size: var(--ms-control-height-lg);
+  font-size: var(--ms-typography-size-md);
+  border-radius: var(--ms-radius-md);
 }
 
 .ms-pin-input__separator {

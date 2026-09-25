@@ -1,6 +1,7 @@
 /*
  * Magic-Style Empty State layer (doc 05 §8).
- * Premium quiet surface placeholder with centered icon, heading, copy, and actions.
+ * Quiet placeholder (shadcn Empty): dashed hairline frame, muted 40px media tile,
+ * 18px medium title, 14px muted description, and centered actions.
  */
 
 .ms-empty-state {
@@ -11,6 +12,7 @@
   text-align: center;
   box-sizing: border-box;
   border-radius: var(--ms-radius-lg);
+  font-family: var(--ms-font-sans);
   width: 100%;
 }
 
@@ -21,14 +23,15 @@
 }
 
 .ms-empty-state--dashed {
-  border: var(--ms-border-hairline) dashed var(--ms-color-border-subtle);
-  background-color: var(--ms-color-surface-default);
+  border: var(--ms-border-hairline) dashed var(--ms-color-border-default);
+  background-color: transparent;
 }
 
 .ms-empty-state--card {
-  border: 1px solid var(--ms-color-border-subtle);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border-radius: var(--ms-radius-xl);
   background-color: var(--ms-color-surface-raised);
-  box-shadow: var(--ms-elevation-1);
+  box-shadow: var(--ms-elevation-card);
 }
 
 /* Sizes */
@@ -39,7 +42,7 @@
 }
 
 .ms-empty-state--md {
-  padding: var(--ms-space-10) var(--ms-space-6);
+  padding: var(--ms-space-12) var(--ms-space-6);
   max-width: 540px;
   margin: 0 auto;
 }
@@ -55,11 +58,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--ms-radius-full);
+  border-radius: var(--ms-radius-lg);
   background-color: var(--ms-color-surface-sunken);
-  color: var(--ms-color-text-secondary);
+  color: var(--ms-color-text-primary);
   margin-bottom: var(--ms-space-4);
   flex-shrink: 0;
+}
+
+.ms-empty-state__icon > svg {
+  inline-size: 24px;
+  block-size: 24px;
 }
 
 /* Tones: the class sets --ms-tone/--ms-tone-content; the tone engine (themes.css) derives the states. */
@@ -91,29 +99,30 @@
 }
 
 .ms-empty-state--sm .ms-empty-state__icon {
+  width: 32px;
+  height: 32px;
+}
+
+.ms-empty-state--md .ms-empty-state__icon {
   width: 40px;
   height: 40px;
 }
 
-.ms-empty-state--md .ms-empty-state__icon {
-  width: 56px;
-  height: 56px;
-}
-
 .ms-empty-state--lg .ms-empty-state__icon {
-  width: 72px;
-  height: 72px;
+  width: 48px;
+  height: 48px;
 }
 
 .ms-empty-state__default-icon {
-  width: 50%;
-  height: 50%;
+  width: 60%;
+  height: 60%;
 }
 
 /* Title */
 .ms-empty-state__title {
-  font-family: var(--ms-font-display);
-  font-weight: var(--ms-typography-weight-semibold);
+  font-family: var(--ms-font-sans);
+  font-weight: var(--ms-typography-weight-medium);
+  letter-spacing: -0.01em;
   color: var(--ms-color-text-primary);
   margin-bottom: var(--ms-space-2);
   line-height: var(--ms-typography-line-height-tight);
@@ -134,14 +143,14 @@
 /* Description */
 .ms-empty-state__description {
   font-size: var(--ms-typography-size-sm);
-  color: var(--ms-color-text-secondary);
+  color: var(--ms-color-text-muted);
   line-height: var(--ms-typography-line-height-relaxed);
   max-width: 44ch;
   margin-bottom: var(--ms-space-5);
 }
 
 .ms-empty-state--sm .ms-empty-state__description {
-  font-size: var(--ms-typography-size-xs);
+  font-size: var(--ms-typography-size-sm);
   margin-bottom: var(--ms-space-4);
 }
 
@@ -150,6 +159,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--ms-space-3);
+  gap: var(--ms-space-2);
   flex-wrap: wrap;
 }

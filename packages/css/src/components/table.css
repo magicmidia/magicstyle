@@ -7,9 +7,10 @@
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  background-color: var(--ms-color-surface-default);
-  border: 1px solid var(--ms-color-border-subtle);
-  border-radius: var(--ms-radius-md);
+  position: relative;
+  background-color: transparent;
+  border: var(--ms-border-hairline) solid transparent;
+  border-radius: var(--ms-radius-lg);
   box-sizing: border-box;
 }
 
@@ -18,9 +19,14 @@
   border-collapse: collapse;
   text-align: start;
   font-family: inherit;
-  font-size: var(--ms-font-size-body-md, 0.9375rem);
+  font-size: var(--ms-typography-size-sm);
+  line-height: var(--ms-typography-line-height-base);
   color: var(--ms-color-text-primary);
   box-sizing: border-box;
+  --_ms-table-head-height: 40px;
+  --_ms-table-cell-py: 8px;
+  --_ms-table-cell-px: 8px;
+  --_ms-table-font-size: var(--ms-typography-size-sm);
 }
 
 .ms-table *,
@@ -32,9 +38,9 @@
 /* --- Caption --- */
 .ms-table__caption {
   caption-side: top;
-  padding: var(--ms-space-2) var(--ms-space-4);
-  font-size: var(--ms-font-size-body-sm, 0.8125rem);
-  font-weight: 600;
+  padding: var(--ms-space-2) 8px;
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-regular);
   color: var(--ms-color-text-muted);
   text-align: start;
 }
@@ -46,14 +52,15 @@
 
 /* --- Table Head --- */
 .ms-table__head {
-  background-color: var(--ms-color-surface-sunken);
-  border-bottom: 2px solid var(--ms-color-border-default);
+  background-color: transparent;
+  border-bottom: var(--ms-border-hairline) solid var(--ms-color-border-default);
 }
 
 .ms-table__th {
-  padding: var(--ms-space-3) var(--ms-space-4);
-  font-size: var(--ms-font-size-body-sm, 0.8125rem);
-  font-weight: 600;
+  block-size: var(--_ms-table-head-height);
+  padding: 0 var(--_ms-table-cell-px);
+  font-size: var(--_ms-table-font-size);
+  font-weight: var(--ms-typography-weight-medium);
   color: var(--ms-color-text-primary);
   vertical-align: middle;
   white-space: nowrap;
@@ -75,40 +82,49 @@
 .ms-table__th--sortable {
   cursor: pointer;
   user-select: none;
-  transition: background-color var(--ms-motion-duration-fast) ease;
+  transition: background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-table__th--sortable:hover {
-  background-color: var(--ms-color-surface-hover);
+  background-color: color-mix(
+    in oklab,
+    var(--ms-color-interactive-neutral-subtle) 50%,
+    transparent
+  );
+}
+
+.ms-table__th--sortable:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: -2px;
 }
 
 .ms-table__th-inner {
   display: inline-flex;
   align-items: center;
-  gap: var(--ms-space-1);
+  gap: 4px;
 }
 
 .ms-table__sort-icon {
   display: inline-flex;
   align-items: center;
   color: var(--ms-color-text-muted);
-  font-size: 0.75rem;
-  transition: color var(--ms-motion-duration-fast) ease;
+  font-size: var(--ms-typography-size-xs);
+  transition: color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-table__th--sortable[aria-sort="ascending"] .ms-table__sort-icon,
 .ms-table__th--sortable[aria-sort="descending"] .ms-table__sort-icon {
-  color: var(--ms-color-primary);
+  color: var(--ms-color-text-primary);
 }
 
 /* --- Table Body --- */
 .ms-table__body {
-  background-color: var(--ms-color-surface-default);
+  background-color: transparent;
 }
 
 .ms-table__row {
-  border-bottom: 1px solid var(--ms-color-border-subtle);
-  transition: background-color var(--ms-motion-duration-fast) ease;
+  border-bottom: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  transition: background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-table__row:last-child {
@@ -117,21 +133,34 @@
 
 /* Hoverable modifier */
 .ms-table--hoverable .ms-table__body .ms-table__row:hover {
-  background-color: var(--ms-color-surface-hover);
+  background-color: color-mix(
+    in oklab,
+    var(--ms-color-interactive-neutral-subtle) 50%,
+    transparent
+  );
 }
 
 /* Striped modifier */
 .ms-table--striped .ms-table__body .ms-table__row:nth-child(even) {
-  background-color: var(--ms-color-surface-sunken);
+  background-color: color-mix(in oklab, var(--ms-color-surface-sunken) 50%, transparent);
 }
 
 .ms-table--striped.ms-table--hoverable .ms-table__body .ms-table__row:hover {
-  background-color: var(--ms-color-surface-hover);
+  background-color: color-mix(
+    in oklab,
+    var(--ms-color-interactive-neutral-subtle) 50%,
+    transparent
+  );
 }
 
-/* Selected row state */
+/* Selected row state (shadcn: data-[state=selected]:bg-muted) */
 .ms-table .ms-table__body .ms-table__row[data-selected="true"] {
-  background-color: var(--ms-color-primary-subtle);
+  background-color: var(--ms-color-interactive-neutral-subtle);
+}
+
+.ms-table__row[data-clickable="true"]:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: -2px;
 }
 
 /* Clickable row state */
@@ -141,7 +170,8 @@
 
 /* --- Table Data Cell --- */
 .ms-table__td {
-  padding: var(--ms-space-3) var(--ms-space-4);
+  padding: var(--_ms-table-cell-py) var(--_ms-table-cell-px);
+  font-size: var(--_ms-table-font-size);
   color: var(--ms-color-text-primary);
   vertical-align: middle;
 }
@@ -160,29 +190,30 @@
 
 /* --- Table Footer --- */
 .ms-table__footer {
-  background-color: var(--ms-color-surface-sunken);
-  border-top: 2px solid var(--ms-color-border-default);
-  font-weight: 500;
+  background-color: color-mix(in oklab, var(--ms-color-surface-sunken) 50%, transparent);
+  border-top: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  font-weight: var(--ms-typography-weight-medium);
 }
 
 .ms-table__footer .ms-table__td {
-  font-weight: 600;
+  font-weight: var(--ms-typography-weight-medium);
   color: var(--ms-color-text-primary);
 }
 
 /* --- Bordered modifier --- */
 .ms-table--bordered {
-  border: 1px solid var(--ms-color-border-subtle);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
 }
 
 .ms-table--bordered .ms-table__th,
 .ms-table--bordered .ms-table__td {
-  border: 1px solid var(--ms-color-border-subtle);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
 }
 
 /* --- Variants --- */
 .ms-table-container--surface {
-  box-shadow: var(--ms-elevation-2);
+  background-color: var(--ms-color-surface-raised);
+  box-shadow: var(--ms-elevation-card);
   border-color: var(--ms-color-border-default);
 }
 
@@ -197,35 +228,51 @@
   position: sticky;
   top: 0;
   z-index: 2;
+  background-color: var(--ms-color-surface-default);
+  box-shadow: inset 0 -1px 0 var(--ms-color-border-default);
 }
 
-/* --- Densities --- */
+.ms-table-container--surface .ms-table--sticky-header .ms-table__head .ms-table__th {
+  background-color: var(--ms-color-surface-raised);
+}
+
+/* --- Densities (md = shadcn: 40px head, 8px cells, 14px text) --- */
 .ms-table--xs .ms-table__th,
 .ms-table--xs .ms-table__td {
-  padding: 4px 8px;
-  font-size: 11px;
+  --_ms-table-head-height: 28px;
+  --_ms-table-cell-py: 4px;
+  --_ms-table-cell-px: 8px;
+  --_ms-table-font-size: var(--ms-typography-size-xs);
 }
 
 .ms-table--sm .ms-table__th,
 .ms-table--sm .ms-table__td {
-  padding: var(--ms-space-1-5, 6px) var(--ms-space-2-5, 10px);
-  font-size: var(--ms-font-size-body-sm, 0.8125rem);
+  --_ms-table-head-height: 32px;
+  --_ms-table-cell-py: 6px;
+  --_ms-table-cell-px: 8px;
+  --_ms-table-font-size: var(--ms-typography-size-sm);
 }
 
 .ms-table--md .ms-table__th,
 .ms-table--md .ms-table__td {
-  padding: var(--ms-space-3) var(--ms-space-4);
-  font-size: var(--ms-font-size-body-md, 0.9375rem);
+  --_ms-table-head-height: 40px;
+  --_ms-table-cell-py: 8px;
+  --_ms-table-cell-px: 8px;
+  --_ms-table-font-size: var(--ms-typography-size-sm);
 }
 
 .ms-table--lg .ms-table__th,
 .ms-table--lg .ms-table__td {
-  padding: var(--ms-space-4) var(--ms-space-5);
-  font-size: var(--ms-font-size-body-lg, 1.0625rem);
+  --_ms-table-head-height: 48px;
+  --_ms-table-cell-py: 12px;
+  --_ms-table-cell-px: 12px;
+  --_ms-table-font-size: var(--ms-typography-size-md);
 }
 
 .ms-table--xl .ms-table__th,
 .ms-table--xl .ms-table__td {
-  padding: var(--ms-space-5) var(--ms-space-6);
-  font-size: 1.125rem;
+  --_ms-table-head-height: 56px;
+  --_ms-table-cell-py: 16px;
+  --_ms-table-cell-px: 16px;
+  --_ms-table-font-size: var(--ms-typography-size-md);
 }

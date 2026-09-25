@@ -20,10 +20,12 @@
   flex-shrink: 0;
   border: var(--ms-border-hairline) solid var(--ms-color-border-field);
   border-radius: var(--ms-radius-full);
-  background-color: var(--ms-color-surface-raised);
+  background-color: transparent;
+  box-shadow: var(--ms-elevation-input);
   transition:
     background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
-    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-radio-native {
@@ -37,9 +39,9 @@
 .ms-radio-dot::after {
   content: "";
   position: absolute;
-  inset: 4px;
+  inset: 3px;
   border-radius: var(--ms-radius-full);
-  background-color: var(--ms-color-text-on-accent);
+  background-color: var(--_ms-radio-tone, var(--ms-color-primary));
   transform: scale(0);
   transition: transform var(--ms-motion-duration-fast) var(--ms-motion-easing-emphasized);
 }
@@ -47,7 +49,7 @@
 /* Sizes */
 .ms-radio--sm {
   font-size: var(--ms-typography-size-xs);
-  gap: var(--ms-space-1-5, 6px);
+  gap: 6px;
 }
 .ms-radio--sm .ms-radio-dot {
   block-size: 14px;
@@ -66,41 +68,45 @@
   inline-size: 16px;
 }
 .ms-radio--md .ms-radio-dot::after {
-  inset: 4px;
+  inset: 3px;
 }
 
 .ms-radio--lg {
   font-size: var(--ms-typography-size-md);
-  gap: var(--ms-space-2-5, 10px);
+  gap: var(--ms-space-3);
 }
 .ms-radio--lg .ms-radio-dot {
   block-size: 20px;
   inline-size: 20px;
 }
 .ms-radio--lg .ms-radio-dot::after {
-  inset: 5px;
+  inset: 4px;
 }
 
-/* Tone styling on checked */
+/* Tone styling on checked: circle stays transparent, tone border + 8px tone dot */
 .ms-radio-native:checked + .ms-radio-dot,
 .ms-radio--primary .ms-radio-native:checked + .ms-radio-dot {
-  background-color: var(--ms-color-interactive-primary);
-  border-color: var(--ms-color-interactive-primary);
+  --_ms-radio-tone: var(--ms-color-primary);
+  background-color: transparent;
+  border-color: var(--_ms-radio-tone);
 }
 
 .ms-radio--success .ms-radio-native:checked + .ms-radio-dot {
-  background-color: var(--ms-color-feedback-success-solid);
-  border-color: var(--ms-color-feedback-success-solid);
+  --_ms-radio-tone: var(--ms-color-success);
+  background-color: transparent;
+  border-color: var(--_ms-radio-tone);
 }
 
 .ms-radio--warning .ms-radio-native:checked + .ms-radio-dot {
-  background-color: var(--ms-color-feedback-warning-solid);
-  border-color: var(--ms-color-feedback-warning-solid);
+  --_ms-radio-tone: var(--ms-color-warning);
+  background-color: transparent;
+  border-color: var(--_ms-radio-tone);
 }
 
 .ms-radio--danger .ms-radio-native:checked + .ms-radio-dot {
-  background-color: var(--ms-color-feedback-danger-solid);
-  border-color: var(--ms-color-feedback-danger-solid);
+  --_ms-radio-tone: var(--ms-color-danger);
+  background-color: transparent;
+  border-color: var(--_ms-radio-tone);
 }
 
 .ms-radio-native:checked + .ms-radio-dot::after {
@@ -108,8 +114,9 @@
 }
 
 .ms-radio-native:focus-visible + .ms-radio-dot {
-  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
-  outline-offset: var(--ms-focus-ring-offset);
+  outline: none;
+  border-color: var(--ms-focus-ring-color);
+  box-shadow: var(--ms-elevation-input), var(--ms-focus-ring-shadow);
 }
 
 .ms-radio[data-disabled] {
@@ -118,7 +125,11 @@
 }
 
 .ms-radio:hover:not([data-disabled]) .ms-radio-dot {
-  border-color: var(--ms-color-interactive-primary);
+  border-color: var(--ms-color-border-field-hover);
+}
+.ms-radio:hover:not([data-disabled]) .ms-radio-native:checked + .ms-radio-dot,
+.ms-radio .ms-radio-native:focus-visible:checked + .ms-radio-dot {
+  border-color: var(--_ms-radio-tone, var(--ms-color-primary));
 }
 
 /* Card Mode */
@@ -126,44 +137,44 @@
   display: flex;
   align-items: flex-start;
   padding: var(--ms-space-3) var(--ms-space-4);
-  border: 1px solid var(--ms-color-border-subtle);
-  border-radius: var(--ms-radius-md);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border-radius: var(--ms-radius-lg);
   background-color: var(--ms-color-surface-raised);
   transition:
     border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
     background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
     box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
-  width: 100%;
+  inline-size: 100%;
   box-sizing: border-box;
 }
 
 .ms-radio--card .ms-radio-dot {
-  margin-top: 2px;
+  margin-block-start: 2px;
 }
 
 .ms-radio--card:hover:not([data-disabled]) {
   border-color: var(--ms-color-border-strong);
-  background-color: var(--ms-color-surface-sunken);
+  background-color: var(--ms-color-surface-raised);
 }
 
 .ms-radio--card:has(.ms-radio-native:checked),
 .ms-radio--card[data-checked] {
-  border-color: var(--ms-color-interactive-primary);
-  background-color: var(--ms-color-surface-subtle);
-  box-shadow: 0 0 0 1px var(--ms-color-interactive-primary);
+  border-color: var(--ms-color-primary);
+  background-color: color-mix(in oklab, var(--ms-color-primary) 5%, var(--ms-color-surface-raised));
+  box-shadow: none;
 }
 
 /* Label & Description Group */
 .ms-radio-label-group {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 6px;
 }
 
 .ms-radio-description {
   font-size: var(--ms-typography-size-xs);
-  color: var(--ms-color-text-secondary);
-  font-weight: normal;
+  color: var(--ms-color-text-muted);
+  font-weight: var(--ms-typography-weight-regular);
 }
 
 /* Group layout */
@@ -182,5 +193,5 @@
 .ms-radio-group--vertical {
   flex-direction: column;
   align-items: stretch;
-  width: 100%;
+  inline-size: 100%;
 }

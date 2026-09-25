@@ -10,7 +10,8 @@
     "border-width": "1px",
     "depth": "1",
     "font-sans": "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
-    "font-mono": "IBM Plex Mono, Cascadia Mono, ui-monospace, monospace"
+    "font-mono": "IBM Plex Mono, Cascadia Mono, ui-monospace, monospace",
+    "font-display": "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif"
   },
   "light": {
     "color-base-100": "#ffffff",
@@ -19,8 +20,8 @@
     "color-base-content": "#09090b",
     "color-primary": "#18181b",
     "color-primary-content": "#fafafa",
-    "color-secondary": "oklch(0.645 0.169 034)",
-    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-secondary": "#f4f4f5",
+    "color-secondary-content": "#18181b",
     "color-accent": "#18181b",
     "color-accent-content": "#fafafa",
     "color-neutral": "#f4f4f5",
@@ -31,8 +32,9 @@
     "color-success-content": "oklch(0.170 0.020 252)",
     "color-warning": "oklch(0.785 0.154 061)",
     "color-warning-content": "oklch(0.170 0.020 252)",
-    "color-danger": "oklch(0.545 0.188 024)",
-    "color-danger-content": "oklch(1.000 0.003 252)"
+    "color-danger": "oklch(0.577 0.245 27.325)",
+    "color-danger-content": "#ffffff",
+    "color-base-raised": "#ffffff"
   },
   "dark": {
     "color-base-100": "#09090b",
@@ -41,8 +43,8 @@
     "color-base-content": "#fafafa",
     "color-primary": "#fafafa",
     "color-primary-content": "#09090b",
-    "color-secondary": "oklch(0.715 0.152 034)",
-    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-secondary": "#27272a",
+    "color-secondary-content": "#fafafa",
     "color-accent": "#f4f4f5",
     "color-accent-content": "#09090b",
     "color-neutral": "#27272a",
@@ -53,19 +55,8 @@
     "color-success-content": "oklch(0.170 0.020 252)",
     "color-warning": "oklch(0.785 0.154 061)",
     "color-warning-content": "oklch(0.170 0.020 252)",
-    "color-danger": "oklch(0.545 0.188 024)",
-    "color-danger-content": "oklch(1.000 0.003 252)"
-  },
-  "extras": {
-    "light": {
-      "elevation-button": "0px 1px 2px 0px rgb(0 0 0 / 0.05)",
-      "elevation-card": "0px 1px 3px 0px rgb(0 0 0 / 0.10), 0px 1px 2px -1px rgb(0 0 0 / 0.10)",
-      "focus-ring-width": "1px"
-    },
-    "dark": {
-      "elevation-button": "none",
-      "elevation-card": "none",
-      "focus-ring-width": "1px"
-    }
+    "color-danger": "oklch(0.704 0.191 22.216)",
+    "color-danger-content": "#09090b",
+    "color-base-raised": "#09090b"
   }
 }

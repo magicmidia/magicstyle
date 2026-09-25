@@ -3,16 +3,18 @@
  * Classes: .ms-alert, .ms-alert-icon, .ms-alert-content, .ms-alert-title,
  *          .ms-alert-description, .ms-alert-close, .ms-alert-actions.
  * Variants: soft (default), solid, outline.
- * Tones: info (default), success, warning, danger, neutral, primary.
+ * Tones: neutral (default, shadcn card look), info, success, warning, danger, primary.
+ * Toned soft/solid/outline keep their tinted looks; neutral soft is the shadcn alert.
  */
 
 .ms-alert {
   position: relative;
   display: flex;
   align-items: center;
-  gap: var(--ms-space-3-5, 14px);
-  padding: var(--ms-space-3-5, 14px) var(--ms-space-4);
-  border-radius: var(--ms-radius-md);
+  gap: 12px;
+  inline-size: 100%;
+  padding: 12px 16px;
+  border-radius: var(--ms-radius-lg);
   border: var(--ms-border-hairline) solid transparent;
   font-family: var(--ms-font-sans);
   font-size: var(--ms-typography-size-sm);
@@ -30,21 +32,24 @@
 
 /* Sizes */
 .ms-alert--sm {
-  padding: var(--ms-space-2) var(--ms-space-3);
+  --_ms-alert-icon-size: 14px;
+  padding: 8px 12px;
   font-size: var(--ms-typography-size-xs);
-  gap: var(--ms-space-2-5, 10px);
+  gap: 8px;
 }
 
 .ms-alert--md {
-  padding: var(--ms-space-3-5, 14px) var(--ms-space-4);
+  --_ms-alert-icon-size: 16px;
+  padding: 12px 16px;
   font-size: var(--ms-typography-size-sm);
-  gap: var(--ms-space-3-5, 14px);
+  gap: 12px;
 }
 
 .ms-alert--lg {
-  padding: var(--ms-space-4) var(--ms-space-5);
+  --_ms-alert-icon-size: 20px;
+  padding: 16px 20px;
   font-size: var(--ms-typography-size-md);
-  gap: var(--ms-space-4);
+  gap: 16px;
 }
 
 /* Icon */
@@ -55,6 +60,12 @@
   justify-content: center;
   align-self: center;
   margin: 0;
+}
+
+/* shadcn: 16px icon (the Vue icon attributes are overridden by CSS size). */
+.ms-alert-icon > svg {
+  inline-size: var(--_ms-alert-icon-size, 16px);
+  block-size: var(--_ms-alert-icon-size, 16px);
 }
 
 .ms-alert[data-align="start"] .ms-alert-icon {
@@ -86,26 +97,27 @@
   min-inline-size: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--ms-space-1);
+  gap: 2px;
 }
 
 .ms-alert-title {
   margin: 0;
-  font-weight: var(--ms-typography-weight-semibold);
+  font-weight: var(--ms-typography-weight-medium);
   line-height: var(--ms-typography-line-height-tight);
 }
 
 .ms-alert-description {
   margin: 0;
-  font-size: var(--ms-typography-size-sm);
-  opacity: 0.92;
+  font-size: inherit;
+  line-height: var(--ms-typography-line-height-relaxed);
+  color: var(--_ms-alert-description-fg, inherit);
 }
 
 .ms-alert-actions {
   display: flex;
   align-items: center;
-  gap: var(--ms-space-2);
-  margin-block-start: var(--ms-space-2);
+  gap: 8px;
+  margin-block-start: 8px;
 }
 
 .ms-alert-close {
@@ -136,7 +148,8 @@
 }
 
 .ms-alert-close:focus-visible {
-  outline: var(--ms-focus-ring-width) solid currentColor;
+  opacity: 1;
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
   outline-offset: var(--ms-focus-ring-offset);
 }
 
@@ -145,8 +158,9 @@
 }
 /* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
 .ms-alert:not([data-tone]) {
-  --ms-tone: var(--ms-color-info);
-  --ms-tone-content: var(--ms-color-info-content);
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
 }
 
 .ms-alert:is([data-tone], :not([data-tone])) {
@@ -155,6 +169,21 @@
   --_ms-alert-fg: var(--ms-tone-text);
   --_ms-alert-solid-bg: var(--ms-tone);
   --_ms-alert-solid-fg: var(--ms-tone-content);
+}
+
+/* Neutral (default): shadcn alert — card surface, hairline border, muted description. */
+.ms-alert:is(:not([data-tone]), [data-tone="neutral"]) {
+  --_ms-alert-bg: var(--ms-color-surface-raised);
+  --_ms-alert-border: var(--ms-color-border-default);
+  --_ms-alert-fg: var(--ms-color-text-primary);
+}
+
+.ms-alert:is(:not([data-tone]), [data-tone="neutral"]):is(
+    [data-variant="soft"],
+    [data-variant="outline"],
+    :not([data-variant])
+  ) {
+  --_ms-alert-description-fg: var(--ms-color-text-muted);
 }
 
 /* Soft Variant (Default) */

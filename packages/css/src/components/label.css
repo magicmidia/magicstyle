@@ -6,14 +6,15 @@
 .ms-label {
   display: inline-flex;
   align-items: center;
-  gap: var(--ms-space-1);
+  gap: var(--ms-space-2);
   font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-sm);
   font-weight: var(--ms-typography-weight-medium);
   color: var(--ms-color-text-primary);
-  line-height: 1.35;
+  line-height: 1;
   user-select: none;
   cursor: pointer;
-  transition: color var(--ms-motion-duration-fast) ease;
+  transition: color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 /* Sizes */
@@ -32,15 +33,14 @@
 /* Required & Optional marks */
 .ms-label__required {
   color: var(--ms-color-status-danger);
-  font-weight: var(--ms-typography-weight-bold);
-  margin-inline-start: 2px;
+  font-weight: var(--ms-typography-weight-medium);
+  margin-inline-start: -4px;
 }
 
 .ms-label__optional {
-  font-size: 0.85em;
+  font-size: 0.925em;
   font-weight: var(--ms-typography-weight-regular);
   color: var(--ms-color-text-muted);
-  margin-inline-start: var(--ms-space-1);
 }
 
 /* Tooltip Trigger */
@@ -53,17 +53,22 @@
   background: transparent;
   border: none;
   padding: 0;
-  margin-inline-start: 2px;
+  border-radius: var(--ms-radius-full);
   line-height: 1;
 }
 
 .ms-label__tooltip-trigger:hover {
-  color: var(--ms-color-text-secondary);
+  color: var(--ms-color-text-primary);
+}
+
+.ms-label__tooltip-trigger:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
 }
 
 .ms-label__tooltip-icon {
-  width: 14px;
-  height: 14px;
+  inline-size: 14px;
+  block-size: 14px;
 }
 
 /* Disabled state */

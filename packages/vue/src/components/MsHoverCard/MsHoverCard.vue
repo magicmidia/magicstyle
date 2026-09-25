@@ -6,7 +6,7 @@ const props = withDefaults(defineProps<MsHoverCardProps>(), {
   openDelay: 200,
   closeDelay: 150,
   placement: "bottom",
-  width: "300px",
+  width: "256px",
 });
 
 const isOpen = ref(false);

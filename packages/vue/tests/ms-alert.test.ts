@@ -13,7 +13,7 @@ describe("MsAlert", () => {
 
     expect(wrapper.classes()).toContain("ms-alert");
     expect(wrapper.attributes("role")).toBe("alert");
-    expect(wrapper.attributes("data-tone")).toBe("info");
+    expect(wrapper.attributes("data-tone")).toBe("neutral");
     expect(wrapper.attributes("data-variant")).toBe("soft");
     expect(wrapper.text()).toContain("Mensagem informativa");
   });

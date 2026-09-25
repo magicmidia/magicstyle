@@ -1,31 +1,32 @@
 /*
  * Magic-Style Badge component layer — semantic status and counter tags.
  * Classes: .ms-badge, .ms-badge-dot.
- * Variants: soft (default), solid, outline.
+ * Variants: solid (default), soft, outline, ghost.
  * Tones: primary, secondary, accent, neutral, success, info, warning, danger.
  * Sizes: sm, md (default), lg.
  * States/Mod: data-pill.
  */
 
 .ms-badge {
-  --_ms-badge-height: 22px;
-  --_ms-badge-padding: var(--ms-space-2) var(--ms-space-2-5, 8px);
+  --_ms-badge-height: auto;
+  --_ms-badge-padding: 2px 8px;
   --_ms-badge-font-size: var(--ms-typography-size-xs);
+  --_ms-badge-icon-size: 12px;
 
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--ms-space-1-5, 6px);
+  gap: 4px;
   box-sizing: border-box;
   block-size: var(--_ms-badge-height);
   padding: var(--_ms-badge-padding);
   border: var(--ms-border-hairline) solid transparent;
-  border-radius: var(--ms-radius-sm);
+  border-radius: var(--ms-radius-md);
   font-family: var(--ms-font-sans);
   font-size: var(--_ms-badge-font-size);
   font-weight: var(--ms-typography-weight-medium);
-  line-height: 1;
+  line-height: var(--ms-typography-line-height-tight);
   text-decoration: none;
   white-space: nowrap;
   vertical-align: middle;
@@ -36,6 +37,14 @@
     color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
+/* Icons inherit the 12px badge icon size */
+.ms-badge > svg {
+  inline-size: var(--_ms-badge-icon-size);
+  block-size: var(--_ms-badge-icon-size);
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
 /* Opt-in pill shape */
 .ms-badge[data-pill] {
   border-radius: var(--ms-radius-full);
@@ -43,28 +52,26 @@
 
 /* Sizing */
 .ms-badge[data-size="xs"] {
-  --_ms-badge-height: 16px;
-  --_ms-badge-padding: 0 var(--ms-space-1);
-  --_ms-badge-font-size: 10px;
+  --_ms-badge-padding: 0 4px;
+  --_ms-badge-font-size: var(--ms-typography-size-2xs);
+  --_ms-badge-icon-size: 10px;
 }
 
 .ms-badge[data-size="sm"] {
-  --_ms-badge-height: 18px;
-  --_ms-badge-padding: 0 var(--ms-space-1-5, 6px);
-  --_ms-badge-font-size: 11px;
+  --_ms-badge-padding: 1px 6px;
+  --_ms-badge-font-size: var(--ms-typography-size-xs);
 }
 
 .ms-badge[data-size="lg"] {
-  --_ms-badge-height: 26px;
-  --_ms-badge-padding: 0 var(--ms-space-3);
+  --_ms-badge-padding: 2px 10px;
   --_ms-badge-font-size: var(--ms-typography-size-sm);
+  --_ms-badge-icon-size: 14px;
 }
 
 .ms-badge[data-size="xl"] {
-  --_ms-badge-height: 32px;
-  --_ms-badge-padding: 0 var(--ms-space-3-5, 14px);
-  --_ms-badge-font-size: var(--ms-typography-size-md);
-  font-weight: var(--ms-typography-weight-semibold);
+  --_ms-badge-padding: 4px 12px;
+  --_ms-badge-font-size: var(--ms-typography-size-sm);
+  --_ms-badge-icon-size: 16px;
 }
 
 /* Dot-only mode */
@@ -124,18 +131,24 @@
   --_ms-badge-outline-border: var(--ms-tone);
 }
 
+/* Default/primary/neutral outline follows shadcn: neutral border + primary text. */
+.ms-badge:is(:not([data-tone]), [data-tone="primary"], [data-tone="neutral"]) {
+  --_ms-badge-outline-fg: var(--ms-color-text-primary);
+  --_ms-badge-outline-border: var(--ms-color-border-default);
+}
+
 /* ---------- Variants ---------- */
 
-/* Soft (Default) */
-.ms-badge[data-variant="soft"],
-.ms-badge:not([data-variant]) {
+/* Soft */
+.ms-badge[data-variant="soft"] {
   background-color: var(--_ms-badge-soft-bg);
   color: var(--_ms-badge-soft-fg);
   border-color: var(--_ms-badge-soft-border);
 }
 
-/* Solid */
-.ms-badge[data-variant="solid"] {
+/* Solid (Default) */
+.ms-badge[data-variant="solid"],
+.ms-badge:not([data-variant]) {
   background-color: var(--_ms-badge-solid-bg);
   color: var(--_ms-badge-solid-fg);
   border-color: transparent;
@@ -276,10 +289,14 @@
   opacity: 0.7;
   padding: 0;
   transition:
-    opacity 0.15s ease,
-    background-color 0.15s ease;
+    opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 .ms-badge__remove:hover {
   opacity: 1;
   background-color: color-mix(in oklch, currentColor 15%, transparent);
+}
+.ms-badge__remove:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
 }

@@ -6,7 +6,7 @@ export type MsBadgeTone = MsTone;
 export type MsBadgePlacement = "top-right" | "top-left" | "bottom-right" | "bottom-left";
 
 export interface MsBadgeProps {
-  /** Visual variant. @default "soft" */
+  /** Visual variant. @default "solid" */
   variant?: MsBadgeVariant;
   /** Semantic tone. @default "primary" */
   tone?: MsBadgeTone;

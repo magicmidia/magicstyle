@@ -26,15 +26,16 @@
   --_ms-smenu-tone-bg: var(--ms-color-primary);
   --_ms-smenu-tone-subtle: var(--ms-color-interactive-primary-subtle);
   --_ms-smenu-tone-fg: var(--ms-color-interactive-primary-text);
-  --_ms-smenu-item-py: var(--ms-space-2);
-  --_ms-smenu-item-px: var(--ms-space-3);
+  --_ms-smenu-item-height: var(--ms-control-height-sm);
+  --_ms-smenu-item-py: 0px;
+  --_ms-smenu-item-px: 8px;
   --_ms-smenu-font-size: var(--ms-typography-size-sm);
   --_ms-smenu-radius: var(--ms-radius-md);
-  --_ms-smenu-gap: var(--ms-space-2);
+  --_ms-smenu-gap: 4px;
 
   display: flex;
   flex-direction: column;
-  gap: var(--ms-space-4);
+  gap: var(--ms-space-2);
   inline-size: 100%;
   box-sizing: border-box;
   font-family: var(--ms-font-sans);
@@ -44,22 +45,22 @@
 /* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
 .ms-sidebar-menu[data-tone] {
   --_ms-smenu-tone-bg: var(--ms-tone);
-  --_ms-smenu-tone-subtle: color-mix(in oklab, var(--ms-tone) 12%, transparent);
-  --_ms-smenu-tone-fg: var(--ms-tone);
+  --_ms-smenu-tone-subtle: var(--ms-tone-subtle);
+  --_ms-smenu-tone-fg: var(--ms-tone-text);
 }
 
 /* ---------- Densities ---------- */
 .ms-sidebar-menu[data-density="compact"] {
-  --_ms-smenu-item-py: var(--ms-space-1-5, 6px);
-  --_ms-smenu-item-px: var(--ms-space-2-5, 10px);
+  --_ms-smenu-item-height: calc(var(--ms-control-height-sm) - 4px);
+  --_ms-smenu-item-px: 8px;
   --_ms-smenu-font-size: var(--ms-typography-size-xs);
-  --_ms-smenu-gap: var(--ms-space-1);
+  --_ms-smenu-gap: 2px;
 }
 .ms-sidebar-menu[data-density="spacious"] {
-  --_ms-smenu-item-py: var(--ms-space-3);
-  --_ms-smenu-item-px: var(--ms-space-4);
-  --_ms-smenu-font-size: var(--ms-typography-size-md);
-  --_ms-smenu-gap: var(--ms-space-2-5, 10px);
+  --_ms-smenu-item-height: var(--ms-control-height-lg);
+  --_ms-smenu-item-px: 12px;
+  --_ms-smenu-font-size: var(--ms-typography-size-sm);
+  --_ms-smenu-gap: 4px;
 }
 
 /* ---------- Shapes ---------- */
@@ -74,22 +75,22 @@
 .ms-sidebar-menu-group {
   display: flex;
   flex-direction: column;
-  gap: var(--ms-space-1);
+  gap: 4px;
   padding: 0;
   margin: 0;
   border: none;
 }
 
+/* shadcn SidebarGroupLabel: 32px, 12px medium, muted, no uppercase. */
 .ms-sidebar-menu-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-block-size: var(--ms-control-height-sm);
   padding-inline: var(--_ms-smenu-item-px);
-  padding-block: var(--ms-space-1);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  padding-block: 0;
+  font-size: var(--ms-typography-size-xs);
+  font-weight: var(--ms-typography-weight-medium);
   color: var(--ms-color-text-muted);
 }
 
@@ -117,37 +118,37 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: var(--ms-space-2-5, 10px);
+  gap: 8px;
   inline-size: 100%;
+  min-block-size: var(--_ms-smenu-item-height);
   box-sizing: border-box;
   padding-block: var(--_ms-smenu-item-py);
   padding-inline: var(--_ms-smenu-item-px);
   border: none;
   border-radius: var(--_ms-smenu-radius);
   background: transparent;
-  color: var(--ms-color-text-secondary);
+  color: var(--ms-color-text-primary);
   font-family: inherit;
   font-size: var(--_ms-smenu-font-size);
-  font-weight: 500;
-  line-height: 1.4;
+  font-weight: var(--ms-typography-weight-regular);
+  line-height: var(--ms-typography-line-height-tight);
   text-align: start;
   text-decoration: none;
   cursor: pointer;
   outline: none;
   transition:
     background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
-    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
-    transform var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-sidebar-menu-button:hover:not(:disabled):not(.is-disabled) {
-  background-color: var(--ms-color-surface-hover);
+  background-color: var(--ms-color-interactive-neutral-subtle);
   color: var(--ms-color-text-primary);
 }
 
 .ms-sidebar-menu-button:focus-visible {
-  outline: 2px solid var(--_ms-smenu-tone-bg);
-  outline-offset: 1px;
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: -2px;
 }
 
 /* Active State */
@@ -155,7 +156,7 @@
 .ms-sidebar-menu-button[aria-current="page"] {
   background-color: var(--_ms-smenu-tone-subtle);
   color: var(--_ms-smenu-tone-fg);
-  font-weight: 600;
+  font-weight: var(--ms-typography-weight-medium);
 }
 
 .ms-sidebar-menu-button.is-active .ms-sidebar-menu-icon,
@@ -166,7 +167,7 @@
 /* Disabled State */
 .ms-sidebar-menu-button:disabled,
 .ms-sidebar-menu-button.is-disabled {
-  opacity: 0.45;
+  opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -177,10 +178,15 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  inline-size: 18px;
-  block-size: 18px;
+  inline-size: 16px;
+  block-size: 16px;
   color: var(--ms-color-text-muted);
-  transition: color var(--ms-motion-duration-fast);
+  transition: color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-sidebar-menu-icon > svg {
+  inline-size: 16px;
+  block-size: 16px;
 }
 
 .ms-sidebar-menu-button:hover .ms-sidebar-menu-icon {
@@ -202,11 +208,14 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 11px;
-  font-weight: 600;
+  min-inline-size: 20px;
+  font-size: var(--ms-typography-size-xs);
+  font-weight: var(--ms-typography-weight-medium);
+  font-variant-numeric: tabular-nums;
   padding-inline: 6px;
   padding-block: 2px;
-  border-radius: var(--ms-radius-full);
+  box-sizing: border-box;
+  border-radius: var(--ms-radius-md);
   background-color: var(--_ms-smenu-tone-subtle);
   color: var(--_ms-smenu-tone-fg);
   line-height: 1;
@@ -233,12 +242,11 @@
 .ms-sidebar-menu-sub {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows var(--ms-motion-duration-moderate, 240ms)
-    cubic-bezier(0.4, 0, 0.2, 1);
+  transition: grid-template-rows var(--ms-motion-duration-base) var(--ms-motion-easing-standard);
   overflow: hidden;
-  padding-inline-start: var(--ms-space-4);
-  margin-inline-start: var(--ms-space-3);
-  border-inline-start: 1px solid var(--ms-color-border-subtle);
+  padding-inline-start: 10px;
+  margin-inline-start: 14px;
+  border-inline-start: var(--ms-border-hairline) solid var(--ms-color-border-default);
   margin-top: 2px;
 }
 
@@ -252,8 +260,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--_ms-smenu-gap);
-  padding-top: var(--ms-space-1);
-  padding-bottom: var(--ms-space-1);
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 /* ---------- Collapsed (Mini / Icons-only) Mode ---------- */
@@ -271,5 +279,6 @@
 
 .ms-sidebar-menu[data-collapsed="true"] .ms-sidebar-menu-button {
   justify-content: center;
-  padding-inline: var(--_ms-smenu-item-py);
+  inline-size: var(--_ms-smenu-item-height);
+  padding-inline: 0;
 }

@@ -7,17 +7,18 @@
   display: inline-flex;
   align-items: center;
   position: relative;
+  block-size: var(--ms-control-height-md);
   background-color: var(--ms-color-surface-sunken);
-  border: 1px solid var(--ms-color-border-subtle);
+  border: none;
   border-radius: var(--ms-radius-lg);
-  padding: 2px;
+  padding: 3px;
   user-select: none;
   box-sizing: border-box;
 }
 
 .ms-segmented-control--full-width {
   display: flex;
-  width: 100%;
+  inline-size: 100%;
 }
 
 /* Shapes */
@@ -43,35 +44,35 @@
 
 .ms-segmented-control--tone-accent .ms-segmented-control__item.is-active {
   background-color: var(--ms-color-interactive-accent);
-  color: var(--ms-color-text-on-accent);
+  color: var(--ms-color-accent-content);
 }
 
 /* Sizes */
 .ms-segmented-control--xs {
-  height: 24px;
-  font-size: 11px;
-  padding: 1px;
+  block-size: calc(var(--ms-control-height-sm) - 4px);
+  font-size: var(--ms-typography-size-xs);
+  padding: 2px;
 }
 
 .ms-segmented-control--sm {
-  height: 32px;
-  font-size: var(--ms-typography-size-xs);
+  block-size: var(--ms-control-height-sm);
+  font-size: var(--ms-typography-size-sm);
 }
 
 .ms-segmented-control--md {
-  height: 40px;
+  block-size: var(--ms-control-height-md);
   font-size: var(--ms-typography-size-sm);
 }
 
 .ms-segmented-control--lg {
-  height: 48px;
-  font-size: var(--ms-typography-size-md);
+  block-size: var(--ms-control-height-lg);
+  font-size: var(--ms-typography-size-sm);
 }
 
 .ms-segmented-control--xl {
-  height: 56px;
+  block-size: var(--ms-control-height-xl);
   font-size: var(--ms-typography-size-md);
-  padding: 3px;
+  padding: 4px;
 }
 
 /* Options / Segments */
@@ -79,12 +80,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--ms-space-2);
+  gap: 6px;
   flex: 1 1 auto;
-  height: 100%;
-  padding: 0 var(--ms-space-3);
-  border-radius: calc(var(--ms-radius-lg) - 2px);
-  border: none;
+  block-size: 100%;
+  padding: 0 var(--ms-space-2);
+  border-radius: var(--ms-radius-md);
+  border: var(--ms-border-hairline) solid transparent;
   background: transparent;
   color: var(--ms-color-text-muted);
   font-family: inherit;
@@ -101,24 +102,24 @@
 }
 
 .ms-segmented-control__item:hover:not(:disabled):not(.is-active) {
-  color: var(--ms-color-text-default);
+  color: var(--ms-color-text-primary);
 }
 
 .ms-segmented-control__item:focus-visible {
-  outline: 2px solid var(--ms-color-focus-ring);
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
   outline-offset: -2px;
   z-index: 2;
 }
 
 .ms-segmented-control__item.is-active {
-  background-color: var(--ms-color-surface-default);
-  color: var(--ms-color-text-default);
-  font-weight: var(--ms-typography-weight-semibold);
-  box-shadow: var(--ms-elevation-1);
+  background-color: var(--ms-color-surface-raised);
+  color: var(--ms-color-text-primary);
+  font-weight: var(--ms-typography-weight-medium);
+  box-shadow: var(--ms-elevation-sm);
 }
 
 .ms-segmented-control__item:disabled {
-  opacity: 0.4;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 

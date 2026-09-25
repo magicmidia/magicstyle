@@ -9,7 +9,7 @@ export type MsAlertTone = MsTone;
 export interface MsAlertProps {
   /** Visual variant. @default "soft" */
   variant?: MsAlertVariant;
-  /** Semantic role. @default "info" */
+  /** Semantic role. @default "neutral" */
   tone?: MsAlertTone;
   /** Scale size: "sm" | "md" | "lg". @default "md" */
   size?: MsAlertSize;

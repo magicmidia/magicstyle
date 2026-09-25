@@ -7,7 +7,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<MsBadgeProps>(), {
-  variant: "soft",
+  variant: "solid",
   tone: "primary",
   size: "md",
   pill: false,

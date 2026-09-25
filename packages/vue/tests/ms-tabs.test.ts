@@ -37,8 +37,13 @@ describe("MsTabs (doc 05 §7)", () => {
   it("renders tab structure and correct ARIA attributes", () => {
     const wrapper = renderTabs();
 
+    // Default variant is the shadcn-style pill (segmented) list.
+    expect(wrapper.classes()).toContain("ms-tabs--pill");
+
     const tablist = wrapper.find('[role="tablist"]');
     expect(tablist.exists()).toBe(true);
+    expect(tablist.classes()).toContain("ms-tab-list--pill");
+    expect(wrapper.findAll('[role="tab"]')[0]!.classes()).toContain("ms-tab--pill");
     expect(tablist.attributes("aria-label")).toBe("Settings navigation");
     expect(tablist.attributes("aria-orientation")).toBe("horizontal");
 
@@ -126,19 +131,19 @@ describe("MsTabs (doc 05 §7)", () => {
 
   it("applies variant and orientation classes", () => {
     const wrapper = renderTabs({
-      variant: "pill",
+      variant: "line",
       size: "lg",
       orientation: "vertical",
       fitted: true,
     });
 
-    expect(wrapper.classes()).toContain("ms-tabs--pill");
+    expect(wrapper.classes()).toContain("ms-tabs--line");
     expect(wrapper.classes()).toContain("ms-tabs--lg");
     expect(wrapper.classes()).toContain("ms-tabs--vertical");
     expect(wrapper.classes()).toContain("ms-tabs--fitted");
 
     const tablist = wrapper.find(".ms-tab-list");
-    expect(tablist.classes()).toContain("ms-tab-list--pill");
+    expect(tablist.classes()).toContain("ms-tab-list--line");
     expect(tablist.classes()).toContain("ms-tab-list--fitted");
 
     wrapper.unmount();

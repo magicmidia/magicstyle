@@ -1,6 +1,6 @@
 /*
- * Magic-Style Button component layer — flat tonal grammar (shadcn-guided).
- * Defaults: solid = flat fill, slight 6px rounding, no shadows.
+ * Magic-Style Button component layer — shadcn/ui (new-york) structure.
+ * Defaults: solid = tone fill + xs elevation, control radius, 14px medium label.
  * Options: variant "gradient" (brand signature) and [data-pill].
  * States via data attributes (doc 09 §4, §8). No !important, low specificity.
  */
@@ -31,16 +31,17 @@
     background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
     border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
     color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
-    filter var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
-    transform var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+    box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    filter var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
+/* Pressed: no scale (shadcn); tone-derived pressed colors live on each variant */
 .ms-button:active:not(:disabled) {
-  transform: scale(0.98);
+  transform: none;
 }
 
 .ms-button-label {
-  letter-spacing: var(--ms-typography-letter-spacing-wide);
+  min-inline-size: 0;
 }
 
 /* Opt-in pill shape & explicit shape modifiers */
@@ -116,54 +117,59 @@
     cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
-/* Close Button: compact dismissal action with hover rotate */
+/* Close Button: compact dismissal action (muted, full opacity on hover) */
 .ms-button--close {
   inline-size: var(--ms-control-height-sm);
   block-size: var(--ms-control-height-sm);
   padding: 0;
-  border-radius: var(--ms-radius-full);
-  color: var(--ms-color-text-muted);
+  border-radius: var(--ms-radius-sm);
+  color: var(--ms-color-text-primary);
   background-color: transparent;
   border: none;
+  box-shadow: none;
+  opacity: 0.7;
 }
 .ms-button--close:hover:not(:disabled) {
   background-color: var(--ms-color-interactive-neutral-subtle);
   color: var(--ms-color-text-primary);
-  transform: rotate(90deg);
+  opacity: 1;
 }
 
 /* Sizes (doc 03 §6: density is not size; height scale comes from layout tokens) */
 .ms-button[data-size="xs"],
 .ms-button--size-xs {
-  --_ms-btn-height: 28px;
+  --_ms-btn-height: calc(var(--ms-control-height-sm) - 4px);
+  gap: var(--ms-space-1);
   padding-inline: var(--ms-space-2);
-  font-size: 0.75rem;
+  font-size: var(--ms-typography-size-xs);
 }
 .ms-button[data-size="sm"] {
   --_ms-btn-height: var(--ms-control-height-sm);
+  gap: 6px;
   padding-inline: var(--ms-space-3);
-  font-size: var(--ms-typography-size-xs);
 }
 .ms-button[data-size="lg"] {
   --_ms-btn-height: var(--ms-control-height-lg);
-  padding-inline: var(--ms-space-5);
-  font-size: var(--ms-typography-size-md);
+  padding-inline: var(--ms-space-6);
 }
 .ms-button[data-size="xl"] {
   --_ms-btn-height: var(--ms-control-height-xl);
   padding-inline: var(--ms-space-6);
-  font-size: var(--ms-typography-size-md);
 }
 .ms-button[data-size="xxl"] {
   --_ms-btn-height: var(--ms-control-height-xxl);
-  padding-inline: var(--ms-space-7);
-  font-size: var(--ms-typography-size-lg);
+  padding-inline: var(--ms-space-8);
 }
 
-/* Icon-only buttons become circles */
+/* Icon-only buttons: square (width = height), same radius as the button.
+ * Circle only when explicitly requested via shape="circle" / pill. */
 .ms-button[data-icon-only] {
   inline-size: var(--_ms-btn-height);
   padding-inline: 0;
+}
+.ms-button[data-shape="circle"],
+.ms-button[data-icon-only][data-pill],
+.ms-button[data-icon-only][data-shape="pill"] {
   border-radius: var(--ms-radius-full);
 }
 
@@ -219,7 +225,7 @@
 
 /* ---------- Variants ---------- */
 
-/* Solid: flat fill, slight rounding (default identity) */
+/* Solid: tone fill + xs elevation (default identity) */
 .ms-button[data-variant="solid"],
 .ms-button[data-variant="squared"] {
   background-color: var(--_ms-btn-accent);
@@ -232,7 +238,7 @@
 }
 .ms-button[data-variant="solid"]:active:not(:disabled),
 .ms-button[data-variant="squared"]:active:not(:disabled) {
-  transform: scale(0.98);
+  background-color: var(--ms-tone-active);
 }
 
 /* Squared: opt-in sharp geometry (0 radius) */
@@ -245,65 +251,68 @@
   background-image: var(--ms-color-interactive-accent-gradient);
   background-color: var(--ms-color-interactive-accent);
   color: var(--ms-color-text-on-accent);
+  box-shadow: var(--ms-elevation-button);
 }
 .ms-button[data-variant="gradient"]:hover:not(:disabled) {
   filter: brightness(1.07);
 }
 .ms-button[data-variant="gradient"]:active:not(:disabled) {
-  transform: scale(0.98);
+  filter: brightness(0.95);
 }
 
-/* Soft: tinted field, quiet until touched */
+/* Soft: tinted tone field, tone text */
 .ms-button[data-variant="soft"] {
-  background-color: var(--_ms-btn-accent-fg-muted);
-  color: var(--_ms-btn-accent-subtle);
+  background-color: var(--_ms-btn-accent-subtle);
+  color: var(--_ms-btn-accent-fg-muted);
 }
 .ms-button[data-variant="soft"]:hover:not(:disabled) {
-  background-color: color-mix(in oklch, var(--_ms-btn-accent-fg-muted) 85%, var(--_ms-btn-accent));
+  background-color: color-mix(in oklab, var(--_ms-btn-accent-subtle) 82%, var(--_ms-btn-accent));
 }
 .ms-button[data-variant="soft"]:active:not(:disabled) {
-  transform: scale(0.98);
+  background-color: color-mix(in oklab, var(--_ms-btn-accent-subtle) 72%, var(--_ms-btn-accent));
 }
 
-/* Outline: inherits the tone - tinted hairline and tone text */
+/* Outline: neutral hairline on a raised surface, neutral hover (shadcn "outline") */
 .ms-button[data-variant="outline"] {
-  border-color: color-mix(in oklch, var(--_ms-btn-accent) 42%, transparent);
-  color: var(--_ms-btn-accent-fg-muted);
+  border-color: var(--ms-color-border-default);
+  background-color: var(--ms-color-surface-raised);
+  color: var(--ms-color-text-primary);
+  box-shadow: var(--ms-elevation-button);
 }
 .ms-button[data-variant="outline"]:hover:not(:disabled) {
-  background-color: var(--_ms-btn-accent-subtle);
-  border-color: var(--_ms-btn-accent);
+  background-color: var(--ms-color-interactive-neutral-subtle);
+  border-color: var(--ms-color-border-default);
 }
 .ms-button[data-variant="outline"]:active:not(:disabled) {
-  transform: scale(0.98);
+  background-color: var(--ms-color-interactive-neutral-subtle);
 }
 
-/* Ghost: inherits the tone - tone text, subtle fill on hover */
+/* Ghost: no fill, neutral hover (shadcn "ghost") */
 .ms-button[data-variant="ghost"] {
-  color: var(--_ms-btn-accent-fg-muted);
+  color: var(--ms-color-text-primary);
 }
 .ms-button[data-variant="ghost"]:hover:not(:disabled) {
-  background-color: var(--_ms-btn-accent-subtle);
+  background-color: var(--ms-color-interactive-neutral-subtle);
 }
 .ms-button[data-variant="ghost"]:active:not(:disabled) {
-  transform: scale(0.98);
+  background-color: var(--ms-color-interactive-neutral-subtle);
 }
 
-/* Dashed: corporate dashed outline style */
+/* Dashed: dashed outline style */
 .ms-button[data-variant="dashed"],
 .ms-button--variant-dashed {
   border-style: dashed;
-  border-color: color-mix(in oklch, var(--_ms-btn-accent) 50%, transparent);
-  color: var(--_ms-btn-accent-fg-muted);
+  border-color: var(--ms-color-border-strong);
+  color: var(--ms-color-text-primary);
   background-color: transparent;
 }
 .ms-button[data-variant="dashed"]:hover:not(:disabled),
 .ms-button--variant-dashed:hover:not(:disabled) {
-  background-color: var(--_ms-btn-accent-subtle);
-  border-color: var(--_ms-btn-accent);
+  background-color: var(--ms-color-interactive-neutral-subtle);
+  border-color: var(--ms-color-border-strong);
 }
 
-/* Link: hyperlinked button with underline on hover */
+/* Link: tone text, underline on hover */
 .ms-button[data-variant="link"],
 .ms-button--variant-link {
   background-color: transparent;
@@ -311,6 +320,7 @@
   color: var(--_ms-btn-accent);
   padding-inline: var(--ms-space-1);
   text-decoration: none;
+  box-shadow: none;
 }
 .ms-button[data-variant="link"]:hover:not(:disabled),
 .ms-button--variant-link:hover:not(:disabled) {
@@ -318,23 +328,53 @@
   text-underline-offset: 4px;
 }
 
-/* Text Buttons: lightweight, no border, subtle background on hover */
+/* Text Buttons: lightweight, no border, neutral fill on hover */
 .ms-button[data-variant="text"],
 .ms-button--variant-text {
   background-color: transparent;
   border-color: transparent;
-  color: var(--_ms-btn-accent-fg-muted);
+  color: var(--ms-color-text-primary);
 }
 .ms-button[data-variant="text"]:hover:not(:disabled),
 .ms-button--variant-text:hover:not(:disabled) {
-  background-color: var(--_ms-btn-accent-subtle);
-  color: var(--_ms-btn-accent);
+  background-color: var(--ms-color-interactive-neutral-subtle);
+  color: var(--ms-color-text-primary);
 }
 .ms-button[data-variant="text"]:active:not(:disabled) {
-  transform: scale(0.98);
+  background-color: var(--ms-color-interactive-neutral-subtle);
 }
 
-/* Glass Button: modern frosted translucent glassmorphism */
+/* Explicit non-primary/neutral tone: quiet variants carry the tone in border/text */
+.ms-button[data-tone]:not([data-tone="primary"], [data-tone="neutral"]):is(
+    [data-variant="outline"],
+    [data-variant="ghost"],
+    [data-variant="dashed"],
+    [data-variant="text"],
+    .ms-button--variant-dashed,
+    .ms-button--variant-text
+  ) {
+  color: var(--_ms-btn-accent-fg-muted);
+}
+.ms-button[data-tone]:not([data-tone="primary"], [data-tone="neutral"]):is(
+    [data-variant="outline"],
+    [data-variant="dashed"],
+    .ms-button--variant-dashed
+  ) {
+  border-color: var(--ms-tone-border);
+}
+.ms-button[data-tone]:not([data-tone="primary"], [data-tone="neutral"]):is(
+    [data-variant="outline"],
+    [data-variant="ghost"],
+    [data-variant="dashed"],
+    [data-variant="text"],
+    .ms-button--variant-dashed,
+    .ms-button--variant-text
+  ):hover:not(:disabled) {
+  background-color: var(--_ms-btn-accent-subtle);
+  color: var(--_ms-btn-accent-fg-muted);
+}
+
+/* Glass Button: opt-in frosted translucent signature */
 .ms-button[data-variant="glass"],
 .ms-button--variant-glass {
   background-color: color-mix(in srgb, var(--ms-color-surface-elevated) 65%, transparent);
@@ -342,21 +382,17 @@
   -webkit-backdrop-filter: blur(12px);
   border-color: color-mix(in srgb, var(--ms-color-border-subtle) 80%, transparent);
   color: var(--ms-color-text-primary);
-  box-shadow:
-    0 4px 16px 0 rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+  box-shadow: var(--ms-elevation-md);
 }
 .ms-button[data-variant="glass"]:hover:not(:disabled),
 .ms-button--variant-glass:hover:not(:disabled) {
   background-color: color-mix(in srgb, var(--ms-color-surface-elevated) 85%, transparent);
   border-color: color-mix(in srgb, var(--_ms-btn-accent) 60%, transparent);
   color: var(--_ms-btn-accent);
-  box-shadow:
-    0 6px 20px 0 rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.28);
+  box-shadow: var(--ms-elevation-lg);
 }
 .ms-button[data-variant="glass"]:active:not(:disabled) {
-  transform: scale(0.98);
+  box-shadow: var(--ms-elevation-md);
 }
 
 /* ---------- States ---------- */
@@ -375,7 +411,7 @@
   opacity: 0.35;
 }
 
-/* Signature focus: cyan ring */
+/* Focus: tokenized outline ring */
 .ms-button:focus-visible {
   outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
   outline-offset: var(--ms-focus-ring-offset);
@@ -404,10 +440,19 @@
   }
 }
 
-/* Icons stay optically balanced against the label */
+/* Icons stay optically balanced against the label (16px, 12px at xs) */
 .ms-button-icon {
   display: inline-flex;
   flex-shrink: 0;
+}
+.ms-button-icon > :where(svg) {
+  inline-size: 16px;
+  block-size: 16px;
+}
+.ms-button[data-size="xs"] .ms-button-icon > :where(svg),
+.ms-button--size-xs .ms-button-icon > :where(svg) {
+  inline-size: 12px;
+  block-size: 12px;
 }
 
 /* Forced colors: keep affordance readable */

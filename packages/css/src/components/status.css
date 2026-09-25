@@ -108,6 +108,11 @@
   color: var(--ms-tone);
 }
 
+/* Some themes use secondary as a surface color (e.g. shadcn): keep the dot visible. */
+.ms-status--tone-secondary {
+  color: var(--ms-tone-text);
+}
+
 .ms-status__label {
   color: var(--ms-color-text);
 }

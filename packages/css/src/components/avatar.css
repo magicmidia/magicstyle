@@ -1,13 +1,13 @@
 /*
  * Magic-Style Avatar component layer — user/entity representation.
  * Classes: .ms-avatar, .ms-avatar-image, .ms-avatar-fallback, .ms-avatar-indicator.
- * Sizes: xs (24px), sm (32px), md (40px, default), lg (48px), xl (64px).
+ * Sizes: 2xs (20px), xs (24px), sm (28px), md (32px, default — shadcn size-8), lg (48px), xl (64px).
  * Shapes: circle (default), rounded.
  * Status: online, offline, busy, away.
  */
 
 .ms-avatar {
-  --_ms-avatar-size: 40px;
+  --_ms-avatar-size: 32px;
   --_ms-avatar-font-size: var(--ms-typography-size-sm);
   --_ms-avatar-radius: var(--ms-radius-full);
 
@@ -19,7 +19,7 @@
   block-size: var(--_ms-avatar-size);
   border-radius: var(--_ms-avatar-radius);
   background-color: var(--ms-color-surface-sunken);
-  color: var(--ms-color-text-secondary);
+  color: var(--ms-color-text-primary);
   font-family: var(--ms-font-sans);
   font-size: var(--_ms-avatar-font-size);
   font-weight: var(--ms-typography-weight-medium);
@@ -42,22 +42,22 @@
 /* Sizing */
 .ms-avatar[data-size="2xs"] {
   --_ms-avatar-size: 20px;
-  --_ms-avatar-font-size: 9px;
+  --_ms-avatar-font-size: var(--ms-typography-size-2xs);
 }
 
 .ms-avatar[data-size="xs"] {
   --_ms-avatar-size: 24px;
-  --_ms-avatar-font-size: 10px;
+  --_ms-avatar-font-size: var(--ms-typography-size-2xs);
 }
 
 .ms-avatar[data-size="sm"] {
-  --_ms-avatar-size: 32px;
+  --_ms-avatar-size: 28px;
   --_ms-avatar-font-size: var(--ms-typography-size-xs);
 }
 
 .ms-avatar[data-size="md"],
 .ms-avatar:not([data-size]) {
-  --_ms-avatar-size: 40px;
+  --_ms-avatar-size: 32px;
   --_ms-avatar-font-size: var(--ms-typography-size-sm);
 }
 
@@ -109,6 +109,12 @@
 .ms-avatar:is([data-tone], :not([data-tone])) .ms-avatar-fallback {
   background-color: var(--ms-tone-subtle);
   color: var(--ms-tone-text);
+}
+
+/* Neutral (default) fallback follows shadcn: muted surface, primary text. */
+.ms-avatar:is([data-tone="neutral"], :not([data-tone])) .ms-avatar-fallback {
+  background-color: var(--ms-color-surface-sunken);
+  color: var(--ms-color-text-primary);
 }
 
 /* Status Indicator Dot */
@@ -182,7 +188,7 @@
 .ms-avatar-group > .ms-avatar {
   margin-inline-start: -8px;
   box-shadow: 0 0 0 2px var(--ms-color-surface-raised);
-  transition: transform var(--ms-motion-duration-fast) ease;
+  transition: transform var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-avatar-group > .ms-avatar:first-child {
@@ -234,6 +240,6 @@
 /* Excess / Overflow counter avatar */
 .ms-avatar--excess {
   background-color: var(--ms-color-surface-sunken);
-  color: var(--ms-color-text-secondary);
-  font-weight: var(--ms-typography-weight-semibold);
+  color: var(--ms-color-text-primary);
+  font-weight: var(--ms-typography-weight-medium);
 }

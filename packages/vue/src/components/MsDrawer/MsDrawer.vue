@@ -111,7 +111,21 @@ useDismissableLayer({
                 :aria-label="t.drawer.close"
                 @click="handleClose"
               >
-                <slot name="close">✕</slot>
+                <slot name="close">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M18 6 6 18M6 6l12 12" />
+                  </svg>
+                </slot>
               </button>
             </slot>
           </header>

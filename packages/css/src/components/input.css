@@ -1,5 +1,5 @@
 /*
- * Magic-Style Input — flat hairline field with tonal focus.
+ * Magic-Style Input — shadcn/ui field: transparent fill, field hairline, xs elevation, 3px focus halo.
  * Classes: .ms-input (wrapper), .ms-input-native, .ms-input-prefix, .ms-input-suffix.
  * States via data attributes: data-size, data-invalid, data-disabled.
  */
@@ -11,9 +11,12 @@
   block-size: var(--ms-control-height-md);
   padding-inline: var(--ms-space-3);
   border: var(--ms-border-hairline) solid var(--ms-color-border-field);
-  border-radius: var(--ms-control-radius);
-  background-color: var(--ms-color-surface-raised);
+  border-radius: var(--ms-radius-md);
+  background-color: transparent;
+  box-shadow: var(--ms-elevation-input);
+  font-size: var(--ms-typography-size-sm);
   transition:
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
     border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
     box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
@@ -23,36 +26,34 @@
 }
 
 .ms-input:focus-within {
+  outline: none;
   border-color: var(--ms-focus-ring-color);
-  box-shadow:
-    0 0 0 1px var(--ms-focus-ring-color),
-    0 0 0 3px color-mix(in oklch, var(--ms-focus-ring-color) 20%, transparent);
+  box-shadow: var(--ms-elevation-input), var(--ms-focus-ring-shadow);
 }
 
 .ms-input[data-invalid] {
-  border-color: var(--ms-color-feedback-danger-border);
+  border-color: var(--ms-color-danger);
 }
 .ms-input[data-invalid]:focus-within {
-  border-color: var(--ms-color-feedback-danger-border);
+  border-color: var(--ms-color-danger);
   box-shadow:
-    0 0 0 1px var(--ms-color-feedback-danger-border),
-    0 0 0 3px color-mix(in oklch, var(--ms-color-feedback-danger-border) 20%, transparent);
+    var(--ms-elevation-input),
+    0 0 0 3px color-mix(in oklab, var(--ms-color-danger) 20%, transparent);
 }
 
 .ms-input[data-disabled] {
-  background-color: var(--ms-color-surface-sunken);
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
 .ms-input[data-size="xs"] {
-  block-size: 28px;
+  block-size: calc(var(--ms-control-height-sm) - 4px);
   padding-inline: var(--ms-space-2);
-  font-size: 0.75rem;
+  font-size: var(--ms-typography-size-xs);
 }
 .ms-input[data-size="sm"] {
   block-size: var(--ms-control-height-sm);
-  padding-inline: var(--ms-space-2-5, 10px);
+  padding-inline: var(--ms-space-3);
 }
 .ms-input[data-size="md"] {
   block-size: var(--ms-control-height-md);
@@ -86,7 +87,7 @@
 }
 .ms-input[data-shape="pill"],
 .ms-input--shape-pill {
-  border-radius: 9999px;
+  border-radius: var(--ms-radius-full);
   padding-inline: var(--ms-space-4);
 }
 
@@ -97,7 +98,7 @@
   outline: none;
   background: transparent;
   font-family: var(--ms-font-sans);
-  font-size: var(--ms-typography-size-md);
+  font-size: inherit;
   color: var(--ms-color-text-primary);
 }
 .ms-input-native::placeholder {
@@ -123,7 +124,9 @@
 /* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
 .ms-input[data-tone]:focus-within {
   border-color: var(--ms-tone);
-  box-shadow: 0 0 0 1px var(--ms-tone);
+  box-shadow:
+    var(--ms-elevation-input),
+    0 0 0 3px color-mix(in oklab, var(--ms-tone) 30%, transparent);
 }
 
 /* ---------- Addons: integrated input groups (shared silhouette) ---------- */
@@ -157,8 +160,8 @@
 
 /* Focus highlights the compound as ONE element */
 .ms-input-group:focus-within {
-  box-shadow: 0 0 0 1px var(--ms-focus-ring-color);
-  border-radius: var(--ms-control-radius);
+  box-shadow: var(--ms-focus-ring-shadow);
+  border-radius: var(--ms-radius-md);
 }
 .ms-input-group:focus-within .ms-input,
 .ms-input-group:focus-within .ms-input:hover {
@@ -168,7 +171,7 @@
 .ms-input-group:focus-within .ms-button[data-attached],
 .ms-input-group:focus-within .ms-button[data-attached]:hover {
   border-color: var(--ms-focus-ring-color);
-  box-shadow: inset 0 0 0 1px var(--ms-focus-ring-color);
+  box-shadow: none;
 }
 
 /* ---------- Processing: spinner in suffix ---------- */
@@ -206,7 +209,7 @@
   padding-inline: var(--ms-space-1);
   background-color: var(--ms-color-surface-raised);
   border-radius: var(--ms-radius-xs);
-  font-size: var(--ms-typography-size-md);
+  font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-muted);
   pointer-events: none;
   transition:
@@ -218,7 +221,7 @@
 .ms-input[data-floating] .ms-input-native:not(:placeholder-shown) + .ms-input-floating-label,
 .ms-input[data-floating] .ms-input-native:not(:placeholder-shown) ~ .ms-input-floating-label {
   inset-block-start: 0;
-  transform: translateY(-50%) scale(0.78);
+  transform: translateY(-50%) scale(0.86);
   transform-origin: inline-start;
   font-size: var(--ms-typography-size-sm);
   color: var(--ms-focus-ring-color);
@@ -229,7 +232,8 @@
 .ms-textarea {
   display: inline-flex;
   align-items: stretch;
-  min-block-size: 96px;
+  block-size: auto;
+  min-block-size: 64px;
   padding-block: var(--ms-space-2);
   resize: vertical;
 }
@@ -394,9 +398,9 @@
   border-color: transparent;
 }
 .ms-input[data-variant="filled"]:focus-within {
-  background-color: var(--ms-color-surface-raised);
+  background-color: transparent;
   border-color: var(--ms-focus-ring-color);
-  box-shadow: 0 0 0 1px var(--ms-focus-ring-color);
+  box-shadow: var(--ms-focus-ring-shadow);
 }
 
 .ms-input[data-variant="flushed"] {
@@ -428,17 +432,17 @@
   cursor: pointer;
   color: var(--ms-color-text-muted);
   border-radius: var(--ms-radius-xs);
-  transition: color var(--ms-motion-duration-fast) ease;
+  transition: color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 .ms-input-action-btn:hover {
   color: var(--ms-color-text-primary);
 }
 .ms-input-action-btn:focus-visible {
   outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
-  outline-offset: 1px;
+  outline-offset: var(--ms-focus-ring-offset);
 }
 
-/* Variant: Soft (FlyonUI Signature: Tinted Surface) */
+/* Variant: Soft (opt-in tinted surface) */
 .ms-input[data-variant="soft"] {
   background-color: var(
     --ms-color-interactive-primary-subtle,
@@ -455,11 +459,9 @@
   border-color: color-mix(in oklch, var(--ms-focus-ring-color) 35%, transparent);
 }
 .ms-input[data-variant="soft"]:focus-within {
-  background-color: var(--ms-color-surface-raised);
+  background-color: transparent;
   border-color: var(--ms-focus-ring-color);
-  box-shadow:
-    0 0 0 1px var(--ms-focus-ring-color),
-    0 0 0 3px color-mix(in oklch, var(--ms-focus-ring-color) 18%, transparent);
+  box-shadow: var(--ms-focus-ring-shadow);
 }
 
 /* Variant: Ghost (Borderless until hover/focus) */
@@ -469,15 +471,13 @@
   box-shadow: none;
 }
 .ms-input[data-variant="ghost"]:hover:not([data-disabled]):not([data-invalid]) {
-  background-color: var(--ms-color-surface-sunken);
-  border-color: var(--ms-color-border-subtle);
+  background-color: var(--ms-color-interactive-neutral-subtle);
+  border-color: transparent;
 }
 .ms-input[data-variant="ghost"]:focus-within {
-  background-color: var(--ms-color-surface-raised);
+  background-color: transparent;
   border-color: var(--ms-focus-ring-color);
-  box-shadow:
-    0 0 0 1px var(--ms-focus-ring-color),
-    0 0 0 3px color-mix(in oklch, var(--ms-focus-ring-color) 18%, transparent);
+  box-shadow: var(--ms-focus-ring-shadow);
 }
 
 /* Addon Groups (https://, .com, $, etc.) */
@@ -488,20 +488,20 @@
   font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-secondary);
   background-color: var(--ms-color-surface-sunken);
-  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-field);
   box-sizing: border-box;
   white-space: nowrap;
   user-select: none;
 }
 .ms-input-addon--prefix {
   border-inline-end: none;
-  border-start-start-radius: var(--ms-control-radius);
-  border-end-start-radius: var(--ms-control-radius);
+  border-start-start-radius: var(--ms-radius-md);
+  border-end-start-radius: var(--ms-radius-md);
 }
 .ms-input-addon--suffix {
   border-inline-start: none;
-  border-start-end-radius: var(--ms-control-radius);
-  border-end-end-radius: var(--ms-control-radius);
+  border-start-end-radius: var(--ms-radius-md);
+  border-end-end-radius: var(--ms-radius-md);
 }
 
 /* Group wrapper for input + addon or attached buttons */
@@ -509,7 +509,7 @@
   display: inline-flex;
   align-items: stretch;
   position: relative;
-  width: 100%;
+  inline-size: 100%;
 }
 .ms-input-group > .ms-input {
   flex: 1;

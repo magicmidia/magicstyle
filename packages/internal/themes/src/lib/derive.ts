@@ -44,6 +44,10 @@ export const RATIOS = {
   /** Form control boundaries (WCAG 1.4.11): 3:1 against every surface in every theme. */
   borderField: 50,
   borderFieldHover: 30,
+  /** Focus ring: primary nudged toward the ink so it reaches 3:1 on every surface (WCAG 1.4.11). */
+  focusRing: 80,
+  /** Soft 3px halo around focused fields (decorative; the solid ring/border carries the contrast). */
+  focusHalo: 30,
   /** Chroma restored after mixing (tints keep ~30% and shades ~80% of the role's saturation). */
   tintChroma: 2.2,
   textChroma: 2,
@@ -94,8 +98,15 @@ export const DERIVED: ReadonlyArray<readonly [string, Expr]> = [
   ["color-border-strong", mix("color-base-300", RATIOS.borderStrong, INK)],
   ["color-border-field", mix("color-base-300", RATIOS.borderField, INK)],
   ["color-border-field-hover", mix("color-base-300", RATIOS.borderFieldHover, INK)],
-  ["color-border-focus", ref("color-primary")],
-  ["focus-ring-color", ref("color-primary")],
+  ["color-border-focus", ref("focus-ring-color")],
+  ["focus-ring-color", mix("color-primary", RATIOS.focusRing, INK)],
+  // Fields: solid ring-colored border + soft 3px halo (`box-shadow: var(--ms-focus-ring-shadow)`).
+  // Everything else: `outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color)` + offset.
+  [
+    "focus-ring-halo",
+    css(`color-mix(in oklab, var(--ms-focus-ring-color) ${RATIOS.focusHalo}%, transparent)`),
+  ],
+  ["focus-ring-shadow", css("0 0 0 3px var(--ms-focus-ring-halo)")],
   // Roles
   ...CONTRACT_COLOR_ROLES.map((role): [string, Expr] => [
     `color-brand-${role}`,
@@ -120,28 +131,40 @@ export const DERIVED: ReadonlyArray<readonly [string, Expr]> = [
   ["radius-lg", ref("radius-box")],
   ["radius-xl", css("calc(var(--ms-radius-box) * 1.5)")],
   ["radius-2xl", css("calc(var(--ms-radius-box) * 2)")],
-  // Shadows scale with --ms-depth (0 = flat themes).
+  // Shadows (Tailwind scale, neutral ink) scale with --ms-depth (0 = flat themes).
+  ["elevation-xs", css("0 1px 2px 0 oklch(0 0 0 / calc(0.05 * var(--ms-depth)))")],
   [
-    "elevation-1",
+    "elevation-sm",
     css(
-      "0 1px 2px 0 oklch(0.19 0.016 248 / calc(0.1 * var(--ms-depth))), 0 1px 1px -1px oklch(0.19 0.016 248 / calc(0.06 * var(--ms-depth)))",
+      "0 1px 3px 0 oklch(0 0 0 / calc(0.1 * var(--ms-depth))), 0 1px 2px -1px oklch(0 0 0 / calc(0.1 * var(--ms-depth)))",
     ),
   ],
   [
-    "elevation-2",
+    "elevation-md",
     css(
-      "0 4px 12px -2px oklch(0.19 0.018 248 / calc(0.12 * var(--ms-depth))), 0 1px 2px 0 oklch(0.19 0.016 248 / calc(0.06 * var(--ms-depth)))",
+      "0 4px 6px -1px oklch(0 0 0 / calc(0.1 * var(--ms-depth))), 0 2px 4px -2px oklch(0 0 0 / calc(0.1 * var(--ms-depth)))",
     ),
   ],
   [
-    "elevation-3",
+    "elevation-lg",
     css(
-      "0 12px 32px -8px oklch(0.12 0.014 248 / calc(0.18 * var(--ms-depth))), 0 2px 6px -2px oklch(0.12 0.012 248 / calc(0.08 * var(--ms-depth)))",
+      "0 10px 15px -3px oklch(0 0 0 / calc(0.1 * var(--ms-depth))), 0 4px 6px -4px oklch(0 0 0 / calc(0.1 * var(--ms-depth)))",
     ),
   ],
-  ["elevation-card", ref("elevation-1")],
-  ["elevation-dropdown", ref("elevation-2")],
-  ["elevation-modal", ref("elevation-3")],
+  [
+    "elevation-xl",
+    css(
+      "0 20px 25px -5px oklch(0 0 0 / calc(0.1 * var(--ms-depth))), 0 8px 10px -6px oklch(0 0 0 / calc(0.1 * var(--ms-depth)))",
+    ),
+  ],
+  ["elevation-1", ref("elevation-sm")],
+  ["elevation-2", ref("elevation-md")],
+  ["elevation-3", ref("elevation-lg")],
+  ["elevation-button", ref("elevation-xs")],
+  ["elevation-input", ref("elevation-xs")],
+  ["elevation-card", ref("elevation-sm")],
+  ["elevation-dropdown", ref("elevation-md")],
+  ["elevation-modal", ref("elevation-lg")],
   // Legacy aliases kept for component compatibility (point at derived tokens).
   ["color-surface", ref("color-surface-default")],
   ["color-surface-hover", ref("color-interactive-neutral-subtle")],
@@ -277,6 +300,10 @@ export const CONTRAST_PAIRS: ReadonlyArray<readonly [fg: string, bg: string, min
   ["color-text-primary", "color-surface-default", 4.5],
   ["color-text-secondary", "color-surface-default", 4.5],
   ["color-text-primary", "color-surface-sunken", 4.5],
+  // Focus indicator (WCAG 2.4.7 + 1.4.11).
+  ["focus-ring-color", "color-surface-default", 3],
+  ["focus-ring-color", "color-surface-raised", 3],
+  ["focus-ring-color", "color-surface-sunken", 3],
   // Non-text contrast of form control boundaries (WCAG 1.4.11).
   ["color-border-field", "color-surface-default", 3],
   ["color-border-field", "color-surface-raised", 3],

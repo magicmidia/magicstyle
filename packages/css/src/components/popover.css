@@ -13,15 +13,14 @@
   z-index: var(--ms-z-popover, 500);
   background-color: var(--ms-color-surface-raised);
   color: var(--ms-color-text-primary);
-  border: 1px solid var(--ms-color-border-subtle);
-  border-radius: var(--ms-radius-lg);
-  box-shadow: var(
-    --ms-elevation-3,
-    0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -4px rgba(0, 0, 0, 0.1)
-  );
-  min-width: 200px;
-  animation: ms-popover-appear calc(150ms * var(--ms-motion-scale, 1)) cubic-bezier(0.16, 1, 0.3, 1);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border-radius: var(--ms-radius-md);
+  box-shadow: var(--ms-elevation-dropdown);
+  box-sizing: border-box;
+  min-inline-size: 200px;
+  outline: none;
+  animation: ms-popover-appear calc(150ms * var(--ms-motion-scale, 1))
+    var(--ms-motion-easing-standard);
 }
 
 /* Placements */
@@ -71,36 +70,42 @@
 
 /* Width Presets */
 .ms-popover-panel--width-auto {
-  width: max-content;
-  max-width: min(90vw, 420px);
+  inline-size: max-content;
+  max-inline-size: min(90vw, 420px);
 }
 
 .ms-popover-panel--width-sm {
-  width: 220px;
+  inline-size: 224px;
 }
 
+/* shadcn default popover width (w-72). */
 .ms-popover-panel--width-md {
-  width: 300px;
+  inline-size: 288px;
 }
 
 .ms-popover-panel--width-lg {
-  width: 380px;
+  inline-size: 384px;
 }
 
 /* Header, Content & Footer */
 .ms-popover__header {
-  padding: var(--ms-space-3) var(--ms-space-4);
-  border-bottom: 1px solid var(--ms-color-border-subtle);
-  font-weight: var(--ms-typography-weight-semibold);
+  padding: var(--ms-space-4) var(--ms-space-4) 0;
+  font-weight: var(--ms-typography-weight-medium);
   font-size: var(--ms-typography-size-sm);
+  line-height: 1;
   color: var(--ms-color-text-primary);
 }
 
 .ms-popover__body {
   padding: var(--ms-space-4);
   font-size: var(--ms-typography-size-sm);
-  line-height: var(--ms-line-height-relaxed, 1.625);
-  color: var(--ms-color-text-secondary);
+  line-height: var(--ms-typography-line-height-base);
+  color: var(--ms-color-text-primary);
+}
+
+.ms-popover__header + .ms-popover__body {
+  padding-block-start: var(--ms-space-2);
+  color: var(--ms-color-text-muted);
 }
 
 .ms-popover__footer {
@@ -108,20 +113,20 @@
   align-items: center;
   justify-content: flex-end;
   gap: var(--ms-space-2);
-  padding: var(--ms-space-2) var(--ms-space-4);
-  border-top: 1px solid var(--ms-color-border-subtle);
-  background-color: var(--ms-color-surface-sunken);
+  padding: 0 var(--ms-space-4) var(--ms-space-4);
   border-end-start-radius: inherit;
   border-end-end-radius: inherit;
 }
 
+/* Uses the individual `scale` property so it composes with the placement
+   `transform: translate(...)` instead of overriding it mid-animation. */
 @keyframes ms-popover-appear {
   from {
     opacity: 0;
-    transform: scale(0.96);
+    scale: 0.95;
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    scale: 1;
   }
 }

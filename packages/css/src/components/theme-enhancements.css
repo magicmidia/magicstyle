@@ -94,32 +94,8 @@
 }
 
 /* ==========================================================================
-   3. Shadcn UI
+   3. Shadcn UI — no overrides: the base components follow the shadcn structure.
    ========================================================================== */
-:is([data-ms-theme="shadcn"], [data-theme="shadcn"]) .ms-button {
-  border-radius: 6px;
-  font-weight: 500;
-}
-
-:is([data-ms-theme="shadcn"], [data-theme="shadcn"]) .ms-button[data-variant="solid"] {
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-
-:is([data-ms-theme="shadcn"], [data-theme="shadcn"]) .ms-card {
-  border-radius: 8px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--ms-color-border-default);
-}
-
-:is([data-ms-theme="shadcn"], [data-theme="shadcn"]) .ms-input {
-  border-radius: 6px;
-  border-color: var(--ms-color-border-field);
-}
-
-:is([data-ms-theme="shadcn"], [data-theme="shadcn"]) .ms-input:focus-within {
-  border-color: var(--ms-color-border-focus);
-  box-shadow: 0 0 0 1px var(--ms-color-border-focus);
-}
 
 /* ==========================================================================
    4. GitHub Primer

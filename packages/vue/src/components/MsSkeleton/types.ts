@@ -18,8 +18,8 @@ export interface MsSkeletonProps {
 
   /**
    * Visual loading animation:
-   * - "shimmer": continuous gradient sweep (default)
-   * - "pulse": subtle opacity oscillation
+   * - "shimmer": continuous gradient sweep
+   * - "pulse": subtle opacity oscillation (default)
    * - "none": static placeholder background
    */
   animation?: MsSkeletonAnimation;

@@ -121,5 +121,5 @@
 }
 
 .ms-file-input__item-remove:hover {
-  color: var(--ms-color-danger);
+  color: var(--ms-color-feedback-danger-text);
 }

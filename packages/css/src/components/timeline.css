@@ -39,7 +39,7 @@
 /* Track connector line */
 .ms-timeline-item__connector {
   position: absolute;
-  background-color: var(--ms-color-border-subtle);
+  background-color: var(--ms-color-border-default);
 }
 
 .ms-timeline--direction-vertical .ms-timeline-item__connector {
@@ -74,13 +74,20 @@
   width: 32px;
   height: 32px;
   border-radius: var(--ms-radius-full);
+  box-sizing: border-box;
+  font-family: var(--ms-font-sans);
   font-size: var(--ms-typography-size-xs);
-  font-weight: var(--ms-typography-weight-bold);
+  font-weight: var(--ms-typography-weight-medium);
   background-color: var(--ms-color-surface-raised);
-  border: 2px solid var(--ms-color-border-default);
-  color: var(--ms-color-text-secondary);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  color: var(--ms-color-text-muted);
   flex-shrink: 0;
   box-shadow: 0 0 0 4px var(--ms-color-surface-default);
+}
+
+.ms-timeline-item__node > svg {
+  inline-size: 16px;
+  block-size: 16px;
 }
 /* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
 .ms-timeline-item--tone-primary {
@@ -152,15 +159,16 @@
 }
 
 .ms-timeline-item__title {
-  font-size: var(--ms-typography-size-md);
-  font-weight: var(--ms-typography-weight-semibold);
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-medium);
+  line-height: var(--ms-typography-line-height-tight);
   color: var(--ms-color-text-primary);
   margin: 0 0 var(--ms-space-1) 0;
 }
 
 .ms-timeline-item__description {
   font-size: var(--ms-typography-size-sm);
-  color: var(--ms-color-text-secondary);
-  line-height: var(--ms-line-height-relaxed, 1.625);
+  color: var(--ms-color-text-muted);
+  line-height: var(--ms-typography-line-height-relaxed);
   margin: 0;
 }

@@ -36,7 +36,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<MsTooltipProps>(), {
   placement: "top",
-  tone: "dark",
+  tone: "primary",
   size: "md",
   arrow: true,
   showDelay: 150,

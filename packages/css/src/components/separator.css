@@ -4,7 +4,7 @@
    ========================================================================== */
 
 .ms-separator {
-  --_ms-sep-color: var(--ms-color-border-subtle);
+  --_ms-sep-color: var(--ms-color-border-default);
   --_ms-sep-thickness: 1px;
   margin: 0;
   padding: 0;
@@ -71,26 +71,25 @@
 /* Tones */
 .ms-separator--tone-neutral,
 .ms-separator--default {
-  --_ms-sep-color: var(--ms-color-border-subtle);
+  --_ms-sep-color: var(--ms-color-border-default);
 }
 
 .ms-separator--tone-muted,
 .ms-separator--subtle {
   --_ms-sep-color: var(--ms-color-border-subtle);
-  opacity: 0.6;
 }
 
 .ms-separator--tone-strong,
 .ms-separator--strong {
-  --_ms-sep-color: var(--ms-color-border-default);
+  --_ms-sep-color: var(--ms-color-border-strong);
 }
 
 .ms-separator--tone-primary {
-  --_ms-sep-color: var(--ms-color-interactive-primary);
+  --_ms-sep-color: var(--ms-color-primary);
 }
 
 .ms-separator--tone-accent {
-  --_ms-sep-color: var(--ms-color-interactive-accent);
+  --_ms-sep-color: var(--ms-color-accent);
 }
 
 .ms-separator--tone-success {

@@ -24,7 +24,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<MsTabsProps>(), {
-  variant: "line",
+  variant: "pill",
   size: "md",
   orientation: "horizontal",
   fitted: false,

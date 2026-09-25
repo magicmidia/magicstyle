@@ -12,7 +12,7 @@ describe("MsBadge", () => {
 
     expect(wrapper.classes()).toContain("ms-badge");
     expect(wrapper.text()).toBe("Novo");
-    expect(wrapper.attributes("data-variant")).toBe("soft");
+    expect(wrapper.attributes("data-variant")).toBe("solid");
     expect(wrapper.attributes("data-tone")).toBe("primary");
     expect(wrapper.attributes("data-size")).toBe("md");
   });

@@ -1,6 +1,7 @@
 /*
  * Magic-Style Tabs layer (doc 05 §7).
- * Accessible tab navigation with line, pill, and enclosed variants.
+ * Accessible tab navigation. Variants: pill (Vue default, shadcn segmented look),
+ * line (underline), enclosed, solid, and the CSS-only boxed/segmented aliases of pill.
  */
 
 .ms-tabs {
@@ -60,26 +61,30 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  width: calc(var(--ms-control-height-sm) - 4px);
+  height: calc(var(--ms-control-height-sm) - 4px);
   padding: 0;
-  border: 1px solid var(--ms-color-border-subtle);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
   background-color: var(--ms-color-surface-raised);
-  color: var(--ms-color-text-secondary);
-  border-radius: var(--ms-radius-full);
+  color: var(--ms-color-text-muted);
+  border-radius: var(--ms-control-radius);
   cursor: pointer;
-  box-shadow: var(--ms-elevation-1);
+  box-shadow: var(--ms-elevation-button);
   transition:
-    color var(--ms-motion-duration-fast) ease,
-    background-color var(--ms-motion-duration-fast) ease,
-    border-color var(--ms-motion-duration-fast) ease;
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
   z-index: 2;
 }
 
 .ms-tab-list__arrow:hover {
   color: var(--ms-color-text-primary);
-  border-color: var(--ms-color-border-strong);
-  background-color: var(--ms-color-surface-default);
+  background-color: var(--ms-color-interactive-neutral-subtle);
+}
+
+.ms-tab-list__arrow:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
 }
 
 .ms-tab-list__arrow--left {
@@ -98,52 +103,75 @@
   flex-direction: column;
 }
 
-/* Variant: Line (default) */
+/* Variant: Line (underline) */
 .ms-tabs--horizontal .ms-tab-list--line {
-  border-bottom: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
-  gap: var(--ms-space-6);
+  border-bottom: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  gap: var(--ms-space-4);
 }
 
 .ms-tabs--vertical .ms-tab-list--line {
-  border-inline-end: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-inline-end: var(--ms-border-hairline) solid var(--ms-color-border-default);
   gap: var(--ms-space-1);
 }
 
-/* Variant: Pill */
+/* Variant: Pill (default) — shadcn TabsList: sunken track, 3px inset, 36px tall, fit-content. */
 .ms-tab-list--pill {
-  background-color: var(--ms-color-surface-sunken);
-  border-radius: var(--ms-radius-full);
-  padding: var(--ms-space-1);
-  gap: var(--ms-space-1);
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: fit-content;
+  block-size: var(--ms-control-height-md);
+  background-color: var(--ms-color-surface-sunken);
+  color: var(--ms-color-text-muted);
+  border-radius: var(--ms-radius-lg);
+  padding: 3px;
+  gap: 0;
+}
+
+.ms-tabs--sm .ms-tab-list--pill {
+  block-size: var(--ms-control-height-sm);
+}
+
+.ms-tabs--lg .ms-tab-list--pill {
+  block-size: var(--ms-control-height-lg);
+}
+
+.ms-tab-list--pill.ms-tab-list--scrollable {
+  flex: 0 1 auto;
+}
+
+.ms-tab-list--pill.ms-tab-list--fitted {
+  inline-size: 100%;
 }
 
 .ms-tabs--vertical .ms-tab-list--pill {
+  block-size: auto;
+  align-items: stretch;
   border-radius: var(--ms-radius-lg);
 }
 
 /* Variant: Solid (preenchida) */
 .ms-tab-list--solid {
   background-color: var(--ms-color-surface-sunken);
-  border: 1px solid var(--ms-color-border-subtle);
-  border-radius: var(--ms-radius-md);
-  padding: var(--ms-space-1);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border-radius: var(--ms-radius-lg);
+  padding: 3px;
   gap: var(--ms-space-1);
   display: inline-flex;
 }
 
 .ms-tabs--vertical .ms-tab-list--solid {
-  border-radius: var(--ms-radius-md);
+  border-radius: var(--ms-radius-lg);
 }
 
 /* Variant: Enclosed */
 .ms-tabs--horizontal .ms-tab-list--enclosed {
-  border-bottom: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-bottom: var(--ms-border-hairline) solid var(--ms-color-border-default);
   gap: var(--ms-space-1);
 }
 
 .ms-tabs--vertical .ms-tab-list--enclosed {
-  border-inline-end: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-inline-end: var(--ms-border-hairline) solid var(--ms-color-border-default);
   gap: var(--ms-space-1);
 }
 
@@ -164,7 +192,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--ms-space-2);
+  gap: 6px;
   background: transparent;
   border: none;
   font-family: inherit;
@@ -182,28 +210,35 @@
   position: relative;
 }
 
+.ms-tab > svg {
+  inline-size: 16px;
+  block-size: 16px;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
 /* Tab sizes */
 .ms-tab--sm {
   font-size: var(--ms-typography-size-xs);
-  padding: var(--ms-space-1) var(--ms-space-3);
+  padding: 4px 10px;
   min-height: var(--ms-control-height-sm);
 }
 
 .ms-tab--md {
   font-size: var(--ms-typography-size-sm);
-  padding: var(--ms-space-2) var(--ms-space-4);
+  padding: 4px 12px;
   min-height: var(--ms-control-height-md);
 }
 
 .ms-tab--lg {
-  font-size: var(--ms-typography-size-md);
-  padding: var(--ms-space-3) var(--ms-space-5);
+  font-size: var(--ms-typography-size-sm);
+  padding: 6px 16px;
   min-height: var(--ms-control-height-lg);
 }
 
-/* Line tab styling */
+/* Line tab styling (underline) */
 .ms-tab--line {
-  color: var(--ms-color-text-secondary);
+  color: var(--ms-color-text-muted);
   border-radius: var(--ms-radius-sm) var(--ms-radius-sm) 0 0;
   margin-bottom: -1px;
   border-bottom: 2px solid transparent;
@@ -223,23 +258,29 @@
 }
 
 .ms-tab--line.ms-tab--selected {
-  color: var(--ms-color-interactive-primary);
-  border-bottom-color: var(--ms-color-interactive-primary, var(--ms-color-interactive-accent));
-  font-weight: var(--ms-typography-weight-semibold);
+  color: var(--ms-color-text-primary);
+  border-bottom-color: var(--ms-color-primary);
 }
 
 .ms-tabs--vertical .ms-tab--line.ms-tab--selected {
-  border-inline-end-color: var(--ms-color-interactive-primary, var(--ms-color-interactive-accent));
+  border-inline-end-color: var(--ms-color-primary);
   border-bottom-color: transparent;
 }
 
-/* Pill tab styling */
+/* Pill tab styling (default) — shadcn TabsTrigger */
 .ms-tab--pill {
-  color: var(--ms-color-text-secondary);
-  border-radius: var(--ms-radius-full);
+  flex: 1 1 auto;
+  block-size: calc(100% - 1px);
+  min-height: 0;
+  padding: 4px 8px;
+  color: var(--ms-color-text-muted);
+  border: var(--ms-border-hairline) solid transparent;
+  border-radius: var(--ms-radius-md);
 }
 
 .ms-tabs--vertical .ms-tab--pill {
+  block-size: auto;
+  min-height: calc(var(--ms-control-height-md) - 8px);
   border-radius: var(--ms-radius-md);
   justify-content: flex-start;
 }
@@ -250,52 +291,57 @@
 
 .ms-tab--pill.ms-tab--selected {
   color: var(--ms-color-text-primary);
-  background-color: var(--ms-color-surface-default);
-  box-shadow: var(--ms-elevation-1);
-  font-weight: var(--ms-typography-weight-semibold);
+  background-color: var(--ms-color-surface-raised);
+  box-shadow: var(--ms-elevation-sm);
 }
 
 /* Solid tab styling (preenchida) */
 .ms-tab--solid {
-  color: var(--ms-color-text-secondary);
-  border-radius: var(--ms-control-radius);
-  padding: var(--ms-space-1-5, 6px) var(--ms-space-3-5, 14px);
+  color: var(--ms-color-text-muted);
+  border-radius: var(--ms-radius-md);
+  padding: 4px 12px;
 }
 
 .ms-tabs--vertical .ms-tab--solid {
-  border-radius: var(--ms-control-radius);
+  border-radius: var(--ms-radius-md);
   justify-content: flex-start;
 }
 
 .ms-tab--solid:hover:not(.ms-tab--disabled) {
   color: var(--ms-color-text-primary);
-  background-color: color-mix(in oklch, var(--ms-color-surface-raised) 60%, transparent);
+  background-color: var(--ms-color-interactive-neutral-subtle);
 }
 
 .ms-tab--solid.ms-tab--selected {
-  color: var(--ms-color-text-on-accent);
-  background-color: var(--ms-color-interactive-primary);
-  box-shadow: var(--ms-elevation-1);
-  font-weight: var(--ms-typography-weight-semibold);
+  color: var(--ms-color-primary-content);
+  background-color: var(--ms-color-primary);
+  box-shadow: var(--ms-elevation-xs);
 }
 
-/* Boxed / Segmented tab styling (Shadcn Signature) */
+/* Boxed / Segmented tab styling (Shadcn Signature) — same look as the default pill */
 .ms-tab-list--boxed,
 .ms-tab-list--segmented {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: fit-content;
+  block-size: var(--ms-control-height-md);
   background-color: var(--ms-color-surface-sunken);
-  border: 1px solid var(--ms-color-border-subtle);
+  color: var(--ms-color-text-muted);
   border-radius: var(--ms-radius-lg);
   padding: 3px;
-  gap: 2px;
-  display: inline-flex;
+  gap: 0;
 }
 .ms-tab--boxed,
 .ms-tab--segmented {
-  color: var(--ms-color-text-secondary);
+  flex: 1 1 auto;
+  block-size: calc(100% - 1px);
+  min-height: 0;
+  color: var(--ms-color-text-muted);
+  border: var(--ms-border-hairline) solid transparent;
   border-radius: var(--ms-radius-md);
-  padding: 6px 14px;
+  padding: 4px 8px;
   font-weight: var(--ms-typography-weight-medium);
-  transition: all var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 .ms-tab--boxed:hover:not(.ms-tab--disabled),
 .ms-tab--segmented:hover:not(.ms-tab--disabled) {
@@ -305,15 +351,25 @@
 .ms-tab--segmented.ms-tab--selected {
   color: var(--ms-color-text-primary);
   background-color: var(--ms-color-surface-raised);
-  box-shadow:
-    0 1px 3px 0 rgb(0 0 0 / 0.1),
-    0 1px 2px -1px rgb(0 0 0 / 0.1);
-  font-weight: var(--ms-typography-weight-semibold);
+  box-shadow: var(--ms-elevation-sm);
+}
+
+/* Dark mode: the active pill gets a field-colored hairline instead of relying on shadow. */
+:root[data-ms-color-mode="dark"]
+  :is(.ms-tab--pill, .ms-tab--boxed, .ms-tab--segmented).ms-tab--selected {
+  border-color: var(--ms-color-border-field);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-ms-color-mode="system"]
+    :is(.ms-tab--pill, .ms-tab--boxed, .ms-tab--segmented).ms-tab--selected {
+    border-color: var(--ms-color-border-field);
+  }
 }
 
 /* Enclosed tab styling */
 .ms-tab--enclosed {
-  color: var(--ms-color-text-secondary);
+  color: var(--ms-color-text-muted);
   border: var(--ms-border-hairline) solid transparent;
   border-radius: var(--ms-radius-md) var(--ms-radius-md) 0 0;
   margin-bottom: -1px;
@@ -334,28 +390,32 @@
 .ms-tab--enclosed.ms-tab--selected {
   color: var(--ms-color-text-primary);
   background-color: var(--ms-color-surface-default);
-  border-color: var(--ms-color-border-subtle);
+  border-color: var(--ms-color-border-default);
   border-bottom-color: var(--ms-color-surface-default);
-  font-weight: var(--ms-typography-weight-semibold);
 }
 
 .ms-tabs--vertical .ms-tab--enclosed.ms-tab--selected {
-  border-color: var(--ms-color-border-subtle);
+  border-color: var(--ms-color-border-default);
   border-inline-end-color: var(--ms-color-surface-default);
 }
 
 /* Disabled state */
 .ms-tab--disabled {
-  opacity: 0.45;
+  opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
 }
 
 /* Focus visible */
 .ms-tab:focus-visible {
-  outline: var(--ms-border-focus) solid var(--ms-color-border-focus);
-  outline-offset: 2px;
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
   z-index: 1;
+}
+
+/* Triggers inside a clipping (scrollable) list draw the ring inside so it is not cut off. */
+.ms-tab-list--scrollable .ms-tab:focus-visible {
+  outline-offset: -2px;
 }
 
 /* Panels */
@@ -364,11 +424,11 @@
 }
 
 .ms-tab-panel {
-  padding-top: var(--ms-space-4);
+  padding-top: var(--ms-space-2);
   box-sizing: border-box;
 }
 
 .ms-tab-panel:focus-visible {
-  outline: var(--ms-border-focus) solid var(--ms-color-border-focus);
-  outline-offset: 2px;
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
 }

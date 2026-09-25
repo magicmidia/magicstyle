@@ -5,7 +5,7 @@
 
 .ms-field {
   display: grid;
-  gap: var(--ms-space-1);
+  gap: var(--ms-space-2);
   grid-template-columns: minmax(0, 1fr);
 }
 
@@ -19,7 +19,7 @@
 .ms-field-content {
   display: flex;
   flex-direction: column;
-  gap: var(--ms-space-1);
+  gap: var(--ms-space-2);
 }
 
 /* Grid items must be able to shrink below their content min-width */
@@ -32,7 +32,7 @@
 .ms-field-label {
   font-size: var(--ms-typography-size-sm);
   font-weight: var(--ms-typography-weight-medium);
-  letter-spacing: var(--ms-typography-letter-spacing-wide);
+  line-height: 1;
   color: var(--ms-color-text-primary);
 }
 
@@ -52,12 +52,14 @@
 }
 
 .ms-field-description {
-  font-size: var(--ms-typography-size-xs);
+  font-size: var(--ms-typography-size-sm);
+  line-height: var(--ms-typography-line-height-base);
   color: var(--ms-color-text-muted);
 }
 
 .ms-field-error {
-  font-size: var(--ms-typography-size-xs);
+  font-size: var(--ms-typography-size-sm);
+  line-height: var(--ms-typography-line-height-base);
   color: var(--ms-color-feedback-danger-text);
 }
 

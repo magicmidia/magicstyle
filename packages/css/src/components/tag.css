@@ -7,12 +7,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--ms-space-1);
+  gap: 4px;
   box-sizing: border-box;
   font-family: var(--ms-font-sans);
   font-weight: var(--ms-typography-weight-medium);
   line-height: 1;
-  border-radius: var(--ms-radius-sm);
+  border-radius: var(--ms-radius-md);
   user-select: none;
   border: var(--ms-border-hairline) solid transparent;
   transition:
@@ -25,19 +25,19 @@
 /* Sizes */
 .ms-tag--sm {
   height: 20px;
-  padding: 0 var(--ms-space-1);
-  font-size: var(--ms-typography-size-2xs);
+  padding: 0 6px;
+  font-size: var(--ms-typography-size-xs);
 }
 
 .ms-tag--md {
   height: 24px;
-  padding: 0 var(--ms-space-2);
+  padding: 0 8px;
   font-size: var(--ms-typography-size-xs);
 }
 
 .ms-tag--lg {
-  height: 30px;
-  padding: 0 var(--ms-space-3);
+  height: calc(var(--ms-control-height-sm) - 4px);
+  padding: 0 10px;
   font-size: var(--ms-typography-size-sm);
 }
 /* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
@@ -85,8 +85,8 @@
   .ms-tag--warning,
   .ms-tag--danger
 ) {
-  background-color: var(--ms-tone-text);
-  color: var(--ms-tone-subtle);
+  background-color: var(--ms-tone-subtle);
+  color: var(--ms-tone-text);
   border-color: var(--ms-tone-border);
 }
 /* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
@@ -149,7 +149,7 @@
   cursor: pointer;
   color: inherit;
   opacity: 0.65;
-  border-radius: var(--ms-radius-xs);
+  border-radius: var(--ms-radius-sm);
   box-sizing: border-box;
   transition:
     opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
@@ -162,8 +162,9 @@
 }
 
 .ms-tag__close:focus-visible {
-  outline: var(--ms-border-focus) solid var(--ms-color-border-focus);
-  outline-offset: 1px;
+  opacity: 1;
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
 }
 
 .ms-tag__close-icon {
@@ -178,12 +179,16 @@
 
 .ms-tag--clickable:hover:not(.ms-tag--disabled) {
   filter: brightness(0.95);
-  box-shadow: var(--ms-elevation-1);
+}
+
+.ms-tag--outline.ms-tag--clickable:hover:not(.ms-tag--disabled) {
+  filter: none;
+  background-color: var(--ms-color-interactive-neutral-subtle);
 }
 
 .ms-tag--clickable:focus-visible {
-  outline: var(--ms-border-focus) solid var(--ms-color-border-focus);
-  outline-offset: 2px;
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
 }
 
 .ms-tag--disabled {

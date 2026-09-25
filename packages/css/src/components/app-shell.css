@@ -195,21 +195,21 @@
 }
 
 .ms-status-bar--info {
-  background-color: var(--ms-color-info-subtle);
-  color: var(--ms-color-info);
+  background-color: var(--ms-color-feedback-info-bg);
+  color: var(--ms-color-feedback-info-text);
 }
 
 .ms-status-bar--success {
-  background-color: var(--ms-color-success-subtle);
-  color: var(--ms-color-success);
+  background-color: var(--ms-color-feedback-success-bg);
+  color: var(--ms-color-feedback-success-text);
 }
 
 .ms-status-bar--warning {
-  background-color: var(--ms-color-warning-subtle);
-  color: var(--ms-color-warning);
+  background-color: var(--ms-color-feedback-warning-bg);
+  color: var(--ms-color-feedback-warning-text);
 }
 
 .ms-status-bar--danger {
-  background-color: var(--ms-color-danger-subtle);
-  color: var(--ms-color-danger);
+  background-color: var(--ms-color-feedback-danger-bg);
+  color: var(--ms-color-feedback-danger-text);
 }

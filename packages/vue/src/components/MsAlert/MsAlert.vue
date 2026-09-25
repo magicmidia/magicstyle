@@ -5,7 +5,7 @@ import type { MsAlertProps } from "./types.ts";
 
 const props = withDefaults(defineProps<MsAlertProps>(), {
   variant: "soft",
-  tone: "info",
+  tone: "neutral",
   size: "md",
   align: "center",
   iconStyle: "plain",

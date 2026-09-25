@@ -7,62 +7,72 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  width: 100%;
+  inline-size: 100%;
   box-sizing: border-box;
 }
 
 .ms-masked-input__field {
-  width: 100%;
-  height: var(--ms-control-height-lg);
+  inline-size: 100%;
+  block-size: var(--ms-control-height-md);
   padding: 0 var(--ms-space-3);
   font-family: var(--ms-font-sans);
   font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-primary);
-  background-color: var(--ms-color-surface-raised);
+  background-color: transparent;
   border: var(--ms-border-hairline) solid var(--ms-color-border-field);
   border-radius: var(--ms-radius-md);
+  box-shadow: var(--ms-elevation-input);
   outline: none;
   box-sizing: border-box;
   transition:
-    border-color var(--ms-motion-duration-fast) ease,
-    box-shadow var(--ms-motion-duration-fast) ease;
+    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+}
+
+.ms-masked-input__field::placeholder {
+  color: var(--ms-color-text-muted);
+}
+
+.ms-masked-input__field:hover:not(:disabled) {
+  border-color: var(--ms-color-border-field-hover);
 }
 
 .ms-masked-input__field:focus {
-  border-color: var(--ms-color-interactive-primary);
-  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ms-color-interactive-primary) 20%, transparent);
+  outline: none;
+  border-color: var(--ms-focus-ring-color);
+  box-shadow: var(--ms-elevation-input), var(--ms-focus-ring-shadow);
 }
 
 .ms-masked-input--sm .ms-masked-input__field {
-  height: var(--ms-control-height-sm);
-  font-size: var(--ms-typography-size-xs);
-  padding: 0 var(--ms-space-2);
+  block-size: var(--ms-control-height-sm);
+  padding: 0 var(--ms-space-3);
 }
 
 .ms-masked-input--lg .ms-masked-input__field {
-  height: var(--ms-control-height-xl);
-  font-size: var(--ms-typography-size-md);
-  padding: 0 var(--ms-space-4);
+  block-size: var(--ms-control-height-lg);
+  padding: 0 var(--ms-space-3);
 }
 
 .ms-masked-input--invalid .ms-masked-input__field {
-  border-color: var(--ms-color-status-danger);
+  border-color: var(--ms-color-danger);
 }
 
 .ms-masked-input--invalid .ms-masked-input__field:focus {
-  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ms-color-status-danger) 20%, transparent);
+  border-color: var(--ms-color-danger);
+  box-shadow:
+    var(--ms-elevation-input),
+    0 0 0 3px color-mix(in oklab, var(--ms-color-danger) 20%, transparent);
 }
 
 .ms-masked-input--disabled .ms-masked-input__field {
   opacity: 0.5;
   cursor: not-allowed;
-  background-color: var(--ms-color-surface-sunken);
 }
 
 .ms-masked-input__clear {
   position: absolute;
   inset-inline-end: var(--ms-space-2);
-  top: 50%;
+  inset-block-start: 50%;
   transform: translateY(-50%);
   display: inline-flex;
   align-items: center;

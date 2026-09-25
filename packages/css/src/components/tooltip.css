@@ -19,17 +19,18 @@
   user-select: none;
   box-sizing: border-box;
 
-  background-color: var(--ms-color-neutral-900);
-  color: var(--ms-color-neutral-0);
+  background-color: var(--ms-color-primary);
+  color: var(--ms-color-primary-content);
   font-family: var(--ms-font-sans);
-  font-size: var(--ms-typography-size-2xs);
-  font-weight: var(--ms-typography-weight-medium);
+  font-size: var(--ms-typography-size-xs);
+  font-weight: var(--ms-typography-weight-regular);
   line-height: var(--ms-typography-line-height-tight);
-  padding: var(--ms-space-1) var(--ms-space-2);
-  border-radius: var(--ms-radius-sm);
-  box-shadow: var(--ms-elevation-2);
+  padding: 6px var(--ms-space-3);
+  border-radius: var(--ms-radius-md);
+  box-shadow: none;
 
-  animation: ms-tooltip-fade-in var(--ms-motion-duration-fast) var(--ms-motion-easing-entrance);
+  animation: ms-tooltip-fade-in calc(var(--ms-motion-duration-fast) * var(--ms-motion-scale, 1))
+    var(--ms-motion-easing-standard);
 }
 
 /* Tones */
@@ -41,30 +42,31 @@
 .ms-tooltip--tone-light {
   background-color: var(--ms-color-surface-raised);
   color: var(--ms-color-text-primary);
-  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
-  box-shadow: var(--ms-elevation-3);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  box-shadow: var(--ms-elevation-dropdown);
 }
 
+/* shadcn tooltip: bg-primary / text-primary-foreground, no shadow. */
 .ms-tooltip--tone-primary {
-  background-color: var(--ms-color-interactive-primary);
-  color: var(--ms-color-text-on-accent);
+  background-color: var(--ms-color-primary);
+  color: var(--ms-color-primary-content);
 }
 
 /* Sizes */
 .ms-tooltip--sm {
-  font-size: 10px;
-  padding: 2px 6px;
-  border-radius: var(--ms-radius-xs);
-}
-
-.ms-tooltip--md {
   font-size: var(--ms-typography-size-2xs);
-  padding: var(--ms-space-1) var(--ms-space-2);
+  padding: 2px var(--ms-space-2);
   border-radius: var(--ms-radius-sm);
 }
 
-.ms-tooltip--lg {
+.ms-tooltip--md {
   font-size: var(--ms-typography-size-xs);
+  padding: 6px var(--ms-space-3);
+  border-radius: var(--ms-radius-md);
+}
+
+.ms-tooltip--lg {
+  font-size: var(--ms-typography-size-sm);
   padding: var(--ms-space-2) var(--ms-space-3);
   border-radius: var(--ms-radius-md);
 }
@@ -74,12 +76,15 @@
   text-align: center;
 }
 
+/* `scale` composes with the placement `transform` (fade + zoom 0.95 -> 1). */
 @keyframes ms-tooltip-fade-in {
   from {
     opacity: 0;
+    scale: 0.95;
   }
   to {
     opacity: 1;
+    scale: 1;
   }
 }
 
@@ -111,9 +116,10 @@
 /* Arrow */
 .ms-tooltip__arrow {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  inline-size: 6px;
+  block-size: 6px;
   background-color: inherit;
+  border-radius: 1px;
   transform: rotate(45deg);
 }
 

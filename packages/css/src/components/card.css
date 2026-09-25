@@ -2,30 +2,26 @@
  * Magic-Style Card component layer — container and surface for grouping content.
  * Classes: .ms-card, .ms-card-header, .ms-card-title, .ms-card-description,
  *          .ms-card-content, .ms-card-footer, .ms-card-actions.
- * Variants: raised (default), flat, outline, sunken.
+ * Variants: raised (default), flat, outline, sunken, soft, glass.
  * Padding: none, sm, md (default), lg.
  * States: data-interactive.
  */
 
 .ms-card {
-  --_ms-card-padding: var(--ms-space-5);
+  --_ms-card-padding: var(--ms-space-6);
   position: relative;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border-radius: var(--ms-radius-lg);
-  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-xl);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
   background-color: var(--ms-color-surface-raised);
-  box-shadow: var(
-    --ms-elevation-card,
-    0 1px 3px 0 rgb(0 0 0 / 0.04),
-    0 1px 2px -1px rgb(0 0 0 / 0.04)
-  );
+  color: var(--ms-color-text-primary);
+  box-shadow: var(--ms-elevation-card);
   overflow: hidden;
   transition:
     box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
-    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
-    transform var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
+    border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 /* Padding scale */
@@ -43,7 +39,7 @@
 
 .ms-card[data-padding="md"],
 .ms-card:not([data-padding]) {
-  --_ms-card-padding: var(--ms-space-5);
+  --_ms-card-padding: var(--ms-space-6);
 }
 
 .ms-card[data-padding="lg"] {
@@ -63,10 +59,15 @@
   padding: var(--_ms-card-padding) var(--_ms-card-padding) 0;
 }
 
+/* Header directly followed by footer: keep the shadcn 24px section gap. */
+.ms-card-header + .ms-card-footer {
+  padding-block-start: var(--_ms-card-padding);
+}
+
 .ms-card-header-main {
   display: flex;
   flex-direction: column;
-  gap: var(--ms-space-1);
+  gap: 6px;
 }
 
 .ms-card-title {
@@ -74,7 +75,7 @@
   font-family: var(--ms-font-sans);
   font-size: var(--ms-typography-size-md);
   font-weight: var(--ms-typography-weight-semibold);
-  line-height: var(--ms-typography-line-height-tight);
+  line-height: 1;
   color: var(--ms-color-text-primary);
 }
 
@@ -82,7 +83,7 @@
   margin: 0;
   font-family: var(--ms-font-sans);
   font-size: var(--ms-typography-size-sm);
-  color: var(--ms-color-text-secondary);
+  color: var(--ms-color-text-muted);
   line-height: var(--ms-typography-line-height-base);
 }
 
@@ -106,7 +107,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: var(--ms-space-3);
+  gap: var(--ms-space-2);
   padding: 0 var(--_ms-card-padding) var(--_ms-card-padding);
 }
 
@@ -114,11 +115,7 @@
 .ms-card[data-variant="raised"],
 .ms-card:not([data-variant]) {
   background-color: var(--ms-color-surface-raised);
-  box-shadow: var(
-    --ms-elevation-card,
-    0 1px 3px 0 rgb(0 0 0 / 0.04),
-    0 1px 2px -1px rgb(0 0 0 / 0.04)
-  );
+  box-shadow: var(--ms-elevation-card);
 }
 
 .ms-card[data-variant="flat"] {
@@ -142,11 +139,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-color: color-mix(in oklch, var(--ms-color-border-subtle) 60%, transparent);
-  box-shadow: var(
-    --ms-elevation-card,
-    0 1px 3px 0 rgb(0 0 0 / 0.04),
-    0 1px 2px -1px rgb(0 0 0 / 0.04)
-  );
+  box-shadow: var(--ms-elevation-card);
 }
 
 /* Soft tone cards (FlyonUI / Shadcn inspired) */
@@ -159,17 +152,15 @@
   border-color: color-mix(in oklab, var(--ms-tone) 22%, transparent);
 }
 
-/* Hoverable (lift on hover) */
+/* Hoverable: subtle shadow step, no translate (shadcn has no lift). */
 .ms-card[data-hoverable] {
   transition:
-    transform var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
     box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
     border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-card[data-hoverable]:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--ms-elevation-3);
+  box-shadow: var(--ms-elevation-md);
 }
 
 /* Interactive card */
@@ -180,24 +171,28 @@
 
 .ms-card[data-interactive]:hover {
   border-color: var(--ms-color-border-strong);
-  box-shadow: var(--ms-elevation-2);
-  transform: translateY(-1px);
+  box-shadow: var(--ms-elevation-md);
 }
 
 .ms-card[data-interactive]:active {
-  transform: translateY(0) scale(0.995);
+  box-shadow: var(--ms-elevation-card);
+}
+
+.ms-card[data-interactive]:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
 }
 
 /* Dividers */
 .ms-card--header-divider .ms-card-header,
 .ms-card[data-header-divider] .ms-card-header {
-  border-block-end: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-block-end: var(--ms-border-hairline) solid var(--ms-color-border-default);
   padding-block-end: var(--_ms-card-padding);
 }
 
 .ms-card--footer-divider .ms-card-footer,
 .ms-card[data-footer-divider] .ms-card-footer {
-  border-block-start: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  border-block-start: var(--ms-border-hairline) solid var(--ms-color-border-default);
   padding-block-start: var(--_ms-card-padding);
 }
 
@@ -282,7 +277,7 @@
   .ms-card--tone-warning,
   .ms-card--tone-danger
 ) {
-  border-top: 3px solid var(--ms-tone);
+  border-block-start: 3px solid var(--ms-tone);
 }
 
 /* Glass Variant (Modern Frosted Glass) */
@@ -293,7 +288,7 @@
   -webkit-backdrop-filter: blur(16px);
   border: var(--ms-border-hairline) solid
     color-mix(in oklch, var(--ms-color-border-subtle) 60%, transparent);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: var(--ms-elevation-lg);
 }
 
 /* Stat / KPI Metric Card (FlyonUI / Shadcn Signature) */
@@ -303,17 +298,15 @@
   gap: var(--ms-space-1);
 }
 .ms-card-stat__label {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--ms-color-text-secondary);
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-medium);
+  color: var(--ms-color-text-muted);
 }
 .ms-card-stat__value {
-  font-size: 30px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-size: var(--ms-typography-size-2xl);
+  font-weight: var(--ms-typography-weight-semibold);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--ms-typography-line-height-tight);
   color: var(--ms-color-text-primary);
   margin-block: var(--ms-space-1);
 }
@@ -321,24 +314,24 @@
   display: flex;
   align-items: center;
   gap: var(--ms-space-2);
-  font-size: 12px;
+  font-size: var(--ms-typography-size-xs);
   color: var(--ms-color-text-muted);
 }
 .ms-card-stat__trend {
   display: inline-flex;
   align-items: center;
-  gap: 3px;
-  font-weight: 700;
-  font-size: 11px;
-  padding: 1px 6px;
-  border-radius: var(--ms-radius-full);
+  gap: var(--ms-space-1);
+  font-weight: var(--ms-typography-weight-medium);
+  font-size: var(--ms-typography-size-xs);
+  padding: 2px 8px;
+  border-radius: var(--ms-radius-md);
 }
 .ms-card-stat__trend--up {
-  color: var(--ms-color-success);
+  color: var(--ms-color-feedback-success-text);
   background-color: color-mix(in oklch, var(--ms-color-success) 12%, transparent);
 }
 .ms-card-stat__trend--down {
-  color: var(--ms-color-danger);
+  color: var(--ms-color-feedback-danger-text);
   background-color: color-mix(in oklch, var(--ms-color-danger) 12%, transparent);
 }
 
@@ -348,7 +341,7 @@
 }
 .ms-card-cover-badge {
   position: absolute;
-  top: 12px;
-  inset-inline-end: 12px;
+  inset-block-start: var(--ms-space-3);
+  inset-inline-end: var(--ms-space-3);
   z-index: 2;
 }

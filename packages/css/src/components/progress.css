@@ -30,7 +30,7 @@
 .ms-progress {
   display: flex;
   flex-direction: column;
-  gap: var(--ms-space-1);
+  gap: var(--ms-space-2);
   width: 100%;
   box-sizing: border-box;
 }
@@ -39,9 +39,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--ms-typography-size-xs);
+  font-size: var(--ms-typography-size-sm);
   font-weight: var(--ms-typography-weight-medium);
-  color: var(--ms-color-text-secondary);
+  color: var(--ms-color-text-primary);
 }
 
 .ms-progress__label {
@@ -52,14 +52,16 @@
 .ms-progress__value {
   display: inline-flex;
   font-variant-numeric: tabular-nums;
-  color: var(--ms-color-text-primary);
-  font-weight: var(--ms-typography-weight-semibold);
+  color: var(--ms-color-text-muted);
+  font-weight: var(--ms-typography-weight-medium);
 }
 
+/* shadcn: the track is the bar color at 20% (per tone via the tone engine). */
 .ms-progress__track {
   position: relative;
   width: 100%;
-  background-color: var(--ms-color-surface-sunken);
+  height: 8px;
+  background-color: color-mix(in oklab, var(--ms-tone, var(--ms-color-primary)) 20%, transparent);
   border-radius: var(--ms-radius-full);
   overflow: hidden;
   box-sizing: border-box;
@@ -67,6 +69,7 @@
 
 .ms-progress__bar {
   height: 100%;
+  background-color: var(--ms-color-primary);
   color: var(--ms-color-primary-content);
   border-radius: inherit;
   transition: width var(--ms-motion-duration-base) var(--ms-motion-easing-standard);
@@ -179,8 +182,8 @@
 .ms-progress--gradient.ms-progress--neutral .ms-progress__bar {
   background-image: linear-gradient(
     90deg,
-    var(--ms-color-neutral-600),
-    var(--ms-color-neutral-800)
+    var(--ms-color-neutral),
+    var(--ms-color-interactive-neutral-hover)
   );
 }
 
@@ -208,7 +211,7 @@
   height: 100%;
   padding-inline-end: var(--ms-space-2);
   font-size: var(--ms-typography-size-2xs);
-  font-weight: var(--ms-typography-weight-bold);
+  font-weight: var(--ms-typography-weight-semibold);
   color: inherit;
   line-height: 1;
   white-space: nowrap;
@@ -220,18 +223,22 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  animation: ms-progress-indeterminate 1.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  animation: ms-progress-indeterminate calc(1.4s * var(--ms-motion-scale, 1))
+    cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 
 /* Striped state */
 .ms-progress__track--striped .ms-progress__bar {
   background-image: linear-gradient(
     45deg,
-    rgba(255, 255, 255, 0.18) 25%,
+    color-mix(in oklab, var(--ms-tone-content, var(--ms-color-primary-content)) 18%, transparent)
+      25%,
     transparent 25%,
     transparent 50%,
-    rgba(255, 255, 255, 0.18) 50%,
-    rgba(255, 255, 255, 0.18) 75%,
+    color-mix(in oklab, var(--ms-tone-content, var(--ms-color-primary-content)) 18%, transparent)
+      50%,
+    color-mix(in oklab, var(--ms-tone-content, var(--ms-color-primary-content)) 18%, transparent)
+      75%,
     transparent 75%,
     transparent
   );

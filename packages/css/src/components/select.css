@@ -7,9 +7,9 @@
   position: relative;
   display: inline-flex;
   flex-direction: column;
-  width: 100%;
+  inline-size: 100%;
   font-family: inherit;
-  font-size: var(--ms-font-size-body-md, 0.9375rem);
+  font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-primary);
   box-sizing: border-box;
 }
@@ -26,12 +26,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  min-height: 40px;
+  inline-size: 100%;
+  min-block-size: var(--ms-control-height-md);
   padding: 0 var(--ms-space-3);
-  background-color: var(--ms-color-surface-default);
-  border: 1px solid var(--ms-color-border-field);
+  background-color: transparent;
+  border: var(--ms-border-hairline) solid var(--ms-color-border-field);
   border-radius: var(--ms-radius-md);
+  box-shadow: var(--ms-elevation-input);
   cursor: pointer;
   user-select: none;
   transition:
@@ -48,62 +49,63 @@
 .ms-select__control[data-focused="true"],
 .ms-select__control[aria-expanded="true"] {
   outline: none;
-  border-color: var(--ms-color-primary);
-  box-shadow: 0 0 0 var(--ms-focus-ring-width) var(--ms-color-focus-ring);
+  border-color: var(--ms-focus-ring-color);
+  box-shadow: var(--ms-elevation-input), var(--ms-focus-ring-shadow);
 }
 
 /* Invalid state */
 .ms-select__control[data-invalid="true"] {
-  border-color: var(--ms-color-danger-default);
+  border-color: var(--ms-color-danger);
 }
 
 .ms-select__control[data-invalid="true"]:focus-visible,
 .ms-select__control[data-invalid="true"][aria-expanded="true"] {
-  box-shadow: 0 0 0 var(--ms-focus-ring-width) var(--ms-color-danger-subtle);
+  border-color: var(--ms-color-danger);
+  box-shadow:
+    var(--ms-elevation-input),
+    0 0 0 3px color-mix(in oklab, var(--ms-color-danger) 20%, transparent);
 }
 
 /* Disabled state */
 .ms-select__control[data-disabled="true"] {
-  background-color: var(--ms-color-surface-disabled);
-  border-color: var(--ms-color-border-subtle);
   cursor: not-allowed;
-  opacity: 0.65;
+  opacity: 0.5;
 }
 
 /* --- Sizes --- */
 .ms-select[data-size="xs"] .ms-select__control,
 .ms-select--size-xs .ms-select__control {
-  min-height: 28px;
+  min-block-size: calc(var(--ms-control-height-sm) - 4px);
   padding: 0 var(--ms-space-2);
-  font-size: var(--ms-font-size-body-xs, 0.75rem);
+  font-size: var(--ms-typography-size-xs);
 }
 
 .ms-select[data-size="sm"] .ms-select__control,
 .ms-select--size-sm .ms-select__control {
-  min-height: 32px;
-  padding: 0 var(--ms-space-2);
-  font-size: var(--ms-font-size-body-sm, 0.8125rem);
+  min-block-size: var(--ms-control-height-sm);
+  padding: 0 var(--ms-space-3);
+  font-size: var(--ms-typography-size-sm);
 }
 
 .ms-select[data-size="md"] .ms-select__control,
 .ms-select--size-md .ms-select__control {
-  min-height: 40px;
+  min-block-size: var(--ms-control-height-md);
   padding: 0 var(--ms-space-3);
-  font-size: var(--ms-font-size-body-md, 0.9375rem);
+  font-size: var(--ms-typography-size-sm);
 }
 
 .ms-select[data-size="lg"] .ms-select__control,
 .ms-select--size-lg .ms-select__control {
-  min-height: 48px;
-  padding: 0 var(--ms-space-4);
-  font-size: var(--ms-font-size-body-lg, 1.0625rem);
+  min-block-size: var(--ms-control-height-lg);
+  padding: 0 var(--ms-space-3);
+  font-size: var(--ms-typography-size-sm);
 }
 
 .ms-select[data-size="xl"] .ms-select__control,
 .ms-select--size-xl .ms-select__control {
-  min-height: 56px;
-  padding: 0 var(--ms-space-5);
-  font-size: var(--ms-font-size-body-xl, 1.125rem);
+  min-block-size: var(--ms-control-height-xl);
+  padding: 0 var(--ms-space-4);
+  font-size: var(--ms-typography-size-md);
 }
 
 /* --- Shapes (square, rounded-sm, rounded, rounded-lg, pill) --- */
@@ -138,29 +140,30 @@
 /* --- Variants: outline (default), filled, flushed --- */
 .ms-select[data-variant="filled"] .ms-select__control,
 .ms-select--variant-filled .ms-select__control {
-  background-color: var(--ms-color-surface-subtle);
+  background-color: var(--ms-color-surface-sunken);
   border-color: transparent;
 }
 .ms-select[data-variant="filled"] .ms-select__control:hover:not([data-disabled="true"]),
 .ms-select--variant-filled .ms-select__control:hover:not([data-disabled="true"]) {
-  background-color: var(--ms-color-surface-hover);
+  background-color: var(--ms-color-interactive-neutral-subtle);
 }
 .ms-select[data-variant="filled"] .ms-select__control:focus-visible,
 .ms-select[data-variant="filled"] .ms-select__control[aria-expanded="true"],
 .ms-select--variant-filled .ms-select__control:focus-visible,
 .ms-select--variant-filled .ms-select__control[aria-expanded="true"] {
-  background-color: var(--ms-color-surface-default);
-  border-color: var(--_ms-select-accent, var(--ms-color-primary));
+  background-color: transparent;
+  border-color: var(--_ms-select-accent, var(--ms-focus-ring-color));
 }
 
 .ms-select[data-variant="flushed"] .ms-select__control,
 .ms-select--variant-flushed .ms-select__control {
   background-color: transparent;
-  border-top: none;
+  border-block-start: none;
   border-inline-start: none;
   border-inline-end: none;
-  border-bottom: 2px solid var(--ms-color-border-field);
+  border-block-end: var(--ms-border-thick) solid var(--ms-color-border-field);
   border-radius: 0;
+  box-shadow: none;
   padding-inline-start: 0;
   padding-inline-end: 0;
 }
@@ -168,7 +171,7 @@
 .ms-select[data-variant="flushed"] .ms-select__control[aria-expanded="true"],
 .ms-select--variant-flushed .ms-select__control:focus-visible,
 .ms-select--variant-flushed .ms-select__control[aria-expanded="true"] {
-  border-bottom-color: var(--_ms-select-accent, var(--ms-color-primary));
+  border-block-end-color: var(--_ms-select-accent, var(--ms-focus-ring-color));
   box-shadow: none;
 }
 /* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
@@ -219,7 +222,7 @@
 ) {
   --_ms-select-accent: var(--ms-tone);
   --_ms-select-accent-content: var(--ms-tone-content);
-  --_ms-select-ring: color-mix(in oklab, var(--ms-tone) 25%, transparent);
+  --_ms-select-ring: color-mix(in oklab, var(--ms-tone) 30%, transparent);
 }
 
 .ms-select[data-tone] .ms-select__control:focus-visible,
@@ -227,7 +230,9 @@
 .ms-select[class*="ms-select--tone-"] .ms-select__control:focus-visible,
 .ms-select[class*="ms-select--tone-"] .ms-select__control[aria-expanded="true"] {
   border-color: var(--_ms-select-accent);
-  box-shadow: 0 0 0 var(--ms-focus-ring-width) var(--_ms-select-ring);
+  box-shadow:
+    var(--ms-elevation-input),
+    0 0 0 3px var(--_ms-select-ring);
 }
 
 .ms-select[data-tone] .ms-select__option[data-selected="true"],
@@ -257,8 +262,8 @@
   flex-wrap: wrap;
   align-items: center;
   gap: var(--ms-space-1);
-  min-width: 0;
-  padding: 4px 0;
+  min-inline-size: 0;
+  padding: var(--ms-space-1) 0;
   overflow: hidden;
 }
 
@@ -281,13 +286,13 @@
   display: inline-flex;
   align-items: center;
   gap: var(--ms-space-1);
-  max-width: 200px;
+  max-inline-size: 200px;
   padding: 2px 6px;
-  background-color: var(--ms-color-surface-sunken);
-  border: 1px solid var(--ms-color-border-subtle);
+  background-color: var(--ms-color-interactive-neutral-subtle);
+  border: var(--ms-border-hairline) solid transparent;
   border-radius: var(--ms-radius-sm);
-  font-size: var(--ms-font-size-body-xs, 0.75rem);
-  font-weight: 500;
+  font-size: var(--ms-typography-size-xs);
+  font-weight: var(--ms-typography-weight-medium);
   color: var(--ms-color-text-primary);
 }
 
@@ -301,17 +306,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 14px;
-  height: 14px;
+  inline-size: 14px;
+  block-size: 14px;
   padding: 0;
   background: transparent;
   border: none;
-  border-radius: 50%;
+  border-radius: var(--ms-radius-full);
   color: var(--ms-color-text-muted);
   cursor: pointer;
   transition:
-    color var(--ms-motion-duration-fast) ease,
-    background-color var(--ms-motion-duration-fast) ease;
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-select__tag-remove:hover {
@@ -322,7 +327,7 @@
 /* --- Search Input inside Control --- */
 .ms-select__input {
   flex: 1;
-  min-width: 40px;
+  min-inline-size: 40px;
   padding: 0;
   margin: 0;
   background: transparent;
@@ -337,7 +342,7 @@
 .ms-select__actions {
   display: inline-flex;
   align-items: center;
-  gap: var(--ms-space-1-5, 6px);
+  gap: 6px;
   flex-shrink: 0;
   margin-inline-start: var(--ms-space-2);
   color: var(--ms-color-text-muted);
@@ -347,15 +352,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  inline-size: 18px;
+  block-size: 18px;
   padding: 0;
   background: transparent;
   border: none;
-  border-radius: 50%;
+  border-radius: var(--ms-radius-full);
   color: var(--ms-color-text-muted);
   cursor: pointer;
-  transition: color var(--ms-motion-duration-fast) ease;
+  transition: color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-select__clear:hover {
@@ -382,6 +387,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  opacity: 0.5;
   transition: transform var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
@@ -389,82 +395,99 @@
   transform: rotate(180deg);
 }
 
-/* --- Dropdown Panel --- */
+/* --- Dropdown Panel (shadcn popover surface) --- */
+@keyframes ms-select-dropdown-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .ms-select__dropdown {
   position: absolute;
-  top: calc(100% + 4px);
-  left: 0;
-  right: 0;
+  inset-block-start: calc(100% + 4px);
+  inset-inline: 0;
   z-index: var(--ms-z-popover, 1000);
-  background-color: var(--ms-color-surface-elevated);
-  border: 1px solid var(--ms-color-border-subtle);
+  background-color: var(--ms-color-surface-raised);
+  color: var(--ms-color-text-primary);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
   border-radius: var(--ms-radius-md);
-  box-shadow: var(
-    --ms-elevation-3,
-    0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -4px rgba(0, 0, 0, 0.1)
-  );
+  box-shadow: var(--ms-elevation-dropdown);
   overflow: hidden;
-  max-height: 280px;
+  max-block-size: 280px;
   display: flex;
   flex-direction: column;
+  transform-origin: top center;
+  animation: ms-select-dropdown-in calc(150ms * var(--ms-motion-scale, 1))
+    var(--ms-motion-easing-standard);
 }
 
 /* Placements: Top and Bottom */
 .ms-select[data-placement="top"] .ms-select__dropdown,
 .ms-select--placement-top .ms-select__dropdown,
 .ms-select__dropdown[data-placement="top"] {
-  top: auto;
-  bottom: calc(100% + 4px);
-  box-shadow:
-    0 -10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 -4px 6px -4px rgba(0, 0, 0, 0.1);
+  inset-block-start: auto;
+  inset-block-end: calc(100% + 4px);
+  box-shadow: var(--ms-elevation-dropdown);
+  transform-origin: bottom center;
 }
 
 .ms-select[data-placement="bottom"] .ms-select__dropdown,
 .ms-select--placement-bottom .ms-select__dropdown,
 .ms-select__dropdown[data-placement="bottom"] {
-  top: calc(100% + 4px);
-  bottom: auto;
+  inset-block-start: calc(100% + 4px);
+  inset-block-end: auto;
 }
 
-/* Teleported Dropdown Panel */
+/* Teleported Dropdown Panel (inline style supplies top/bottom/left/width) */
 .ms-select__dropdown--teleported {
   position: fixed;
+  inset-inline: auto;
   z-index: var(--ms-z-popover, 1050);
 }
 
 /* Dropdown Search Bar */
 .ms-select__search-box {
-  padding: var(--ms-space-2) var(--ms-space-3);
-  border-bottom: 1px solid var(--ms-color-border-subtle);
-  background-color: var(--ms-color-surface-sunken);
+  padding: var(--ms-space-1);
+  border-block-end: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  background-color: transparent;
 }
 
 .ms-select__search-input {
-  width: 100%;
-  padding: var(--ms-space-1-5, 6px) var(--ms-space-2-5, 10px);
-  background-color: var(--ms-color-surface-default);
-  border: 1px solid var(--ms-color-border-field);
+  inline-size: 100%;
+  block-size: var(--ms-control-height-sm);
+  padding: 0 var(--ms-space-2);
+  background-color: transparent;
+  border: var(--ms-border-hairline) solid var(--ms-color-border-field);
   border-radius: var(--ms-radius-sm);
   font-family: inherit;
-  font-size: var(--ms-font-size-body-sm, 0.8125rem);
+  font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-primary);
   outline: none;
   box-sizing: border-box;
 }
 
+.ms-select__search-input::placeholder {
+  color: var(--ms-color-text-muted);
+}
+
 .ms-select__search-input:focus {
-  border-color: var(--ms-color-primary);
+  outline: none;
+  border-color: var(--ms-focus-ring-color);
+  box-shadow: var(--ms-focus-ring-shadow);
 }
 
 /* --- Listbox --- */
 .ms-select__listbox {
   list-style: none;
   margin: 0;
-  padding: var(--ms-space-1) 0;
+  padding: var(--ms-space-1);
   overflow-y: auto;
-  max-height: 240px;
+  max-block-size: 240px;
 }
 
 /* --- Option --- */
@@ -473,24 +496,26 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--ms-space-2) var(--ms-space-3);
+  gap: var(--ms-space-2);
+  padding: 6px var(--ms-space-2);
+  border-radius: var(--ms-radius-sm);
+  font-size: var(--ms-typography-size-sm);
   cursor: pointer;
   user-select: none;
-  transition: background-color var(--ms-motion-duration-fast) ease;
+  transition: background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-select__option[data-highlighted="true"] {
-  background-color: var(--ms-color-surface-hover);
+  background-color: var(--ms-color-interactive-neutral-subtle);
 }
 
 .ms-select__option[aria-selected="true"] {
-  color: var(--ms-color-primary);
-  font-weight: 500;
-  background-color: var(--ms-color-primary-subtle);
+  color: var(--ms-color-text-primary);
+  font-weight: var(--ms-typography-weight-medium);
 }
 
 .ms-select__option[data-disabled="true"] {
-  opacity: 0.45;
+  opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -506,14 +531,14 @@
 }
 
 .ms-select__option-desc {
-  font-size: var(--ms-font-size-body-xs, 0.75rem);
+  font-size: var(--ms-typography-size-xs);
   color: var(--ms-color-text-muted);
 }
 
 .ms-select__option-check {
   display: inline-flex;
   align-items: center;
-  color: var(--ms-color-primary);
+  color: currentColor;
   margin-inline-start: var(--ms-space-2);
   flex-shrink: 0;
 }
@@ -525,19 +550,17 @@
 }
 
 .ms-select__group-label {
-  padding: var(--ms-space-2) var(--ms-space-3) var(--ms-space-1);
-  font-size: var(--ms-font-size-body-xs, 0.75rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  padding: 6px var(--ms-space-2);
+  font-size: var(--ms-typography-size-xs);
+  font-weight: var(--ms-typography-weight-medium);
   color: var(--ms-color-text-muted);
 }
 
 /* --- Empty State --- */
 .ms-select__empty {
-  padding: var(--ms-space-4);
+  padding: var(--ms-space-6) var(--ms-space-4);
   text-align: center;
-  font-size: var(--ms-font-size-body-sm, 0.8125rem);
+  font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-muted);
 }
 
@@ -546,18 +569,20 @@
   display: flex;
   align-items: center;
   gap: var(--ms-space-2);
-  padding: var(--ms-space-2) var(--ms-space-3);
-  color: var(--ms-color-primary);
-  font-weight: 500;
-  font-size: var(--ms-font-size-body-sm, 0.8125rem);
+  padding: 6px var(--ms-space-2);
+  margin: var(--ms-space-1);
+  border-radius: var(--ms-radius-sm);
+  color: var(--ms-color-text-primary);
+  font-weight: var(--ms-typography-weight-medium);
+  font-size: var(--ms-typography-size-sm);
   cursor: pointer;
-  background-color: var(--ms-color-surface-default);
-  border-top: 1px solid var(--ms-color-border-subtle);
+  background-color: transparent;
+  border-block-start: var(--ms-border-hairline) solid var(--ms-color-border-default);
 }
 
 .ms-select__create:hover,
 .ms-select__create[data-highlighted="true"] {
-  background-color: var(--ms-color-surface-hover);
+  background-color: var(--ms-color-interactive-neutral-subtle);
 }
 
 /* --- Counter Badge (Multiple with Counter / Conditional Counter) --- */
@@ -566,12 +591,12 @@
   align-items: center;
   justify-content: center;
   padding: 2px 8px;
-  border-radius: var(--ms-radius-full);
-  background-color: var(--ms-color-surface-subtle);
-  border: 1px solid var(--ms-color-border-subtle);
-  font-size: var(--ms-font-size-body-xs, 0.75rem);
-  font-weight: 600;
-  color: var(--ms-color-text-secondary);
+  border-radius: var(--ms-radius-md);
+  background-color: var(--ms-color-interactive-neutral-subtle);
+  border: var(--ms-border-hairline) solid transparent;
+  font-size: var(--ms-typography-size-xs);
+  font-weight: var(--ms-typography-weight-medium);
+  color: var(--ms-color-text-primary);
   line-height: 1;
   white-space: nowrap;
 }
@@ -594,41 +619,41 @@
   justify-content: center;
   margin-inline-end: var(--ms-space-2);
   color: var(--ms-color-text-muted);
-  font-size: 1.1em;
+  font-size: var(--ms-typography-size-md);
   flex-shrink: 0;
 }
 
 /* --- Floating Label --- */
 .ms-select--floating {
-  margin-top: 8px;
+  margin-block-start: var(--ms-space-2);
 }
 
 .ms-select__floating-label {
   position: absolute;
   inset-inline-start: var(--ms-space-3);
-  top: 50%;
+  inset-block-start: 50%;
   transform: translateY(-50%);
-  font-size: var(--ms-font-size-body-sm, 0.8125rem);
+  font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-muted);
   pointer-events: none;
   background-color: var(--ms-color-surface-default);
-  padding: 0 4px;
-  border-radius: 2px;
+  padding: 0 var(--ms-space-1);
+  border-radius: var(--ms-radius-xs);
   transition:
-    top var(--ms-motion-duration-fast) cubic-bezier(0.16, 1, 0.3, 1),
-    transform var(--ms-motion-duration-fast) cubic-bezier(0.16, 1, 0.3, 1),
-    color var(--ms-motion-duration-fast) ease,
-    font-size var(--ms-motion-duration-fast) ease;
+    inset-block-start var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    transform var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    font-size var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
   z-index: 1;
 }
 
 .ms-select--floating[data-focused="true"] .ms-select__floating-label,
 .ms-select--floating[data-has-value="true"] .ms-select__floating-label {
-  top: 0;
+  inset-block-start: 0;
   transform: translateY(-50%) scale(0.85);
   transform-origin: left top;
-  color: var(--_ms-select-accent, var(--ms-color-primary));
-  font-weight: 600;
+  color: var(--_ms-select-accent, var(--ms-focus-ring-color));
+  font-weight: var(--ms-typography-weight-medium);
 }
 
 .ms-select--floating[data-has-value="true"] .ms-select__floating-label:dir(rtl) {
@@ -637,17 +662,17 @@
 
 /* --- Custom Option Styles with Avatars --- */
 .ms-select__option-avatar {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
+  inline-size: 24px;
+  block-size: 24px;
+  border-radius: var(--ms-radius-full);
   object-fit: cover;
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
-  background-color: var(--ms-color-surface-subtle);
+  font-size: var(--ms-typography-size-2xs);
+  font-weight: var(--ms-typography-weight-semibold);
+  background-color: var(--ms-color-surface-sunken);
   color: var(--ms-color-text-primary);
 }
 
@@ -655,10 +680,10 @@
   display: flex;
   align-items: center;
   gap: var(--ms-space-2);
-  width: 100%;
+  inline-size: 100%;
 }
 
 .ms-select__option-sub {
-  font-size: var(--ms-font-size-body-xs, 0.75rem);
+  font-size: var(--ms-typography-size-xs);
   color: var(--ms-color-text-muted);
 }
