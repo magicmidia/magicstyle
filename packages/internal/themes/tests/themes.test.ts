@@ -111,16 +111,22 @@ describe("theme contract", () => {
     expect(JSON.parse(committed)).toEqual(themeJsonSchema());
   });
 
-  it("docs/theming.md documents every contract key", () => {
-    const docs = readFileSync(new URL("../../../../docs/theming.md", import.meta.url), "utf8");
-    for (const key of CONTRACT_KEYS) {
-      const base = key.replace(/-content$/, "");
-      expect(
-        docs.includes(`--ms-${key}`) || docs.includes(`--ms-${base}\` / \`-content`),
-        key,
-      ).toBe(true);
-    }
-  });
+  it.each(["guide", "en/guide", "es/guide"])(
+    "the theming guide (%s) documents every contract key",
+    (dir) => {
+      const docs = readFileSync(
+        new URL(`../../../../apps/docs/src/${dir}/theming.md`, import.meta.url),
+        "utf8",
+      );
+      for (const key of CONTRACT_KEYS) {
+        const base = key.replace(/-content$/, "");
+        expect(
+          docs.includes(`--ms-${key}`) || docs.includes(`--ms-${base}\` / \`-content`),
+          key,
+        ).toBe(true);
+      }
+    },
+  );
 
   it("tinted tokens and the tone engine share one formula (chroma restored)", () => {
     const expr = (name: string) => DERIVED.find(([n]) => n === name)?.[1];

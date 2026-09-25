@@ -322,7 +322,10 @@ export const CONTRAST_PAIRS: ReadonlyArray<readonly [fg: string, bg: string, min
     `color-feedback-${role}-bg`,
     4.5,
   ]),
-  ["color-text-muted", "color-surface-default", 3],
+  // Muted text carries descriptions and hints: body text, so AA 4.5:1 on every surface.
+  ["color-text-muted", "color-surface-default", 4.5],
+  ["color-text-muted", "color-surface-raised", 4.5],
+  ["color-text-muted", "color-surface-sunken", 4.5],
 ];
 
 export interface ContrastIssue {

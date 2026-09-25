@@ -1,3 +1,0 @@
-@echo off
-echo Iniciando Magic-Style Visualizer (Preview Studio)...
-node apps/preview/serve.mjs
