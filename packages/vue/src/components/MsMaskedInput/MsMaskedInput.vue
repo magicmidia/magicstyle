@@ -2,6 +2,7 @@
 import { computed } from "vue";
 import type { MsMaskedInputProps, MsMaskedInputEmits } from "./types.ts";
 import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({ inheritAttrs: false });
 
@@ -18,6 +19,8 @@ const props = withDefaults(defineProps<MsMaskedInputProps>(), {
 });
 
 const emit = defineEmits<MsMaskedInputEmits>();
+
+const t = useMsMessages();
 
 const fieldControl = useFieldControl("ms-masked-input");
 const isInvalid = computed(() => props.invalid === true || fieldControl.fieldInvalid.value);
@@ -113,8 +116,8 @@ const classes = computed(() => [
       v-if="props.clearable && props.modelValue && !props.disabled && !props.readonly"
       type="button"
       class="ms-masked-input__clear"
-      aria-label="Limpar campo"
-      title="Limpar campo"
+      :aria-label="t.input.clear"
+      :title="t.input.clear"
       @click="handleClear"
     >
       <svg

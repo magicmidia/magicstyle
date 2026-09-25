@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsScrollSpyProps, MsScrollSpyEmits } from "./types.ts";
 
 const props = withDefaults(defineProps<MsScrollSpyProps>(), {
@@ -7,6 +8,8 @@ const props = withDefaults(defineProps<MsScrollSpyProps>(), {
 });
 
 const emit = defineEmits<MsScrollSpyEmits>();
+
+const t = useMsMessages();
 
 defineSlots<{
   default?(): unknown;
@@ -63,7 +66,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <nav class="ms-scroll-spy" aria-label="Navegação na página" data-ms-scroll-spy>
+  <nav class="ms-scroll-spy" :aria-label="t.scrollSpy.label" data-ms-scroll-spy>
     <ul style="list-style: none; margin: 0; padding: 0">
       <li
         v-for="item in props.items"

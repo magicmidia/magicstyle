@@ -16,7 +16,7 @@
       :aria-valuenow="isIndeterminate ? undefined : modelValue"
       :aria-valuemin="min"
       :aria-valuemax="max"
-      :aria-valuetext="isIndeterminate ? 'Carregando...' : `${percentage}%`"
+      :aria-valuetext="isIndeterminate ? t.progress.loading : `${percentage}%`"
       :aria-label="label"
       :class="trackClasses"
     >
@@ -34,6 +34,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsProgressProps } from "./types.ts";
 
 defineOptions({
@@ -53,6 +54,8 @@ const props = withDefaults(defineProps<MsProgressProps>(), {
   striped: false,
   animated: false,
 });
+
+const t = useMsMessages();
 
 const isIndeterminate = computed(() => {
   return props.indeterminate || props.modelValue === undefined;

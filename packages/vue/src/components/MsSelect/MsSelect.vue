@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, nextTick, onUnmounted, ref, watch } from "vue";
 import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type {
   MsSelectEmits,
   MsSelectGroup,
@@ -25,11 +26,22 @@ const props = withDefaults(defineProps<MsSelectProps>(), {
   placement: "bottom",
   minSearchLength: 0,
   counter: false,
-  placeholder: "Select...",
-  searchPlaceholder: "Search...",
 });
 
 const emit = defineEmits<MsSelectEmits>();
+
+const t = useMsMessages();
+const placeholderText = computed(() => props.placeholder ?? t.value.select.placeholder);
+const searchPlaceholderText = computed(
+  () => props.searchPlaceholder ?? t.value.select.searchPlaceholder,
+);
+/** `select.create(query)` split around the query so it can be emphasized in the option. */
+const createParts = computed<{ before: string; after: string } | null>(() => {
+  const marker = "\u0000";
+  const parts = t.value.select.create(marker).split(marker);
+  if (parts.length !== 2) return null;
+  return { before: parts[0] ?? "", after: parts[1] ?? "" };
+});
 
 defineSlots<{
   default?(): unknown;
@@ -588,7 +600,9 @@ onUnmounted(() => {
           <!-- Counter only mode -->
           <template v-if="isCounterOnly">
             <slot name="counter" :count="selectedOptions.length" :total="allFlatOptions.length">
-              <span class="ms-select__counter"> {{ selectedOptions.length }} selecionados </span>
+              <span class="ms-select__counter">
+                {{ t.select.selectedCount(selectedOptions.length) }}
+              </span>
             </slot>
           </template>
 
@@ -601,7 +615,7 @@ onUnmounted(() => {
                   v-if="!props.disabled"
                   type="button"
                   class="ms-select__tag-remove"
-                  :aria-label="`Remove ${opt.label}`"
+                  :aria-label="t.select.removeOption(opt.label)"
                   @click="removeValue(opt.value, $event)"
                 >
                   <svg
@@ -623,7 +637,7 @@ onUnmounted(() => {
 
             <!-- Remaining counter badge if conditional counter is active -->
             <span v-if="remainingTagCount > 0" class="ms-select__counter">
-              +{{ remainingTagCount }} mais
+              {{ t.select.more(remainingTagCount) }}
             </span>
           </template>
         </template>
@@ -642,7 +656,7 @@ onUnmounted(() => {
           v-if="selectedOptions.length === 0 && (!props.floatingLabel || isDropdownOpen)"
           class="ms-select__placeholder"
         >
-          {{ props.placeholder }}
+          {{ placeholderText }}
         </span>
       </div>
 
@@ -654,7 +668,7 @@ onUnmounted(() => {
           v-if="props.clearable && selectedValues.length > 0 && !props.disabled"
           type="button"
           class="ms-select__clear"
-          aria-label="Clear selection"
+          :aria-label="t.select.clear"
           @click="clear"
         >
           <svg
@@ -726,8 +740,8 @@ onUnmounted(() => {
             aria-expanded="true"
             :aria-controls="listboxId"
             :aria-activedescendant="activeOptionId"
-            :aria-label="props.searchPlaceholder"
-            :placeholder="props.searchPlaceholder"
+            :aria-label="searchPlaceholderText"
+            :placeholder="searchPlaceholderText"
             :value="searchQuery"
             @input="onSearchInput"
           />
@@ -832,7 +846,7 @@ onUnmounted(() => {
             class="ms-select__empty"
             role="presentation"
           >
-            <slot name="empty">No options found</slot>
+            <slot name="empty">{{ t.select.empty }}</slot>
           </li>
 
           <!-- Creatable option when query has no exact match -->
@@ -843,10 +857,11 @@ onUnmounted(() => {
             tabindex="0"
             @click="handleCreate"
           >
-            <span
-              >Create "<strong>{{ searchQuery }}</strong
-              >"</span
+            <span v-if="createParts"
+              >{{ createParts.before }}<strong>{{ searchQuery }}</strong
+              >{{ createParts.after }}</span
             >
+            <span v-else>{{ t.select.create(searchQuery) }}</span>
           </li>
         </ul>
 

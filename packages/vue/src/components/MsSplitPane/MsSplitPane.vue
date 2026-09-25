@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, onBeforeUnmount } from "vue";
 import type { MsSplitPaneProps, MsSplitPaneEmits } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsSplitPaneProps>(), {
   direction: "horizontal",
@@ -10,6 +11,8 @@ const props = withDefaults(defineProps<MsSplitPaneProps>(), {
 });
 
 const emit = defineEmits<MsSplitPaneEmits>();
+
+const t = useMsMessages();
 
 const currentSplit = ref(props.split);
 const isDragging = ref(false);
@@ -119,7 +122,7 @@ const secondPaneStyle = computed(() => ({
       :class="{ 'ms-split-pane__gutter--dragging': isDragging }"
       role="separator"
       tabindex="0"
-      aria-label="Redimensionar painéis"
+      :aria-label="t.splitPane.resize"
       :aria-orientation="props.direction === 'horizontal' ? 'vertical' : 'horizontal'"
       :aria-valuenow="currentSplit"
       :aria-valuemin="props.min"

@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import { ref, computed, watch } from "vue";
 import type { MsTruncateProps, MsTruncateEmits } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsTruncateProps>(), {
   text: "",
   lines: 1,
   expandable: false,
   expanded: false,
-  expandText: "Ver mais",
-  collapseText: "Ver menos",
   showTooltip: true,
   position: "end",
   middleChars: 10,
 });
 
 const emit = defineEmits<MsTruncateEmits>();
+
+const t = useMsMessages();
+const expandLabel = computed(() => props.expandText ?? t.value.truncate.more);
+const collapseLabel = computed(() => props.collapseText ?? t.value.truncate.less);
 
 const internalExpanded = ref(props.expanded);
 
@@ -92,7 +95,7 @@ const toggleExpand = () => {
         :toggle="toggleExpand"
       >
         <button type="button" class="ms-truncate__toggle" @click="toggleExpand">
-          {{ internalExpanded ? props.collapseText : props.expandText }}
+          {{ internalExpanded ? collapseLabel : expandLabel }}
         </button>
       </slot>
     </template>

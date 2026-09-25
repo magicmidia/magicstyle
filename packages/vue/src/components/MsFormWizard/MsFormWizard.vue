@@ -2,16 +2,19 @@
 import { ref, computed, watch } from "vue";
 import type { MsFormWizardProps, MsFormWizardEmits } from "./types.ts";
 import MsButton from "../MsButton/MsButton.vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsFormWizardProps>(), {
   modelValue: 0,
   linear: true,
-  prevText: "Voltar",
-  nextText: "Avançar",
-  finishText: "Concluir",
 });
 
 const emit = defineEmits<MsFormWizardEmits>();
+
+const t = useMsMessages();
+const prevLabel = computed(() => props.prevText ?? t.value.formWizard.previous);
+const nextLabel = computed(() => props.nextText ?? t.value.formWizard.next);
+const finishLabel = computed(() => props.finishText ?? t.value.formWizard.finish);
 
 const activeIndex = ref(props.modelValue);
 
@@ -62,7 +65,7 @@ const handlePrev = async () => {
   <div class="ms-form-wizard" :data-step="activeIndex">
     <!-- Header / Steps Tracker -->
     <div class="ms-form-wizard__header">
-      <nav class="ms-form-wizard__steps" aria-label="Progresso do formulário">
+      <nav class="ms-form-wizard__steps" :aria-label="t.formWizard.progress">
         <template v-for="(step, idx) in props.steps" :key="step.id">
           <div
             class="ms-form-wizard__step"
@@ -129,11 +132,11 @@ const handlePrev = async () => {
         :current-index="activeIndex"
       >
         <MsButton variant="outline" :disabled="isFirst" @click="handlePrev">
-          {{ props.prevText }}
+          {{ prevLabel }}
         </MsButton>
 
         <MsButton variant="solid" tone="primary" @click="handleNext">
-          {{ isLast ? props.finishText : props.nextText }}
+          {{ isLast ? finishLabel : nextLabel }}
         </MsButton>
       </slot>
     </div>

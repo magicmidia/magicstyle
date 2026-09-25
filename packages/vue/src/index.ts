@@ -803,3 +803,21 @@ export {
   type MsThemeKey,
   type MsThemeValues,
 } from "./theming.ts";
+
+// i18n: built-in component strings (Portuguese default, English included).
+export {
+  MS_MESSAGES_KEY,
+  createMsI18n,
+  provideMsMessages,
+  useMsMessages,
+  type MsI18nOptions,
+} from "./composables/use-ms-messages.ts";
+export {
+  MS_BUILTIN_MESSAGES,
+  mergeMsMessages,
+  msMessagesEn,
+  msMessagesForLocale,
+  msMessagesPtBR,
+  type MsMessages,
+  type MsMessagesOverride,
+} from "./i18n/messages.ts";

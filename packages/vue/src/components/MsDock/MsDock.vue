@@ -2,11 +2,14 @@
 import { computed, provide, toRef } from "vue";
 import type { MsDockProps } from "./types.ts";
 import { MS_DOCK_KEY } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsDockProps>(), {
   position: "bottom",
   size: "md",
 });
+
+const t = useMsMessages();
 
 defineSlots<{
   default?(): unknown;
@@ -26,7 +29,7 @@ const dockClasses = computed(() => ["ms-dock", `ms-dock--size-${props.size}`]);
 
 <template>
   <div :class="containerClasses" data-ms-dock-container>
-    <ul :class="dockClasses" role="toolbar" aria-label="Barra de aplicativos dock" data-ms-dock>
+    <ul :class="dockClasses" role="toolbar" :aria-label="t.dock.label" data-ms-dock>
       <slot />
     </ul>
   </div>

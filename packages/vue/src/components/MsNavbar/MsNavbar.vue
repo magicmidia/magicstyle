@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import type { MsNavbarProps, MsNavbarEmits } from "./types";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({
   name: "MsNavbar",
@@ -19,6 +20,8 @@ const props = withDefaults(defineProps<MsNavbarProps>(), {
 });
 
 const emit = defineEmits<MsNavbarEmits>();
+
+const t = useMsMessages();
 
 const internalMobileMenuOpen = ref(props.mobileMenuOpen);
 watch(
@@ -93,7 +96,7 @@ const containerClasses = computed(() => {
         type="button"
         class="ms-navbar__mobile-toggle"
         :aria-expanded="internalMobileMenuOpen ? 'true' : 'false'"
-        aria-label="Toggle navigation menu"
+        :aria-label="t.navbar.toggle"
         @click="handleToggleMenu"
       >
         <slot name="mobile-toggle">
@@ -134,7 +137,7 @@ const containerClasses = computed(() => {
         type="button"
         class="ms-navbar__mobile-toggle"
         :aria-expanded="internalMobileMenuOpen ? 'true' : 'false'"
-        aria-label="Toggle navigation menu"
+        :aria-label="t.navbar.toggle"
         @click="handleToggleMenu"
       >
         <slot name="mobile-toggle">

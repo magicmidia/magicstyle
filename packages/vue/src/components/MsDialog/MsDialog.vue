@@ -5,6 +5,7 @@ import { useScrollLock } from "../../composables/use-scroll-lock.ts";
 import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
 import { useFocusTrap } from "../../composables/use-focus-trap.ts";
 import type { MsDialogProps } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsDialogProps>(), {
   open: false,
@@ -28,6 +29,8 @@ defineSlots<{
   footer?(): unknown;
   close?(): unknown;
 }>();
+
+const t = useMsMessages();
 
 const titleId = useMsId("ms-dialog-title");
 const descriptionId = useMsId("ms-dialog-desc");
@@ -84,7 +87,7 @@ useDismissableLayer({
             v-if="props.showClose"
             type="button"
             class="ms-dialog-close"
-            aria-label="Fechar"
+            :aria-label="t.dialog.close"
             @click="requestClose"
           >
             <slot name="close">

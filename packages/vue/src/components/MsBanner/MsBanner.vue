@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsBannerProps, MsBannerEmits } from "./types.ts";
 
 const props = withDefaults(defineProps<MsBannerProps>(), {
@@ -10,6 +11,8 @@ const props = withDefaults(defineProps<MsBannerProps>(), {
 });
 
 const emit = defineEmits<MsBannerEmits>();
+
+const t = useMsMessages();
 
 defineSlots<{
   default?(): unknown;
@@ -75,7 +78,7 @@ const handleAction = () => {
         v-if="props.dismissible"
         type="button"
         class="ms-banner__close"
-        aria-label="Fechar aviso"
+        :aria-label="t.banner.dismiss"
         @click="handleDismiss"
       >
         ✕

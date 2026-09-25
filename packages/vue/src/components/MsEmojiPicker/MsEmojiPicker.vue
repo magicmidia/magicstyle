@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import type { MsEmojiPickerProps, MsEmojiPickerEmits, MsEmojiItem } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const emojiList: MsEmojiItem[] = [
   // Smileys & Emoções
@@ -186,6 +187,8 @@ const props = withDefaults(defineProps<MsEmojiPickerProps>(), {
 
 const emit = defineEmits<MsEmojiPickerEmits>();
 
+const t = useMsMessages();
+
 const isOpen = ref(false);
 const searchQuery = ref("");
 const activeCategory = ref("all");
@@ -230,7 +233,7 @@ const toggleDropdown = () => {
         v-model="searchQuery"
         type="text"
         class="ms-emoji-picker__search"
-        placeholder="Buscar emoji..."
+        :placeholder="t.emojiPicker.search"
       />
 
       <div class="ms-emoji-picker__categories">

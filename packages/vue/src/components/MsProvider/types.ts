@@ -1,4 +1,5 @@
 import type { MsThemeValues } from "../../theming.ts";
+import type { MsMessagesOverride } from "../../i18n/messages.ts";
 import type {
   ColorModePreference,
   Contrast,
@@ -43,6 +44,16 @@ export interface MsProviderProps {
    * Default: "ltr".
    */
   dir?: Direction;
+
+  /**
+   * Language of the components' built-in strings and Intl formatting (BCP 47).
+   * Built-in dictionaries: Portuguese (default) and English. Inherits from an
+   * ancestor provider or `createMsI18n` when omitted.
+   */
+  locale?: string;
+
+  /** Partial overrides for built-in strings, e.g. `{ select: { empty: "…" } }`. */
+  messages?: MsMessagesOverride;
 
   /**
    * Target element to apply theme data attributes.

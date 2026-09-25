@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { sanitizeSvg } from "../../composables/sanitize-svg.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsIconPickerProps, MsIconPickerEmits, MsIconItem } from "./types.ts";
 
 const ICON_PATHS: Record<string, string> = {
@@ -88,15 +89,19 @@ const defaultIcons: MsIconItem[] = [
 
 const props = withDefaults(defineProps<MsIconPickerProps>(), {
   modelValue: "",
-  placeholder: "Selecione um ícone...",
   disabled: false,
 });
+
+const t = useMsMessages();
+const resolvedPlaceholder = computed(() => props.placeholder ?? t.value.iconPicker.placeholder);
 
 const emit = defineEmits<MsIconPickerEmits>();
 
 const isOpen = ref(false);
 const searchQuery = ref("");
-const selectedCategory = ref("Todos");
+/** Sentinel for the "all categories" filter; its label comes from the messages. */
+const ALL_CATEGORIES = "";
+const selectedCategory = ref(ALL_CATEGORIES);
 
 const activeIcons = computed(() => props.icons || defaultIcons);
 
@@ -111,12 +116,12 @@ const categories = computed(() => {
   activeIcons.value.forEach((i) => {
     if (i.category) cats.add(i.category);
   });
-  return ["Todos", ...Array.from(cats)];
+  return [ALL_CATEGORIES, ...Array.from(cats)];
 });
 
 const filteredIcons = computed(() => {
   let list = activeIcons.value;
-  if (selectedCategory.value !== "Todos") {
+  if (selectedCategory.value !== ALL_CATEGORIES) {
     list = list.filter((i) => i.category === selectedCategory.value);
   }
   if (searchQuery.value.trim()) {
@@ -163,7 +168,7 @@ const toggleDropdown = () => {
         <!-- eslint-enable vue/no-v-html -->
         <span v-else>❖</span>
       </span>
-      <span>{{ props.modelValue || props.placeholder }}</span>
+      <span>{{ props.modelValue || resolvedPlaceholder }}</span>
     </button>
 
     <div v-if="isOpen" class="ms-icon-picker__dropdown">
@@ -171,7 +176,7 @@ const toggleDropdown = () => {
         v-model="searchQuery"
         type="text"
         class="ms-icon-picker__search"
-        placeholder="Buscar ícones..."
+        :placeholder="t.iconPicker.search"
       />
 
       <div class="ms-icon-picker__categories">
@@ -183,7 +188,7 @@ const toggleDropdown = () => {
           :class="{ 'ms-icon-picker__category-btn--active': selectedCategory === cat }"
           @click="selectedCategory = cat"
         >
-          {{ cat }}
+          {{ cat === ALL_CATEGORIES ? t.iconPicker.all : cat }}
         </button>
       </div>
 

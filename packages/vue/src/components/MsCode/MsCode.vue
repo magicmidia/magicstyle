@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onBeforeUnmount } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsCodeProps, MsCodeEmits } from "./types.ts";
 
 const props = withDefaults(defineProps<MsCodeProps>(), {
@@ -10,6 +11,7 @@ const props = withDefaults(defineProps<MsCodeProps>(), {
 });
 
 const emit = defineEmits<MsCodeEmits>();
+const t = useMsMessages();
 const copied = ref(false);
 const codeEl = ref<HTMLElement | null>(null);
 let copyTimer: ReturnType<typeof setTimeout> | null = null;
@@ -65,8 +67,8 @@ const handleCopy = async (event: MouseEvent) => {
       v-if="props.copyable"
       type="button"
       class="ms-code__copy-btn"
-      :title="copied ? 'Copiado!' : 'Copiar código'"
-      :aria-label="copied ? 'Copiado!' : 'Copiar código'"
+      :title="copied ? t.code.copied : t.code.copy"
+      :aria-label="copied ? t.code.copied : t.code.copy"
       @click="handleCopy"
     >
       <svg

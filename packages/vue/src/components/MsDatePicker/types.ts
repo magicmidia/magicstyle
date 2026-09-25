@@ -13,7 +13,7 @@ export interface MsDatePickerProps {
   modelValue?: MsDatePickerModelValue;
   /** Picker mode: single date, date range, hour/time only, or mixed datetime */
   mode?: MsDatePickerMode;
-  /** Input placeholder text */
+  /** Input placeholder text (defaults to the messages `datePicker.placeholder*` for the mode) */
   placeholder?: string | undefined;
   /** Minimum selectable date (YYYY-MM-DD) */
   minDate?: string | undefined;

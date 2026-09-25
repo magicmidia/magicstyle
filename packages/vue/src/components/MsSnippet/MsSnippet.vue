@@ -2,7 +2,7 @@
   <div :class="classes">
     <!-- Header with Tabs if tabs prop provided -->
     <div v-if="tabs && tabs.length > 0" class="ms-snippet__header">
-      <div class="ms-snippet__tabs" role="tablist" aria-label="Gerenciadores e comandos">
+      <div class="ms-snippet__tabs" role="tablist" :aria-label="t.snippet.label">
         <button
           v-for="(tab, index) in tabs"
           :id="`${snippetId}-tab-${index}`"
@@ -30,8 +30,8 @@
           type="button"
           class="ms-snippet__copy-btn"
           :data-copied="copied"
-          :aria-label="copied ? 'Copiado para a área de transferência' : 'Copiar comando'"
-          :title="copied ? 'Copiado!' : 'Copiar'"
+          :aria-label="copied ? t.snippet.copied : t.snippet.copy"
+          :title="copied ? t.snippet.copiedShort : t.snippet.copyShort"
           @click="handleCopy"
         >
           <slot name="copy-button" :copied="copied">
@@ -93,8 +93,8 @@
         type="button"
         class="ms-snippet__copy-btn"
         :data-copied="copied"
-        :aria-label="copied ? 'Copiado para a área de transferência' : 'Copiar comando'"
-        :title="copied ? 'Copiado!' : 'Copiar'"
+        :aria-label="copied ? t.snippet.copied : t.snippet.copy"
+        :title="copied ? t.snippet.copiedShort : t.snippet.copyShort"
         @click="handleCopy"
       >
         <slot name="copy-button" :copied="copied">
@@ -138,6 +138,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { useMsId } from "../../composables/use-ms-id.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsSnippetProps, MsSnippetEmits } from "./types.ts";
 
 defineOptions({
@@ -158,6 +159,8 @@ const props = withDefaults(defineProps<MsSnippetProps>(), {
 });
 
 const emit = defineEmits<MsSnippetEmits>();
+
+const t = useMsMessages();
 
 const snippetId = useMsId("snippet");
 const copied = ref(false);

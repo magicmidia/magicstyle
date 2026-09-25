@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onBeforeUnmount } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsCodeBlockProps, MsCodeBlockEmits } from "./types.ts";
 
 const props = withDefaults(defineProps<MsCodeBlockProps>(), {
@@ -15,6 +16,7 @@ const props = withDefaults(defineProps<MsCodeBlockProps>(), {
 });
 
 const emit = defineEmits<MsCodeBlockEmits>();
+const t = useMsMessages();
 
 const copied = ref(false);
 const isCollapsed = ref(props.defaultCollapsed);
@@ -194,8 +196,8 @@ const highlightedCode = computed(() => highlightCode(props.code, props.language)
           type="button"
           class="ms-code-block__copy-btn"
           :class="{ 'ms-code-block__copy-btn--copied': copied }"
-          :title="copied ? 'Copiado!' : 'Copiar código'"
-          :aria-label="copied ? 'Copiado!' : 'Copiar código'"
+          :title="copied ? t.code.copied : t.code.copy"
+          :aria-label="copied ? t.code.copied : t.code.copy"
           @click="handleCopy"
         >
           <svg
@@ -221,7 +223,7 @@ const highlightedCode = computed(() => highlightCode(props.code, props.language)
           >
             <polyline points="20 6 9 17 4 12" />
           </svg>
-          <span>{{ copied ? "Copiado" : "Copiar" }}</span>
+          <span>{{ copied ? t.codeBlock.copied : t.codeBlock.copy }}</span>
         </button>
       </div>
     </div>
@@ -251,7 +253,7 @@ const highlightedCode = computed(() => highlightCode(props.code, props.language)
           class="ms-code-block__collapse-btn"
           @click="toggleCollapse"
         >
-          {{ isCollapsed ? "Mostrar mais linhas" : "Recolher código" }}
+          {{ isCollapsed ? t.codeBlock.expand : t.codeBlock.collapse }}
         </button>
       </slot>
     </div>

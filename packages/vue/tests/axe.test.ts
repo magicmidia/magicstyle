@@ -97,7 +97,19 @@ const cases: Array<[string, () => ReturnType<typeof h>]> = [
     "open dialog",
     () => h(MsDialog, { open: true, title: "Título", description: "Texto" }, () => "Corpo"),
   ],
-  ["open command palette", () => h(MsCommandPalette, { modelValue: true })],
+  [
+    "open command palette",
+    () =>
+      h(MsCommandPalette, {
+        modelValue: true,
+        items: [
+          { id: "docs", label: "Documentação", group: "Navegação" },
+          { id: "theme", label: "Alternar tema", group: "Ações" },
+          { id: "off", label: "Indisponível", disabled: true },
+        ],
+      }),
+  ],
+  ["empty command palette", () => h(MsCommandPalette, { modelValue: true })],
   [
     "navigation and disclosure",
     () =>

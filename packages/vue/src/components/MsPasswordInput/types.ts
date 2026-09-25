@@ -6,6 +6,10 @@ export interface MsPasswordCriterion {
   validator: (password: string) => boolean;
 }
 
+/**
+ * Built-in criteria. When `criteria` is not passed, MsPasswordInput uses these
+ * validators with labels from the messages (`passwordInput.criteria[id]`).
+ */
 export const defaultCriteria: MsPasswordCriterion[] = [
   { id: "length", label: "Mínimo de 8 caracteres", validator: (p) => p.length >= 8 },
   { id: "lowercase", label: "Pelo menos 1 letra minúscula", validator: (p) => /[a-z]/.test(p) },
@@ -20,6 +24,7 @@ export const defaultCriteria: MsPasswordCriterion[] = [
 
 export interface MsPasswordInputProps {
   modelValue?: string;
+  /** @default from messages (`passwordInput.placeholder`) */
   placeholder?: string;
   size?: MsPasswordInputSize;
   disabled?: boolean;

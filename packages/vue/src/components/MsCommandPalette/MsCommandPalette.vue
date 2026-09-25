@@ -5,24 +5,18 @@ import { useMsId } from "../../composables/use-ms-id.ts";
 import { useScrollLock } from "../../composables/use-scroll-lock.ts";
 import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
 import { useFocusTrap } from "../../composables/use-focus-trap.ts";
-
-const defaultCommands: MsCommandItem[] = [
-  { id: "docs", label: "Ir para Documentação", group: "Navegação", shortcut: "G D" },
-  { id: "components", label: "Explorar Componentes", group: "Navegação", shortcut: "G C" },
-  { id: "tokens", label: "Inspecionar Design Tokens", group: "Navegação", shortcut: "G T" },
-  { id: "theme", label: "Alternar Tema Claro / Escuro", group: "Ações Rápidas", shortcut: "⌘ T" },
-  { id: "copy-cdn", label: "Copiar link do CDN CSS", group: "Ações Rápidas", shortcut: "⌘ C" },
-  { id: "feedback", label: "Enviar Feedback", group: "Geral", shortcut: "⌘ F" },
-];
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsCommandPaletteProps>(), {
   modelValue: false,
-  placeholder: "Digite um comando ou pesquise...",
-  emptyText: "Nenhum comando encontrado.",
   hotkey: true,
 });
 
 const emit = defineEmits<MsCommandPaletteEmits>();
+
+const t = useMsMessages();
+const placeholderText = computed(() => props.placeholder ?? t.value.commandPalette.placeholder);
+const emptyMessage = computed(() => props.emptyText ?? t.value.commandPalette.empty);
 
 const isOpen = ref(props.modelValue);
 const search = ref("");
@@ -39,7 +33,7 @@ watch(
   },
 );
 
-const commandList = computed(() => props.items || defaultCommands);
+const commandList = computed<MsCommandItem[]>(() => props.items ?? []);
 
 const filteredCommands = computed(() => {
   if (!search.value.trim()) return commandList.value;
@@ -52,7 +46,7 @@ const filteredCommands = computed(() => {
 const groupedCommands = computed(() => {
   const groups: Record<string, MsCommandItem[]> = {};
   filteredCommands.value.forEach((c) => {
-    const g = c.group || "Ações";
+    const g = c.group || t.value.commandPalette.defaultGroup;
     if (!groups[g]) groups[g] = [];
     groups[g]!.push(c);
   });
@@ -161,7 +155,7 @@ onUnmounted(() => {
         class="ms-command-palette"
         role="dialog"
         aria-modal="true"
-        aria-label="Paleta de Comandos"
+        :aria-label="t.commandPalette.label"
         tabindex="-1"
       >
         <div class="ms-command-palette__search-wrapper">
@@ -185,11 +179,11 @@ onUnmounted(() => {
             class="ms-command-palette__search-input"
             role="combobox"
             aria-autocomplete="list"
-            :aria-label="props.placeholder"
+            :aria-label="placeholderText"
             :aria-expanded="orderedCommands.length > 0"
             :aria-controls="listboxId"
             :aria-activedescendant="activeCommand ? optionId(activeCommand) : undefined"
-            :placeholder="props.placeholder"
+            :placeholder="placeholderText"
           />
           <span class="ms-command-palette__kbd" aria-hidden="true">ESC</span>
         </div>
@@ -199,7 +193,7 @@ onUnmounted(() => {
           :id="listboxId"
           class="ms-command-palette__results"
           role="listbox"
-          :aria-label="props.placeholder"
+          :aria-label="placeholderText"
         >
           <li
             v-for="(cmds, groupName, groupIndex) in groupedCommands"
@@ -245,12 +239,12 @@ onUnmounted(() => {
         </ul>
 
         <div v-else class="ms-command-palette__empty" role="status">
-          {{ props.emptyText }}
+          {{ emptyMessage }}
         </div>
 
         <div class="ms-command-palette__footer" aria-hidden="true">
-          <span>Navegar com ↑ ↓</span>
-          <span>Executar com ↵</span>
+          <span>{{ t.commandPalette.navigateHint }}</span>
+          <span>{{ t.commandPalette.runHint }}</span>
         </div>
       </div>
     </div>

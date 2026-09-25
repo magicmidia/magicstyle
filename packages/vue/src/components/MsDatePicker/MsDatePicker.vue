@@ -21,7 +21,7 @@
         v-if="clearable && displayValue && !disabled"
         type="button"
         class="ms-date-picker__clear-btn"
-        aria-label="Limpar data"
+        :aria-label="t.datePicker.clear"
         @click.stop="handleClear"
       >
         ✕
@@ -71,7 +71,7 @@
           <button
             type="button"
             class="ms-date-picker__nav-btn"
-            aria-label="Mês anterior"
+            :aria-label="t.datePicker.previousMonth"
             @click="prevMonth"
           >
             ‹
@@ -82,7 +82,7 @@
           <button
             type="button"
             class="ms-date-picker__nav-btn"
-            aria-label="Próximo mês"
+            :aria-label="t.datePicker.nextMonth"
             @click="nextMonth"
           >
             ›
@@ -124,12 +124,12 @@
 
       <!-- Time Picker Panel (for time or datetime) -->
       <div v-if="mode === 'time' || mode === 'datetime'" class="ms-date-picker__time-panel">
-        <div class="ms-date-picker__time-header">Horário</div>
+        <div class="ms-date-picker__time-header">{{ t.datePicker.time }}</div>
         <div class="ms-date-picker__time-selectors">
           <select
             v-model="displayHour"
             class="ms-date-picker__time-select"
-            aria-label="Hora"
+            :aria-label="t.datePicker.hour"
             @change="onTimeChange"
           >
             <option v-for="h in hourOptions" :key="h" :value="h">
@@ -140,7 +140,7 @@
           <select
             v-model="selectedMinute"
             class="ms-date-picker__time-select"
-            aria-label="Minutos"
+            :aria-label="t.datePicker.minutes"
             @change="onTimeChange"
           >
             <option v-for="m in minuteOptions" :key="m" :value="m">
@@ -151,7 +151,7 @@
             v-if="!props.format24h"
             v-model="meridiem"
             class="ms-date-picker__time-select"
-            aria-label="AM ou PM"
+            :aria-label="t.datePicker.meridiem"
             @change="onTimeChange"
           >
             <option value="AM">AM</option>
@@ -163,19 +163,19 @@
       <!-- Quick Presets -->
       <div v-if="mode === 'date'" class="ms-date-picker__presets">
         <button type="button" class="ms-date-picker__preset-btn" @click="selectPreset('today')">
-          Hoje
+          {{ t.datePicker.today }}
         </button>
         <button type="button" class="ms-date-picker__preset-btn" @click="selectPreset('tomorrow')">
-          Amanhã
+          {{ t.datePicker.tomorrow }}
         </button>
       </div>
 
       <div v-else-if="mode === 'range'" class="ms-date-picker__presets">
         <button type="button" class="ms-date-picker__preset-btn" @click="selectRangePreset(7)">
-          Próximos 7 dias
+          {{ t.datePicker.nextDays(7) }}
         </button>
         <button type="button" class="ms-date-picker__preset-btn" @click="selectRangePreset(30)">
-          Próximos 30 dias
+          {{ t.datePicker.nextDays(30) }}
         </button>
       </div>
     </div>
@@ -187,6 +187,7 @@ import { computed, nextTick, onMounted, ref, watch } from "vue";
 import type { MsDatePickerProps, MsDatePickerEmits } from "./types.ts";
 import { useMsId } from "../../composables/use-ms-id.ts";
 import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({
   name: "MsDatePicker",
@@ -205,6 +206,8 @@ const props = withDefaults(defineProps<MsDatePickerProps>(), {
 });
 
 const emit = defineEmits<MsDatePickerEmits>();
+
+const t = useMsMessages();
 
 const isOpen = ref(false);
 const rootRef = ref<HTMLElement | null>(null);
@@ -296,16 +299,18 @@ function parseInitialValue() {
 watch(() => props.modelValue, parseInitialValue, { immediate: true });
 
 const defaultPlaceholder = computed(() => {
-  if (props.mode === "range") return "Selecione o período (início até fim)...";
-  if (props.mode === "time") return "Selecione o horário (HH:mm)...";
-  if (props.mode === "datetime") return "Selecione data e horário...";
-  return "Selecione uma data...";
+  const m = t.value.datePicker;
+  if (props.mode === "range") return m.placeholderRange;
+  if (props.mode === "time") return m.placeholderTime;
+  if (props.mode === "datetime") return m.placeholderDateTime;
+  return m.placeholderDate;
 });
 
 const displayValue = computed(() => {
+  const sep = t.value.datePicker.rangeSeparator;
   if (!props.modelValue) {
     if (props.mode === "range" && (rangeStart.value || rangeEnd.value)) {
-      return `${rangeStart.value} até ${rangeEnd.value || "..."}`;
+      return `${rangeStart.value}${sep}${rangeEnd.value || "..."}`;
     }
     return "";
   }
@@ -313,12 +318,12 @@ const displayValue = computed(() => {
   if (props.mode === "range") {
     if (Array.isArray(props.modelValue)) {
       return props.modelValue[0] && props.modelValue[1]
-        ? `${props.modelValue[0]} até ${props.modelValue[1]}`
+        ? `${props.modelValue[0]}${sep}${props.modelValue[1]}`
         : props.modelValue[0] || "";
     }
     if (typeof props.modelValue === "object") {
       return props.modelValue.start && props.modelValue.end
-        ? `${props.modelValue.start} até ${props.modelValue.end}`
+        ? `${props.modelValue.start}${sep}${props.modelValue.end}`
         : props.modelValue.start || "";
     }
     return String(props.modelValue);
@@ -331,39 +336,38 @@ const displayValue = computed(() => {
   return String(props.modelValue);
 });
 
-const monthNames = [
-  "Janeiro",
-  "Fevereiro",
-  "Março",
-  "Abril",
-  "Maio",
-  "Junho",
-  "Julho",
-  "Agosto",
-  "Setembro",
-  "Outubro",
-  "Novembro",
-  "Dezembro",
-];
+function capitalize(text: string): string {
+  return text.charAt(0).toLocaleUpperCase(t.value.locale) + text.slice(1);
+}
+
+/** Month, weekday and long-date names come from Intl in the messages' locale. */
+const monthFormatter = computed(() => new Intl.DateTimeFormat(t.value.locale, { month: "long" }));
+const longDateFormatter = computed(
+  () => new Intl.DateTimeFormat(t.value.locale, { day: "numeric", month: "long", year: "numeric" }),
+);
 
 const headerTitle = computed(() => {
-  return `${monthNames[currentMonth.value]} ${currentYear.value}`;
+  const month = monthFormatter.value.format(new Date(currentYear.value, currentMonth.value, 1));
+  return `${capitalize(month)} ${currentYear.value}`;
 });
 
-const weekdays = [
-  { short: "Dom", long: "Domingo" },
-  { short: "Seg", long: "Segunda-feira" },
-  { short: "Ter", long: "Terça-feira" },
-  { short: "Qua", long: "Quarta-feira" },
-  { short: "Qui", long: "Quinta-feira" },
-  { short: "Sex", long: "Sexta-feira" },
-  { short: "Sáb", long: "Sábado" },
-];
+/** Sunday-first column headers; 2023-01-01 (local time) is a Sunday. */
+const weekdays = computed(() => {
+  const short = new Intl.DateTimeFormat(t.value.locale, { weekday: "short" });
+  const long = new Intl.DateTimeFormat(t.value.locale, { weekday: "long" });
+  return Array.from({ length: 7 }, (_, i) => {
+    const date = new Date(2023, 0, 1 + i);
+    return {
+      short: capitalize(short.format(date).replace(/\.$/, "")),
+      long: capitalize(long.format(date)),
+    };
+  });
+});
 
 const dialogLabel = computed(() => {
-  if (props.mode === "range") return "Escolher período";
-  if (props.mode === "time") return "Escolher horário";
-  return "Escolher data";
+  if (props.mode === "range") return t.value.datePicker.chooseRange;
+  if (props.mode === "time") return t.value.datePicker.chooseTime;
+  return t.value.datePicker.chooseDate;
 });
 
 // Hours are stored as 0-23; the 12h format only changes presentation (1-12 + AM/PM).
@@ -499,7 +503,7 @@ const tabbableDate = computed(() => {
 });
 
 function formatLongDate(dayObj: DayItem): string {
-  return `${dayObj.day} de ${monthNames[dayObj.month]!.toLowerCase()} de ${dayObj.year}`;
+  return longDateFormatter.value.format(new Date(dayObj.year, dayObj.month, dayObj.day));
 }
 
 function selectedDateStr(): string {

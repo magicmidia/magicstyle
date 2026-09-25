@@ -10,6 +10,7 @@ import {
 import MsSidebarMenuGroup from "./MsSidebarMenuGroup.vue";
 import MsSidebarMenuItem from "./MsSidebarMenuItem.vue";
 import { safeHref } from "../../composables/safe-url.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({
   name: "MsSidebarMenu",
@@ -26,6 +27,8 @@ const props = withDefaults(defineProps<MsSidebarMenuProps>(), {
 });
 
 const emit = defineEmits<MsSidebarMenuEmits>();
+
+const t = useMsMessages();
 
 const activeId = ref(props.modelValue);
 watch(
@@ -116,7 +119,7 @@ function isGroup(
     :data-shape="shape"
     :data-collapsed="collapsed"
     role="navigation"
-    aria-label="Sidebar Navigation"
+    :aria-label="t.sidebarMenu.label"
   >
     <!-- Slot-based declarative markup -->
     <slot>

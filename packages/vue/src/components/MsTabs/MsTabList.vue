@@ -5,7 +5,7 @@
       v-if="arrowsVisible && canScrollLeft"
       type="button"
       class="ms-tab-list__arrow ms-tab-list__arrow--left"
-      aria-label="Previous tabs"
+      :aria-label="t.tabs.previous"
       @click="scrollLeft"
     >
       <svg
@@ -40,7 +40,7 @@
       v-if="arrowsVisible && canScrollRight"
       type="button"
       class="ms-tab-list__arrow ms-tab-list__arrow--right"
-      aria-label="Next tabs"
+      :aria-label="t.tabs.next"
       @click="scrollRight"
     >
       <svg
@@ -72,12 +72,15 @@ import {
   watch,
 } from "vue";
 import { TABS_CONTEXT_KEY, type MsTabListProps } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({
   name: "MsTabList",
 });
 
 const props = defineProps<MsTabListProps>();
+
+const t = useMsMessages();
 
 const instance = getCurrentInstance();
 const hasProp = (key: string) => {

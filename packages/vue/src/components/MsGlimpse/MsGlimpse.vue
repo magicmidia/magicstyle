@@ -29,7 +29,7 @@
       :id="cardId"
       ref="cardRef"
       role="dialog"
-      aria-label="Pré-visualização do link"
+      :aria-label="t.glimpse.label"
       :class="cardClasses"
       @mouseenter="handleCardEnter"
       @mouseleave="handleCardLeave"
@@ -52,7 +52,7 @@
             <slot name="image">
               <img
                 :src="image"
-                :alt="title || 'Pré-visualização do link'"
+                :alt="title || t.glimpse.label"
                 class="ms-glimpse__image"
                 loading="lazy"
               />
@@ -99,6 +99,7 @@ import { computed, onUnmounted, ref } from "vue";
 import { useMsId } from "../../composables/use-ms-id.ts";
 import type { MsGlimpseProps, MsGlimpseEmits } from "./types.ts";
 import { safeHref, safeRel } from "../../composables/safe-url.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({
   name: "MsGlimpse",
@@ -122,6 +123,8 @@ const props = withDefaults(defineProps<MsGlimpseProps>(), {
 });
 
 const emit = defineEmits<MsGlimpseEmits>();
+
+const t = useMsMessages();
 
 const rootRef = ref<HTMLElement | null>(null);
 const cardRef = ref<HTMLElement | null>(null);

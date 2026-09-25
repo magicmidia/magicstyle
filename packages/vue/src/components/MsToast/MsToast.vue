@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { computed, onMounted, onBeforeUnmount } from "vue";
 import type { MsToastProps, MsToastEmits } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsToastProps>(), { announce: true });
 const emit = defineEmits<MsToastEmits>();
+
+const t = useMsMessages();
 
 let timer: ReturnType<typeof setTimeout> | null = null;
 let remaining = props.toast.duration;
@@ -81,7 +84,7 @@ onBeforeUnmount(() => {
       v-if="props.toast.dismissible"
       type="button"
       class="ms-toast__close"
-      aria-label="Fechar notificação"
+      :aria-label="t.toast.dismiss"
       @click="handleDismiss"
     >
       ✕

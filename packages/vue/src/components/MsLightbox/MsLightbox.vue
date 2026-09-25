@@ -4,6 +4,7 @@ import type { MsLightboxProps, MsLightboxEmits } from "./types.ts";
 import { useScrollLock } from "../../composables/use-scroll-lock.ts";
 import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
 import { useFocusTrap } from "../../composables/use-focus-trap.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsLightboxProps>(), {
   modelValue: false,
@@ -12,6 +13,8 @@ const props = withDefaults(defineProps<MsLightboxProps>(), {
 });
 
 const emit = defineEmits<MsLightboxEmits>();
+
+const t = useMsMessages();
 
 const currentIndex = ref(props.index);
 
@@ -79,7 +82,7 @@ onUnmounted(() => {
       class="ms-lightbox-backdrop"
       role="dialog"
       aria-modal="true"
-      aria-label="Visualizador de imagens"
+      :aria-label="t.lightbox.label"
       tabindex="-1"
       @click.self="close"
     >
@@ -90,7 +93,7 @@ onUnmounted(() => {
         <button
           type="button"
           class="ms-lightbox__close"
-          aria-label="Fechar visualizador"
+          :aria-label="t.lightbox.close"
           @click="close"
         >
           <svg
@@ -114,7 +117,7 @@ onUnmounted(() => {
           v-if="currentIndex > 0"
           type="button"
           class="ms-lightbox__nav-btn ms-lightbox__prev"
-          aria-label="Imagem anterior"
+          :aria-label="t.lightbox.previous"
           @click="prev"
         >
           <svg
@@ -133,7 +136,7 @@ onUnmounted(() => {
 
         <img
           :src="currentItem.src"
-          :alt="currentItem.alt || currentItem.title || 'Imagem em destaque'"
+          :alt="currentItem.alt || currentItem.title || t.lightbox.image"
           class="ms-lightbox__img"
         />
 
@@ -141,7 +144,7 @@ onUnmounted(() => {
           v-if="currentIndex < props.items.length - 1"
           type="button"
           class="ms-lightbox__nav-btn ms-lightbox__next"
-          aria-label="Próxima imagem"
+          :aria-label="t.lightbox.next"
           @click="next"
         >
           <svg

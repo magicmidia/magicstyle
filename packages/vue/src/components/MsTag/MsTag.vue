@@ -27,7 +27,7 @@
       v-if="closable"
       type="button"
       class="ms-tag__close"
-      aria-label="Remover"
+      :aria-label="t.tag.remove"
       :disabled="disabled"
       @click.stop="handleClose"
     >
@@ -50,6 +50,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import type { MsTagEmits, MsTagProps } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({
   name: "MsTag",
@@ -67,6 +68,8 @@ const props = withDefaults(defineProps<MsTagProps>(), {
 });
 
 const emit = defineEmits<MsTagEmits>();
+
+const t = useMsMessages();
 
 function handleClick(event: MouseEvent) {
   if (props.disabled) return;

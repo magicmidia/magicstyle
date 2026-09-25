@@ -3,12 +3,12 @@ import { computed, ref } from "vue";
 import type { MsSearchFieldEmits, MsSearchFieldProps } from "./types.ts";
 import MsSpinner from "../MsSpinner/MsSpinner.vue";
 import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<MsSearchFieldProps>(), {
   modelValue: "",
-  placeholder: "Pesquisar...",
   size: "md",
   variant: "outline",
   disabled: false,
@@ -19,6 +19,9 @@ const props = withDefaults(defineProps<MsSearchFieldProps>(), {
 });
 
 const emit = defineEmits<MsSearchFieldEmits>();
+
+const t = useMsMessages();
+const placeholderText = computed(() => props.placeholder ?? t.value.searchField.placeholder);
 
 defineSlots<{
   icon?(): unknown;
@@ -91,12 +94,12 @@ const showClearButton = computed(() => {
       type="search"
       class="ms-search-field__input"
       :value="modelValue"
-      :placeholder="placeholder"
+      :placeholder="placeholderText"
       :disabled="disabled"
       :readonly="readonly"
       :autofocus="autofocus"
       role="searchbox"
-      :aria-label="fieldControl.field ? undefined : 'Pesquisar'"
+      :aria-label="fieldControl.field ? undefined : t.searchField.label"
       :aria-describedby="fieldControl.describedBy.value"
       :aria-invalid="fieldControl.fieldInvalid.value || undefined"
       v-bind="controlAttrs($attrs)"
@@ -113,7 +116,7 @@ const showClearButton = computed(() => {
         v-if="showClearButton"
         type="button"
         class="ms-search-field__clear"
-        aria-label="Limpar pesquisa"
+        :aria-label="t.searchField.clear"
         tabindex="-1"
         @click="clear"
       >

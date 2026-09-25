@@ -2,6 +2,7 @@
 import { ref, computed, toRef, watch, provide, onMounted, onBeforeUnmount } from "vue";
 import type { MsCarouselProps, MsCarouselEmits } from "./types.ts";
 import { MS_CAROUSEL_KEY } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsCarouselProps>(), {
   modelValue: 0,
@@ -14,6 +15,8 @@ const props = withDefaults(defineProps<MsCarouselProps>(), {
 });
 
 const emit = defineEmits<MsCarouselEmits>();
+
+const t = useMsMessages();
 
 defineSlots<{
   default?(): unknown;
@@ -109,8 +112,8 @@ const trackStyle = computed(() => ({
   <div
     class="ms-carousel"
     role="region"
-    aria-roledescription="carousel"
-    aria-label="Galeria de slides"
+    :aria-roledescription="t.carousel.roleDescription"
+    :aria-label="t.carousel.label"
     data-ms-carousel
     @mouseenter="pauseForInteraction"
     @mouseleave="resumeAfterInteraction()"
@@ -121,7 +124,7 @@ const trackStyle = computed(() => ({
       v-if="props.autoplay && props.totalSlides > 1"
       type="button"
       class="ms-carousel__rotation"
-      :aria-label="userPaused ? 'Iniciar rotação automática' : 'Pausar rotação automática'"
+      :aria-label="userPaused ? t.carousel.play : t.carousel.pause"
       @click="toggleRotation"
     >
       <span aria-hidden="true">{{ userPaused ? "▶" : "❚❚" }}</span>
@@ -137,7 +140,7 @@ const trackStyle = computed(() => ({
       <button
         type="button"
         class="ms-carousel__arrow ms-carousel__arrow--prev"
-        aria-label="Slide anterior"
+        :aria-label="t.carousel.previous"
         @click="prev"
       >
         ❮
@@ -145,7 +148,7 @@ const trackStyle = computed(() => ({
       <button
         type="button"
         class="ms-carousel__arrow ms-carousel__arrow--next"
-        aria-label="Próximo slide"
+        :aria-label="t.carousel.next"
         @click="next"
       >
         ❯
@@ -156,7 +159,7 @@ const trackStyle = computed(() => ({
     <div
       v-if="props.showIndicators && props.totalSlides > 1"
       class="ms-carousel__indicators"
-      aria-label="Seletores de slide"
+      :aria-label="t.carousel.indicators"
     >
       <button
         v-for="index in props.totalSlides"
@@ -165,7 +168,7 @@ const trackStyle = computed(() => ({
         class="ms-carousel__indicator"
         :class="{ 'ms-carousel__indicator--active': current === index - 1 }"
         :aria-current="current === index - 1 ? 'true' : undefined"
-        :aria-label="`Ir para o slide ${index}`"
+        :aria-label="t.carousel.goTo(index)"
         @click="goTo(index - 1)"
       />
     </div>

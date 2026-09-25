@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref, computed, watch, nextTick, onMounted } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsPinInputProps, MsPinInputEmits } from "./types.ts";
 import { useFieldControl } from "../../composables/use-field-context.ts";
 
+const t = useMsMessages();
 const props = withDefaults(defineProps<MsPinInputProps>(), {
   modelValue: "",
   length: 4,
@@ -137,7 +139,7 @@ const classes = computed(() => [
         :class="{ 'ms-pin-input__box--filled': values[index] }"
         :value="values[index]"
         :disabled="props.disabled"
-        :aria-label="`Dígito ${index + 1} de ${props.length}`"
+        :aria-label="t.pinInput.digit(index + 1, props.length)"
         @input="handleInput(index, $event)"
         @keydown="handleKeyDown(index, $event)"
         @paste="handlePaste"

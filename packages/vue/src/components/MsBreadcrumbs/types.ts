@@ -63,7 +63,7 @@ export interface MsBreadcrumbsProps {
 
   /**
    * Accessible navigation label for screen readers.
-   * Default: "Navegação estrutural".
+   * @default messages.breadcrumbs.label
    */
   ariaLabel?: string;
 }

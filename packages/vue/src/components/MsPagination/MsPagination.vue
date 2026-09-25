@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsPaginationProps, MsPaginationEmits } from "./types.ts";
 
 const props = withDefaults(defineProps<MsPaginationProps>(), {
@@ -14,6 +15,8 @@ const props = withDefaults(defineProps<MsPaginationProps>(), {
 });
 
 const emit = defineEmits<MsPaginationEmits>();
+
+const t = useMsMessages();
 
 const jumperValue = ref("");
 
@@ -84,12 +87,12 @@ const handleJumper = () => {
   <nav
     class="ms-pagination"
     :class="`ms-pagination--${props.size}`"
-    aria-label="Paginação"
+    :aria-label="t.pagination.label"
     :data-size="props.size"
   >
     <div v-if="props.showTotal" class="ms-pagination__total">
       <slot name="total" :total="props.total" :total-pages="totalPages">
-        Total de {{ props.total }} itens
+        {{ t.pagination.total(props.total) }}
       </slot>
     </div>
 
@@ -100,8 +103,8 @@ const handleJumper = () => {
           type="button"
           class="ms-pagination__item ms-pagination__first"
           :disabled="props.disabled || props.currentPage <= 1"
-          aria-label="Primeira página"
-          title="Primeira página"
+          :aria-label="t.pagination.first"
+          :title="t.pagination.first"
           @click="setPage(1)"
         >
           <svg
@@ -124,8 +127,8 @@ const handleJumper = () => {
           type="button"
           class="ms-pagination__item ms-pagination__prev"
           :disabled="props.disabled || props.currentPage <= 1"
-          aria-label="Página anterior"
-          title="Página anterior"
+          :aria-label="t.pagination.previous"
+          :title="t.pagination.previous"
           @click="setPage(props.currentPage - 1)"
         >
           <svg
@@ -164,8 +167,8 @@ const handleJumper = () => {
           type="button"
           class="ms-pagination__item ms-pagination__next"
           :disabled="props.disabled || props.currentPage >= totalPages"
-          aria-label="Próxima página"
-          title="Próxima página"
+          :aria-label="t.pagination.next"
+          :title="t.pagination.next"
           @click="setPage(props.currentPage + 1)"
         >
           <svg
@@ -187,8 +190,8 @@ const handleJumper = () => {
           type="button"
           class="ms-pagination__item ms-pagination__last"
           :disabled="props.disabled || props.currentPage >= totalPages"
-          aria-label="Última página"
-          title="Última página"
+          :aria-label="t.pagination.last"
+          :title="t.pagination.last"
           @click="setPage(totalPages)"
         >
           <svg
@@ -208,7 +211,7 @@ const handleJumper = () => {
 
     <!-- Jumper -->
     <div v-if="props.showJumper" class="ms-pagination__jumper">
-      <span>Ir para</span>
+      <span>{{ t.pagination.goTo }}</span>
       <input
         v-model="jumperValue"
         type="number"

@@ -8,6 +8,7 @@
 import { computed, ref, watch, watchEffect, onBeforeUnmount } from "vue";
 import type { MsProviderProps } from "./types.ts";
 import { msThemeOverridesToStyle } from "../../theme-overrides.ts";
+import { provideMsMessages } from "../../composables/use-ms-messages.ts";
 import {
   provideThemeContext,
   useSystemColorMode,
@@ -34,6 +35,8 @@ const props = withDefaults(defineProps<MsProviderProps>(), {
   target: "wrapper",
   as: "div",
 });
+
+provideMsMessages(() => ({ locale: props.locale, messages: props.messages }));
 
 const internalTheme = ref<string>(props.theme);
 const internalColorMode = ref<ColorModePreference>(props.colorMode);

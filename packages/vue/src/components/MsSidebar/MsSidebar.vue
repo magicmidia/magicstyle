@@ -2,6 +2,7 @@
 import { computed, inject, getCurrentInstance } from "vue";
 import type { MsSidebarProps, MsSidebarEmits } from "./types";
 import { MS_APP_SHELL_KEY } from "../MsAppShell/types";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({
   name: "MsSidebar",
@@ -18,6 +19,8 @@ const props = withDefaults(defineProps<MsSidebarProps>(), {
 });
 
 const emit = defineEmits<MsSidebarEmits>();
+
+const t = useMsMessages();
 
 const shellContext = inject(MS_APP_SHELL_KEY, null);
 const instance = getCurrentInstance();
@@ -69,7 +72,7 @@ const classes = computed(() => [
         v-if="showToggle"
         type="button"
         class="ms-sidebar__collapse-btn"
-        :aria-label="collapsed ? 'Expand sidebar' : 'Collapse sidebar'"
+        :aria-label="collapsed ? t.sidebar.expand : t.sidebar.collapse"
         @click="handleToggle"
       >
         <slot name="toggle-icon">

@@ -9,8 +9,20 @@ export interface MsCommandItem {
 
 export interface MsCommandPaletteProps {
   modelValue?: boolean;
+  /**
+   * Commands to list. Without items the palette shows its empty state.
+   * @default []
+   */
   items?: MsCommandItem[];
+  /**
+   * Search input placeholder (also the input and listbox accessible name).
+   * @default messages.commandPalette.placeholder
+   */
   placeholder?: string;
+  /**
+   * Text shown when no command matches.
+   * @default messages.commandPalette.empty
+   */
   emptyText?: string;
   /**
    * Registers the global Ctrl/⌘+K shortcut. Disable on secondary instances.

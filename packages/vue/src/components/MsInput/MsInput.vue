@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsInputProps } from "./types.ts";
 
 defineOptions({
@@ -28,6 +29,8 @@ defineSlots<{
   prefix?(): unknown;
   suffix?(): unknown;
 }>();
+
+const t = useMsMessages();
 
 const showPassword = ref(false);
 
@@ -95,7 +98,7 @@ const resolvedTone = computed(() => (isInvalid.value ? "danger" : props.tone));
       v-if="props.clearable && props.modelValue && !props.disabled && !props.readonly"
       type="button"
       class="ms-input-action-btn"
-      aria-label="Limpar campo"
+      :aria-label="t.input.clear"
       @click="onClear"
     >
       <svg
@@ -118,7 +121,7 @@ const resolvedTone = computed(() => (isInvalid.value ? "danger" : props.tone));
       v-if="props.type === 'password' && props.passwordToggle && !props.disabled"
       type="button"
       class="ms-input-action-btn"
-      :aria-label="showPassword ? 'Ocultar senha' : 'Exibir senha'"
+      :aria-label="showPassword ? t.input.hidePassword : t.input.showPassword"
       @click="showPassword = !showPassword"
     >
       <svg

@@ -2,15 +2,18 @@
 import { ref, computed } from "vue";
 import type { MsFileInputProps, MsFileInputEmits } from "./types.ts";
 import { useFieldControl } from "../../composables/use-field-context.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsFileInputProps>(), {
   multiple: false,
-  label: "Arraste e solte arquivos aqui, ou clique para selecionar",
   showFileList: true,
   disabled: false,
 });
 
 const emit = defineEmits<MsFileInputEmits>();
+
+const t = useMsMessages();
+const labelText = computed(() => props.label ?? t.value.fileInput.prompt);
 
 const fieldControl = useFieldControl("ms-file-input");
 
@@ -142,7 +145,7 @@ const dropzoneClasses = computed(() => [
         <slot name="icon">📁</slot>
       </span>
       <span class="ms-file-input__label">
-        <slot>{{ props.label }}</slot>
+        <slot>{{ labelText }}</slot>
       </span>
       <span v-if="props.hint" class="ms-file-input__hint">
         {{ props.hint }}
@@ -163,7 +166,7 @@ const dropzoneClasses = computed(() => [
         <button
           type="button"
           class="ms-file-input__item-remove"
-          aria-label="Remover arquivo"
+          :aria-label="t.fileInput.remove"
           @click.stop="removeFile(idx)"
         >
           ✕

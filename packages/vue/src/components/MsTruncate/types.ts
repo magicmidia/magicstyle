@@ -5,7 +5,9 @@ export interface MsTruncateProps {
   lines?: number;
   expandable?: boolean;
   expanded?: boolean;
+  /** @default messages `truncate.more` ("Ver mais" in pt-BR) */
   expandText?: string;
+  /** @default messages `truncate.less` ("Ver menos" in pt-BR) */
   collapseText?: string;
   showTooltip?: boolean;
   position?: MsTruncatePosition;

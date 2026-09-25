@@ -195,7 +195,7 @@ describe("MsSelect (Doc 04 §9, Doc 05 §6, Doc 27 §6)", () => {
 
     const createBtn = wrapper.find(".ms-select__create");
     expect(createBtn.exists()).toBe(true);
-    expect(createBtn.text()).toContain('Create "SolidJS"');
+    expect(createBtn.text()).toContain('Criar "SolidJS"');
 
     await createBtn.trigger("click");
     expect(wrapper.emitted("create")?.[0]).toEqual(["SolidJS"]);

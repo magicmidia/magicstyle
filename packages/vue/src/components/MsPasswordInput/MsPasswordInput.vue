@@ -2,12 +2,12 @@
 import { ref, computed, watch } from "vue";
 import { type MsPasswordInputProps, type MsPasswordInputEmits, defaultCriteria } from "./types.ts";
 import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<MsPasswordInputProps>(), {
   modelValue: "",
-  placeholder: "Digite sua senha...",
   size: "md",
   disabled: false,
   invalid: false,
@@ -17,6 +17,9 @@ const props = withDefaults(defineProps<MsPasswordInputProps>(), {
 });
 
 const emit = defineEmits<MsPasswordInputEmits>();
+
+const t = useMsMessages();
+const resolvedPlaceholder = computed(() => props.placeholder ?? t.value.passwordInput.placeholder);
 
 const fieldControl = useFieldControl("ms-password-input");
 const isInvalid = computed(() => props.invalid === true || fieldControl.fieldInvalid.value);
@@ -28,7 +31,13 @@ const toggleVisibility = () => {
 };
 
 const activeCriteria = computed(() => {
-  return props.criteria && props.criteria.length > 0 ? props.criteria : defaultCriteria;
+  if (props.criteria && props.criteria.length > 0) return props.criteria;
+  // Built-in criteria keep their validators; labels come from the messages.
+  const labels: Partial<Record<string, string>> = t.value.passwordInput.criteria;
+  return defaultCriteria.map((c) => ({
+    ...c,
+    label: labels[c.id] ?? c.label,
+  }));
 });
 
 const criteriaStatus = computed(() => {
@@ -49,7 +58,7 @@ const strengthScore = computed(() => {
   return 4;
 });
 
-const strengthLabels = ["Muito fraca", "Fraca", "Razoável", "Boa", "Excelente"];
+const strengthLabels = computed(() => t.value.passwordInput.levels);
 
 watch(strengthScore, (score) => {
   emit("strength-change", score);
@@ -76,7 +85,7 @@ const handleInput = (event: Event) => {
         :aria-describedby="fieldControl.describedBy.value"
         class="ms-password-input__field"
         :value="props.modelValue"
-        :placeholder="props.placeholder"
+        :placeholder="resolvedPlaceholder"
         :disabled="props.disabled"
         :data-size="props.size"
         v-bind="controlAttrs($attrs)"
@@ -87,8 +96,8 @@ const handleInput = (event: Event) => {
         v-if="props.showToggle"
         type="button"
         class="ms-password-input__toggle"
-        :aria-label="isVisible ? 'Ocultar senha' : 'Exibir senha'"
-        :title="isVisible ? 'Ocultar senha' : 'Exibir senha'"
+        :aria-label="isVisible ? t.passwordInput.hide : t.passwordInput.show"
+        :title="isVisible ? t.passwordInput.hide : t.passwordInput.show"
         @click="toggleVisibility"
       >
         <svg
@@ -139,7 +148,7 @@ const handleInput = (event: Event) => {
       </div>
 
       <div class="ms-password-input__strength-label">
-        <span>Segurança da senha:</span>
+        <span>{{ t.passwordInput.strength }}</span>
         <strong>{{ strengthLabels[strengthScore] }}</strong>
       </div>
     </div>

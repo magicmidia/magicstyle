@@ -16,7 +16,7 @@
 
 <br />
 
-[**Landing Page & Component Studio**](#️-comandos-de-desenvolvimento) (local: `pnpm preview`) • [**Changelog & Releases**](CHANGELOG.md) • [**Temas & Personalização**](docs/theming.md) • [**Architecture Baseline 1.2**](docs/baseline/Magic-Style-Architecture-Baseline-1.2/)
+[**Landing Page & Component Studio**](#️-comandos-de-desenvolvimento) (local: `pnpm preview`) • [**Changelog & Releases**](CHANGELOG.md) • [**Temas & Personalização**](docs/theming.md) • [**Idiomas (i18n)**](docs/i18n.md) • [**Architecture Baseline 1.2**](docs/baseline/Magic-Style-Architecture-Baseline-1.2/)
 
 </div>
 

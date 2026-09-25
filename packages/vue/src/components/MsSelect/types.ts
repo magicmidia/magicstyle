@@ -31,7 +31,9 @@ export interface MsSelectProps {
   creatable?: boolean | undefined;
   disabled?: boolean | undefined;
   invalid?: boolean | undefined;
+  /** @default messages `select.placeholder` ("Selecione..." in pt-BR) */
   placeholder?: string | undefined;
+  /** @default messages `select.searchPlaceholder` ("Buscar..." in pt-BR) */
   searchPlaceholder?: string | undefined;
   size?: MsSelectSize | undefined;
   tone?: MsSelectTone | undefined;

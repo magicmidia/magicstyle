@@ -5,6 +5,7 @@ import { useMsId } from "../../composables/use-ms-id.ts";
 import { useScrollLock } from "../../composables/use-scroll-lock.ts";
 import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
 import { useFocusTrap } from "../../composables/use-focus-trap.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsDrawerProps>(), {
   open: false,
@@ -17,6 +18,8 @@ const props = withDefaults(defineProps<MsDrawerProps>(), {
 });
 
 const emit = defineEmits<MsDrawerEmits>();
+
+const t = useMsMessages();
 
 defineSlots<{
   default?(): unknown;
@@ -105,7 +108,7 @@ useDismissableLayer({
                 v-if="showClose"
                 type="button"
                 class="ms-drawer__close"
-                aria-label="Close drawer"
+                :aria-label="t.drawer.close"
                 @click="handleClose"
               >
                 <slot name="close">✕</slot>

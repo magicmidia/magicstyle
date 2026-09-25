@@ -6,13 +6,11 @@ import { useMsId } from "../../composables/use-ms-id.ts";
 import { useScrollLock } from "../../composables/use-scroll-lock.ts";
 import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
 import { useFocusTrap } from "../../composables/use-focus-trap.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsConfirmDialogProps>(), {
   open: false,
   tone: "danger",
-  title: "Confirmar ação",
-  confirmLabel: "Confirmar",
-  cancelLabel: "Cancelar",
   loading: false,
   closeOnBackdrop: true,
   closeOnEscape: true,
@@ -20,6 +18,11 @@ const props = withDefaults(defineProps<MsConfirmDialogProps>(), {
 });
 
 const emit = defineEmits<MsConfirmDialogEmits>();
+
+const t = useMsMessages();
+const titleText = computed(() => props.title ?? t.value.confirmDialog.title);
+const confirmText = computed(() => props.confirmLabel ?? t.value.confirmDialog.confirm);
+const cancelText = computed(() => props.cancelLabel ?? t.value.confirmDialog.cancel);
 
 defineSlots<{
   default?(): unknown;
@@ -105,7 +108,7 @@ const dialogClasses = computed(() => [
             </div>
             <div class="ms-confirm-dialog__text-group">
               <h3 :id="titleId" class="ms-confirm-dialog__title">
-                <slot name="title">{{ props.title }}</slot>
+                <slot name="title">{{ titleText }}</slot>
               </h3>
               <div
                 v-if="props.message || $slots.default"
@@ -126,7 +129,7 @@ const dialogClasses = computed(() => [
                 data-ms-confirm-cancel
                 @click="handleCancel"
               >
-                {{ props.cancelLabel }}
+                {{ cancelText }}
               </MsButton>
               <MsButton
                 variant="solid"
@@ -135,7 +138,7 @@ const dialogClasses = computed(() => [
                 :loading="props.loading"
                 @click="handleConfirm"
               >
-                {{ props.confirmLabel }}
+                {{ confirmText }}
               </MsButton>
             </slot>
           </div>

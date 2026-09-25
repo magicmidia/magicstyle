@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsAlertProps } from "./types.ts";
 
 const props = withDefaults(defineProps<MsAlertProps>(), {
@@ -10,6 +11,8 @@ const props = withDefaults(defineProps<MsAlertProps>(), {
   iconStyle: "plain",
   dismissible: false,
 });
+
+const t = useMsMessages();
 
 const emit = defineEmits<{
   close: [];
@@ -144,7 +147,7 @@ const iconClasses = computed(() => {
       v-if="props.dismissible"
       type="button"
       class="ms-alert-close"
-      aria-label="Fechar alerta"
+      :aria-label="t.alert.dismiss"
       @click="onClose"
     >
       <slot name="close">

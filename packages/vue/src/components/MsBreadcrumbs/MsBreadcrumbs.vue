@@ -1,5 +1,5 @@
 <template>
-  <nav :aria-label="ariaLabel" :class="classes">
+  <nav :aria-label="navLabel" :class="classes">
     <ol class="ms-breadcrumbs__list">
       <template v-if="displayItems && displayItems.length">
         <template v-for="(entry, idx) in displayItems" :key="idx">
@@ -8,7 +8,7 @@
             <button
               type="button"
               class="ms-breadcrumbs__ellipsis"
-              aria-label="Show all breadcrumb items"
+              :aria-label="t.breadcrumbs.showAll"
               @click="isExpanded = true"
             >
               &hellip;
@@ -48,6 +48,7 @@ import {
   type MsBreadcrumbsVariant,
 } from "./types.ts";
 import { safeHref } from "../../composables/safe-url.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({
   name: "MsBreadcrumbs",
@@ -57,10 +58,13 @@ const props = withDefaults(defineProps<MsBreadcrumbsProps>(), {
   variant: "plain",
   size: "md",
   separator: "›",
-  ariaLabel: "Navegação estrutural",
   itemsBeforeCollapse: 1,
   itemsAfterCollapse: 1,
 });
+
+const t = useMsMessages();
+
+const navLabel = computed(() => props.ariaLabel ?? t.value.breadcrumbs.label);
 
 const isExpanded = ref(false);
 

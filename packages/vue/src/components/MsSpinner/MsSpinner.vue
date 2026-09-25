@@ -18,13 +18,14 @@
         stroke-linecap="round"
       />
     </svg>
-    <span class="ms-visually-hidden">{{ label }}</span>
+    <span class="ms-visually-hidden">{{ labelText }}</span>
   </span>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
 import type { MsSpinnerProps } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({
   name: "MsSpinner",
@@ -35,8 +36,10 @@ const props = withDefaults(defineProps<MsSpinnerProps>(), {
   tone: "primary",
   thickness: "normal",
   speed: "normal",
-  label: "Carregando...",
 });
+
+const t = useMsMessages();
+const labelText = computed(() => props.label ?? t.value.spinner.label);
 
 const strokeWidth = computed(() => {
   switch (props.thickness) {

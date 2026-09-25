@@ -85,6 +85,14 @@ export function useBatch9To14() {
   const dateClearable = ref(true);
   const dateMinuteStep = ref(5);
   const commandPaletteOpen = ref(false);
+  const commandPaletteItems = [
+    { id: "docs", label: "Ir para Documentação", group: "Navegação", shortcut: "G D" },
+    { id: "components", label: "Explorar Componentes", group: "Navegação", shortcut: "G C" },
+    { id: "tokens", label: "Inspecionar Design Tokens", group: "Navegação", shortcut: "G T" },
+    { id: "theme", label: "Alternar Tema Claro / Escuro", group: "Ações Rápidas", shortcut: "⌘ T" },
+    { id: "copy-cdn", label: "Copiar link do CDN CSS", group: "Ações Rápidas", shortcut: "⌘ C" },
+    { id: "feedback", label: "Enviar Feedback", group: "Geral", shortcut: "⌘ F" },
+  ];
 
   // --- BATCH 5: SUPERFÍCIES & MÍDIA ---
   const canvasPattern = ref("dots");
@@ -203,6 +211,7 @@ export function useBatch9To14() {
     dateClearable,
     dateMinuteStep,
     commandPaletteOpen,
+    commandPaletteItems,
     canvasPattern,
     canvasSize,
     canvasInteractive,
@@ -1160,14 +1169,14 @@ export const batch9To14TemplatesHtml = `
           >
             Abrir Command Palette
           </button>
-          <MsCommandPalette v-model="b9.commandPaletteOpen" />
+          <MsCommandPalette v-model="b9.commandPaletteOpen" :items="b9.commandPaletteItems" />
         </div>
 
         <div class="code-card">
           <button class="code-copy-btn" @click="copyCode">
             {{ copied ? "✓ Copiado!" : "📋 Copiar Código" }}
           </button>
-          <pre class="code-content"><code>&lt;MsCommandPalette v-model="isOpen" /&gt;</code></pre>
+          <pre class="code-content"><code>&lt;MsCommandPalette v-model="isOpen" :items="commands" @select="run" /&gt;</code></pre>
         </div>
       </div>
 

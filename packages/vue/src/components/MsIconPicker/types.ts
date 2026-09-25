@@ -8,6 +8,7 @@ export interface MsIconItem {
 export interface MsIconPickerProps {
   modelValue?: string;
   icons?: MsIconItem[];
+  /** Trigger text when nothing is selected. @default from messages (`iconPicker.placeholder`) */
   placeholder?: string;
   disabled?: boolean;
 }

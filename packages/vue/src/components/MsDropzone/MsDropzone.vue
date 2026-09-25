@@ -6,6 +6,7 @@ import type {
   MsDropzoneFile,
   MsDropzoneRejection,
 } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsDropzoneProps>(), {
   accept: "*/*",
@@ -14,6 +15,8 @@ const props = withDefaults(defineProps<MsDropzoneProps>(), {
 });
 
 const emit = defineEmits<MsDropzoneEmits>();
+
+const t = useMsMessages();
 
 const isDragOver = ref(false);
 const fileList = ref<MsDropzoneFile[]>([]);
@@ -134,7 +137,7 @@ const removeFile = (item: MsDropzoneFile) => {
       ref="inputRef"
       type="file"
       class="ms-dropzone__input"
-      aria-label="Selecionar arquivos"
+      :aria-label="t.dropzone.select"
       :accept="props.accept"
       :multiple="props.multiple"
       :disabled="props.disabled"
@@ -158,10 +161,10 @@ const removeFile = (item: MsDropzoneFile) => {
     </svg>
 
     <div class="ms-dropzone__title">
-      <slot name="title">Arraste e solte arquivos aqui</slot>
+      <slot name="title">{{ t.dropzone.prompt }}</slot>
     </div>
     <div class="ms-dropzone__subtitle">
-      <slot name="subtitle">ou clique para selecionar do seu computador</slot>
+      <slot name="subtitle">{{ t.dropzone.hint }}</slot>
     </div>
 
     <!-- Uploaded file previews -->
@@ -178,8 +181,8 @@ const removeFile = (item: MsDropzoneFile) => {
         <button
           type="button"
           class="ms-dropzone__remove-btn"
-          title="Remover arquivo"
-          :aria-label="`Remover ${item.name}`"
+          :title="t.dropzone.remove"
+          :aria-label="t.dropzone.removeFile(item.name)"
           @click="removeFile(item)"
         >
           ✕
