@@ -201,7 +201,7 @@
     rgba(255, 255, 255, 0.15) 60%,
     rgba(255, 255, 255, 0)
   );
-  animation: ms-glimpse-shimmer 2s infinite;
+  animation: ms-glimpse-shimmer calc(2s * var(--ms-motion-scale, 1)) infinite;
 }
 
 .ms-glimpse__skeleton-line {

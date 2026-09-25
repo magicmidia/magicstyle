@@ -106,6 +106,24 @@ describe("cascade layers and color scheme", () => {
     expect(offenders).toEqual([]);
   });
 
+  it("decorative animations follow reduced motion via --ms-motion-scale", () => {
+    // Loading indicators are essential motion (WCAG 2.3.3) and keep animating, slower where styled.
+    const essential =
+      /ms-(spin|progress-radial-spin|progress-radial-dash|progress-indeterminate|select-spin)\b/;
+    const offenders = cssFiles
+      .filter(({ name }) => name.startsWith("components/"))
+      .flatMap(({ name, css }) =>
+        [...css.matchAll(/animation:\s*([\w-]+)\s+([0-9.]+m?s)\b[^;]*;/g)]
+          .filter((m) => !essential.test(m[1]!))
+          .map((m) => `${name}: ${m[0]}`),
+      );
+    expect(offenders).toEqual([]);
+    const base = cssFiles.find((file) => file.name === "base.css")!.css;
+    expect(base).toMatch(
+      /prefers-reduced-motion: reduce\)\s*\{\s*:root\s*\{[^}]*--ms-motion-scale: 0;/,
+    );
+  });
+
   it("density dial scales control heights on any element", () => {
     const themes = cssFiles.find((file) => file.name === "themes.css")!.css;
     expect(themes).toMatch(

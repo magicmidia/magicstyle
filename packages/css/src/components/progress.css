@@ -240,7 +240,7 @@
 
 /* Animated stripes */
 .ms-progress__track--animated .ms-progress__bar {
-  animation: ms-progress-stripes 1s linear infinite;
+  animation: ms-progress-stripes calc(1s * var(--ms-motion-scale, 1)) linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -29,7 +29,8 @@
   color: var(--ms-color-text-primary);
   pointer-events: auto;
   transform-origin: top center;
-  animation: ms-hover-card-enter 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: ms-hover-card-enter calc(150ms * var(--ms-motion-scale, 1))
+    cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 :root[data-ms-color-mode="dark"] .ms-hover-card__content {

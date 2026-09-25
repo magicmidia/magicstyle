@@ -112,7 +112,8 @@
   inset: -1px;
   border-radius: inherit;
   pointer-events: none;
-  animation: ms-button-wave-spread 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  animation: ms-button-wave-spread calc(0.5s * var(--ms-motion-scale, 1))
+    cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
 /* Close Button: compact dismissal action with hover rotate */

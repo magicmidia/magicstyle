@@ -13,7 +13,8 @@
   align-items: center;
   justify-content: center;
   padding: var(--ms-space-4);
-  animation: ms-confirm-fade-in 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: ms-confirm-fade-in calc(150ms * var(--ms-motion-scale, 1))
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .ms-confirm-dialog {
@@ -30,7 +31,8 @@
   max-width: 440px;
   overflow: hidden;
   border: 1px solid var(--ms-color-border-subtle);
-  animation: ms-confirm-scale-in 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: ms-confirm-scale-in calc(200ms * var(--ms-motion-scale, 1))
+    cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .ms-confirm-dialog__body {

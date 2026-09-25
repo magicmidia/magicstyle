@@ -175,7 +175,8 @@
   border-radius: inherit;
   background-color: inherit;
   pointer-events: none;
-  animation: ms-badge-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation: ms-badge-ping calc(1.8s * var(--ms-motion-scale, 1)) cubic-bezier(0, 0, 0.2, 1)
+    infinite;
   z-index: -1;
 }
 
@@ -255,7 +256,8 @@
 .ms-badge[data-pulse] .ms-badge-dot,
 .ms-badge--pulsing .ms-badge-dot,
 .ms-badge--dot-only[data-pulse] {
-  animation: ms-badge-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: ms-badge-pulse calc(2s * var(--ms-motion-scale, 1)) cubic-bezier(0.4, 0, 0.6, 1)
+    infinite;
 }
 
 /* Removable tag button inside badge */
