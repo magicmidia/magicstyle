@@ -16,6 +16,8 @@
   --ms-scrollbar-track: transparent;
   --ms-scrollbar-thumb: rgba(148, 163, 184, 0.45);
   --ms-scrollbar-thumb-hover: rgba(100, 116, 139, 0.75);
+  /* Current thumb color: the states below swap this variable instead of fighting over specificity. */
+  --_ms-scrollbar-thumb-current: transparent;
 }
 
 /* WebKit / Chromium / Safari Custom Scrollbars (Chrome, Edge, Safari, Opera) */
@@ -33,16 +35,14 @@
 
 /* Base thumb is transparent by default (auto-hide: only shown when scrolling/interacting) */
 .ms-scrollbar::-webkit-scrollbar-thumb {
-  background: transparent;
+  background: var(--_ms-scrollbar-thumb-current);
   border-radius: var(--ms-scrollbar-radius);
   transition: background var(--ms-motion-duration-fast) ease;
 }
 
 /* Shown during active scrolling or when visibility is permanently 'always' */
-.ms-scrollbar.is-scrolling::-webkit-scrollbar-thumb,
-.ms-scrollbar--visibility-always::-webkit-scrollbar-thumb,
-.ms-scrollbar[data-visibility="always"]::-webkit-scrollbar-thumb {
-  background: var(--ms-scrollbar-thumb);
+.ms-scrollbar:is(.is-scrolling, .ms-scrollbar--visibility-always, [data-visibility="always"]) {
+  --_ms-scrollbar-thumb-current: var(--ms-scrollbar-thumb);
 }
 
 .ms-scrollbar.is-scrolling::-webkit-scrollbar-track,
@@ -53,7 +53,7 @@
 
 /* Direct hover on the thumb itself */
 .ms-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: var(--ms-scrollbar-thumb-hover) !important;
+  background: var(--ms-scrollbar-thumb-hover);
 }
 
 .ms-scrollbar::-webkit-scrollbar-corner {
@@ -62,18 +62,17 @@
 
 /* Scrollbar Buttons (Arrows) - STRICTLY REMOVED BY DEFAULT */
 .ms-scrollbar::-webkit-scrollbar-button {
-  display: none !important;
-  inline-size: 0 !important;
-  block-size: 0 !important;
-  width: 0 !important;
-  height: 0 !important;
-  background: transparent !important;
+  display: none;
+  inline-size: 0;
+  block-size: 0;
+  width: 0;
+  height: 0;
+  background: transparent;
 }
 
 /* Optional arrows - ONLY enabled when arrows prop/attribute is explicitly true */
-.ms-scrollbar--arrows::-webkit-scrollbar-button,
-.ms-scrollbar[data-arrows="true"]::-webkit-scrollbar-button {
-  display: block !important;
+.ms-scrollbar:is(.ms-scrollbar--arrows, [data-arrows="true"])::-webkit-scrollbar-button {
+  display: block;
   background-color: var(--ms-scrollbar-track, transparent);
   background-repeat: no-repeat;
   background-position: center;
@@ -139,39 +138,19 @@
 }
 
 /* Visibility Controls */
-/* auto: hidden when idle, shown ONLY during active scrolling */
-.ms-scrollbar--visibility-auto::-webkit-scrollbar-thumb,
-.ms-scrollbar[data-visibility="auto"]::-webkit-scrollbar-thumb {
-  background: transparent;
-}
+/* auto (default): the thumb is transparent when idle and shown while scrolling (rules above). */
 
-.ms-scrollbar--visibility-auto.is-scrolling::-webkit-scrollbar-thumb,
-.ms-scrollbar[data-visibility="auto"].is-scrolling::-webkit-scrollbar-thumb {
-  background: var(--ms-scrollbar-thumb);
-}
-
-.ms-scrollbar--visibility-auto::-webkit-scrollbar-thumb:hover,
-.ms-scrollbar[data-visibility="auto"]::-webkit-scrollbar-thumb:hover {
-  background: var(--ms-scrollbar-thumb-hover) !important;
-}
-
-/* always: thumb is permanently visible */
-.ms-scrollbar--visibility-always::-webkit-scrollbar-thumb,
-.ms-scrollbar[data-visibility="always"]::-webkit-scrollbar-thumb {
-  background: var(--ms-scrollbar-thumb);
-}
+/* always: thumb is permanently visible (see the state rule above) */
 
 /* none: completely hides the scrollbar while keeping scrollability */
-.ms-scrollbar--visibility-none::-webkit-scrollbar,
-.ms-scrollbar[data-visibility="none"]::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
+.ms-scrollbar:is(.ms-scrollbar--visibility-none, [data-visibility="none"])::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
-.ms-scrollbar--visibility-none,
-.ms-scrollbar[data-visibility="none"] {
-  scrollbar-width: none !important;
+.ms-scrollbar:is(.ms-scrollbar--visibility-none, [data-visibility="none"]) {
+  scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
@@ -200,9 +179,8 @@
     scrollbar-width: auto;
   }
 
-  .ms-scrollbar--visibility-none,
-  .ms-scrollbar[data-visibility="none"] {
-    scrollbar-width: none !important;
+  .ms-scrollbar:is(.ms-scrollbar--visibility-none, [data-visibility="none"]) {
+    scrollbar-width: none;
   }
 }
 /* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */

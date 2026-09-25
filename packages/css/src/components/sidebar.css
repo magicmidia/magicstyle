@@ -74,15 +74,15 @@
 }
 
 /* Collapsed State (Mini Rail) */
-.ms-sidebar--collapsed,
-.ms-sidebar[data-collapsed="true"] {
-  inline-size: 68px !important;
-  --ms-sidebar-width: 68px !important;
+/* :is() lifts the class form to the same specificity as the width attribute rules above. */
+.ms-sidebar:is(.ms-sidebar--collapsed, [data-collapsed="true"]) {
+  inline-size: 68px;
+  --ms-sidebar-width: 68px;
 }
 
 .ms-sidebar--collapsed .ms-sidebar-hide-on-collapse,
 .ms-sidebar[data-collapsed="true"] .ms-sidebar-hide-on-collapse {
-  display: none !important;
+  display: none;
 }
 
 .ms-sidebar--collapsed .ms-sidebar__header,

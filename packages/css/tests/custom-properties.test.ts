@@ -89,6 +89,23 @@ describe("cascade layers and color scheme", () => {
     );
   });
 
+  it("components avoid !important (it outranks consumer overrides inside layers)", () => {
+    const offenders = cssFiles
+      .filter(({ name }) => name.startsWith("components/"))
+      .flatMap(({ name, css }) =>
+        // Reduced-motion guards are the one accepted use.
+        css
+          .replace(
+            /@media \(prefers-reduced-motion: reduce\)\s*\{(?:[^{}]*\{[^{}]*\})*[^{}]*\}/g,
+            "",
+          )
+          .split("\n")
+          .filter((line) => line.includes("!important"))
+          .map((line) => `${name}: ${line.trim()}`),
+      );
+    expect(offenders).toEqual([]);
+  });
+
   it("density dial scales control heights on any element", () => {
     const themes = cssFiles.find((file) => file.name === "themes.css")!.css;
     expect(themes).toMatch(

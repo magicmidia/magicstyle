@@ -117,11 +117,11 @@
 
 @media (max-width: 768px) {
   .ms-bento-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
   }
   .ms-bento-item {
-    grid-column: span 1 !important;
-    grid-row: auto !important;
+    grid-column: span 1;
+    grid-row: auto;
   }
   .ms-masonry-grid {
     flex-direction: column;
