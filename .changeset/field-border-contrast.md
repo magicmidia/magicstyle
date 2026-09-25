@@ -3,8 +3,8 @@
 "@magic-style/vue": patch
 ---
 
-Bordas de campos com contraste de 3:1 (WCAG 1.4.11). Os novos tokens derivados `--ms-color-border-field` e `--ms-color-border-field-hover` (50% e 30% do `base-300` sobre o `base-content`) passam a ser usados em input, native-select, select, date-picker, masked-input, search-field, password-input, pin-input, color-picker, checkbox e radio.
+Field borders with 3:1 contrast (WCAG 1.4.11). The new derived tokens `--ms-color-border-field` and `--ms-color-border-field-hover` (50% and 30% of `base-300` over `base-content`) are now used in input, native-select, select, date-picker, masked-input, search-field, password-input, pin-input, color-picker, checkbox and radio.
 
-- Medido no navegador em 10 temas × 2 modos: bordas de campo abaixo de 3:1 caíram de 170/200 para 0/200. O pior caso passou de 1,01:1 (no shadcn escuro, a borda era invisível) para 3,76:1.
-- O teste de contraste do gerador passa a exigir 3:1 dessas bordas sobre as superfícies padrão, elevada e rebaixada.
-- Para um visual mais suave, basta sobrescrever as duas variáveis (exemplo em `docs/theming.md`).
+- Measured in the browser across 10 themes × 2 modes: field borders below 3:1 dropped from 170/200 to 0/200. The worst case went from 1.01:1 (in shadcn dark, the border was invisible) to 3.76:1.
+- The generator's contrast test now requires 3:1 for these borders on the default, raised and sunken surfaces.
+- For a softer look, override the two variables (example in `docs/theming.md`).

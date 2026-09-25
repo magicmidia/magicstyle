@@ -3,9 +3,9 @@
 "@magic-style/css": patch
 ---
 
-Segurança e publicação:
+Security and publishing:
 
-- `MsIconPicker`: sanitizer de SVG por allowlist (bloqueia `javascript:` sem aspas/com entidades, `foreignObject`, `animate`/`set`, `use`, `style`, `url()` e `id`).
-- `MsLink`, `MsBreadcrumbs`, `MsSidebarMenu`, `MsFooter`, `MsGlimpse`: `href` passa por `safeHref` (bloqueia `javascript:`/`data:`/`vbscript:`); `target="_blank"` sempre mantém `noopener noreferrer`, mesmo com `rel` customizado.
-- `@magic-style/css`: pacotes internos privados movidos para `devDependencies` (a instalação a partir do npm falhava); exports de `kbd.css`, `aspect-ratio.css`, `hover-card.css` e `./package.json`; build limpa `dist/`.
-- Licença MIT nos dois pacotes, com metadados de repositório e provenance.
+- `MsIconPicker`: allowlist SVG sanitizer (blocks `javascript:` without quotes or with entities, `foreignObject`, `animate`/`set`, `use`, `style`, `url()` and `id`).
+- `MsLink`, `MsBreadcrumbs`, `MsSidebarMenu`, `MsFooter`, `MsGlimpse`: `href` goes through `safeHref` (blocks `javascript:`/`data:`/`vbscript:`); `target="_blank"` always keeps `noopener noreferrer`, even with a custom `rel`.
+- `@magic-style/css`: private internal packages moved to `devDependencies` (installing from npm failed); exports for `kbd.css`, `aspect-ratio.css`, `hover-card.css` and `./package.json`; the build cleans `dist/`.
+- MIT license in both packages, with repository metadata and provenance.

@@ -3,9 +3,9 @@
 "@magic-style/css": patch
 ---
 
-Documentação e DX:
+Documentation and DX:
 
-- Tipos `.d.ts` agora resolvem com `moduleResolution` `bundler`, `node16` e `nodenext` (antes os componentes viravam `any` em node16/nodenext); verificação pós-build (`check-dts`).
-- Exporta ~45 tipos públicos que faltavam e blocos de construção para componentes próprios: `useFieldControl`, `useFieldContext`, `FIELD_CONTEXT_KEY`, `THEME_CONTEXT_KEY`, `useFocusTrap`, `useDismissableLayer`, `useScrollLock`, `safeHref`, `safeRel`, `sanitizeSvg`, `msPasswordDefaultCriteria`.
-- `@magic-style/css` declarado como peer opcional de `@magic-style/vue`; README em cada pacote publicado.
-- Contagens corrigidas (95 componentes, 285 tokens) e verificadas por script no health gate; `engines.node` aceita Node ≥24.
+- `.d.ts` types now resolve with `moduleResolution` `bundler`, `node16` and `nodenext` (previously components became `any` under node16/nodenext); post-build check (`check-dts`).
+- Exports ~45 missing public types and building blocks for your own components: `useFieldControl`, `useFieldContext`, `FIELD_CONTEXT_KEY`, `THEME_CONTEXT_KEY`, `useFocusTrap`, `useDismissableLayer`, `useScrollLock`, `safeHref`, `safeRel`, `sanitizeSvg`, `msPasswordDefaultCriteria`.
+- `@magic-style/css` declared as an optional peer of `@magic-style/vue`; a README in each published package.
+- Counts corrected (95 components, 285 tokens) and verified by a script in the health gate; `engines.node` accepts Node ≥24.

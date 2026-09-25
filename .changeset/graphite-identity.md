@@ -3,8 +3,8 @@
 "@magic-style/vue": patch
 ---
 
-O tema Graphite ganha identidade própria nos modos claro e escuro. Antes, era o Magic com outro `accent`.
+The Graphite theme gets its own identity in light and dark modes. Previously it was Magic with a different `accent`.
 
-- Neutros grafite de baixa saturação (no escuro, superfícies cinza-grafite em vez de azul-marinho), primário azul-aço e secundário petróleo discreto; o `accent` índigo suave foi mantido.
-- Raios mais compactos (3/5/6px) e `depth` 0.6, para interfaces densas.
-- Todos os pares do contrato passam de WCAG AA; o mais apertado é `danger`, com 5,57:1. Nos componentes, 47 pares de texto melhoraram, sem regressões.
+- Low-saturation graphite neutrals (in dark mode, graphite-gray surfaces instead of navy), a steel-blue primary and a subtle petrol secondary; the soft indigo `accent` is kept.
+- More compact radii (3/5/6px) and `depth` 0.6, for dense interfaces.
+- Every contract pair passes WCAG AA; the tightest is `danger`, at 5.57:1. In the components, 47 text pairs improved, with no regressions.

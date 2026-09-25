@@ -2,8 +2,8 @@
 "@magic-style/css": patch
 ---
 
-Remove os 20 `!important` de `sidebar`, `grid` (bento) e `scrollbar`. Dentro de `@layer`, um `!important` da biblioteca vence até o `!important` do CSS do consumidor, então essas regras não podiam ser sobrescritas.
+Removes the 20 `!important` declarations from `sidebar`, `grid` (bento) and `scrollbar`. Inside `@layer`, a library `!important` beats even the consumer's `!important`, so these rules could not be overridden.
 
-- `scrollbar`: os estados trocam uma variável interna (`--_ms-scrollbar-thumb-current`), e hover, `always` e `none` passam a funcionar só por especificidade. Corrige as setas de `arrows`, que nunca apareciam porque `height: 0 !important` vencia o tamanho definido para elas.
-- `sidebar` recolhida e bento responsivo: resolvidos por especificidade e ordem.
-- Só restam os de `prefers-reduced-motion` do `glimpse`, que são intencionais. Um novo teste impede novos `!important` em componentes.
+- `scrollbar`: states swap an internal variable (`--_ms-scrollbar-thumb-current`), and hover, `always` and `none` now work through specificity alone. Fixes the `arrows` buttons, which never showed because `height: 0 !important` beat the size set for them.
+- Collapsed `sidebar` and responsive bento: resolved through specificity and order.
+- Only the `prefers-reduced-motion` ones in `glimpse` remain, and they are intentional. A new test prevents new `!important` in components.

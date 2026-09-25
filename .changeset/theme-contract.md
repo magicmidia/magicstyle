@@ -3,11 +3,11 @@
 "@magic-style/vue": minor
 ---
 
-Novo modelo de temas: contrato de 27 variáveis + tokens derivados (modelo daisyUI/FlyonUI).
+New theme model: a 27-variable contract + derived tokens (the daisyUI/FlyonUI model).
 
-- Cada tema define só o contrato (`--ms-color-base-100/200/300/content`, 8 cores de papel + `-content`, `--ms-radius-selector/field/box`, `--ms-border-width`, `--ms-depth`, `--ms-font-sans/mono`, e 3 opcionais). Os ~150 tokens semânticos (surface, text, border, interactive, feedback, radius, elevation e aliases legados) são derivados em runtime com `color-mix()` e `oklch(from …)`; os nomes existentes continuam válidos.
-- Personalização em um lugar: sobrescrever `--ms-color-primary` (ou qualquer chave do contrato) atualiza hover, active, subtle, texto, foco e bordas em todos os componentes e modos.
-- Temas oficiais reduzidos de ~40–50 tokens por modo para 21 por modo + 8 compartilhados, em JSON com `$schema` (autocompletar/validação no editor). Todos os pares de texto/fundo passam WCAG AA (teste cobre 10 temas × 2 modos).
-- `@magic-style/vue`: `defineMsTheme()`, `msThemeToCss()`, `checkMsThemeContrast()`, `MS_THEME_CONTRACT` e prop `overrides` em `MsProvider`/`MsThemeScope` (cores de marca em tempo real, ex.: multi-tenant).
-- CSS dos componentes: 1.143 fallbacks mortos e 529 cores hex fixas removidos (sidebar-menu, progress, navbar e footer agora seguem o tema); botão reescrito com 2 variáveis por tom.
-- Mudanças visíveis: textos "muted" mais legíveis e texto escuro sobre o `accent` claro do Nord (antes falhavam contraste). Guia: `docs/theming.md`.
+- Each theme defines only the contract (`--ms-color-base-100/200/300/content`, 8 role colors + `-content`, `--ms-radius-selector/field/box`, `--ms-border-width`, `--ms-depth`, `--ms-font-sans/mono`, and 3 optional ones). The ~150 semantic tokens (surface, text, border, interactive, feedback, radius, elevation and legacy aliases) are derived at runtime with `color-mix()` and `oklch(from …)`; existing names remain valid.
+- Customization in one place: overriding `--ms-color-primary` (or any contract key) updates hover, active, subtle, text, focus and borders in every component and mode.
+- Official themes reduced from ~40–50 tokens per mode to 21 per mode + 8 shared, in JSON with `$schema` (editor autocomplete and validation). Every text/background pair passes WCAG AA (the test covers 10 themes × 2 modes).
+- `@magic-style/vue`: `defineMsTheme()`, `msThemeToCss()`, `checkMsThemeContrast()`, `MS_THEME_CONTRACT` and the `overrides` prop on `MsProvider`/`MsThemeScope` (runtime brand colors, e.g. multi-tenant).
+- Component CSS: 1,143 dead fallbacks and 529 hardcoded hex colors removed (sidebar-menu, progress, navbar and footer now follow the theme); button rewritten with 2 variables per tone.
+- Visible changes: more legible "muted" text and dark text on Nord's light `accent` (both previously failed contrast). Guide: `docs/theming.md`.

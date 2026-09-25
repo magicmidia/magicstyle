@@ -3,10 +3,10 @@
 "@magic-style/vue": patch
 ---
 
-CSS e tokens corretos:
+Correct CSS and tokens:
 
-- Corrige 25 variáveis CSS inexistentes (ex.: `--ms-color-interactive-focus`, `--ms-shadow-*`, `--ms-font-size-*`, `--ms-motion-duration-normal`), o que restaura o anel de foco em link, code, code-block, password-input e truncate. Um novo teste impede regressões.
-- `base.css` deixou de sobrescrever as cores de marca dos temas, e os aliases (`--ms-color-primary`, `*-subtle`, `*-soft-*`, `status-*`) passam a ser resolvidos por escopo, então o `MsThemeScope` aninhado funciona.
-- Tokens `--ms-elevation-card/button/dropdown/modal/input` agora são emitidos.
-- Novos tokens `--ms-color-feedback-{info,success,danger}-solid-fg` e aliases `--ms-color-{info,warning}-contrast`. Os estados solid de badge, alert, button e tag, e os temas Nord, Supabase e Bootstrap, atingem WCAG AA, validado por um teste de contraste em todos os temas e modos.
-- Todo o CSS é entregue em cascade layers (`ms.*`), com `color-scheme` por modo e suporte a `data-ms-color-mode="system"` via CSS.
+- Fixes 25 non-existent CSS variables (e.g. `--ms-color-interactive-focus`, `--ms-shadow-*`, `--ms-font-size-*`, `--ms-motion-duration-normal`), which restores the focus ring on link, code, code-block, password-input and truncate. A new test prevents regressions.
+- `base.css` no longer overrides the themes' brand colors, and the aliases (`--ms-color-primary`, `*-subtle`, `*-soft-*`, `status-*`) are now resolved per scope, so nested `MsThemeScope` works.
+- The `--ms-elevation-card/button/dropdown/modal/input` tokens are now emitted.
+- New tokens `--ms-color-feedback-{info,success,danger}-solid-fg` and aliases `--ms-color-{info,warning}-contrast`. The solid states of badge, alert, button and tag, and the Nord, Supabase and Bootstrap themes, reach WCAG AA, validated by a contrast test across every theme and mode.
+- All CSS ships in cascade layers (`ms.*`), with `color-scheme` per mode and CSS support for `data-ms-color-mode="system"`.

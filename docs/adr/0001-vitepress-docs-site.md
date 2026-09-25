@@ -1,42 +1,47 @@
-# Proposta: documentação em VitePress
+# ADR 0001: VitePress documentation site
 
-**Status:** implementada. O site está em `apps/docs` (VitePress 2, pt-BR/en/es) e substituiu o preview antigo. Este documento fica como registro da decisão.
+- **Status:** Accepted, implemented
+- **Scope:** `apps/docs`
 
-## Problema
+The site lives in `apps/docs` (VitePress 2) and replaced the old hand-written preview. It is published in English at the root, with Portuguese under `/pt/` and Spanish under `/es/`. This record keeps the context of the decision.
 
-O preview antigo tem cerca de 26 mil linhas de JavaScript escrito à mão em 5 páginas HTML. Os templates são compilados no navegador, e a documentação de API é duplicada manualmente (`studio-api-docs.js`). Isso traz três problemas:
+## Context
 
-- **A API documentada diverge do código.** Props, eventos e slots são reescritos à mão, e nada acusa quando mudam.
-- **Não há busca, navegação por URL estável nem SEO.** O roteamento é por hash dentro de uma única página.
-- **Contribuir é difícil.** Um exemplo novo exige editar arquivos de milhares de linhas, sem tipos nem lint de template.
+The old preview had about 26k lines of hand-written JavaScript across 5 HTML pages. Templates were compiled in the browser, and the API documentation was duplicated by hand (`studio-api-docs.js`). That caused three problems:
 
-## Proposta
+- **The documented API drifted from the code.** Props, events and slots were rewritten by hand, and nothing flagged when they changed.
+- **No search, no stable URLs and no SEO.** Routing was hash-based inside a single page.
+- **Contributing was hard.** A new example meant editing files with thousands of lines, without types or template linting.
 
-Criar `apps/docs` com **VitePress** (Vue 3 + Vite, o mesmo stack da biblioteca) e migrar o conteúdo aos poucos:
+## Decision
 
-1. **Uma página Markdown por componente** (`components/button.md`), com demos como SFCs reais importados (`<<< @/demos/button/Basic.vue` para o código, e o componente renderizado ao lado). As demos passam pelo `vue-tsc` e pelo ESLint do monorepo.
-2. **Tabelas de API geradas** com `vue-component-meta`, lendo props, eventos, slots e JSDoc direto dos `.vue`/`types.ts`. Um script de build gera `api/<componente>.json`, e um componente `<ApiTable>` renderiza. Isso elimina o `studio-api-docs.js`.
-3. **Seletor de tema, modo, densidade e idioma** no tema do VitePress, usando `MsProvider` (`theme`, `color-mode`, `density`, `locale`). As mesmas páginas servem de verificação visual dos 10 temas.
-4. **Busca local** (a nativa do VitePress) e URLs estáveis (`/components/select#async`).
-5. **Gate de CI:** `vitepress build` entra no `pnpm validate` só depois que a migração estiver completa. Com páginas reais por componente, dá para somar ao teste de axe do Vitest (que hoje usa happy-dom) uma auditoria axe em navegador sobre o site gerado.
+Create `apps/docs` with **VitePress** (Vue 3 + Vite, the same stack as the library) and migrate the content incrementally:
 
-## Migração
+1. **One Markdown page per component** (`components/button.md`), with demos as real imported SFCs (`<<< @/demos/button/Basic.vue` for the code, and the rendered component next to it). The demos go through the monorepo's `vue-tsc` and ESLint.
+2. **Generated API tables** with `vue-component-meta`, reading props, events, slots and JSDoc straight from the `.vue` and `types.ts` files. A build script generates `api/<component>.json`, and an `<ApiTable>` component renders it. This removes `studio-api-docs.js`.
+3. **Theme, color mode, density and language pickers** in the VitePress theme, using `MsProvider` (`theme`, `color-mode`, `density`, `locale`). The same pages double as a visual check of the 10 themes.
+4. **Local search** (VitePress's built-in search) and stable URLs (`/components/select#async`).
+5. **CI gate:** `vitepress build` joins `pnpm validate` once the migration is complete. With real pages per component, an in-browser axe audit of the built site can complement the Vitest axe test (which uses happy-dom).
 
-| Etapa | Escopo                                                                                | Critério de pronto                                         |
-| :---- | :------------------------------------------------------------------------------------ | :--------------------------------------------------------- |
-| 1     | Esqueleto `apps/docs`, tema com `MsProvider`, geração de API com `vue-component-meta` | Build verde; 3 componentes piloto (Button, Select, Dialog) |
-| 2     | Fundamentos: tokens, temas (`docs/theming.md`), i18n (`docs/i18n.md`), RTL            | Guias existentes renderizados no site                      |
-| 3     | Componentes restantes, em lotes por categoria (formulários, overlays, layout, dados)  | Nenhum componente só no preview                            |
-| 4     | Remoção do preview antigo                                                             | `pnpm validate` inclui o build das docs                    |
+## Migration
 
-## Custos e riscos
+| Step | Scope                                                                                   | Done when                                                |
+| :--- | :-------------------------------------------------------------------------------------- | :------------------------------------------------------- |
+| 1    | `apps/docs` skeleton, theme with `MsProvider`, API generation with `vue-component-meta` | Green build; 3 pilot components (Button, Select, Dialog) |
+| 2    | Foundations: tokens, themes, i18n, RTL guides                                           | Existing guides rendered on the site                     |
+| 3    | Remaining components, in batches by category (forms, overlays, layout, data)            | No component documented only in the preview              |
+| 4    | Removal of the old preview                                                              | `pnpm validate` includes the docs build                  |
 
-- **Esforço:** a maior parte é mover exemplos. A geração de API é a parte que reduz trabalho no longo prazo.
-- **Duas fontes durante a migração:** o preview continua funcionando até a etapa 4; nenhum exemplo é apagado antes de existir no VitePress.
-- **Dependências novas** (`vitepress`, `vue-component-meta`) só em `apps/docs`, privado. Os packages publicados não mudam.
+All four steps are done. The site build runs in `pnpm validate`, and `pnpm docs:e2e` smoke-tests every route with an axe audit in CI.
 
-## Alternativas consideradas
+## Consequences
 
-- **Storybook:** bom para isolar estados, mas pesado e com outro modelo mental (stories em vez de páginas). A documentação narrativa (tema, i18n, contrato) encaixa melhor em Markdown.
-- **Histoire:** feito para Vue, mas com manutenção menos ativa que a do VitePress.
-- **Manter o preview e só gerar a API:** resolve a divergência de props, mas não a busca, as URLs nem a dificuldade de contribuir.
+- **Effort:** most of the work was moving examples. API generation is what reduces work in the long run.
+- **Two sources during the migration:** the preview kept working until step 4; no example was deleted before it existed in VitePress.
+- **New dependencies** (`vitepress`, `vue-component-meta`) live only in `apps/docs`, which is private. The published packages did not change.
+
+## Alternatives considered
+
+- **Storybook:** good for isolating states, but heavy and built on a different mental model (stories instead of pages). Narrative documentation (theming, i18n, the theme contract) fits Markdown better.
+- **Histoire:** built for Vue, but less actively maintained than VitePress.
+- **Keep the preview and only generate the API:** fixes prop drift, but not search, URLs or the difficulty of contributing.

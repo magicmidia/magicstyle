@@ -3,21 +3,21 @@
 "@magic-style/vue": minor
 ---
 
-Novo visual padrão no estilo shadcn/ui, aplicado a todos os temas (cada tema continua trocando só as cores):
+New default look in the shadcn/ui style, applied to every theme (each theme still only swaps colors):
 
-- **Tokens globais:**
-  - Sombras na escala do Tailwind (`--ms-elevation-xs|sm|md|lg|xl`), neutras e proporcionais a `depth`. As semânticas (`button`, `input`, `card`, `dropdown`, `modal`) apontam para essa escala.
-  - Um único padrão de foco em toda a biblioteca. Campos usam a borda na cor do anel mais o halo de 3px (`--ms-focus-ring-shadow`); os demais elementos usam contorno com recuo. A cor do anel (`--ms-focus-ring-color`) atinge 3:1 em todas as superfícies de todos os temas.
-  - `typography-size-xs` passa a 12px.
-- **Controles:** altura padrão de 36px e texto de 14px em todos os tamanhos. Campos transparentes com sombra xs. O botão perde o `scale` no clique e o letter-spacing; o botão só de ícone fica quadrado. `outline` e `ghost` ficam neutros. O `soft` volta a ser fundo claro com texto no tom (em botão, tag e banner). Checkbox, radio e switch seguem as medidas do shadcn.
-- **Superfícies:** cards com `radius-xl` e padding de 24px. Dialog com até 512px, overlay preto a 50% sem blur e sombra `modal`. Popover e menus com `radius-md`, sombra `dropdown` e hover neutro. O tooltip passa a usar o primário por padrão.
-- **Dados e feedback:**
-  - O badge é sólido por padrão.
-  - O `MsTabs` usa a variante `pill` por padrão; `line` continua disponível.
-  - O `MsAlert` é neutro por padrão (`tone="neutral"`).
-  - Tabela sem fundo no cabeçalho, toast sem faixa lateral colorida, avatar de 32px.
-  - O `MsSkeleton` usa `pulse` por padrão.
-- **Temas:**
-  - Magic ganha superfícies neutras (sem o tom azulado no escuro) e mantém o primário azul.
-  - O tema shadcn fica completo: `base-raised`, secundário zinc, `destructive` oficial e `font-display`. Os overrides específicos do shadcn foram removidos.
-- **Contraste:** em 10 temas × 2 modos, 102 pares de texto passaram para acima de AA. O item `danger` de menus, a barra de status e textos de tendência usam tokens de texto de feedback.
+- **Global tokens:**
+  - Shadows on the Tailwind scale (`--ms-elevation-xs|sm|md|lg|xl`), neutral and proportional to `depth`. The semantic ones (`button`, `input`, `card`, `dropdown`, `modal`) point to that scale.
+  - A single focus style across the library. Fields use a border in the ring color plus a 3px halo (`--ms-focus-ring-shadow`); other elements use an offset outline. The ring color (`--ms-focus-ring-color`) reaches 3:1 on every surface of every theme.
+  - `typography-size-xs` becomes 12px.
+- **Controls:** 36px default height and 14px text at every size. Transparent fields with an xs shadow. The button loses the press `scale` and the letter-spacing; the icon-only button is square. `outline` and `ghost` become neutral. `soft` is back to a light background with tinted text (in button, tag and banner). Checkbox, radio and switch follow shadcn's measurements.
+- **Surfaces:** cards with `radius-xl` and 24px padding. Dialog up to 512px, a 50% black overlay without blur and the `modal` shadow. Popover and menus with `radius-md`, the `dropdown` shadow and a neutral hover. The tooltip uses the primary color by default.
+- **Data and feedback:**
+  - The badge is solid by default.
+  - `MsTabs` uses the `pill` variant by default; `line` is still available.
+  - `MsAlert` is neutral by default (`tone="neutral"`).
+  - Table without a header background, toast without a colored side stripe, 32px avatar.
+  - `MsSkeleton` uses `pulse` by default.
+- **Themes:**
+  - Magic gets neutral surfaces (no bluish tint in dark mode) and keeps the blue primary.
+  - The shadcn theme is complete: `base-raised`, zinc secondary, the official `destructive` and `font-display`. The shadcn-specific overrides were removed.
+- **Contrast:** across 10 themes × 2 modes, 102 text pairs moved above AA. The `danger` menu item, the status bar and trend text use feedback text tokens.

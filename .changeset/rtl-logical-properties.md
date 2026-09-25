@@ -3,9 +3,9 @@
 "@magic-style/vue": patch
 ---
 
-RTL de verdade: 134 declarações físicas (`margin-left`, `padding-right`, `border-left`, `left`/`right`, `text-align: left`, raios de canto) e 4 atalhos `padding` assimétricos viraram propriedades lógicas em 43 folhas de estilo. Em LTR não muda nada: a diferença de estilos computados contra a versão anterior deu zero em 68 mil elementos das páginas do preview.
+Real RTL: 134 physical declarations (`margin-left`, `padding-right`, `border-left`, `left`/`right`, `text-align: left`, corner radii) and 4 asymmetric `padding` shorthands became logical properties across 43 stylesheets. Nothing changes in LTR: the computed-style diff against the previous version was zero across 68k elements of the preview pages.
 
-- Continuam físicas de propósito: placements com nome de lado (`placement="left"`, cantos `top-right`, `data-align="right"`), painéis posicionados via JS (`MsSelect`), tooltip, glimpse, FAB, pointer e o `code-block`. Este último agora força `direction: ltr`, porque código se lê da esquerda para a direita.
-- `MsCarousel` e `MsMarquee` invertem o movimento em `:dir(rtl)`, e as setas do carrossel ficam nas bordas lógicas. O marquee com `pause-hover` também pausa com foco (WCAG 2.2.2).
-- `th` dentro de `.ms-table` herda o alinhamento da tabela: o navegador centralizaria o cabeçalho quando o pai usa `start`.
-- Novo teste impede a volta de propriedades físicas fora das exceções documentadas.
+- Intentionally still physical: placements named after a side (`placement="left"`, `top-right` corners, `data-align="right"`), panels positioned from JS (`MsSelect`), tooltip, glimpse, FAB, pointer and `code-block`. The latter now forces `direction: ltr`, because code reads left to right.
+- `MsCarousel` and `MsMarquee` reverse their motion under `:dir(rtl)`, and the carousel arrows sit on the logical edges. The marquee with `pause-hover` also pauses on focus (WCAG 2.2.2).
+- `th` inside `.ms-table` inherits the table's alignment: the browser would center the header when the parent uses `start`.
+- A new test prevents physical properties from coming back outside the documented exceptions.

@@ -2,4 +2,4 @@
 "@magic-style/vue": patch
 ---
 
-`MsCheckbox` e `MsSwitch` aceitam o `v-model` padrão (`v-model="form.remember"`, como no `useForm` do Inertia), além do `v-model:checked`, que continua funcionando. Os dois emitem `update:modelValue` e `update:checked`; quando os dois estão ligados, vale o `modelValue`.
+`MsCheckbox` and `MsSwitch` accept the standard `v-model` (`v-model="form.remember"`, as with Inertia's `useForm`), in addition to `v-model:checked`, which keeps working. Both emit `update:modelValue` and `update:checked`; when both are bound, `modelValue` wins.

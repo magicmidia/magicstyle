@@ -3,15 +3,15 @@
 "@magic-style/css": patch
 ---
 
-Acessibilidade e comportamento (WAI-ARIA APG):
+Accessibility and behavior (WAI-ARIA APG):
 
-- Novas primitivas internas: `useScrollLock` (ref-count), `useDismissableLayer` (pilha para Esc/clique fora — fecha só a camada do topo) e `useFocusTrap` (foco inicial, Tab cíclico, restauração de foco). Aplicadas em Dialog, Drawer, ConfirmDialog (foco inicial em "Cancelar"), Lightbox, CommandPalette, Popover, ContextMenu e Menu; removidos todos os `@click.stop` que quebravam o clique fora.
-- `MsMenu`/`MsDropdownButton`: foco real nos itens (roving tabindex), setas/Home/End/typeahead, ArrowDown/ArrowUp no trigger, Esc devolve o foco, clicar no trigger fecha o menu. Novo evento `dismiss`.
-- `MsSelect`: teclado funciona sem `searchable` (Home/End/Espaço inclusive); input de busca com semântica de combobox; ids de opção sem colisão; controle via `open` confiável.
-- `MsPopover`: abre quando o pai só escuta `update:open`; `toggle` do slot não alterna duas vezes; ARIA no botão real.
-- `MsCommandPalette`: Ctrl/⌘+K foca a busca; navegação segue a ordem agrupada e pula itens desabilitados; combobox/listbox com `aria-activedescendant`; nova prop `hotkey`.
-- `MsContextMenu`: Shift+F10/tecla Menu, navegação por setas, nunca abre fora da viewport.
-- Inputs (`MsInput`, `MsTextarea`, `MsNativeSelect`, `MsPasswordInput`, `MsMaskedInput`, `MsRange`, `MsSearchField`, `MsCheckbox`, `MsSwitch`): `inheritAttrs: false` — `aria-*`, `required`, `autocomplete` e listeners vão para o elemento nativo; `class`/`style` ficam na raiz.
-- `MsField`: ids únicos por controle; `aria-describedby`/`aria-invalid`/`aria-labelledby` também em PasswordInput, MaskedInput, Range, SearchField, PinInput, ColorPicker, FileInput, RadioGroup e Switch.
-- `MsCheckbox`: `indeterminate` aplicado na montagem. `MsCodeBlock`: realce não corrompe mais código com aspas.
-- `MsTree`: navegação por setas/Home/End com um único tab stop. `MsSplitPane`: separador focável com teclado e pointer events (toque/caneta), RTL. `MsDropzone`: input acessível por teclado, validação de `accept`/`multiple` em arquivos arrastados e novo evento `files-rejected`.
+- New internal primitives: `useScrollLock` (reference-counted), `useDismissableLayer` (a stack for Escape/outside click — only the top layer closes) and `useFocusTrap` (initial focus, Tab cycling, focus restoration). Applied to Dialog, Drawer, ConfirmDialog (initial focus on "Cancel"), Lightbox, CommandPalette, Popover, ContextMenu and Menu; removed every `@click.stop` that broke outside clicks.
+- `MsMenu`/`MsDropdownButton`: real focus on items (roving tabindex), arrows/Home/End/typeahead, ArrowDown/ArrowUp on the trigger, Escape returns focus, clicking the trigger closes the menu. New `dismiss` event.
+- `MsSelect`: keyboard works without `searchable` (including Home/End/Space); the search input has combobox semantics; option ids no longer collide; control through `open` is reliable.
+- `MsPopover`: opens when the parent only listens to `update:open`; the slot's `toggle` no longer toggles twice; ARIA on the real button.
+- `MsCommandPalette`: Ctrl/⌘+K focuses the search; navigation follows the grouped order and skips disabled items; combobox/listbox with `aria-activedescendant`; new `hotkey` prop.
+- `MsContextMenu`: Shift+F10/Menu key, arrow navigation, never opens outside the viewport.
+- Inputs (`MsInput`, `MsTextarea`, `MsNativeSelect`, `MsPasswordInput`, `MsMaskedInput`, `MsRange`, `MsSearchField`, `MsCheckbox`, `MsSwitch`): `inheritAttrs: false` — `aria-*`, `required`, `autocomplete` and listeners go to the native element; `class`/`style` stay on the root.
+- `MsField`: unique ids per control; `aria-describedby`/`aria-invalid`/`aria-labelledby` also on PasswordInput, MaskedInput, Range, SearchField, PinInput, ColorPicker, FileInput, RadioGroup and Switch.
+- `MsCheckbox`: `indeterminate` applied on mount. `MsCodeBlock`: highlighting no longer corrupts code with quotes.
+- `MsTree`: arrows/Home/End navigation with a single tab stop. `MsSplitPane`: focusable separator with keyboard and pointer events (touch/pen), RTL. `MsDropzone`: keyboard-accessible input, `accept`/`multiple` validation for dropped files and a new `files-rejected` event.

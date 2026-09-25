@@ -2,10 +2,10 @@
 "@magic-style/css": patch
 ---
 
-Tokens compatíveis com DTCG (baseline doc 06 §1):
+DTCG-compatible tokens (baseline doc 06 §1):
 
-- Não há mais tipos fora da especificação. Easing usa `cubicBezier` (array de 4 números); os papéis tipográficos usam o composto `typography` com as chaves oficiais; letter-spacing em `em` é `number` com a unidade em `$extensions`, já que `dimension` só aceita px/rem. `font-feature-settings`, que não tem tipo no DTCG, agora fica no `base.css`. O CSS gerado para easing, letter-spacing e features é idêntico ao anterior.
-- Tamanhos de fonte em `rem` (iguais a 16px na raiz padrão), para acompanhar o tamanho de fonte escolhido pelo usuário.
-- 33 primitivas OKLCH que estavam fora do gamut sRGB tiveram o croma reduzido até caber, mantendo luminosidade e matiz. A cor agora é a mesma em qualquer tela; antes, o navegador cortava canal a canal em telas sRGB. Os temas não mudam, pois usam o contrato.
-- A descrição de `neutral.700` citava um hex que não correspondia ao valor.
-- O resolvedor reporta `$type` desconhecido, e novos testes cobrem tipos, gamut e hex das descrições.
+- No more types outside the specification. Easing uses `cubicBezier` (an array of 4 numbers); typography roles use the `typography` composite with the official keys; letter-spacing in `em` is a `number` with the unit in `$extensions`, since `dimension` only accepts px/rem. `font-feature-settings`, which has no DTCG type, now lives in `base.css`. The generated CSS for easing, letter-spacing and features is identical to before.
+- Font sizes in `rem` (equal to 16px at the default root size), so they follow the font size chosen by the user.
+- 33 OKLCH primitives that were outside the sRGB gamut had their chroma reduced until they fit, keeping lightness and hue. The color is now the same on every screen; previously the browser clipped channel by channel on sRGB screens. Themes don't change, since they use the contract.
+- The description of `neutral.700` quoted a hex that didn't match the value.
+- The resolver reports unknown `$type`s, and new tests cover types, gamut and the hex values in descriptions.

@@ -1,125 +1,137 @@
-# Análise de concorrentes: leva 2
+# Competitive analysis
 
-**Escopo:** comparação do Magic-Style com as bibliotecas de referência no ecossistema Vue e com o shadcn/ui, que hoje define o padrão visual e de documentação. O documento aponta o que já foi resolvido nesta leva e o que fica como backlog.
+**Scope:** how Magic-Style compares with the reference libraries in the Vue ecosystem and with shadcn/ui, which currently sets the standard for look and documentation. The document records what has already been addressed, what is planned for this release and what stays in the backlog.
 
-**Concorrentes analisados:** shadcn/ui (React) e shadcn-vue, Nuxt UI v3, PrimeVue 4, Vuetify 3 e Reka UI (antigo Radix Vue).
+**Libraries analyzed:** shadcn/ui (React) and shadcn-vue, Nuxt UI v3, PrimeVue 4, Vuetify 3 and Reka UI (formerly Radix Vue).
 
-As afirmações sobre concorrentes descrevem características públicas e estáveis dos projetos, não números de versão nem métricas que mudam com frequência.
+Statements about other libraries describe public, stable characteristics of those projects, not version numbers or metrics that change often.
 
-## Resumo
+## Summary
 
-| Eixo           | Referência                                                              | Magic-Style antes                                       | Magic-Style agora                                                                      | Backlog                                                  |
-| :------------- | :---------------------------------------------------------------------- | :------------------------------------------------------ | :------------------------------------------------------------------------------------- | :------------------------------------------------------- |
-| Visual padrão  | shadcn/ui (new-york)                                                    | Visual próprio, 5 padrões de foco, sombras azuladas     | Estrutura shadcn em todos os temas; foco único com halo; sombras na escala do Tailwind | Revisar componentes de nicho (FAB, speed dial, lightbox) |
-| Temas          | Nuxt UI (app.config + CSS vars), PrimeVue (presets), daisyUI (contrato) | Contrato de 27 variáveis com contraste validado         | Galeria dos 10 temas e gerador de tema com verificação AA no site                      | Exportar para Figma/Tokens Studio                        |
-| Documentação   | shadcn/ui, Nuxt UI                                                      | Preview de 34 mil linhas escrito à mão, só em português | Site VitePress em pt-BR, en e es, 95 páginas por idioma com demos, código e API gerada | Playground online (StackBlitz)                           |
-| API gerada     | Nuxt UI, PrimeVue                                                       | Duplicada à mão                                         | `vue-component-meta` gera props, eventos e slots do código                             | Descrever as 128 props sem JSDoc e ativar `--strict`     |
-| Acessibilidade | Reka UI (primitivas WAI-ARIA)                                           | Padrões APG, foco 3:1                                   | Mesma base, com notas de teclado por componente e bugs de a11y corrigidos              | Auditoria axe no navegador em CI                         |
-| i18n           | Vuetify (locale adapter), PrimeVue (locale)                             | pt-BR e en                                              | pt-BR, en e es nos componentes e no site                                               | Mais idiomas via contribuição                            |
-| Distribuição   | shadcn (CLI copia o código), Nuxt UI (módulo)                           | Pacote npm                                              | Pacote npm, CSS utilizável sem Vue                                                     | CLI/registry `magic-style add`                           |
-| SSR            | Nuxt UI (Nuxt nativo)                                                   | SSR sem mismatch                                        | Guias de Laravel + Inertia com SSR nos 3 idiomas                                       | Módulo Nuxt                                              |
+| Axis          | Reference                                                               | Magic-Style before                             | Magic-Style now                                                                                              | Next                                                            |
+| :------------ | :---------------------------------------------------------------------- | :--------------------------------------------- | :----------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------- |
+| Default look  | shadcn/ui (new-york)                                                    | Custom look, 5 focus styles, bluish shadows    | shadcn structure in every theme; a single focus style with a halo; shadows on the Tailwind scale             | Review niche components (FAB, speed dial, lightbox)             |
+| Themes        | Nuxt UI (app.config + CSS vars), PrimeVue (presets), daisyUI (contract) | 27-variable contract with validated contrast   | Gallery of the 10 themes and a theme generator with AA checks on the site                                    | Planned for this release: export to DTCG / Tokens Studio        |
+| Documentation | shadcn/ui, Nuxt UI                                                      | 34k-line hand-written preview, Portuguese only | VitePress site in English, Portuguese and Spanish, 95 pages per language with demos, code and generated API  | Planned for this release: Blocks page and StackBlitz playground |
+| Generated API | Nuxt UI, PrimeVue                                                       | Duplicated by hand                             | `vue-component-meta` generates props, events and slots from the code; JSDoc on every public prop             | Turn on `gen-api --strict` in the build                         |
+| Accessibility | Reka UI (WAI-ARIA primitives)                                           | APG patterns, 3:1 focus ring                   | Same foundation, plus keyboard notes per component, a11y bugs fixed and an axe audit of the built site in CI | Planned for this release: the remaining a11y findings below     |
+| i18n          | Vuetify (locale adapter), PrimeVue (locale)                             | pt-BR and en                                   | English (default), Portuguese and Spanish in the components and on the site                                  | More languages through contributions                            |
+| Distribution  | shadcn (CLI copies the code), Nuxt UI (module)                          | npm package                                    | npm packages; the CSS works without Vue                                                                      | Backlog: shadcn-vue-compatible registry                         |
+| SSR           | Nuxt UI (native Nuxt)                                                   | SSR without mismatch                           | Laravel + Inertia guide with SSR in all 3 languages                                                          | Nuxt module                                                     |
 
-## Por eixo
+## By axis
 
-### Visual
+### Look
 
-O shadcn/ui virou referência porque tem poucas decisões e todas consistentes: controles de 36px, texto de 14px, `shadow-xs` nos campos, anel de foco de 3px com transparência, cards `rounded-xl`, overlays sem blur e menus densos. O shadcn-vue e o Nuxt UI v3 seguem a mesma linguagem.
+shadcn/ui became the reference because it makes few decisions and all of them are consistent: 36px controls, 14px text, `shadow-xs` on fields, a 3px translucent focus ring, `rounded-xl` cards, overlays without blur and dense menus. shadcn-vue and Nuxt UI v3 follow the same language.
 
-**O que mudou:** a estrutura passou a ser a mesma em todos os temas, e cada tema troca só cores, raios, profundidade e fontes (decisão da leva). Houve ainda três correções transversais:
+**What changed:** the structure is now the same in every theme, and each theme only swaps colors, radii, depth and fonts. There were also three cross-cutting fixes:
 
-- a variável inexistente `--ms-font-size-body-*` foi eliminada;
-- as alturas fixas do Select foram substituídas por tokens;
-- o `scale()` no clique do botão foi removido.
+- the non-existent variable `--ms-font-size-body-*` was removed;
+- the fixed heights of the Select were replaced by tokens;
+- the `scale()` on button press was removed.
 
-**Diferencial mantido:** as bordas de campo seguem em 3:1 (WCAG 1.4.11). O shadcn usa bordas mais claras, que não atingem esse contraste.
+**Kept as a differentiator:** field borders stay at 3:1 (WCAG 1.4.11). shadcn uses lighter borders that don't reach that contrast.
 
-### Temas
+### Themes
 
-- **PrimeVue 4:** presets (Aura, Lara, Nora) com design tokens em três camadas (primitive, semantic, component).
-- **Nuxt UI v3:** cores configuráveis em `app.config` e variáveis CSS.
-- **Magic-Style:** usa o modelo de contrato do daisyUI e do FlyonUI. É menor para o autor do tema e tem uma vantagem que os outros não oferecem prontos: `checkMsThemeContrast` aponta falhas de WCAG AA antes de publicar.
+- **PrimeVue 4:** presets (Aura, Lara, Nora) with design tokens in three layers (primitive, semantic, component).
+- **Nuxt UI v3:** colors configurable in `app.config` and CSS variables.
+- **Magic-Style:** uses the daisyUI and FlyonUI contract model. It is smaller for theme authors and has an advantage the others don't offer out of the box: `checkMsThemeContrast` reports WCAG AA failures before you ship.
 
-O gerador de tema do site expõe isso visualmente, com prévia nos componentes reais e código `defineMsTheme` e CSS prontos. É o equivalente ao gerador de temas do shadcn/ui, mas com verificação de contraste.
+The theme generator on the site makes this visual, with a preview on the real components and ready-to-copy `defineMsTheme` and CSS code. It is the equivalent of the shadcn/ui theme generator, with contrast checks.
 
-**Backlog:** exportar o tema gerado em DTCG ou Tokens Studio; permitir editar todas as cores do contrato, não só a primária e a matiz dos neutros.
+**Planned for this release:** export the generated theme as DTCG or Tokens Studio JSON.
 
-### Documentação
+**Next:** allow editing every contract color in the generator, not only the primary color and the neutral hue.
 
-O shadcn/ui e o Nuxt UI definem o padrão esperado hoje:
+### Documentation
 
-- uma página por componente, com exemplo ao vivo e código ao lado;
-- tabela de API gerada do código;
-- busca;
-- URLs estáveis;
-- modo escuro;
-- seletor de tema.
+shadcn/ui and Nuxt UI set today's expectations:
 
-**Novo site (`apps/docs`):**
+- one page per component, with a live example and the code next to it;
+- an API table generated from the code;
+- search;
+- stable URLs;
+- dark mode;
+- a theme picker.
 
-- VitePress 2, com páginas geradas a partir de um catálogo tipado;
-- demos em SFC reais que passam por `vue-tsc` e ESLint;
-- código exibido com os textos já traduzidos para o idioma da página;
-- tabelas de API com `vue-component-meta` e traduções de descrição sinalizadas quando desatualizadas;
-- busca local por idioma, `hreflang` e sitemap;
-- notas de teclado e ARIA conferidas no código-fonte.
+**New site (`apps/docs`):**
 
-**Backlog:**
+- VitePress 2, with pages generated from a typed catalog;
+- demos written as real SFCs that go through `vue-tsc` and ESLint;
+- code shown with the strings already translated into the page's language;
+- API tables from `vue-component-meta`, with outdated description translations flagged;
+- local search per language, `hreflang` and a sitemap;
+- keyboard and ARIA notes checked against the source code;
+- a Playwright smoke test of every route with an axe audit, in CI.
 
-- playground (StackBlitz ou Vue SFC Playground) a partir da demo;
-- página de "blocks" com telas completas (login, dashboard, configurações), como os blocks do shadcn;
-- smoke e2e com Playwright e axe no CI.
+**Planned for this release:**
 
-### Distribuição
+- a "Blocks" page with complete screens (login, dashboard, settings), like shadcn's blocks;
+- a playground (StackBlitz) opened from each demo.
 
-O CLI do shadcn copia o código do componente para o projeto, o que dá controle total ao usuário. O Nuxt UI e o PrimeVue distribuem pacotes.
+### Distribution
 
-O Magic-Style distribui dois pacotes: `@magic-style/vue` e `@magic-style/css`. O pacote de CSS funciona sem Vue (HTML e Blade), algo que nenhum dos concorrentes Vue oferece.
+The shadcn CLI copies the component code into the project, which gives users full control. Nuxt UI and PrimeVue ship packages.
 
-**Backlog:** um registry compatível com o CLI do shadcn-vue (JSON por componente) permitiria o fluxo "copiar para o projeto" sem manter um CLI próprio.
+Magic-Style ships two packages: `@magic-style/vue` and `@magic-style/css`. The CSS package works without Vue (plain HTML and Blade), which none of the Vue competitors offer.
 
-### Acessibilidade
+**Backlog:** a registry compatible with the shadcn-vue CLI (one JSON file per component) would enable the "copy into your project" flow without maintaining our own CLI.
 
-O Reka UI é a referência em primitivas acessíveis; o shadcn-vue e o Nuxt UI v3 são construídos sobre ele. O Magic-Style implementa os padrões APG por conta própria.
+### Accessibility
 
-Os agentes que escreveram as demos auditaram o código-fonte de cada componente e encontraram lacunas reais, listadas abaixo. As corrigidas nesta leva estão no changeset `a11y-i18n-fixes`.
+Reka UI is the reference for accessible primitives; shadcn-vue and Nuxt UI v3 are built on it. Magic-Style implements the APG patterns itself.
 
-- `MsSegmentedControl` não move o foco com as setas.
-- `MsProgressRadial` tem `aria-valuenow` inconsistente.
-- `MsRadioGroup` fica sem alvo para o `<label for>`.
-- `MsField` e `MsRating` têm textos fixos em português.
-- O ícone de `MsCommandPalette` é ignorado.
+The agents that wrote the demos audited the source of every component and found real gaps. The following were fixed in the `a11y-i18n-fixes` changeset:
 
-**Backlog (encontrado, ainda não corrigido):**
+- `MsSegmentedControl` did not move focus with the arrow keys.
+- `MsProgressRadial` had an inconsistent `aria-valuenow`.
+- `MsRadioGroup` had no target for `<label for>`.
+- `MsField` and `MsRating` had hardcoded Portuguese strings.
+- The `MsCommandPalette` item icon was ignored.
 
-- `MsEmojiPicker` e `MsIconPicker`: sem `aria-expanded`, sem fechar com Esc e com nomes só em português.
-- `MsDatePicker`: o input não recebe o id do `MsField`, e os atalhos ignoram `minDate`/`maxDate`.
-- `MsFab`: o speed dial não fecha com Esc.
-- `MsMenu`: não devolve o foco ao gatilho.
-- `MsBanner`: `role="region"` sem nome acessível.
-- `MsFileInput`: não valida `accept` em arquivos arrastados.
-- `MsChoicebox`: sem navegação por setas.
-- `MsButton`: sem renderização como link (`as`/`href`). O shadcn resolve isso com `asChild`.
-- `MsListGroup` / `MsListItem`: `role="group"` dentro de `<ul>` e `aria-selected` em `<li>` de lista simples; `interactive` sem teclado.
-- `MsCollapse` / `MsAccordionItem`: `<div>` dentro do `<button>` do cabeçalho (modelo de conteúdo inválido).
-- `MsGlimpse`: `aria-expanded` em elemento não interativo. `MsTruncate`: botão sem `aria-expanded`, que aparece mesmo sem truncamento.
-- `MsMarquee`, `MsParallax`, `MsPointer`: ignoram `prefers-reduced-motion`; o marquee não tem pausa (WCAG 2.2.2).
-- `MsBlockquote`: o `cite` vai para o atributo nativo, que espera uma URL. `MsTimelineItem`: título sempre `<h4>`.
-- `MsCarousel`: `totalSlides` informado à mão, embora os slides se registrem.
+**Planned for this release (found, not yet fixed):**
+
+- `MsEmojiPicker` and `MsIconPicker`: no `aria-expanded`, no Escape to close, and names only in Portuguese.
+- `MsDatePicker`: the input doesn't get the `MsField` id, and the shortcuts ignore `minDate`/`maxDate`.
+- `MsFab`: the speed dial doesn't close with Escape.
+- `MsMenu`: doesn't return focus to the trigger.
+- `MsBanner`: `role="region"` without an accessible name.
+- `MsFileInput`: doesn't validate `accept` for dropped files.
+- `MsChoicebox`: no arrow-key navigation.
+- `MsListGroup` / `MsListItem`: `role="group"` inside a `<ul>` and `aria-selected` on a plain list's `<li>`; `interactive` without keyboard support.
+- `MsCollapse` / `MsAccordionItem`: a `<div>` inside the header `<button>` (invalid content model).
+- `MsGlimpse`: `aria-expanded` on a non-interactive element. `MsTruncate`: the button has no `aria-expanded` and shows up even when nothing is truncated.
+- `MsMarquee`, `MsParallax`, `MsPointer`: ignore `prefers-reduced-motion`; the marquee has no pause control (WCAG 2.2.2).
+- `MsBlockquote`: `cite` goes to the native attribute, which expects a URL. `MsTimelineItem`: the title is always an `<h4>`.
+- `MsCarousel`: `totalSlides` is passed by hand, even though slides register themselves.
+
+Later changesets (for example `a11y-overlays-keyboard-phase-3`, which makes Escape return focus from `MsMenu`) touched some of these components, so check the current source before picking an item up.
 
 ### API
 
-- **Reka UI e shadcn-vue:** `as` e `asChild` permitem trocar o elemento raiz.
-- **Nuxt UI v3:** prop `ui` para sobrescrever classes por slot.
+- **Reka UI and shadcn-vue:** `as` and `asChild` swap the root element.
+- **Nuxt UI v3:** a `ui` prop to override classes per slot.
 - **PrimeVue:** `pt` (pass-through).
 
-O Magic-Style não tem nenhum desses mecanismos, e o caso mais sentido é o do botão como link (a landing usa uma âncora com as classes do botão).
+Magic-Style has none of these mechanisms, and the most visible gap is a button rendered as a link (the landing page uses an anchor with the button classes). shadcn solves this with `asChild`.
 
-**Backlog:** `as` em `MsButton`, `MsBadge` e `MsCard` como primeiro passo; avaliar um `pt` simples por slot depois.
+**Planned for this release:** `as`/`href` on `MsButton`, `MsBadge` and `MsCard`.
 
-## Prioridades sugeridas para a próxima leva
+**Backlog:** a simple per-slot `pt` (pass-through).
 
-1. `as`/`href` em `MsButton` (a demanda mais citada pelos agentes e pela landing).
-2. Corrigir o backlog de acessibilidade acima e rodar axe no navegador em CI.
-3. Completar o JSDoc das 128 props sem descrição e ativar `gen-api --strict`.
-4. Blocks (telas completas) no site.
-5. Registry compatível com o shadcn-vue.
+## Priorities
+
+Planned for this release:
+
+1. `as`/`href` on `MsButton`, `MsBadge` and `MsCard` (the most requested item, by the demo agents and by the landing page).
+2. The accessibility findings above.
+3. The Blocks page (complete screens) on the site.
+4. A StackBlitz playground from each demo.
+5. Theme export (DTCG / Tokens Studio) from the theme generator.
+
+Backlog:
+
+1. A registry compatible with shadcn-vue.
+2. A per-slot `pt` pass-through.

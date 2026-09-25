@@ -2,4 +2,4 @@
 "@magic-style/vue": patch
 ---
 
-JSDoc em inglês em todas as props, eventos e tipos públicos dos 30 componentes que ainda não tinham documentação. Aparecem no autocomplete do editor e alimentam as tabelas de API geradas no site de documentação.
+English JSDoc on every public prop, event and type of the 30 components that still had no documentation. It shows up in editor autocomplete and feeds the API tables generated on the documentation site.

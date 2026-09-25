@@ -3,9 +3,9 @@
 "@magic-style/vue": patch
 ---
 
-Acessibilidade de Tooltip, HoverCard, Collapse e Carousel:
+Accessibility of Tooltip, HoverCard, Collapse and Carousel:
 
-- `MsTooltip`: o balão fica sempre no DOM (oculto com `v-show`) e `aria-describedby` vai para o primeiro elemento focável do slot, não para o wrapper.
-- `MsHoverCard`: remove `role="tooltip"` (o conteúdo é interativo) e fecha com Esc.
-- `MsCollapse`: `aria-controls` no cabeçalho aponta para o conteúdo, e o conteúdo fechado usa `inert` em vez de `aria-hidden`, para que os filhos focáveis saiam da ordem de tabulação.
-- `MsCarousel`: botão de pausar/iniciar a rotação (WCAG 2.2.2); a rotação pausa com foco, hover ou `prefers-reduced-motion`; `aria-live` fica "off" durante a rotação; os indicadores viram botões com `aria-current`; cada slide recebe o rótulo "N de total" e `inert` quando inativo.
+- `MsTooltip`: the bubble always stays in the DOM (hidden with `v-show`), and `aria-describedby` goes to the first focusable element of the slot, not to the wrapper.
+- `MsHoverCard`: drops `role="tooltip"` (the content is interactive) and closes with Escape.
+- `MsCollapse`: `aria-controls` on the header points to the content, and closed content uses `inert` instead of `aria-hidden`, so focusable children leave the tab order.
+- `MsCarousel`: a pause/play button for auto-rotation (WCAG 2.2.2); rotation pauses on focus, hover or `prefers-reduced-motion`; `aria-live` is "off" while rotating; indicators become buttons with `aria-current`; each slide gets an "N of total" label and `inert` when inactive.

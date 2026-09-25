@@ -3,7 +3,7 @@
 "@magic-style/vue": patch
 ---
 
-Texto `muted` com contraste AA (4,5:1) em todas as superfícies:
+`muted` text with AA contrast (4.5:1) on every surface:
 
-- O contrato de contraste dos temas passa a exigir 4,5:1 para `--ms-color-text-muted` sobre `surface-default`, `surface-raised` e `surface-sunken`; antes, exigia 3:1 só sobre `surface-default`. `checkMsThemeContrast` aplica a mesma regra aos temas próprios.
-- **Nord:** `base-content` claro passa a `#242933` e `base-raised` escuro a `#353c4a`. O texto muted ia de 4,20 a 4,44:1 no claro e ficava em 4,33:1 sobre cards no escuro.
+- The themes' contrast contract now requires 4.5:1 for `--ms-color-text-muted` on `surface-default`, `surface-raised` and `surface-sunken`; previously it required 3:1 on `surface-default` only. `checkMsThemeContrast` applies the same rule to custom themes.
+- **Nord:** light `base-content` becomes `#242933` and dark `base-raised` becomes `#353c4a`. Muted text ranged from 4.20 to 4.44:1 in light mode and sat at 4.33:1 on cards in dark mode.
