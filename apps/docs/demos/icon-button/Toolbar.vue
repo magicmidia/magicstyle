@@ -8,7 +8,7 @@ const t = useDemoStrings(strings);
 <template>
   <div role="group" :aria-label="t.messageActions" style="display: flex; gap: 4px">
     <MsTooltip :content="t.reply">
-      <MsIconButton variant="ghost" tone="neutral" size="sm" :ariaLabel="t.reply">
+      <MsIconButton variant="ghost" tone="neutral" size="sm" :label="t.reply">
         <svg
           width="16"
           height="16"
@@ -24,7 +24,7 @@ const t = useDemoStrings(strings);
       </MsIconButton>
     </MsTooltip>
     <MsTooltip :content="t.forward">
-      <MsIconButton variant="ghost" tone="neutral" size="sm" :ariaLabel="t.forward">
+      <MsIconButton variant="ghost" tone="neutral" size="sm" :label="t.forward">
         <svg
           width="16"
           height="16"
@@ -40,7 +40,7 @@ const t = useDemoStrings(strings);
       </MsIconButton>
     </MsTooltip>
     <MsTooltip :content="t.archive">
-      <MsIconButton variant="ghost" tone="neutral" size="sm" :ariaLabel="t.archive">
+      <MsIconButton variant="ghost" tone="neutral" size="sm" :label="t.archive">
         <svg
           width="16"
           height="16"
@@ -56,7 +56,7 @@ const t = useDemoStrings(strings);
       </MsIconButton>
     </MsTooltip>
     <MsTooltip :content="t.delete">
-      <MsIconButton variant="ghost" tone="danger" size="sm" :ariaLabel="t.delete">
+      <MsIconButton variant="ghost" tone="danger" size="sm" :label="t.delete">
         <svg
           width="16"
           height="16"

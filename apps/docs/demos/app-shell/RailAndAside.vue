@@ -69,7 +69,7 @@ const messages = computed(() => [
           <MsIconButton
             v-for="item in sections"
             :key="item.id"
-            v-bind="{ ariaLabel: item.label }"
+            :label="item.label"
             :active="section === item.id"
             :variant="section === item.id ? 'soft' : 'ghost'"
             tone="neutral"

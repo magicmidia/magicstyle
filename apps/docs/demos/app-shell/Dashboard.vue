@@ -58,7 +58,7 @@ const stats = computed(() => [
               variant="ghost"
               tone="neutral"
               size="sm"
-              v-bind="{ ariaLabel: collapsed ? t.expandMenu : t.collapseMenu }"
+              :label="collapsed ? t.expandMenu : t.collapseMenu"
               @click="collapsed = !collapsed"
             >
               <svg

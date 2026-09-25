@@ -19,7 +19,7 @@ function refresh() {
       variant="outline"
       tone="neutral"
       :loading="refreshing"
-      :ariaLabel="t.refresh"
+      :label="t.refresh"
       @click="refresh"
     >
       <svg
@@ -36,7 +36,7 @@ function refresh() {
         <path d="M16 16h5v5" />
       </svg>
     </MsIconButton>
-    <MsIconButton tone="danger" disabled :ariaLabel="t.delete">
+    <MsIconButton tone="danger" disabled :label="t.delete">
       <svg
         width="16"
         height="16"

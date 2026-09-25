@@ -15,7 +15,7 @@ const muted = ref(true);
       variant="ghost"
       tone="danger"
       :active="favorite"
-      :ariaLabel="t.favorite"
+      :label="t.favorite"
       @click="favorite = !favorite"
     >
       <svg
@@ -36,7 +36,7 @@ const muted = ref(true);
       variant="outline"
       tone="neutral"
       :active="muted"
-      :ariaLabel="t.mute"
+      :label="t.mute"
       @click="muted = !muted"
     >
       <svg

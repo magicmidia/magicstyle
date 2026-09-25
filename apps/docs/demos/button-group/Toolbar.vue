@@ -8,7 +8,7 @@ const t = useDemoStrings(strings);
 <template>
   <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
     <MsButtonGroup :aria-label="t.history">
-      <MsIconButton variant="outline" tone="neutral" :ariaLabel="t.undo">
+      <MsIconButton variant="outline" tone="neutral" :label="t.undo">
         <svg
           width="16"
           height="16"
@@ -22,7 +22,7 @@ const t = useDemoStrings(strings);
           <path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11" />
         </svg>
       </MsIconButton>
-      <MsIconButton variant="outline" tone="neutral" :ariaLabel="t.redo">
+      <MsIconButton variant="outline" tone="neutral" :label="t.redo">
         <svg
           width="16"
           height="16"

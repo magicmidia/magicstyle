@@ -41,7 +41,7 @@ const importLine = computed(
     </div>
     <div class="language-ts vp-adaptive-theme docs-component-header__import">
       <span class="lang">ts</span>
-      <pre><code>{{ importLine }}</code></pre>
+      <pre tabindex="0"><code>{{ importLine }}</code></pre>
     </div>
   </div>
 </template>

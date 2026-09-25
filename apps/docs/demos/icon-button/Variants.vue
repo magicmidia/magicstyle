@@ -7,7 +7,7 @@ const t = useDemoStrings(strings);
 
 <template>
   <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
-    <MsIconButton :ariaLabel="t.settings">
+    <MsIconButton :label="t.settings">
       <svg
         width="16"
         height="16"
@@ -23,7 +23,7 @@ const t = useDemoStrings(strings);
         />
       </svg>
     </MsIconButton>
-    <MsIconButton variant="soft" :ariaLabel="t.settings">
+    <MsIconButton variant="soft" :label="t.settings">
       <svg
         width="16"
         height="16"
@@ -39,7 +39,7 @@ const t = useDemoStrings(strings);
         />
       </svg>
     </MsIconButton>
-    <MsIconButton variant="outline" tone="neutral" :ariaLabel="t.settings">
+    <MsIconButton variant="outline" tone="neutral" :label="t.settings">
       <svg
         width="16"
         height="16"
@@ -55,7 +55,7 @@ const t = useDemoStrings(strings);
         />
       </svg>
     </MsIconButton>
-    <MsIconButton variant="ghost" tone="neutral" :ariaLabel="t.settings">
+    <MsIconButton variant="ghost" tone="neutral" :label="t.settings">
       <svg
         width="16"
         height="16"

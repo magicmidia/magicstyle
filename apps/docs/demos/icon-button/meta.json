@@ -1,8 +1,8 @@
 {
   "intro": {
-    "pt-BR": "Use o botão de ícone em barras de ferramentas e ações compactas cujo ícone é amplamente reconhecido. A prop `ariaLabel` é obrigatória, porque o botão não tem texto visível.",
-    "en-US": "Use the icon button in toolbars and compact actions whose icon is widely recognized. The `ariaLabel` prop is required because the button has no visible text.",
-    "es-ES": "Usa el botón de icono en barras de herramientas y acciones compactas cuyo icono es ampliamente reconocido. La prop `ariaLabel` es obligatoria porque el botón no tiene texto visible."
+    "pt-BR": "Use o botão de ícone em barras de ferramentas e ações compactas cujo ícone é amplamente reconhecido. Dê um nome acessível com a prop `label` (ou `aria-label`), porque o botão não tem texto visível.",
+    "en-US": "Use the icon button in toolbars and compact actions whose icon is widely recognized. Give it an accessible name with the `label` prop (or `aria-label`), because the button has no visible text.",
+    "es-ES": "Usa el botón de icono en barras de herramientas y acciones compactas cuyo icono es ampliamente reconocido. Dale un nombre accesible con la prop `label` (o `aria-label`), porque el botón no tiene texto visible."
   },
   "demos": [
     {
@@ -72,8 +72,8 @@
     }
   ],
   "a11y": {
-    "pt-BR": "- Renderiza um `<button>` nativo: `Tab` foca e `Enter`/`Espaço` ativam.\n- A prop obrigatória `ariaLabel` vira o atributo `aria-label`, o nome acessível do botão; marque o ícone com `aria-hidden=\"true\"`.\n- Com `active` definido, o botão expõe `aria-pressed=\"true\"` ou `\"false\"`.\n- `loading` e `disabled` aplicam `disabled` e `aria-disabled=\"true\"`; `loading` também define `aria-busy=\"true\"`.",
-    "en-US": "- Renders a native `<button>`: `Tab` focuses and `Enter`/`Space` activate.\n- The required `ariaLabel` prop becomes the `aria-label` attribute, the button's accessible name; mark the icon with `aria-hidden=\"true\"`.\n- When `active` is set, the button exposes `aria-pressed=\"true\"` or `\"false\"`.\n- `loading` and `disabled` set `disabled` and `aria-disabled=\"true\"`; `loading` also sets `aria-busy=\"true\"`.",
-    "es-ES": "- Renderiza un `<button>` nativo: `Tab` enfoca y `Enter`/`Espacio` activan.\n- La prop obligatoria `ariaLabel` se convierte en el atributo `aria-label`, el nombre accesible del botón; marca el icono con `aria-hidden=\"true\"`.\n- Con `active` definido, el botón expone `aria-pressed=\"true\"` o `\"false\"`.\n- `loading` y `disabled` aplican `disabled` y `aria-disabled=\"true\"`; `loading` también define `aria-busy=\"true\"`."
+    "pt-BR": "- Renderiza um `<button>` nativo: `Tab` foca e `Enter`/`Espaço` ativam.\n- A prop `label` vira o atributo `aria-label`, o nome acessível do botão; marque o ícone com `aria-hidden=\"true\"`.\n- Com `active` definido, o botão expõe `aria-pressed=\"true\"` ou `\"false\"`.\n- `loading` e `disabled` aplicam `disabled` e `aria-disabled=\"true\"`; `loading` também define `aria-busy=\"true\"`.",
+    "en-US": "- Renders a native `<button>`: `Tab` focuses and `Enter`/`Space` activate.\n- The `label` prop becomes the `aria-label` attribute, the button's accessible name; mark the icon with `aria-hidden=\"true\"`.\n- When `active` is set, the button exposes `aria-pressed=\"true\"` or `\"false\"`.\n- `loading` and `disabled` set `disabled` and `aria-disabled=\"true\"`; `loading` also sets `aria-busy=\"true\"`.",
+    "es-ES": "- Renderiza un `<button>` nativo: `Tab` enfoca y `Enter`/`Espacio` activan.\n- La prop `label` se convierte en el atributo `aria-label`, el nombre accesible del botón; marca el icono con `aria-hidden=\"true\"`.\n- Con `active` definido, el botón expone `aria-pressed=\"true\"` o `\"false\"`.\n- `loading` y `disabled` aplican `disabled` y `aria-disabled=\"true\"`; `loading` también define `aria-busy=\"true\"`."
   }
 }
