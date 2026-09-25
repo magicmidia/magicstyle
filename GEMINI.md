@@ -24,7 +24,7 @@ Este arquivo define as diretrizes normativas para o assistente de IA (Antigravit
 ## 3. Contratos de Arquitetura e Monorepo
 
 - **Topologia:**
-  - `apps/` — Aplicações internas (ex: `apps/preview/` para fixtures e validação visual).
+  - `apps/` — Aplicações internas (ex: `apps/docs/`, o site VitePress com demos e validação visual).
   - `packages/` — Pacotes públicos (`vue`, `css`, futuros `tailwind`, `cli`, `schema`).
   - `packages/internal/` — Pacotes internos de fundação (`tokens`, `themes`, futuros `primitives`, `core`).
   - `scripts/` — Scripts de verificação de arquitetura (`scripts/check-architecture.mjs`).

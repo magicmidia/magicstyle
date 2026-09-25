@@ -34,7 +34,7 @@ body:
       label: Reproduction Steps
       description: Steps or minimal reproduction repository to reproduce the behavior.
       placeholder: |
-        1. Open component in preview or studio
+        1. Open the component page on the docs site (or `pnpm docs:dev`)
         2. Click on '...'
         3. See error
     validations:

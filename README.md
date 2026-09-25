@@ -6,7 +6,7 @@
 
 [![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?style=flat-square)](https://github.com/magicmidia/magicstyle)
 [![Architecture Baseline](https://img.shields.io/badge/baseline-1.2%20normativa-purple.svg?style=flat-square)](docs/baseline/Magic-Style-Architecture-Baseline-1.2/)
-[![Components](https://img.shields.io/badge/components-95%20prontos-emerald.svg?style=flat-square)](apps/preview/components.html)
+[![Components](https://img.shields.io/badge/components-95%20prontos-emerald.svg?style=flat-square)](apps/docs/)
 [![Themes](https://img.shields.io/badge/themes-10%20autênticos-indigo.svg?style=flat-square)](#-10-temas-autênticos-além-da-cor)
 [![Design Tokens](https://img.shields.io/badge/tokens-199%20DTCG-cyan.svg?style=flat-square)](packages/internal/tokens/)
 [![Accessibility](https://img.shields.io/badge/a11y-WCAG%202.2%20AA-green.svg?style=flat-square)](docs/baseline/Magic-Style-Architecture-Baseline-1.2/11-Accessibility-Specification.md)
@@ -16,7 +16,7 @@
 
 <br />
 
-[**Landing Page & Component Studio**](#️-comandos-de-desenvolvimento) (local: `pnpm preview`) • [**Changelog & Releases**](CHANGELOG.md) • [**Temas & Personalização**](docs/theming.md) • [**Idiomas (i18n)**](docs/i18n.md) • [**Architecture Baseline 1.2**](docs/baseline/Magic-Style-Architecture-Baseline-1.2/)
+[**Site e documentação (pt-BR, en, es)**](apps/docs/) (local: `pnpm docs:dev`) • [**Changelog & Releases**](CHANGELOG.md) • [**Temas & Personalização**](docs/theming.md) • [**Idiomas (i18n)**](docs/i18n.md) • [**Architecture Baseline 1.2**](docs/baseline/Magic-Style-Architecture-Baseline-1.2/)
 
 </div>
 
@@ -224,7 +224,7 @@ O repositório é organizado em camadas estritas e unidirecionais para impedir a
 
 ```
 apps/
-  └── preview/                  # Studio interativo, documentação e Landing Page
+  └── docs/                     # Site VitePress: landing, guias e 95 componentes em pt-BR, en e es
 packages/
   ├── css/                      # @magic-style/css — Camada de estilo framework-free
   ├── vue/                      # @magic-style/vue — Componentes Vue 3 SFC
@@ -251,7 +251,9 @@ scripts/
 | :------------------ | :----------------------------------------------------------------------------------------------- |
 | `pnpm install`      | Instalação com frozen lockfile e engine-strict (Node ≥24).                                       |
 | `pnpm validate`     | **Health gate completo:** Prettier, ESLint, Stylelint, arquitetura, docs, types, testes e build. |
-| `pnpm dev:preview`  | Inicia o servidor local de Landing Page e Studio em `http://localhost:4173`.                     |
+| `pnpm docs:dev`     | Site de documentação (VitePress) com recarga ao vivo.                                            |
+| `pnpm docs:build`   | Build estático do site (landing, guias e páginas de componentes nos 3 idiomas).                  |
+| `pnpm docs:e2e`     | Smoke de todas as rotas e auditoria axe sobre o build (Playwright).                              |
 | `pnpm test`         | Executa todos os testes unitários via Vitest nos 4 pacotes.                                      |
 | `pnpm typecheck`    | Checagem de tipagem estrita via TypeScript em todo o monorepo.                                   |
 | `pnpm lint`         | ESLint 10 (TypeScript, JavaScript e SFCs `.vue`).                                                |

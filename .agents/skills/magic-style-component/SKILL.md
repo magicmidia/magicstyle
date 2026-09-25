@@ -81,14 +81,16 @@ Antes da implementação, defina mentalmente ou no plano:
 
 ---
 
-## 5. Preview & Validação Visual (`apps/preview`)
+## 5. Documentação e Validação Visual (`apps/docs`)
 
-1. Adicione ou atualize uma fixture em `apps/preview/` demonstrando o componente em suas diversas variantes, tamanhos e temas (light, dark, high contrast).
-2. Para testar no navegador:
+1. Registre o componente em `apps/docs/catalog/components.ts` (slug, categoria, título e descrição nos 3 idiomas).
+2. Crie as demos em `apps/docs/demos/<slug>/`: um SFC por exemplo, `strings.json` (pt-BR, en-US, es-ES) e `meta.json` (títulos, descrições e notas de acessibilidade). Siga o modelo de `demos/button/`.
+3. Valide e visualize:
    ```powershell
-   pnpm.cmd dev:preview
+   pnpm.cmd --filter magic-style-docs check:demos
+   pnpm.cmd docs:dev
    ```
-   Acesse `http://localhost:4173/apps/preview/index.html`.
+   Use o seletor **Personalizar** para conferir temas, densidade, raio e contraste.
 
 ---
 

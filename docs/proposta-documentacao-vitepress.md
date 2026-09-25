@@ -1,10 +1,10 @@
 # Proposta: documentação em VitePress
 
-**Status:** proposta, não implementada. Precisa de decisão antes de começar.
+**Status:** implementada. O site está em `apps/docs` (VitePress 2, pt-BR/en/es) e substituiu o preview antigo. Este documento fica como registro da decisão.
 
 ## Problema
 
-O preview atual (`apps/preview`) tem cerca de 26 mil linhas de JavaScript escrito à mão em 5 páginas HTML. Os templates são compilados no navegador, e a documentação de API é duplicada manualmente (`studio-api-docs.js`). Isso traz três problemas:
+O preview antigo tem cerca de 26 mil linhas de JavaScript escrito à mão em 5 páginas HTML. Os templates são compilados no navegador, e a documentação de API é duplicada manualmente (`studio-api-docs.js`). Isso traz três problemas:
 
 - **A API documentada diverge do código.** Props, eventos e slots são reescritos à mão, e nada acusa quando mudam.
 - **Não há busca, navegação por URL estável nem SEO.** O roteamento é por hash dentro de uma única página.
@@ -27,7 +27,7 @@ Criar `apps/docs` com **VitePress** (Vue 3 + Vite, o mesmo stack da biblioteca) 
 | 1     | Esqueleto `apps/docs`, tema com `MsProvider`, geração de API com `vue-component-meta` | Build verde; 3 componentes piloto (Button, Select, Dialog) |
 | 2     | Fundamentos: tokens, temas (`docs/theming.md`), i18n (`docs/i18n.md`), RTL            | Guias existentes renderizados no site                      |
 | 3     | Componentes restantes, em lotes por categoria (formulários, overlays, layout, dados)  | Nenhum componente só no preview                            |
-| 4     | Remoção de `apps/preview`                                                             | `pnpm validate` inclui o build das docs                    |
+| 4     | Remoção do preview antigo                                                             | `pnpm validate` inclui o build das docs                    |
 
 ## Custos e riscos
 

@@ -15,9 +15,9 @@ Abra uma advisory privada via GitHub Security Advisories deste repositório. Nã
 - Pacotes publicáveis não dependem em runtime de pacotes privados (`scripts/check-architecture.mjs`)
 - Registry: integrity SHA-256 desde Preview; Official signing até v1; **no remote execution**
 
-## Preview local
+## Site de documentação
 
-`pnpm preview` escuta apenas em `127.0.0.1`, valida o header `Host` e serve somente `apps/preview` e `packages/{css,vue}/{dist,src}` (sem dotfiles). Para expor na rede, defina `HOST=0.0.0.0` e liste os hosts/IPs aceitos em `PREVIEW_ALLOWED_HOSTS`.
+`apps/docs` é um site estático (VitePress). `pnpm docs:dev` e `pnpm docs:preview` escutam apenas em `localhost` por padrão; use `--host` só em redes confiáveis. As demos não fazem requisições a terceiros, exceto o mapa embutido no exemplo de `MsAspectRatio`.
 
 ## Conteúdo não confiável
 

@@ -32,7 +32,10 @@
     "node": ">=24"
   },
   "scripts": {
-    "preview": "node apps/preview/serve.mjs",
+    "docs:dev": "pnpm --filter magic-style-docs dev",
+    "docs:build": "turbo run build --filter=magic-style-docs",
+    "docs:preview": "pnpm --filter magic-style-docs preview",
+    "docs:e2e": "pnpm --filter magic-style-docs e2e",
     "validate": "prettier --check . && eslint . && stylelint \"packages/**/src/**/*.css\" \"apps/**/*.css\" && node scripts/check-architecture.mjs && node scripts/stats.mjs --check && turbo run typecheck test build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -41,7 +44,6 @@
     "test": "turbo run test",
     "build": "turbo run build",
     "architecture": "node scripts/check-architecture.mjs",
-    "dev:preview": "node apps/preview/serve.mjs",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "lint:css": "stylelint \"packages/**/src/**/*.css\" \"apps/**/*.css\""

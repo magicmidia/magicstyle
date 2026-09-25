@@ -28,11 +28,14 @@ This repository is governed by the **Architecture Baseline 1.2** located in `doc
    pnpm install --frozen-lockfile
    ```
 
-3. **Start the local preview server & documentation studio:**
+3. **Start the documentation site (VitePress, pt-BR/en/es):**
    ```bash
-   pnpm preview
-   # Opens at http://localhost:4173 (Landing, Studio, Docs, and Changelog)
+   pnpm docs:dev
    ```
+   Component pages are generated from `apps/docs/catalog/components.ts`. Examples live in
+   `apps/docs/demos/<slug>/` (one SFC per example, `strings.json` for the 3 languages and
+   `meta.json` for titles and accessibility notes); `pnpm --filter magic-style-docs check:demos`
+   validates them. API tables are generated from the component types and JSDoc.
 
 ---
 
@@ -41,7 +44,7 @@ This repository is governed by the **Architecture Baseline 1.2** located in `doc
 ```
 magic-style/
 ├── apps/
-│   └── preview/           # Interactive documentation, component studio & changelog
+│   └── docs/              # VitePress site: landing, guides, component pages (pt-BR, en, es)
 ├── packages/
 │   ├── vue/               # @magic-style/vue (95 accessible Vue 3 components)
 │   ├── css/               # @magic-style/css (Modular CSS, reset, utility tokens)

@@ -64,22 +64,6 @@ export default tseslint.config(
     },
   },
   {
-    files: ["apps/preview/**/*.js"],
-    languageOptions: {
-      globals: {
-        document: "readonly",
-        window: "readonly",
-        localStorage: "readonly",
-        Event: "readonly",
-        Node: "readonly",
-        setTimeout: "readonly",
-        clearTimeout: "readonly",
-        EventSource: "readonly",
-        navigator: "readonly",
-      },
-    },
-  },
-  {
     // VitePress theme files (Layout, Demo) and demo SFCs are named by convention.
     files: ["apps/docs/**/*.{vue,ts}"],
     rules: { "vue/multi-word-component-names": "off" },
