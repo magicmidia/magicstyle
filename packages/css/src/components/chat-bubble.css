@@ -82,6 +82,14 @@
   --ms-tone: var(--ms-color-primary);
   --ms-tone-content: var(--ms-color-primary-content);
 }
+.ms-chat-bubble--tone-secondary {
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
+}
+.ms-chat-bubble--tone-accent {
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
+}
 .ms-chat-bubble--tone-neutral {
   --ms-tone: var(--ms-color-surface-inverse);
   --ms-tone-content: var(--ms-color-text-inverse);
@@ -104,16 +112,26 @@
   --ms-tone-content: var(--ms-color-danger-content);
 }
 
+/* Soft: tinted surface with readable ink (the tone's subtle fill and text colors). */
 .ms-chat-bubble--variant-soft:is(
   .ms-chat-bubble--tone-primary,
-  .ms-chat-bubble--tone-neutral,
+  .ms-chat-bubble--tone-secondary,
+  .ms-chat-bubble--tone-accent,
   .ms-chat-bubble--tone-info,
   .ms-chat-bubble--tone-success,
   .ms-chat-bubble--tone-warning,
   .ms-chat-bubble--tone-danger
 ) {
-  background-color: var(--ms-tone-text);
-  color: var(--ms-tone-subtle);
+  background-color: var(--ms-tone-subtle);
+  color: var(--ms-tone-text);
+  border: 1px solid var(--ms-tone-border);
+}
+
+.ms-chat-bubble--variant-soft.ms-chat-bubble--tone-neutral,
+.ms-chat-bubble--variant-soft:not([class*="tone-"]) {
+  background-color: var(--ms-color-surface-sunken);
+  color: var(--ms-color-text-primary);
+  border: 1px solid var(--ms-color-border-subtle);
 }
 
 .ms-chat-bubble--variant-solid:is(
@@ -128,10 +146,67 @@
   color: var(--ms-tone-content);
 }
 
+.ms-chat-bubble--variant-solid.ms-chat-bubble--tone-accent {
+  background-color: var(--ms-color-interactive-accent);
+  color: var(--ms-color-text-on-accent);
+}
+
+.ms-chat-bubble--variant-solid.ms-chat-bubble--tone-success {
+  background-color: var(--ms-color-feedback-success-solid);
+  color: var(--ms-color-text-on-accent);
+}
+
+.ms-chat-bubble--variant-solid.ms-chat-bubble--tone-danger {
+  background-color: var(--ms-color-feedback-danger-solid);
+  color: var(--ms-color-text-on-accent);
+}
+
 .ms-chat-bubble--variant-outline {
   border: 1px solid var(--ms-color-border-subtle);
   background-color: var(--ms-color-surface-raised);
   color: var(--ms-color-text-primary);
+}
+
+/* Typing Indicator Balloon */
+.ms-chat-bubble--typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 16px;
+}
+
+.ms-chat-bubble--typing span {
+  display: inline-block;
+  inline-size: 6px;
+  block-size: 6px;
+  background-color: currentColor;
+  border-radius: 50%;
+  animation: ms-chat-typing calc(1.4s * var(--ms-motion-scale, 1)) infinite ease-in-out;
+}
+
+.ms-chat-bubble--typing span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.ms-chat-bubble--typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.ms-chat-bubble--typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes ms-chat-typing {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
 }
 
 .ms-chat-bubble-footer {

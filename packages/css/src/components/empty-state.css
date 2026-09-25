@@ -75,6 +75,18 @@
   --ms-tone: var(--ms-color-primary);
   --ms-tone-content: var(--ms-color-primary-content);
 }
+.ms-empty-state__icon--secondary {
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
+}
+.ms-empty-state__icon--accent {
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
+}
+.ms-empty-state__icon--info {
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
+}
 .ms-empty-state__icon--success {
   --ms-tone: var(--ms-color-success);
   --ms-tone-content: var(--ms-color-success-content);
@@ -90,12 +102,24 @@
 
 .ms-empty-state__icon:is(
   .ms-empty-state__icon--primary,
+  .ms-empty-state__icon--secondary,
+  .ms-empty-state__icon--accent,
+  .ms-empty-state__icon--info,
   .ms-empty-state__icon--success,
   .ms-empty-state__icon--warning,
   .ms-empty-state__icon--danger
 ) {
   background-color: var(--ms-tone-subtle);
   color: var(--ms-tone-text);
+}
+
+.ms-empty-state__icon--neutral {
+  background-color: var(--ms-color-surface-sunken);
+  color: var(--ms-color-text-secondary);
+}
+
+.ms-empty-state__icon--ring {
+  box-shadow: 0 0 0 6px color-mix(in oklch, currentColor 12%, transparent);
 }
 
 .ms-empty-state--sm .ms-empty-state__icon {

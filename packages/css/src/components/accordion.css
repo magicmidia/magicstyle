@@ -38,6 +38,14 @@
   overflow: hidden;
   background-color: var(--ms-color-surface-raised);
   box-shadow: var(--ms-elevation-card);
+  transition:
+    border-color calc(200ms * var(--ms-motion-scale, 1)) ease,
+    box-shadow calc(200ms * var(--ms-motion-scale, 1)) ease;
+}
+
+.ms-accordion--variant-separated .ms-accordion-item.ms-accordion-item--expanded {
+  border-color: color-mix(in oklab, var(--ms-color-primary) 35%, var(--ms-color-border-default));
+  box-shadow: var(--ms-elevation-md);
 }
 
 .ms-accordion--variant-flush .ms-accordion-item {

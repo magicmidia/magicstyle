@@ -41,7 +41,33 @@
 }
 
 .ms-rating__item--filled {
-  color: var(--ms-color-warning);
+  color: var(--ms-tone, var(--ms-color-warning));
+}
+
+/* Tones: the filled star uses the tone's fill color. */
+.ms-rating--tone-primary {
+  --ms-tone: var(--ms-color-primary);
+}
+.ms-rating--tone-secondary {
+  --ms-tone: var(--ms-color-secondary);
+}
+.ms-rating--tone-accent {
+  --ms-tone: var(--ms-color-accent);
+}
+.ms-rating--tone-success {
+  --ms-tone: var(--ms-color-success);
+}
+.ms-rating--tone-warning {
+  --ms-tone: var(--ms-color-warning);
+}
+.ms-rating--tone-danger {
+  --ms-tone: var(--ms-color-danger);
+}
+.ms-rating--tone-info {
+  --ms-tone: var(--ms-color-info);
+}
+.ms-rating--tone-neutral {
+  --ms-tone: var(--ms-color-text-primary);
 }
 
 .ms-rating__item:focus-visible {

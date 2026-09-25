@@ -134,6 +134,7 @@
   border-color: var(--ms-color-primary);
   background-color: var(--ms-color-primary);
   color: var(--ms-color-primary-content);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--ms-color-primary) 20%, transparent);
 }
 
 .ms-step--complete .ms-step__indicator {
@@ -146,6 +147,11 @@
   border-color: var(--ms-color-danger);
   background-color: var(--ms-color-danger-subtle);
   color: var(--ms-color-danger);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--ms-color-danger) 18%, transparent);
+}
+
+.ms-stepper--clickable .ms-step:not(.ms-step--disabled):hover .ms-step__indicator {
+  border-color: var(--ms-color-primary);
 }
 
 /* Step Text Group */

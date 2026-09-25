@@ -1,6 +1,15 @@
+import type { MsTone } from "../MsButton/types.ts";
+
 export type MsRatingSize = "sm" | "md" | "lg";
+export type MsRatingTone = MsTone;
 
 export interface MsRatingProps {
+  /**
+   * Semantic tone.
+   * @default 'warning'
+   */
+  tone?: MsRatingTone;
+
   /**
    * Current rating value.
    * @default 0
