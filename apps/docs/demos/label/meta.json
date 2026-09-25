@@ -1,0 +1,62 @@
+{
+  "intro": {
+    "pt-BR": "Use `MsLabel` quando montar um layout de formulário próprio. Para o caso comum, `MsField` já renderiza o rótulo e liga os ids para você.",
+    "en-US": "Use `MsLabel` when you build your own form layout. For the common case, `MsField` already renders the label and wires the ids for you.",
+    "es-ES": "Usa `MsLabel` cuando armes tu propio diseño de formulario. Para el caso común, `MsField` ya renderiza la etiqueta y conecta los ids por ti."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`for` aponta para o `id` do controle, então clicar no rótulo foca o campo.",
+        "en-US": "`for` points to the control `id`, so clicking the label focuses the field.",
+        "es-ES": "`for` apunta al `id` del control, así que hacer clic en la etiqueta enfoca el campo."
+      }
+    },
+    {
+      "file": "RequiredOptional",
+      "title": {
+        "pt-BR": "Obrigatório e opcional",
+        "en-US": "Required and optional",
+        "es-ES": "Obligatorio y opcional"
+      },
+      "description": {
+        "pt-BR": "`required` mostra um asterisco; `optional` mostra uma dica que pode ser trocada com `optional-text`.",
+        "en-US": "`required` shows an asterisk; `optional` shows a hint you can change with `optional-text`.",
+        "es-ES": "`required` muestra un asterisco; `optional` muestra una pista que puedes cambiar con `optional-text`."
+      }
+    },
+    {
+      "file": "Tooltip",
+      "title": {
+        "pt-BR": "Ajuda contextual",
+        "en-US": "Contextual help",
+        "es-ES": "Ayuda contextual"
+      },
+      "description": {
+        "pt-BR": "`tooltip` adiciona um ícone de ajuda com a explicação no atributo `title`.",
+        "en-US": "`tooltip` adds a help icon with the explanation in its `title` attribute.",
+        "es-ES": "`tooltip` añade un icono de ayuda con la explicación en su atributo `title`."
+      }
+    },
+    {
+      "file": "SizesDisabled",
+      "title": {
+        "pt-BR": "Tamanhos e desabilitado",
+        "en-US": "Sizes and disabled",
+        "es-ES": "Tamaños y deshabilitado"
+      },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md` e `lg`; `disabled` acompanha um controle desabilitado.",
+        "en-US": "`size` accepts `sm`, `md` and `lg`; `disabled` matches a disabled control.",
+        "es-ES": "`size` acepta `sm`, `md` y `lg`; `disabled` acompaña a un control deshabilitado."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza um `label` nativo; use `for` com o `id` do controle para associar os dois.\n- O asterisco de `required` tem `aria-hidden=\"true\"`: marque também o controle com `required`.\n- O ícone de `tooltip` recebe foco com `Tab`, mas o texto fica só no atributo `title`, que não é exibido ao focar pelo teclado. Repita a informação importante em um texto de ajuda visível.",
+    "en-US": "- Renders a native `label`; use `for` with the control `id` to associate them.\n- The `required` asterisk has `aria-hidden=\"true\"`: also mark the control itself as `required`.\n- The `tooltip` icon is reachable with `Tab`, but its text lives only in the `title` attribute, which is not shown on keyboard focus. Repeat important information in visible help text.",
+    "es-ES": "- Renderiza un `label` nativo; usa `for` con el `id` del control para asociarlos.\n- El asterisco de `required` tiene `aria-hidden=\"true\"`: marca también el control con `required`.\n- El icono de `tooltip` recibe el foco con `Tab`, pero su texto solo está en el atributo `title`, que no se muestra al enfocar con el teclado. Repite la información importante en un texto de ayuda visible."
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "intro": {
+    "pt-BR": "Mostra um conjunto de slides um de cada vez, com setas e indicadores. Informe `total-slides` com a quantidade de `MsCarouselSlide` renderizados.",
+    "en-US": "Shows a set of slides one at a time, with arrows and indicators. Set `total-slides` to the number of rendered `MsCarouselSlide` elements.",
+    "es-ES": "Muestra un conjunto de diapositivas de a una, con flechas e indicadores. Indica en `total-slides` la cantidad de `MsCarouselSlide` renderizados."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "O `v-model` guarda o índice do slide ativo; setas e indicadores aparecem quando há mais de um slide.",
+        "en-US": "`v-model` holds the active slide index; arrows and indicators appear when there is more than one slide.",
+        "es-ES": "`v-model` guarda el índice de la diapositiva activa; las flechas y los indicadores aparecen cuando hay más de una."
+      }
+    },
+    {
+      "file": "Controlled",
+      "title": {
+        "pt-BR": "Controles próprios",
+        "en-US": "Custom controls",
+        "es-ES": "Controles propios"
+      },
+      "description": {
+        "pt-BR": "Esconda os controles com `show-arrows` e `show-indicators` e navegue pelo `v-model`; `:loop=\"false\"` para no primeiro e no último slide.",
+        "en-US": "Hide the built-in controls with `show-arrows` and `show-indicators` and navigate through `v-model`; `:loop=\"false\"` stops at the first and last slide.",
+        "es-ES": "Oculta los controles con `show-arrows` y `show-indicators` y navega con `v-model`; `:loop=\"false\"` se detiene en la primera y la última diapositiva."
+      }
+    },
+    {
+      "file": "Autoplay",
+      "title": {
+        "pt-BR": "Reprodução automática",
+        "en-US": "Autoplay",
+        "es-ES": "Reproducción automática"
+      },
+      "description": {
+        "pt-BR": "`autoplay` troca de slide a cada `interval` ms, pausa com o cursor ou o foco e exibe um botão de pausa; não inicia se o usuário preferir movimento reduzido.",
+        "en-US": "`autoplay` advances every `interval` ms, pauses on hover or focus and shows a pause button; it doesn't start when the user prefers reduced motion.",
+        "es-ES": "`autoplay` avanza cada `interval` ms, se pausa con el cursor o el foco y muestra un botón de pausa; no se inicia si el usuario prefiere movimiento reducido."
+      }
+    },
+    {
+      "file": "Testimonials",
+      "title": { "pt-BR": "Depoimentos", "en-US": "Testimonials", "es-ES": "Testimonios" },
+      "description": {
+        "pt-BR": "Somente com indicadores, para um carrossel discreto de depoimentos.",
+        "en-US": "Indicators only, for a subtle testimonial carousel.",
+        "es-ES": "Solo con indicadores, para un carrusel discreto de testimonios."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- A raiz é uma `region` com `aria-roledescription` \"carrossel\" e cada slide é um `group` com `aria-roledescription` \"slide\" e rótulo \"N de M\".\n- Slides fora da tela ficam `inert`: não recebem foco nem são lidos.\n- Setas, indicadores e o botão de pausa são `<button>` com `aria-label`; o indicador ativo usa `aria-current`.\n- `Tab`: percorre os controles; `Enter` / `Espaço`: acionam o botão focado. Não há navegação por setas do teclado.\n- A troca de slide é anunciada (`aria-live=\"polite\"`) apenas quando o usuário a provoca; a rotação automática pausa com foco ou cursor.",
+    "en-US": "- The root is a `region` with the `aria-roledescription` \"carousel\" and each slide is a `group` with the `aria-roledescription` \"slide\" and the label \"N of M\".\n- Off-screen slides are `inert`: they can't be focused or read.\n- Arrows, indicators and the pause button are `<button>` elements with an `aria-label`; the active indicator uses `aria-current`.\n- `Tab`: moves through the controls; `Enter` / `Space`: activate the focused button. Arrow-key navigation is not provided.\n- Slide changes are announced (`aria-live=\"polite\"`) only when the user triggers them; autoplay pauses on focus or hover.",
+    "es-ES": "- La raíz es una `region` con `aria-roledescription` \"carrusel\" y cada diapositiva es un `group` con `aria-roledescription` \"diapositiva\" y la etiqueta \"N de M\".\n- Las diapositivas fuera de pantalla son `inert`: no reciben foco ni se leen.\n- Las flechas, los indicadores y el botón de pausa son `<button>` con `aria-label`; el indicador activo usa `aria-current`.\n- `Tab`: recorre los controles; `Enter` / `Espacio`: activan el botón enfocado. No hay navegación con las flechas del teclado.\n- El cambio de diapositiva se anuncia (`aria-live=\"polite\"`) solo cuando lo provoca el usuario; la rotación automática se pausa con el foco o el cursor."
+  }
+}

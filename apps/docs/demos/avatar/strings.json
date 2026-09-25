@@ -1,0 +1,32 @@
+{
+  "pt-BR": {
+    "guest": "?",
+    "online": "Online",
+    "busy": "Ocupado",
+    "away": "Ausente",
+    "offline": "Offline",
+    "projectTeam": "Equipe do projeto",
+    "reviewers": "Revisores",
+    "attendees": "Participantes da reunião"
+  },
+  "en-US": {
+    "guest": "?",
+    "online": "Online",
+    "busy": "Busy",
+    "away": "Away",
+    "offline": "Offline",
+    "projectTeam": "Project team",
+    "reviewers": "Reviewers",
+    "attendees": "Meeting attendees"
+  },
+  "es-ES": {
+    "guest": "?",
+    "online": "En línea",
+    "busy": "Ocupado",
+    "away": "Ausente",
+    "offline": "Desconectado",
+    "projectTeam": "Equipo del proyecto",
+    "reviewers": "Revisores",
+    "attendees": "Asistentes a la reunión"
+  }
+}

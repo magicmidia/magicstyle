@@ -1,0 +1,53 @@
+{
+  "intro": {
+    "pt-BR": "Exibe dados hierárquicos que podem ser expandidos e selecionados, como arquivos, pastas e categorias.",
+    "en-US": "Displays hierarchical data that can be expanded and selected, such as files, folders and categories.",
+    "es-ES": "Muestra datos jerárquicos que se pueden expandir y seleccionar, como archivos, carpetas y categorías."
+  },
+  "demos": [
+    {
+      "file": "FileExplorer",
+      "title": {
+        "pt-BR": "Explorador de arquivos",
+        "en-US": "File explorer",
+        "es-ES": "Explorador de archivos"
+      },
+      "description": {
+        "pt-BR": "`items` recebe a hierarquia; `v-model:selected-key` e `v-model:expanded-keys` controlam seleção e expansão. Dê um nome à árvore com `aria-label`.",
+        "en-US": "`items` takes the hierarchy; `v-model:selected-key` and `v-model:expanded-keys` control selection and expansion. Name the tree with `aria-label`.",
+        "es-ES": "`items` recibe la jerarquía; `v-model:selected-key` y `v-model:expanded-keys` controlan la selección y la expansión. Nombra el árbol con `aria-label`."
+      }
+    },
+    {
+      "file": "CustomIcons",
+      "title": {
+        "pt-BR": "Ícones e itens desabilitados",
+        "en-US": "Icons and disabled items",
+        "es-ES": "Iconos y elementos deshabilitados"
+      },
+      "description": {
+        "pt-BR": "O campo `icon` de cada nó substitui o ícone de pasta/arquivo; `disabled: true` impede selecionar o nó.",
+        "en-US": "Each node's `icon` field replaces the folder/file icon; `disabled: true` keeps the node from being selected.",
+        "es-ES": "El campo `icon` de cada nodo reemplaza el icono de carpeta/archivo; `disabled: true` impide seleccionar el nodo."
+      }
+    },
+    {
+      "file": "CustomLabel",
+      "title": {
+        "pt-BR": "Rótulo personalizado",
+        "en-US": "Custom label",
+        "es-ES": "Etiqueta personalizada"
+      },
+      "description": {
+        "pt-BR": "O slot padrão recebe `{ node }` e permite compor o rótulo, por exemplo com contadores.",
+        "en-US": "The default slot receives `{ node }` and lets you compose the label, for example with counters.",
+        "es-ES": "El slot por defecto recibe `{ node }` y permite componer la etiqueta, por ejemplo con contadores."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "Segue o padrão de árvore do WAI-ARIA APG: `role=\"tree\"`, `treeitem` com `aria-expanded`, `aria-selected` e `aria-disabled`, e `group` para os filhos. Apenas um item fica na ordem de `Tab` (tabindex móvel).\n\n- `↓` / `↑`: próximo / anterior item visível.\n- `→`: expande o nó fechado; se já estiver aberto, vai para o primeiro filho.\n- `←`: recolhe o nó aberto; caso contrário, vai para o pai.\n- `Home` / `End`: primeiro / último item visível.\n- `Enter` / `Espaço`: seleciona o item focado.",
+    "en-US": "Follows the WAI-ARIA APG tree view pattern: `role=\"tree\"`, `treeitem` with `aria-expanded`, `aria-selected` and `aria-disabled`, and `group` for children. Only one item is in the `Tab` order (roving tabindex).\n\n- `↓` / `↑`: next / previous visible item.\n- `→`: expands a closed node; if it's already open, moves to its first child.\n- `←`: collapses an open node; otherwise, moves to its parent.\n- `Home` / `End`: first / last visible item.\n- `Enter` / `Space`: selects the focused item.",
+    "es-ES": "Sigue el patrón de árbol del WAI-ARIA APG: `role=\"tree\"`, `treeitem` con `aria-expanded`, `aria-selected` y `aria-disabled`, y `group` para los hijos. Solo un elemento está en el orden de `Tab` (tabindex móvil).\n\n- `↓` / `↑`: elemento visible siguiente / anterior.\n- `→`: expande un nodo cerrado; si ya está abierto, va a su primer hijo.\n- `←`: pliega un nodo abierto; si no, va a su padre.\n- `Home` / `End`: primer / último elemento visible.\n- `Enter` / `Espacio`: selecciona el elemento enfocado."
+  }
+}

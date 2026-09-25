@@ -1,0 +1,26 @@
+{
+  "pt-BR": {
+    "productName": "Fone Bluetooth Pulse",
+    "productSubtitle": "Cancelamento ativo de ruído, 40 horas de bateria, carregamento rápido USB-C e estojo compacto",
+    "review": "Comprei para usar no home office e superou minhas expectativas. O som é equilibrado, os graves são encorpados sem exagero e o cancelamento de ruído dá conta do barulho da rua. A bateria dura a semana inteira.",
+    "description": "O Pulse foi projetado para quem passa o dia em chamadas. Os seis microfones com redução de ruído isolam sua voz, o modo ambiente deixa você ouvir o entorno sem tirar o fone e a conexão multiponto alterna automaticamente entre notebook e celular. As almofadas de espuma com memória se ajustam ao formato da orelha e o arco acolchoado distribui o peso, permitindo usar por horas sem desconforto.",
+    "readMore": "Ler mais",
+    "readLess": "Ler menos"
+  },
+  "en-US": {
+    "productName": "Pulse Bluetooth headphones",
+    "productSubtitle": "Active noise cancellation, 40-hour battery, USB-C fast charging and a compact case",
+    "review": "I bought these for working from home and they exceeded my expectations. The sound is balanced, the bass is full without being overwhelming and the noise cancellation handles street noise. The battery lasts the whole week.",
+    "description": "Pulse is designed for people who spend the day on calls. Six noise-reducing microphones isolate your voice, ambient mode lets you hear your surroundings without taking them off, and multipoint pairing switches automatically between laptop and phone. Memory-foam cushions adapt to the shape of your ears and the padded headband spreads the weight, so you can wear them for hours without discomfort.",
+    "readMore": "Read more",
+    "readLess": "Read less"
+  },
+  "es-ES": {
+    "productName": "Auriculares Bluetooth Pulse",
+    "productSubtitle": "Cancelación activa de ruido, 40 horas de batería, carga rápida USB-C y estuche compacto",
+    "review": "Los compré para teletrabajar y superaron mis expectativas. El sonido es equilibrado, los graves son potentes sin exagerar y la cancelación de ruido se encarga del ruido de la calle. La batería dura toda la semana.",
+    "description": "Pulse está diseñado para quienes pasan el día en llamadas. Seis micrófonos con reducción de ruido aíslan tu voz, el modo ambiente te permite escuchar el entorno sin quitártelos y la conexión multipunto alterna automáticamente entre el portátil y el móvil. Las almohadillas de espuma viscoelástica se adaptan a la forma de la oreja y la diadema acolchada reparte el peso, para usarlos durante horas sin molestias.",
+    "readMore": "Leer más",
+    "readLess": "Leer menos"
+  }
+}

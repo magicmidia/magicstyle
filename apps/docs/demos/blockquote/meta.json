@@ -1,0 +1,50 @@
+{
+  "intro": {
+    "pt-BR": "Destaca uma citação, depoimento ou nota editorial, com autor, cargo, fonte e avatar opcionais.",
+    "en-US": "Highlights a quotation, testimonial or editorial note, with optional author, role, source and avatar.",
+    "es-ES": "Destaca una cita, testimonio o nota editorial, con autor, cargo, fuente y avatar opcionales."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`author` e `author-role` compõem o rodapé; o slot `cite` mostra o título da fonte dentro de um `<cite>`.",
+        "en-US": "`author` and `author-role` build the footer; the `cite` slot shows the source title inside a `<cite>`.",
+        "es-ES": "`author` y `author-role` forman el pie; el slot `cite` muestra el título de la fuente dentro de un `<cite>`."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": { "pt-BR": "Variantes", "en-US": "Variants", "es-ES": "Variantes" },
+      "description": {
+        "pt-BR": "Além de `bordered` (padrão), há `card`, `filled` e `minimal`; `icon` exibe as aspas decorativas.",
+        "en-US": "Besides `bordered` (default), there are `card`, `filled` and `minimal`; `icon` shows the decorative quote mark.",
+        "es-ES": "Además de `bordered` (por defecto), hay `card`, `filled` y `minimal`; `icon` muestra las comillas decorativas."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "`tone` muda a cor da borda e do fundo para notas editoriais; `size` ajusta a tipografia.",
+        "en-US": "`tone` changes the border and background color for editorial notes; `size` adjusts the type scale.",
+        "es-ES": "`tone` cambia el color del borde y del fondo para notas editoriales; `size` ajusta la tipografía."
+      }
+    },
+    {
+      "file": "Testimonial",
+      "title": { "pt-BR": "Depoimento", "en-US": "Testimonial", "es-ES": "Testimonio" },
+      "description": {
+        "pt-BR": "Com `author-avatar`, o rodapé ganha a foto do autor, que usa `author` como texto alternativo.",
+        "en-US": "With `author-avatar`, the footer shows the author's photo, which uses `author` as its alt text.",
+        "es-ES": "Con `author-avatar`, el pie muestra la foto del autor, que usa `author` como texto alternativo."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza um `<blockquote>` nativo com rodapé em `<footer>` e a fonte em `<cite>`.\n- O ícone de aspas é decorativo (`aria-hidden=\"true\"`).\n- A prop `cite` também vira o atributo `cite` do `<blockquote>`, que por especificação deve ser uma URL; para títulos de obras, prefira o slot `cite`.",
+    "en-US": "- Renders a native `<blockquote>` with a `<footer>` and the source in `<cite>`.\n- The quote icon is decorative (`aria-hidden=\"true\"`).\n- The `cite` prop is also set as the `<blockquote>` `cite` attribute, which the spec expects to be a URL; for work titles, prefer the `cite` slot.",
+    "es-ES": "- Renderiza un `<blockquote>` nativo con un `<footer>` y la fuente en `<cite>`.\n- El icono de comillas es decorativo (`aria-hidden=\"true\"`).\n- La prop `cite` también se aplica como atributo `cite` del `<blockquote>`, que según la especificación debe ser una URL; para títulos de obras, prefiere el slot `cite`."
+  }
+}

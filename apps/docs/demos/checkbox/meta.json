@@ -1,0 +1,80 @@
+{
+  "intro": {
+    "pt-BR": "Use checkbox para opções independentes que podem ser ligadas ou desligadas, ou para confirmar um aceite antes de enviar um formulário.",
+    "en-US": "Use a checkbox for independent options that can be turned on or off, or to confirm an agreement before submitting a form.",
+    "es-ES": "Usa una casilla para opciones independientes que se pueden activar o desactivar, o para confirmar una aceptación antes de enviar un formulario."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Ligue o estado a um booleano com `v-model` e defina o texto em `label`.",
+        "en-US": "Bind the state to a boolean with `v-model` and set the text with `label`.",
+        "es-ES": "Vincula el estado a un booleano con `v-model` y define el texto con `label`."
+      }
+    },
+    {
+      "file": "Description",
+      "title": {
+        "pt-BR": "Com descrição",
+        "en-US": "With description",
+        "es-ES": "Con descripción"
+      },
+      "description": {
+        "pt-BR": "`description` adiciona um texto de apoio abaixo do rótulo.",
+        "en-US": "`description` adds helper text below the label.",
+        "es-ES": "`description` añade un texto de ayuda debajo de la etiqueta."
+      }
+    },
+    {
+      "file": "SelectAll",
+      "title": { "pt-BR": "Selecionar todos", "en-US": "Select all", "es-ES": "Seleccionar todos" },
+      "description": {
+        "pt-BR": "`indeterminate` mostra o estado parcial quando só parte dos itens está marcada.",
+        "en-US": "`indeterminate` shows the partial state when only some items are checked.",
+        "es-ES": "`indeterminate` muestra el estado parcial cuando solo algunos elementos están marcados."
+      }
+    },
+    {
+      "file": "Cards",
+      "title": { "pt-BR": "Cartões", "en-US": "Cards", "es-ES": "Tarjetas" },
+      "description": {
+        "pt-BR": "`card` transforma cada opção em um cartão selecionável, ótimo para adicionais de um plano.",
+        "en-US": "`card` turns each option into a selectable card, great for plan add-ons.",
+        "es-ES": "`card` convierte cada opción en una tarjeta seleccionable, ideal para complementos de un plan."
+      }
+    },
+    {
+      "file": "SizesTones",
+      "title": {
+        "pt-BR": "Tamanhos e tons",
+        "en-US": "Sizes and tones",
+        "es-ES": "Tamaños y tonos"
+      },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md` e `lg`; `tone` muda a cor do estado marcado.",
+        "en-US": "`size` accepts `sm`, `md` and `lg`; `tone` changes the checked color.",
+        "es-ES": "`size` acepta `sm`, `md` y `lg`; `tone` cambia el color del estado marcado."
+      }
+    },
+    {
+      "file": "States",
+      "title": {
+        "pt-BR": "Desabilitado e inválido",
+        "en-US": "Disabled and invalid",
+        "es-ES": "Deshabilitado e inválido"
+      },
+      "description": {
+        "pt-BR": "`disabled` bloqueia a interação; dentro de `MsField`, o `error` marca o checkbox com `aria-invalid`.",
+        "en-US": "`disabled` blocks interaction; inside `MsField`, `error` marks the checkbox with `aria-invalid`.",
+        "es-ES": "`disabled` bloquea la interacción; dentro de `MsField`, `error` marca la casilla con `aria-invalid`."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Usa um `input type=\"checkbox\"` nativo envolvido por um `label`, então clicar no texto também alterna o valor.\n- `Tab`: move o foco para o checkbox.\n- `Espaço`: marca ou desmarca.\n- No estado `indeterminate`, a propriedade nativa é aplicada e o input recebe `aria-checked=\"mixed\"`.\n- Dentro de `MsField`, recebe `aria-describedby` e `aria-invalid` do campo.",
+    "en-US": "- Uses a native `input type=\"checkbox\"` wrapped in a `label`, so clicking the text also toggles the value.\n- `Tab`: moves focus to the checkbox.\n- `Space`: checks or unchecks it.\n- In the `indeterminate` state, the native property is set and the input gets `aria-checked=\"mixed\"`.\n- Inside `MsField`, it receives `aria-describedby` and `aria-invalid` from the field.",
+    "es-ES": "- Usa un `input type=\"checkbox\"` nativo envuelto en un `label`, así que hacer clic en el texto también alterna el valor.\n- `Tab`: mueve el foco a la casilla.\n- `Espacio`: la marca o desmarca.\n- En el estado `indeterminate`, se aplica la propiedad nativa y el input recibe `aria-checked=\"mixed\"`.\n- Dentro de `MsField`, recibe `aria-describedby` y `aria-invalid` del campo."
+  }
+}

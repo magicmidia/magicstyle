@@ -1,0 +1,81 @@
+{
+  "intro": {
+    "pt-BR": "Use o botão para disparar uma ação: enviar um formulário, abrir um diálogo ou confirmar uma operação. Para navegação entre páginas, prefira um link.",
+    "en-US": "Use a button to trigger an action: submit a form, open a dialog or confirm an operation. For navigation between pages, prefer a link.",
+    "es-ES": "Usa el botón para ejecutar una acción: enviar un formulario, abrir un diálogo o confirmar una operación. Para navegar entre páginas, prefiere un enlace."
+  },
+  "demos": [
+    {
+      "file": "Variants",
+      "title": { "pt-BR": "Variantes", "en-US": "Variants", "es-ES": "Variantes" },
+      "description": {
+        "pt-BR": "Use `solid` para a ação principal, `outline` e `ghost` para ações secundárias e `link` para navegação em linha.",
+        "en-US": "Use `solid` for the main action, `outline` and `ghost` for secondary actions and `link` for inline navigation.",
+        "es-ES": "Usa `solid` para la acción principal, `outline` y `ghost` para acciones secundarias y `link` para navegación en línea."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "O `tone` define o papel semântico da cor e combina com qualquer variante, como `solid` e `soft`.",
+        "en-US": "`tone` sets the semantic color role and combines with any variant, such as `solid` and `soft`.",
+        "es-ES": "`tone` define el rol semántico del color y se combina con cualquier variante, como `solid` y `soft`."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "A prop `size` vai de `xs` a `xxl`; o padrão é `md`.",
+        "en-US": "The `size` prop goes from `xs` to `xxl`; the default is `md`.",
+        "es-ES": "La prop `size` va de `xs` a `xxl`; el valor por defecto es `md`."
+      }
+    },
+    {
+      "file": "WithIcon",
+      "title": { "pt-BR": "Com ícone", "en-US": "With icon", "es-ES": "Con icono" },
+      "description": {
+        "pt-BR": "Os slots `icon-start` e `icon-end` posicionam ícones ao redor do rótulo, e `caret` adiciona a seta de menu.",
+        "en-US": "The `icon-start` and `icon-end` slots place icons around the label, and `caret` adds a menu arrow.",
+        "es-ES": "Los slots `icon-start` e `icon-end` colocan iconos alrededor de la etiqueta, y `caret` añade la flecha de menú."
+      }
+    },
+    {
+      "file": "Loading",
+      "title": { "pt-BR": "Carregando", "en-US": "Loading", "es-ES": "Cargando" },
+      "description": {
+        "pt-BR": "Com `loading`, o botão mostra um spinner, recebe `aria-busy` e bloqueia novos cliques até a operação terminar.",
+        "en-US": "With `loading`, the button shows a spinner, gets `aria-busy` and blocks further clicks until the operation ends.",
+        "es-ES": "Con `loading`, el botón muestra un spinner, recibe `aria-busy` y bloquea nuevos clics hasta que termine la operación."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": { "pt-BR": "Desabilitado", "en-US": "Disabled", "es-ES": "Deshabilitado" },
+      "description": {
+        "pt-BR": "`disabled` aplica o atributo nativo, que remove o botão da ordem de tabulação.",
+        "en-US": "`disabled` sets the native attribute, which removes the button from the tab order.",
+        "es-ES": "`disabled` aplica el atributo nativo, que quita el botón del orden de tabulación."
+      }
+    },
+    {
+      "file": "Shapes",
+      "title": {
+        "pt-BR": "Formato e largura",
+        "en-US": "Shape and width",
+        "es-ES": "Forma y ancho"
+      },
+      "description": {
+        "pt-BR": "Use `pill` ou `shape` para o arredondamento, `wide` para CTAs de destaque e `block` para ocupar toda a largura.",
+        "en-US": "Use `pill` or `shape` for rounding, `wide` for prominent CTAs and `block` to fill the full width.",
+        "es-ES": "Usa `pill` o `shape` para el redondeo, `wide` para CTAs destacados y `block` para ocupar todo el ancho."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza um `<button>` nativo com `type=\"button\"` por padrão: `Enter` e `Espaço` ativam a ação.\n- `loading` define `aria-busy=\"true\"` e desabilita o botão; `disabled` usa o atributo nativo.\n- Com `open` definido, o botão expõe `aria-expanded` para menus e popovers.\n- Botões só com ícone precisam de nome acessível: prefira o `MsIconButton`, que exige `ariaLabel`.",
+    "en-US": "- Renders a native `<button>` with `type=\"button\"` by default: `Enter` and `Space` trigger the action.\n- `loading` sets `aria-busy=\"true\"` and disables the button; `disabled` uses the native attribute.\n- When `open` is set, the button exposes `aria-expanded` for menus and popovers.\n- Icon-only buttons need an accessible name: prefer `MsIconButton`, which requires `ariaLabel`.",
+    "es-ES": "- Renderiza un `<button>` nativo con `type=\"button\"` por defecto: `Enter` y `Espacio` ejecutan la acción.\n- `loading` define `aria-busy=\"true\"` y deshabilita el botón; `disabled` usa el atributo nativo.\n- Con `open` definido, el botón expone `aria-expanded` para menús y popovers.\n- Los botones solo con icono necesitan un nombre accesible: prefiere `MsIconButton`, que exige `ariaLabel`."
+  }
+}

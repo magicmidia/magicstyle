@@ -1,0 +1,45 @@
+{
+  "intro": {
+    "pt-BR": "Encurta textos longos com reticências no fim, após várias linhas ou no meio, mantendo o texto completo acessível.",
+    "en-US": "Shortens long text with an ellipsis at the end, after several lines or in the middle, while keeping the full text accessible.",
+    "es-ES": "Acorta textos largos con puntos suspensivos al final, después de varias líneas o en el medio, manteniendo accesible el texto completo."
+  },
+  "demos": [
+    {
+      "file": "SingleLine",
+      "title": { "pt-BR": "Uma linha", "en-US": "Single line", "es-ES": "Una línea" },
+      "description": {
+        "pt-BR": "Por padrão, `text` fica em uma linha com reticências no fim e o texto completo aparece no `title` nativo ao passar o cursor (`show-tooltip`).",
+        "en-US": "By default, `text` stays on one line with an ending ellipsis, and the full text shows in the native `title` on hover (`show-tooltip`).",
+        "es-ES": "Por defecto, `text` queda en una línea con puntos suspensivos al final y el texto completo aparece en el `title` nativo al pasar el cursor (`show-tooltip`)."
+      }
+    },
+    {
+      "file": "Multiline",
+      "title": {
+        "pt-BR": "Várias linhas e expandir",
+        "en-US": "Multiple lines and expand",
+        "es-ES": "Varias líneas y expandir"
+      },
+      "description": {
+        "pt-BR": "`lines` limita o número de linhas; `expandable` adiciona o botão de expandir, com `v-model:expanded` e textos em `expand-text` e `collapse-text`.",
+        "en-US": "`lines` caps the number of lines; `expandable` adds an expand button, with `v-model:expanded` and labels in `expand-text` and `collapse-text`.",
+        "es-ES": "`lines` limita la cantidad de líneas; `expandable` agrega el botón para expandir, con `v-model:expanded` y textos en `expand-text` y `collapse-text`."
+      }
+    },
+    {
+      "file": "Middle",
+      "title": { "pt-BR": "No meio", "en-US": "Middle", "es-ES": "En el medio" },
+      "description": {
+        "pt-BR": "`position=\"middle\"` preserva o final do texto (`middle-chars` caracteres), ideal para nomes de arquivo, caminhos e hashes.",
+        "en-US": "`position=\"middle\"` keeps the end of the text (`middle-chars` characters), ideal for file names, paths and hashes.",
+        "es-ES": "`position=\"middle\"` conserva el final del texto (`middle-chars` caracteres), ideal para nombres de archivo, rutas y hashes."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O corte é feito só com CSS: o texto completo continua no DOM e é lido integralmente por leitores de tela.\n- O `title` nativo usado como dica não aparece com foco do teclado nem em telas de toque; não dependa dele para informação essencial.\n- Com `expandable`, o botão é um `<button>` nativo (`Tab` para focar, `Enter` / `Espaço` para alternar), mas não expõe `aria-expanded`, e aparece mesmo quando o texto não chega a ser cortado.",
+    "en-US": "- Truncation is CSS-only: the full text stays in the DOM and is read in full by screen readers.\n- The native `title` used as a tooltip doesn't show on keyboard focus or on touch screens; don't rely on it for essential information.\n- With `expandable`, the toggle is a native `<button>` (`Tab` to focus, `Enter` / `Space` to toggle), but it doesn't expose `aria-expanded`, and it shows even when the text isn't actually truncated.",
+    "es-ES": "- El recorte se hace solo con CSS: el texto completo sigue en el DOM y los lectores de pantalla lo leen entero.\n- El `title` nativo usado como sugerencia no aparece con el foco del teclado ni en pantallas táctiles; no dependas de él para información esencial.\n- Con `expandable`, el botón es un `<button>` nativo (`Tab` para enfocar, `Enter` / `Espacio` para alternar), pero no expone `aria-expanded` y aparece aunque el texto no llegue a recortarse."
+  }
+}

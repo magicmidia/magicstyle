@@ -1,0 +1,44 @@
+{
+  "pt-BR": {
+    "placeholder": "Buscar produtos",
+    "searchedFor": "Você buscou:",
+    "docsPlaceholder": "Buscar na documentação",
+    "peoplePlaceholder": "Buscar pessoas por nome ou e-mail",
+    "noResults": "Nenhuma pessoa encontrada.",
+    "ordersPlaceholder": "Buscar pedidos",
+    "small": "Pequeno",
+    "outline": "Contorno (padrão)",
+    "filled": "Preenchido",
+    "flushed": "Apenas linha inferior",
+    "large": "Grande",
+    "disabled": "Busca desabilitada"
+  },
+  "en-US": {
+    "placeholder": "Search products",
+    "searchedFor": "You searched for:",
+    "docsPlaceholder": "Search documentation",
+    "peoplePlaceholder": "Search people by name or email",
+    "noResults": "No people found.",
+    "ordersPlaceholder": "Search orders",
+    "small": "Small",
+    "outline": "Outline (default)",
+    "filled": "Filled",
+    "flushed": "Bottom border only",
+    "large": "Large",
+    "disabled": "Search disabled"
+  },
+  "es-ES": {
+    "placeholder": "Buscar productos",
+    "searchedFor": "Buscaste:",
+    "docsPlaceholder": "Buscar en la documentación",
+    "peoplePlaceholder": "Buscar personas por nombre o correo",
+    "noResults": "No se encontraron personas.",
+    "ordersPlaceholder": "Buscar pedidos",
+    "small": "Pequeño",
+    "outline": "Contorno (predeterminado)",
+    "filled": "Relleno",
+    "flushed": "Solo línea inferior",
+    "large": "Grande",
+    "disabled": "Búsqueda deshabilitada"
+  }
+}

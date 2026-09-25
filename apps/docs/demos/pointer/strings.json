@@ -1,0 +1,23 @@
+{
+  "pt-BR": {
+    "dotToggle": "Ativar cursor ponto",
+    "ringToggle": "Ativar cursor anel",
+    "spotlightToggle": "Ativar holofote",
+    "hoverMe": "Passe o cursor aqui",
+    "orMe": "Ou aqui"
+  },
+  "en-US": {
+    "dotToggle": "Enable dot cursor",
+    "ringToggle": "Enable ring cursor",
+    "spotlightToggle": "Enable spotlight",
+    "hoverMe": "Hover here",
+    "orMe": "Or here"
+  },
+  "es-ES": {
+    "dotToggle": "Activar cursor punto",
+    "ringToggle": "Activar cursor anillo",
+    "spotlightToggle": "Activar foco",
+    "hoverMe": "Pasa el cursor aquí",
+    "orMe": "O aquí"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "intro": {
+    "pt-BR": "`MsCanvas` é uma superfície decorativa com padrão de fundo (pontos, grade, linhas…) para editores visuais, construtores de diagramas e estados vazios. O padrão é puramente visual e tem `aria-hidden=\"true\"`.",
+    "en-US": "`MsCanvas` is a decorative surface with a background pattern (dots, grid, lines…) for visual editors, diagram builders and empty states. The pattern is purely visual and `aria-hidden=\"true\"`.",
+    "es-ES": "`MsCanvas` es una superficie decorativa con un patrón de fondo (puntos, cuadrícula, líneas…) para editores visuales, constructores de diagramas y estados vacíos. El patrón es solo visual y tiene `aria-hidden=\"true\"`."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "O conteúdo do slot fica centralizado sobre o padrão `dots`, o padrão.",
+        "en-US": "Slot content is centered over the default `dots` pattern.",
+        "es-ES": "El contenido del slot se centra sobre el patrón `dots`, el predeterminado."
+      }
+    },
+    {
+      "file": "Patterns",
+      "title": { "pt-BR": "Padrões", "en-US": "Patterns", "es-ES": "Patrones" },
+      "description": {
+        "pt-BR": "Os 11 valores de `pattern`. A altura mínima padrão é 280px; aqui ela foi reduzida com `style`.",
+        "en-US": "The 11 `pattern` values. The default minimum height is 280px; here it is reduced with `style`.",
+        "es-ES": "Los 11 valores de `pattern`. La altura mínima por defecto es 280px; aquí se reduce con `style`."
+      }
+    },
+    {
+      "file": "Size",
+      "title": {
+        "pt-BR": "Escala do padrão",
+        "en-US": "Pattern scale",
+        "es-ES": "Escala del patrón"
+      },
+      "description": {
+        "pt-BR": "`size` define o tamanho da célula do padrão em pixels (20 por padrão).",
+        "en-US": "`size` sets the pattern cell size in pixels (20 by default).",
+        "es-ES": "`size` define el tamaño de la celda del patrón en píxeles (20 por defecto)."
+      }
+    },
+    {
+      "file": "Workspace",
+      "title": {
+        "pt-BR": "Área de trabalho de automação",
+        "en-US": "Automation workspace",
+        "es-ES": "Área de trabajo de automatización"
+      },
+      "description": {
+        "pt-BR": "Cards sobre o canvas formam um fluxo; `interactive` só troca o cursor para `grab`, o arrasto fica por conta da sua aplicação.",
+        "en-US": "Cards on the canvas form a flow; `interactive` only switches the cursor to `grab`, dragging is up to your app.",
+        "es-ES": "Las tarjetas sobre el canvas forman un flujo; `interactive` solo cambia el cursor a `grab`, el arrastre depende de tu aplicación."
+      }
+    }
+  ]
+}

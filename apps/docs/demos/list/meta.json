@@ -1,0 +1,62 @@
+{
+  "intro": {
+    "pt-BR": "Lista estruturada de itens com título, descrição e conteúdo à esquerda e à direita. Use para membros, recursos, configurações e navegação secundária.",
+    "en-US": "Structured list of items with a title, description and leading and trailing content. Use it for members, features, settings and secondary navigation.",
+    "es-ES": "Lista estructurada de elementos con título, descripción y contenido a la izquierda y a la derecha. Úsala para miembros, funciones, configuración y navegación secundaria."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Cada `MsListItem` recebe `title` e `description`.",
+        "en-US": "Each `MsListItem` takes a `title` and a `description`.",
+        "es-ES": "Cada `MsListItem` recibe `title` y `description`."
+      }
+    },
+    {
+      "file": "Members",
+      "title": {
+        "pt-BR": "Membros da equipe",
+        "en-US": "Team members",
+        "es-ES": "Miembros del equipo"
+      },
+      "description": {
+        "pt-BR": "Os slots `leading` e `trailing` recebem avatares, badges ou ações.",
+        "en-US": "The `leading` and `trailing` slots take avatars, badges or actions.",
+        "es-ES": "Los slots `leading` y `trailing` reciben avatares, badges o acciones."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": {
+        "pt-BR": "Variantes e tamanhos",
+        "en-US": "Variants and sizes",
+        "es-ES": "Variantes y tamaños"
+      },
+      "description": {
+        "pt-BR": "`variant` aceita `default`, `divided` e `bordered`; `size` ajusta espaçamento e tipografia.",
+        "en-US": "`variant` accepts `default`, `divided` and `bordered`; `size` adjusts spacing and type.",
+        "es-ES": "`variant` acepta `default`, `divided` y `bordered`; `size` ajusta el espaciado y la tipografía."
+      }
+    },
+    {
+      "file": "Settings",
+      "title": {
+        "pt-BR": "Navegação agrupada",
+        "en-US": "Grouped navigation",
+        "es-ES": "Navegación agrupada"
+      },
+      "description": {
+        "pt-BR": "`MsListGroup` adiciona um cabeçalho de grupo; `interactive`, `active` e `disabled` estilizam os estados, e os links dão suporte ao teclado.",
+        "en-US": "`MsListGroup` adds a group header; `interactive`, `active` and `disabled` style the states, and the links provide keyboard support.",
+        "es-ES": "`MsListGroup` agrega un encabezado de grupo; `interactive`, `active` y `disabled` dan estilo a los estados, y los enlaces aportan soporte de teclado."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- `MsList` renderiza `<ul role=\"list\">` e cada item um `<li>` (altere com `as`).\n- `interactive` é apenas visual: o item não recebe foco nem responde ao teclado. Para itens clicáveis, coloque um `<a>` ou `<button>` dentro dele.\n- `active` e `disabled` são expostos como `aria-selected` e `aria-disabled` no item.\n- `MsListGroup` é um `role=\"group\"`; o cabeçalho não é associado ao grupo por `aria-labelledby`.",
+    "en-US": "- `MsList` renders `<ul role=\"list\">` and each item an `<li>` (change it with `as`).\n- `interactive` is visual only: the item doesn't take focus or respond to the keyboard. For clickable items, put an `<a>` or `<button>` inside.\n- `active` and `disabled` are exposed as `aria-selected` and `aria-disabled` on the item.\n- `MsListGroup` is a `role=\"group\"`; its header isn't linked to the group through `aria-labelledby`.",
+    "es-ES": "- `MsList` renderiza `<ul role=\"list\">` y cada elemento un `<li>` (cámbialo con `as`).\n- `interactive` es solo visual: el elemento no recibe foco ni responde al teclado. Para elementos clicables, coloca un `<a>` o `<button>` dentro.\n- `active` y `disabled` se exponen como `aria-selected` y `aria-disabled` en el elemento.\n- `MsListGroup` es un `role=\"group\"`; su encabezado no se asocia al grupo mediante `aria-labelledby`."
+  }
+}

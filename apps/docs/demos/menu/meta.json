@@ -1,0 +1,58 @@
+{
+  "intro": {
+    "pt-BR": "Lista de ações com o padrão de menu do WAI-ARIA. `MsMenu` renderiza só o painel: combine com um botão e a classe `ms-dropdown` para posicioná-lo. Para o caso comum, `MsDropdownButton` já faz essa composição.",
+    "en-US": "List of actions following the WAI-ARIA menu pattern. `MsMenu` renders only the panel: pair it with a button and the `ms-dropdown` class to position it. For the common case, `MsDropdownButton` already does this composition.",
+    "es-ES": "Lista de acciones con el patrón de menú de WAI-ARIA. `MsMenu` solo renderiza el panel: combínalo con un botón y la clase `ms-dropdown` para posicionarlo. Para el caso común, `MsDropdownButton` ya hace esa composición."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Menu de conta", "en-US": "Account menu", "es-ES": "Menú de cuenta" },
+      "description": {
+        "pt-BR": "Renderize o menu com `v-if` e passe o wrapper em `anchor` para que o clique no gatilho não conte como clique fora.",
+        "en-US": "Render the menu with `v-if` and pass the wrapper as `anchor` so clicking the trigger does not count as an outside click.",
+        "es-ES": "Renderiza el menú con `v-if` y pasa el contenedor en `anchor` para que el clic en el disparador no cuente como clic fuera."
+      }
+    },
+    {
+      "file": "Rich",
+      "title": {
+        "pt-BR": "Ícones, atalhos e tons",
+        "en-US": "Icons, shortcuts and tones",
+        "es-ES": "Iconos, atajos y tonos"
+      },
+      "description": {
+        "pt-BR": "Cada item aceita `prefix`, `suffix`, `disabled`, `divider` e `tone: \"danger\"` para ações destrutivas.",
+        "en-US": "Each item accepts `prefix`, `suffix`, `disabled`, `divider` and `tone: \"danger\"` for destructive actions.",
+        "es-ES": "Cada elemento acepta `prefix`, `suffix`, `disabled`, `divider` y `tone: \"danger\"` para acciones destructivas."
+      }
+    },
+    {
+      "file": "Selection",
+      "title": {
+        "pt-BR": "Tratando a seleção",
+        "en-US": "Handling selection",
+        "es-ES": "Manejar la selección"
+      },
+      "description": {
+        "pt-BR": "`@select` entrega o item escolhido; use o `value` dele para atualizar o estado.",
+        "en-US": "`@select` passes the chosen item; use its `value` to update your state.",
+        "es-ES": "`@select` entrega el elemento elegido; usa su `value` para actualizar el estado."
+      }
+    },
+    {
+      "file": "AlignEnd",
+      "title": { "pt-BR": "Ações de linha", "en-US": "Row actions", "es-ES": "Acciones de fila" },
+      "description": {
+        "pt-BR": "A classe `ms-menu--right` alinha o painel à borda direita do gatilho.",
+        "en-US": "The `ms-menu--right` class aligns the panel to the right edge of the trigger.",
+        "es-ES": "La clase `ms-menu--right` alinea el panel con el borde derecho del disparador."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O painel usa `role=\"menu\"` e cada item `role=\"menuitem\"`, com `aria-disabled` nos desabilitados e `role=\"separator\"` nos divisores.\n- Ao abrir, o foco vai para o primeiro item habilitado (ou o último, com `initial-focus=\"last\"`).\n- `↓` / `↑`: próximo / anterior item habilitado, com retorno ao início.\n- `Home` / `End`: primeiro / último item.\n- `Enter` / `Espaço`: seleciona o item em foco.\n- Letras: pulam para o próximo item que começa com a letra digitada.\n- `Esc` e `Tab`: fecham o menu (evento `dismiss` com o motivo); devolver o foco ao gatilho fica a cargo do app, como nas demos.\n- Adicione `aria-haspopup=\"menu\"` ao botão gatilho; a prop `open` do `MsButton` já cuida de `aria-expanded`.",
+    "en-US": "- The panel uses `role=\"menu\"` and each item `role=\"menuitem\"`, with `aria-disabled` on disabled items and `role=\"separator\"` on dividers.\n- On open, focus moves to the first enabled item (or the last one with `initial-focus=\"last\"`).\n- `↓` / `↑`: next / previous enabled item, wrapping around.\n- `Home` / `End`: first / last item.\n- `Enter` / `Space`: selects the focused item.\n- Letters: jump to the next item starting with the typed character.\n- `Esc` and `Tab`: close the menu (`dismiss` event with the reason); returning focus to the trigger is up to the app, as in the demos.\n- Add `aria-haspopup=\"menu\"` to the trigger button; the `open` prop of `MsButton` already handles `aria-expanded`.",
+    "es-ES": "- El panel usa `role=\"menu\"` y cada elemento `role=\"menuitem\"`, con `aria-disabled` en los deshabilitados y `role=\"separator\"` en los divisores.\n- Al abrirse, el foco va al primer elemento habilitado (o al último, con `initial-focus=\"last\"`).\n- `↓` / `↑`: elemento habilitado siguiente / anterior, volviendo al inicio.\n- `Home` / `End`: primer / último elemento.\n- `Enter` / `Espacio`: selecciona el elemento enfocado.\n- Letras: saltan al siguiente elemento que empieza por la letra escrita.\n- `Esc` y `Tab`: cierran el menú (evento `dismiss` con el motivo); devolver el foco al disparador corre por cuenta de la app, como en las demos.\n- Añade `aria-haspopup=\"menu\"` al botón disparador; la prop `open` de `MsButton` ya se encarga de `aria-expanded`."
+  }
+}

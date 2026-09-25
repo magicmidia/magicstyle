@@ -1,0 +1,66 @@
+{
+  "intro": {
+    "pt-BR": "Representa uma pessoa ou organização com foto, iniciais ou conteúdo próprio. Use o grupo para mostrar quem participa de um projeto, documento ou reunião.",
+    "en-US": "Represents a person or organization with a photo, initials or custom content. Use the group to show who takes part in a project, document or meeting.",
+    "es-ES": "Representa a una persona u organización con foto, iniciales o contenido propio. Usa el grupo para mostrar quién participa en un proyecto, documento o reunión."
+  },
+  "demos": [
+    {
+      "file": "Sizes",
+      "title": {
+        "pt-BR": "Tamanhos",
+        "en-US": "Sizes",
+        "es-ES": "Tamaños"
+      },
+      "description": {
+        "pt-BR": "`size` vai de `2xs` a `3xl`, cobrindo desde listas densas até cabeçalhos de perfil.",
+        "en-US": "`size` goes from `2xs` to `3xl`, covering everything from dense lists to profile headers.",
+        "es-ES": "`size` va de `2xs` a `3xl`, desde listas densas hasta encabezados de perfil."
+      }
+    },
+    {
+      "file": "Fallback",
+      "title": {
+        "pt-BR": "Fallback, tons e formatos",
+        "en-US": "Fallback, tones and shapes",
+        "es-ES": "Respaldo, tonos y formas"
+      },
+      "description": {
+        "pt-BR": "Sem `src`, ou quando a imagem falha, o avatar mostra as iniciais de `name` sobre o `tone` escolhido; o slot padrão aceita conteúdo próprio.",
+        "en-US": "Without `src`, or when the image fails to load, the avatar shows the initials of `name` on the chosen `tone`; the default slot accepts custom content.",
+        "es-ES": "Sin `src`, o cuando la imagen falla, el avatar muestra las iniciales de `name` sobre el `tone` elegido; el slot por defecto acepta contenido propio."
+      }
+    },
+    {
+      "file": "Status",
+      "title": {
+        "pt-BR": "Status",
+        "en-US": "Status",
+        "es-ES": "Estado"
+      },
+      "description": {
+        "pt-BR": "`status` adiciona um indicador de presença; `status-placement` move o ponto para o canto superior.",
+        "en-US": "`status` adds a presence indicator; `status-placement` moves the dot to the top corner.",
+        "es-ES": "`status` agrega un indicador de presencia; `status-placement` mueve el punto a la esquina superior."
+      }
+    },
+    {
+      "file": "Group",
+      "title": {
+        "pt-BR": "Grupo",
+        "en-US": "Group",
+        "es-ES": "Grupo"
+      },
+      "description": {
+        "pt-BR": "`MsAvatarGroup` empilha avatares a partir de `items` ou do slot; com `max`, o excedente vira um contador `+N`.",
+        "en-US": "`MsAvatarGroup` stacks avatars from `items` or the slot; with `max`, the overflow becomes a `+N` counter.",
+        "es-ES": "`MsAvatarGroup` apila avatares desde `items` o el slot; con `max`, el excedente se convierte en un contador `+N`."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- A imagem usa `name` como texto alternativo; sempre informe `name` quando houver foto.\n- O indicador de `status` é decorativo (`aria-hidden=\"true\"`): mostre a presença também em texto quando ela for relevante.\n- O contador `+N` do grupo recebe o `aria-label` genérico \"Mais membros\", sem a quantidade; se o número importar, liste os nomes em outro lugar (por exemplo, numa dica).",
+    "en-US": "- The image uses `name` as its alt text; always set `name` when there is a photo.\n- The `status` indicator is decorative (`aria-hidden=\"true\"`): also show presence as text when it matters.\n- The group's `+N` counter gets the generic `aria-label` \"More members\", without the count; if the number matters, list the names elsewhere (in a tooltip, for example).",
+    "es-ES": "- La imagen usa `name` como texto alternativo; indica siempre `name` cuando haya foto.\n- El indicador de `status` es decorativo (`aria-hidden=\"true\"`): muestra la presencia también en texto cuando sea relevante.\n- El contador `+N` del grupo recibe el `aria-label` genérico \"Más miembros\", sin la cantidad; si el número importa, lista los nombres en otro lugar (por ejemplo, en un tooltip)."
+  }
+}

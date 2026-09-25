@@ -1,0 +1,58 @@
+{
+  "intro": {
+    "pt-BR": "Mostra eventos em ordem cronológica, como histórico de atividades, rastreamento de pedidos e roadmaps.",
+    "en-US": "Shows events in chronological order, such as activity history, order tracking and roadmaps.",
+    "es-ES": "Muestra eventos en orden cronológico, como historial de actividad, seguimiento de pedidos y roadmaps."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Cada `MsTimelineItem` recebe `title`, `timestamp` e `description`.",
+        "en-US": "Each `MsTimelineItem` takes a `title`, `timestamp` and `description`.",
+        "es-ES": "Cada `MsTimelineItem` recibe `title`, `timestamp` y `description`."
+      }
+    },
+    {
+      "file": "OrderTracking",
+      "title": {
+        "pt-BR": "Rastreamento de pedido",
+        "en-US": "Order tracking",
+        "es-ES": "Seguimiento de pedido"
+      },
+      "description": {
+        "pt-BR": "`tone` colore o marcador de cada etapa; o slot padrão substitui `description`.",
+        "en-US": "`tone` colors each step's marker; the default slot replaces `description`.",
+        "es-ES": "`tone` colorea el marcador de cada etapa; el slot por defecto reemplaza a `description`."
+      }
+    },
+    {
+      "file": "Horizontal",
+      "title": { "pt-BR": "Horizontal", "en-US": "Horizontal", "es-ES": "Horizontal" },
+      "description": {
+        "pt-BR": "`direction=\"horizontal\"` distribui os marcos lado a lado, bom para roadmaps.",
+        "en-US": "`direction=\"horizontal\"` lays milestones side by side, good for roadmaps.",
+        "es-ES": "`direction=\"horizontal\"` distribuye los hitos uno al lado del otro, ideal para roadmaps."
+      }
+    },
+    {
+      "file": "CustomNode",
+      "title": {
+        "pt-BR": "Marcador personalizado",
+        "en-US": "Custom marker",
+        "es-ES": "Marcador personalizado"
+      },
+      "description": {
+        "pt-BR": "O slot `node` troca o marcador por avatares ou ícones, ideal para feeds de atividade.",
+        "en-US": "The `node` slot swaps the marker for avatars or icons, ideal for activity feeds.",
+        "es-ES": "El slot `node` cambia el marcador por avatares o iconos, ideal para feeds de actividad."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza uma lista ordenada (`<ol>`) com um `<li>` por evento, preservando a ordem para leitores de tela.\n- Marcador e conector são `aria-hidden=\"true\"`: o conteúdo do slot `node` e a cor do `tone` não são anunciados, então descreva o estado no texto.\n- O título é sempre um `<h4>`; verifique se esse nível faz sentido na hierarquia de cabeçalhos da página.",
+    "en-US": "- Renders an ordered list (`<ol>`) with one `<li>` per event, preserving order for screen readers.\n- The marker and connector are `aria-hidden=\"true\"`: the `node` slot content and the `tone` color aren't announced, so describe the state in text.\n- The title is always an `<h4>`; check that this level fits the page's heading hierarchy.",
+    "es-ES": "- Renderiza una lista ordenada (`<ol>`) con un `<li>` por evento, conservando el orden para los lectores de pantalla.\n- El marcador y el conector son `aria-hidden=\"true\"`: el contenido del slot `node` y el color del `tone` no se anuncian, así que describe el estado en el texto.\n- El título siempre es un `<h4>`; verifica que ese nivel encaje en la jerarquía de encabezados de la página."
+  }
+}

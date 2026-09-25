@@ -1,0 +1,54 @@
+{
+  "intro": {
+    "pt-BR": "Faixa de largura total para comunicados do produto ou do sistema, como novidades, manutenções e pendências de conta. Para mensagens ligadas a um trecho da página, prefira o `MsAlert`.",
+    "en-US": "Full-width strip for product or system announcements, such as releases, maintenance and account issues. For messages tied to a section of the page, prefer `MsAlert`.",
+    "es-ES": "Franja de ancho completo para comunicados del producto o del sistema, como novedades, mantenimientos y pendientes de la cuenta. Para mensajes ligados a una sección de la página, prefiere `MsAlert`."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`title` aparece em negrito antes do texto e `action-label` cria um botão que emite `action`.",
+        "en-US": "`title` is shown in bold before the text and `action-label` adds a button that emits `action`.",
+        "es-ES": "`title` aparece en negrita antes del texto y `action-label` añade un botón que emite `action`."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "O tom padrão é `info`; `neutral`, `success`, `warning` e `danger` têm ícones próprios.",
+        "en-US": "The default tone is `info`; `neutral`, `success`, `warning` and `danger` have their own icons.",
+        "es-ES": "El tono predeterminado es `info`; `neutral`, `success`, `warning` y `danger` tienen iconos propios."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": { "pt-BR": "Variantes", "en-US": "Variants", "es-ES": "Variantes" },
+      "description": {
+        "pt-BR": "`variant` alterna entre `soft` (padrão), `outline` e `solid`.",
+        "en-US": "`variant` switches between `soft` (default), `outline` and `solid`.",
+        "es-ES": "`variant` alterna entre `soft` (predeterminado), `outline` y `solid`."
+      }
+    },
+    {
+      "file": "Dismissible",
+      "title": {
+        "pt-BR": "Ações e fechamento",
+        "en-US": "Actions and dismiss",
+        "es-ES": "Acciones y cierre"
+      },
+      "description": {
+        "pt-BR": "O slot `actions` substitui o botão padrão e `dismissible` adiciona o botão de fechar, que emite `dismiss`.",
+        "en-US": "The `actions` slot replaces the default button and `dismissible` adds the close button, which emits `dismiss`.",
+        "es-ES": "El slot `actions` sustituye al botón predeterminado y `dismissible` añade el botón de cerrar, que emite `dismiss`."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza `role=\"region\"` sem nome acessível; o conteúdo não é anunciado automaticamente. Para avisos urgentes, use `MsAlert` ou um toast.\n- O botão de ação e o de fechar são `<button>` nativos, alcançáveis com `Tab` e acionados com `Enter` / `Espaço`; o de fechar tem rótulo acessível traduzido.\n- O ícone é decorativo (`aria-hidden`).",
+    "en-US": "- Renders `role=\"region\"` without an accessible name; the content is not announced automatically. For urgent notices, use `MsAlert` or a toast.\n- The action and close buttons are native `<button>` elements, reachable with `Tab` and activated with `Enter` / `Space`; the close button has a translated accessible label.\n- The icon is decorative (`aria-hidden`).",
+    "es-ES": "- Renderiza `role=\"region\"` sin nombre accesible; el contenido no se anuncia automáticamente. Para avisos urgentes, usa `MsAlert` o un toast.\n- Los botones de acción y de cerrar son `<button>` nativos, accesibles con `Tab` y activables con `Enter` / `Espacio`; el de cerrar tiene una etiqueta accesible traducida.\n- El icono es decorativo (`aria-hidden`)."
+  }
+}

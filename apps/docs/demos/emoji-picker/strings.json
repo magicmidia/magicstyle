@@ -1,0 +1,29 @@
+{
+  "pt-BR": {
+    "statusHint": "Escolha o emoji do seu status",
+    "message": "Mensagem",
+    "messagePlaceholder": "Escreva uma mensagem…",
+    "send": "Enviar",
+    "post": "Versão 2.0 publicada! Obrigada a todo mundo que testou o beta.",
+    "locked": "O emoji do canal é definido pelo administrador.",
+    "author": "Marina Costa"
+  },
+  "en-US": {
+    "statusHint": "Pick your status emoji",
+    "message": "Message",
+    "messagePlaceholder": "Write a message…",
+    "send": "Send",
+    "post": "Version 2.0 is live! Thanks to everyone who tested the beta.",
+    "locked": "The channel emoji is set by an admin.",
+    "author": "Marina Costa"
+  },
+  "es-ES": {
+    "statusHint": "Elige el emoji de tu estado",
+    "message": "Mensaje",
+    "messagePlaceholder": "Escribe un mensaje…",
+    "send": "Enviar",
+    "post": "¡La versión 2.0 ya está disponible! Gracias a todos los que probaron la beta.",
+    "locked": "El emoji del canal lo define un administrador.",
+    "author": "Marina Costa"
+  }
+}

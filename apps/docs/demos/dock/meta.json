@@ -1,0 +1,49 @@
+{
+  "intro": {
+    "pt-BR": "O dock é uma barra flutuante de atalhos, no estilo do macOS, para os destinos ou ferramentas mais usados. Ele usa `position: fixed` e se prende à borda da viewport; nos exemplos, um `transform` no contêiner o limita à área da demo.",
+    "en-US": "The dock is a floating, macOS-style bar of shortcuts to the most used destinations or tools. It uses `position: fixed` and sticks to a viewport edge; in these examples a `transform` on the container keeps it inside the demo area.",
+    "es-ES": "El dock es una barra flotante de accesos directos, al estilo de macOS, para los destinos o herramientas más usados. Usa `position: fixed` y se fija a un borde de la ventana; en estos ejemplos un `transform` en el contenedor lo limita al área de la demo."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Cada `MsDockItem` recebe um `label` acessível; `active` mostra o ponto indicador sob o app aberto.",
+        "en-US": "Each `MsDockItem` takes an accessible `label`; `active` shows the indicator dot under the open app.",
+        "es-ES": "Cada `MsDockItem` recibe un `label` accesible; `active` muestra el punto indicador bajo la app abierta."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": {
+        "pt-BR": "Tamanhos e posição",
+        "en-US": "Sizes and position",
+        "es-ES": "Tamaños y posición"
+      },
+      "description": {
+        "pt-BR": "Combine `size` (`sm`, `md`, `lg`) com `position` para prender o dock no topo ou na base.",
+        "en-US": "Combine `size` (`sm`, `md`, `lg`) with `position` to pin the dock to the top or bottom.",
+        "es-ES": "Combina `size` (`sm`, `md`, `lg`) con `position` para fijar el dock arriba o abajo."
+      }
+    },
+    {
+      "file": "Vertical",
+      "title": {
+        "pt-BR": "Barra de ferramentas vertical",
+        "en-US": "Vertical toolbar",
+        "es-ES": "Barra de herramientas vertical"
+      },
+      "description": {
+        "pt-BR": "Com `position=\"left\"` ou `\"right\"`, os itens empilham na vertical, como a barra de um editor de design.",
+        "en-US": "With `position=\"left\"` or `\"right\"`, items stack vertically, like a design editor toolbar.",
+        "es-ES": "Con `position=\"left\"` o `\"right\"`, los ítems se apilan en vertical, como la barra de un editor de diseño."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- A lista tem `role=\"toolbar\"` com `aria-label` vindo das mensagens da biblioteca.\n- Cada item tem `role=\"button\"`, `tabindex=\"0\"` e `aria-label` igual ao `label`.\n- `Tab`: move o foco entre os itens.\n- O componente não trata `Enter` nem `Espaço`; se o item executa uma ação, adicione `@keydown.enter` e `@keydown.space` além de `@click`.",
+    "en-US": "- The list has `role=\"toolbar\"` with an `aria-label` from the library messages.\n- Each item has `role=\"button\"`, `tabindex=\"0\"` and an `aria-label` equal to `label`.\n- `Tab`: moves focus between items.\n- The component does not handle `Enter` or `Space`; if an item triggers an action, add `@keydown.enter` and `@keydown.space` alongside `@click`.",
+    "es-ES": "- La lista tiene `role=\"toolbar\"` con un `aria-label` de los mensajes de la biblioteca.\n- Cada ítem tiene `role=\"button\"`, `tabindex=\"0\"` y un `aria-label` igual a `label`.\n- `Tab`: mueve el foco entre los ítems.\n- El componente no gestiona `Enter` ni `Espacio`; si un ítem ejecuta una acción, añade `@keydown.enter` y `@keydown.space` además de `@click`."
+  }
+}

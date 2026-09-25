@@ -1,0 +1,76 @@
+{
+  "intro": {
+    "pt-BR": "Use o seletor de data quando o usuário precisa escolher uma data, um intervalo ou um horário a partir de um calendário. Os valores são strings no formato ISO (`AAAA-MM-DD`, `HH:mm`).",
+    "en-US": "Use the date picker when users need to choose a date, a range or a time from a calendar. Values are ISO-formatted strings (`YYYY-MM-DD`, `HH:mm`).",
+    "es-ES": "Usa el selector de fecha cuando el usuario necesita elegir una fecha, un rango o una hora desde un calendario. Los valores son strings en formato ISO (`AAAA-MM-DD`, `HH:mm`)."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Data", "en-US": "Date", "es-ES": "Fecha" },
+      "description": {
+        "pt-BR": "No modo padrão `date`, o `v-model` recebe a data como `AAAA-MM-DD`; os atalhos Hoje e Amanhã ficam no rodapé.",
+        "en-US": "In the default `date` mode, `v-model` gets the date as `YYYY-MM-DD`; Today and Tomorrow shortcuts sit in the footer.",
+        "es-ES": "En el modo por defecto `date`, `v-model` recibe la fecha como `AAAA-MM-DD`; los atajos Hoy y Mañana están en el pie."
+      }
+    },
+    {
+      "file": "Range",
+      "title": { "pt-BR": "Intervalo", "en-US": "Range", "es-ES": "Rango" },
+      "description": {
+        "pt-BR": "Com `mode=\"range\"`, dois cliques definem início e fim, e o `v-model` vira `[início, fim]`.",
+        "en-US": "With `mode=\"range\"`, two clicks set the start and end, and `v-model` becomes `[start, end]`.",
+        "es-ES": "Con `mode=\"range\"`, dos clics definen inicio y fin, y `v-model` pasa a ser `[inicio, fin]`."
+      }
+    },
+    {
+      "file": "DateTime",
+      "title": { "pt-BR": "Data e hora", "en-US": "Date and time", "es-ES": "Fecha y hora" },
+      "description": {
+        "pt-BR": "`mode=\"datetime\"` produz `AAAA-MM-DD HH:mm`; escolha a hora antes do dia ou reabra para ajustá-la. `minute-step` define o intervalo dos minutos.",
+        "en-US": "`mode=\"datetime\"` produces `YYYY-MM-DD HH:mm`; pick the time before the day or reopen to adjust it. `minute-step` sets the minute interval.",
+        "es-ES": "`mode=\"datetime\"` produce `AAAA-MM-DD HH:mm`; elige la hora antes del día o vuelve a abrir para ajustarla. `minute-step` define el intervalo de minutos."
+      }
+    },
+    {
+      "file": "Time",
+      "title": { "pt-BR": "Horário", "en-US": "Time", "es-ES": "Hora" },
+      "description": {
+        "pt-BR": "`mode=\"time\"` mostra só os seletores de hora; `:format24h=\"false\"` troca para AM/PM, mas o valor continua em 24 horas.",
+        "en-US": "`mode=\"time\"` shows only the time selectors; `:format24h=\"false\"` switches to AM/PM, while the value stays in 24-hour format.",
+        "es-ES": "`mode=\"time\"` muestra solo los selectores de hora; `:format24h=\"false\"` cambia a AM/PM, pero el valor sigue en formato de 24 horas."
+      }
+    },
+    {
+      "file": "MinMax",
+      "title": {
+        "pt-BR": "Datas mínima e máxima",
+        "en-US": "Minimum and maximum dates",
+        "es-ES": "Fechas mínima y máxima"
+      },
+      "description": {
+        "pt-BR": "`min-date` e `max-date` (`AAAA-MM-DD`) desabilitam os dias fora da janela permitida.",
+        "en-US": "`min-date` and `max-date` (`YYYY-MM-DD`) disable days outside the allowed window.",
+        "es-ES": "`min-date` y `max-date` (`AAAA-MM-DD`) deshabilitan los días fuera del intervalo permitido."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": {
+        "pt-BR": "Desabilitado e sem limpar",
+        "en-US": "Disabled and not clearable",
+        "es-ES": "Deshabilitado y sin borrar"
+      },
+      "description": {
+        "pt-BR": "`disabled` bloqueia o campo; `:clearable=\"false\"` remove o botão de limpar, exibido por padrão.",
+        "en-US": "`disabled` locks the field; `:clearable=\"false\"` removes the clear button, shown by default.",
+        "es-ES": "`disabled` bloquea el campo; `:clearable=\"false\"` quita el botón de borrar, visible por defecto."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O campo é somente leitura, com `aria-haspopup=\"dialog\"`, `aria-expanded` e `aria-controls`; `Enter`, `Espaço` ou `↓` abrem o calendário.\n- Ao abrir, o foco vai para o dia selecionado (ou hoje). A grade usa `role=\"grid\"`, e cada dia tem `aria-label` com a data por extenso, `aria-selected` e `aria-current=\"date\"` para hoje.\n- `←`/`→` movem um dia, `↑`/`↓` uma semana, `Home`/`End` vão ao início/fim da semana, `PageUp`/`PageDown` mudam o mês e, com `Shift`, o ano. `Enter` ou `Espaço` escolhem o dia.\n- `Esc` fecha e devolve o foco ao campo; sair do componente com `Tab` também fecha.\n- O `<input>` não recebe `id` de um `MsField` nem `aria-label`: o placeholder é a única pista do campo.",
+    "en-US": "- The field is read-only, with `aria-haspopup=\"dialog\"`, `aria-expanded` and `aria-controls`; `Enter`, `Space` or `↓` open the calendar.\n- On open, focus moves to the selected day (or today). The grid uses `role=\"grid\"`, and each day has an `aria-label` with the full date, `aria-selected` and `aria-current=\"date\"` for today.\n- `←`/`→` move one day, `↑`/`↓` one week, `Home`/`End` go to the start/end of the week, `PageUp`/`PageDown` change the month and, with `Shift`, the year. `Enter` or `Space` choose the day.\n- `Esc` closes and returns focus to the field; tabbing out of the component also closes it.\n- The `<input>` gets neither an `MsField` `id` nor an `aria-label`: the placeholder is the only hint for the field.",
+    "es-ES": "- El campo es de solo lectura, con `aria-haspopup=\"dialog\"`, `aria-expanded` y `aria-controls`; `Enter`, `Espacio` o `↓` abren el calendario.\n- Al abrir, el foco va al día seleccionado (o a hoy). La cuadrícula usa `role=\"grid\"`, y cada día tiene un `aria-label` con la fecha completa, `aria-selected` y `aria-current=\"date\"` para hoy.\n- `←`/`→` mueven un día, `↑`/`↓` una semana, `Home`/`End` van al inicio/fin de la semana, `PageUp`/`PageDown` cambian el mes y, con `Shift`, el año. `Enter` o `Espacio` eligen el día.\n- `Esc` cierra y devuelve el foco al campo; salir del componente con `Tab` también lo cierra.\n- El `<input>` no recibe el `id` de un `MsField` ni un `aria-label`: el placeholder es la única pista del campo."
+  }
+}

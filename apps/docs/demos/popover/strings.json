@@ -1,0 +1,47 @@
+{
+  "pt-BR": {
+    "shippingTrigger": "Prazo de entrega",
+    "shippingTitle": "Entrega estimada",
+    "shippingBody": "Pedidos feitos até as 14h saem no mesmo dia. Para São Paulo capital, a entrega leva de 1 a 2 dias úteis.",
+    "placementBody": "Conteúdo do popover",
+    "dimensions": "Dimensões",
+    "resize": "Redimensionar",
+    "width": "Largura",
+    "height": "Altura",
+    "cancel": "Cancelar",
+    "apply": "Aplicar",
+    "pro": "Pro",
+    "proPlan": "Recurso do plano Pro",
+    "proBody": "Relatórios avançados estão disponíveis nos planos Pro e Empresa."
+  },
+  "en-US": {
+    "shippingTrigger": "Delivery time",
+    "shippingTitle": "Estimated delivery",
+    "shippingBody": "Orders placed before 2 PM ship the same day. Within New York City, delivery takes 1 to 2 business days.",
+    "placementBody": "Popover content",
+    "dimensions": "Dimensions",
+    "resize": "Resize",
+    "width": "Width",
+    "height": "Height",
+    "cancel": "Cancel",
+    "apply": "Apply",
+    "pro": "Pro",
+    "proPlan": "Pro plan feature",
+    "proBody": "Advanced reports are available on the Pro and Business plans."
+  },
+  "es-ES": {
+    "shippingTrigger": "Plazo de entrega",
+    "shippingTitle": "Entrega estimada",
+    "shippingBody": "Los pedidos realizados antes de las 14:00 salen el mismo día. En la ciudad, la entrega tarda de 1 a 2 días hábiles.",
+    "placementBody": "Contenido del popover",
+    "dimensions": "Dimensiones",
+    "resize": "Redimensionar",
+    "width": "Ancho",
+    "height": "Alto",
+    "cancel": "Cancelar",
+    "apply": "Aplicar",
+    "pro": "Pro",
+    "proPlan": "Función del plan Pro",
+    "proBody": "Los informes avanzados están disponibles en los planes Pro y Empresa."
+  }
+}

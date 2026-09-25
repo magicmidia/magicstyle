@@ -1,0 +1,67 @@
+{
+  "intro": {
+    "pt-BR": "Indicador de carregamento para esperas curtas e sem progresso mensurável. Para tarefas longas com valor conhecido, prefira `MsProgress`.",
+    "en-US": "Loading indicator for short waits without measurable progress. For long tasks with a known value, prefer `MsProgress`.",
+    "es-ES": "Indicador de carga para esperas cortas sin progreso medible. Para tareas largas con valor conocido, prefiere `MsProgress`."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Sem props, o spinner é `md`, no tom `primary`, e anuncia o texto de carregamento traduzido.",
+        "en-US": "Without props the spinner is `md`, in the `primary` tone, and announces the translated loading text.",
+        "es-ES": "Sin props, el spinner es `md`, en el tono `primary`, y anuncia el texto de carga traducido."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` vai de `2xs` (8px) a `2xl` (64px).",
+        "en-US": "`size` goes from `2xs` (8px) to `2xl` (64px).",
+        "es-ES": "`size` va de `2xs` (8px) a `2xl` (64px)."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "`tone` aceita `primary`, `neutral`, `success`, `warning`, `danger` e `current` (herda a cor do texto).",
+        "en-US": "`tone` accepts `primary`, `neutral`, `success`, `warning`, `danger` and `current` (inherits the text color).",
+        "es-ES": "`tone` acepta `primary`, `neutral`, `success`, `warning`, `danger` y `current` (hereda el color del texto)."
+      }
+    },
+    {
+      "file": "ThicknessSpeed",
+      "title": {
+        "pt-BR": "Espessura e velocidade",
+        "en-US": "Thickness and speed",
+        "es-ES": "Grosor y velocidad"
+      },
+      "description": {
+        "pt-BR": "`thickness` (`thin`, `normal`, `thick`) e `speed` (`slow`, `normal`, `fast`) ajustam o traço e a rotação.",
+        "en-US": "`thickness` (`thin`, `normal`, `thick`) and `speed` (`slow`, `normal`, `fast`) tune the stroke and rotation.",
+        "es-ES": "`thickness` (`thin`, `normal`, `thick`) y `speed` (`slow`, `normal`, `fast`) ajustan el trazo y la rotación."
+      }
+    },
+    {
+      "file": "Inline",
+      "title": {
+        "pt-BR": "Junto a texto e em botões",
+        "en-US": "Next to text and in buttons",
+        "es-ES": "Junto a texto y en botones"
+      },
+      "description": {
+        "pt-BR": "Com `tone=\"current\"`, o spinner acompanha a cor do texto ao redor e `label` define o que é anunciado. Em botões, use a prop `loading` do `MsButton`.",
+        "en-US": "With `tone=\"current\"` the spinner follows the surrounding text color and `label` sets what is announced. In buttons, use the `loading` prop of `MsButton`.",
+        "es-ES": "Con `tone=\"current\"` el spinner sigue el color del texto que lo rodea y `label` define lo que se anuncia. En botones, usa la prop `loading` de `MsButton`."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza `role=\"status\"` com `aria-live=\"polite\"` e um texto visualmente oculto (`label`, ou o texto traduzido de carregamento).\n- O desenho SVG é decorativo (`aria-hidden`).\n- Evite vários spinners visíveis ao mesmo tempo: cada um é uma região viva anunciada separadamente.",
+    "en-US": "- Renders `role=\"status\"` with `aria-live=\"polite\"` and visually hidden text (`label`, or the translated loading text).\n- The SVG drawing is decorative (`aria-hidden`).\n- Avoid several visible spinners at once: each one is a live region announced separately.",
+    "es-ES": "- Renderiza `role=\"status\"` con `aria-live=\"polite\"` y un texto visualmente oculto (`label`, o el texto de carga traducido).\n- El dibujo SVG es decorativo (`aria-hidden`).\n- Evita varios spinners visibles a la vez: cada uno es una región viva que se anuncia por separado."
+  }
+}

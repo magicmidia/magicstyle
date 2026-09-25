@@ -1,0 +1,74 @@
+{
+  "intro": {
+    "pt-BR": "Três sistemas de layout: `MsRow`/`MsCol` (alias `MsGrid`) para a grade flexível de 12 colunas, `MsBentoGrid` para mosaicos com células de tamanhos diferentes e `MsMasonryGrid` para colunas de alturas variadas.",
+    "en-US": "Three layout systems: `MsRow`/`MsCol` (alias `MsGrid`) for the 12-column flex grid, `MsBentoGrid` for mosaics with cells of different sizes and `MsMasonryGrid` for columns of varying heights.",
+    "es-ES": "Tres sistemas de diseño: `MsRow`/`MsCol` (alias `MsGrid`) para la cuadrícula flexible de 12 columnas, `MsBentoGrid` para mosaicos con celdas de distintos tamaños y `MsMasonryGrid` para columnas de alturas variables."
+  },
+  "demos": [
+    {
+      "file": "RowCol",
+      "title": {
+        "pt-BR": "Linhas e colunas",
+        "en-US": "Rows and columns",
+        "es-ES": "Filas y columnas"
+      },
+      "description": {
+        "pt-BR": "`span` define a largura em 12 avos e `sm`/`md`/`lg`/`xl` a sobrescrevem a partir de cada breakpoint: 2 colunas no celular, 4 a partir de `md`.",
+        "en-US": "`span` sets the width in twelfths and `sm`/`md`/`lg`/`xl` override it from each breakpoint up: 2 columns on phones, 4 from `md`.",
+        "es-ES": "`span` define el ancho en doceavos y `sm`/`md`/`lg`/`xl` lo reemplazan a partir de cada breakpoint: 2 columnas en móvil, 4 desde `md`."
+      }
+    },
+    {
+      "file": "FormLayout",
+      "title": {
+        "pt-BR": "Formulário horizontal",
+        "en-US": "Horizontal form",
+        "es-ES": "Formulario horizontal"
+      },
+      "description": {
+        "pt-BR": "Rótulos em 4 colunas e campos em 8 a partir de `sm` (empilhados no celular); `gutter` com dois valores define o espaço `[horizontal, vertical]` e uma segunda linha com `justify=\"end\"` alinha o botão aos campos.",
+        "en-US": "Labels take 4 columns and fields 8 from `sm` up (stacked on phones); a two-value `gutter` sets `[horizontal, vertical]` spacing and a second row with `justify=\"end\"` lines the button up with the fields.",
+        "es-ES": "Las etiquetas ocupan 4 columnas y los campos 8 desde `sm` (apilados en móvil); un `gutter` de dos valores define el espacio `[horizontal, vertical]` y una segunda fila con `justify=\"end\"` alinea el botón con los campos."
+      }
+    },
+    {
+      "file": "Alignment",
+      "title": {
+        "pt-BR": "Alinhamento",
+        "en-US": "Alignment",
+        "es-ES": "Alineación"
+      },
+      "description": {
+        "pt-BR": "`justify` distribui as colunas na linha (`start`, `center`, `end`, `space-between`…) e `align` as alinha na vertical.",
+        "en-US": "`justify` distributes columns along the row (`start`, `center`, `end`, `space-between`…) and `align` aligns them vertically.",
+        "es-ES": "`justify` distribuye las columnas en la fila (`start`, `center`, `end`, `space-between`…) y `align` las alinea en vertical."
+      }
+    },
+    {
+      "file": "Bento",
+      "title": {
+        "pt-BR": "Bento",
+        "en-US": "Bento",
+        "es-ES": "Bento"
+      },
+      "description": {
+        "pt-BR": "`MsBentoGrid` define `cols` e `gap`; cada `MsBentoItem` ocupa `col-span` × `row-span` células e tem as variantes `default`, `accent`, `elevated` e `ghost`.",
+        "en-US": "`MsBentoGrid` sets `cols` and `gap`; each `MsBentoItem` spans `col-span` × `row-span` cells and comes in `default`, `accent`, `elevated` and `ghost` variants.",
+        "es-ES": "`MsBentoGrid` define `cols` y `gap`; cada `MsBentoItem` ocupa `col-span` × `row-span` celdas y tiene las variantes `default`, `accent`, `elevated` y `ghost`."
+      }
+    },
+    {
+      "file": "Masonry",
+      "title": {
+        "pt-BR": "Masonry",
+        "en-US": "Masonry",
+        "es-ES": "Masonry"
+      },
+      "description": {
+        "pt-BR": "`MsMasonryGrid` distribui `items` entre `cols` colunas e renderiza cada um pelo slot padrão; abaixo de 768px vira uma coluna.",
+        "en-US": "`MsMasonryGrid` spreads `items` across `cols` columns and renders each through the default slot; below 768px it becomes one column.",
+        "es-ES": "`MsMasonryGrid` reparte `items` entre `cols` columnas y renderiza cada uno con el slot por defecto; por debajo de 768px pasa a una columna."
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "pt-BR": {
+    "newsletterTitle": "Receba novidades",
+    "newsletterDesc": "Um e-mail por mês com lançamentos e dicas do produto.",
+    "email": "E-mail",
+    "emailPlaceholder": "voce@empresa.com",
+    "productNews": "Quero receber anúncios de produto",
+    "cancel": "Cancelar",
+    "subscribe": "Inscrever-se",
+    "jumpTo": "Pular para a página",
+    "nextPage": "Avançar",
+    "previousPage": "Voltar",
+    "deployTitle": "nimbus-web",
+    "deployDesc": "Produção · main · há 3 minutos",
+    "ready": "Pronto",
+    "viewLogs": "Ver logs",
+    "visit": "Abrir site"
+  },
+  "en-US": {
+    "newsletterTitle": "Stay in the loop",
+    "newsletterDesc": "One email a month with product releases and tips.",
+    "email": "Email",
+    "emailPlaceholder": "you@company.com",
+    "productNews": "Send me product announcements",
+    "cancel": "Cancel",
+    "subscribe": "Subscribe",
+    "jumpTo": "Jump to page",
+    "nextPage": "Forward",
+    "previousPage": "Back",
+    "deployTitle": "nimbus-web",
+    "deployDesc": "Production · main · 3 minutes ago",
+    "ready": "Ready",
+    "viewLogs": "View logs",
+    "visit": "Visit site"
+  },
+  "es-ES": {
+    "newsletterTitle": "Recibe novedades",
+    "newsletterDesc": "Un correo al mes con lanzamientos y consejos del producto.",
+    "email": "Correo",
+    "emailPlaceholder": "tu@empresa.com",
+    "productNews": "Quiero recibir anuncios del producto",
+    "cancel": "Cancelar",
+    "subscribe": "Suscribirse",
+    "jumpTo": "Saltar a la página",
+    "nextPage": "Avanzar",
+    "previousPage": "Retroceder",
+    "deployTitle": "nimbus-web",
+    "deployDesc": "Producción · main · hace 3 minutos",
+    "ready": "Listo",
+    "viewLogs": "Ver registros",
+    "visit": "Abrir sitio"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "pt-BR": {
+    "filesLabel": "Arquivos do projeto",
+    "selectedLabel": "Selecionado:",
+    "settingsLabel": "Configurações",
+    "account": "Conta",
+    "profile": "Perfil",
+    "security": "Segurança",
+    "workspace": "Workspace",
+    "members": "Membros",
+    "billing": "Cobrança",
+    "sso": "Login único (Enterprise)",
+    "foldersLabel": "Pastas de e-mail",
+    "inbox": "Caixa de entrada",
+    "sales": "Vendas",
+    "support": "Suporte",
+    "archive": "Arquivo"
+  },
+  "en-US": {
+    "filesLabel": "Project files",
+    "selectedLabel": "Selected:",
+    "settingsLabel": "Settings",
+    "account": "Account",
+    "profile": "Profile",
+    "security": "Security",
+    "workspace": "Workspace",
+    "members": "Members",
+    "billing": "Billing",
+    "sso": "Single sign-on (Enterprise)",
+    "foldersLabel": "Mail folders",
+    "inbox": "Inbox",
+    "sales": "Sales",
+    "support": "Support",
+    "archive": "Archive"
+  },
+  "es-ES": {
+    "filesLabel": "Archivos del proyecto",
+    "selectedLabel": "Seleccionado:",
+    "settingsLabel": "Configuración",
+    "account": "Cuenta",
+    "profile": "Perfil",
+    "security": "Seguridad",
+    "workspace": "Espacio de trabajo",
+    "members": "Miembros",
+    "billing": "Facturación",
+    "sso": "Inicio de sesión único (Enterprise)",
+    "foldersLabel": "Carpetas de correo",
+    "inbox": "Bandeja de entrada",
+    "sales": "Ventas",
+    "support": "Soporte",
+    "archive": "Archivo"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "pt-BR": {
+    "settings": "Configurações",
+    "add": "Adicionar",
+    "favorite": "Favoritar",
+    "mute": "Silenciar",
+    "refresh": "Atualizar",
+    "delete": "Excluir",
+    "messageActions": "Ações da mensagem",
+    "reply": "Responder",
+    "forward": "Encaminhar",
+    "archive": "Arquivar"
+  },
+  "en-US": {
+    "settings": "Settings",
+    "add": "Add",
+    "favorite": "Favorite",
+    "mute": "Mute",
+    "refresh": "Refresh",
+    "delete": "Delete",
+    "messageActions": "Message actions",
+    "reply": "Reply",
+    "forward": "Forward",
+    "archive": "Archive"
+  },
+  "es-ES": {
+    "settings": "Configuración",
+    "add": "Agregar",
+    "favorite": "Marcar como favorito",
+    "mute": "Silenciar",
+    "refresh": "Actualizar",
+    "delete": "Eliminar",
+    "messageActions": "Acciones del mensaje",
+    "reply": "Responder",
+    "forward": "Reenviar",
+    "archive": "Archivar"
+  }
+}

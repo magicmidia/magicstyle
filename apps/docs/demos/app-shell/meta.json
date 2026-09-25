@@ -1,0 +1,53 @@
+{
+  "intro": {
+    "pt-BR": "`MsAppShell` monta a moldura de uma aplicação: slots para barra superior, trilho de navegação, barra lateral, conteúdo, painel lateral, rodapé e barra de status. Por padrão ocupa `100vh`; nos exemplos, `:full-height=\"false\"` e uma altura fixa o mantêm dentro da moldura.",
+    "en-US": "`MsAppShell` builds an application frame: slots for top bar, navigation rail, sidebar, content, aside, footer and status bar. It fills `100vh` by default; in these examples `:full-height=\"false\"` and a fixed height keep it inside the frame.",
+    "es-ES": "`MsAppShell` arma el marco de una aplicación: slots para barra superior, riel de navegación, barra lateral, contenido, panel lateral, pie y barra de estado. Por defecto ocupa `100vh`; en estos ejemplos `:full-height=\"false\"` y una altura fija lo mantienen dentro del marco."
+  },
+  "demos": [
+    {
+      "file": "Dashboard",
+      "title": {
+        "pt-BR": "Painel administrativo",
+        "en-US": "Admin dashboard",
+        "es-ES": "Panel de administración"
+      },
+      "description": {
+        "pt-BR": "`MsTopbar`, `MsAppShellSidebar`, `MsContent` e `MsStatusBar`; `v-model:sidebar-collapsed` recolhe a barra lateral pelo botão da barra superior.",
+        "en-US": "`MsTopbar`, `MsAppShellSidebar`, `MsContent` and `MsStatusBar`; `v-model:sidebar-collapsed` collapses the sidebar from the top bar button.",
+        "es-ES": "`MsTopbar`, `MsAppShellSidebar`, `MsContent` y `MsStatusBar`; `v-model:sidebar-collapsed` contrae la barra lateral desde el botón de la barra superior."
+      }
+    },
+    {
+      "file": "RailAndAside",
+      "title": {
+        "pt-BR": "Trilho, painel lateral e rodapé",
+        "en-US": "Rail, aside and footer",
+        "es-ES": "Riel, panel lateral y pie"
+      },
+      "description": {
+        "pt-BR": "`MsNavigationRail` guarda ícones de seções, `MsAside` mostra detalhes à direita e `MsAppShellFooter` fecha a moldura, como num app de mensagens.",
+        "en-US": "`MsNavigationRail` holds section icons, `MsAside` shows details on the right and `MsAppShellFooter` closes the frame, like a messaging app.",
+        "es-ES": "`MsNavigationRail` contiene iconos de secciones, `MsAside` muestra detalles a la derecha y `MsAppShellFooter` cierra el marco, como en una app de mensajería."
+      }
+    },
+    {
+      "file": "StatusBar",
+      "title": {
+        "pt-BR": "Barra de status com tom",
+        "en-US": "Toned status bar",
+        "es-ES": "Barra de estado con tono"
+      },
+      "description": {
+        "pt-BR": "`MsStatusBar` aceita `tone` (`info`, `success`, `warning`, `danger`) para sinalizar o estado do documento, como num editor de código.",
+        "en-US": "`MsStatusBar` accepts `tone` (`info`, `success`, `warning`, `danger`) to flag the document state, like a code editor.",
+        "es-ES": "`MsStatusBar` acepta `tone` (`info`, `success`, `warning`, `danger`) para señalar el estado del documento, como en un editor de código."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- As partes geram landmarks: `MsTopbar` é `<header>`, `MsAppShellSidebar` e `MsAside` são `<aside>`, `MsContent` é `<main>` e `MsAppShellFooter` é `<footer>`.\n- `MsNavigationRail` é um `<nav>` com `aria-label` vindo das mensagens da biblioteca.\n- `MsStatusBar` tem `role=\"status\"`: mudanças no texto são anunciadas por leitores de tela, então evite atualizá-lo a todo momento.\n- Use apenas um `MsContent` (`<main>`) por página.",
+    "en-US": "- The parts create landmarks: `MsTopbar` is a `<header>`, `MsAppShellSidebar` and `MsAside` are `<aside>`, `MsContent` is `<main>` and `MsAppShellFooter` is `<footer>`.\n- `MsNavigationRail` is a `<nav>` with an `aria-label` from the library messages.\n- `MsStatusBar` has `role=\"status\"`: text changes are announced by screen readers, so avoid updating it constantly.\n- Use a single `MsContent` (`<main>`) per page.",
+    "es-ES": "- Las partes crean landmarks: `MsTopbar` es un `<header>`, `MsAppShellSidebar` y `MsAside` son `<aside>`, `MsContent` es `<main>` y `MsAppShellFooter` es `<footer>`.\n- `MsNavigationRail` es un `<nav>` con un `aria-label` de los mensajes de la biblioteca.\n- `MsStatusBar` tiene `role=\"status\"`: los cambios de texto se anuncian en lectores de pantalla, así que evita actualizarlo constantemente.\n- Usa un solo `MsContent` (`<main>`) por página."
+  }
+}

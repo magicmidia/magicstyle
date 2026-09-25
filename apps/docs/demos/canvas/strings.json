@@ -1,0 +1,44 @@
+{
+  "pt-BR": {
+    "emptyTitle": "Seu fluxo está vazio",
+    "emptyBody": "Arraste blocos da barra lateral ou comece com um gatilho para montar sua primeira automação.",
+    "addNode": "Adicionar gatilho",
+    "trigger": "Novo pedido",
+    "triggerDetail": "Quando um pedido é pago na loja",
+    "event": "Gatilho",
+    "filter": "Valor acima de R$ 500",
+    "filterDetail": "Segue só pedidos grandes",
+    "logic": "Condição",
+    "action": "Avisar no Slack",
+    "actionDetail": "Envia para #vendas",
+    "integration": "Ação"
+  },
+  "en-US": {
+    "emptyTitle": "Your flow is empty",
+    "emptyBody": "Drag blocks from the sidebar or start with a trigger to build your first automation.",
+    "addNode": "Add trigger",
+    "trigger": "New order",
+    "triggerDetail": "When an order is paid in the store",
+    "event": "Trigger",
+    "filter": "Amount over $500",
+    "filterDetail": "Only large orders continue",
+    "logic": "Condition",
+    "action": "Notify on Slack",
+    "actionDetail": "Posts to #sales",
+    "integration": "Action"
+  },
+  "es-ES": {
+    "emptyTitle": "Tu flujo está vacío",
+    "emptyBody": "Arrastra bloques desde la barra lateral o empieza con un disparador para crear tu primera automatización.",
+    "addNode": "Añadir disparador",
+    "trigger": "Nuevo pedido",
+    "triggerDetail": "Cuando se paga un pedido en la tienda",
+    "event": "Disparador",
+    "filter": "Importe mayor de 500 €",
+    "filterDetail": "Solo siguen los pedidos grandes",
+    "logic": "Condición",
+    "action": "Avisar en Slack",
+    "actionDetail": "Publica en #ventas",
+    "integration": "Acción"
+  }
+}

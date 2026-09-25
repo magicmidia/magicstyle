@@ -1,0 +1,53 @@
+{
+  "pt-BR": {
+    "visitorsLabel": "Visitantes hoje",
+    "simulate": "Simular novo acesso",
+    "numberLocale": "pt-BR",
+    "currencyCode": "BRL",
+    "currencySymbol": "R$ ",
+    "revenue": "Receita do mês",
+    "conversion": "Taxa de conversão",
+    "shipment": "Peso do envio",
+    "refresh": "Atualizar métricas",
+    "lastWeek": "Últimos 7 dias",
+    "lastMonth": "Últimos 30 dias",
+    "switchPeriod": "Alternar período",
+    "orders": "Pedidos",
+    "averageTicket": "Ticket médio",
+    "churn": "Cancelamentos"
+  },
+  "en-US": {
+    "visitorsLabel": "Visitors today",
+    "simulate": "Simulate new visit",
+    "numberLocale": "en-US",
+    "currencyCode": "USD",
+    "currencySymbol": "$",
+    "revenue": "Monthly revenue",
+    "conversion": "Conversion rate",
+    "shipment": "Shipment weight",
+    "refresh": "Refresh metrics",
+    "lastWeek": "Last 7 days",
+    "lastMonth": "Last 30 days",
+    "switchPeriod": "Switch period",
+    "orders": "Orders",
+    "averageTicket": "Average order value",
+    "churn": "Churn"
+  },
+  "es-ES": {
+    "visitorsLabel": "Visitantes hoy",
+    "simulate": "Simular nueva visita",
+    "numberLocale": "es-ES",
+    "currencyCode": "EUR",
+    "currencySymbol": "€ ",
+    "revenue": "Ingresos del mes",
+    "conversion": "Tasa de conversión",
+    "shipment": "Peso del envío",
+    "refresh": "Actualizar métricas",
+    "lastWeek": "Últimos 7 días",
+    "lastMonth": "Últimos 30 días",
+    "switchPeriod": "Cambiar período",
+    "orders": "Pedidos",
+    "averageTicket": "Ticket promedio",
+    "churn": "Cancelaciones"
+  }
+}

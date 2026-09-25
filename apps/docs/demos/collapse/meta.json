@@ -1,0 +1,49 @@
+{
+  "intro": {
+    "pt-BR": "Um único painel que expande e recolhe o conteúdo ao clicar no cabeçalho. Para várias seções coordenadas, use o `MsAccordion`.",
+    "en-US": "A single panel that expands and collapses its content when the header is clicked. For several coordinated sections, use `MsAccordion`.",
+    "es-ES": "Un único panel que expande y pliega su contenido al hacer clic en el encabezado. Para varias secciones coordinadas, usa `MsAccordion`."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`v-model` controla se o painel está aberto; `title` define o texto do cabeçalho.",
+        "en-US": "`v-model` controls whether the panel is open; `title` sets the header text.",
+        "es-ES": "`v-model` controla si el panel está abierto; `title` define el texto del encabezado."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": {
+        "pt-BR": "Variantes e desabilitado",
+        "en-US": "Variants and disabled",
+        "es-ES": "Variantes y deshabilitado"
+      },
+      "description": {
+        "pt-BR": "`variant` aceita `bordered`, `card` e `ghost`; `disabled` impede a abertura.",
+        "en-US": "`variant` accepts `bordered`, `card` and `ghost`; `disabled` prevents opening.",
+        "es-ES": "`variant` acepta `bordered`, `card` y `ghost`; `disabled` impide abrirlo."
+      }
+    },
+    {
+      "file": "OrderSummary",
+      "title": {
+        "pt-BR": "Resumo do pedido",
+        "en-US": "Order summary",
+        "es-ES": "Resumen del pedido"
+      },
+      "description": {
+        "pt-BR": "O slot `title` aceita conteúdo rico e o slot `extra` coloca um badge ao lado do chevron.",
+        "en-US": "The `title` slot accepts rich content and the `extra` slot places a badge next to the chevron.",
+        "es-ES": "El slot `title` acepta contenido enriquecido y el slot `extra` coloca un badge junto al chevron."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O cabeçalho é um `<button>` nativo com `aria-expanded` e `aria-controls` apontando para o conteúdo.\n- `Tab` foca o cabeçalho; `Enter` / `Espaço` abrem ou fecham o painel.\n- Fechado, o conteúdo fica `inert`: não recebe foco nem é lido por leitores de tela.\n- Com `disabled`, o botão recebe o atributo `disabled` e sai da ordem de foco.\n- Todo o cabeçalho é um botão: evite colocar outros elementos interativos nos slots `title` e `extra`.",
+    "en-US": "- The header is a native `<button>` with `aria-expanded` and `aria-controls` pointing to the content.\n- `Tab` focuses the header; `Enter` / `Space` open or close the panel.\n- When closed, the content is `inert`: it can't be focused or read by screen readers.\n- With `disabled`, the button gets the `disabled` attribute and leaves the focus order.\n- The whole header is a button: avoid placing other interactive elements in the `title` and `extra` slots.",
+    "es-ES": "- El encabezado es un `<button>` nativo con `aria-expanded` y `aria-controls` que apunta al contenido.\n- `Tab` enfoca el encabezado; `Enter` / `Espacio` abren o cierran el panel.\n- Cerrado, el contenido queda `inert`: no recibe foco ni lo leen los lectores de pantalla.\n- Con `disabled`, el botón recibe el atributo `disabled` y sale del orden de foco.\n- Todo el encabezado es un botón: evita poner otros elementos interactivos en los slots `title` y `extra`."
+  }
+}

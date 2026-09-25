@@ -1,0 +1,79 @@
+{
+  "intro": {
+    "pt-BR": "Use o botão de ícone em barras de ferramentas e ações compactas cujo ícone é amplamente reconhecido. A prop `ariaLabel` é obrigatória, porque o botão não tem texto visível.",
+    "en-US": "Use the icon button in toolbars and compact actions whose icon is widely recognized. The `ariaLabel` prop is required because the button has no visible text.",
+    "es-ES": "Usa el botón de icono en barras de herramientas y acciones compactas cuyo icono es ampliamente reconocido. La prop `ariaLabel` es obligatoria porque el botón no tiene texto visible."
+  },
+  "demos": [
+    {
+      "file": "Variants",
+      "title": {
+        "pt-BR": "Variantes",
+        "en-US": "Variants",
+        "es-ES": "Variantes"
+      },
+      "description": {
+        "pt-BR": "As variantes `solid`, `soft`, `outline` e `ghost` combinam com qualquer `tone`.",
+        "en-US": "The `solid`, `soft`, `outline` and `ghost` variants combine with any `tone`.",
+        "es-ES": "Las variantes `solid`, `soft`, `outline` y `ghost` se combinan con cualquier `tone`."
+      }
+    },
+    {
+      "file": "SizesShapes",
+      "title": {
+        "pt-BR": "Tamanhos e formatos",
+        "en-US": "Sizes and shapes",
+        "es-ES": "Tamaños y formas"
+      },
+      "description": {
+        "pt-BR": "`size` vai de `2xs` a `xl`, e `shape` aceita `square`, `rounded` (padrão) ou `circle`, também disponível como atalho `circle`.",
+        "en-US": "`size` goes from `2xs` to `xl`, and `shape` accepts `square`, `rounded` (default) or `circle`, also available as the `circle` shorthand.",
+        "es-ES": "`size` va de `2xs` a `xl`, y `shape` acepta `square`, `rounded` (por defecto) o `circle`, también disponible como atajo `circle`."
+      }
+    },
+    {
+      "file": "Toggle",
+      "title": {
+        "pt-BR": "Alternância",
+        "en-US": "Toggle",
+        "es-ES": "Alternancia"
+      },
+      "description": {
+        "pt-BR": "Quando `active` é definido, o botão vira uma alternância e expõe `aria-pressed`.",
+        "en-US": "When `active` is set, the button becomes a toggle and exposes `aria-pressed`.",
+        "es-ES": "Cuando se define `active`, el botón se vuelve un alternador y expone `aria-pressed`."
+      }
+    },
+    {
+      "file": "States",
+      "title": {
+        "pt-BR": "Carregando e desabilitado",
+        "en-US": "Loading and disabled",
+        "es-ES": "Cargando y deshabilitado"
+      },
+      "description": {
+        "pt-BR": "`loading` troca o ícone por um spinner e bloqueia cliques; `disabled` desativa o botão.",
+        "en-US": "`loading` swaps the icon for a spinner and blocks clicks; `disabled` turns the button off.",
+        "es-ES": "`loading` cambia el icono por un spinner y bloquea los clics; `disabled` desactiva el botón."
+      }
+    },
+    {
+      "file": "Toolbar",
+      "title": {
+        "pt-BR": "Com tooltip",
+        "en-US": "With tooltip",
+        "es-ES": "Con tooltip"
+      },
+      "description": {
+        "pt-BR": "Envolva cada botão em `MsTooltip` para mostrar o nome da ação ao passar o mouse ou focar.",
+        "en-US": "Wrap each button in `MsTooltip` to show the action name on hover or focus.",
+        "es-ES": "Envuelve cada botón en `MsTooltip` para mostrar el nombre de la acción al pasar el mouse o enfocar."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza um `<button>` nativo: `Tab` foca e `Enter`/`Espaço` ativam.\n- A prop obrigatória `ariaLabel` vira o atributo `aria-label`, o nome acessível do botão; marque o ícone com `aria-hidden=\"true\"`.\n- Com `active` definido, o botão expõe `aria-pressed=\"true\"` ou `\"false\"`.\n- `loading` e `disabled` aplicam `disabled` e `aria-disabled=\"true\"`; `loading` também define `aria-busy=\"true\"`.",
+    "en-US": "- Renders a native `<button>`: `Tab` focuses and `Enter`/`Space` activate.\n- The required `ariaLabel` prop becomes the `aria-label` attribute, the button's accessible name; mark the icon with `aria-hidden=\"true\"`.\n- When `active` is set, the button exposes `aria-pressed=\"true\"` or `\"false\"`.\n- `loading` and `disabled` set `disabled` and `aria-disabled=\"true\"`; `loading` also sets `aria-busy=\"true\"`.",
+    "es-ES": "- Renderiza un `<button>` nativo: `Tab` enfoca y `Enter`/`Espacio` activan.\n- La prop obligatoria `ariaLabel` se convierte en el atributo `aria-label`, el nombre accesible del botón; marca el icono con `aria-hidden=\"true\"`.\n- Con `active` definido, el botón expone `aria-pressed=\"true\"` o `\"false\"`.\n- `loading` y `disabled` aplican `disabled` y `aria-disabled=\"true\"`; `loading` también define `aria-busy=\"true\"`."
+  }
+}

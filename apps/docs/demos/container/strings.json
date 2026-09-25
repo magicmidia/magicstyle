@@ -1,0 +1,23 @@
+{
+  "pt-BR": {
+    "heroTitle": "Relatórios que sua equipe entende",
+    "heroBody": "Conecte suas fontes de dados e publique painéis claros em minutos, sem escrever SQL.",
+    "getStarted": "Começar agora",
+    "padded": "Com padding lateral (padrão): o texto não encosta nas bordas em telas pequenas.",
+    "flush": "Sem padding (:padded=\"false\"): útil quando o conteúdo já tem espaçamento próprio."
+  },
+  "en-US": {
+    "heroTitle": "Reports your team understands",
+    "heroBody": "Connect your data sources and publish clear dashboards in minutes, without writing SQL.",
+    "getStarted": "Get started",
+    "padded": "With side padding (default): text never touches the edges on small screens.",
+    "flush": "Without padding (:padded=\"false\"): useful when the content already has its own spacing."
+  },
+  "es-ES": {
+    "heroTitle": "Informes que tu equipo entiende",
+    "heroBody": "Conecta tus fuentes de datos y publica paneles claros en minutos, sin escribir SQL.",
+    "getStarted": "Empezar ahora",
+    "padded": "Con padding lateral (por defecto): el texto no toca los bordes en pantallas pequeñas.",
+    "flush": "Sin padding (:padded=\"false\"): útil cuando el contenido ya tiene su propio espaciado."
+  }
+}

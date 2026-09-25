@@ -1,0 +1,67 @@
+{
+  "intro": {
+    "pt-BR": "Avaliação por estrelas para coletar ou exibir notas, como em reviews de produtos e pesquisas de satisfação.",
+    "en-US": "Star rating for collecting or displaying scores, as in product reviews and satisfaction surveys.",
+    "es-ES": "Calificación con estrellas para recoger o mostrar puntuaciones, como en reseñas de productos y encuestas de satisfacción."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`v-model` guarda o número de estrelas; passe um `aria-label` descrevendo o que está sendo avaliado.",
+        "en-US": "`v-model` holds the number of stars; pass an `aria-label` describing what is being rated.",
+        "es-ES": "`v-model` guarda el número de estrellas; pasa un `aria-label` que describa lo que se califica."
+      }
+    },
+    {
+      "file": "ReadOnly",
+      "title": { "pt-BR": "Somente leitura", "en-US": "Read-only", "es-ES": "Solo lectura" },
+      "description": {
+        "pt-BR": "`readonly` exibe uma nota sem permitir mudanças, ideal para a média de um produto.",
+        "en-US": "`readonly` shows a score without allowing changes, ideal for a product average.",
+        "es-ES": "`readonly` muestra una puntuación sin permitir cambios, ideal para el promedio de un producto."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md` e `lg`.",
+        "en-US": "`size` accepts `sm`, `md` and `lg`.",
+        "es-ES": "`size` acepta `sm`, `md` y `lg`."
+      }
+    },
+    {
+      "file": "MaxDisabled",
+      "title": {
+        "pt-BR": "Máximo e desabilitado",
+        "en-US": "Maximum and disabled",
+        "es-ES": "Máximo y deshabilitado"
+      },
+      "description": {
+        "pt-BR": "`max` muda a quantidade de estrelas; `disabled` bloqueia a interação.",
+        "en-US": "`max` changes the number of stars; `disabled` blocks interaction.",
+        "es-ES": "`max` cambia la cantidad de estrellas; `disabled` bloquea la interacción."
+      }
+    },
+    {
+      "file": "Feedback",
+      "title": {
+        "pt-BR": "Pesquisa de satisfação",
+        "en-US": "Satisfaction survey",
+        "es-ES": "Encuesta de satisfacción"
+      },
+      "description": {
+        "pt-BR": "Combine com `MsField` e `MsTextarea` para coletar nota e comentário, com erro se nenhuma estrela for escolhida.",
+        "en-US": "Combine it with `MsField` and `MsTextarea` to collect a score and a comment, with an error if no star is chosen.",
+        "es-ES": "Combínalo con `MsField` y `MsTextarea` para recoger una puntuación y un comentario, con error si no se elige ninguna estrella."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O contêiner tem `role=\"slider\"`, `tabindex=\"0\"` e `aria-valuenow`, `aria-valuemin` e `aria-valuemax`; passe um `aria-label`.\n- `Tab`: foca o componente inteiro (as estrelas individuais ficam fora da ordem de tabulação).\n- `Seta para direita`/`Seta para cima`: aumentam uma estrela.\n- `Seta para esquerda`/`Seta para baixo`: diminuem uma estrela, até zero.\n- `readonly` e `disabled` ignoram o teclado e o clique, e são expostos com `aria-readonly` e `aria-disabled`.",
+    "en-US": "- The container has `role=\"slider\"`, `tabindex=\"0\"` and `aria-valuenow`, `aria-valuemin` and `aria-valuemax`; pass an `aria-label`.\n- `Tab`: focuses the whole component (individual stars are left out of the tab order).\n- `Arrow Right`/`Arrow Up`: add one star.\n- `Arrow Left`/`Arrow Down`: remove one star, down to zero.\n- `readonly` and `disabled` ignore keyboard and clicks, and are exposed via `aria-readonly` and `aria-disabled`.",
+    "es-ES": "- El contenedor tiene `role=\"slider\"`, `tabindex=\"0\"` y `aria-valuenow`, `aria-valuemin` y `aria-valuemax`; pasa un `aria-label`.\n- `Tab`: enfoca el componente completo (las estrellas individuales quedan fuera del orden de tabulación).\n- `Flecha derecha`/`Flecha arriba`: suman una estrella.\n- `Flecha izquierda`/`Flecha abajo`: restan una estrella, hasta cero.\n- `readonly` y `disabled` ignoran el teclado y los clics, y se exponen con `aria-readonly` y `aria-disabled`."
+  }
+}

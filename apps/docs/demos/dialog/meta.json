@@ -1,0 +1,67 @@
+{
+  "intro": {
+    "pt-BR": "Janela modal para tarefas curtas que exigem atenção sem sair da página, como formulários rápidos e avisos. Controle a abertura com `v-model:open`.",
+    "en-US": "Modal window for short tasks that need attention without leaving the page, such as quick forms and notices. Control it with `v-model:open`.",
+    "es-ES": "Ventana modal para tareas cortas que requieren atención sin salir de la página, como formularios rápidos y avisos. Contrólala con `v-model:open`."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`title` e `description` montam o cabeçalho; as ações ficam no slot `footer`.",
+        "en-US": "`title` and `description` build the header; actions go in the `footer` slot.",
+        "es-ES": "`title` y `description` forman la cabecera; las acciones van en el slot `footer`."
+      }
+    },
+    {
+      "file": "Form",
+      "title": {
+        "pt-BR": "Formulário no diálogo",
+        "en-US": "Form in a dialog",
+        "es-ES": "Formulario en un diálogo"
+      },
+      "description": {
+        "pt-BR": "O botão do rodapé envia o formulário pelo atributo `form`, então `Enter` em qualquer campo também salva.",
+        "en-US": "The footer button submits the form through the `form` attribute, so pressing `Enter` in any field saves too.",
+        "es-ES": "El botón del pie envía el formulario mediante el atributo `form`, así que `Enter` en cualquier campo también guarda."
+      }
+    },
+    {
+      "file": "Scrollable",
+      "title": {
+        "pt-BR": "Conteúdo com rolagem",
+        "en-US": "Scrollable content",
+        "es-ES": "Contenido con desplazamiento"
+      },
+      "description": {
+        "pt-BR": "Quando o conteúdo passa da altura da tela, só o corpo rola; cabeçalho e rodapé continuam visíveis.",
+        "en-US": "When the content is taller than the screen, only the body scrolls; header and footer stay visible.",
+        "es-ES": "Cuando el contenido supera la altura de la pantalla, solo el cuerpo se desplaza; la cabecera y el pie siguen visibles."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md` (padrão), `lg`, `xl` e `full`.",
+        "en-US": "`size` accepts `sm`, `md` (default), `lg`, `xl` and `full`.",
+        "es-ES": "`size` acepta `sm`, `md` (predeterminado), `lg`, `xl` y `full`."
+      }
+    },
+    {
+      "file": "Placement",
+      "title": { "pt-BR": "Posicionamento", "en-US": "Placement", "es-ES": "Posición" },
+      "description": {
+        "pt-BR": "`placement=\"bottom\"` transforma o diálogo em um painel inferior, útil em telas pequenas.",
+        "en-US": "`placement=\"bottom\"` turns the dialog into a bottom sheet, handy on small screens.",
+        "es-ES": "`placement=\"bottom\"` convierte el diálogo en un panel inferior, útil en pantallas pequeñas."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza `role=\"dialog\"` (ou `alertdialog` via prop `role`) com `aria-modal=\"true\"`; `aria-labelledby` e `aria-describedby` apontam para `title` e `description` quando existem.\n- Ao abrir, o foco vai para o primeiro elemento focável e fica preso no diálogo; a rolagem da página é bloqueada.\n- `Tab` / `Shift+Tab`: circulam entre os elementos focáveis do diálogo.\n- `Esc`: fecha (desative com `close-on-escape=\"false\"`).\n- O botão de fechar tem rótulo acessível traduzido; ao fechar, o foco volta ao elemento que abriu o diálogo.",
+    "en-US": "- Renders `role=\"dialog\"` (or `alertdialog` via the `role` prop) with `aria-modal=\"true\"`; `aria-labelledby` and `aria-describedby` point at `title` and `description` when present.\n- On open, focus moves to the first focusable element and is trapped inside the dialog; page scrolling is locked.\n- `Tab` / `Shift+Tab`: cycle through the focusable elements of the dialog.\n- `Esc`: closes (disable with `close-on-escape=\"false\"`).\n- The close button has a translated accessible label; on close, focus returns to the element that opened the dialog.",
+    "es-ES": "- Renderiza `role=\"dialog\"` (o `alertdialog` con la prop `role`) con `aria-modal=\"true\"`; `aria-labelledby` y `aria-describedby` apuntan a `title` y `description` cuando existen.\n- Al abrirse, el foco va al primer elemento enfocable y queda atrapado en el diálogo; el desplazamiento de la página se bloquea.\n- `Tab` / `Shift+Tab`: recorren los elementos enfocables del diálogo.\n- `Esc`: cierra (desactívalo con `close-on-escape=\"false\"`).\n- El botón de cerrar tiene una etiqueta accesible traducida; al cerrarse, el foco vuelve al elemento que abrió el diálogo."
+  }
+}

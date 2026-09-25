@@ -1,0 +1,67 @@
+{
+  "intro": {
+    "pt-BR": "Notificações breves e não bloqueantes disparadas por `useToast()`. Monte um único `MsToastContainer` na raiz do app (em SSR, instale também `app.use(createMsToast())` para que cada requisição tenha seu próprio estado). Nesta página, o container está no primeiro exemplo e atende a todos.",
+    "en-US": "Brief, non-blocking notifications triggered by `useToast()`. Mount a single `MsToastContainer` at the app root (for SSR, also install `app.use(createMsToast())` so every request gets its own state). On this page the container lives in the first example and serves all of them.",
+    "es-ES": "Notificaciones breves y no bloqueantes disparadas con `useToast()`. Monta un único `MsToastContainer` en la raíz de la app (en SSR, instala también `app.use(createMsToast())` para que cada petición tenga su propio estado). En esta página, el contenedor está en el primer ejemplo y atiende a todos."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`toast.success(mensagem, opções)` adiciona uma notificação; `MsToastContainer` a exibe e some depois de 4 segundos.",
+        "en-US": "`toast.success(message, options)` adds a notification; `MsToastContainer` shows it and it disappears after 4 seconds.",
+        "es-ES": "`toast.success(mensaje, opciones)` añade una notificación; `MsToastContainer` la muestra y desaparece tras 4 segundos."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "Há um atalho por tom: `info`, `success`, `warning`, `danger`, além de `primary`, `neutral` e outros.",
+        "en-US": "There is a shortcut per tone: `info`, `success`, `warning`, `danger`, plus `primary`, `neutral` and more.",
+        "es-ES": "Hay un atajo por tono: `info`, `success`, `warning`, `danger`, además de `primary`, `neutral` y otros."
+      }
+    },
+    {
+      "file": "Placement",
+      "title": { "pt-BR": "Posição", "en-US": "Placement", "es-ES": "Posición" },
+      "description": {
+        "pt-BR": "A opção `placement` escolhe um dos seis cantos e centros da tela; o padrão é `top-right`.",
+        "en-US": "The `placement` option picks one of six corners and centers of the screen; the default is `top-right`.",
+        "es-ES": "La opción `placement` elige una de las seis esquinas y centros de la pantalla; el valor predeterminado es `top-right`."
+      }
+    },
+    {
+      "file": "Duration",
+      "title": {
+        "pt-BR": "Duração e fechamento",
+        "en-US": "Duration and dismiss",
+        "es-ES": "Duración y cierre"
+      },
+      "description": {
+        "pt-BR": "`duration: 0` mantém o toast até ser fechado, `dismissible: false` esconde o botão de fechar e `clear()` remove todos.",
+        "en-US": "`duration: 0` keeps the toast until it is closed, `dismissible: false` hides the close button and `clear()` removes them all.",
+        "es-ES": "`duration: 0` mantiene el toast hasta que se cierra, `dismissible: false` oculta el botón de cerrar y `clear()` los elimina todos."
+      }
+    },
+    {
+      "file": "Standalone",
+      "title": {
+        "pt-BR": "MsToast avulso",
+        "en-US": "Standalone MsToast",
+        "es-ES": "MsToast independiente"
+      },
+      "description": {
+        "pt-BR": "`MsToast` renderiza um único item fora do container, útil para pré-visualizações; trate `@dismiss` para escondê-lo.",
+        "en-US": "`MsToast` renders a single item outside the container, handy for previews; handle `@dismiss` to hide it.",
+        "es-ES": "`MsToast` renderiza un único elemento fuera del contenedor, útil para vistas previas; maneja `@dismiss` para ocultarlo."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- `MsToastContainer` mantém duas regiões vivas sempre no DOM: `role=\"status\"` (polida) e `role=\"alert\"` (assertiva, usada pelo tom `danger`); cada novo toast é anunciado como título e mensagem.\n- Passar o mouse ou focar um toast pausa o tempo de fechamento; ao sair, a contagem continua.\n- O botão de fechar tem rótulo acessível traduzido e é acionado com `Enter` / `Espaço`.\n- Toasts não recebem foco automaticamente: não coloque neles ações que só existam ali.",
+    "en-US": "- `MsToastContainer` keeps two live regions in the DOM at all times: `role=\"status\"` (polite) and `role=\"alert\"` (assertive, used by the `danger` tone); each new toast is announced as title and message.\n- Hovering or focusing a toast pauses its dismiss timer; it resumes on leave.\n- The close button has a translated accessible label and is activated with `Enter` / `Space`.\n- Toasts never take focus automatically: do not put actions in them that exist nowhere else.",
+    "es-ES": "- `MsToastContainer` mantiene dos regiones vivas siempre en el DOM: `role=\"status\"` (educada) y `role=\"alert\"` (asertiva, usada por el tono `danger`); cada toast nuevo se anuncia como título y mensaje.\n- Pasar el ratón o enfocar un toast pausa su temporizador de cierre; se reanuda al salir.\n- El botón de cerrar tiene una etiqueta accesible traducida y se activa con `Enter` / `Espacio`.\n- Los toasts nunca reciben el foco automáticamente: no pongas en ellos acciones que no existan en otro lugar."
+  }
+}

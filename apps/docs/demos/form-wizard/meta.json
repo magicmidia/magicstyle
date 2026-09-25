@@ -1,0 +1,49 @@
+{
+  "intro": {
+    "pt-BR": "Use o assistente para dividir um formulário longo em etapas curtas, com progresso visível e validação antes de avançar.",
+    "en-US": "Use the wizard to split a long form into short steps, with visible progress and validation before moving on.",
+    "es-ES": "Usa el asistente para dividir un formulario largo en pasos cortos, con progreso visible y validación antes de avanzar."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Cada etapa do array `steps` renderiza o slot com o mesmo `id`; o índice ativo fica em `v-model`.",
+        "en-US": "Each entry in `steps` renders the slot with the same `id`; the active index lives in `v-model`.",
+        "es-ES": "Cada entrada de `steps` renderiza el slot con el mismo `id`; el índice activo vive en `v-model`."
+      }
+    },
+    {
+      "file": "Validation",
+      "title": {
+        "pt-BR": "Validação por etapa",
+        "en-US": "Per-step validation",
+        "es-ES": "Validación por paso"
+      },
+      "description": {
+        "pt-BR": "`before-change` retorna `false` para impedir o avanço enquanto a etapa atual tiver erros.",
+        "en-US": "`before-change` returns `false` to block moving forward while the current step has errors.",
+        "es-ES": "`before-change` devuelve `false` para impedir avanzar mientras el paso actual tenga errores."
+      }
+    },
+    {
+      "file": "CustomFooter",
+      "title": {
+        "pt-BR": "Rodapé personalizado",
+        "en-US": "Custom footer",
+        "es-ES": "Pie personalizado"
+      },
+      "description": {
+        "pt-BR": "O slot `footer` expõe `prev`, `next`, `isFirst` e `isLast` para montar seus próprios botões.",
+        "en-US": "The `footer` slot exposes `prev`, `next`, `isFirst` and `isLast` so you can build your own buttons.",
+        "es-ES": "El slot `footer` expone `prev`, `next`, `isFirst` e `isLast` para crear tus propios botones."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O cabeçalho é um `nav` com `aria-label` e marca a etapa atual com `aria-current=\"step\"`.\n- `Tab`: move o foco entre os campos da etapa e os botões Anterior/Próximo (elementos `button` nativos).\n- `Enter`/`Espaço`: acionam o botão focado. Os indicadores de etapa não são interativos.",
+    "en-US": "- The header is a `nav` with an `aria-label` and marks the current step with `aria-current=\"step\"`.\n- `Tab`: moves focus through the step fields and the Previous/Next buttons (native `button` elements).\n- `Enter`/`Space`: activate the focused button. The step indicators are not interactive.",
+    "es-ES": "- El encabezado es un `nav` con `aria-label` y marca el paso actual con `aria-current=\"step\"`.\n- `Tab`: mueve el foco entre los campos del paso y los botones Anterior/Siguiente (elementos `button` nativos).\n- `Enter`/`Espacio`: activan el botón enfocado. Los indicadores de paso no son interactivos."
+  }
+}

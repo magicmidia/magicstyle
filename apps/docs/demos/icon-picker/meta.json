@@ -1,0 +1,50 @@
+{
+  "intro": {
+    "pt-BR": "Use o seletor de ícones para que o usuário personalize itens de menu, projetos ou categorias. Ele traz um conjunto embutido e aceita seus próprios ícones SVG.",
+    "en-US": "Use the icon picker to let users customize menu items, projects or categories. It ships a built-in set and accepts your own SVG icons.",
+    "es-ES": "Usa el selector de iconos para que el usuario personalice ítems de menú, proyectos o categorías. Incluye un conjunto integrado y acepta tus propios iconos SVG."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Sem `icons`, o seletor usa o conjunto embutido; o `v-model` recebe o `id` do ícone.",
+        "en-US": "Without `icons`, the picker uses the built-in set; `v-model` gets the icon `id`.",
+        "es-ES": "Sin `icons`, el selector usa el conjunto integrado; `v-model` recibe el `id` del icono."
+      }
+    },
+    {
+      "file": "CustomIcons",
+      "title": { "pt-BR": "Ícones próprios", "en-US": "Custom icons", "es-ES": "Iconos propios" },
+      "description": {
+        "pt-BR": "Passe `icons` com `id`, `name`, `category` e o conteúdo interno do SVG em `svg`, que é sanitizado antes de renderizar.",
+        "en-US": "Pass `icons` with `id`, `name`, `category` and the inner SVG markup in `svg`, which is sanitized before rendering.",
+        "es-ES": "Pasa `icons` con `id`, `name`, `category` y el contenido interno del SVG en `svg`, que se sanea antes de renderizar."
+      }
+    },
+    {
+      "file": "NavEditor",
+      "title": { "pt-BR": "Editor de menu", "en-US": "Menu editor", "es-ES": "Editor de menú" },
+      "description": {
+        "pt-BR": "Combine com `MsField` e `MsInput` para editar o ícone e o rótulo de um item da barra lateral.",
+        "en-US": "Combine it with `MsField` and `MsInput` to edit the icon and label of a sidebar item.",
+        "es-ES": "Combínalo con `MsField` y `MsInput` para editar el icono y la etiqueta de un ítem de la barra lateral."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": { "pt-BR": "Desabilitado", "en-US": "Disabled", "es-ES": "Deshabilitado" },
+      "description": {
+        "pt-BR": "`disabled` mantém o ícone visível, mas impede abrir o seletor.",
+        "en-US": "`disabled` keeps the icon visible but prevents opening the picker.",
+        "es-ES": "`disabled` mantiene el icono visible, pero impide abrir el selector."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O botão de abertura é um `<button>` nativo com o `id` do ícone (ou o placeholder) como texto; ele não expõe `aria-expanded` nem `aria-haspopup`.\n- No painel, `Tab` percorre o campo de busca, as categorias e cada ícone; `Enter`/`Espaço` escolhem.\n- Os ícones da grade são identificados só por `title`, e o campo de busca só pelo `placeholder`.\n- O painel não fecha com `Esc` nem ao clicar fora; ele fecha ao escolher um ícone ou ao clicar de novo no botão.",
+    "en-US": "- The trigger is a native `<button>` with the icon `id` (or the placeholder) as its text; it exposes neither `aria-expanded` nor `aria-haspopup`.\n- In the panel, `Tab` moves through the search field, the categories and each icon; `Enter`/`Space` choose.\n- Grid icons are identified only by `title`, and the search field only by its `placeholder`.\n- The panel doesn't close on `Esc` or on outside click; it closes when an icon is chosen or the trigger is clicked again.",
+    "es-ES": "- El botón de apertura es un `<button>` nativo con el `id` del icono (o el placeholder) como texto; no expone `aria-expanded` ni `aria-haspopup`.\n- En el panel, `Tab` recorre el campo de búsqueda, las categorías y cada icono; `Enter`/`Espacio` eligen.\n- Los iconos de la cuadrícula solo se identifican por `title`, y el campo de búsqueda solo por su `placeholder`.\n- El panel no se cierra con `Esc` ni al hacer clic fuera; se cierra al elegir un icono o al volver a hacer clic en el botón."
+  }
+}

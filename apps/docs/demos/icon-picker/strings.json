@@ -1,0 +1,50 @@
+{
+  "pt-BR": {
+    "choose": "Escolher ícone",
+    "value": "Valor:",
+    "rocket": "Foguete",
+    "lab": "Laboratório",
+    "work": "Trabalho",
+    "docs": "Documentação",
+    "announcements": "Anúncios",
+    "projects": "Projetos",
+    "content": "Conteúdo",
+    "cardTitle": "Item do menu",
+    "cardDescription": "Defina o ícone e o rótulo exibidos na barra lateral.",
+    "labelField": "Rótulo",
+    "defaultLabel": "Agenda",
+    "locked": "Ícones de itens do sistema não podem ser alterados."
+  },
+  "en-US": {
+    "choose": "Choose icon",
+    "value": "Value:",
+    "rocket": "Rocket",
+    "lab": "Lab",
+    "work": "Work",
+    "docs": "Documentation",
+    "announcements": "Announcements",
+    "projects": "Projects",
+    "content": "Content",
+    "cardTitle": "Menu item",
+    "cardDescription": "Set the icon and label shown in the sidebar.",
+    "labelField": "Label",
+    "defaultLabel": "Schedule",
+    "locked": "System item icons can't be changed."
+  },
+  "es-ES": {
+    "choose": "Elegir icono",
+    "value": "Valor:",
+    "rocket": "Cohete",
+    "lab": "Laboratorio",
+    "work": "Trabajo",
+    "docs": "Documentación",
+    "announcements": "Anuncios",
+    "projects": "Proyectos",
+    "content": "Contenido",
+    "cardTitle": "Ítem del menú",
+    "cardDescription": "Define el icono y la etiqueta que se muestran en la barra lateral.",
+    "labelField": "Etiqueta",
+    "defaultLabel": "Agenda",
+    "locked": "Los iconos de los ítems del sistema no se pueden cambiar."
+  }
+}

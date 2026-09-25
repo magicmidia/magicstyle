@@ -1,0 +1,58 @@
+{
+  "intro": {
+    "pt-BR": "Exibe trechos de código com realce de sintaxe embutido, numeração de linhas, nome de arquivo e botão de copiar.",
+    "en-US": "Displays code snippets with built-in syntax highlighting, line numbers, a file name and a copy button.",
+    "es-ES": "Muestra fragmentos de código con resaltado de sintaxis integrado, numeración de líneas, nombre de archivo y botón para copiar."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Passe o código em `code`; `language` e `filename` aparecem no cabeçalho junto ao botão de copiar.",
+        "en-US": "Pass the source in `code`; `language` and `filename` show in the header next to the copy button.",
+        "es-ES": "Pasa el código en `code`; `language` y `filename` aparecen en el encabezado junto al botón para copiar."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": { "pt-BR": "Variantes", "en-US": "Variants", "es-ES": "Variantes" },
+      "description": {
+        "pt-BR": "`variant` aceita `bordered` (padrão), `card` e `ghost`; `:show-line-numbers=\"false\"` remove a numeração.",
+        "en-US": "`variant` accepts `bordered` (default), `card` and `ghost`; `:show-line-numbers=\"false\"` hides the gutter.",
+        "es-ES": "`variant` acepta `bordered` (por defecto), `card` y `ghost`; `:show-line-numbers=\"false\"` oculta la numeración."
+      }
+    },
+    {
+      "file": "Shell",
+      "title": {
+        "pt-BR": "Shell e quebra de linha",
+        "en-US": "Shell and line wrapping",
+        "es-ES": "Shell y ajuste de línea"
+      },
+      "description": {
+        "pt-BR": "Linguagens como `bash`, `python` e `yaml` realçam comentários com `#`; `wrap-lines` quebra linhas longas em vez de rolar.",
+        "en-US": "Languages such as `bash`, `python` and `yaml` highlight `#` comments; `wrap-lines` wraps long lines instead of scrolling.",
+        "es-ES": "Lenguajes como `bash`, `python` y `yaml` resaltan los comentarios con `#`; `wrap-lines` ajusta las líneas largas en lugar de desplazarlas."
+      }
+    },
+    {
+      "file": "Collapsible",
+      "title": {
+        "pt-BR": "Recolhível e altura máxima",
+        "en-US": "Collapsible and max height",
+        "es-ES": "Plegable y altura máxima"
+      },
+      "description": {
+        "pt-BR": "`collapsible` adiciona um botão de expandir no rodapé (`default-collapsed` começa recolhido); `max-height` limita a altura com rolagem.",
+        "en-US": "`collapsible` adds an expand button in the footer (`default-collapsed` starts collapsed); `max-height` caps the height with scrolling.",
+        "es-ES": "`collapsible` agrega un botón para expandir en el pie (`default-collapsed` empieza plegado); `max-height` limita la altura con desplazamiento."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O código fica em `<pre><code>`; a coluna de números de linha é `aria-hidden=\"true\"`.\n- O botão de copiar é um `<button>` com `aria-label` traduzido que muda após a cópia.\n- `Tab` alcança os botões de copiar e de expandir; `Enter` / `Espaço` os acionam.",
+    "en-US": "- The code is rendered in `<pre><code>`; the line-number column is `aria-hidden=\"true\"`.\n- The copy button is a `<button>` with a translated `aria-label` that changes after copying.\n- `Tab` reaches the copy and expand buttons; `Enter` / `Space` activate them.",
+    "es-ES": "- El código se renderiza en `<pre><code>`; la columna de números de línea es `aria-hidden=\"true\"`.\n- El botón para copiar es un `<button>` con un `aria-label` traducido que cambia después de copiar.\n- `Tab` llega a los botones para copiar y expandir; `Enter` / `Espacio` los activan."
+  }
+}

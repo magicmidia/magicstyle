@@ -1,0 +1,49 @@
+{
+  "intro": {
+    "pt-BR": "Preenche o espaço de listas, tabelas e buscas sem conteúdo, explicando o motivo e oferecendo o próximo passo.",
+    "en-US": "Fills the space of lists, tables and searches with no content, explaining why and offering the next step.",
+    "es-ES": "Ocupa el espacio de listas, tablas y búsquedas sin contenido, explicando el motivo y ofreciendo el siguiente paso."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Sem o slot `icon`, aparece o ícone padrão; os botões vão no slot padrão (ou em `actions`).",
+        "en-US": "Without the `icon` slot the default icon is shown; buttons go in the default slot (or in `actions`).",
+        "es-ES": "Sin el slot `icon` aparece el icono predeterminado; los botones van en el slot predeterminado (o en `actions`)."
+      }
+    },
+    {
+      "file": "SearchResults",
+      "title": {
+        "pt-BR": "Busca sem resultados",
+        "en-US": "No search results",
+        "es-ES": "Búsqueda sin resultados"
+      },
+      "description": {
+        "pt-BR": "Um ícone próprio no slot `icon` e uma ação que desfaz a causa do vazio.",
+        "en-US": "A custom icon in the `icon` slot and an action that undoes the cause of the empty state.",
+        "es-ES": "Un icono propio en el slot `icon` y una acción que deshace la causa del estado vacío."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": { "pt-BR": "Variantes", "en-US": "Variants", "es-ES": "Variantes" },
+      "description": {
+        "pt-BR": "`variant` aceita `dashed` (padrão), `card` e `plain`; `size` vai de `sm` a `lg`.",
+        "en-US": "`variant` accepts `dashed` (default), `card` and `plain`; `size` goes from `sm` to `lg`.",
+        "es-ES": "`variant` acepta `dashed` (predeterminado), `card` y `plain`; `size` va de `sm` a `lg`."
+      }
+    },
+    {
+      "file": "IconTones",
+      "title": { "pt-BR": "Tons do ícone", "en-US": "Icon tones", "es-ES": "Tonos del icono" },
+      "description": {
+        "pt-BR": "`icon-tone` colore o selo do ícone: `neutral`, `primary`, `success`, `warning` ou `danger`.",
+        "en-US": "`icon-tone` colors the icon badge: `neutral`, `primary`, `success`, `warning` or `danger`.",
+        "es-ES": "`icon-tone` colorea la insignia del icono: `neutral`, `primary`, `success`, `warning` o `danger`."
+      }
+    }
+  ]
+}

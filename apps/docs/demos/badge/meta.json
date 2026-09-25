@@ -1,0 +1,67 @@
+{
+  "intro": {
+    "pt-BR": "Rótulo compacto para status, categorias e contadores. Use texto curto; para itens removíveis ou clicáveis, prefira o `MsTag`.",
+    "en-US": "Compact label for statuses, categories and counters. Keep the text short; for removable or clickable items, use `MsTag` instead.",
+    "es-ES": "Etiqueta compacta para estados, categorías y contadores. Usa texto corto; para elementos removibles o clicables, prefiere `MsTag`."
+  },
+  "demos": [
+    {
+      "file": "Variants",
+      "title": { "pt-BR": "Variantes", "en-US": "Variants", "es-ES": "Variantes" },
+      "description": {
+        "pt-BR": "`solid` é o padrão; `outline` e `soft` reduzem o peso visual para informações secundárias.",
+        "en-US": "`solid` is the default; `outline` and `soft` lower the visual weight for secondary information.",
+        "es-ES": "`solid` es el valor por defecto; `outline` y `soft` reducen el peso visual para información secundaria."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "Todos os valores de `tone` em cada variante.",
+        "en-US": "Every `tone` value in each variant.",
+        "es-ES": "Todos los valores de `tone` en cada variante."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": {
+        "pt-BR": "Tamanhos, pílula e ponto",
+        "en-US": "Sizes, pill and dot",
+        "es-ES": "Tamaños, píldora y punto"
+      },
+      "description": {
+        "pt-BR": "`size` vai de `xs` a `xl`; `pill` arredonda as pontas e `dot` adiciona um indicador antes do texto.",
+        "en-US": "`size` goes from `xs` to `xl`; `pill` rounds the ends and `dot` adds an indicator before the text.",
+        "es-ES": "`size` va de `xs` a `xl`; `pill` redondea los extremos y `dot` agrega un indicador antes del texto."
+      }
+    },
+    {
+      "file": "Counter",
+      "title": {
+        "pt-BR": "Contador ancorado",
+        "en-US": "Anchored counter",
+        "es-ES": "Contador anclado"
+      },
+      "description": {
+        "pt-BR": "Com `placement`, o badge envolve o elemento do slot e fica no canto; `count` acima de `maxCount` (99) vira `99+` e `show-zero` mantém o zero visível.",
+        "en-US": "With `placement`, the badge wraps the slot element and sits on its corner; a `count` above `maxCount` (99) shows `99+` and `show-zero` keeps zero visible.",
+        "es-ES": "Con `placement`, el badge envuelve el elemento del slot y se ubica en la esquina; un `count` mayor que `maxCount` (99) muestra `99+` y `show-zero` mantiene visible el cero."
+      }
+    },
+    {
+      "file": "Pulse",
+      "title": { "pt-BR": "Pulso", "en-US": "Pulse", "es-ES": "Pulso" },
+      "description": {
+        "pt-BR": "`pulse` anima um halo para chamar atenção a estados ao vivo; use com moderação.",
+        "en-US": "`pulse` animates a halo to draw attention to live states; use it sparingly.",
+        "es-ES": "`pulse` anima un halo para llamar la atención sobre estados en vivo; úsalo con moderación."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O badge é um `<span>` sem papel ARIA; o texto é lido junto com o conteúdo ao redor.\n- O ponto de `dot` é decorativo (`aria-hidden=\"true\"`), assim como a cor: o texto precisa transmitir o status sozinho.\n- Um contador ancorado lê apenas o número; dê contexto no rótulo do elemento envolvido (por exemplo, `aria-label=\"Caixa de entrada, 8 não lidas\"`). Um badge `dot-only` não tem texto acessível.",
+    "en-US": "- The badge is a `<span>` with no ARIA role; its text is read along with the surrounding content.\n- The `dot` indicator is decorative (`aria-hidden=\"true\"`), and so is color: the text must convey the status on its own.\n- An anchored counter reads only the number; add context to the wrapped element's label (for example, `aria-label=\"Inbox, 8 unread\"`). A `dot-only` badge has no accessible text.",
+    "es-ES": "- El badge es un `<span>` sin rol ARIA; su texto se lee junto con el contenido circundante.\n- El punto de `dot` es decorativo (`aria-hidden=\"true\"`), igual que el color: el texto debe transmitir el estado por sí solo.\n- Un contador anclado solo lee el número; da contexto en la etiqueta del elemento envuelto (por ejemplo, `aria-label=\"Bandeja de entrada, 8 sin leer\"`). Un badge `dot-only` no tiene texto accesible."
+  }
+}

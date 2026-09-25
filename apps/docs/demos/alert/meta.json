@@ -1,0 +1,67 @@
+{
+  "intro": {
+    "pt-BR": "Mensagem em destaque dentro do fluxo da página para avisos, confirmações e erros. O tom padrão é `neutral`; escolha outro tom de acordo com a gravidade.",
+    "en-US": "Highlighted message within the page flow for notices, confirmations and errors. The default tone is `neutral`; pick another tone according to severity.",
+    "es-ES": "Mensaje destacado dentro del flujo de la página para avisos, confirmaciones y errores. El tono predeterminado es `neutral`; elige otro tono según la gravedad."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Sem `tone`, o alerta usa o tom neutro, com `title` e `description`.",
+        "en-US": "Without `tone`, the alert uses the neutral tone, with `title` and `description`.",
+        "es-ES": "Sin `tone`, la alerta usa el tono neutro, con `title` y `description`."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "Use `info`, `success`, `warning` e `danger` para comunicar o tipo da mensagem; o ícone acompanha o tom.",
+        "en-US": "Use `info`, `success`, `warning` and `danger` to convey the kind of message; the icon follows the tone.",
+        "es-ES": "Usa `info`, `success`, `warning` y `danger` para indicar el tipo de mensaje; el icono acompaña al tono."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": { "pt-BR": "Variantes", "en-US": "Variants", "es-ES": "Variantes" },
+      "description": {
+        "pt-BR": "`variant` alterna entre `soft` (padrão), `outline` e `solid`.",
+        "en-US": "`variant` switches between `soft` (default), `outline` and `solid`.",
+        "es-ES": "`variant` alterna entre `soft` (predeterminado), `outline` y `solid`."
+      }
+    },
+    {
+      "file": "WithActions",
+      "title": {
+        "pt-BR": "Ações e fechamento",
+        "en-US": "Actions and dismiss",
+        "es-ES": "Acciones y cierre"
+      },
+      "description": {
+        "pt-BR": "O slot `actions` recebe botões; `dismissible` mostra o botão de fechar e emite `close`.",
+        "en-US": "The `actions` slot takes buttons; `dismissible` shows the close button and emits `close`.",
+        "es-ES": "El slot `actions` recibe botones; `dismissible` muestra el botón de cerrar y emite `close`."
+      }
+    },
+    {
+      "file": "Featured",
+      "title": {
+        "pt-BR": "Tamanhos e ícone em destaque",
+        "en-US": "Sizes and featured icon",
+        "es-ES": "Tamaños e icono destacado"
+      },
+      "description": {
+        "pt-BR": "`size` vai de `sm` a `lg`; `icon-style=\"featured\"` coloca o ícone num selo e `align=\"start\"` alinha ao topo em textos longos.",
+        "en-US": "`size` goes from `sm` to `lg`; `icon-style=\"featured\"` puts the icon in a badge and `align=\"start\"` top-aligns it for longer text.",
+        "es-ES": "`size` va de `sm` a `lg`; `icon-style=\"featured\"` coloca el icono en una insignia y `align=\"start\"` lo alinea arriba en textos largos."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza `role=\"alert\"`: leitores de tela anunciam o conteúdo assim que o alerta entra na página. Para mensagens estáticas que já estão na página ao carregar, o anúncio pode ser redundante.\n- O botão de fechar (`dismissible`) é um `<button>` com rótulo acessível traduzido, alcançável com `Tab` e acionado com `Enter` / `Espaço`.\n- O ícone é decorativo; a gravidade precisa estar clara no texto, não só na cor.",
+    "en-US": "- Renders `role=\"alert\"`: screen readers announce the content as soon as the alert enters the page. For static messages that are already on the page at load, the announcement can be redundant.\n- The close button (`dismissible`) is a `<button>` with a translated accessible label, reachable with `Tab` and activated with `Enter` / `Space`.\n- The icon is decorative; severity must be clear from the text, not just the color.",
+    "es-ES": "- Renderiza `role=\"alert\"`: los lectores de pantalla anuncian el contenido en cuanto la alerta aparece en la página. Para mensajes estáticos presentes desde la carga, el anuncio puede ser redundante.\n- El botón de cerrar (`dismissible`) es un `<button>` con etiqueta accesible traducida, accesible con `Tab` y activable con `Enter` / `Espacio`.\n- El icono es decorativo; la gravedad debe quedar clara en el texto, no solo en el color."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "intro": {
+    "pt-BR": "Controle deslizante para escolher um número dentro de um intervalo, quando o valor aproximado importa mais que a precisão.",
+    "en-US": "Slider for picking a number within a range, when the approximate value matters more than precision.",
+    "es-ES": "Control deslizante para elegir un número dentro de un rango, cuando el valor aproximado importa más que la precisión."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`v-model` guarda o número e `show-value` exibe o valor atual ao lado.",
+        "en-US": "`v-model` holds the number and `show-value` shows the current value alongside.",
+        "es-ES": "`v-model` guarda el número y `show-value` muestra el valor actual al lado."
+      }
+    },
+    {
+      "file": "Step",
+      "title": { "pt-BR": "Intervalo e passo", "en-US": "Range and step", "es-ES": "Rango y paso" },
+      "description": {
+        "pt-BR": "`min`, `max` e `step` definem o intervalo; o slot `value` formata o número exibido.",
+        "en-US": "`min`, `max` and `step` set the range; the `value` slot formats the displayed number.",
+        "es-ES": "`min`, `max` y `step` definen el rango; el slot `value` da formato al número mostrado."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "`tone` colore a trilha preenchida e o marcador.",
+        "en-US": "`tone` colors the filled track and the thumb.",
+        "es-ES": "`tone` colorea la pista rellena y el control."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md` e `lg`.",
+        "en-US": "`size` accepts `sm`, `md` and `lg`.",
+        "es-ES": "`size` acepta `sm`, `md` y `lg`."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": { "pt-BR": "Desabilitado", "en-US": "Disabled", "es-ES": "Deshabilitado" },
+      "description": {
+        "pt-BR": "`disabled` mostra o valor sem permitir alteração.",
+        "en-US": "`disabled` shows the value without allowing changes.",
+        "es-ES": "`disabled` muestra el valor sin permitir cambios."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza um `input type=\"range\"` nativo, com todo o suporte de teclado do navegador.\n- `Tab`: move o foco para o controle.\n- `Setas`: diminuem ou aumentam um `step`.\n- `Home`/`End`: vão para `min` e `max`; `Page Up`/`Page Down` dão saltos maiores, conforme o navegador.\n- Dentro de `MsField`, recebe o rótulo e `aria-describedby`; fora dele, use `aria-label`.",
+    "en-US": "- Renders a native `input type=\"range\"`, with all of the browser keyboard support.\n- `Tab`: moves focus to the slider.\n- `Arrow keys`: decrease or increase by one `step`.\n- `Home`/`End`: jump to `min` and `max`; `Page Up`/`Page Down` take larger steps, depending on the browser.\n- Inside `MsField`, it gets the label and `aria-describedby`; outside of it, use `aria-label`.",
+    "es-ES": "- Renderiza un `input type=\"range\"` nativo, con todo el soporte de teclado del navegador.\n- `Tab`: mueve el foco al control.\n- `Flechas`: disminuyen o aumentan un `step`.\n- `Inicio`/`Fin`: van a `min` y `max`; `Re Pág`/`Av Pág` dan saltos mayores, según el navegador.\n- Dentro de `MsField`, recibe la etiqueta y `aria-describedby`; fuera de él, usa `aria-label`."
+  }
+}

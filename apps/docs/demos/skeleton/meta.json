@@ -1,0 +1,76 @@
+{
+  "intro": {
+    "pt-BR": "Formas neutras que ocupam o lugar do conteúdo enquanto ele carrega, reduzindo saltos de layout. Monte o esqueleto com o mesmo formato do conteúdo final.",
+    "en-US": "Neutral shapes that hold the place of content while it loads, reducing layout shifts. Build the skeleton with the same shape as the final content.",
+    "es-ES": "Formas neutras que ocupan el lugar del contenido mientras carga, reduciendo los saltos de diseño. Construye el esqueleto con la misma forma que el contenido final."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Linhas de texto", "en-US": "Text lines", "es-ES": "Líneas de texto" },
+      "description": {
+        "pt-BR": "A variante padrão é `text`; `count` repete linhas e `width` / `height` ajustam as dimensões.",
+        "en-US": "The default variant is `text`; `count` repeats lines and `width` / `height` set the dimensions.",
+        "es-ES": "La variante predeterminada es `text`; `count` repite líneas y `width` / `height` ajustan las dimensiones."
+      }
+    },
+    {
+      "file": "Shapes",
+      "title": { "pt-BR": "Formatos", "en-US": "Shapes", "es-ES": "Formas" },
+      "description": {
+        "pt-BR": "`variant` oferece `circle`, `avatar`, `button`, `rect` e `card`; `radius` substitui o arredondamento.",
+        "en-US": "`variant` offers `circle`, `avatar`, `button`, `rect` and `card`; `radius` overrides the corner rounding.",
+        "es-ES": "`variant` ofrece `circle`, `avatar`, `button`, `rect` y `card`; `radius` sustituye el redondeo."
+      }
+    },
+    {
+      "file": "CardPlaceholder",
+      "title": { "pt-BR": "Cartão", "en-US": "Card", "es-ES": "Tarjeta" },
+      "description": {
+        "pt-BR": "Placeholder de um cartão de artigo com capa, título, resumo e autor.",
+        "en-US": "Placeholder for an article card with cover, title, summary and author.",
+        "es-ES": "Marcador de una tarjeta de artículo con portada, título, resumen y autor."
+      }
+    },
+    {
+      "file": "ListPlaceholder",
+      "title": { "pt-BR": "Lista", "en-US": "List", "es-ES": "Lista" },
+      "description": {
+        "pt-BR": "Placeholder de uma lista de contatos; `tone=\"subtle\"` suaviza as linhas secundárias.",
+        "en-US": "Placeholder for a contact list; `tone=\"subtle\"` softens the secondary lines.",
+        "es-ES": "Marcador de una lista de contactos; `tone=\"subtle\"` suaviza las líneas secundarias."
+      }
+    },
+    {
+      "file": "Loading",
+      "title": {
+        "pt-BR": "Troca pelo conteúdo",
+        "en-US": "Swap for content",
+        "es-ES": "Cambio por el contenido"
+      },
+      "description": {
+        "pt-BR": "Alterne entre esqueleto e conteúdo com `v-if`, marcando o contêiner com `aria-busy` durante o carregamento.",
+        "en-US": "Switch between skeleton and content with `v-if`, marking the container with `aria-busy` while loading.",
+        "es-ES": "Alterna entre el esqueleto y el contenido con `v-if`, marcando el contenedor con `aria-busy` durante la carga."
+      }
+    },
+    {
+      "file": "Animations",
+      "title": {
+        "pt-BR": "Animações e tons",
+        "en-US": "Animations and tones",
+        "es-ES": "Animaciones y tonos"
+      },
+      "description": {
+        "pt-BR": "`animation` aceita `pulse` (padrão), `shimmer` e `none`; `speed` e `tone` completam o ajuste.",
+        "en-US": "`animation` accepts `pulse` (default), `shimmer` and `none`; `speed` and `tone` complete the tuning.",
+        "es-ES": "`animation` acepta `pulse` (predeterminado), `shimmer` y `none`; `speed` y `tone` completan el ajuste."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Cada esqueleto tem `aria-hidden=\"true\"` e não é anunciado.\n- Marque o contêiner com `aria-busy=\"true\"` e um rótulo (por exemplo, `aria-label=\"Carregando contatos\"`) enquanto o conteúdo carrega, e remova ao terminar.",
+    "en-US": "- Each skeleton has `aria-hidden=\"true\"` and is not announced.\n- Mark the container with `aria-busy=\"true\"` and a label (for example, `aria-label=\"Loading contacts\"`) while content loads, and remove it when done.",
+    "es-ES": "- Cada esqueleto tiene `aria-hidden=\"true\"` y no se anuncia.\n- Marca el contenedor con `aria-busy=\"true\"` y una etiqueta (por ejemplo, `aria-label=\"Cargando contactos\"`) mientras carga el contenido, y quítalo al terminar."
+  }
+}

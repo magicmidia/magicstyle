@@ -1,0 +1,67 @@
+{
+  "intro": {
+    "pt-BR": "Use o grupo de alternância para ligar e desligar opções relacionadas, como formatação de texto. Com `multiple`, várias opções podem ficar ativas ao mesmo tempo.",
+    "en-US": "Use a toggle group to switch related options on and off, such as text formatting. With `multiple`, several options can be active at once.",
+    "es-ES": "Usa el grupo de alternancia para activar y desactivar opciones relacionadas, como el formato de texto. Con `multiple`, varias opciones pueden estar activas a la vez."
+  },
+  "demos": [
+    {
+      "file": "Single",
+      "title": {
+        "pt-BR": "Seleção única",
+        "en-US": "Single selection",
+        "es-ES": "Selección única"
+      },
+      "description": {
+        "pt-BR": "Por padrão só um item fica ativo; clicar de novo nele o desmarca e o `v-model` vira `\"\"`.",
+        "en-US": "By default only one item is active; clicking it again deselects it and `v-model` becomes `\"\"`.",
+        "es-ES": "Por defecto solo un ítem queda activo; al volver a hacer clic se desmarca y `v-model` pasa a `\"\"`."
+      }
+    },
+    {
+      "file": "Multiple",
+      "title": {
+        "pt-BR": "Seleção múltipla",
+        "en-US": "Multiple selection",
+        "es-ES": "Selección múltiple"
+      },
+      "description": {
+        "pt-BR": "Com `multiple`, o `v-model` é um array com os valores ativos.",
+        "en-US": "With `multiple`, `v-model` is an array of the active values.",
+        "es-ES": "Con `multiple`, `v-model` es un array con los valores activos."
+      }
+    },
+    {
+      "file": "Items",
+      "title": { "pt-BR": "A partir de dados", "en-US": "From data", "es-ES": "A partir de datos" },
+      "description": {
+        "pt-BR": "Passe `items` em vez de filhos; `mandatory` impede desmarcar o último item ativo.",
+        "en-US": "Pass `items` instead of children; `mandatory` prevents deselecting the last active item.",
+        "es-ES": "Pasa `items` en lugar de hijos; `mandatory` impide desmarcar el último ítem activo."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md` (padrão) e `lg`.",
+        "en-US": "`size` accepts `sm`, `md` (default) and `lg`.",
+        "es-ES": "`size` acepta `sm`, `md` (por defecto) y `lg`."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": { "pt-BR": "Desabilitado", "en-US": "Disabled", "es-ES": "Deshabilitado" },
+      "description": {
+        "pt-BR": "`disabled` no grupo desativa todos os itens; também é possível desabilitar um item só.",
+        "en-US": "`disabled` on the group turns off every item; you can also disable a single item.",
+        "es-ES": "`disabled` en el grupo desactiva todos los ítems; también se puede deshabilitar uno solo."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O grupo tem `role=\"group\"`; dê nome a ele com `aria-label`.\n- Cada item é um `<button>` com `aria-pressed`: `Tab` passa por todos os itens e `Enter`/`Espaço` alternam o item focado. Não há navegação por setas.\n- Itens só com ícone precisam de `aria-label`, que é repassado ao botão.\n- Itens desabilitados usam o atributo nativo `disabled` e saem da ordem de tabulação.",
+    "en-US": "- The group has `role=\"group\"`; name it with `aria-label`.\n- Each item is a `<button>` with `aria-pressed`: `Tab` goes through every item and `Enter`/`Space` toggle the focused one. There is no arrow-key navigation.\n- Icon-only items need an `aria-label`, which is passed through to the button.\n- Disabled items use the native `disabled` attribute and leave the tab order.",
+    "es-ES": "- El grupo tiene `role=\"group\"`; nómbralo con `aria-label`.\n- Cada ítem es un `<button>` con `aria-pressed`: `Tab` recorre todos los ítems y `Enter`/`Espacio` alternan el ítem enfocado. No hay navegación con flechas.\n- Los ítems solo con icono necesitan un `aria-label`, que se pasa al botón.\n- Los ítems deshabilitados usan el atributo nativo `disabled` y salen del orden de tabulación."
+  }
+}

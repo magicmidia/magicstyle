@@ -1,0 +1,54 @@
+{
+  "intro": {
+    "pt-BR": "`MsSidebar` é o painel lateral de navegação, com cabeçalho, corpo e rodapé, e pode recolher para o modo só com ícones. Por padrão ocupa a altura da viewport; nos exemplos, `min-block-size: 0` o encaixa numa moldura de altura fixa.",
+    "en-US": "`MsSidebar` is the side navigation panel, with header, body and footer, and it can collapse to an icon-only mode. By default it fills the viewport height; in these examples `min-block-size: 0` fits it into a fixed-height frame.",
+    "es-ES": "`MsSidebar` es el panel lateral de navegación, con cabecera, cuerpo y pie, y puede contraerse a un modo solo con iconos. Por defecto ocupa la altura de la ventana; en estos ejemplos `min-block-size: 0` lo encaja en un marco de altura fija."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Os slots `header`, padrão e `footer` recebem a marca, um `MsSidebarMenu` e o usuário conectado.",
+        "en-US": "The `header`, default and `footer` slots hold the brand, an `MsSidebarMenu` and the signed-in user.",
+        "es-ES": "Los slots `header`, por defecto y `footer` contienen la marca, un `MsSidebarMenu` y el usuario conectado."
+      }
+    },
+    {
+      "file": "Collapsible",
+      "title": { "pt-BR": "Recolhível", "en-US": "Collapsible", "es-ES": "Contraíble" },
+      "description": {
+        "pt-BR": "`show-toggle` adiciona o botão de recolher e `v-model:collapsed` guarda o estado; elementos com a classe `ms-sidebar-hide-on-collapse` somem no modo compacto.",
+        "en-US": "`show-toggle` adds the collapse button and `v-model:collapsed` holds the state; elements with the `ms-sidebar-hide-on-collapse` class hide in compact mode.",
+        "es-ES": "`show-toggle` añade el botón de contraer y `v-model:collapsed` guarda el estado; los elementos con la clase `ms-sidebar-hide-on-collapse` se ocultan en modo compacto."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "`tone=\"primary\"` ou `\"neutral\"` pinta o painel inteiro com a cor da marca ou um cinza escuro.",
+        "en-US": "`tone=\"primary\"` or `\"neutral\"` paints the whole panel with the brand color or a dark gray.",
+        "es-ES": "`tone=\"primary\"` o `\"neutral\"` pinta todo el panel con el color de marca o un gris oscuro."
+      }
+    },
+    {
+      "file": "RightSide",
+      "title": {
+        "pt-BR": "Painel de detalhes à direita",
+        "en-US": "Right details panel",
+        "es-ES": "Panel de detalles a la derecha"
+      },
+      "description": {
+        "pt-BR": "`side=\"right\"` move a borda para o lado esquerdo; combine com `width=\"wide\"` e `variant=\"raised\"` para um painel de propriedades.",
+        "en-US": "`side=\"right\"` moves the border to the left edge; combine it with `width=\"wide\"` and `variant=\"raised\"` for a properties panel.",
+        "es-ES": "`side=\"right\"` mueve el borde al lado izquierdo; combínalo con `width=\"wide\"` y `variant=\"raised\"` para un panel de propiedades."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza um `<aside>` (região complementar); coloque a navegação dentro de um `<nav>` rotulado, como o `MsSidebarMenu`.\n- O botão de recolher é um `<button>` com `aria-label` vindo das mensagens da biblioteca (expandir/recolher).\n- `Tab`: chega ao botão de recolher e aos itens; `Enter` ou `Espaço` alterna o modo.\n- No modo recolhido os rótulos somem visualmente; dê um nome acessível a cada item (por exemplo `title` ou `aria-label`).",
+    "en-US": "- Renders an `<aside>` (complementary region); put navigation inside a labeled `<nav>`, such as `MsSidebarMenu`.\n- The collapse control is a `<button>` with an `aria-label` from the library messages (expand/collapse).\n- `Tab`: reaches the collapse button and the items; `Enter` or `Space` toggles the mode.\n- In collapsed mode labels are hidden visually; give each item an accessible name (for example `title` or `aria-label`).",
+    "es-ES": "- Renderiza un `<aside>` (región complementaria); coloca la navegación dentro de un `<nav>` etiquetado, como `MsSidebarMenu`.\n- El botón de contraer es un `<button>` con un `aria-label` de los mensajes de la biblioteca (expandir/contraer).\n- `Tab`: llega al botón de contraer y a los ítems; `Enter` o `Espacio` alterna el modo.\n- En modo contraído las etiquetas se ocultan visualmente; da un nombre accesible a cada ítem (por ejemplo `title` o `aria-label`)."
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "intro": {
+    "pt-BR": "Use um grupo de radio quando a pessoa precisa escolher exatamente uma opção entre poucas alternativas visíveis. Para listas longas, prefira um select.",
+    "en-US": "Use a radio group when people must pick exactly one option from a few visible choices. For long lists, prefer a select.",
+    "es-ES": "Usa un grupo de radio cuando se debe elegir exactamente una opción entre pocas alternativas visibles. Para listas largas, prefiere un select."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`v-model` guarda o `value` da opção marcada; o layout padrão é horizontal.",
+        "en-US": "`v-model` holds the `value` of the checked option; the default layout is horizontal.",
+        "es-ES": "`v-model` guarda el `value` de la opción marcada; el diseño predeterminado es horizontal."
+      }
+    },
+    {
+      "file": "Vertical",
+      "title": {
+        "pt-BR": "Vertical com rótulo",
+        "en-US": "Vertical with label",
+        "es-ES": "Vertical con etiqueta"
+      },
+      "description": {
+        "pt-BR": "`orientation=\"vertical\"` empilha as opções; dentro de `MsField`, o grupo recebe `aria-labelledby` com o rótulo.",
+        "en-US": "`orientation=\"vertical\"` stacks the options; inside `MsField`, the group gets `aria-labelledby` with the label.",
+        "es-ES": "`orientation=\"vertical\"` apila las opciones; dentro de `MsField`, el grupo recibe `aria-labelledby` con la etiqueta."
+      }
+    },
+    {
+      "file": "Plans",
+      "title": { "pt-BR": "Escolha de plano", "en-US": "Plan picker", "es-ES": "Selector de plan" },
+      "description": {
+        "pt-BR": "`card` no grupo aplica o estilo de cartão a todas as opções.",
+        "en-US": "`card` on the group applies the card style to every option.",
+        "es-ES": "`card` en el grupo aplica el estilo de tarjeta a todas las opciones."
+      }
+    },
+    {
+      "file": "SizesTones",
+      "title": {
+        "pt-BR": "Tamanhos e tons",
+        "en-US": "Sizes and tones",
+        "es-ES": "Tamaños y tonos"
+      },
+      "description": {
+        "pt-BR": "`size` e `tone` no grupo valem para todas as opções.",
+        "en-US": "`size` and `tone` on the group apply to every option.",
+        "es-ES": "`size` y `tone` en el grupo se aplican a todas las opciones."
+      }
+    },
+    {
+      "file": "Validation",
+      "title": { "pt-BR": "Validação", "en-US": "Validation", "es-ES": "Validación" },
+      "description": {
+        "pt-BR": "Um `error` no `MsField` marca o grupo com `aria-invalid` e mostra a mensagem abaixo das opções.",
+        "en-US": "An `error` on `MsField` marks the group with `aria-invalid` and shows the message below the options.",
+        "es-ES": "Un `error` en `MsField` marca el grupo con `aria-invalid` y muestra el mensaje debajo de las opciones."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": { "pt-BR": "Desabilitado", "en-US": "Disabled", "es-ES": "Deshabilitado" },
+      "description": {
+        "pt-BR": "`disabled` no grupo bloqueia todas as opções de uma vez.",
+        "en-US": "`disabled` on the group locks every option at once.",
+        "es-ES": "`disabled` en el grupo bloquea todas las opciones a la vez."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O contêiner tem `role=\"radiogroup\"`; dentro de `MsField`, recebe `aria-labelledby`, `aria-describedby` e `aria-invalid` do campo. Fora dele, use `aria-label`.\n- As opções são `input type=\"radio\"` nativos com o mesmo `name`.\n- `Tab`: entra e sai do grupo, focando a opção marcada.\n- `Setas`: movem a seleção entre as opções (comportamento nativo do navegador).\n- `Espaço`: marca a opção focada.",
+    "en-US": "- The container has `role=\"radiogroup\"`; inside `MsField`, it gets `aria-labelledby`, `aria-describedby` and `aria-invalid` from the field. Outside of it, use `aria-label`.\n- The options are native `input type=\"radio\"` elements sharing the same `name`.\n- `Tab`: moves into and out of the group, focusing the checked option.\n- `Arrow keys`: move the selection between options (native browser behavior).\n- `Space`: checks the focused option.",
+    "es-ES": "- El contenedor tiene `role=\"radiogroup\"`; dentro de `MsField`, recibe `aria-labelledby`, `aria-describedby` y `aria-invalid` del campo. Fuera de él, usa `aria-label`.\n- Las opciones son `input type=\"radio\"` nativos con el mismo `name`.\n- `Tab`: entra y sale del grupo, enfocando la opción marcada.\n- `Flechas`: mueven la selección entre las opciones (comportamiento nativo del navegador).\n- `Espacio`: marca la opción enfocada."
+  }
+}

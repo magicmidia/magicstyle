@@ -1,0 +1,53 @@
+{
+  "intro": {
+    "pt-BR": "`MsThemeScope` aplica tema, modo de cor, densidade, contraste, raio ou tokens avulsos a um trecho da interface. Diferente do `MsProvider`, ele herda do escopo pai tudo o que não for definido e pinta o próprio fundo.",
+    "en-US": "`MsThemeScope` applies a theme, color mode, density, contrast, radius or individual tokens to one part of the UI. Unlike `MsProvider`, it inherits from the parent scope everything it doesn't set and paints its own background.",
+    "es-ES": "`MsThemeScope` aplica tema, modo de color, densidad, contraste, radio o tokens sueltos a una parte de la interfaz. A diferencia de `MsProvider`, hereda del ámbito padre todo lo que no define y pinta su propio fondo."
+  },
+  "demos": [
+    {
+      "file": "SideBySide",
+      "title": {
+        "pt-BR": "Temas lado a lado",
+        "en-US": "Themes side by side",
+        "es-ES": "Temas lado a lado"
+      },
+      "description": {
+        "pt-BR": "Os mesmos componentes com `theme` `magic`, `shadcn`, `material` e `github`, cada um no seu escopo.",
+        "en-US": "The same components with `theme` set to `magic`, `shadcn`, `material` and `github`, each in its own scope.",
+        "es-ES": "Los mismos componentes con `theme` `magic`, `shadcn`, `material` y `github`, cada uno en su ámbito."
+      }
+    },
+    {
+      "file": "ColorMode",
+      "title": { "pt-BR": "Claro e escuro", "en-US": "Light and dark", "es-ES": "Claro y oscuro" },
+      "description": {
+        "pt-BR": "`color-mode` força `light` ou `dark` num trecho; os dois cards compartilham o mesmo estado.",
+        "en-US": "`color-mode` forces `light` or `dark` on a section; both cards share the same state.",
+        "es-ES": "`color-mode` fuerza `light` o `dark` en una sección; las dos tarjetas comparten el mismo estado."
+      }
+    },
+    {
+      "file": "Nested",
+      "title": {
+        "pt-BR": "Escopos aninhados",
+        "en-US": "Nested scopes",
+        "es-ES": "Ámbitos anidados"
+      },
+      "description": {
+        "pt-BR": "O escopo interno não define `theme`, então herda `nord` do pai e muda apenas `density` e `radius`.",
+        "en-US": "The inner scope doesn't set `theme`, so it inherits `nord` from its parent and changes only `density` and `radius`.",
+        "es-ES": "El ámbito interno no define `theme`, así que hereda `nord` del padre y solo cambia `density` y `radius`."
+      }
+    },
+    {
+      "file": "Overrides",
+      "title": { "pt-BR": "Tokens avulsos", "en-US": "Token overrides", "es-ES": "Tokens sueltos" },
+      "description": {
+        "pt-BR": "`overrides` recebe variáveis do contrato do tema sem o prefixo `--ms-`, como `color-primary` e `radius-field`.",
+        "en-US": "`overrides` takes theme contract variables without the `--ms-` prefix, such as `color-primary` and `radius-field`.",
+        "es-ES": "`overrides` recibe variables del contrato del tema sin el prefijo `--ms-`, como `color-primary` y `radius-field`."
+      }
+    }
+  ]
+}

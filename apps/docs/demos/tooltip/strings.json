@@ -1,0 +1,38 @@
+{
+  "pt-BR": {
+    "save": "Salvar",
+    "addToLibrary": "Adicionar à biblioteca",
+    "toneTip": "Sincronizado há 2 minutos",
+    "feeLabel": "Taxa de serviço: R$ 4,90",
+    "feeHelp": "O que é a taxa de serviço?",
+    "feeExplanation": "Cobrimos custos de pagamento e suporte 24h. Assinantes Plus não pagam a taxa em pedidos acima de R$ 50.",
+    "bold": "Negrito",
+    "italic": "Itálico",
+    "underline": "Sublinhado",
+    "link": "Inserir link"
+  },
+  "en-US": {
+    "save": "Save",
+    "addToLibrary": "Add to library",
+    "toneTip": "Synced 2 minutes ago",
+    "feeLabel": "Service fee: $1.99",
+    "feeHelp": "What is the service fee?",
+    "feeExplanation": "It covers payment processing and 24/7 support. Plus members pay no fee on orders over $25.",
+    "bold": "Bold",
+    "italic": "Italic",
+    "underline": "Underline",
+    "link": "Insert link"
+  },
+  "es-ES": {
+    "save": "Guardar",
+    "addToLibrary": "Añadir a la biblioteca",
+    "toneTip": "Sincronizado hace 2 minutos",
+    "feeLabel": "Tarifa de servicio: 1,99 €",
+    "feeHelp": "¿Qué es la tarifa de servicio?",
+    "feeExplanation": "Cubre los costes de pago y el soporte 24 h. Los suscriptores Plus no pagan la tarifa en pedidos superiores a 25 €.",
+    "bold": "Negrita",
+    "italic": "Cursiva",
+    "underline": "Subrayado",
+    "link": "Insertar enlace"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "intro": {
+    "pt-BR": "`MsProvider` define tema, modo de cor, densidade, contraste, raio, direção e idioma para tudo que estiver dentro dele. Na raiz do app use `target=\"root\"`; para trechos isolados, como nestes exemplos, mantenha o padrão `target=\"wrapper\"`, que aplica tudo só no elemento que envolve o conteúdo.",
+    "en-US": "`MsProvider` sets theme, color mode, density, contrast, radius, direction and locale for everything inside it. At the app root use `target=\"root\"`; for isolated sections, like these examples, keep the default `target=\"wrapper\"`, which applies everything only to the wrapping element.",
+    "es-ES": "`MsProvider` define tema, modo de color, densidad, contraste, radio, dirección e idioma para todo lo que contiene. En la raíz de la app usa `target=\"root\"`; para secciones aisladas, como en estos ejemplos, mantén el valor por defecto `target=\"wrapper\"`, que lo aplica todo solo al elemento que envuelve el contenido."
+  },
+  "demos": [
+    {
+      "file": "Theme",
+      "title": {
+        "pt-BR": "Outro tema num trecho",
+        "en-US": "Another theme in one section",
+        "es-ES": "Otro tema en una sección"
+      },
+      "description": {
+        "pt-BR": "Um provider aninhado com `theme=\"shadcn\"` troca cores, raios e tipografia só do card, sem afetar o resto da página.",
+        "en-US": "A nested provider with `theme=\"shadcn\"` swaps colors, radii and typography for the card only, leaving the rest of the page alone.",
+        "es-ES": "Un provider anidado con `theme=\"shadcn\"` cambia colores, radios y tipografía solo de la tarjeta, sin afectar al resto de la página."
+      }
+    },
+    {
+      "file": "Locale",
+      "title": {
+        "pt-BR": "Idioma dos componentes",
+        "en-US": "Component locale",
+        "es-ES": "Idioma de los componentes"
+      },
+      "description": {
+        "pt-BR": "`locale` troca os textos internos dos componentes (total, \"ir para\", rótulos de acessibilidade); os três paginadores compartilham o mesmo estado.",
+        "en-US": "`locale` switches the components' built-in strings (total, \"go to\", accessibility labels); the three paginators share the same state.",
+        "es-ES": "`locale` cambia los textos internos de los componentes (total, \"ir a\", etiquetas de accesibilidad); los tres paginadores comparten el mismo estado."
+      }
+    },
+    {
+      "file": "Messages",
+      "title": {
+        "pt-BR": "Sobrescrever mensagens",
+        "en-US": "Override messages",
+        "es-ES": "Sobrescribir mensajes"
+      },
+      "description": {
+        "pt-BR": "`messages` aceita um objeto parcial (`MsMessagesOverride`) mesclado sobre o idioma atual; aqui mudam o texto do campo e os rótulos de anterior e próxima.",
+        "en-US": "`messages` takes a partial object (`MsMessagesOverride`) merged over the current locale; here the jump field text and the previous and next labels change.",
+        "es-ES": "`messages` acepta un objeto parcial (`MsMessagesOverride`) que se fusiona con el idioma actual; aquí cambian el texto del campo y las etiquetas de anterior y siguiente."
+      }
+    },
+    {
+      "file": "Dials",
+      "title": {
+        "pt-BR": "Modo de cor, densidade e raio",
+        "en-US": "Color mode, density and radius",
+        "es-ES": "Modo de color, densidad y radio"
+      },
+      "description": {
+        "pt-BR": "`color-mode=\"dark\"`, `density=\"compact\"` e `radius=\"sharp\"` ajustam os tokens do trecho independentemente do resto do site.",
+        "en-US": "`color-mode=\"dark\"`, `density=\"compact\"` and `radius=\"sharp\"` adjust the section tokens independently of the rest of the site.",
+        "es-ES": "`color-mode=\"dark\"`, `density=\"compact\"` y `radius=\"sharp\"` ajustan los tokens de la sección con independencia del resto del sitio."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- `locale` também traduz os rótulos acessíveis (`aria-label`) dos componentes internos, então defina-o com o idioma real da página.\n- `dir=\"rtl\"` inverte a direção de leitura do trecho e a navegação por setas dos componentes que a suportam.\n- `contrast=\"high\"` reforça bordas e contraste de texto para quem precisa.",
+    "en-US": "- `locale` also translates the components' accessible labels (`aria-label`), so set it to the page's actual language.\n- `dir=\"rtl\"` flips the section's reading direction and the arrow-key navigation of components that support it.\n- `contrast=\"high\"` strengthens borders and text contrast for those who need it.",
+    "es-ES": "- `locale` también traduce las etiquetas accesibles (`aria-label`) de los componentes, así que usa el idioma real de la página.\n- `dir=\"rtl\"` invierte la dirección de lectura de la sección y la navegación con flechas de los componentes que la admiten.\n- `contrast=\"high\"` refuerza bordes y contraste de texto para quien lo necesite."
+  }
+}

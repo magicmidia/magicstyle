@@ -1,0 +1,58 @@
+{
+  "intro": {
+    "pt-BR": "Tabela de dados composta por `MsTableHead`, `MsTableBody`, `MsTableFooter`, linhas e células, com ordenação, zebra, bordas, densidade e cabeçalho fixo.",
+    "en-US": "Data table composed of `MsTableHead`, `MsTableBody`, `MsTableFooter`, rows and cells, with sorting, stripes, borders, density and a sticky header.",
+    "es-ES": "Tabla de datos compuesta por `MsTableHead`, `MsTableBody`, `MsTableFooter`, filas y celdas, con ordenación, filas alternas, bordes, densidad y encabezado fijo."
+  },
+  "demos": [
+    {
+      "file": "Invoices",
+      "title": { "pt-BR": "Faturas", "en-US": "Invoices", "es-ES": "Facturas" },
+      "description": {
+        "pt-BR": "Colunas com `sortable` exibem o indicador de `sort-direction` e emitem `click`; você ordena os dados. `MsTableFooter` traz o total e `caption` descreve a tabela.",
+        "en-US": "Columns with `sortable` show the `sort-direction` indicator and emit `click`; you sort the data. `MsTableFooter` holds the total and `caption` describes the table.",
+        "es-ES": "Las columnas con `sortable` muestran el indicador de `sort-direction` y emiten `click`; tú ordenas los datos. `MsTableFooter` muestra el total y `caption` describe la tabla."
+      }
+    },
+    {
+      "file": "Users",
+      "title": {
+        "pt-BR": "Usuários com seleção",
+        "en-US": "Users with selection",
+        "es-ES": "Usuarios con selección"
+      },
+      "description": {
+        "pt-BR": "`striped` alterna o fundo das linhas e `selected` destaca as linhas marcadas pelo `MsCheckbox`.",
+        "en-US": "`striped` alternates row backgrounds and `selected` highlights the rows checked with `MsCheckbox`.",
+        "es-ES": "`striped` alterna el fondo de las filas y `selected` resalta las filas marcadas con `MsCheckbox`."
+      }
+    },
+    {
+      "file": "Density",
+      "title": {
+        "pt-BR": "Densidade e bordas",
+        "en-US": "Density and borders",
+        "es-ES": "Densidad y bordes"
+      },
+      "description": {
+        "pt-BR": "`density` vai de `xs` a `xl`; `bordered` desenha todas as bordas e `:hoverable=\"false\"` desliga o destaque ao passar o cursor.",
+        "en-US": "`density` goes from `xs` to `xl`; `bordered` draws every border and `:hoverable=\"false\"` turns off the hover highlight.",
+        "es-ES": "`density` va de `xs` a `xl`; `bordered` dibuja todos los bordes y `:hoverable=\"false\"` desactiva el resaltado al pasar el cursor."
+      }
+    },
+    {
+      "file": "StickyHeader",
+      "title": { "pt-BR": "Cabeçalho fixo", "en-US": "Sticky header", "es-ES": "Encabezado fijo" },
+      "description": {
+        "pt-BR": "Com `sticky-header` e uma altura máxima no contêiner, o cabeçalho continua visível durante a rolagem.",
+        "en-US": "With `sticky-header` and a max height on the container, the header stays visible while scrolling.",
+        "es-ES": "Con `sticky-header` y una altura máxima en el contenedor, el encabezado sigue visible durante el desplazamiento."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza uma `<table>` nativa com `<thead>`, `<tbody>`, `<tfoot>`, `<th>` e `<td>`; `caption` gera um `<caption>` que nomeia a tabela.\n- Colunas `sortable` recebem `aria-sort` (`ascending`, `descending` ou `none`).\n- O cabeçalho ordenável responde apenas ao clique: o `<th>` não é focável nem reage a `Enter`/`Espaço`, então ofereça outra forma de ordenar para quem usa teclado.\n- `selected` e `clickable` são apenas visuais; exponha a seleção com um controle real, como um `MsCheckbox` com `aria-label`.",
+    "en-US": "- Renders a native `<table>` with `<thead>`, `<tbody>`, `<tfoot>`, `<th>` and `<td>`; `caption` renders a `<caption>` that names the table.\n- `sortable` columns get `aria-sort` (`ascending`, `descending` or `none`).\n- The sortable header only responds to clicks: the `<th>` isn't focusable and doesn't react to `Enter`/`Space`, so offer another way to sort for keyboard users.\n- `selected` and `clickable` are visual only; expose selection through a real control, such as an `MsCheckbox` with an `aria-label`.",
+    "es-ES": "- Renderiza una `<table>` nativa con `<thead>`, `<tbody>`, `<tfoot>`, `<th>` y `<td>`; `caption` genera un `<caption>` que nombra la tabla.\n- Las columnas `sortable` reciben `aria-sort` (`ascending`, `descending` o `none`).\n- El encabezado ordenable solo responde al clic: el `<th>` no es enfocable ni reacciona a `Enter`/`Espacio`, así que ofrece otra forma de ordenar para quienes usan teclado.\n- `selected` y `clickable` son solo visuales; expón la selección con un control real, como un `MsCheckbox` con `aria-label`."
+  }
+}

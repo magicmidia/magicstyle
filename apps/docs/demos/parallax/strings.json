@@ -1,0 +1,32 @@
+{
+  "pt-BR": {
+    "heroTitle": "Interfaces que ganham profundidade",
+    "heroText": "Role a página: o fundo se move mais devagar que o conteúdo e cria uma sensação de camadas.",
+    "heroCta": "Começar agora",
+    "slow": "speed 0.15 · sutil",
+    "fast": "speed 0.6 · intenso",
+    "bannerTitle": "Semana do meio ambiente",
+    "bannerText": "Plante uma árvore a cada pedido acima de R$ 150.",
+    "bannerBadge": "Até 5 de junho"
+  },
+  "en-US": {
+    "heroTitle": "Interfaces with depth",
+    "heroText": "Scroll the page: the background moves slower than the content, creating a sense of layers.",
+    "heroCta": "Get started",
+    "slow": "speed 0.15 · subtle",
+    "fast": "speed 0.6 · strong",
+    "bannerTitle": "Environment week",
+    "bannerText": "We plant a tree for every order over $30.",
+    "bannerBadge": "Through June 5"
+  },
+  "es-ES": {
+    "heroTitle": "Interfaces con profundidad",
+    "heroText": "Desplaza la página: el fondo se mueve más despacio que el contenido y crea una sensación de capas.",
+    "heroCta": "Empezar ahora",
+    "slow": "speed 0.15 · sutil",
+    "fast": "speed 0.6 · intenso",
+    "bannerTitle": "Semana del medio ambiente",
+    "bannerText": "Plantamos un árbol por cada pedido superior a 30 €.",
+    "bannerBadge": "Hasta el 5 de junio"
+  }
+}

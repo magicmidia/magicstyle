@@ -1,0 +1,71 @@
+{
+  "intro": {
+    "pt-BR": "`MsRadio` é uma opção individual e sempre fica dentro de um `MsRadioGroup`, que controla o valor selecionado e o `name` compartilhado.",
+    "en-US": "`MsRadio` is a single option and always lives inside an `MsRadioGroup`, which controls the selected value and the shared `name`.",
+    "es-ES": "`MsRadio` es una opción individual y siempre va dentro de un `MsRadioGroup`, que controla el valor seleccionado y el `name` compartido."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Cada `MsRadio` define o seu `value` e o texto em `label`.",
+        "en-US": "Each `MsRadio` sets its own `value` and its text in `label`.",
+        "es-ES": "Cada `MsRadio` define su `value` y su texto en `label`."
+      }
+    },
+    {
+      "file": "Description",
+      "title": {
+        "pt-BR": "Com descrição",
+        "en-US": "With description",
+        "es-ES": "Con descripción"
+      },
+      "description": {
+        "pt-BR": "`description` explica a consequência de cada escolha.",
+        "en-US": "`description` explains the outcome of each choice.",
+        "es-ES": "`description` explica la consecuencia de cada opción."
+      }
+    },
+    {
+      "file": "Card",
+      "title": { "pt-BR": "Cartão", "en-US": "Card", "es-ES": "Tarjeta" },
+      "description": {
+        "pt-BR": "`card` transforma a opção em um cartão clicável.",
+        "en-US": "`card` turns the option into a clickable card.",
+        "es-ES": "`card` convierte la opción en una tarjeta clicable."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": {
+        "pt-BR": "Tons por opção",
+        "en-US": "Per-option tones",
+        "es-ES": "Tonos por opción"
+      },
+      "description": {
+        "pt-BR": "`tone` no `MsRadio` sobrescreve o tom definido no grupo.",
+        "en-US": "`tone` on `MsRadio` overrides the tone set on the group.",
+        "es-ES": "`tone` en `MsRadio` reemplaza el tono definido en el grupo."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": {
+        "pt-BR": "Opção desabilitada",
+        "en-US": "Disabled option",
+        "es-ES": "Opción deshabilitada"
+      },
+      "description": {
+        "pt-BR": "`disabled` em uma opção impede apenas aquela escolha.",
+        "en-US": "`disabled` on one option blocks only that choice.",
+        "es-ES": "`disabled` en una opción bloquea solo esa elección."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Cada opção é um `input type=\"radio\"` nativo envolvido por um `label`, com o `name` do grupo.\n- `Tab`: entra e sai do grupo, focando a opção marcada.\n- `Setas`: movem a seleção entre as opções do grupo (comportamento nativo do navegador).\n- `Espaço`: marca a opção focada, se ainda não estiver marcada.",
+    "en-US": "- Each option is a native `input type=\"radio\"` wrapped in a `label`, with the group `name`.\n- `Tab`: moves into and out of the group, focusing the checked option.\n- `Arrow keys`: move the selection between options in the group (native browser behavior).\n- `Space`: checks the focused option if it is not checked yet.",
+    "es-ES": "- Cada opción es un `input type=\"radio\"` nativo envuelto en un `label`, con el `name` del grupo.\n- `Tab`: entra y sale del grupo, enfocando la opción marcada.\n- `Flechas`: mueven la selección entre las opciones del grupo (comportamiento nativo del navegador).\n- `Espacio`: marca la opción enfocada si aún no está marcada."
+  }
+}

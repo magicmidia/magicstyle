@@ -1,0 +1,40 @@
+{
+  "intro": {
+    "pt-BR": "O scroll spy lista as seções de uma página longa e destaca a que está em leitura. Ele observa a rolagem da janela (`window`), não de um contêiner com rolagem própria: role esta página para ver o destaque mudar.",
+    "en-US": "Scroll spy lists the sections of a long page and highlights the one being read. It tracks the window scroll, not a scrollable container: scroll this page to see the highlight move.",
+    "es-ES": "El scroll spy lista las secciones de una página larga y resalta la que se está leyendo. Observa el desplazamiento de la ventana (`window`), no de un contenedor con scroll propio: desplaza esta página para ver cómo cambia."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": {
+        "pt-BR": "Índice da página",
+        "en-US": "Table of contents",
+        "es-ES": "Índice de la página"
+      },
+      "description": {
+        "pt-BR": "Cada item de `items` aponta para o `id` de uma seção; clicar rola suavemente até ela, descontando `offset` pixels do topo.",
+        "en-US": "Each entry in `items` points to a section `id`; clicking smooth-scrolls to it, minus `offset` pixels from the top.",
+        "es-ES": "Cada entrada de `items` apunta al `id` de una sección; al hacer clic se desplaza suavemente hasta ella, descontando `offset` píxeles desde arriba."
+      }
+    },
+    {
+      "file": "ActiveChange",
+      "title": {
+        "pt-BR": "Reagir à seção ativa",
+        "en-US": "React to the active section",
+        "es-ES": "Reaccionar a la sección activa"
+      },
+      "description": {
+        "pt-BR": "O evento `active-change` entrega o `id` da seção atual, útil para atualizar um rótulo, a URL ou métricas de leitura.",
+        "en-US": "The `active-change` event emits the current section `id`, handy for updating a label, the URL or reading analytics.",
+        "es-ES": "El evento `active-change` emite el `id` de la sección actual, útil para actualizar una etiqueta, la URL o métricas de lectura."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza `<nav>` com `aria-label` vindo das mensagens da biblioteca e uma lista de `<button>`.\n- O item ativo recebe `aria-current=\"true\"`.\n- `Tab`: percorre os itens; `Enter` ou `Espaço` rola até a seção.\n- O foco não é movido para a seção de destino; se precisar, dê `tabindex=\"-1\"` à seção e foque-a no evento `active-change`.",
+    "en-US": "- Renders a `<nav>` with an `aria-label` from the library messages and a list of `<button>`s.\n- The active item gets `aria-current=\"true\"`.\n- `Tab`: moves through items; `Enter` or `Space` scrolls to the section.\n- Focus is not moved to the target section; if needed, give the section `tabindex=\"-1\"` and focus it on `active-change`.",
+    "es-ES": "- Renderiza un `<nav>` con un `aria-label` de los mensajes de la biblioteca y una lista de `<button>`.\n- El ítem activo recibe `aria-current=\"true\"`.\n- `Tab`: recorre los ítems; `Enter` o `Espacio` se desplaza a la sección.\n- El foco no se mueve a la sección de destino; si lo necesitas, da `tabindex=\"-1\"` a la sección y enfócala en `active-change`."
+  }
+}

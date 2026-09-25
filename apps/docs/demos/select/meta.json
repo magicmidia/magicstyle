@@ -1,0 +1,76 @@
+{
+  "intro": {
+    "pt-BR": "Use o select quando o usuário escolhe entre muitas opções que não cabem como botões ou rádios. Para listas curtas sem busca, o `MsNativeSelect` também atende.",
+    "en-US": "Use the select when users choose among many options that don't fit as buttons or radios. For short lists without search, `MsNativeSelect` also works.",
+    "es-ES": "Usa el select cuando el usuario elige entre muchas opciones que no caben como botones o radios. Para listas cortas sin búsqueda, `MsNativeSelect` también sirve."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Passe `options` com `value` e `label` e envolva em `MsField` para ligar o rótulo ao combobox.",
+        "en-US": "Pass `options` with `value` and `label`, and wrap it in `MsField` to link the label to the combobox.",
+        "es-ES": "Pasa `options` con `value` y `label`, y envuélvelo en `MsField` para vincular la etiqueta al combobox."
+      }
+    },
+    {
+      "file": "Multiple",
+      "title": {
+        "pt-BR": "Seleção múltipla",
+        "en-US": "Multiple selection",
+        "es-ES": "Selección múltiple"
+      },
+      "description": {
+        "pt-BR": "Com `multiple`, os itens viram etiquetas removíveis; `max-tag-count` limita as etiquetas visíveis e `clearable` limpa tudo.",
+        "en-US": "With `multiple`, items become removable tags; `max-tag-count` limits the visible tags and `clearable` clears everything.",
+        "es-ES": "Con `multiple`, los ítems se vuelven etiquetas removibles; `max-tag-count` limita las etiquetas visibles y `clearable` borra todo."
+      }
+    },
+    {
+      "file": "Searchable",
+      "title": { "pt-BR": "Com busca", "en-US": "Searchable", "es-ES": "Con búsqueda" },
+      "description": {
+        "pt-BR": "`searchable` adiciona um campo de busca no painel, útil para listas longas como países.",
+        "en-US": "`searchable` adds a search field to the panel, useful for long lists such as countries.",
+        "es-ES": "`searchable` añade un campo de búsqueda al panel, útil para listas largas como países."
+      }
+    },
+    {
+      "file": "Grouped",
+      "title": { "pt-BR": "Grupos", "en-US": "Groups", "es-ES": "Grupos" },
+      "description": {
+        "pt-BR": "Use objetos `{ group, options }` para agrupar opções; `description` mostra uma segunda linha em cada item.",
+        "en-US": "Use `{ group, options }` objects to group options; `description` shows a second line on each item.",
+        "es-ES": "Usa objetos `{ group, options }` para agrupar opciones; `description` muestra una segunda línea en cada ítem."
+      }
+    },
+    {
+      "file": "Creatable",
+      "title": { "pt-BR": "Criando itens", "en-US": "Creating items", "es-ES": "Crear ítems" },
+      "description": {
+        "pt-BR": "Com `creatable` e `searchable`, o termo buscado pode virar um novo valor; ouça `create` para incluí-lo em `options`.",
+        "en-US": "With `creatable` and `searchable`, the search term can become a new value; listen to `create` to add it to `options`.",
+        "es-ES": "Con `creatable` y `searchable`, el término buscado puede convertirse en un valor nuevo; escucha `create` para agregarlo a `options`."
+      }
+    },
+    {
+      "file": "Validation",
+      "title": {
+        "pt-BR": "Validação e opções desabilitadas",
+        "en-US": "Validation and disabled options",
+        "es-ES": "Validación y opciones deshabilitadas"
+      },
+      "description": {
+        "pt-BR": "O `error` do `MsField` marca o select como inválido; opções com `disabled: true` aparecem, mas não podem ser escolhidas.",
+        "en-US": "`MsField`'s `error` marks the select as invalid; options with `disabled: true` are shown but can't be chosen.",
+        "es-ES": "El `error` de `MsField` marca el select como inválido; las opciones con `disabled: true` se muestran, pero no se pueden elegir."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O gatilho é um `role=\"combobox\"` focável, com `aria-expanded`, `aria-controls`, `aria-activedescendant` e, dentro de um `MsField`, `aria-labelledby`, `aria-describedby` e `aria-invalid`.\n- Com o painel fechado, `↓`, `↑`, `Enter` ou `Espaço` o abrem.\n- No painel (`role=\"listbox\"`): `↓`/`↑` movem a opção ativa pulando as desabilitadas, `Home`/`End` vão à primeira/última, `Enter` escolhe (sem busca, `Espaço` também) e `Esc` fecha e devolve o foco ao gatilho; `Tab` fecha o painel.\n- Com `searchable`, o foco vai para o campo de busca ao abrir. Com `creatable`, `Enter` cria o termo buscado quando não há opção correspondente.\n- Com `multiple`, a lista tem `aria-multiselectable`, o painel continua aberto após cada escolha e `Backspace` no gatilho remove a última etiqueta.",
+    "en-US": "- The trigger is a focusable `role=\"combobox\"` with `aria-expanded`, `aria-controls`, `aria-activedescendant` and, inside an `MsField`, `aria-labelledby`, `aria-describedby` and `aria-invalid`.\n- With the panel closed, `↓`, `↑`, `Enter` or `Space` open it.\n- In the panel (`role=\"listbox\"`): `↓`/`↑` move the active option skipping disabled ones, `Home`/`End` go to the first/last one, `Enter` chooses (without search, `Space` too) and `Esc` closes and returns focus to the trigger; `Tab` closes the panel.\n- With `searchable`, focus moves to the search field on open. With `creatable`, `Enter` creates the search term when no option matches.\n- With `multiple`, the list has `aria-multiselectable`, the panel stays open after each choice and `Backspace` on the trigger removes the last tag.",
+    "es-ES": "- El disparador es un `role=\"combobox\"` enfocable, con `aria-expanded`, `aria-controls`, `aria-activedescendant` y, dentro de un `MsField`, `aria-labelledby`, `aria-describedby` y `aria-invalid`.\n- Con el panel cerrado, `↓`, `↑`, `Enter` o `Espacio` lo abren.\n- En el panel (`role=\"listbox\"`): `↓`/`↑` mueven la opción activa saltando las deshabilitadas, `Home`/`End` van a la primera/última, `Enter` elige (sin búsqueda, `Espacio` también) y `Esc` cierra y devuelve el foco al disparador; `Tab` cierra el panel.\n- Con `searchable`, el foco va al campo de búsqueda al abrir. Con `creatable`, `Enter` crea el término buscado cuando ninguna opción coincide.\n- Con `multiple`, la lista tiene `aria-multiselectable`, el panel sigue abierto tras cada elección y `Backspace` en el disparador quita la última etiqueta."
+  }
+}

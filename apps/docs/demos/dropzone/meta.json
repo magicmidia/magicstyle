@@ -1,0 +1,54 @@
+{
+  "intro": {
+    "pt-BR": "Área para arrastar e soltar arquivos, com seleção pelo explorador, validação de tipo e tamanho e lista dos arquivos aceitos.",
+    "en-US": "Drag-and-drop area for files, with browsing, type and size validation and a list of accepted files.",
+    "es-ES": "Área para arrastrar y soltar archivos, con selección desde el explorador, validación de tipo y tamaño y lista de archivos aceptados."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`@files-dropped` entrega os arquivos aceitos; o componente mantém a própria lista com botão de remover.",
+        "en-US": "`@files-dropped` delivers the accepted files; the component keeps its own list with a remove button.",
+        "es-ES": "`@files-dropped` entrega los archivos aceptados; el componente mantiene su propia lista con botón de quitar."
+      }
+    },
+    {
+      "file": "CustomText",
+      "title": {
+        "pt-BR": "Texto personalizado",
+        "en-US": "Custom text",
+        "es-ES": "Texto personalizado"
+      },
+      "description": {
+        "pt-BR": "Os slots `title` e `subtitle` trocam os textos; `:multiple=\"false\"` aceita um arquivo por vez.",
+        "en-US": "The `title` and `subtitle` slots replace the text; `:multiple=\"false\"` accepts one file at a time.",
+        "es-ES": "Los slots `title` y `subtitle` reemplazan los textos; `:multiple=\"false\"` acepta un archivo a la vez."
+      }
+    },
+    {
+      "file": "Validation",
+      "title": { "pt-BR": "Validação", "en-US": "Validation", "es-ES": "Validación" },
+      "description": {
+        "pt-BR": "`accept` e `max-size` (em bytes) filtram os arquivos; `@files-rejected` informa o arquivo e o motivo (`type`, `size` ou `multiple`).",
+        "en-US": "`accept` and `max-size` (in bytes) filter files; `@files-rejected` reports each file and the reason (`type`, `size` or `multiple`).",
+        "es-ES": "`accept` y `max-size` (en bytes) filtran los archivos; `@files-rejected` informa cada archivo y el motivo (`type`, `size` o `multiple`)."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": { "pt-BR": "Desabilitado", "en-US": "Disabled", "es-ES": "Deshabilitado" },
+      "description": {
+        "pt-BR": "`disabled` ignora cliques e arquivos soltos na área.",
+        "en-US": "`disabled` ignores clicks and files dropped on the area.",
+        "es-ES": "`disabled` ignora los clics y los archivos soltados en el área."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Contém um `input type=\"file\"` nativo visualmente oculto, mas focável, com `aria-label` localizado; o foco aparece como anel na área inteira.\n- `Tab`: foca o seletor de arquivos.\n- `Enter`/`Espaço`: abrem o explorador de arquivos do sistema.\n- Cada arquivo da lista tem um botão de remover com `aria-label` que inclui o nome do arquivo.\n- Arrastar e soltar é só um atalho: todo o fluxo funciona pelo teclado.",
+    "en-US": "- Contains a visually hidden but focusable native `input type=\"file\"` with a localized `aria-label`; focus shows as a ring around the whole area.\n- `Tab`: focuses the file picker.\n- `Enter`/`Space`: open the system file browser.\n- Each file in the list has a remove button whose `aria-label` includes the file name.\n- Drag and drop is only a shortcut: the whole flow works with the keyboard.",
+    "es-ES": "- Contiene un `input type=\"file\"` nativo oculto visualmente pero enfocable, con `aria-label` localizado; el foco se muestra como un anillo en toda el área.\n- `Tab`: enfoca el selector de archivos.\n- `Enter`/`Espacio`: abren el explorador de archivos del sistema.\n- Cada archivo de la lista tiene un botón de quitar cuyo `aria-label` incluye el nombre del archivo.\n- Arrastrar y soltar es solo un atajo: todo el flujo funciona con el teclado."
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "intro": {
+    "pt-BR": "Um seguidor decorativo do cursor do mouse, teleportado para o `body`, que reage a links e botões. Use em landing pages e experiências de marketing, nunca como substituto do cursor.",
+    "en-US": "A decorative mouse cursor follower, teleported to `body`, that reacts to links and buttons. Use it on landing pages and marketing experiences, never as a cursor replacement.",
+    "es-ES": "Un seguidor decorativo del cursor del mouse, teletransportado al `body`, que reacciona a enlaces y botones. Úsalo en landing pages y experiencias de marketing, nunca como sustituto del cursor."
+  },
+  "demos": [
+    {
+      "file": "Dot",
+      "title": { "pt-BR": "Ponto", "en-US": "Dot", "es-ES": "Punto" },
+      "description": {
+        "pt-BR": "`variant=\"dot\"` (padrão) é um ponto discreto que acompanha o mouse. Nas demos, o componente só é montado quando o switch está ligado.",
+        "en-US": "`variant=\"dot\"` (default) is a subtle dot that follows the mouse. In these demos, the component is only mounted while the switch is on.",
+        "es-ES": "`variant=\"dot\"` (por defecto) es un punto discreto que sigue al mouse. En estas demos, el componente solo se monta cuando el switch está activado."
+      }
+    },
+    {
+      "file": "Ring",
+      "title": { "pt-BR": "Anel", "en-US": "Ring", "es-ES": "Anillo" },
+      "description": {
+        "pt-BR": "`variant=\"ring\"` desenha um anel que muda de estado sobre links e botões.",
+        "en-US": "`variant=\"ring\"` draws a ring that changes state over links and buttons.",
+        "es-ES": "`variant=\"ring\"` dibuja un anillo que cambia de estado sobre enlaces y botones."
+      }
+    },
+    {
+      "file": "Spotlight",
+      "title": { "pt-BR": "Holofote", "en-US": "Spotlight", "es-ES": "Foco" },
+      "description": {
+        "pt-BR": "`variant=\"spotlight\"` projeta um brilho suave ao redor do cursor; use `disabled` para pausar o rastreamento sem desmontar.",
+        "en-US": "`variant=\"spotlight\"` casts a soft glow around the cursor; use `disabled` to stop tracking without unmounting.",
+        "es-ES": "`variant=\"spotlight\"` proyecta un brillo suave alrededor del cursor; usa `disabled` para detener el seguimiento sin desmontarlo."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O elemento é `aria-hidden=\"true\"` e usa `pointer-events: none`, então não interfere em cliques nem em leitores de tela.\n- Ele não substitui nem esconde o cursor nativo, e não segue o foco do teclado.\n- O movimento não respeita `prefers-reduced-motion` por conta própria: não monte o componente (ou use `disabled`) quando o usuário preferir menos movimento.",
+    "en-US": "- The element is `aria-hidden=\"true\"` and uses `pointer-events: none`, so it doesn't interfere with clicks or screen readers.\n- It doesn't replace or hide the native cursor, and it doesn't follow keyboard focus.\n- The motion doesn't honor `prefers-reduced-motion` by itself: don't mount the component (or use `disabled`) when the user prefers less motion.",
+    "es-ES": "- El elemento es `aria-hidden=\"true\"` y usa `pointer-events: none`, así que no interfiere con los clics ni con los lectores de pantalla.\n- No reemplaza ni oculta el cursor nativo, y no sigue el foco del teclado.\n- El movimiento no respeta `prefers-reduced-motion` por sí solo: no montes el componente (o usa `disabled`) cuando el usuario prefiera menos movimiento."
+  }
+}

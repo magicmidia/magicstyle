@@ -1,0 +1,75 @@
+{
+  "intro": {
+    "pt-BR": "Formata o texto enquanto a pessoa digita, para documentos, telefones, datas e cartões. Os presets cobrem formatos brasileiros; qualquer outro padrão pode ser escrito com `9` para cada dígito.",
+    "en-US": "Formats text as people type, for documents, phone numbers, dates and cards. The presets cover Brazilian formats; any other pattern can be written with `9` for each digit.",
+    "es-ES": "Da formato al texto mientras se escribe, para documentos, teléfonos, fechas y tarjetas. Los presets cubren formatos brasileños; cualquier otro patrón se escribe con `9` para cada dígito."
+  },
+  "demos": [
+    {
+      "file": "Presets",
+      "title": { "pt-BR": "Presets", "en-US": "Presets", "es-ES": "Presets" },
+      "description": {
+        "pt-BR": "`mask` aceita `cpf`, `cnpj`, `phone`, `cep`, `date` e `credit-card`; o padrão vira o placeholder.",
+        "en-US": "`mask` accepts `cpf`, `cnpj`, `phone`, `cep`, `date` and `credit-card`; the pattern becomes the placeholder.",
+        "es-ES": "`mask` acepta `cpf`, `cnpj`, `phone`, `cep`, `date` y `credit-card`; el patrón se usa como placeholder."
+      }
+    },
+    {
+      "file": "CustomPattern",
+      "title": {
+        "pt-BR": "Padrão personalizado",
+        "en-US": "Custom pattern",
+        "es-ES": "Patrón personalizado"
+      },
+      "description": {
+        "pt-BR": "Em um padrão próprio, `9` aceita um dígito e qualquer outro caractere é inserido como literal.",
+        "en-US": "In a custom pattern, `9` accepts one digit and any other character is inserted as a literal.",
+        "es-ES": "En un patrón propio, `9` acepta un dígito y cualquier otro carácter se inserta como literal."
+      }
+    },
+    {
+      "file": "Unmasked",
+      "title": {
+        "pt-BR": "Valor sem máscara",
+        "en-US": "Unmasked value",
+        "es-ES": "Valor sin máscara"
+      },
+      "description": {
+        "pt-BR": "`v-model:unmasked` entrega só os dígitos para enviar à API, e `@complete` avisa quando o padrão foi preenchido.",
+        "en-US": "`v-model:unmasked` gives you only the digits to send to your API, and `@complete` fires when the pattern is filled.",
+        "es-ES": "`v-model:unmasked` entrega solo los dígitos para enviar a la API, y `@complete` avisa cuando se completa el patrón."
+      }
+    },
+    {
+      "file": "Payment",
+      "title": {
+        "pt-BR": "Formulário de pagamento",
+        "en-US": "Payment form",
+        "es-ES": "Formulario de pago"
+      },
+      "description": {
+        "pt-BR": "Cartão, validade e código de segurança com `autocomplete` e `inputmode` repassados ao `input`.",
+        "en-US": "Card number, expiry and security code with `autocomplete` and `inputmode` forwarded to the `input`.",
+        "es-ES": "Tarjeta, vencimiento y código de seguridad con `autocomplete` e `inputmode` reenviados al `input`."
+      }
+    },
+    {
+      "file": "States",
+      "title": {
+        "pt-BR": "Estados e tamanhos",
+        "en-US": "States and sizes",
+        "es-ES": "Estados y tamaños"
+      },
+      "description": {
+        "pt-BR": "`invalid`, `readonly`, `disabled` e `size` (`sm`, `md`, `lg`).",
+        "en-US": "`invalid`, `readonly`, `disabled` and `size` (`sm`, `md`, `lg`).",
+        "es-ES": "`invalid`, `readonly`, `disabled` y `size` (`sm`, `md`, `lg`)."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza um `input type=\"text\"` nativo; atributos como `inputmode` e `autocomplete` são repassados a ele.\n- `Tab`: move o foco para o campo e, com `clearable`, para o botão de limpar (com `aria-label` localizado).\n- Dentro de `MsField`, recebe `aria-describedby` e `aria-invalid` do campo.\n- O placeholder com o padrão não substitui um rótulo: use `MsField` ou `aria-label`.",
+    "en-US": "- Renders a native `input type=\"text\"`; attributes such as `inputmode` and `autocomplete` are forwarded to it.\n- `Tab`: moves focus to the field and, with `clearable`, to the clear button (with a localized `aria-label`).\n- Inside `MsField`, it receives `aria-describedby` and `aria-invalid` from the field.\n- The pattern placeholder does not replace a label: use `MsField` or `aria-label`.",
+    "es-ES": "- Renderiza un `input type=\"text\"` nativo; atributos como `inputmode` y `autocomplete` se le reenvían.\n- `Tab`: mueve el foco al campo y, con `clearable`, al botón de borrar (con `aria-label` localizado).\n- Dentro de `MsField`, recibe `aria-describedby` y `aria-invalid` del campo.\n- El placeholder con el patrón no reemplaza una etiqueta: usa `MsField` o `aria-label`."
+  }
+}

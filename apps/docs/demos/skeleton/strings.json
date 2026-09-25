@@ -1,0 +1,35 @@
+{
+  "pt-BR": {
+    "loadingArticle": "Carregando artigo",
+    "loadingContacts": "Carregando contatos",
+    "simulateLoading": "Carregando",
+    "bio": "Designer de produto em Recife. Apaixonada por tipografia e bicicletas.",
+    "pulse": "pulse",
+    "shimmer": "shimmer",
+    "none": "none",
+    "primaryTone": "tone primary",
+    "contrastTone": "tone contrast"
+  },
+  "en-US": {
+    "loadingArticle": "Loading article",
+    "loadingContacts": "Loading contacts",
+    "simulateLoading": "Loading",
+    "bio": "Product designer based in Recife. Loves typography and bikes.",
+    "pulse": "pulse",
+    "shimmer": "shimmer",
+    "none": "none",
+    "primaryTone": "tone primary",
+    "contrastTone": "tone contrast"
+  },
+  "es-ES": {
+    "loadingArticle": "Cargando artículo",
+    "loadingContacts": "Cargando contactos",
+    "simulateLoading": "Cargando",
+    "bio": "Diseñadora de producto en Recife. Apasionada por la tipografía y las bicicletas.",
+    "pulse": "pulse",
+    "shimmer": "shimmer",
+    "none": "none",
+    "primaryTone": "tone primary",
+    "contrastTone": "tone contrast"
+  }
+}

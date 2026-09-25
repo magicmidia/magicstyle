@@ -1,0 +1,53 @@
+{
+  "intro": {
+    "pt-BR": "Contêiner com uma camada de fundo que se desloca conforme a rolagem da página, para seções de destaque e heróis.",
+    "en-US": "A container whose background layer shifts as the page scrolls, for hero and highlight sections.",
+    "es-ES": "Contenedor con una capa de fondo que se desplaza según el scroll de la página, para secciones destacadas y heros."
+  },
+  "demos": [
+    {
+      "file": "Hero",
+      "title": {
+        "pt-BR": "Seção hero",
+        "en-US": "Hero section",
+        "es-ES": "Sección hero"
+      },
+      "description": {
+        "pt-BR": "O slot `background` recebe a camada que se move; o slot padrão fica fixo por cima. Deixe o fundo maior que o contêiner para não aparecerem bordas vazias.",
+        "en-US": "The `background` slot holds the moving layer; the default slot stays on top. Make the background taller than the container so no empty edges show.",
+        "es-ES": "El slot `background` recibe la capa que se mueve; el slot por defecto queda encima. Haz el fondo más alto que el contenedor para que no aparezcan bordes vacíos."
+      }
+    },
+    {
+      "file": "Speed",
+      "title": {
+        "pt-BR": "Velocidade",
+        "en-US": "Speed",
+        "es-ES": "Velocidad"
+      },
+      "description": {
+        "pt-BR": "`speed` multiplica o deslocamento do fundo (padrão `0.3`); `height` aceita número em pixels ou qualquer medida CSS.",
+        "en-US": "`speed` multiplies the background offset (default `0.3`); `height` accepts a number in pixels or any CSS length.",
+        "es-ES": "`speed` multiplica el desplazamiento del fondo (por defecto `0.3`); `height` acepta un número en píxeles o cualquier medida CSS."
+      }
+    },
+    {
+      "file": "Banner",
+      "title": {
+        "pt-BR": "Banner com SVG",
+        "en-US": "SVG banner",
+        "es-ES": "Banner con SVG"
+      },
+      "description": {
+        "pt-BR": "O fundo pode ser um SVG inline decorativo (`aria-hidden=\"true\"`), leve e nítido em qualquer resolução.",
+        "en-US": "The background can be a decorative inline SVG (`aria-hidden=\"true\"`), lightweight and sharp at any resolution.",
+        "es-ES": "El fondo puede ser un SVG inline decorativo (`aria-hidden=\"true\"`), liviano y nítido en cualquier resolución."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O efeito é puramente visual e não adiciona papéis ARIA; o conteúdo do slot padrão é lido normalmente.\n- O deslocamento é calculado no `scroll` e não respeita `prefers-reduced-motion` por conta própria: para usuários sensíveis a movimento, considere passar `:speed=\"0\"` quando essa preferência estiver ativa.\n- Garanta contraste suficiente entre o texto e todas as áreas do fundo.",
+    "en-US": "- The effect is purely visual and adds no ARIA roles; the default slot content is read normally.\n- The offset is computed on `scroll` and doesn't honor `prefers-reduced-motion` by itself: for motion-sensitive users, consider passing `:speed=\"0\"` when that preference is set.\n- Ensure enough contrast between the text and every area of the background.",
+    "es-ES": "- El efecto es puramente visual y no agrega roles ARIA; el contenido del slot por defecto se lee normalmente.\n- El desplazamiento se calcula en el `scroll` y no respeta `prefers-reduced-motion` por sí solo: para usuarios sensibles al movimiento, considera pasar `:speed=\"0\"` cuando esa preferencia esté activa.\n- Asegura suficiente contraste entre el texto y todas las zonas del fondo."
+  }
+}

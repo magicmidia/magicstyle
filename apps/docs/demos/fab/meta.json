@@ -1,0 +1,50 @@
+{
+  "intro": {
+    "pt-BR": "Use o FAB para a ação mais importante de uma tela, principalmente em layouts móveis. Ele fica fixo em um canto da viewport; nas demos abaixo, um contêiner com `transform` o mantém dentro da moldura.",
+    "en-US": "Use the FAB for the most important action on a screen, especially in mobile layouts. It stays fixed to a viewport corner; in the demos below, a container with `transform` keeps it inside the frame.",
+    "es-ES": "Usa el FAB para la acción más importante de una pantalla, sobre todo en diseños móviles. Queda fijo en una esquina de la ventana; en las demos de abajo, un contenedor con `transform` lo mantiene dentro del marco."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Substitua o ícone pelo slot `icon` e inclua um texto com `ms-visually-hidden` para dar nome acessível ao botão.",
+        "en-US": "Replace the icon through the `icon` slot and include text with `ms-visually-hidden` to give the button an accessible name.",
+        "es-ES": "Reemplaza el icono con el slot `icon` e incluye un texto con `ms-visually-hidden` para dar un nombre accesible al botón."
+      }
+    },
+    {
+      "file": "Extended",
+      "title": { "pt-BR": "Estendido", "en-US": "Extended", "es-ES": "Extendido" },
+      "description": {
+        "pt-BR": "Com `label`, o FAB mostra o texto ao lado do ícone, o que deixa a ação mais clara.",
+        "en-US": "With `label`, the FAB shows text next to the icon, which makes the action clearer.",
+        "es-ES": "Con `label`, el FAB muestra el texto junto al icono, lo que aclara la acción."
+      }
+    },
+    {
+      "file": "SpeedDial",
+      "title": { "pt-BR": "Speed dial", "en-US": "Speed dial", "es-ES": "Speed dial" },
+      "description": {
+        "pt-BR": "Com `actions`, o clique abre ações secundárias; `action-click` informa qual foi escolhida e fecha o menu.",
+        "en-US": "With `actions`, a click opens secondary actions; `action-click` reports which one was chosen and closes the dial.",
+        "es-ES": "Con `actions`, el clic abre acciones secundarias; `action-click` indica cuál se eligió y cierra el menú."
+      }
+    },
+    {
+      "file": "Positions",
+      "title": { "pt-BR": "Posições", "en-US": "Positions", "es-ES": "Posiciones" },
+      "description": {
+        "pt-BR": "`position` ancora o botão em `bottom-right` (padrão), `bottom-left`, `top-right` ou `top-left`.",
+        "en-US": "`position` anchors the button to `bottom-right` (default), `bottom-left`, `top-right` or `top-left`.",
+        "es-ES": "`position` ancla el botón en `bottom-right` (por defecto), `bottom-left`, `top-right` o `top-left`."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O FAB e as ações do speed dial são `<button>` nativos: `Tab` foca e `Enter`/`Espaço` ativam.\n- Com `actions`, o botão principal expõe `aria-expanded`; cada ação recebe `aria-label` e `title` a partir de `label`.\n- Atributos como `aria-label` passados ao `MsFab` vão para o contêiner, não para o botão: dê nome ao FAB com `label` ou com texto oculto no slot `icon`.\n- O speed dial não fecha com `Esc` nem ao clicar fora; clique de novo no botão principal para fechá-lo.",
+    "en-US": "- The FAB and the speed-dial actions are native `<button>` elements: `Tab` focuses and `Enter`/`Space` activate.\n- With `actions`, the main button exposes `aria-expanded`; each action gets `aria-label` and `title` from `label`.\n- Attributes such as `aria-label` passed to `MsFab` land on the container, not the button: name the FAB with `label` or with hidden text in the `icon` slot.\n- The speed dial doesn't close on `Esc` or on outside click; click the main button again to close it.",
+    "es-ES": "- El FAB y las acciones del speed dial son `<button>` nativos: `Tab` enfoca y `Enter`/`Espacio` activan.\n- Con `actions`, el botón principal expone `aria-expanded`; cada acción recibe `aria-label` y `title` a partir de `label`.\n- Los atributos como `aria-label` pasados a `MsFab` van al contenedor, no al botón: nombra el FAB con `label` o con texto oculto en el slot `icon`.\n- El speed dial no se cierra con `Esc` ni al hacer clic fuera; vuelve a hacer clic en el botón principal para cerrarlo."
+  }
+}

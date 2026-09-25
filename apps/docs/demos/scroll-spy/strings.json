@@ -1,0 +1,53 @@
+{
+  "pt-BR": {
+    "onThisPage": "Nesta página",
+    "install": "Instalação",
+    "installBody": "Adicione a CLI ao projeto com o gerenciador de pacotes da sua preferência e rode o comando de inicialização. Ele cria o arquivo de configuração, detecta o framework e sugere os scripts de build e de pré-visualização.",
+    "config": "Configuração",
+    "configBody": "Defina variáveis de ambiente por ambiente (desenvolvimento, homologação e produção). Segredos ficam criptografados e só são injetados no momento do build, nunca no bundle enviado ao navegador.",
+    "deploy": "Deploy",
+    "deployBody": "Cada push na branch principal gera um deploy de produção; as outras branches recebem uma URL de pré-visualização própria, com comentários automáticos no pull request.",
+    "monitor": "Monitoramento",
+    "monitorBody": "Acompanhe latência, taxa de erro e uso de banda no painel. Configure alertas por e-mail ou Slack quando algum indicador passar do limite definido pela equipe.",
+    "profile": "Perfil",
+    "profileBody": "Nome público, foto e biografia aparecem nos seus comentários e nas páginas de projetos compartilhados. Você pode ocultar o e-mail e mostrar apenas o nome de usuário.",
+    "security": "Segurança",
+    "securityBody": "Ative a autenticação em dois fatores, revise as sessões abertas em outros dispositivos e gere chaves de acesso para integrações. Chaves sem uso por 90 dias são revogadas automaticamente.",
+    "notifications": "Notificações",
+    "notificationsBody": "Escolha o que chega por e-mail, push ou apenas dentro do app. Resumos semanais agrupam menções e atualizações de projetos para reduzir interrupções."
+  },
+  "en-US": {
+    "onThisPage": "On this page",
+    "install": "Installation",
+    "installBody": "Add the CLI to your project with your package manager of choice and run the init command. It creates the config file, detects the framework and suggests build and preview scripts.",
+    "config": "Configuration",
+    "configBody": "Set environment variables per environment (development, staging and production). Secrets are encrypted and injected only at build time, never into the bundle shipped to the browser.",
+    "deploy": "Deployment",
+    "deployBody": "Every push to the main branch triggers a production deploy; other branches get their own preview URL, with automatic comments on the pull request.",
+    "monitor": "Monitoring",
+    "monitorBody": "Track latency, error rate and bandwidth in the dashboard. Set up email or Slack alerts when a metric crosses the threshold your team defined.",
+    "profile": "Profile",
+    "profileBody": "Your display name, photo and bio show up on your comments and on shared project pages. You can hide your email and show only your username.",
+    "security": "Security",
+    "securityBody": "Turn on two-factor authentication, review sessions open on other devices and create access keys for integrations. Keys unused for 90 days are revoked automatically.",
+    "notifications": "Notifications",
+    "notificationsBody": "Choose what arrives by email, push or only in the app. Weekly digests group mentions and project updates to cut down on interruptions."
+  },
+  "es-ES": {
+    "onThisPage": "En esta página",
+    "install": "Instalación",
+    "installBody": "Añade la CLI al proyecto con tu gestor de paquetes preferido y ejecuta el comando de inicio. Crea el archivo de configuración, detecta el framework y sugiere los scripts de build y de vista previa.",
+    "config": "Configuración",
+    "configBody": "Define variables de entorno para cada entorno (desarrollo, pruebas y producción). Los secretos se cifran y solo se inyectan durante el build, nunca en el bundle que llega al navegador.",
+    "deploy": "Despliegue",
+    "deployBody": "Cada push a la rama principal genera un despliegue de producción; las demás ramas reciben su propia URL de vista previa, con comentarios automáticos en el pull request.",
+    "monitor": "Monitoreo",
+    "monitorBody": "Sigue la latencia, la tasa de errores y el uso de ancho de banda en el panel. Configura alertas por correo o Slack cuando un indicador supere el límite definido por el equipo.",
+    "profile": "Perfil",
+    "profileBody": "Tu nombre público, foto y biografía aparecen en tus comentarios y en las páginas de proyectos compartidos. Puedes ocultar tu correo y mostrar solo el nombre de usuario.",
+    "security": "Seguridad",
+    "securityBody": "Activa la autenticación en dos pasos, revisa las sesiones abiertas en otros dispositivos y crea claves de acceso para integraciones. Las claves sin uso durante 90 días se revocan automáticamente.",
+    "notifications": "Notificaciones",
+    "notificationsBody": "Elige qué llega por correo, push o solo dentro de la app. Los resúmenes semanales agrupan menciones y novedades de proyectos para reducir interrupciones."
+  }
+}

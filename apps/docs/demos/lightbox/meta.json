@@ -1,0 +1,45 @@
+{
+  "intro": {
+    "pt-BR": "Visualizador de imagens em tela cheia com legenda, contador e navegação entre fotos. Abra a partir de miniaturas ou de um botão com `v-model`.",
+    "en-US": "Full-screen image viewer with caption, counter and navigation between photos. Open it from thumbnails or a button with `v-model`.",
+    "es-ES": "Visor de imágenes a pantalla completa con leyenda, contador y navegación entre fotos. Ábrelo desde miniaturas o un botón con `v-model`."
+  },
+  "demos": [
+    {
+      "file": "Gallery",
+      "title": { "pt-BR": "Galeria", "en-US": "Gallery", "es-ES": "Galería" },
+      "description": {
+        "pt-BR": "Cada miniatura define `v-model:index` antes de abrir; as setas navegam entre as fotos.",
+        "en-US": "Each thumbnail sets `v-model:index` before opening; the arrows move between photos.",
+        "es-ES": "Cada miniatura define `v-model:index` antes de abrir; las flechas navegan entre las fotos."
+      }
+    },
+    {
+      "file": "Single",
+      "title": { "pt-BR": "Imagem única", "en-US": "Single image", "es-ES": "Imagen única" },
+      "description": {
+        "pt-BR": "Com um único item, as setas somem; `alt` descreve a imagem e `title` / `caption` formam a legenda.",
+        "en-US": "With a single item the arrows are hidden; `alt` describes the image and `title` / `caption` build the caption.",
+        "es-ES": "Con un único elemento las flechas desaparecen; `alt` describe la imagen y `title` / `caption` forman la leyenda."
+      }
+    },
+    {
+      "file": "Controlled",
+      "title": {
+        "pt-BR": "Índice controlado",
+        "en-US": "Controlled index",
+        "es-ES": "Índice controlado"
+      },
+      "description": {
+        "pt-BR": "`v-model:index` mantém a foto atual sincronizada com o estado do app, mesmo depois de fechar.",
+        "en-US": "`v-model:index` keeps the current photo in sync with app state, even after closing.",
+        "es-ES": "`v-model:index` mantiene la foto actual sincronizada con el estado de la app, incluso después de cerrar."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza `role=\"dialog\"` com `aria-modal=\"true\"` e rótulo traduzido; o foco fica preso no visualizador e a rolagem da página é bloqueada.\n- `←` / `→`: foto anterior / próxima.\n- `Tab` / `Shift+Tab`: circulam entre os botões de fechar, anterior e próxima.\n- `Esc`: fecha e devolve o foco ao elemento que abriu.\n- Os botões têm rótulos acessíveis traduzidos; o texto alternativo usa `alt`, depois `title`.",
+    "en-US": "- Renders `role=\"dialog\"` with `aria-modal=\"true\"` and a translated label; focus is trapped in the viewer and page scrolling is locked.\n- `←` / `→`: previous / next photo.\n- `Tab` / `Shift+Tab`: cycle through the close, previous and next buttons.\n- `Esc`: closes and returns focus to the element that opened it.\n- Buttons have translated accessible labels; the alt text uses `alt`, then `title`.",
+    "es-ES": "- Renderiza `role=\"dialog\"` con `aria-modal=\"true\"` y una etiqueta traducida; el foco queda atrapado en el visor y el desplazamiento de la página se bloquea.\n- `←` / `→`: foto anterior / siguiente.\n- `Tab` / `Shift+Tab`: recorren los botones de cerrar, anterior y siguiente.\n- `Esc`: cierra y devuelve el foco al elemento que lo abrió.\n- Los botones tienen etiquetas accesibles traducidas; el texto alternativo usa `alt` y luego `title`."
+  }
+}

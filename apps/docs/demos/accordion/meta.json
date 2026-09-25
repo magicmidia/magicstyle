@@ -1,0 +1,62 @@
+{
+  "intro": {
+    "pt-BR": "Use o acordeão para organizar conteúdo longo em seções que o leitor abre sob demanda, como FAQs e páginas de configurações.",
+    "en-US": "Use an accordion to split long content into sections the reader opens on demand, such as FAQs and settings pages.",
+    "es-ES": "Usa el acordeón para dividir contenido extenso en secciones que el lector abre cuando lo necesita, como preguntas frecuentes y páginas de configuración."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Por padrão só uma seção fica aberta por vez; o `v-model` guarda o `value` do item expandido.",
+        "en-US": "By default only one section is open at a time; `v-model` holds the `value` of the expanded item.",
+        "es-ES": "Por defecto solo una sección queda abierta a la vez; `v-model` guarda el `value` del elemento expandido."
+      }
+    },
+    {
+      "file": "Multiple",
+      "title": {
+        "pt-BR": "Múltiplas seções",
+        "en-US": "Multiple sections",
+        "es-ES": "Varias secciones"
+      },
+      "description": {
+        "pt-BR": "Com `multiple`, o `v-model` vira um array e várias seções podem ficar abertas; `subtitle` adiciona uma linha de apoio.",
+        "en-US": "With `multiple`, `v-model` becomes an array and several sections can stay open; `subtitle` adds a supporting line.",
+        "es-ES": "Con `multiple`, `v-model` pasa a ser un array y varias secciones pueden quedar abiertas; `subtitle` agrega una línea de apoyo."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": {
+        "pt-BR": "Variantes e tamanhos",
+        "en-US": "Variants and sizes",
+        "es-ES": "Variantes y tamaños"
+      },
+      "description": {
+        "pt-BR": "`variant` alterna entre `default`, `bordered`, `separated` e `flush`; `size` ajusta espaçamento e tipografia.",
+        "en-US": "`variant` switches between `default`, `bordered`, `separated` and `flush`; `size` adjusts spacing and type.",
+        "es-ES": "`variant` alterna entre `default`, `bordered`, `separated` y `flush`; `size` ajusta el espaciado y la tipografía."
+      }
+    },
+    {
+      "file": "WithTrailing",
+      "title": {
+        "pt-BR": "Conteúdo à direita e desabilitado",
+        "en-US": "Trailing content and disabled",
+        "es-ES": "Contenido a la derecha y deshabilitado"
+      },
+      "description": {
+        "pt-BR": "O slot `trailing` exibe badges ao lado do chevron; `disabled` impede que a seção seja aberta.",
+        "en-US": "The `trailing` slot shows badges next to the chevron; `disabled` keeps the section from opening.",
+        "es-ES": "El slot `trailing` muestra badges junto al chevron; `disabled` impide que la sección se abra."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Cada cabeçalho é um `<button>` nativo com `aria-expanded` e `aria-controls` apontando para o painel.\n- O painel tem `role=\"region\"` e `aria-labelledby` ligado ao botão.\n- `Tab` / `Shift+Tab`: movem o foco entre os cabeçalhos.\n- `Enter` / `Espaço`: abrem ou fecham a seção focada.\n- Itens `disabled` usam o atributo `disabled` do botão e saem da ordem de foco.\n- Não há navegação por setas entre cabeçalhos.",
+    "en-US": "- Each header is a native `<button>` with `aria-expanded` and `aria-controls` pointing to its panel.\n- The panel has `role=\"region\"` and `aria-labelledby` linked to the button.\n- `Tab` / `Shift+Tab`: move focus between headers.\n- `Enter` / `Space`: open or close the focused section.\n- `disabled` items use the button's `disabled` attribute and leave the focus order.\n- Arrow-key navigation between headers is not provided.",
+    "es-ES": "- Cada encabezado es un `<button>` nativo con `aria-expanded` y `aria-controls` que apunta a su panel.\n- El panel tiene `role=\"region\"` y `aria-labelledby` vinculado al botón.\n- `Tab` / `Shift+Tab`: mueven el foco entre encabezados.\n- `Enter` / `Espacio`: abren o cierran la sección enfocada.\n- Los elementos `disabled` usan el atributo `disabled` del botón y salen del orden de foco.\n- No hay navegación con flechas entre encabezados."
+  }
+}

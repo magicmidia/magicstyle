@@ -1,0 +1,49 @@
+{
+  "intro": {
+    "pt-BR": "Faixa que rola o conteúdo continuamente, útil para logos de clientes, depoimentos e tópicos em destaque. Não use para informação essencial.",
+    "en-US": "A strip that scrolls content continuously, useful for customer logos, testimonials and featured topics. Don't use it for essential information.",
+    "es-ES": "Franja que desplaza el contenido de forma continua, útil para logos de clientes, testimonios y temas destacados. No la uses para información esencial."
+  },
+  "demos": [
+    {
+      "file": "Logos",
+      "title": {
+        "pt-BR": "Logos de clientes",
+        "en-US": "Customer logos",
+        "es-ES": "Logos de clientes"
+      },
+      "description": {
+        "pt-BR": "Por padrão, as bordas esmaecem (`fade`) e a animação pausa quando o cursor está sobre a faixa (`pause-on-hover`).",
+        "en-US": "By default, the edges fade out (`fade`) and the animation pauses while the pointer is over the strip (`pause-on-hover`).",
+        "es-ES": "Por defecto, los bordes se difuminan (`fade`) y la animación se pausa mientras el cursor está sobre la franja (`pause-on-hover`)."
+      }
+    },
+    {
+      "file": "Reverse",
+      "title": {
+        "pt-BR": "Direção e velocidade",
+        "en-US": "Direction and speed",
+        "es-ES": "Dirección y velocidad"
+      },
+      "description": {
+        "pt-BR": "`speed` é a duração de um ciclo em segundos (maior é mais lento); `reverse` inverte a direção e `gap` controla o espaço entre os itens.",
+        "en-US": "`speed` is the duration of one cycle in seconds (higher is slower); `reverse` flips the direction and `gap` sets the space between items.",
+        "es-ES": "`speed` es la duración de un ciclo en segundos (mayor es más lento); `reverse` invierte la dirección y `gap` controla el espacio entre elementos."
+      }
+    },
+    {
+      "file": "Testimonials",
+      "title": { "pt-BR": "Depoimentos", "en-US": "Testimonials", "es-ES": "Testimonios" },
+      "description": {
+        "pt-BR": "Qualquer conteúdo pode rolar, como cards; `:fade=\"false\"` remove o esmaecimento das bordas.",
+        "en-US": "Any content can scroll, such as cards; `:fade=\"false\"` removes the edge fade.",
+        "es-ES": "Cualquier contenido puede desplazarse, como tarjetas; `:fade=\"false\"` quita el difuminado de los bordes."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O conteúdo é renderizado duas vezes para o loop; a cópia tem `aria-hidden=\"true\"`, então leitores de tela leem os itens uma única vez.\n- A animação pausa com o cursor sobre a faixa ou com foco dentro dela (`pause-on-hover`).\n- Não há botão de pausa nem tratamento próprio de `prefers-reduced-motion`: evite colocar conteúdo essencial ou interativo na faixa.",
+    "en-US": "- Content is rendered twice for the loop; the copy is `aria-hidden=\"true\"`, so screen readers read the items only once.\n- The animation pauses on hover or when focus is inside the strip (`pause-on-hover`).\n- There is no pause button and no built-in `prefers-reduced-motion` handling: avoid placing essential or interactive content in the strip.",
+    "es-ES": "- El contenido se renderiza dos veces para el bucle; la copia tiene `aria-hidden=\"true\"`, así que los lectores de pantalla leen los elementos una sola vez.\n- La animación se pausa con el cursor sobre la franja o con el foco dentro de ella (`pause-on-hover`).\n- No hay botón de pausa ni manejo propio de `prefers-reduced-motion`: evita poner contenido esencial o interactivo en la franja."
+  }
+}

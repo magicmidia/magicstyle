@@ -1,0 +1,92 @@
+{
+  "intro": {
+    "pt-BR": "Cards agrupam conteúdo e ações sobre um mesmo assunto. Use as props `title` e `description` para o cabeçalho e os slots padrão, `actions` e `footer` para o resto.",
+    "en-US": "Cards group content and actions about a single subject. Use the `title` and `description` props for the header and the default, `actions` and `footer` slots for the rest.",
+    "es-ES": "Las tarjetas agrupan contenido y acciones sobre un mismo tema. Usa las props `title` y `description` para la cabecera y los slots por defecto, `actions` y `footer` para el resto."
+  },
+  "demos": [
+    {
+      "file": "CreateProject",
+      "title": {
+        "pt-BR": "Formulário em card",
+        "en-US": "Form card",
+        "es-ES": "Formulario en tarjeta"
+      },
+      "description": {
+        "pt-BR": "Cabeçalho com `title` e `description`, campos no slot padrão e botões no slot `footer`.",
+        "en-US": "Header from `title` and `description`, fields in the default slot and buttons in the `footer` slot.",
+        "es-ES": "Cabecera con `title` y `description`, campos en el slot por defecto y botones en el slot `footer`."
+      }
+    },
+    {
+      "file": "Notifications",
+      "title": {
+        "pt-BR": "Card de notificações",
+        "en-US": "Notifications card",
+        "es-ES": "Tarjeta de notificaciones"
+      },
+      "description": {
+        "pt-BR": "Combine `MsSwitch`, uma lista e um botão `block` no rodapé.",
+        "en-US": "Combine an `MsSwitch`, a list and a `block` button in the footer.",
+        "es-ES": "Combina un `MsSwitch`, una lista y un botón `block` en el pie."
+      }
+    },
+    {
+      "file": "Stats",
+      "title": {
+        "pt-BR": "Cards de métricas",
+        "en-US": "Stat cards",
+        "es-ES": "Tarjetas de métricas"
+      },
+      "description": {
+        "pt-BR": "O slot `title` aceita marcação própria; `variant=\"outline\"` deixa uma grade de KPIs mais leve.",
+        "en-US": "The `title` slot takes custom markup; `variant=\"outline\"` keeps a KPI grid light.",
+        "es-ES": "El slot `title` acepta marcado propio; `variant=\"outline\"` aligera una cuadrícula de KPI."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": {
+        "pt-BR": "Variantes",
+        "en-US": "Variants",
+        "es-ES": "Variantes"
+      },
+      "description": {
+        "pt-BR": "`raised` (padrão), `outline`, `flat`, `sunken` e `glass`.",
+        "en-US": "`raised` (default), `outline`, `flat`, `sunken` and `glass`.",
+        "es-ES": "`raised` (por defecto), `outline`, `flat`, `sunken` y `glass`."
+      }
+    },
+    {
+      "file": "WithCover",
+      "title": {
+        "pt-BR": "Com capa",
+        "en-US": "With cover",
+        "es-ES": "Con portada"
+      },
+      "description": {
+        "pt-BR": "`cover-src` adiciona uma imagem; `orientation=\"horizontal\"` a coloca ao lado, `hoverable` reforça a sombra no hover e `interactive` torna o card focável e clicável.",
+        "en-US": "`cover-src` adds an image; `orientation=\"horizontal\"` places it on the side, `hoverable` deepens the shadow on hover and `interactive` makes the card focusable and clickable.",
+        "es-ES": "`cover-src` añade una imagen; `orientation=\"horizontal\"` la coloca al lado, `hoverable` intensifica la sombra al pasar el ratón e `interactive` hace la tarjeta enfocable y clicable."
+      }
+    },
+    {
+      "file": "Dividers",
+      "title": {
+        "pt-BR": "Divisores",
+        "en-US": "Dividers",
+        "es-ES": "Divisores"
+      },
+      "description": {
+        "pt-BR": "`header-divider` e `footer-divider` traçam linhas entre cabeçalho, conteúdo e rodapé, úteis em zonas de perigo e cards de plano.",
+        "en-US": "`header-divider` and `footer-divider` draw lines between header, content and footer, handy for danger zones and plan cards.",
+        "es-ES": "`header-divider` y `footer-divider` trazan líneas entre cabecera, contenido y pie, útiles en zonas de peligro y tarjetas de plan."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O card é um `<div>` sem papel próprio; o título não é um heading, então use o slot `title` com `<h2>`–`<h4>` quando o card abrir uma seção.\n- Com `interactive`, o card recebe `tabindex=\"0\"` e emite `click`, mas não reage a `Enter` nem `Espaço`; prefira colocar um link ou botão real dentro dele para ações navegáveis por teclado.\n- A imagem de capa usa `cover-alt` como texto alternativo (vazio por padrão, tratada como decorativa).",
+    "en-US": "- The card is a `<div>` with no role; the title is not a heading, so use the `title` slot with `<h2>`–`<h4>` when the card opens a section.\n- With `interactive`, the card gets `tabindex=\"0\"` and emits `click`, but does not react to `Enter` or `Space`; prefer a real link or button inside it for keyboard-operable actions.\n- The cover image uses `cover-alt` as alt text (empty by default, treated as decorative).",
+    "es-ES": "- La tarjeta es un `<div>` sin rol; el título no es un encabezado, así que usa el slot `title` con `<h2>`–`<h4>` cuando la tarjeta abra una sección.\n- Con `interactive`, la tarjeta recibe `tabindex=\"0\"` y emite `click`, pero no reacciona a `Enter` ni `Espacio`; prefiere un enlace o botón real dentro de ella para acciones operables con teclado.\n- La imagen de portada usa `cover-alt` como texto alternativo (vacío por defecto, tratada como decorativa)."
+  }
+}

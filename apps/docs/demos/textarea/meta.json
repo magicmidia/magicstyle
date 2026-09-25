@@ -1,0 +1,71 @@
+{
+  "intro": {
+    "pt-BR": "Campo de texto de várias linhas para comentários, descrições e mensagens. Pode mostrar contador de caracteres e crescer com o conteúdo.",
+    "en-US": "Multi-line text field for comments, descriptions and messages. It can show a character counter and grow with its content.",
+    "es-ES": "Campo de texto de varias líneas para comentarios, descripciones y mensajes. Puede mostrar un contador de caracteres y crecer con el contenido."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Use `v-model` para o texto e envolva com `MsField` para rótulo e ajuda.",
+        "en-US": "Use `v-model` for the text and wrap it in `MsField` for a label and help text.",
+        "es-ES": "Usa `v-model` para el texto y envuélvelo en `MsField` para la etiqueta y la ayuda."
+      }
+    },
+    {
+      "file": "Counter",
+      "title": {
+        "pt-BR": "Contador de caracteres",
+        "en-US": "Character counter",
+        "es-ES": "Contador de caracteres"
+      },
+      "description": {
+        "pt-BR": "`max-length` limita o texto e `show-count` mostra o contador no rodapé.",
+        "en-US": "`max-length` limits the text and `show-count` shows the counter in the footer.",
+        "es-ES": "`max-length` limita el texto y `show-count` muestra el contador en el pie."
+      }
+    },
+    {
+      "file": "AutoGrow",
+      "title": {
+        "pt-BR": "Crescimento automático",
+        "en-US": "Auto grow",
+        "es-ES": "Crecimiento automático"
+      },
+      "description": {
+        "pt-BR": "`auto-grow` ajusta a altura ao conteúdo, como em uma caixa de mensagem de chat.",
+        "en-US": "`auto-grow` fits the height to the content, like a chat message box.",
+        "es-ES": "`auto-grow` ajusta la altura al contenido, como en un cuadro de mensaje de chat."
+      }
+    },
+    {
+      "file": "States",
+      "title": { "pt-BR": "Estados", "en-US": "States", "es-ES": "Estados" },
+      "description": {
+        "pt-BR": "Um `error` no `MsField` deixa o campo inválido; `readonly` e `disabled` bloqueiam a edição.",
+        "en-US": "An `error` on `MsField` makes the field invalid; `readonly` and `disabled` block editing.",
+        "es-ES": "Un `error` en `MsField` marca el campo como inválido; `readonly` y `disabled` bloquean la edición."
+      }
+    },
+    {
+      "file": "Feedback",
+      "title": {
+        "pt-BR": "Abrir chamado de suporte",
+        "en-US": "Open a support ticket",
+        "es-ES": "Abrir un ticket de soporte"
+      },
+      "description": {
+        "pt-BR": "Formulário completo com `MsInput`, `MsNativeSelect` e `MsTextarea`, validado no envio.",
+        "en-US": "A complete form with `MsInput`, `MsNativeSelect` and `MsTextarea`, validated on submit.",
+        "es-ES": "Un formulario completo con `MsInput`, `MsNativeSelect` y `MsTextarea`, validado al enviar."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza um `textarea` nativo; atributos extras são repassados a ele.\n- `Tab`: move o foco para o campo. `Enter` insere uma nova linha.\n- Dentro de `MsField`, recebe `aria-describedby` e `aria-invalid` do campo; fora dele, use `aria-label`.\n- O contador de caracteres é apenas visual e não é anunciado a cada tecla.",
+    "en-US": "- Renders a native `textarea`; extra attributes are forwarded to it.\n- `Tab`: moves focus to the field. `Enter` inserts a new line.\n- Inside `MsField`, it receives `aria-describedby` and `aria-invalid` from the field; outside of it, use `aria-label`.\n- The character counter is visual only and is not announced on every keystroke.",
+    "es-ES": "- Renderiza un `textarea` nativo; los atributos extra se le reenvían.\n- `Tab`: mueve el foco al campo. `Enter` inserta una nueva línea.\n- Dentro de `MsField`, recibe `aria-describedby` y `aria-invalid` del campo; fuera de él, usa `aria-label`.\n- El contador de caracteres es solo visual y no se anuncia en cada pulsación."
+  }
+}

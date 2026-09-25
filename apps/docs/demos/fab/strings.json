@@ -1,0 +1,32 @@
+{
+  "pt-BR": {
+    "compose": "Escrever mensagem",
+    "newTask": "Nova tarefa",
+    "uploadPhoto": "Enviar foto",
+    "writeNote": "Escrever nota",
+    "scheduleEvent": "Agendar evento",
+    "hint": "Toque no botão + para ver as ações rápidas.",
+    "help": "Ajuda",
+    "chat": "Falar com o suporte"
+  },
+  "en-US": {
+    "compose": "Compose message",
+    "newTask": "New task",
+    "uploadPhoto": "Upload photo",
+    "writeNote": "Write note",
+    "scheduleEvent": "Schedule event",
+    "hint": "Tap the + button to see the quick actions.",
+    "help": "Help",
+    "chat": "Chat with support"
+  },
+  "es-ES": {
+    "compose": "Redactar mensaje",
+    "newTask": "Nueva tarea",
+    "uploadPhoto": "Subir foto",
+    "writeNote": "Escribir nota",
+    "scheduleEvent": "Programar evento",
+    "hint": "Toca el botón + para ver las acciones rápidas.",
+    "help": "Ayuda",
+    "chat": "Hablar con soporte"
+  }
+}

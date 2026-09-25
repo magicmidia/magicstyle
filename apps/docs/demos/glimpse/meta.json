@@ -1,0 +1,41 @@
+{
+  "intro": {
+    "pt-BR": "Mostra uma prévia do destino de um link (título, descrição, domínio e imagem) quando o usuário passa o cursor ou foca o link.",
+    "en-US": "Shows a preview of a link's destination (title, description, domain and image) when the user hovers or focuses the link.",
+    "es-ES": "Muestra una vista previa del destino de un enlace (título, descripción, dominio e imagen) cuando el usuario pasa el cursor o enfoca el enlace."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`href` e `label` geram o link; `title`, `description` e `badge` preenchem o cartão, e o domínio é extraído de `href`. O slot `image` aceita qualquer conteúdo no lugar da miniatura.",
+        "en-US": "`href` and `label` render the link; `title`, `description` and `badge` fill the card, and the domain is derived from `href`. The `image` slot accepts any content in place of the thumbnail.",
+        "es-ES": "`href` y `label` generan el enlace; `title`, `description` y `badge` completan la tarjeta, y el dominio se obtiene de `href`. El slot `image` acepta cualquier contenido en lugar de la miniatura."
+      }
+    },
+    {
+      "file": "Placement",
+      "title": { "pt-BR": "Posição", "en-US": "Placement", "es-ES": "Posición" },
+      "description": {
+        "pt-BR": "`placement` posiciona o cartão em `top` (padrão), `right`, `bottom` ou `left`.",
+        "en-US": "`placement` positions the card at `top` (default), `right`, `bottom` or `left`.",
+        "es-ES": "`placement` ubica la tarjeta en `top` (por defecto), `right`, `bottom` o `left`."
+      }
+    },
+    {
+      "file": "Loading",
+      "title": { "pt-BR": "Carregando", "en-US": "Loading", "es-ES": "Cargando" },
+      "description": {
+        "pt-BR": "Use `loading` com os eventos `open` e `close` para buscar os metadados só quando a prévia for aberta.",
+        "en-US": "Use `loading` with the `open` and `close` events to fetch metadata only when the preview opens.",
+        "es-ES": "Usa `loading` con los eventos `open` y `close` para obtener los metadatos solo cuando se abre la vista previa."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O gatilho padrão é um `<a>` nativo; o cartão abre ao focar o link com `Tab` e fecha ao perder o foco.\n- `Esc`: fecha o cartão imediatamente.\n- O cartão tem `role=\"dialog\"` com `aria-label` traduzido, mas não recebe foco; a prévia é um complemento visual, então o texto do link deve bastar por si só.\n- Links com `target=\"_blank\"` (padrão) recebem `rel=\"noopener noreferrer\"` automaticamente.",
+    "en-US": "- The default trigger is a native `<a>`; the card opens when the link receives focus via `Tab` and closes when it loses focus.\n- `Esc`: closes the card immediately.\n- The card has `role=\"dialog\"` with a translated `aria-label`, but it doesn't take focus; the preview is a visual extra, so the link text must stand on its own.\n- Links with `target=\"_blank\"` (the default) get `rel=\"noopener noreferrer\"` automatically.",
+    "es-ES": "- El disparador por defecto es un `<a>` nativo; la tarjeta se abre al enfocar el enlace con `Tab` y se cierra al perder el foco.\n- `Esc`: cierra la tarjeta de inmediato.\n- La tarjeta tiene `role=\"dialog\"` con un `aria-label` traducido, pero no recibe el foco; la vista previa es un complemento visual, así que el texto del enlace debe bastar por sí solo.\n- Los enlaces con `target=\"_blank\"` (por defecto) reciben `rel=\"noopener noreferrer\"` automáticamente."
+  }
+}

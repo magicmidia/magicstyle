@@ -1,0 +1,66 @@
+{
+  "intro": {
+    "pt-BR": "`MsScrollbar` é um contêiner com rolagem nativa e barras estilizadas pelo tema. Use `max-height` ou `max-width` para limitar a área e `orientation` para escolher os eixos.",
+    "en-US": "`MsScrollbar` is a container with native scrolling and theme-styled scrollbars. Use `max-height` or `max-width` to bound the area and `orientation` to pick the axes.",
+    "es-ES": "`MsScrollbar` es un contenedor con desplazamiento nativo y barras con el estilo del tema. Usa `max-height` o `max-width` para limitar el área y `orientation` para elegir los ejes."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": {
+        "pt-BR": "Vertical",
+        "en-US": "Vertical",
+        "es-ES": "Vertical"
+      },
+      "description": {
+        "pt-BR": "`max-height` aceita número (px) ou string CSS; a rolagem vertical é o padrão.",
+        "en-US": "`max-height` accepts a number (px) or a CSS string; vertical scrolling is the default.",
+        "es-ES": "`max-height` acepta un número (px) o una cadena CSS; el desplazamiento vertical es el predeterminado."
+      }
+    },
+    {
+      "file": "Horizontal",
+      "title": {
+        "pt-BR": "Horizontal",
+        "en-US": "Horizontal",
+        "es-ES": "Horizontal"
+      },
+      "description": {
+        "pt-BR": "`orientation=\"horizontal\"` para carrosséis simples e listas de cards.",
+        "en-US": "`orientation=\"horizontal\"` for simple carousels and card rows.",
+        "es-ES": "`orientation=\"horizontal\"` para carruseles simples y filas de tarjetas."
+      }
+    },
+    {
+      "file": "Appearance",
+      "title": {
+        "pt-BR": "Espessura, tom e visibilidade",
+        "en-US": "Thickness, tone and visibility",
+        "es-ES": "Grosor, tono y visibilidad"
+      },
+      "description": {
+        "pt-BR": "`size` (`thin`, `normal`, `thick`), `tone` e `visibility` (`auto`, `always` ou `none`) ajustam a barra.",
+        "en-US": "`size` (`thin`, `normal`, `thick`), `tone` and `visibility` (`auto`, `always` or `none`) tune the bar.",
+        "es-ES": "`size` (`thin`, `normal`, `thick`), `tone` y `visibility` (`auto`, `always` o `none`) ajustan la barra."
+      }
+    },
+    {
+      "file": "BothAxes",
+      "title": {
+        "pt-BR": "Tabela larga",
+        "en-US": "Wide table",
+        "es-ES": "Tabla ancha"
+      },
+      "description": {
+        "pt-BR": "`orientation=\"both\"` rola nos dois eixos; o cabeçalho com `position: sticky` continua visível.",
+        "en-US": "`orientation=\"both\"` scrolls on both axes; the header with `position: sticky` stays visible.",
+        "es-ES": "`orientation=\"both\"` se desplaza en ambos ejes; la cabecera con `position: sticky` sigue visible."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- A rolagem é nativa: roda do mouse, toque e barra funcionam como em qualquer elemento com `overflow`.\n- O componente não adiciona `tabindex`; para rolar pelo teclado, dê `tabindex=\"0\"`, `role=\"region\"` e um `aria-label` ao contêiner (como nos exemplos). Com foco, `Seta para cima`/`Seta para baixo`, `Page Up`/`Page Down`, `Home` e `End` rolam o conteúdo.\n- Evite `visibility=\"none\"` quando o conteúdo escondido não for óbvio.",
+    "en-US": "- Scrolling is native: wheel, touch and the bar work like any element with `overflow`.\n- The component adds no `tabindex`; to scroll with the keyboard, give the container `tabindex=\"0\"`, `role=\"region\"` and an `aria-label` (as in the examples). When focused, `ArrowUp`/`ArrowDown`, `Page Up`/`Page Down`, `Home` and `End` scroll the content.\n- Avoid `visibility=\"none\"` when the hidden content isn't obvious.",
+    "es-ES": "- El desplazamiento es nativo: rueda, táctil y barra funcionan como en cualquier elemento con `overflow`.\n- El componente no añade `tabindex`; para desplazarte con el teclado, da `tabindex=\"0\"`, `role=\"region\"` y un `aria-label` al contenedor (como en los ejemplos). Con foco, `Flecha arriba`/`Flecha abajo`, `Re Pág`/`Av Pág`, `Inicio` y `Fin` desplazan el contenido.\n- Evita `visibility=\"none\"` cuando el contenido oculto no sea evidente."
+  }
+}

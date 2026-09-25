@@ -1,0 +1,59 @@
+{
+  "intro": {
+    "pt-BR": "A barra de navegação superior reúne marca, links principais e ações da conta. Nos exemplos ela fica estática; em um app, use `position=\"sticky\"` ou `\"fixed\"`.",
+    "en-US": "The top navigation bar holds the brand, primary links and account actions. The examples keep it static; in an app, use `position=\"sticky\"` or `\"fixed\"`.",
+    "es-ES": "La barra de navegación superior reúne la marca, los enlaces principales y las acciones de la cuenta. En los ejemplos es estática; en una app, usa `position=\"sticky\"` o `\"fixed\"`."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Os slots `brand`, padrão e `actions` organizam a barra da esquerda para a direita.",
+        "en-US": "The `brand`, default and `actions` slots lay out the bar from left to right.",
+        "es-ES": "Los slots `brand`, por defecto y `actions` organizan la barra de izquierda a derecha."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": { "pt-BR": "Variantes", "en-US": "Variants", "es-ES": "Variantes" },
+      "description": {
+        "pt-BR": "`bordered`, `elevated` e `glass` (fundo translúcido com desfoque).",
+        "en-US": "`bordered`, `elevated` and `glass` (translucent background with blur).",
+        "es-ES": "`bordered`, `elevated` y `glass` (fondo translúcido con desenfoque)."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "`tone` pinta a barra com uma cor da marca e ajusta a cor do texto para manter o contraste.",
+        "en-US": "`tone` paints the bar with a brand color and adjusts the text color to keep contrast.",
+        "es-ES": "`tone` pinta la barra con un color de marca y ajusta el color del texto para mantener el contraste."
+      }
+    },
+    {
+      "file": "Floating",
+      "title": { "pt-BR": "Flutuante", "en-US": "Floating", "es-ES": "Flotante" },
+      "description": {
+        "pt-BR": "`floating` afasta a barra das bordas e arredonda os cantos, comum em landing pages.",
+        "en-US": "`floating` insets the bar from the edges and rounds its corners, common on landing pages.",
+        "es-ES": "`floating` separa la barra de los bordes y redondea las esquinas, habitual en landing pages."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` ajusta a altura mínima e o espaçamento: `sm` (48px), `md` (56px) e `lg` (68px).",
+        "en-US": "`size` adjusts the minimum height and padding: `sm` (48px), `md` (56px) and `lg` (68px).",
+        "es-ES": "`size` ajusta la altura mínima y el espaciado: `sm` (48px), `md` (56px) y `lg` (68px)."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza um `<header>`; envolva os links principais em `<nav>` com `aria-label` e marque a página atual com `aria-current=\"page\"`.\n- Com o slot `mobile-menu`, aparece em telas estreitas um botão com `aria-expanded` e `aria-label` vindo das mensagens da biblioteca.\n- `Tab`: percorre links e ações na ordem do DOM.",
+    "en-US": "- Renders a `<header>`; wrap the primary links in a `<nav>` with `aria-label` and mark the current page with `aria-current=\"page\"`.\n- With the `mobile-menu` slot, narrow screens get a toggle button with `aria-expanded` and an `aria-label` from the library messages.\n- `Tab`: moves through links and actions in DOM order.",
+    "es-ES": "- Renderiza un `<header>`; envuelve los enlaces principales en un `<nav>` con `aria-label` y marca la página actual con `aria-current=\"page\"`.\n- Con el slot `mobile-menu`, las pantallas estrechas muestran un botón con `aria-expanded` y un `aria-label` de los mensajes de la biblioteca.\n- `Tab`: recorre enlaces y acciones en el orden del DOM."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "intro": {
+    "pt-BR": "Representa teclas e atalhos de teclado em textos, menus e listas de ajuda.",
+    "en-US": "Represents keys and keyboard shortcuts in text, menus and help lists.",
+    "es-ES": "Representa teclas y atajos de teclado en textos, menús y listas de ayuda."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": {
+        "pt-BR": "No texto",
+        "en-US": "Inline",
+        "es-ES": "En el texto"
+      },
+      "description": {
+        "pt-BR": "Cada `MsKbd` renderiza um `<kbd>` nativo que acompanha o fluxo do parágrafo.",
+        "en-US": "Each `MsKbd` renders a native `<kbd>` that follows the paragraph flow.",
+        "es-ES": "Cada `MsKbd` renderiza un `<kbd>` nativo que sigue el flujo del párrafo."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": {
+        "pt-BR": "Variantes, tamanhos e tons",
+        "en-US": "Variants, sizes and tones",
+        "es-ES": "Variantes, tamaños y tonos"
+      },
+      "description": {
+        "pt-BR": "`variant` aceita `raised` (padrão), `outline` e `flat`; `size` vai de `xs` a `lg` e `tone` colore a tecla.",
+        "en-US": "`variant` accepts `raised` (default), `outline` and `flat`; `size` goes from `xs` to `lg` and `tone` colors the key.",
+        "es-ES": "`variant` acepta `raised` (por defecto), `outline` y `flat`; `size` va de `xs` a `lg` y `tone` colorea la tecla."
+      }
+    },
+    {
+      "file": "Shortcuts",
+      "title": {
+        "pt-BR": "Lista de atalhos",
+        "en-US": "Shortcut list",
+        "es-ES": "Lista de atajos"
+      },
+      "description": {
+        "pt-BR": "Uma lista de ações com `<dl>`: atalhos compostos combinam vários `MsKbd` separados por `+`.",
+        "en-US": "An action list built with `<dl>`: compound shortcuts combine several `MsKbd` separated by `+`.",
+        "es-ES": "Una lista de acciones con `<dl>`: los atajos compuestos combinan varios `MsKbd` separados por `+`."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza o elemento semântico `<kbd>`, sem papel ARIA adicional.\n- Símbolos como `⌘` e `⌥` podem ser lidos de forma inconsistente por leitores de tela; quando o atalho for importante, prefira o nome da tecla ou adicione um texto visualmente oculto.",
+    "en-US": "- Renders the semantic `<kbd>` element, with no extra ARIA role.\n- Symbols such as `⌘` and `⌥` may be read inconsistently by screen readers; when the shortcut matters, prefer the key name or add visually hidden text.",
+    "es-ES": "- Renderiza el elemento semántico `<kbd>`, sin rol ARIA adicional.\n- Símbolos como `⌘` y `⌥` pueden leerse de forma inconsistente en los lectores de pantalla; cuando el atajo sea importante, prefiere el nombre de la tecla o agrega un texto visualmente oculto."
+  }
+}

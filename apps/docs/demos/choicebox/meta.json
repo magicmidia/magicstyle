@@ -1,0 +1,62 @@
+{
+  "intro": {
+    "pt-BR": "Use a caixa de escolha quando cada opção precisa de mais contexto que um rótulo, como planos, complementos ou formas de entrega.",
+    "en-US": "Use a choicebox when each option needs more context than a label, such as plans, add-ons or shipping methods.",
+    "es-ES": "Usa la caja de elección cuando cada opción necesita más contexto que una etiqueta, como planes, complementos o métodos de envío."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": {
+        "pt-BR": "Seleção única",
+        "en-US": "Single selection",
+        "es-ES": "Selección única"
+      },
+      "description": {
+        "pt-BR": "Passe os cartões em `items` com `title`, `description`, `price` e `badge`; o padrão é `type=\"radio\"`.",
+        "en-US": "Pass the cards in `items` with `title`, `description`, `price` and `badge`; the default is `type=\"radio\"`.",
+        "es-ES": "Pasa las tarjetas en `items` con `title`, `description`, `price` y `badge`; por defecto es `type=\"radio\"`."
+      }
+    },
+    {
+      "file": "Multiple",
+      "title": {
+        "pt-BR": "Seleção múltipla",
+        "en-US": "Multiple selection",
+        "es-ES": "Selección múltiple"
+      },
+      "description": {
+        "pt-BR": "Com `type=\"checkbox\"`, o `v-model` é um array; `indicator-placement=\"right\"` move o indicador para a direita.",
+        "en-US": "With `type=\"checkbox\"`, `v-model` is an array; `indicator-placement=\"right\"` moves the indicator to the right.",
+        "es-ES": "Con `type=\"checkbox\"`, `v-model` es un array; `indicator-placement=\"right\"` mueve el indicador a la derecha."
+      }
+    },
+    {
+      "file": "Grid",
+      "title": { "pt-BR": "Grade", "en-US": "Grid", "es-ES": "Cuadrícula" },
+      "description": {
+        "pt-BR": "`layout=\"grid\"` com `columns` organiza os cartões em colunas; `disabled` bloqueia uma opção.",
+        "en-US": "`layout=\"grid\"` with `columns` arranges the cards in columns; `disabled` locks an option.",
+        "es-ES": "`layout=\"grid\"` con `columns` organiza las tarjetas en columnas; `disabled` bloquea una opción."
+      }
+    },
+    {
+      "file": "Composition",
+      "title": {
+        "pt-BR": "Com MsChoiceboxItem",
+        "en-US": "With MsChoiceboxItem",
+        "es-ES": "Con MsChoiceboxItem"
+      },
+      "description": {
+        "pt-BR": "Declare cada `MsChoiceboxItem` no template para incluir conteúdo extra no slot padrão, como um `MsBadge`.",
+        "en-US": "Declare each `MsChoiceboxItem` in the template to add extra content in the default slot, such as an `MsBadge`.",
+        "es-ES": "Declara cada `MsChoiceboxItem` en el template para añadir contenido extra en el slot por defecto, como un `MsBadge`."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O contêiner tem `role=\"radiogroup\"` (ou `role=\"group\"` com `type=\"checkbox\"`); dê nome a ele com `aria-label`.\n- Cada cartão tem `role=\"radio\"` ou `role=\"checkbox\"` com `aria-checked` e `tabindex=\"0\"`.\n- `Tab` passa por todos os cartões habilitados; `Espaço` ou `Enter` seleciona ou alterna o cartão focado. Não há navegação por setas.\n- Cartões desabilitados recebem `aria-disabled=\"true\"` e saem da ordem de tabulação.",
+    "en-US": "- The container has `role=\"radiogroup\"` (or `role=\"group\"` with `type=\"checkbox\"`); name it with `aria-label`.\n- Each card has `role=\"radio\"` or `role=\"checkbox\"` with `aria-checked` and `tabindex=\"0\"`.\n- `Tab` goes through every enabled card; `Space` or `Enter` selects or toggles the focused card. There is no arrow-key navigation.\n- Disabled cards get `aria-disabled=\"true\"` and leave the tab order.",
+    "es-ES": "- El contenedor tiene `role=\"radiogroup\"` (o `role=\"group\"` con `type=\"checkbox\"`); nómbralo con `aria-label`.\n- Cada tarjeta tiene `role=\"radio\"` o `role=\"checkbox\"` con `aria-checked` y `tabindex=\"0\"`.\n- `Tab` recorre todas las tarjetas habilitadas; `Espacio` o `Enter` selecciona o alterna la tarjeta enfocada. No hay navegación con flechas.\n- Las tarjetas deshabilitadas reciben `aria-disabled=\"true\"` y salen del orden de tabulación."
+  }
+}
