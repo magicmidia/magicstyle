@@ -46,40 +46,43 @@
   border-color: var(--ms-color-border-subtle);
 }
 
-.ms-code--subtle.ms-code--primary {
-  background-color: color-mix(in oklch, var(--ms-color-interactive-primary) 12%, transparent);
-  color: var(--ms-color-interactive-primary);
-  border-color: color-mix(in oklch, var(--ms-color-interactive-primary) 22%, transparent);
+/* Tones: the class sets --ms-tone/--ms-tone-content; the tone engine (themes.css) derives the states. */
+.ms-code--primary {
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
+}
+.ms-code--secondary {
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
+}
+.ms-code--success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
+.ms-code--warning {
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
+}
+.ms-code--danger {
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
+}
+.ms-code--info {
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
 }
 
-.ms-code--subtle.ms-code--secondary {
-  background-color: color-mix(in oklch, var(--ms-color-interactive-secondary) 12%, transparent);
-  color: var(--ms-color-interactive-secondary);
-  border-color: color-mix(in oklch, var(--ms-color-interactive-secondary) 22%, transparent);
-}
-
-.ms-code--subtle.ms-code--success {
-  background-color: color-mix(in oklch, var(--ms-color-status-success) 12%, transparent);
-  color: var(--ms-color-status-success);
-  border-color: color-mix(in oklch, var(--ms-color-status-success) 22%, transparent);
-}
-
-.ms-code--subtle.ms-code--warning {
-  background-color: color-mix(in oklch, var(--ms-color-status-warning) 12%, transparent);
-  color: var(--ms-color-status-warning);
-  border-color: color-mix(in oklch, var(--ms-color-status-warning) 22%, transparent);
-}
-
-.ms-code--subtle.ms-code--danger {
-  background-color: color-mix(in oklch, var(--ms-color-status-danger) 12%, transparent);
-  color: var(--ms-color-status-danger);
-  border-color: color-mix(in oklch, var(--ms-color-status-danger) 22%, transparent);
-}
-
-.ms-code--subtle.ms-code--info {
-  background-color: color-mix(in oklch, var(--ms-color-status-info) 12%, transparent);
-  color: var(--ms-color-status-info);
-  border-color: color-mix(in oklch, var(--ms-color-status-info) 22%, transparent);
+.ms-code--subtle:is(
+  .ms-code--primary,
+  .ms-code--secondary,
+  .ms-code--success,
+  .ms-code--warning,
+  .ms-code--danger,
+  .ms-code--info
+) {
+  background-color: var(--ms-tone-subtle);
+  color: var(--ms-tone-text);
+  border-color: var(--ms-tone-border);
 }
 
 /* Variant: Outline */
@@ -92,34 +95,16 @@
   border-color: var(--ms-color-border-strong);
 }
 
-.ms-code--outline.ms-code--primary {
-  color: var(--ms-color-interactive-primary);
-  border-color: var(--ms-color-interactive-primary);
-}
-
-.ms-code--outline.ms-code--secondary {
-  color: var(--ms-color-interactive-secondary);
-  border-color: var(--ms-color-interactive-secondary);
-}
-
-.ms-code--outline.ms-code--success {
-  color: var(--ms-color-status-success);
-  border-color: var(--ms-color-status-success);
-}
-
-.ms-code--outline.ms-code--warning {
-  color: var(--ms-color-status-warning);
-  border-color: var(--ms-color-status-warning);
-}
-
-.ms-code--outline.ms-code--danger {
-  color: var(--ms-color-status-danger);
-  border-color: var(--ms-color-status-danger);
-}
-
-.ms-code--outline.ms-code--info {
-  color: var(--ms-color-status-info);
-  border-color: var(--ms-color-status-info);
+.ms-code--outline:is(
+  .ms-code--primary,
+  .ms-code--secondary,
+  .ms-code--success,
+  .ms-code--warning,
+  .ms-code--danger,
+  .ms-code--info
+) {
+  color: var(--ms-tone-text);
+  border-color: var(--ms-tone);
 }
 
 /* Variant: Solid */
@@ -129,39 +114,16 @@
   border-color: transparent;
 }
 
-.ms-code--solid.ms-code--primary {
-  background-color: var(--ms-color-interactive-primary);
-  color: var(--ms-color-text-inverse);
-  border-color: transparent;
-}
-
-.ms-code--solid.ms-code--secondary {
-  background-color: var(--ms-color-interactive-secondary);
-  color: var(--ms-color-text-inverse);
-  border-color: transparent;
-}
-
-.ms-code--solid.ms-code--success {
-  background-color: var(--ms-color-status-success);
-  color: var(--ms-color-text-inverse);
-  border-color: transparent;
-}
-
-.ms-code--solid.ms-code--warning {
-  background-color: var(--ms-color-status-warning);
-  color: var(--ms-color-text-primary);
-  border-color: transparent;
-}
-
-.ms-code--solid.ms-code--danger {
-  background-color: var(--ms-color-status-danger);
-  color: var(--ms-color-text-inverse);
-  border-color: transparent;
-}
-
-.ms-code--solid.ms-code--info {
-  background-color: var(--ms-color-status-info);
-  color: var(--ms-color-text-inverse);
+.ms-code--solid:is(
+  .ms-code--primary,
+  .ms-code--secondary,
+  .ms-code--success,
+  .ms-code--warning,
+  .ms-code--danger,
+  .ms-code--info
+) {
+  background-color: var(--ms-tone);
+  color: var(--ms-tone-content);
   border-color: transparent;
 }
 

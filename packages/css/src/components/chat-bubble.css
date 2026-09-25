@@ -77,24 +77,55 @@
 }
 
 /* Variants & Tones */
-.ms-chat-bubble--variant-soft.ms-chat-bubble--tone-neutral {
-  background-color: var(--ms-color-text-primary);
-  color: var(--ms-color-surface-sunken);
+/* Tones: the class sets --ms-tone/--ms-tone-content; the tone engine (themes.css) derives the states. */
+.ms-chat-bubble--tone-primary {
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
+}
+.ms-chat-bubble--tone-neutral {
+  --ms-tone: var(--ms-color-surface-inverse);
+  --ms-tone-content: var(--ms-color-text-inverse);
+  --ms-tone-text-mix: 0%;
+}
+.ms-chat-bubble--tone-info {
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
+}
+.ms-chat-bubble--tone-success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
+.ms-chat-bubble--tone-warning {
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
+}
+.ms-chat-bubble--tone-danger {
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
 }
 
-.ms-chat-bubble--variant-soft.ms-chat-bubble--tone-primary {
-  background-color: var(--ms-color-interactive-primary-text);
-  color: var(--ms-color-interactive-primary-subtle);
+.ms-chat-bubble--variant-soft:is(
+  .ms-chat-bubble--tone-primary,
+  .ms-chat-bubble--tone-neutral,
+  .ms-chat-bubble--tone-info,
+  .ms-chat-bubble--tone-success,
+  .ms-chat-bubble--tone-warning,
+  .ms-chat-bubble--tone-danger
+) {
+  background-color: var(--ms-tone-text);
+  color: var(--ms-tone-subtle);
 }
 
-.ms-chat-bubble--variant-solid.ms-chat-bubble--tone-primary {
-  background-color: var(--ms-color-interactive-primary);
-  color: var(--ms-color-text-on-accent);
-}
-
-.ms-chat-bubble--variant-solid.ms-chat-bubble--tone-neutral {
-  background-color: var(--ms-color-surface-inverse);
-  color: var(--ms-color-text-inverse);
+.ms-chat-bubble--variant-solid:is(
+  .ms-chat-bubble--tone-primary,
+  .ms-chat-bubble--tone-neutral,
+  .ms-chat-bubble--tone-info,
+  .ms-chat-bubble--tone-success,
+  .ms-chat-bubble--tone-warning,
+  .ms-chat-bubble--tone-danger
+) {
+  background-color: var(--ms-tone);
+  color: var(--ms-tone-content);
 }
 
 .ms-chat-bubble--variant-outline {

@@ -1,5 +1,6 @@
 export type MsIconButtonVariant = "solid" | "soft" | "outline" | "ghost";
-export type MsIconButtonTone = "primary" | "neutral" | "success" | "warning" | "danger" | "accent";
+export type MsIconButtonTone =
+  "primary" | "secondary" | "accent" | "neutral" | "info" | "success" | "warning" | "danger";
 export type MsIconButtonSize = "2xs" | "xs" | "sm" | "md" | "lg" | "xl";
 export type MsIconButtonShape = "rounded" | "circle" | "square";
 

@@ -52,9 +52,9 @@
 /* Active / Pressed state */
 .ms-icon-button[aria-pressed="true"],
 .ms-icon-button--active {
-  background-color: var(--ms-color-primary-subtle);
-  border-color: var(--ms-color-primary-default);
-  color: var(--ms-color-primary-default);
+  background-color: var(--ms-tone-subtle);
+  border-color: var(--ms-tone);
+  color: var(--ms-tone-text);
 }
 
 .ms-icon-button--solid[aria-pressed="true"],
@@ -101,65 +101,105 @@
 }
 
 /* Variants & Tones */
+/* Tones: the class sets --ms-tone/--ms-tone-content; the tone engine (themes.css) derives the states. */
+.ms-icon-button--primary {
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
+}
+.ms-icon-button--secondary {
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
+}
+.ms-icon-button--accent {
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
+}
+.ms-icon-button--neutral {
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
+}
+.ms-icon-button--info {
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
+}
+.ms-icon-button--success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
+.ms-icon-button--warning {
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
+}
+.ms-icon-button--danger {
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
+}
+
 /* Solid */
-.ms-icon-button--solid.ms-icon-button--primary {
-  background-color: var(--ms-color-primary-default);
-  color: var(--ms-color-primary-contrast);
+.ms-icon-button--solid:is(
+  .ms-icon-button--primary,
+  .ms-icon-button--secondary,
+  .ms-icon-button--accent,
+  .ms-icon-button--neutral,
+  .ms-icon-button--info,
+  .ms-icon-button--success,
+  .ms-icon-button--warning,
+  .ms-icon-button--danger
+) {
+  background-color: var(--ms-tone);
+  color: var(--ms-tone-content);
 }
-.ms-icon-button--solid.ms-icon-button--primary:hover:not(:disabled) {
-  background-color: var(--ms-color-primary-hover);
+.ms-icon-button--solid:is(
+    .ms-icon-button--primary,
+    .ms-icon-button--secondary,
+    .ms-icon-button--accent,
+    .ms-icon-button--neutral,
+    .ms-icon-button--info,
+    .ms-icon-button--success,
+    .ms-icon-button--warning,
+    .ms-icon-button--danger
+  ):hover:not(:disabled) {
+  background-color: var(--ms-tone-hover);
 }
-.ms-icon-button--solid.ms-icon-button--primary:active:not(:disabled) {
-  background-color: var(--ms-color-primary-active);
-}
-
-.ms-icon-button--solid.ms-icon-button--neutral {
-  background-color: var(--ms-color-neutral-default);
-  color: var(--ms-color-neutral-contrast);
-}
-.ms-icon-button--solid.ms-icon-button--neutral:hover:not(:disabled) {
-  background-color: var(--ms-color-neutral-hover);
-}
-
-.ms-icon-button--solid.ms-icon-button--danger {
-  background-color: var(--ms-color-danger-default);
-  color: var(--ms-color-danger-contrast);
-}
-.ms-icon-button--solid.ms-icon-button--danger:hover:not(:disabled) {
-  background-color: var(--ms-color-danger-hover);
-}
-
-.ms-icon-button--solid.ms-icon-button--success {
-  background-color: var(--ms-color-success-default);
-  color: var(--ms-color-success-contrast);
-}
-.ms-icon-button--solid.ms-icon-button--success:hover:not(:disabled) {
-  background-color: var(--ms-color-success-hover);
-}
-
-/* Soft */
-.ms-icon-button--soft.ms-icon-button--primary {
-  background-color: var(--ms-color-primary-default);
-  color: var(--ms-color-primary-subtle);
-}
-.ms-icon-button--soft.ms-icon-button--primary:hover:not(:disabled) {
-  background-color: var(--ms-color-primary-hover);
+.ms-icon-button--solid:is(
+    .ms-icon-button--primary,
+    .ms-icon-button--secondary,
+    .ms-icon-button--accent,
+    .ms-icon-button--neutral,
+    .ms-icon-button--info,
+    .ms-icon-button--success,
+    .ms-icon-button--warning,
+    .ms-icon-button--danger
+  ):active:not(:disabled) {
+  background-color: var(--ms-tone-active);
 }
 
-.ms-icon-button--soft.ms-icon-button--neutral {
-  background-color: var(--ms-color-text-default);
-  color: var(--ms-color-neutral-subtle);
+/* Soft (inverted tonal pair, like tag/banner) */
+.ms-icon-button--soft:is(
+  .ms-icon-button--primary,
+  .ms-icon-button--secondary,
+  .ms-icon-button--accent,
+  .ms-icon-button--neutral,
+  .ms-icon-button--info,
+  .ms-icon-button--success,
+  .ms-icon-button--warning,
+  .ms-icon-button--danger
+) {
+  background-color: var(--ms-tone-text);
+  color: var(--ms-tone-subtle);
 }
-.ms-icon-button--soft.ms-icon-button--neutral:hover:not(:disabled) {
-  background-color: var(--ms-color-text-primary);
-}
-
-.ms-icon-button--soft.ms-icon-button--danger {
-  background-color: var(--ms-color-danger-default);
-  color: var(--ms-color-danger-subtle);
-}
-.ms-icon-button--soft.ms-icon-button--danger:hover:not(:disabled) {
-  background-color: var(--ms-color-danger-hover);
+.ms-icon-button--soft:is(
+    .ms-icon-button--primary,
+    .ms-icon-button--secondary,
+    .ms-icon-button--accent,
+    .ms-icon-button--neutral,
+    .ms-icon-button--info,
+    .ms-icon-button--success,
+    .ms-icon-button--warning,
+    .ms-icon-button--danger
+  ):hover:not(:disabled) {
+  background-color: color-mix(in oklab, var(--ms-tone-text) 86%, var(--ms-color-base-content));
 }
 
 /* Outline */
@@ -172,12 +212,28 @@
   background-color: var(--ms-color-surface-hover);
   border-color: var(--ms-color-border-strong);
 }
-.ms-icon-button--outline.ms-icon-button--primary {
-  border-color: var(--ms-color-primary-default);
-  color: var(--ms-color-primary-default);
+.ms-icon-button--outline:is(
+  .ms-icon-button--primary,
+  .ms-icon-button--secondary,
+  .ms-icon-button--accent,
+  .ms-icon-button--info,
+  .ms-icon-button--success,
+  .ms-icon-button--warning,
+  .ms-icon-button--danger
+) {
+  border-color: var(--ms-tone);
+  color: var(--ms-tone-text);
 }
-.ms-icon-button--outline.ms-icon-button--primary:hover:not(:disabled) {
-  background-color: var(--ms-color-primary-subtle);
+.ms-icon-button--outline:is(
+    .ms-icon-button--primary,
+    .ms-icon-button--secondary,
+    .ms-icon-button--accent,
+    .ms-icon-button--info,
+    .ms-icon-button--success,
+    .ms-icon-button--warning,
+    .ms-icon-button--danger
+  ):hover:not(:disabled) {
+  background-color: var(--ms-tone-subtle);
 }
 
 /* Ghost */
@@ -189,9 +245,25 @@
   background-color: var(--ms-color-surface-hover);
   color: var(--ms-color-text-default);
 }
-.ms-icon-button--ghost.ms-icon-button--primary {
-  color: var(--ms-color-primary-default);
+.ms-icon-button--ghost:is(
+  .ms-icon-button--primary,
+  .ms-icon-button--secondary,
+  .ms-icon-button--accent,
+  .ms-icon-button--info,
+  .ms-icon-button--success,
+  .ms-icon-button--warning,
+  .ms-icon-button--danger
+) {
+  color: var(--ms-tone-text);
 }
-.ms-icon-button--ghost.ms-icon-button--primary:hover:not(:disabled) {
-  background-color: var(--ms-color-primary-subtle);
+.ms-icon-button--ghost:is(
+    .ms-icon-button--primary,
+    .ms-icon-button--secondary,
+    .ms-icon-button--accent,
+    .ms-icon-button--info,
+    .ms-icon-button--success,
+    .ms-icon-button--warning,
+    .ms-icon-button--danger
+  ):hover:not(:disabled) {
+  background-color: var(--ms-tone-subtle);
 }
