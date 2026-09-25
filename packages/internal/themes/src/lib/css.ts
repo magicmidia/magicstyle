@@ -4,7 +4,8 @@ import { CONTRACT_COLOR_ROLES } from "./contract.ts";
 import { DEFAULT_THEME, DIALS, THEMES, resolveThemeMode } from "./themes.ts";
 
 /** Selectors on which derived tokens re-resolve (so nested theme scopes work). */
-export const SCOPE_SELECTOR = ":root, [data-ms-theme], [data-ms-color-mode], [data-ms-contrast]";
+export const SCOPE_SELECTOR =
+  ":root, [data-ms-theme], [data-ms-color-mode], [data-ms-contrast], [data-ms-density], [data-ms-radius]";
 
 const RADIUS_DIAL: Record<string, string> = {
   sharp: "calc(var(--ms-radius-selector) / 2)",

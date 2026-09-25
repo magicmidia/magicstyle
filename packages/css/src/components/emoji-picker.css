@@ -13,7 +13,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: var(--ms-control-height-md, 40px);
+  height: var(--ms-control-height-lg);
   padding: 0 var(--ms-space-3);
   font-size: var(--ms-typography-size-lg);
   background-color: var(--ms-color-surface-raised);

@@ -19,7 +19,7 @@
 
 .ms-date-picker__input {
   width: 100%;
-  height: var(--ms-control-height-md, 40px);
+  height: var(--ms-control-height-lg);
   padding: 0 var(--ms-space-8) 0 var(--ms-space-3);
   font-family: var(--ms-font-sans);
   font-size: var(--ms-typography-size-sm);

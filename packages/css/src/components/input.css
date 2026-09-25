@@ -8,7 +8,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--ms-space-2);
-  block-size: var(--ms-layout-field-height-md);
+  block-size: var(--ms-control-height-md);
   padding-inline: var(--ms-space-3);
   border: var(--ms-border-hairline) solid var(--ms-color-border-default);
   border-radius: var(--ms-control-radius);
@@ -51,20 +51,20 @@
   font-size: 0.75rem;
 }
 .ms-input[data-size="sm"] {
-  block-size: var(--ms-layout-field-height-sm);
+  block-size: var(--ms-control-height-sm);
   padding-inline: var(--ms-space-2-5, 10px);
 }
 .ms-input[data-size="md"] {
-  block-size: var(--ms-layout-field-height-md);
+  block-size: var(--ms-control-height-md);
 }
 .ms-input[data-size="lg"] {
-  block-size: var(--ms-layout-field-height-lg);
+  block-size: var(--ms-control-height-lg);
 }
 .ms-input[data-size="xl"] {
-  block-size: var(--ms-layout-field-height-xl);
+  block-size: var(--ms-control-height-xl);
 }
 .ms-input[data-size="xxl"] {
-  block-size: var(--ms-layout-field-height-xxl);
+  block-size: var(--ms-control-height-xxl);
 }
 
 /* Shape Geometry Modifiers (Harmonized with MsButton and MsSelect) */

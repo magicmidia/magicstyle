@@ -186,19 +186,19 @@
 .ms-tab--sm {
   font-size: var(--ms-typography-size-xs);
   padding: var(--ms-space-1) var(--ms-space-3);
-  min-height: var(--ms-layout-field-height-sm);
+  min-height: var(--ms-control-height-sm);
 }
 
 .ms-tab--md {
   font-size: var(--ms-typography-size-sm);
   padding: var(--ms-space-2) var(--ms-space-4);
-  min-height: var(--ms-layout-field-height-md);
+  min-height: var(--ms-control-height-md);
 }
 
 .ms-tab--lg {
   font-size: var(--ms-typography-size-md);
   padding: var(--ms-space-3) var(--ms-space-5);
-  min-height: var(--ms-layout-field-height-lg);
+  min-height: var(--ms-control-height-lg);
 }
 
 /* Line tab styling */

@@ -88,4 +88,12 @@ describe("cascade layers and color scheme", () => {
       /@media \(prefers-color-scheme: dark\)\s*\{\s*\[data-ms-color-mode="system"\],/,
     );
   });
+
+  it("density dial scales control heights on any element", () => {
+    const themes = cssFiles.find((file) => file.name === "themes.css")!.css;
+    expect(themes).toMatch(
+      /\[data-ms-density\],\s*\[data-ms-radius\]\s*\{[^}]*--ms-control-height-md: round\(calc\(var\(--ms-layout-field-height-md\) \* var\(--ms-density-scale, 1\)\), 1px\)/,
+    );
+    expect(themes).toContain('[data-ms-density="compact"]');
+  });
 });

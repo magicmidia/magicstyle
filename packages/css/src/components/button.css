@@ -6,7 +6,7 @@
  */
 
 .ms-button {
-  --_ms-btn-height: var(--ms-layout-field-height-md);
+  --_ms-btn-height: var(--ms-control-height-md);
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -117,8 +117,8 @@
 
 /* Close Button: compact dismissal action with hover rotate */
 .ms-button--close {
-  inline-size: var(--ms-layout-field-height-sm);
-  block-size: var(--ms-layout-field-height-sm);
+  inline-size: var(--ms-control-height-sm);
+  block-size: var(--ms-control-height-sm);
   padding: 0;
   border-radius: var(--ms-radius-full);
   color: var(--ms-color-text-muted);
@@ -139,22 +139,22 @@
   font-size: 0.75rem;
 }
 .ms-button[data-size="sm"] {
-  --_ms-btn-height: var(--ms-layout-field-height-sm);
+  --_ms-btn-height: var(--ms-control-height-sm);
   padding-inline: var(--ms-space-3);
   font-size: var(--ms-typography-size-xs);
 }
 .ms-button[data-size="lg"] {
-  --_ms-btn-height: var(--ms-layout-field-height-lg);
+  --_ms-btn-height: var(--ms-control-height-lg);
   padding-inline: var(--ms-space-5);
   font-size: var(--ms-typography-size-md);
 }
 .ms-button[data-size="xl"] {
-  --_ms-btn-height: var(--ms-layout-field-height-xl);
+  --_ms-btn-height: var(--ms-control-height-xl);
   padding-inline: var(--ms-space-6);
   font-size: var(--ms-typography-size-md);
 }
 .ms-button[data-size="xxl"] {
-  --_ms-btn-height: var(--ms-layout-field-height-xxl);
+  --_ms-btn-height: var(--ms-control-height-xxl);
   padding-inline: var(--ms-space-7);
   font-size: var(--ms-typography-size-lg);
 }

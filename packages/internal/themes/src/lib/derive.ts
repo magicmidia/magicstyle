@@ -104,6 +104,11 @@ export const DERIVED: ReadonlyArray<readonly [string, Expr]> = [
   ...["info", "success", "warning", "danger"].flatMap(feedback),
   // Shape and type
   ["control-radius", ref("radius-control")],
+  // Density dial (data-ms-density) scales every control height.
+  ...["sm", "md", "lg", "xl", "xxl"].map((size): [string, Expr] => [
+    `control-height-${size}`,
+    css(`round(calc(var(--ms-layout-field-height-${size}) * var(--ms-density-scale, 1)), 1px)`),
+  ]),
   ["radius-xs", css("calc(var(--ms-radius-selector) / 2)")],
   ["radius-sm", ref("radius-selector")],
   ["radius-md", ref("radius-field")],
