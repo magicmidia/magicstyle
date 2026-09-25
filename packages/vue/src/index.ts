@@ -788,3 +788,18 @@ export {
 export { useScrollLock } from "./composables/use-scroll-lock.ts";
 export { safeHref, safeRel } from "./composables/safe-url.ts";
 export { sanitizeSvg } from "./composables/sanitize-svg.ts";
+
+// Theming: contract, theme builder and contrast validation.
+export {
+  MS_THEME_CONTRACT,
+  checkMsThemeContrast,
+  defineMsTheme,
+  msThemeOverridesToStyle,
+  msThemeToCss,
+  type MsThemeColorRole,
+  type MsThemeContractEntry,
+  type MsThemeContrastIssue,
+  type MsThemeDefinition,
+  type MsThemeKey,
+  type MsThemeValues,
+} from "./theming.ts";

@@ -54,19 +54,19 @@
 }
 .ms-button[data-shape="rounded"],
 .ms-button--rounded {
-  border-radius: var(--ms-radius-md, 8px);
+  border-radius: var(--ms-radius-md);
 }
 .ms-button[data-shape="rounded-sm"] {
-  border-radius: var(--ms-radius-sm, 4px);
+  border-radius: var(--ms-radius-sm);
 }
 .ms-button[data-shape="rounded-lg"] {
-  border-radius: var(--ms-radius-lg, 12px);
+  border-radius: var(--ms-radius-lg);
 }
 
 /* Wide Button: prominent call-to-action with extended horizontal breathing room */
 .ms-button[data-wide],
 .ms-button--wide {
-  padding-inline: var(--ms-space-8, 32px);
+  padding-inline: var(--ms-space-8);
   min-inline-size: 160px;
 }
 
@@ -117,8 +117,8 @@
 
 /* Close Button: compact dismissal action with hover rotate */
 .ms-button--close {
-  inline-size: var(--ms-layout-field-height-sm, 32px);
-  block-size: var(--ms-layout-field-height-sm, 32px);
+  inline-size: var(--ms-layout-field-height-sm);
+  block-size: var(--ms-layout-field-height-sm);
   padding: 0;
   border-radius: var(--ms-radius-full);
   color: var(--ms-color-text-muted);
@@ -135,7 +135,7 @@
 .ms-button[data-size="xs"],
 .ms-button--size-xs {
   --_ms-btn-height: 28px;
-  padding-inline: var(--ms-space-2, 8px);
+  padding-inline: var(--ms-space-2);
   font-size: 0.75rem;
 }
 .ms-button[data-size="sm"] {
@@ -198,63 +198,66 @@
   inline-size: 100%;
 }
 
-/* ---------- Tones: Primary, Secondary, Accent, Neutral, Success, Info, Warning, Danger ---------- */
+/* ---------- Tones ----------
+ * A tone sets only its color and content color (theme contract). Every state is
+ * derived here, so a new tone or a custom brand color needs no extra tokens:
+ *   .ms-button[data-tone="brand"] { --_ms-btn-color: #7c3aed; --_ms-btn-content: #fff; }
+ */
+.ms-button {
+  --_ms-btn-color: var(--ms-color-primary);
+  --_ms-btn-content: var(--ms-color-primary-content);
+  --_ms-btn-text: oklch(
+    from
+      color-mix(in oklab, var(--_ms-btn-color) 40%, oklch(from var(--ms-color-base-content) l 0 h))
+      l calc(c * 2) h
+  );
+  --_ms-btn-accent: var(--_ms-btn-color);
+  --_ms-btn-accent-hover: color-mix(
+    in oklab,
+    var(--_ms-btn-color) 86%,
+    var(--ms-color-base-content)
+  );
+  --_ms-btn-accent-subtle: oklch(
+    from color-mix(in oklab, var(--_ms-btn-color) 14%, oklch(from var(--ms-color-base-100) l 0 h)) l
+      calc(c * 2.2) h
+  );
+  --_ms-btn-accent-fg: var(--_ms-btn-content);
+  --_ms-btn-accent-fg-muted: var(--_ms-btn-text);
+}
 
 .ms-button[data-tone="primary"] {
-  --_ms-btn-accent: var(--ms-color-interactive-primary);
-  --_ms-btn-accent-hover: var(--ms-color-interactive-primary-hover);
-  --_ms-btn-accent-subtle: var(--ms-color-interactive-primary-subtle);
-  --_ms-btn-accent-fg: var(--ms-color-text-on-accent);
-  --_ms-btn-accent-fg-muted: var(--ms-color-interactive-primary-text);
+  --_ms-btn-color: var(--ms-color-primary);
+  --_ms-btn-content: var(--ms-color-primary-content);
 }
 .ms-button[data-tone="secondary"] {
-  --_ms-btn-accent: var(--ms-color-interactive-secondary);
-  --_ms-btn-accent-hover: var(--ms-color-interactive-secondary-hover);
-  --_ms-btn-accent-subtle: var(--ms-color-interactive-secondary-subtle);
-  --_ms-btn-accent-fg: var(--ms-color-interactive-secondary-fg);
-  --_ms-btn-accent-fg-muted: var(--ms-color-interactive-secondary-text);
+  --_ms-btn-color: var(--ms-color-secondary);
+  --_ms-btn-content: var(--ms-color-secondary-content);
 }
 .ms-button[data-tone="accent"] {
-  --_ms-btn-accent: var(--ms-color-interactive-accent);
-  --_ms-btn-accent-hover: var(--ms-color-interactive-accent-hover);
-  --_ms-btn-accent-subtle: var(--ms-color-interactive-accent-subtle);
-  --_ms-btn-accent-fg: var(--ms-color-text-on-accent);
-  --_ms-btn-accent-fg-muted: var(--ms-color-interactive-accent-text);
+  --_ms-btn-color: var(--ms-color-accent);
+  --_ms-btn-content: var(--ms-color-accent-content);
 }
 .ms-button[data-tone="neutral"] {
-  --_ms-btn-accent: var(--ms-color-interactive-neutral);
-  --_ms-btn-accent-hover: var(--ms-color-interactive-neutral-hover);
-  --_ms-btn-accent-subtle: var(--ms-color-interactive-neutral-subtle);
-  --_ms-btn-accent-fg: var(--ms-color-interactive-neutral-fg);
-  --_ms-btn-accent-fg-muted: var(--ms-color-interactive-neutral-text);
+  --_ms-btn-color: var(--ms-color-neutral);
+  --_ms-btn-content: var(--ms-color-neutral-content);
+  /* Neutral has no hue: tinted text uses the theme ink. */
+  --_ms-btn-text: var(--ms-color-base-content);
 }
 .ms-button[data-tone="success"] {
-  --_ms-btn-accent: var(--ms-color-feedback-success-solid);
-  --_ms-btn-accent-hover: var(--ms-color-feedback-success-solid-hover);
-  --_ms-btn-accent-subtle: var(--ms-color-feedback-success-bg);
-  --_ms-btn-accent-fg: var(--ms-color-feedback-success-solid-fg);
-  --_ms-btn-accent-fg-muted: var(--ms-color-feedback-success-text);
+  --_ms-btn-color: var(--ms-color-success);
+  --_ms-btn-content: var(--ms-color-success-content);
 }
 .ms-button[data-tone="info"] {
-  --_ms-btn-accent: var(--ms-color-feedback-info-solid);
-  --_ms-btn-accent-hover: var(--ms-color-feedback-info-solid-hover);
-  --_ms-btn-accent-subtle: var(--ms-color-feedback-info-bg);
-  --_ms-btn-accent-fg: var(--ms-color-feedback-info-solid-fg);
-  --_ms-btn-accent-fg-muted: var(--ms-color-feedback-info-text);
+  --_ms-btn-color: var(--ms-color-info);
+  --_ms-btn-content: var(--ms-color-info-content);
 }
 .ms-button[data-tone="warning"] {
-  --_ms-btn-accent: var(--ms-color-feedback-warning-solid);
-  --_ms-btn-accent-hover: var(--ms-color-feedback-warning-solid-hover);
-  --_ms-btn-accent-subtle: var(--ms-color-feedback-warning-bg);
-  --_ms-btn-accent-fg: var(--ms-color-feedback-warning-solid-fg);
-  --_ms-btn-accent-fg-muted: var(--ms-color-feedback-warning-text);
+  --_ms-btn-color: var(--ms-color-warning);
+  --_ms-btn-content: var(--ms-color-warning-content);
 }
 .ms-button[data-tone="danger"] {
-  --_ms-btn-accent: var(--ms-color-feedback-danger-solid);
-  --_ms-btn-accent-hover: var(--ms-color-feedback-danger-solid-hover);
-  --_ms-btn-accent-subtle: var(--ms-color-feedback-danger-bg);
-  --_ms-btn-accent-fg: var(--ms-color-feedback-danger-solid-fg);
-  --_ms-btn-accent-fg-muted: var(--ms-color-feedback-danger-text);
+  --_ms-btn-color: var(--ms-color-danger);
+  --_ms-btn-content: var(--ms-color-danger-content);
 }
 
 /* ---------- Variants ---------- */
@@ -264,7 +267,7 @@
 .ms-button[data-variant="squared"] {
   background-color: var(--_ms-btn-accent);
   color: var(--_ms-btn-accent-fg);
-  box-shadow: var(--ms-elevation-button, none);
+  box-shadow: var(--ms-elevation-button);
 }
 .ms-button[data-variant="solid"]:hover:not(:disabled),
 .ms-button[data-variant="squared"]:hover:not(:disabled) {
@@ -349,7 +352,7 @@
   background-color: transparent;
   border-color: transparent;
   color: var(--_ms-btn-accent);
-  padding-inline: var(--ms-space-1, 4px);
+  padding-inline: var(--ms-space-1);
   text-decoration: none;
 }
 .ms-button[data-variant="link"]:hover:not(:disabled),
@@ -377,18 +380,10 @@
 /* Glass Button: modern frosted translucent glassmorphism */
 .ms-button[data-variant="glass"],
 .ms-button--variant-glass {
-  background-color: color-mix(
-    in srgb,
-    var(--ms-color-surface-elevated, rgba(255, 255, 255, 0.08)) 65%,
-    transparent
-  );
+  background-color: color-mix(in srgb, var(--ms-color-surface-elevated) 65%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-color: color-mix(
-    in srgb,
-    var(--ms-color-border-subtle, rgba(255, 255, 255, 0.18)) 80%,
-    transparent
-  );
+  border-color: color-mix(in srgb, var(--ms-color-border-subtle) 80%, transparent);
   color: var(--ms-color-text-primary);
   box-shadow:
     0 4px 16px 0 rgba(0, 0, 0, 0.12),
@@ -396,11 +391,7 @@
 }
 .ms-button[data-variant="glass"]:hover:not(:disabled),
 .ms-button--variant-glass:hover:not(:disabled) {
-  background-color: color-mix(
-    in srgb,
-    var(--ms-color-surface-elevated, rgba(255, 255, 255, 0.15)) 85%,
-    transparent
-  );
+  background-color: color-mix(in srgb, var(--ms-color-surface-elevated) 85%, transparent);
   border-color: color-mix(in srgb, var(--_ms-btn-accent) 60%, transparent);
   color: var(--_ms-btn-accent);
   box-shadow:

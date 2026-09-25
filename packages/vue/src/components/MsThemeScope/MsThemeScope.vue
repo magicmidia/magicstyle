@@ -1,5 +1,5 @@
 <template>
-  <component :is="as" :class="classes" v-bind="resolvedAttributes">
+  <component :is="as" :class="classes" :style="overrideStyle" v-bind="resolvedAttributes">
     <slot />
   </component>
 </template>
@@ -7,6 +7,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import type { MsThemeScopeProps } from "./types.ts";
+import { msThemeOverridesToStyle } from "../../theme-overrides.ts";
 import {
   provideThemeContext,
   useSystemColorMode,
@@ -118,6 +119,8 @@ const resolvedAttributes = computed<Record<string, string>>(() => {
     dir: effectiveDir.value,
   };
 });
+
+const overrideStyle = computed(() => msThemeOverridesToStyle(props.overrides));
 
 const classes = computed(() => {
   return ["ms-theme-scope"];

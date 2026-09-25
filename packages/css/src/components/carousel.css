@@ -7,9 +7,9 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  border-radius: var(--ms-radius-xl, 12px);
-  background-color: var(--ms-color-surface-subtle, #0f172a);
-  color: var(--ms-color-text, #ffffff);
+  border-radius: var(--ms-radius-xl);
+  background-color: var(--ms-color-surface-subtle);
+  color: var(--ms-color-text);
 }
 
 .ms-carousel__track {
@@ -42,7 +42,7 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
   background-color: rgba(15, 23, 42, 0.6);
   color: #ffffff;
   cursor: pointer;
@@ -55,30 +55,30 @@
 }
 
 .ms-carousel__arrow--prev {
-  left: var(--ms-space-3, 12px);
+  left: var(--ms-space-3);
 }
 
 .ms-carousel__arrow--next {
-  right: var(--ms-space-3, 12px);
+  right: var(--ms-space-3);
 }
 
 /* Indicator Dots */
 .ms-carousel__indicators {
   position: absolute;
-  bottom: var(--ms-space-3, 12px);
+  bottom: var(--ms-space-3);
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
   display: flex;
   align-items: center;
-  gap: var(--ms-space-2, 8px);
+  gap: var(--ms-space-2);
 }
 
 .ms-carousel__indicator {
   all: unset;
   width: 8px;
   height: 8px;
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
   background-color: rgba(255, 255, 255, 0.4);
   cursor: pointer;
   transition: all var(--ms-transition-duration-fast, 150ms);

@@ -69,7 +69,7 @@
 .ms-switch-description {
   font-size: 0.85em;
   color: var(--ms-color-text-secondary);
-  line-height: var(--ms-typography-line-height-tight, 1.25);
+  line-height: var(--ms-typography-line-height-tight);
 }
 
 .ms-switch-track {

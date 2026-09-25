@@ -222,7 +222,7 @@
   border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
   background: var(--ms-color-surface-sunken);
   color: var(--ms-color-text-primary);
-  font-family: var(--ms-font-mono, monospace);
+  font-family: var(--ms-font-mono);
   font-size: var(--ms-typography-size-xs);
   outline: none;
   cursor: pointer;

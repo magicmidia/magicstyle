@@ -23,6 +23,15 @@ pnpm add @magic-style/css
 </html>
 ```
 
+- Customize by overriding the theme contract (27 variables; everything else is derived):
+  ```css
+  :root {
+    --ms-color-primary: #7c3aed;
+    --ms-color-primary-content: #fff;
+    --ms-radius-field: 10px;
+  }
+  ```
+  Full guide, including custom themes: https://github.com/magicmidia/magicstyle/blob/main/docs/theming.md
 - All rules live in the `ms` cascade layer (`ms.reset` … `ms.utilities`): unlayered app CSS always wins, and you can place `ms` in your own layer order (e.g. with Tailwind CSS v4: `@layer theme, base, ms, components, utilities;`).
 - `data-ms-color-mode="system"` follows the OS preference without JavaScript.
 

@@ -46,7 +46,7 @@
   background-color: var(--ms-color-interactive-primary);
   color: var(--ms-color-text-inverse);
   border: none;
-  box-shadow: var(--ms-elevation-3, 0 10px 15px -3px rgba(0, 0, 0, 0.2));
+  box-shadow: var(--ms-elevation-3);
   font-family: var(--ms-font-sans);
   font-size: var(--ms-typography-size-sm);
   font-weight: var(--ms-typography-weight-semibold);

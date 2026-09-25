@@ -13,13 +13,13 @@
   background-color: var(--ms-color-surface-raised);
   color: var(--ms-color-text-primary);
   border: 1px solid var(--ms-color-border-subtle);
-  border-radius: var(--ms-radius-lg, 8px);
+  border-radius: var(--ms-radius-lg);
   box-shadow: var(
     --ms-elevation-3,
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -4px rgba(0, 0, 0, 0.1)
   );
-  padding: var(--ms-space-1, 4px);
+  padding: var(--ms-space-1);
   min-width: 180px;
   max-width: 280px;
   list-style: none;
@@ -30,10 +30,10 @@
 .ms-context-menu-item {
   display: flex;
   align-items: center;
-  gap: var(--ms-space-2, 8px);
-  padding: var(--ms-space-2, 6px) var(--ms-space-3, 10px);
-  border-radius: var(--ms-radius-md, 6px);
-  font-size: var(--ms-typography-size-sm, 0.875rem);
+  gap: var(--ms-space-2);
+  padding: var(--ms-space-2) var(--ms-space-3);
+  border-radius: var(--ms-radius-md);
+  font-size: var(--ms-typography-size-sm);
   cursor: pointer;
   user-select: none;
   transition: background-color var(--ms-transition-duration-fast, 120ms);
@@ -50,17 +50,17 @@
 }
 
 .ms-context-menu-item--danger {
-  color: var(--ms-color-danger, #ef4444);
+  color: var(--ms-color-danger);
 }
 
 .ms-context-menu-item--danger:hover {
-  background-color: var(--ms-color-danger-subtle, #fef2f2);
+  background-color: var(--ms-color-danger-subtle);
 }
 
 .ms-context-menu-item__icon {
   display: inline-flex;
   align-items: center;
-  color: var(--ms-color-text-muted, #64748b);
+  color: var(--ms-color-text-muted);
   flex-shrink: 0;
 }
 
@@ -69,16 +69,16 @@
 }
 
 .ms-context-menu-item__shortcut {
-  font-size: var(--ms-typography-size-xs, 0.75rem);
-  color: var(--ms-color-text-muted, #64748b);
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-muted);
   margin-left: auto;
-  padding-left: var(--ms-space-4, 16px);
+  padding-left: var(--ms-space-4);
 }
 
 .ms-context-menu-divider {
   height: 1px;
   background-color: var(--ms-color-border-subtle);
-  margin: var(--ms-space-1, 4px) 0;
+  margin: var(--ms-space-1) 0;
 }
 
 @keyframes ms-context-menu-appear {

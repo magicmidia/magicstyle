@@ -1,0 +1,71 @@
+{
+  "$schema": "../theme.schema.json",
+  "name": "shadcn",
+  "label": "Shadcn",
+  "description": "Minimalist zinc monochrome design inspired by shadcn/ui. Clean borders, stark primary contrast, subtle accents.",
+  "shared": {
+    "radius-selector": "4px",
+    "radius-field": "6px",
+    "radius-box": "8px",
+    "border-width": "1px",
+    "depth": "1",
+    "font-sans": "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+    "font-mono": "IBM Plex Mono, Cascadia Mono, ui-monospace, monospace"
+  },
+  "light": {
+    "color-base-100": "#ffffff",
+    "color-base-200": "#f4f4f5",
+    "color-base-300": "#e4e4e7",
+    "color-base-content": "#09090b",
+    "color-primary": "#18181b",
+    "color-primary-content": "#fafafa",
+    "color-secondary": "oklch(0.645 0.169 034)",
+    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-accent": "#18181b",
+    "color-accent-content": "#fafafa",
+    "color-neutral": "#f4f4f5",
+    "color-neutral-content": "#09090b",
+    "color-info": "oklch(0.738 0.133 219)",
+    "color-info-content": "oklch(0.170 0.020 252)",
+    "color-success": "oklch(0.663 0.131 168)",
+    "color-success-content": "oklch(0.170 0.020 252)",
+    "color-warning": "oklch(0.785 0.154 061)",
+    "color-warning-content": "oklch(0.170 0.020 252)",
+    "color-danger": "oklch(0.545 0.188 024)",
+    "color-danger-content": "oklch(1.000 0.003 252)"
+  },
+  "dark": {
+    "color-base-100": "#09090b",
+    "color-base-200": "#18181b",
+    "color-base-300": "#27272a",
+    "color-base-content": "#fafafa",
+    "color-primary": "#fafafa",
+    "color-primary-content": "#09090b",
+    "color-secondary": "oklch(0.715 0.152 034)",
+    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-accent": "#f4f4f5",
+    "color-accent-content": "#09090b",
+    "color-neutral": "#27272a",
+    "color-neutral-content": "#fafafa",
+    "color-info": "oklch(0.738 0.133 219)",
+    "color-info-content": "oklch(0.170 0.020 252)",
+    "color-success": "oklch(0.663 0.131 168)",
+    "color-success-content": "oklch(0.170 0.020 252)",
+    "color-warning": "oklch(0.785 0.154 061)",
+    "color-warning-content": "oklch(0.170 0.020 252)",
+    "color-danger": "oklch(0.545 0.188 024)",
+    "color-danger-content": "oklch(1.000 0.003 252)"
+  },
+  "extras": {
+    "light": {
+      "elevation-button": "0px 1px 2px 0px rgb(0 0 0 / 0.05)",
+      "elevation-card": "0px 1px 3px 0px rgb(0 0 0 / 0.10), 0px 1px 2px -1px rgb(0 0 0 / 0.10)",
+      "focus-ring-width": "1px"
+    },
+    "dark": {
+      "elevation-button": "none",
+      "elevation-card": "none",
+      "focus-ring-width": "1px"
+    }
+  }
+}

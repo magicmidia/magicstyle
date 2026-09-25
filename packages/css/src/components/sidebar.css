@@ -119,23 +119,23 @@
 /* Semantic Brand Tones */
 .ms-sidebar--tone-neutral,
 .ms-sidebar[data-tone="neutral"] {
-  background: var(--ms-color-neutral, #222f3e);
-  color: #ffffff;
-  border-inline-end-color: color-mix(in srgb, var(--ms-color-neutral, #222f3e) 85%, white 15%);
+  background: var(--ms-color-neutral);
+  color: var(--ms-color-neutral-content);
+  border-inline-end-color: color-mix(in srgb, var(--ms-color-neutral) 85%, white 15%);
 }
 
 .ms-sidebar--tone-primary,
 .ms-sidebar[data-tone="primary"] {
-  background: var(--ms-color-primary, #2e86de);
-  color: #ffffff;
-  border-inline-end-color: color-mix(in srgb, var(--ms-color-primary, #2e86de) 85%, black 15%);
+  background: var(--ms-color-primary);
+  color: var(--ms-color-primary-content);
+  border-inline-end-color: color-mix(in srgb, var(--ms-color-primary) 85%, black 15%);
 }
 
 .ms-sidebar--tone-accent,
 .ms-sidebar[data-tone="accent"] {
-  background: var(--ms-color-accent, #341f97);
-  color: #ffffff;
-  border-inline-end-color: color-mix(in srgb, var(--ms-color-accent, #341f97) 85%, black 15%);
+  background: var(--ms-color-accent);
+  color: var(--ms-color-accent-content);
+  border-inline-end-color: color-mix(in srgb, var(--ms-color-accent) 85%, black 15%);
 }
 
 /* Sub-elements */

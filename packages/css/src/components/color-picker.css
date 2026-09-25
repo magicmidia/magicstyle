@@ -6,12 +6,12 @@
 .ms-color-picker {
   display: inline-flex;
   flex-direction: column;
-  gap: var(--ms-space-2, 8px);
-  padding: var(--ms-space-3, 12px);
+  gap: var(--ms-space-2);
+  padding: var(--ms-space-3);
   border: 1px solid var(--ms-color-border-subtle);
-  border-radius: var(--ms-radius-lg, 8px);
+  border-radius: var(--ms-radius-lg);
   background-color: var(--ms-color-surface-raised);
-  box-shadow: var(--ms-elevation-1, 0 1px 3px 0 rgba(0, 0, 0, 0.1));
+  box-shadow: var(--ms-elevation-1);
   width: max-content;
 }
 
@@ -24,14 +24,14 @@
 .ms-color-picker__control {
   display: flex;
   align-items: center;
-  gap: var(--ms-space-2, 8px);
+  gap: var(--ms-space-2);
 }
 
 .ms-color-picker__preview-button {
   position: relative;
   width: 32px;
   height: 32px;
-  border-radius: var(--ms-radius-md, 6px);
+  border-radius: var(--ms-radius-md);
   border: 1px solid var(--ms-color-border-default);
   cursor: pointer;
   overflow: hidden;
@@ -51,11 +51,11 @@
 
 .ms-color-picker__input {
   font-family: var(--ms-font-family-mono, monospace);
-  font-size: var(--ms-typography-size-sm, 0.875rem);
+  font-size: var(--ms-typography-size-sm);
   text-transform: uppercase;
-  padding: var(--ms-space-1, 4px) var(--ms-space-2, 8px);
+  padding: var(--ms-space-1) var(--ms-space-2);
   border: 1px solid var(--ms-color-border-default);
-  border-radius: var(--ms-radius-md, 6px);
+  border-radius: var(--ms-radius-md);
   width: 100px;
   background-color: var(--ms-color-surface-sunken);
   color: var(--ms-color-text-primary);
@@ -70,8 +70,8 @@
 .ms-color-picker__swatches {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: var(--ms-space-1, 4px);
-  padding-top: var(--ms-space-2, 8px);
+  gap: var(--ms-space-1);
+  padding-top: var(--ms-space-2);
   border-top: 1px solid var(--ms-color-border-subtle);
 }
 
@@ -79,7 +79,7 @@
   all: unset;
   width: 24px;
   height: 24px;
-  border-radius: var(--ms-radius-sm, 4px);
+  border-radius: var(--ms-radius-sm);
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.1);
   transition: transform var(--ms-transition-duration-fast, 120ms);

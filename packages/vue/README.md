@@ -31,6 +31,7 @@ import { MsField, MsInput, MsButton } from "@magic-style/vue";
 
 - Attributes such as `name`, `required`, `autocomplete` and `aria-*` reach the native control.
 - With SSR (Inertia/Nuxt), install `createMsToast()` per app and use `color-mode="system"` on `MsProvider` for flash-free dark mode.
+- Theming: `<MsProvider :overrides="{ 'color-primary': '#7c3aed' }">` for runtime brand colors, or `defineMsTheme()` + `checkMsThemeContrast()` + `msThemeToCss()` for complete, validated themes ([guide](https://github.com/magicmidia/magicstyle/blob/main/docs/theming.md)).
 - `@magic-style/css` is an optional peer: components ship no styles of their own.
 
 Full documentation: https://github.com/magicmidia/magicstyle#readme — MIT licensed.

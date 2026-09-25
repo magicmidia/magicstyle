@@ -6,7 +6,7 @@
 .ms-lightbox-backdrop {
   position: fixed;
   inset: 0;
-  z-index: var(--ms-z-index-modal, 1300);
+  z-index: var(--ms-z-index-modal);
   background-color: rgba(0, 0, 0, 0.92);
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--ms-color-text-on-accent, #ffffff);
+  color: var(--ms-color-text-on-accent);
 }
 
 .ms-lightbox__counter {
@@ -116,7 +116,7 @@
 
 .ms-lightbox__caption {
   text-align: center;
-  color: var(--ms-color-text-on-accent, #ffffff);
+  color: var(--ms-color-text-on-accent);
   padding: var(--ms-space-2);
   font-size: var(--ms-typography-size-sm);
   opacity: 0.9;

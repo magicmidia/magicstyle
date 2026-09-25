@@ -14,7 +14,7 @@
   background-color: var(--ms-color-surface-raised);
   color: var(--ms-color-text-primary);
   border: 1px solid var(--ms-color-border-subtle);
-  border-radius: var(--ms-radius-lg, 8px);
+  border-radius: var(--ms-radius-lg);
   box-shadow: var(
     --ms-elevation-3,
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -89,16 +89,16 @@
 
 /* Header, Content & Footer */
 .ms-popover__header {
-  padding: var(--ms-space-3, 12px) var(--ms-space-4, 16px);
+  padding: var(--ms-space-3) var(--ms-space-4);
   border-bottom: 1px solid var(--ms-color-border-subtle);
-  font-weight: var(--ms-typography-weight-semibold, 600);
-  font-size: var(--ms-typography-size-sm, 0.875rem);
+  font-weight: var(--ms-typography-weight-semibold);
+  font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-primary);
 }
 
 .ms-popover__body {
-  padding: var(--ms-space-4, 16px);
-  font-size: var(--ms-typography-size-sm, 0.875rem);
+  padding: var(--ms-space-4);
+  font-size: var(--ms-typography-size-sm);
   line-height: var(--ms-line-height-relaxed, 1.625);
   color: var(--ms-color-text-secondary);
 }
@@ -107,8 +107,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: var(--ms-space-2, 8px);
-  padding: var(--ms-space-2, 8px) var(--ms-space-4, 16px);
+  gap: var(--ms-space-2);
+  padding: var(--ms-space-2) var(--ms-space-4);
   border-top: 1px solid var(--ms-color-border-subtle);
   background-color: var(--ms-color-surface-sunken);
   border-bottom-left-radius: inherit;

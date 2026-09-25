@@ -35,7 +35,7 @@
 .ms-scrollbar::-webkit-scrollbar-thumb {
   background: transparent;
   border-radius: var(--ms-scrollbar-radius);
-  transition: background var(--ms-motion-duration-fast, 200ms) ease;
+  transition: background var(--ms-motion-duration-fast) ease;
 }
 
 /* Shown during active scrolling or when visibility is permanently 'always' */
@@ -209,48 +209,48 @@
 /* 8 Semantic Brand Tones for Thumb */
 .ms-scrollbar--tone-primary,
 .ms-scrollbar[data-tone="primary"] {
-  --ms-scrollbar-thumb: var(--ms-color-primary, #2e86de);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-primary, #2e86de) 80%, black 20%);
+  --ms-scrollbar-thumb: var(--ms-color-primary);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-primary) 80%, black 20%);
 }
 
 .ms-scrollbar--tone-secondary,
 .ms-scrollbar[data-tone="secondary"] {
-  --ms-scrollbar-thumb: var(--ms-color-secondary, #e15f41);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-secondary, #e15f41) 80%, black 20%);
+  --ms-scrollbar-thumb: var(--ms-color-secondary);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-secondary) 80%, black 20%);
 }
 
 .ms-scrollbar--tone-accent,
 .ms-scrollbar[data-tone="accent"] {
-  --ms-scrollbar-thumb: var(--ms-color-accent, #341f97);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-accent, #341f97) 80%, black 20%);
+  --ms-scrollbar-thumb: var(--ms-color-accent);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-accent) 80%, black 20%);
 }
 
 .ms-scrollbar--tone-neutral,
 .ms-scrollbar[data-tone="neutral"] {
-  --ms-scrollbar-thumb: var(--ms-color-neutral, #222f3e);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-neutral, #222f3e) 80%, black 20%);
+  --ms-scrollbar-thumb: var(--ms-color-neutral);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-neutral) 80%, black 20%);
 }
 
 .ms-scrollbar--tone-success,
 .ms-scrollbar[data-tone="success"] {
-  --ms-scrollbar-thumb: var(--ms-color-success, #10ac84);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-success, #10ac84) 80%, black 20%);
+  --ms-scrollbar-thumb: var(--ms-color-success);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-success) 80%, black 20%);
 }
 
 .ms-scrollbar--tone-info,
 .ms-scrollbar[data-tone="info"] {
-  --ms-scrollbar-thumb: var(--ms-color-info, #0abde3);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-info, #0abde3) 80%, black 20%);
+  --ms-scrollbar-thumb: var(--ms-color-info);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-info) 80%, black 20%);
 }
 
 .ms-scrollbar--tone-warning,
 .ms-scrollbar[data-tone="warning"] {
-  --ms-scrollbar-thumb: var(--ms-color-warning, #ff9f43);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-warning, #ff9f43) 80%, black 20%);
+  --ms-scrollbar-thumb: var(--ms-color-warning);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-warning) 80%, black 20%);
 }
 
 .ms-scrollbar--tone-danger,
 .ms-scrollbar[data-tone="danger"] {
-  --ms-scrollbar-thumb: var(--ms-color-danger, #ee5253);
-  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-danger, #ee5253) 80%, black 20%);
+  --ms-scrollbar-thumb: var(--ms-color-danger);
+  --ms-scrollbar-thumb-hover: color-mix(in srgb, var(--ms-color-danger) 80%, black 20%);
 }

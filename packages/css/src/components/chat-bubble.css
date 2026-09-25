@@ -5,8 +5,8 @@
 
 .ms-chat-bubble-wrapper {
   display: flex;
-  gap: var(--ms-space-3, 12px);
-  margin-bottom: var(--ms-space-4, 16px);
+  gap: var(--ms-space-3);
+  margin-bottom: var(--ms-space-4);
   width: 100%;
 }
 
@@ -24,13 +24,13 @@
   flex-shrink: 0;
   width: 36px;
   height: 36px;
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
   overflow: hidden;
-  background-color: var(--ms-color-surface-subtle, #f1f5f9);
+  background-color: var(--ms-color-surface-subtle);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--ms-typography-size-sm, 0.875rem);
+  font-size: var(--ms-typography-size-sm);
 }
 
 .ms-chat-bubble-content {
@@ -46,34 +46,34 @@
 .ms-chat-bubble-header {
   display: flex;
   align-items: baseline;
-  gap: var(--ms-space-2, 8px);
-  margin-bottom: var(--ms-space-1, 4px);
-  font-size: var(--ms-typography-size-xs, 0.75rem);
-  color: var(--ms-color-text-muted, #64748b);
+  gap: var(--ms-space-2);
+  margin-bottom: var(--ms-space-1);
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-muted);
 }
 
 .ms-chat-bubble-header__name {
-  font-weight: var(--ms-typography-weight-semibold, 600);
+  font-weight: var(--ms-typography-weight-semibold);
   color: var(--ms-color-text-primary);
 }
 
 /* The actual bubble balloon */
 .ms-chat-bubble {
   position: relative;
-  padding: var(--ms-space-3, 10px) var(--ms-space-4, 14px);
-  border-radius: var(--ms-radius-xl, 14px);
-  font-size: var(--ms-typography-size-sm, 0.875rem);
+  padding: var(--ms-space-3) var(--ms-space-4);
+  border-radius: var(--ms-radius-xl);
+  font-size: var(--ms-typography-size-sm);
   line-height: var(--ms-line-height-relaxed, 1.55);
   word-break: break-word;
 }
 
 /* Bubble Tail Corners */
 .ms-chat-bubble-wrapper--start .ms-chat-bubble {
-  border-bottom-left-radius: var(--ms-radius-xs, 2px);
+  border-bottom-left-radius: var(--ms-radius-xs);
 }
 
 .ms-chat-bubble-wrapper--end .ms-chat-bubble {
-  border-bottom-right-radius: var(--ms-radius-xs, 2px);
+  border-bottom-right-radius: var(--ms-radius-xs);
 }
 
 /* Variants & Tones */
@@ -106,8 +106,8 @@
 .ms-chat-bubble-footer {
   display: flex;
   align-items: center;
-  gap: var(--ms-space-1, 4px);
-  margin-top: var(--ms-space-1, 4px);
-  font-size: var(--ms-typography-size-xs, 0.75rem);
-  color: var(--ms-color-text-muted, #64748b);
+  gap: var(--ms-space-1);
+  margin-top: var(--ms-space-1);
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-muted);
 }

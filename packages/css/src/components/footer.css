@@ -58,7 +58,7 @@
   position: sticky;
   bottom: 0;
   inset-block-end: 0;
-  z-index: var(--ms-z-index-sticky, 100);
+  z-index: var(--ms-z-index-sticky);
 }
 
 .ms-footer--position-fixed,
@@ -70,7 +70,7 @@
   inset-inline-start: 0;
   inset-inline-end: 0;
   inset-block-end: 0;
-  z-index: var(--ms-z-index-sticky, 100);
+  z-index: var(--ms-z-index-sticky);
 }
 
 /* Shadows */
@@ -102,7 +102,7 @@
 
 .ms-footer--variant-sunken,
 .ms-footer[data-variant="sunken"] {
-  background: var(--ms-color-surface-sunken, #f1f5f9);
+  background: var(--ms-color-surface-sunken);
 }
 
 .ms-footer--variant-inverse,
@@ -115,23 +115,23 @@
 /* Semantic Brand Tones */
 .ms-footer--tone-neutral,
 .ms-footer[data-tone="neutral"] {
-  background: var(--ms-color-neutral, #222f3e);
-  color: #ffffff;
-  border-block-start-color: color-mix(in srgb, var(--ms-color-neutral, #222f3e) 85%, white 15%);
+  background: var(--ms-color-neutral);
+  color: var(--ms-color-neutral-content);
+  border-block-start-color: color-mix(in srgb, var(--ms-color-neutral) 85%, white 15%);
 }
 
 .ms-footer--tone-primary,
 .ms-footer[data-tone="primary"] {
-  background: var(--ms-color-primary, #2e86de);
-  color: #ffffff;
-  border-block-start-color: color-mix(in srgb, var(--ms-color-primary, #2e86de) 85%, black 15%);
+  background: var(--ms-color-primary);
+  color: var(--ms-color-primary-content);
+  border-block-start-color: color-mix(in srgb, var(--ms-color-primary) 85%, black 15%);
 }
 
 .ms-footer--tone-accent,
 .ms-footer[data-tone="accent"] {
-  background: var(--ms-color-accent, #341f97);
-  color: #ffffff;
-  border-block-start-color: color-mix(in srgb, var(--ms-color-accent, #341f97) 85%, black 15%);
+  background: var(--ms-color-accent);
+  color: var(--ms-color-accent-content);
+  border-block-start-color: color-mix(in srgb, var(--ms-color-accent) 85%, black 15%);
 }
 
 /* Sub-elements */
@@ -149,7 +149,7 @@
 }
 
 .ms-footer__column-title {
-  font-weight: var(--ms-typography-weight-bold, 700);
+  font-weight: var(--ms-typography-weight-bold);
   font-size: var(--ms-typography-size-sm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -165,7 +165,7 @@
 }
 
 .ms-footer__link:hover {
-  color: var(--ms-color-primary, #2e86de);
+  color: var(--ms-color-primary);
 }
 
 .ms-footer__bottom {

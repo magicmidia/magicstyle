@@ -1,221 +1,148 @@
-import { cssVarName, cssVarValue, type DtcgToken } from "@magic-style-internal/tokens";
-import { CONTRAST_HIGH, DIALS, THEMES, baseline, deltaAgainst, resolveTheme } from "./themes.ts";
+import { THEME_CONTRACT, type ColorMode, type ThemeSource, type ThemeValues } from "./contract.ts";
+import { DERIVED, exprToCss } from "./derive.ts";
+import { DEFAULT_THEME, DIALS, THEMES, resolveThemeMode } from "./themes.ts";
 
-const RADIUS_TOKEN_REF: Record<string, string> = {
-  sharp: "--ms-radius-xs",
-  subtle: "--ms-radius-sm",
-  medium: "--ms-radius-md",
-  rounded: "--ms-radius-lg",
+/** Selectors on which derived tokens re-resolve (so nested theme scopes work). */
+export const SCOPE_SELECTOR = ":root, [data-ms-theme], [data-ms-color-mode], [data-ms-contrast]";
+
+const RADIUS_DIAL: Record<string, string> = {
+  sharp: "calc(var(--ms-radius-selector) / 2)",
+  subtle: "var(--ms-radius-selector)",
+  medium: "var(--ms-radius-field)",
+  rounded: "var(--ms-radius-box)",
 };
 
-function block(selector: string, entries: ReadonlyArray<[string, DtcgToken]>): string {
-  if (entries.length === 0) return "";
-  const lines = entries.map(([path, token]) => `  ${cssVarName(path)}: ${cssVarValue(token)};`);
-  return `${selector} {\n${lines.join("\n")}\n}\n`;
+function rule(
+  selectors: readonly string[],
+  declarations: ReadonlyArray<readonly [string, string]>,
+  indent = "",
+): string {
+  const body = declarations.map(([name, value]) => `${indent}  ${name}: ${value};`).join("\n");
+  return `${indent}${selectors.join(`,\n${indent}`)} {\n${body}\n${indent}}\n`;
 }
 
-/** Emits the full theme/color-mode/dial CSS layer (doc 07 §2 DOM contract). */
+function modeDeclarations(scheme: ColorMode, values: ThemeValues, extras: ThemeValues) {
+  const contract = THEME_CONTRACT.filter((entry) => entry.key in values).map(
+    (entry) => [`--ms-${entry.key}`, values[entry.key]!] as const,
+  );
+  const extra = Object.entries(extras).map(([name, value]) => [`--ms-${name}`, value] as const);
+  return [["color-scheme", scheme] as const, ...contract, ...extra];
+}
+
+interface ThemeSelectors {
+  light: string[];
+  dark: string[];
+  system: string[];
+}
+
+function selectorsFor(name: string): ThemeSelectors {
+  if (name === DEFAULT_THEME) {
+    return {
+      light: [
+        ":root",
+        `[data-ms-theme="${name}"]`,
+        '[data-ms-color-mode="light"]',
+        '[data-ms-color-mode="system"]',
+      ],
+      dark: ['[data-ms-color-mode="dark"]', `[data-ms-theme="${name}"][data-ms-color-mode="dark"]`],
+      system: [
+        '[data-ms-color-mode="system"]',
+        `[data-ms-theme="${name}"][data-ms-color-mode="system"]`,
+      ],
+    };
+  }
+  const t = `[data-ms-theme="${name}"]`;
+  return {
+    light: [t, `${t}[data-ms-color-mode="light"]`, `${t}[data-ms-color-mode="system"]`],
+    dark: [`${t}[data-ms-color-mode="dark"]`],
+    system: [`${t}[data-ms-color-mode="system"]`],
+  };
+}
+
+/**
+ * CSS for one theme: light, dark and OS-driven ("system") blocks. Works for
+ * official themes and user themes (`extends` defaults to "magic").
+ */
+export function themeToCss(
+  theme: ThemeSource,
+  sources: readonly ThemeSource[] = [theme],
+): { base: string; system: string } {
+  const light = resolveThemeMode(theme.name, "light", sources);
+  const dark = resolveThemeMode(theme.name, "dark", sources);
+  const sel = selectorsFor(theme.name);
+  return {
+    base:
+      `/* ${theme.label} — ${theme.description} */\n` +
+      rule(sel.light, modeDeclarations("light", light.values, light.extras)) +
+      rule(sel.dark, modeDeclarations("dark", dark.values, dark.extras)),
+    system: rule(sel.system, modeDeclarations("dark", dark.values, dark.extras), "  "),
+  };
+}
+
+/** Full themes.css: derived layer, every official theme, contrast and dials. */
 export function emitThemesCss(): string {
-  const base = baseline();
-  const parts: string[] = [];
-  parts.push("/*");
-  parts.push(" * Magic-Style Themes - generated output. DO NOT EDIT.");
-  parts.push(" * Theme != color mode (doc 07 §1). Baseline magic/light lives in tokens.css :root.");
-  parts.push(" */");
+  const derived = rule(
+    SCOPE_SELECTOR.split(", "),
+    DERIVED.map(([name, expr]) => [`--ms-${name}`, exprToCss(expr)] as const),
+  );
+  const themes = THEMES.map((theme) => themeToCss(theme, THEMES));
 
-  /*
-   * Cascade order matters:
-   *   1. generic dark (default theme Magic applies by mode alone - §3)
-   *   2. per-theme light overrides
-   *   3. per-theme dark overrides (win over both above)
-   */
-  parts.push(
-    block('[data-ms-color-mode="dark"]', deltaAgainst(base, resolveTheme("magic", "dark"))),
-    // Restores baseline light values inside a light scope nested on a dark page.
-    block('[data-ms-color-mode="light"]', deltaAgainst(resolveTheme("magic", "dark"), base)),
+  const highContrast = rule(
+    ['[data-ms-contrast="high"]'],
+    [
+      ["--ms-color-text-secondary", "var(--ms-color-base-content)"],
+      [
+        "--ms-color-text-muted",
+        "color-mix(in oklab, var(--ms-color-base-content) 88%, var(--ms-color-base-100))",
+      ],
+      [
+        "--ms-color-text-subtle",
+        "color-mix(in oklab, var(--ms-color-base-content) 80%, var(--ms-color-base-100))",
+      ],
+      [
+        "--ms-color-border-default",
+        "color-mix(in oklab, var(--ms-color-base-content) 60%, var(--ms-color-base-100))",
+      ],
+      [
+        "--ms-color-border-subtle",
+        "color-mix(in oklab, var(--ms-color-base-content) 45%, var(--ms-color-base-100))",
+      ],
+    ],
   );
 
-  for (const theme of THEMES.filter((t) => t.name !== "magic")) {
-    for (const mode of ["light", "dark"] as const) {
-      const delta = deltaAgainst(base, resolveTheme(theme.name, mode));
-      const selector =
-        mode === "dark"
-          ? `[data-ms-theme="${theme.dataMs}"][data-ms-color-mode="dark"]`
-          : `[data-ms-theme="${theme.dataMs}"], [data-ms-theme="${theme.dataMs}"][data-ms-color-mode="light"]`;
-      parts.push(block(selector, delta));
-    }
-  }
-
-  /*
-   * CSS-only system preference: [data-ms-color-mode="system"] follows the OS
-   * without JS (SSR/first paint). Mirrors the dark blocks above.
-   */
-  const systemDark = [
-    block('[data-ms-color-mode="system"]', deltaAgainst(base, resolveTheme("magic", "dark"))),
-    ...THEMES.filter((t) => t.name !== "magic").map((theme) =>
-      block(
-        `[data-ms-theme="${theme.dataMs}"][data-ms-color-mode="system"]`,
-        deltaAgainst(base, resolveTheme(theme.name, "dark")),
-      ),
+  const dials = [
+    ...Object.entries(DIALS.density).map(([name, dial]) =>
+      rule([`[data-ms-density="${name}"]`], [["--ms-density-scale", String(dial.$value)]]),
     ),
-    block(
-      '[data-ms-color-mode="system"][data-ms-contrast="high"]',
-      deltaAgainst(
-        resolveTheme("magic", "dark"),
-        resolveTheme("magic", "dark", CONTRAST_HIGH.dark),
-      ),
+    // Doubled attribute: beats `[data-ms-theme][data-ms-color-mode]` theme blocks.
+    ...Object.entries(RADIUS_DIAL).map(([name, value]) =>
+      rule([`[data-ms-radius="${name}"][data-ms-radius]`], [["--ms-radius-control", value]]),
     ),
-  ].filter((part) => part !== "");
-  parts.push(`@media (prefers-color-scheme: dark) {\n${systemDark.join("\n")}}\n`);
+  ];
 
-  for (const [name, dial] of Object.entries(DIALS.density)) {
-    parts.push(
-      block(`[data-ms-density="${name}"]`, [
-        ["density.scale", { $type: "number", $value: dial.$value }],
-      ]),
-    );
-  }
-
-  for (const name of Object.keys(DIALS.radius)) {
-    parts.push(
-      block(`[data-ms-radius="${name}"]`, [
-        ["control.radius", { $type: "dimension", $value: `var(${RADIUS_TOKEN_REF[name]})` }],
-      ]),
-    );
-  }
-
-  parts.push(
-    block(
-      '[data-ms-contrast="high"]',
-      deltaAgainst(base, resolveTheme("magic", "light", CONTRAST_HIGH.light)),
-    ),
-  );
-  const darkBase = resolveTheme("magic", "dark");
-  parts.push(
-    block(
-      '[data-ms-color-mode="dark"][data-ms-contrast="high"]',
-      deltaAgainst(darkBase, resolveTheme("magic", "dark", CONTRAST_HIGH.dark)),
-    ),
-  );
-
-  /*
-   * Aliases are re-declared on every theming scope (not only :root) so var()
-   * references resolve against the nearest theme/mode, e.g. nested MsThemeScope.
-   */
-  parts.push(`/* Global Semantic Aliases & Compatibility Fallbacks */
-:root,
-[data-ms-theme],
-[data-ms-color-mode],
-[data-ms-contrast] {
-  --ms-color-surface: var(--ms-color-surface-default);
-  --ms-color-surface-subtle: var(--ms-color-surface-sunken);
-  --ms-color-surface-hover: var(--ms-color-interactive-neutral-subtle);
-  --ms-color-text: var(--ms-color-text-primary);
-  --ms-color-text-default: var(--ms-color-text-primary);
-  --ms-color-border: var(--ms-color-border-default);
-  --ms-color-border-hover: var(--ms-color-border-strong);
-  --ms-color-primary: var(--ms-color-brand-primary);
-  --ms-color-secondary: var(--ms-color-brand-secondary);
-  --ms-color-accent: var(--ms-color-brand-accent);
-  --ms-color-neutral: var(--ms-color-brand-neutral);
-  --ms-color-info: var(--ms-color-brand-info);
-  --ms-color-success: var(--ms-color-brand-success);
-  --ms-color-warning: var(--ms-color-brand-warning);
-  --ms-color-danger: var(--ms-color-brand-danger);
-  --ms-color-primary-subtle: var(--ms-color-interactive-primary-subtle);
-  --ms-color-secondary-subtle: var(--ms-color-interactive-secondary-subtle);
-  --ms-color-accent-subtle: var(--ms-color-interactive-accent-subtle);
-  --ms-color-neutral-subtle: var(--ms-color-interactive-neutral-subtle);
-  --ms-color-info-subtle: var(--ms-color-feedback-info-bg);
-  --ms-color-success-subtle: var(--ms-color-feedback-success-bg);
-  --ms-color-warning-subtle: var(--ms-color-feedback-warning-bg);
-  --ms-color-danger-subtle: var(--ms-color-feedback-danger-bg);
-  --ms-color-primary-default: var(--ms-color-interactive-primary);
-  --ms-color-neutral-default: var(--ms-color-interactive-neutral);
-  --ms-color-danger-default: var(--ms-color-feedback-danger-solid);
-  --ms-color-success-default: var(--ms-color-feedback-success-solid);
-  --ms-color-info-default: var(--ms-color-feedback-info-solid);
-  --ms-color-warning-default: var(--ms-color-feedback-warning-solid);
-  --ms-color-status-danger: var(--ms-color-feedback-danger-text);
-  --ms-color-status-warning: var(--ms-color-feedback-warning-text);
-  --ms-color-status-success: var(--ms-color-feedback-success-text);
-  --ms-color-status-info: var(--ms-color-feedback-info-text);
-  --ms-color-primary-text: var(--ms-color-interactive-primary-text);
-  --ms-color-primary-hover: var(--ms-color-interactive-primary-hover);
-  --ms-color-primary-active: var(--ms-color-interactive-primary-active);
-  --ms-color-primary-contrast: var(--ms-color-text-on-accent);
-  --ms-color-primary-hover-subtle: var(--ms-color-interactive-primary-subtle);
-  --ms-color-neutral-hover: var(--ms-color-interactive-neutral-hover);
-  --ms-color-neutral-contrast: var(--ms-color-interactive-neutral-fg);
-  --ms-color-danger-hover: var(--ms-color-feedback-danger-solid-hover);
-  --ms-color-danger-contrast: var(--ms-color-feedback-danger-solid-fg);
-  --ms-color-success-hover: var(--ms-color-feedback-success-solid-hover);
-  --ms-color-success-contrast: var(--ms-color-feedback-success-solid-fg);
-  --ms-color-info-contrast: var(--ms-color-feedback-info-solid-fg);
-  --ms-color-warning-contrast: var(--ms-color-feedback-warning-solid-fg);
-  --ms-color-text-disabled: var(--ms-color-text-muted);
-  --ms-color-surface-disabled: var(--ms-color-surface-sunken);
-  --ms-color-surface-elevated: var(--ms-color-surface-raised);
-  --ms-color-surface-overlay: var(--ms-color-surface-raised);
-  --ms-color-focus-ring: var(--ms-focus-ring-color);
-  /* Soft pairs (bg = tone ink, fg = tone subtle) */
-  --ms-color-primary-soft-bg: var(--ms-color-interactive-primary-text);
-  --ms-color-primary-soft-fg: var(--ms-color-interactive-primary-subtle);
-  --ms-color-secondary-soft-bg: var(--ms-color-interactive-secondary-text);
-  --ms-color-secondary-soft-fg: var(--ms-color-interactive-secondary-subtle);
-  --ms-color-accent-soft-bg: var(--ms-color-interactive-accent-text);
-  --ms-color-accent-soft-fg: var(--ms-color-interactive-accent-subtle);
-  --ms-color-neutral-soft-bg: var(--ms-color-interactive-neutral-text);
-  --ms-color-neutral-soft-fg: var(--ms-color-interactive-neutral-subtle);
-  --ms-color-success-soft-bg: var(--ms-color-feedback-success-text);
-  --ms-color-success-soft-fg: var(--ms-color-feedback-success-bg);
-  --ms-color-info-soft-bg: var(--ms-color-feedback-info-text);
-  --ms-color-info-soft-fg: var(--ms-color-feedback-info-bg);
-  --ms-color-warning-soft-bg: var(--ms-color-feedback-warning-text);
-  --ms-color-warning-soft-fg: var(--ms-color-feedback-warning-bg);
-  --ms-color-danger-soft-bg: var(--ms-color-feedback-danger-text);
-  --ms-color-danger-soft-fg: var(--ms-color-feedback-danger-bg);
-}
-
-:root {
-  --ms-color-backdrop-dock: rgba(15, 23, 42, 0.4);
-  --ms-color-backdrop: rgba(15, 23, 42, 0.55);
-}
-
-[data-ms-color-mode="dark"] {
-  --ms-color-backdrop: rgba(0, 0, 0, 0.75);
-  --ms-color-backdrop-dock: rgba(0, 0, 0, 0.6);
-}
-
-/* Native controls, scrollbars and autofill follow the active mode. */
-:root,
-[data-ms-color-mode="light"] {
-  color-scheme: light;
-}
-
-[data-ms-color-mode="dark"] {
-  color-scheme: dark;
-}
-
-[data-ms-color-mode="system"] {
-  color-scheme: light dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  [data-ms-color-mode="system"] {
-    --ms-color-backdrop: rgba(0, 0, 0, 0.75);
-    --ms-color-backdrop-dock: rgba(0, 0, 0, 0.6);
-  }
-}`);
-
-  return `${parts.filter((part) => part !== "").join("\n")}`;
+  return [
+    "/*",
+    " * Magic-Style Themes - generated from packages/internal/themes/src/themes/*.json. DO NOT EDIT.",
+    " * A theme only sets the contract (--ms-color-*, --ms-radius-*, --ms-depth, --ms-font-*);",
+    " * every other token is derived below and re-resolves on each theme scope.",
+    " */",
+    "",
+    "/* Derived tokens (computed from the theme contract) */",
+    derived,
+    ...themes.map((t) => t.base),
+    '/* data-ms-color-mode="system": follows the OS preference without JavaScript */',
+    `@media (prefers-color-scheme: dark) {\n${themes.map((t) => t.system).join("\n")}}\n`,
+    "/* Accessibility and density dials */",
+    highContrast,
+    ...dials,
+  ].join("\n");
 }
 
 export function manifest(): string {
   return (
     JSON.stringify(
       {
-        version: "0.1.0",
+        version: "0.2.0",
         domContract: {
           theme: "data-ms-theme",
           colorMode: "data-ms-color-mode",
@@ -223,22 +150,24 @@ export function manifest(): string {
           contrast: "data-ms-contrast",
           radius: "data-ms-radius",
         },
+        contract: THEME_CONTRACT.map(({ key, kind, required, description }) => ({
+          variable: `--ms-${key}`,
+          kind,
+          required,
+          description,
+        })),
         themes: THEMES.map((t) => ({
           name: t.name,
-          dataMs: t.dataMs,
+          label: t.label,
           description: t.description,
           colorModes: ["light", "dark"],
-          defaultMode: "light",
         })),
         dials: {
           density: Object.keys(DIALS.density),
-          radius: Object.keys(DIALS.radius).map((name) => ({
-            name,
-            varRef: RADIUS_TOKEN_REF[name],
-          })),
+          radius: Object.keys(RADIUS_DIAL),
           contrast: ["default", "high"],
+          colorMode: ["light", "dark", "system"],
         },
-        preferenceResolution: "system resolves to light|dark on DOM (doc 07 §3)",
       },
       null,
       2,

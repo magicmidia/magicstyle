@@ -1,3 +1,4 @@
+import type { MsThemeValues } from "../../theming.ts";
 import type {
   ColorModePreference,
   Contrast,
@@ -56,4 +57,11 @@ export interface MsProviderProps {
    * Default: "div".
    */
   as?: string;
+
+  /**
+   * Runtime theme customization: contract values (see MS_THEME_CONTRACT) applied as
+   * CSS variables on this scope. Everything derived (hover, subtle, text…) follows.
+   * @example { "color-primary": "#7c3aed", "color-primary-content": "#fff", "radius-field": "10px" }
+   */
+  overrides?: MsThemeValues;
 }

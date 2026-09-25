@@ -31,7 +31,7 @@
 }
 
 .ms-stepper--direction-vertical .ms-step {
-  padding-bottom: var(--ms-space-6, 24px);
+  padding-bottom: var(--ms-space-6);
   align-items: flex-start;
 }
 
@@ -71,7 +71,7 @@
 }
 
 .ms-step--complete .ms-step__connector {
-  background-color: var(--ms-color-primary, #6366f1);
+  background-color: var(--ms-color-primary);
 }
 
 /* Step Trigger Button */
@@ -79,11 +79,11 @@
   all: unset;
   display: flex;
   align-items: center;
-  gap: var(--ms-space-3, 12px);
+  gap: var(--ms-space-3);
   position: relative;
   z-index: 1;
   cursor: default;
-  color: var(--ms-color-text, #0f172a);
+  color: var(--ms-color-text);
 }
 
 .ms-stepper--clickable .ms-step:not(.ms-step--disabled) .ms-step__trigger {
@@ -103,9 +103,9 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border-radius: var(--ms-radius-full, 9999px);
-  font-size: var(--ms-typography-size-sm, 0.875rem);
-  font-weight: var(--ms-typography-weight-semibold, 600);
+  border-radius: var(--ms-radius-full);
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-semibold);
   background-color: var(--ms-color-surface-raised);
   border: 2px solid var(--ms-color-border-default);
   color: var(--ms-color-text-secondary);
@@ -120,15 +120,15 @@
 }
 
 .ms-step--complete .ms-step__indicator {
-  border-color: var(--ms-color-primary, #6366f1);
-  background-color: var(--ms-color-primary-subtle, #eef2ff);
-  color: var(--ms-color-primary, #6366f1);
+  border-color: var(--ms-color-primary);
+  background-color: var(--ms-color-primary-subtle);
+  color: var(--ms-color-primary);
 }
 
 .ms-step--error .ms-step__indicator {
-  border-color: var(--ms-color-danger, #ef4444);
-  background-color: var(--ms-color-danger-subtle, #fef2f2);
-  color: var(--ms-color-danger, #ef4444);
+  border-color: var(--ms-color-danger);
+  background-color: var(--ms-color-danger-subtle);
+  color: var(--ms-color-danger);
 }
 
 /* Step Text Group */
@@ -139,18 +139,18 @@
 }
 
 .ms-step__title {
-  font-size: var(--ms-typography-size-sm, 0.875rem);
-  font-weight: var(--ms-typography-weight-semibold, 600);
-  color: var(--ms-color-text, #0f172a);
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-semibold);
+  color: var(--ms-color-text);
   line-height: 1.25;
 }
 
 .ms-step--upcoming .ms-step__title {
-  color: var(--ms-color-text-muted, #64748b);
+  color: var(--ms-color-text-muted);
 }
 
 .ms-step__subtitle {
-  font-size: var(--ms-typography-size-xs, 0.75rem);
-  color: var(--ms-color-text-muted, #64748b);
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-muted);
   line-height: 1.4;
 }

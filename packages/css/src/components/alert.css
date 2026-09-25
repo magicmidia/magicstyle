@@ -11,8 +11,8 @@
   display: flex;
   align-items: center;
   gap: var(--ms-space-3-5, 14px);
-  padding: var(--ms-space-3-5, 14px) var(--ms-space-4, 16px);
-  border-radius: var(--ms-radius-md, 8px);
+  padding: var(--ms-space-3-5, 14px) var(--ms-space-4);
+  border-radius: var(--ms-radius-md);
   border: var(--ms-border-hairline) solid transparent;
   font-family: var(--ms-font-sans);
   font-size: var(--ms-typography-size-sm);
@@ -30,21 +30,21 @@
 
 /* Sizes */
 .ms-alert--sm {
-  padding: var(--ms-space-2, 8px) var(--ms-space-3, 12px);
+  padding: var(--ms-space-2) var(--ms-space-3);
   font-size: var(--ms-typography-size-xs);
   gap: var(--ms-space-2-5, 10px);
 }
 
 .ms-alert--md {
-  padding: var(--ms-space-3-5, 14px) var(--ms-space-4, 16px);
+  padding: var(--ms-space-3-5, 14px) var(--ms-space-4);
   font-size: var(--ms-typography-size-sm);
   gap: var(--ms-space-3-5, 14px);
 }
 
 .ms-alert--lg {
-  padding: var(--ms-space-4, 16px) var(--ms-space-5, 20px);
+  padding: var(--ms-space-4) var(--ms-space-5);
   font-size: var(--ms-typography-size-md);
-  gap: var(--ms-space-4, 16px);
+  gap: var(--ms-space-4);
 }
 
 /* Icon */
@@ -66,7 +66,7 @@
 .ms-alert-icon--featured {
   width: 40px;
   height: 40px;
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
   background-color: color-mix(in oklch, currentColor 14%, transparent);
   box-shadow: 0 0 0 1px color-mix(in oklch, currentColor 20%, transparent);
 }

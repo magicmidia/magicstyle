@@ -51,13 +51,12 @@ describe("custom property contract", () => {
     );
   });
 
-  it("color aliases re-resolve on every theming scope", () => {
+  it("derived tokens re-resolve on every theming scope", () => {
     const themes = cssFiles.find((file) => file.name === "themes.css")!.css;
-    const aliasRule = /([^{}]+)\{[^}]*--ms-color-primary:\s*var\(--ms-color-brand-primary\)/.exec(
-      themes,
-    );
-    expect(aliasRule).not.toBeNull();
-    const selectors = aliasRule![1]!.split(",").map((s) => s.trim());
+    const derivedRule =
+      /([^{}]+)\{[^{}]*--ms-color-surface-default:\s*var\(--ms-color-base-100\)/.exec(themes);
+    expect(derivedRule).not.toBeNull();
+    const selectors = derivedRule![1]!.split(",").map((s) => s.trim());
     expect(selectors).toEqual(
       expect.arrayContaining([":root", "[data-ms-theme]", "[data-ms-color-mode]"]),
     );
@@ -84,9 +83,9 @@ describe("cascade layers and color scheme", () => {
 
   it("themes set color-scheme and support CSS-only system mode", () => {
     const themes = cssFiles.find((file) => file.name === "themes.css")!.css;
-    expect(themes).toMatch(/\[data-ms-color-mode="dark"\]\s*\{\s*color-scheme: dark;/);
+    expect(themes).toMatch(/\[data-ms-color-mode="dark"\],[^{]*\{\s*color-scheme: dark;/);
     expect(themes).toMatch(
-      /@media \(prefers-color-scheme: dark\)\s*\{\s*\[data-ms-color-mode="system"\]\s*\{/,
+      /@media \(prefers-color-scheme: dark\)\s*\{\s*\[data-ms-color-mode="system"\],/,
     );
   });
 });

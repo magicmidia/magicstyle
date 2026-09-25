@@ -23,8 +23,8 @@
 }
 
 .ms-skeleton {
-  --_ms-skel-bg: var(--ms-color-neutral-200, #e2e8f0);
-  --_ms-skel-highlight: var(--ms-color-surface-raised, #ffffff);
+  --_ms-skel-bg: var(--ms-color-neutral-200);
+  --_ms-skel-highlight: var(--ms-color-surface-raised);
   --_ms-skel-duration: 1.6s;
   display: block;
   box-sizing: border-box;
@@ -57,23 +57,23 @@
 
 /* Tones */
 .ms-skeleton--tone-subtle {
-  --_ms-skel-bg: var(--ms-color-surface-sunken, #f1f5f9);
-  --_ms-skel-highlight: var(--ms-color-neutral-0, #ffffff);
+  --_ms-skel-bg: var(--ms-color-surface-sunken);
+  --_ms-skel-highlight: var(--ms-color-neutral-0);
 }
 
 .ms-skeleton--tone-default {
-  --_ms-skel-bg: var(--ms-color-neutral-200, #e2e8f0);
-  --_ms-skel-highlight: var(--ms-color-neutral-100, #f8fafc);
+  --_ms-skel-bg: var(--ms-color-neutral-200);
+  --_ms-skel-highlight: var(--ms-color-neutral-100);
 }
 
 .ms-skeleton--tone-contrast {
-  --_ms-skel-bg: var(--ms-color-neutral-300, #cbd5e1);
-  --_ms-skel-highlight: var(--ms-color-neutral-100, #f8fafc);
+  --_ms-skel-bg: var(--ms-color-neutral-300);
+  --_ms-skel-highlight: var(--ms-color-neutral-100);
 }
 
 .ms-skeleton--tone-primary {
-  --_ms-skel-bg: var(--ms-color-primary-100, #dbeafe);
-  --_ms-skel-highlight: var(--ms-color-primary-50, #eff6ff);
+  --_ms-skel-bg: var(--ms-color-primary-100);
+  --_ms-skel-highlight: var(--ms-color-primary-50);
 }
 
 /* Speeds */
@@ -92,38 +92,38 @@
 /* Shapes & Presets */
 .ms-skeleton--text {
   height: 1.15em;
-  border-radius: var(--ms-radius-sm, 4px);
-  margin-bottom: var(--ms-space-2, 8px);
+  border-radius: var(--ms-radius-sm);
+  margin-bottom: var(--ms-space-2);
 }
 
 .ms-skeleton--circle {
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
   width: 40px;
   height: 40px;
   flex-shrink: 0;
 }
 
 .ms-skeleton--avatar {
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
   width: 48px;
   height: 48px;
   flex-shrink: 0;
 }
 
 .ms-skeleton--button {
-  border-radius: var(--ms-control-radius, 6px);
+  border-radius: var(--ms-control-radius);
   width: 100px;
   height: 38px;
 }
 
 .ms-skeleton--card {
-  border-radius: var(--ms-radius-md, 8px);
+  border-radius: var(--ms-radius-md);
   width: 100%;
   height: 160px;
 }
 
 .ms-skeleton--rect {
-  border-radius: var(--ms-radius-md, 8px);
+  border-radius: var(--ms-radius-md);
   width: 100%;
   height: 100px;
 }

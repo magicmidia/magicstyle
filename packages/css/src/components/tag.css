@@ -44,7 +44,7 @@
 /* Variant: Soft (Default) */
 .ms-tag--soft.ms-tag--neutral {
   background-color: var(--ms-color-text-secondary);
-  color: var(--ms-color-surface-sunken, #f1f5f9);
+  color: var(--ms-color-surface-sunken);
   border-color: var(--ms-color-border-subtle);
 }
 

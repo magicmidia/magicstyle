@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "sideEffects": false,
   "description": "Theme and color-mode system for Magic-Style: Magic/Graphite x light/dark, density/radius/contrast dials.",
   "exports": {
     ".": {

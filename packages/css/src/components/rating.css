@@ -6,7 +6,7 @@
 .ms-rating {
   display: inline-flex;
   align-items: center;
-  gap: var(--ms-space-1, 4px);
+  gap: var(--ms-space-1);
   user-select: none;
 }
 
@@ -25,7 +25,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--ms-color-border, #cbd5e1);
+  color: var(--ms-color-border);
   transition:
     color var(--ms-transition-duration-fast, 120ms),
     transform var(--ms-transition-duration-fast, 120ms);
@@ -41,13 +41,13 @@
 }
 
 .ms-rating__item--filled {
-  color: var(--ms-color-warning, #f59e0b);
+  color: var(--ms-color-warning);
 }
 
 .ms-rating__item:focus-visible {
-  outline: 2px solid var(--ms-color-primary, #6366f1);
+  outline: 2px solid var(--ms-color-primary);
   outline-offset: 2px;
-  border-radius: var(--ms-radius-sm, 4px);
+  border-radius: var(--ms-radius-sm);
 }
 
 /* Sizing */

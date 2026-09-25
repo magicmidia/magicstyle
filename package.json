@@ -1,6 +1,6 @@
 {
   "name": "magic-style",
-  "description": "Enterprise Design System and component platform for Vue 3 and CSS: 95 accessible components, 10 authentic curated themes, 285 DTCG tokens, and WCAG 2.2 AA compliance.",
+  "description": "Enterprise Design System and component platform for Vue 3 and CSS: 95 accessible components, 10 authentic curated themes, 201 DTCG tokens, and WCAG 2.2 AA compliance.",
   "version": "0.1.0",
   "private": true,
   "type": "module",

@@ -9,17 +9,17 @@
   justify-content: center;
   vertical-align: middle;
   box-sizing: border-box;
-  font-family: var(--ms-font-mono, ui-monospace, monospace);
+  font-family: var(--ms-font-mono);
   font-weight: 500;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
   user-select: none;
-  border-radius: var(--ms-radius-sm, 4px);
-  background-color: var(--ms-color-surface-subtle, #f1f5f9);
-  color: var(--ms-color-text-primary, #0f172a);
-  border: 1px solid var(--ms-color-border-subtle, #cbd5e1);
-  transition: all var(--ms-motion-duration-fast, 150ms) ease;
+  border-radius: var(--ms-radius-sm);
+  background-color: var(--ms-color-surface-subtle);
+  color: var(--ms-color-text-primary);
+  border: 1px solid var(--ms-color-border-subtle);
+  transition: all var(--ms-motion-duration-fast) ease;
 }
 
 /* --- Sizes --- */
@@ -54,8 +54,8 @@
 /* --- Variants --- */
 /* Raised (3D keycap effect standard in Shadcn & FlyonUI) */
 .ms-kbd--variant-raised {
-  background-color: var(--ms-color-surface-raised, #ffffff);
-  border-color: var(--ms-color-border-default, #cbd5e1);
+  background-color: var(--ms-color-surface-raised);
+  border-color: var(--ms-color-border-default);
   border-bottom-width: 2px;
   box-shadow:
     0 1px 0 0 rgba(0, 0, 0, 0.08),
@@ -63,8 +63,8 @@
 }
 
 :root[data-ms-color-mode="dark"] .ms-kbd--variant-raised {
-  background-color: var(--ms-color-surface-raised, #1e293b);
-  border-color: var(--ms-color-border-strong, #334155);
+  background-color: var(--ms-color-surface-raised);
+  border-color: var(--ms-color-border-strong);
   border-bottom-width: 2px;
   box-shadow:
     0 1px 0 0 rgba(0, 0, 0, 0.4),
@@ -74,47 +74,47 @@
 /* Outline */
 .ms-kbd--variant-outline {
   background-color: transparent;
-  border-color: var(--ms-color-border-default, #cbd5e1);
+  border-color: var(--ms-color-border-default);
   box-shadow: none;
 }
 
 /* Flat / Subtle */
 .ms-kbd--variant-flat {
-  background-color: var(--ms-color-surface-subtle, #f1f5f9);
+  background-color: var(--ms-color-surface-subtle);
   border-color: transparent;
   box-shadow: none;
 }
 
 :root[data-ms-color-mode="dark"] .ms-kbd--variant-flat {
-  background-color: var(--ms-color-surface-subtle, #1e293b);
+  background-color: var(--ms-color-surface-subtle);
 }
 
 /* --- Tones --- */
 .ms-kbd--tone-primary {
-  color: var(--ms-color-primary, #2e86de);
-  border-color: color-mix(in oklch, var(--ms-color-primary, #2e86de) 30%, transparent);
+  color: var(--ms-color-primary);
+  border-color: color-mix(in oklch, var(--ms-color-primary) 30%, transparent);
 }
 
 .ms-kbd--tone-accent {
-  color: var(--ms-color-accent, #341f97);
-  border-color: color-mix(in oklch, var(--ms-color-accent, #341f97) 30%, transparent);
+  color: var(--ms-color-accent);
+  border-color: color-mix(in oklch, var(--ms-color-accent) 30%, transparent);
 }
 
 .ms-kbd--tone-success {
-  color: var(--ms-color-success, #10ac84);
-  border-color: color-mix(in oklch, var(--ms-color-success, #10ac84) 30%, transparent);
+  color: var(--ms-color-success);
+  border-color: color-mix(in oklch, var(--ms-color-success) 30%, transparent);
 }
 
 .ms-kbd--tone-danger {
-  color: var(--ms-color-danger, #ee5253);
-  border-color: color-mix(in oklch, var(--ms-color-danger, #ee5253) 30%, transparent);
+  color: var(--ms-color-danger);
+  border-color: color-mix(in oklch, var(--ms-color-danger) 30%, transparent);
 }
 
 /* data-ms-color-mode="system": same dark rules, resolved by the OS preference. */
 @media (prefers-color-scheme: dark) {
   :root[data-ms-color-mode="system"] .ms-kbd--variant-raised {
-    background-color: var(--ms-color-surface-raised, #1e293b);
-    border-color: var(--ms-color-border-strong, #334155);
+    background-color: var(--ms-color-surface-raised);
+    border-color: var(--ms-color-border-strong);
     border-bottom-width: 2px;
     box-shadow:
       0 1px 0 0 rgba(0, 0, 0, 0.4),
@@ -122,6 +122,6 @@
   }
 
   :root[data-ms-color-mode="system"] .ms-kbd--variant-flat {
-    background-color: var(--ms-color-surface-subtle, #1e293b);
+    background-color: var(--ms-color-surface-subtle);
   }
 }

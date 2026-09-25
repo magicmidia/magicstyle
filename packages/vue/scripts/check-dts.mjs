@@ -18,6 +18,9 @@ const walk = (dir) =>
 const problems = [];
 for (const file of walk(dist)) {
   const content = readFileSync(file, "utf8");
+  if (content.includes("@magic-style-internal/")) {
+    problems.push(`${file}: references a private @magic-style-internal package`);
+  }
   for (const [, specifier] of content.matchAll(/["'](\.{1,2}\/[^"']+)["']/g)) {
     if (!specifier.endsWith(".js")) {
       problems.push(`${file}: "${specifier}" must end in .js`);

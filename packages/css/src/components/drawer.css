@@ -121,32 +121,32 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: var(--ms-space-4, 16px) var(--ms-space-6, 24px);
+  padding: var(--ms-space-4) var(--ms-space-6);
   border-bottom: 1px solid var(--ms-color-border-subtle);
   background-color: var(--ms-color-surface-raised);
-  gap: var(--ms-space-4, 16px);
+  gap: var(--ms-space-4);
   flex-shrink: 0;
 }
 
 .ms-drawer__title-group {
   display: flex;
   flex-direction: column;
-  gap: var(--ms-space-1, 4px);
+  gap: var(--ms-space-1);
 }
 
 .ms-drawer__title {
-  font-size: var(--ms-typography-size-lg, 1.125rem);
-  font-weight: var(--ms-typography-weight-semibold, 600);
+  font-size: var(--ms-typography-size-lg);
+  font-weight: var(--ms-typography-weight-semibold);
   line-height: var(--ms-line-height-snug, 1.35);
   color: var(--ms-color-text-primary);
   margin: 0;
 }
 
 .ms-drawer__description {
-  font-size: var(--ms-typography-size-sm, 0.875rem);
+  font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-secondary);
   margin: 0;
-  line-height: var(--ms-typography-line-height-base, 1.5);
+  line-height: var(--ms-typography-line-height-base);
 }
 
 .ms-drawer__close {
@@ -156,14 +156,14 @@
   width: 32px;
   height: 32px;
   border: none;
-  border-radius: var(--ms-radius-md, 6px);
+  border-radius: var(--ms-radius-md);
   background: transparent;
   color: var(--ms-color-text-secondary);
   cursor: pointer;
   transition:
     background-color var(--ms-transition-duration-fast, 150ms),
     color var(--ms-transition-duration-fast, 150ms);
-  font-size: var(--ms-typography-size-md, 1rem);
+  font-size: var(--ms-typography-size-md);
   padding: 0;
   flex-shrink: 0;
 }
@@ -179,7 +179,7 @@
 }
 
 .ms-drawer__body {
-  padding: var(--ms-space-6, 24px);
+  padding: var(--ms-space-6);
   overflow-y: auto;
   flex-grow: 1;
 }
@@ -188,10 +188,10 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: var(--ms-space-4, 16px) var(--ms-space-6, 24px);
+  padding: var(--ms-space-4) var(--ms-space-6);
   border-top: 1px solid var(--ms-color-border-subtle);
   background-color: var(--ms-color-surface-sunken);
-  gap: var(--ms-space-3, 12px);
+  gap: var(--ms-space-3);
   flex-shrink: 0;
 }
 

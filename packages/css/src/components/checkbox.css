@@ -69,10 +69,10 @@
 /* Card Mode */
 .ms-checkbox--card,
 .ms-checkbox[data-card] {
-  padding: var(--ms-space-3-5, 14px) var(--ms-space-4, 16px);
+  padding: var(--ms-space-3-5, 14px) var(--ms-space-4);
   border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
-  border-radius: var(--ms-radius-md, 8px);
-  background-color: var(--ms-color-surface-raised, #ffffff);
+  border-radius: var(--ms-radius-md);
+  background-color: var(--ms-color-surface-raised);
   box-shadow: var(--ms-elevation-card);
   transition:
     border-color var(--ms-motion-duration-fast) ease,
@@ -91,7 +91,7 @@
   background-color: color-mix(
     in oklch,
     var(--_ms-checkbox-tone) 6%,
-    var(--ms-color-surface-raised, #ffffff)
+    var(--ms-color-surface-raised)
   );
 }
 

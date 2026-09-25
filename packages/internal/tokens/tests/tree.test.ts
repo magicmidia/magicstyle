@@ -54,16 +54,18 @@ describe("canonical token tree (doc 06)", () => {
     expect(flat.has("container.md")).toBe(true);
   });
 
-  it("defines semantic surface/text/interactive/feedback roles", () => {
+  it("leaves semantic colors, radius scale and elevation levels to the theme contract", () => {
+    // Single source of truth: @magic-style-internal/themes derives these per theme.
     for (const path of [
       "color.surface.default",
       "color.text.primary",
-      "color.border.focus",
-      "color.interactive.accent",
+      "color.interactive.primary",
       "color.feedback.danger-text",
       "focus-ring.color",
+      "radius.md",
+      "elevation.1",
     ]) {
-      expect(flat.has(path)).toBe(true);
+      expect(flat.has(path)).toBe(false);
     }
   });
 

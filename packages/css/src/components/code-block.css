@@ -210,36 +210,36 @@
 }
 
 .ms-code-token--string {
-  color: var(--ms-color-brand-success, #10ac84);
+  color: var(--ms-color-brand-success);
 }
 
 .ms-code-token--tag {
-  color: var(--ms-color-brand-danger, #ee5253);
+  color: var(--ms-color-brand-danger);
   font-weight: var(--ms-typography-weight-semibold);
 }
 
 .ms-code-token--attr {
-  color: var(--ms-color-brand-warning, #ff9f43);
+  color: var(--ms-color-brand-warning);
 }
 
 .ms-code-token--keyword {
-  color: var(--ms-color-brand-secondary, #e15f41);
+  color: var(--ms-color-brand-secondary);
   font-weight: var(--ms-typography-weight-semibold);
 }
 
 .ms-code-token--boolean {
-  color: var(--ms-color-brand-accent, #341f97);
+  color: var(--ms-color-brand-accent);
   font-weight: var(--ms-typography-weight-semibold);
 }
 
 .ms-code-token--type {
-  color: var(--ms-color-brand-info, #0abde3);
+  color: var(--ms-color-brand-info);
 }
 
 .ms-code-token--number {
-  color: var(--ms-color-brand-warning, #ff9f43);
+  color: var(--ms-color-brand-warning);
 }
 
 .ms-code-token--function {
-  color: var(--ms-color-brand-primary, #2e86de);
+  color: var(--ms-color-brand-primary);
 }

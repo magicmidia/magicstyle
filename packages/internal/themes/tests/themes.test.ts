@@ -1,16 +1,24 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import {
-  baseline,
-  deltaAgainst,
+  CONTRACT_KEYS,
+  DERIVED,
+  REQUIRED_CONTRACT_KEYS,
+  THEMES,
   emitThemesCss,
   manifest,
-  resolveTheme,
-  THEMES,
+  resolveThemeMode,
+  themeJsonSchema,
+  themeToCss,
+  validateThemes,
+  type ThemeSource,
 } from "../src/index.ts";
 
-describe("theming system (doc 07)", () => {
-  it("resolves all 20 theme x mode combos across 10 official themes without diagnostics", () => {
-    for (const theme of [
+const css = emitThemesCss();
+
+describe("theme contract", () => {
+  it("ships 10 official themes, each complete in both modes", () => {
+    expect(THEMES.map((t) => t.name)).toEqual([
       "magic",
       "graphite",
       "shadcn",
@@ -21,126 +29,94 @@ describe("theming system (doc 07)", () => {
       "vercel",
       "supabase",
       "nord",
-    ] as const) {
-      for (const mode of ["light", "dark"] as const) {
-        const tokens = resolveTheme(theme, mode);
-        expect(tokens.size).toBeGreaterThan(100);
+    ]);
+    expect(validateThemes()).toEqual([]);
+  });
+
+  it("keeps the contract small and the theme files free of derived tokens", () => {
+    expect(REQUIRED_CONTRACT_KEYS.length).toBeLessThanOrEqual(30);
+    for (const theme of THEMES) {
+      for (const part of [theme.shared, theme.light, theme.dark]) {
+        for (const key of Object.keys(part ?? {})) expect(CONTRACT_KEYS).toContain(key);
+      }
+      // Extras are signature exceptions only (e.g. Material shadows), never a second palette.
+      for (const part of Object.values(theme.extras ?? {})) {
+        expect(Object.keys(part).length).toBeLessThanOrEqual(6);
+        for (const key of Object.keys(part)) expect(key).not.toMatch(/^color-/);
       }
     }
   });
 
-  it("verifies authentic signature palettes for top-tier design themes", () => {
-    // Shadcn: black button in light, white button in dark
-    expect(resolveTheme("shadcn", "light").get("color.interactive.primary")?.$value).toBe(
-      "#18181b",
-    );
-    expect(resolveTheme("shadcn", "dark").get("color.interactive.primary")?.$value).toBe("#fafafa");
-
-    // Bootstrap: royal blue #0d6efd
-    expect(resolveTheme("bootstrap", "light").get("color.brand.primary")?.$value).toBe("#0d6efd");
-    expect(resolveTheme("bootstrap", "dark").get("color.brand.primary")?.$value).toBe("#0d6efd");
-
-    // MaterialUI: royal purple #6750a4 in light, pastel lavender #d0bcff in dark
-    expect(resolveTheme("material", "light").get("color.brand.primary")?.$value).toBe("#6750a4");
-    expect(resolveTheme("material", "dark").get("color.brand.primary")?.$value).toBe("#d0bcff");
-
-    // GitHub: green #1f883d in light, #238636 in dark
-    expect(resolveTheme("github", "light").get("color.brand.primary")?.$value).toBe("#1f883d");
-    expect(resolveTheme("github", "dark").get("color.brand.primary")?.$value).toBe("#238636");
-
-    // Linear: electric indigo #5e6ad2
-    expect(resolveTheme("linear", "light").get("color.brand.primary")?.$value).toBe("#5e6ad2");
-    expect(resolveTheme("linear", "dark").get("color.brand.primary")?.$value).toBe("#5e6ad2");
-
-    // Vercel: pure black #000000 in light, pure white #ffffff in dark
-    expect(resolveTheme("vercel", "light").get("color.interactive.primary")?.$value).toBe(
-      "#000000",
-    );
-    expect(resolveTheme("vercel", "dark").get("color.interactive.primary")?.$value).toBe("#ffffff");
-
-    // Supabase: emerald green #24b47e in light, neon emerald #3ecf8e in dark
-    expect(resolveTheme("supabase", "light").get("color.brand.primary")?.$value).toBe("#24b47e");
-    expect(resolveTheme("supabase", "dark").get("color.brand.primary")?.$value).toBe("#3ecf8e");
-
-    // Nord: frost blue #5e81ac in light, glacial cyan #88c0d0 in dark
-    expect(resolveTheme("nord", "light").get("color.brand.primary")?.$value).toBe("#5e81ac");
-    expect(resolveTheme("nord", "dark").get("color.brand.primary")?.$value).toBe("#88c0d0");
+  it("derives every semantic token from the contract (no literal colors)", () => {
+    const derivedBlock = css.slice(css.indexOf(":root,\n[data-ms-theme]"), css.indexOf("}\n"));
+    // Palette tokens only: shadows and the modal backdrop are fixed ink by design.
+    const paletteLines = derivedBlock
+      .split("\n")
+      .filter((line) => /--ms-color-/.test(line) && !/backdrop/.test(line));
+    expect(paletteLines.length).toBeGreaterThan(80);
+    for (const line of paletteLines)
+      expect(line).not.toMatch(/#[0-9a-f]{3,6}\b|oklch\(\d|rgba?\(/i);
+    expect(DERIVED.length).toBeGreaterThan(100);
   });
 
-  it("keeps theme != color mode (§1): graphite changes accent in both modes", () => {
-    const base = baseline();
-    for (const mode of ["light", "dark"] as const) {
-      const graphite = resolveTheme("graphite", mode);
-      const baseVal = base.get("color.accent.500")?.$value;
-      const graphVal = graphite.get("color.accent.500")?.$value;
-      expect(baseVal).not.toBe(graphVal);
-      expect(String(baseVal)).toContain("280)");
-      expect(String(graphVal)).toContain("280)");
+  it("emits light, dark and system blocks for every theme", () => {
+    for (const theme of THEMES.filter((t) => t.name !== "magic")) {
+      expect(css).toContain(`[data-ms-theme="${theme.name}"][data-ms-color-mode="dark"] {`);
+      expect(css).toContain(`[data-ms-theme="${theme.name}"][data-ms-color-mode="system"]`);
     }
+    expect(css).toMatch(/:root,\n\[data-ms-theme="magic"\],\n\[data-ms-color-mode="light"\]/);
+    expect(css).toContain("@media (prefers-color-scheme: dark)");
   });
 
-  it("designs dark independently, not as inversion (§ dark)", () => {
-    const dark = resolveTheme("magic", "dark");
-    const light = baseline();
-    // raised surface must be LIGHTER than default surface in dark mode
-    const luma = (v: unknown) => Number(/oklch\((\d+\.\d+)/.exec(String(v))?.[1]);
-    expect(luma(dark.get("color.surface.raised")?.$value)).toBeGreaterThan(
-      luma(dark.get("color.surface.default")?.$value),
-    );
-    // and text flips contrast direction per mode while staying on the same hue family
-    expect(luma(dark.get("color.text.primary")?.$value)).toBeGreaterThan(0.8);
-    expect(luma(light.get("color.text.primary")?.$value)).toBeLessThan(0.3);
-  });
-
-  it("emits only deltas under DOM-contract selectors (§2)", () => {
-    const css = emitThemesCss();
-    for (const theme of [
-      "graphite",
-      "shadcn",
-      "bootstrap",
-      "material",
-      "github",
-      "linear",
-      "vercel",
-      "supabase",
-      "nord",
-    ]) {
-      expect(css).toContain(`[data-ms-theme="${theme}"]`);
-      expect(css).toContain(`[data-ms-theme="${theme}"][data-ms-color-mode="dark"]`);
-    }
-    expect(css).toMatch(/\[data-ms-color-mode="dark"\]\s*\{/);
-    expect(css).not.toContain('[data-ms-theme="magic"][data-ms-color-mode="dark"]');
-    expect(css).toContain('[data-ms-density="compact"]');
-    expect(css).toContain('[data-ms-radius="rounded"]');
-    expect(css).toMatch(/--ms-control-radius: var\(--ms-radius-md\)/);
-    // baseline magic/light must NOT be duplicated
-    expect(css).not.toContain("--ms-space-1:");
-    // no unresolved aliases anywhere
-    expect(css).not.toContain("{color.");
-  });
-
-  it("manifest documents the DOM contract and dials", () => {
-    const m = JSON.parse(manifest()) as {
-      domContract: Record<string, string>;
-      themes: Array<{ name: string; colorModes: string[] }>;
-      dials: { density: string[]; contrast: string[] };
+  it("builds a user theme from a partial definition (inherits magic)", () => {
+    const brand: ThemeSource = {
+      name: "acme",
+      label: "Acme",
+      description: "Tenant theme",
+      shared: { "radius-field": "10px" },
+      light: { "color-primary": "#7c3aed", "color-primary-content": "#ffffff" },
     };
-    expect(m.domContract.theme).toBe("data-ms-theme");
-    expect(m.domContract.colorMode).toBe("data-ms-color-mode");
-    expect(m.themes).toHaveLength(THEMES.length);
-    expect(m.themes.every((t) => t.colorModes.join(",") === "light,dark")).toBe(true);
-    expect(m.dials.density).toEqual(["compact", "comfortable", "spacious"]);
-    expect(m.dials.contrast).toEqual(["default", "high"]);
+    const light = resolveThemeMode("acme", "light", [brand]);
+    expect(light.values["color-primary"]).toBe("#7c3aed");
+    expect(light.values["color-base-100"]).toBe(
+      resolveThemeMode("magic", "light").values["color-base-100"],
+    );
+    const out = themeToCss(brand);
+    expect(out.base).toContain('[data-ms-theme="acme"]');
+    expect(out.base).toContain("--ms-color-primary: #7c3aed;");
+    expect(out.base).toContain("--ms-radius-field: 10px;");
   });
 
-  it("theme artifacts carry no remote references (§9 security)", () => {
-    const css = emitThemesCss();
-    expect(css).not.toMatch(/url\(|@import|<script|http(s)?:\/\//);
+  it("rejects unknown keys and inheritance cycles", () => {
+    const bad: ThemeSource = {
+      name: "bad",
+      label: "Bad",
+      description: "",
+      light: { "color-primay": "#000" },
+    };
+    expect(validateThemes([bad]).join()).toContain('unknown contract key "color-primay"');
+    const a: ThemeSource = { name: "a", label: "A", description: "", extends: "b" };
+    const b: ThemeSource = { name: "b", label: "B", description: "", extends: "a" };
+    expect(() => resolveThemeMode("a", "light", [a, b])).toThrow(/cycle/);
   });
 
-  it("delta computation is stable and minimal", () => {
-    const base = baseline();
-    expect(deltaAgainst(base, resolveTheme("magic", "light"))).toHaveLength(0);
-    expect(deltaAgainst(base, resolveTheme("magic", "dark")).length).toBeGreaterThan(10);
+  it("manifest documents the contract and the committed schema is in sync", () => {
+    const parsed = JSON.parse(manifest());
+    expect(parsed.contract.map((c: { variable: string }) => c.variable)).toContain(
+      "--ms-color-primary",
+    );
+    const committed = readFileSync(new URL("../src/theme.schema.json", import.meta.url), "utf8");
+    expect(JSON.parse(committed)).toEqual(themeJsonSchema());
+  });
+
+  it("docs/theming.md documents every contract key", () => {
+    const docs = readFileSync(new URL("../../../../docs/theming.md", import.meta.url), "utf8");
+    for (const key of CONTRACT_KEYS) {
+      const base = key.replace(/-content$/, "");
+      expect(
+        docs.includes(`--ms-${key}`) || docs.includes(`--ms-${base}\` / \`-content`),
+        key,
+      ).toBe(true);
+    }
   });
 });

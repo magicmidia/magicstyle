@@ -9,32 +9,32 @@
   position: relative;
   list-style: none;
   margin: 0;
-  padding: 0 0 0 var(--ms-space-3, 12px);
-  border-left: 2px solid var(--ms-color-border, #e2e8f0);
+  padding: 0 0 0 var(--ms-space-3);
+  border-left: 2px solid var(--ms-color-border);
 }
 
 .ms-scroll-spy__item {
   display: flex;
-  margin: var(--ms-space-1, 4px) 0;
+  margin: var(--ms-space-1) 0;
 }
 
 .ms-scroll-spy__link {
   all: unset;
   display: inline-block;
-  font-size: var(--ms-typography-size-sm, 0.875rem);
-  color: var(--ms-color-text-muted, #64748b);
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text-muted);
   cursor: pointer;
   transition: color var(--ms-transition-duration-fast, 120ms);
   text-decoration: none;
 }
 
 .ms-scroll-spy__link:hover {
-  color: var(--ms-color-text, #0f172a);
+  color: var(--ms-color-text);
 }
 
 .ms-scroll-spy__item--active .ms-scroll-spy__link {
-  color: var(--ms-color-primary, #6366f1);
-  font-weight: var(--ms-typography-weight-semibold, 600);
+  color: var(--ms-color-primary);
+  font-weight: var(--ms-typography-weight-semibold);
 }
 
 .ms-scroll-spy__item--active {
@@ -44,9 +44,9 @@
 .ms-scroll-spy__item--active::before {
   content: "";
   position: absolute;
-  left: calc(-1 * var(--ms-space-3, 12px) - 2px);
+  left: calc(-1 * var(--ms-space-3) - 2px);
   top: 0;
   bottom: 0;
   width: 2px;
-  background-color: var(--ms-color-primary, #6366f1);
+  background-color: var(--ms-color-primary);
 }

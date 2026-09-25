@@ -10,8 +10,8 @@
   margin: 0;
   padding: 0;
   user-select: none;
-  font-size: var(--ms-typography-size-sm, 0.875rem);
-  color: var(--ms-color-text, #0f172a);
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text);
 }
 
 .ms-tree-node {
@@ -22,21 +22,21 @@
 .ms-tree-node__row {
   display: flex;
   align-items: center;
-  gap: var(--ms-space-2, 8px);
-  padding: var(--ms-space-1, 4px) var(--ms-space-2, 8px);
-  border-radius: var(--ms-radius-md, 6px);
+  gap: var(--ms-space-2);
+  padding: var(--ms-space-1) var(--ms-space-2);
+  border-radius: var(--ms-radius-md);
   cursor: pointer;
   transition: background-color var(--ms-transition-duration-fast, 120ms);
 }
 
 .ms-tree-node__row:hover {
-  background-color: var(--ms-color-surface-hover, #f1f5f9);
+  background-color: var(--ms-color-surface-hover);
 }
 
 .ms-tree-node--selected > .ms-tree-node__row {
-  background-color: var(--ms-color-primary-subtle, #eef2ff);
-  color: var(--ms-color-primary, #6366f1);
-  font-weight: var(--ms-typography-weight-medium, 500);
+  background-color: var(--ms-color-primary-subtle);
+  color: var(--ms-color-primary);
+  font-weight: var(--ms-typography-weight-medium);
 }
 
 .ms-tree-node__toggle {
@@ -47,7 +47,7 @@
   width: 18px;
   height: 18px;
   cursor: pointer;
-  color: var(--ms-color-text-muted, #64748b);
+  color: var(--ms-color-text-muted);
   transition: transform var(--ms-transition-duration-fast, 150ms);
   flex-shrink: 0;
 }
@@ -65,7 +65,7 @@
 .ms-tree-node__icon {
   display: inline-flex;
   align-items: center;
-  color: var(--ms-color-text-muted, #64748b);
+  color: var(--ms-color-text-muted);
   flex-shrink: 0;
 }
 
@@ -79,8 +79,8 @@
 .ms-tree-node__children {
   list-style: none;
   margin: 0;
-  padding: 0 0 0 var(--ms-space-4, 16px);
-  border-left: 1px dashed var(--ms-color-border, #e2e8f0);
+  padding: 0 0 0 var(--ms-space-4);
+  border-left: 1px dashed var(--ms-color-border);
   margin-left: 9px;
 }
 

@@ -16,26 +16,26 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: var(--ms-space-2, 8px);
+  gap: var(--ms-space-2);
   font-family: var(--ms-font-sans);
-  font-size: var(--ms-typography-size-sm, 0.875rem);
-  line-height: var(--ms-typography-line-height-base, 1.5);
+  font-size: var(--ms-typography-size-sm);
+  line-height: var(--ms-typography-line-height-base);
 }
 
 /* Sizes */
 .ms-breadcrumbs--sm .ms-breadcrumbs__list {
-  font-size: var(--ms-typography-size-xs, 0.75rem);
+  font-size: var(--ms-typography-size-xs);
   gap: var(--ms-space-1-5, 6px);
 }
 
 .ms-breadcrumbs--md .ms-breadcrumbs__list {
-  font-size: var(--ms-typography-size-sm, 0.875rem);
-  gap: var(--ms-space-2, 8px);
+  font-size: var(--ms-typography-size-sm);
+  gap: var(--ms-space-2);
 }
 
 .ms-breadcrumbs--lg .ms-breadcrumbs__list {
-  font-size: var(--ms-typography-size-md, 1rem);
-  gap: var(--ms-space-3, 12px);
+  font-size: var(--ms-typography-size-md);
+  gap: var(--ms-space-3);
 }
 
 /* Items */
@@ -51,7 +51,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--ms-space-1-5, 6px);
-  border-radius: var(--ms-radius-sm, 4px);
+  border-radius: var(--ms-radius-sm);
   transition:
     color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
     background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
@@ -66,7 +66,7 @@
 
 .ms-breadcrumbs__link:hover {
   color: var(--ms-color-interactive-primary);
-  background-color: var(--ms-color-interactive-primary-subtle, rgba(46, 134, 222, 0.08));
+  background-color: var(--ms-color-interactive-primary-subtle);
   text-decoration: none;
 }
 
@@ -110,7 +110,7 @@
   align-items: center;
   justify-content: center;
   padding: 2px 6px;
-  border-radius: var(--ms-radius-sm, 4px);
+  border-radius: var(--ms-radius-sm);
   background: transparent;
   border: 1px solid transparent;
   color: var(--ms-color-text-muted);
@@ -132,7 +132,7 @@
 .ms-breadcrumbs--pills .ms-breadcrumbs__text {
   padding: 4px 10px;
   margin: 0;
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
   background-color: var(--ms-color-surface-sunken);
 }
 
@@ -150,8 +150,8 @@
 .ms-breadcrumbs--solid {
   background-color: var(--ms-color-surface-sunken);
   border: 1px solid var(--ms-color-border-subtle);
-  border-radius: var(--ms-radius-md, 8px);
-  padding: var(--ms-space-2, 8px) var(--ms-space-3-5, 14px);
+  border-radius: var(--ms-radius-md);
+  padding: var(--ms-space-2) var(--ms-space-3-5, 14px);
 }
 
 /* Disabled state */

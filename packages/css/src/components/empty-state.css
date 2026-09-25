@@ -56,14 +56,14 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--ms-radius-full);
-  background-color: var(--ms-color-surface-sunken, #f1f5f9);
+  background-color: var(--ms-color-surface-sunken);
   color: var(--ms-color-text-secondary);
   margin-bottom: var(--ms-space-4);
   flex-shrink: 0;
 }
 
 .ms-empty-state__icon--primary {
-  background-color: var(--ms-color-primary-subtle, rgba(59, 130, 246, 0.15));
+  background-color: var(--ms-color-primary-subtle);
   color: var(--ms-color-interactive-primary);
 }
 

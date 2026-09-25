@@ -6,7 +6,7 @@
 .ms-range-wrapper {
   display: flex;
   align-items: center;
-  gap: var(--ms-space-3, 12px);
+  gap: var(--ms-space-3);
   width: 100%;
 }
 
@@ -43,41 +43,41 @@
 
 /* Tones */
 .ms-range--tone-primary {
-  --ms-range-fill-color: var(--ms-color-primary, #2e86de);
+  --ms-range-fill-color: var(--ms-color-primary);
 }
 
 .ms-range--tone-secondary {
-  --ms-range-fill-color: var(--ms-color-secondary, #e15f41);
+  --ms-range-fill-color: var(--ms-color-secondary);
 }
 
 .ms-range--tone-accent {
-  --ms-range-fill-color: var(--ms-color-accent, #341f97);
+  --ms-range-fill-color: var(--ms-color-accent);
 }
 
 .ms-range--tone-neutral {
-  --ms-range-fill-color: var(--ms-color-neutral, #222f3e);
+  --ms-range-fill-color: var(--ms-color-neutral);
 }
 
 .ms-range--tone-success {
-  --ms-range-fill-color: var(--ms-color-success, #10ac84);
+  --ms-range-fill-color: var(--ms-color-success);
 }
 
 .ms-range--tone-info {
-  --ms-range-fill-color: var(--ms-color-info, #0abde3);
+  --ms-range-fill-color: var(--ms-color-info);
 }
 
 .ms-range--tone-warning {
-  --ms-range-fill-color: var(--ms-color-warning, #ff9f43);
+  --ms-range-fill-color: var(--ms-color-warning);
 }
 
 .ms-range--tone-danger {
-  --ms-range-fill-color: var(--ms-color-danger, #ee5253);
+  --ms-range-fill-color: var(--ms-color-danger);
 }
 
 /* WebKit Track */
 .ms-range::-webkit-slider-runnable-track {
   height: var(--ms-range-height, 6px);
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
   background: linear-gradient(
     to right,
     var(--ms-range-fill-color, var(--ms-color-primary)) 0%,
@@ -93,10 +93,10 @@
   appearance: none;
   width: var(--ms-range-thumb-size, 18px);
   height: var(--ms-range-thumb-size, 18px);
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
   background-color: var(--ms-color-surface-raised);
   border: 2px solid var(--ms-range-fill-color, var(--ms-color-primary));
-  box-shadow: var(--ms-elevation-1, 0 1px 3px 0 rgba(0, 0, 0, 0.1));
+  box-shadow: var(--ms-elevation-1);
   margin-top: calc((var(--ms-range-height, 6px) - var(--ms-range-thumb-size, 18px)) / 2);
   transition:
     transform var(--ms-transition-duration-fast, 120ms),
@@ -115,30 +115,30 @@
 /* Firefox Track & Thumb */
 .ms-range::-moz-range-track {
   height: var(--ms-range-height, 6px);
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
   background: var(--ms-color-border-subtle);
 }
 
 .ms-range::-moz-range-progress {
   height: var(--ms-range-height, 6px);
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
   background-color: var(--ms-range-fill-color, var(--ms-color-primary));
 }
 
 .ms-range::-moz-range-thumb {
   width: var(--ms-range-thumb-size, 18px);
   height: var(--ms-range-thumb-size, 18px);
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
   background-color: var(--ms-color-surface-raised);
   border: 2px solid var(--ms-range-fill-color, var(--ms-color-primary));
-  box-shadow: var(--ms-elevation-1, 0 1px 3px 0 rgba(0, 0, 0, 0.1));
+  box-shadow: var(--ms-elevation-1);
   transition: transform var(--ms-transition-duration-fast, 120ms);
 }
 
 /* Value Display Badge */
 .ms-range__value {
-  font-size: var(--ms-typography-size-sm, 0.875rem);
-  font-weight: var(--ms-typography-weight-semibold, 600);
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-semibold);
   font-variant-numeric: tabular-nums;
   color: var(--ms-color-text-primary);
   min-width: 36px;

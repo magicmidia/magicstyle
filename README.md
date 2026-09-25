@@ -8,7 +8,7 @@
 [![Architecture Baseline](https://img.shields.io/badge/baseline-1.2%20normativa-purple.svg?style=flat-square)](docs/baseline/Magic-Style-Architecture-Baseline-1.2/)
 [![Components](https://img.shields.io/badge/components-95%20prontos-emerald.svg?style=flat-square)](apps/preview/components.html)
 [![Themes](https://img.shields.io/badge/themes-10%20autênticos-indigo.svg?style=flat-square)](#-10-temas-autênticos-além-da-cor)
-[![Design Tokens](https://img.shields.io/badge/tokens-285%20DTCG-cyan.svg?style=flat-square)](packages/internal/tokens/)
+[![Design Tokens](https://img.shields.io/badge/tokens-201%20DTCG-cyan.svg?style=flat-square)](packages/internal/tokens/)
 [![Accessibility](https://img.shields.io/badge/a11y-WCAG%202.2%20AA-green.svg?style=flat-square)](docs/baseline/Magic-Style-Architecture-Baseline-1.2/11-Accessibility-Specification.md)
 [![TypeScript](https://img.shields.io/badge/typescript-strict%205.9-blue.svg?style=flat-square)](tsconfig.base.json)
 [![Node](https://img.shields.io/badge/node-%3E%3D24-brightgreen.svg?style=flat-square)](package.json)
@@ -16,7 +16,7 @@
 
 <br />
 
-[**Landing Page & Component Studio**](#️-comandos-de-desenvolvimento) (local: `pnpm preview`) • [**Changelog & Releases**](CHANGELOG.md) • [**Theming & Dials**](#4-cascade-layers-e-modo-de-cor-do-sistema) • [**Architecture Baseline 1.2**](docs/baseline/Magic-Style-Architecture-Baseline-1.2/)
+[**Landing Page & Component Studio**](#️-comandos-de-desenvolvimento) (local: `pnpm preview`) • [**Changelog & Releases**](CHANGELOG.md) • [**Temas & Personalização**](docs/theming.md) • [**Architecture Baseline 1.2**](docs/baseline/Magic-Style-Architecture-Baseline-1.2/)
 
 </div>
 
@@ -32,7 +32,7 @@ Diferente de bibliotecas convencionais que limitam temas a simples substituiçõ
 
 - 🧩 **95 Componentes Enterprise:** Do atômico (`MsButton`, `MsBadge`) a subsistemas complexos (`MsSelect` unificado, `MsAppShell`, `MsTable`, `MsSplitPane`, `MsFormWizard`, `MsCommandPalette`).
 - 🎨 **10 Temas Autênticos Curados:** _Shadcn_, _Bootstrap 5_, _MaterialUI (M3)_, _GitHub Primer_, _Linear_, _Vercel Geist_, _Supabase Studio_, _Nord Arctic_, _Graphite_ e _Magic_.
-- 📐 **285 Design Tokens DTCG:** Conforme a especificação W3C Design Tokens Community Group, calculados no modelo perceptual **OKLCH**.
+- 📐 **201 Design Tokens DTCG + contrato de 27 variáveis por tema:** primitivas em **OKLCH** no formato do W3C Design Tokens Community Group. Cada tema define só 27 variáveis, e os ~150 tokens semânticos (hover, subtle, texto, bordas…) são derivados em tempo real.
 - ♿ **Acessibilidade Inegociável:** Totalmente navegável por teclado, foco visível de alto contraste, semântica ARIA e suporte nativo bidirecional LTR / RTL (WCAG 2.2 AA).
 - ⚡ **Zero Bloat de Runtime:** Camada visual pura em `@magic-style/css` que funciona com ou sem Vue; componentes Vue SFC com tipagem integral em TypeScript strict.
 - 🛡️ **Governança Estrita ("No Fake Green"):** Verificação arquitetural automatizada de arestas proibidas, testes unitários rigorosos e versionamento coordenado via Changesets.
@@ -137,7 +137,38 @@ O pacote `@magic-style/css` é 100% utilizável sem Vue:
 </div>
 ```
 
-### 4. Cascade Layers e Modo de Cor do Sistema
+### 4. Personalização e Temas Próprios
+
+Um tema é um **contrato de 27 variáveis** (cores base e de papel, raios, profundidade e fontes); todo o resto é derivado. Três formas de personalizar, da mais simples à mais completa:
+
+```css
+/* 1. Só CSS: troque a marca em um lugar */
+:root {
+  --ms-color-primary: #7c3aed;
+  --ms-color-primary-content: #fff;
+  --ms-radius-field: 10px;
+}
+```
+
+```vue
+<!-- 2. Em tempo real (ex.: cor do tenant vinda do Laravel) -->
+<MsProvider theme="shadcn" :overrides="{ 'color-primary': tenant.brand }">…</MsProvider>
+```
+
+```ts
+// 3. Tema completo, tipado e validado (contraste WCAG AA)
+const acme = defineMsTheme({
+  name: "acme",
+  extends: "shadcn",
+  light: { "color-primary": "#7c3aed", "color-primary-content": "#fff" },
+});
+checkMsThemeContrast(acme); // []
+msThemeToCss(acme); // blocos claro, escuro e system
+```
+
+Guia completo: [docs/theming.md](docs/theming.md).
+
+### 5. Cascade Layers e Modo de Cor do Sistema
 
 Todo o CSS é entregue dentro da camada `ms` (`ms.reset`, `ms.tokens`, `ms.themes`, `ms.base`, `ms.components`, `ms.utilities`). Estilos da aplicação sem camada sempre vencem, e é possível posicionar o Magic-Style na pilha de camadas de outras ferramentas, por exemplo Tailwind CSS v4:
 

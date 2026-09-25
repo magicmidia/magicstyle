@@ -1,0 +1,73 @@
+{
+  "$schema": "../theme.schema.json",
+  "name": "nord",
+  "label": "Nord",
+  "description": "Arctic, north-bluish aesthetic based on the Nord palette. Calm polar night surfaces, cool snow storm light mode, and frost cyan accents.",
+  "shared": {
+    "radius-selector": "6px",
+    "radius-field": "8px",
+    "radius-box": "10px",
+    "border-width": "1px",
+    "depth": "1",
+    "font-sans": "system-ui, -apple-system, sans-serif",
+    "font-mono": "IBM Plex Mono, Cascadia Mono, ui-monospace, monospace"
+  },
+  "light": {
+    "color-base-100": "#eceff4",
+    "color-base-200": "#e5e9f0",
+    "color-base-300": "#d8dee9",
+    "color-base-content": "#2e3440",
+    "color-base-raised": "#ffffff",
+    "color-primary": "#4c6b94",
+    "color-primary-content": "#ffffff",
+    "color-secondary": "oklch(0.645 0.169 034)",
+    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-accent": "#88c0d0",
+    "color-accent-content": "#0b0d12",
+    "color-neutral": "#e5e9f0",
+    "color-neutral-content": "#2e3440",
+    "color-info": "oklch(0.738 0.133 219)",
+    "color-info-content": "oklch(0.170 0.020 252)",
+    "color-success": "oklch(0.663 0.131 168)",
+    "color-success-content": "oklch(0.170 0.020 252)",
+    "color-warning": "oklch(0.785 0.154 061)",
+    "color-warning-content": "oklch(0.170 0.020 252)",
+    "color-danger": "oklch(0.545 0.188 024)",
+    "color-danger-content": "oklch(1.000 0.003 252)"
+  },
+  "dark": {
+    "color-base-100": "#2e3440",
+    "color-base-200": "#242933",
+    "color-base-300": "#4c566a",
+    "color-base-content": "#eceff4",
+    "color-base-raised": "#3b4252",
+    "color-primary": "#88c0d0",
+    "color-primary-content": "#2e3440",
+    "color-secondary": "oklch(0.715 0.152 034)",
+    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-accent": "#8fbcbb",
+    "color-accent-content": "#2e3440",
+    "color-neutral": "#434c5e",
+    "color-neutral-content": "#eceff4",
+    "color-info": "oklch(0.738 0.133 219)",
+    "color-info-content": "oklch(0.170 0.020 252)",
+    "color-success": "oklch(0.663 0.131 168)",
+    "color-success-content": "oklch(0.170 0.020 252)",
+    "color-warning": "oklch(0.785 0.154 061)",
+    "color-warning-content": "oklch(0.170 0.020 252)",
+    "color-danger": "oklch(0.545 0.188 024)",
+    "color-danger-content": "oklch(1.000 0.003 252)"
+  },
+  "extras": {
+    "light": {
+      "elevation-button": "0px 2px 6px 0px rgba(46, 52, 64, 0.12)",
+      "elevation-card": "0px 4px 14px 0px rgba(46, 52, 64, 0.10)",
+      "focus-ring-width": "3px"
+    },
+    "dark": {
+      "elevation-button": "0px 2px 6px 0px rgba(0, 0, 0, 0.3)",
+      "elevation-card": "0px 4px 14px 0px rgba(0, 0, 0, 0.25)",
+      "focus-ring-width": "3px"
+    }
+  }
+}

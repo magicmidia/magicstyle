@@ -9,7 +9,7 @@
   justify-content: space-between;
   gap: var(--ms-space-3);
   padding: var(--ms-space-2) var(--ms-space-4);
-  min-height: var(--ms-layout-topbar-height, 56px);
+  min-height: var(--ms-layout-topbar-height);
   background: var(--ms-color-surface-default);
   color: var(--ms-color-text-primary);
   border-bottom: 1px solid var(--ms-color-border-subtle);
@@ -19,7 +19,7 @@
     background var(--ms-motion-duration-fast),
     border-color var(--ms-motion-duration-fast),
     box-shadow var(--ms-motion-duration-fast);
-  z-index: var(--ms-z-index-sticky, 100);
+  z-index: var(--ms-z-index-sticky);
 }
 
 /* Positions */
@@ -68,17 +68,17 @@
 
 .ms-navbar--shadow-sm,
 .ms-navbar[data-shadow="sm"] {
-  box-shadow: var(--ms-elevation-dropdown, 0 2px 6px rgba(0, 0, 0, 0.06));
+  box-shadow: var(--ms-elevation-dropdown);
 }
 
 .ms-navbar--shadow-md,
 .ms-navbar[data-shadow="md"] {
-  box-shadow: var(--ms-elevation-card, 0 4px 14px rgba(0, 0, 0, 0.08));
+  box-shadow: var(--ms-elevation-card);
 }
 
 .ms-navbar--shadow-lg,
 .ms-navbar[data-shadow="lg"] {
-  box-shadow: var(--ms-elevation-modal, 0 10px 28px rgba(0, 0, 0, 0.12));
+  box-shadow: var(--ms-elevation-modal);
 }
 
 .ms-navbar--shadow-xl,
@@ -140,58 +140,58 @@
 /* 8 Semantic Brand Tones */
 .ms-navbar--tone-primary,
 .ms-navbar[data-tone="primary"] {
-  background: var(--ms-color-primary, #2e86de);
-  color: #ffffff;
-  border-bottom-color: color-mix(in srgb, var(--ms-color-primary, #2e86de) 85%, black 15%);
+  background: var(--ms-color-primary);
+  color: var(--ms-color-primary-content);
+  border-bottom-color: color-mix(in srgb, var(--ms-color-primary) 85%, black 15%);
 }
 
 .ms-navbar--tone-secondary,
 .ms-navbar[data-tone="secondary"] {
-  background: var(--ms-color-secondary, #e15f41);
-  color: #ffffff;
-  border-bottom-color: color-mix(in srgb, var(--ms-color-secondary, #e15f41) 85%, black 15%);
+  background: var(--ms-color-secondary);
+  color: var(--ms-color-secondary-content);
+  border-bottom-color: color-mix(in srgb, var(--ms-color-secondary) 85%, black 15%);
 }
 
 .ms-navbar--tone-accent,
 .ms-navbar[data-tone="accent"] {
-  background: var(--ms-color-accent, #341f97);
-  color: #ffffff;
-  border-bottom-color: color-mix(in srgb, var(--ms-color-accent, #341f97) 85%, black 15%);
+  background: var(--ms-color-accent);
+  color: var(--ms-color-accent-content);
+  border-bottom-color: color-mix(in srgb, var(--ms-color-accent) 85%, black 15%);
 }
 
 .ms-navbar--tone-neutral,
 .ms-navbar[data-tone="neutral"] {
-  background: var(--ms-color-neutral, #222f3e);
-  color: #ffffff;
-  border-bottom-color: color-mix(in srgb, var(--ms-color-neutral, #222f3e) 85%, black 15%);
+  background: var(--ms-color-neutral);
+  color: var(--ms-color-neutral-content);
+  border-bottom-color: color-mix(in srgb, var(--ms-color-neutral) 85%, black 15%);
 }
 
 .ms-navbar--tone-success,
 .ms-navbar[data-tone="success"] {
-  background: var(--ms-color-success, #10ac84);
-  color: #ffffff;
-  border-bottom-color: color-mix(in srgb, var(--ms-color-success, #10ac84) 85%, black 15%);
+  background: var(--ms-color-success);
+  color: var(--ms-color-success-content);
+  border-bottom-color: color-mix(in srgb, var(--ms-color-success) 85%, black 15%);
 }
 
 .ms-navbar--tone-info,
 .ms-navbar[data-tone="info"] {
-  background: var(--ms-color-info, #0abde3);
-  color: #ffffff;
-  border-bottom-color: color-mix(in srgb, var(--ms-color-info, #0abde3) 85%, black 15%);
+  background: var(--ms-color-info);
+  color: var(--ms-color-info-content);
+  border-bottom-color: color-mix(in srgb, var(--ms-color-info) 85%, black 15%);
 }
 
 .ms-navbar--tone-warning,
 .ms-navbar[data-tone="warning"] {
-  background: var(--ms-color-warning, #ff9f43);
-  color: #1e293b;
-  border-bottom-color: color-mix(in srgb, var(--ms-color-warning, #ff9f43) 85%, black 15%);
+  background: var(--ms-color-warning);
+  color: var(--ms-color-warning-content);
+  border-bottom-color: color-mix(in srgb, var(--ms-color-warning) 85%, black 15%);
 }
 
 .ms-navbar--tone-danger,
 .ms-navbar[data-tone="danger"] {
-  background: var(--ms-color-danger, #ee5253);
-  color: #ffffff;
-  border-bottom-color: color-mix(in srgb, var(--ms-color-danger, #ee5253) 85%, black 15%);
+  background: var(--ms-color-danger);
+  color: var(--ms-color-danger-content);
+  border-bottom-color: color-mix(in srgb, var(--ms-color-danger) 85%, black 15%);
 }
 
 /* Child Elements */
@@ -199,7 +199,7 @@
   display: flex;
   align-items: center;
   gap: var(--ms-space-2);
-  font-weight: var(--ms-typography-weight-bold, 700);
+  font-weight: var(--ms-typography-weight-bold);
   text-decoration: none;
   color: inherit;
   white-space: nowrap;

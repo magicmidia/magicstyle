@@ -1,5 +1,5 @@
 <template>
-  <component :is="as" :class="classes" v-bind="wrapperAttributes">
+  <component :is="as" :class="classes" :style="wrapperStyle" v-bind="wrapperAttributes">
     <slot />
   </component>
 </template>
@@ -7,6 +7,7 @@
 <script setup lang="ts">
 import { computed, ref, watch, watchEffect, onBeforeUnmount } from "vue";
 import type { MsProviderProps } from "./types.ts";
+import { msThemeOverridesToStyle } from "../../theme-overrides.ts";
 import {
   provideThemeContext,
   useSystemColorMode,
@@ -106,12 +107,16 @@ const wrapperAttributes = computed(() => {
   return {};
 });
 
+const overrideStyle = computed(() => msThemeOverridesToStyle(props.overrides));
+const wrapperStyle = computed(() => (props.target === "wrapper" ? overrideStyle.value : undefined));
+
 const classes = computed(() => {
   return ["ms-provider"];
 });
 
-// If target is root, sync attributes to document.documentElement (and undo on unmount).
+// If target is root, sync attributes and overrides to document.documentElement (and undo on unmount).
 const appliedRootAttributes = new Map<string, string | null>();
+const appliedRootStyles = new Set<string>();
 
 watchEffect(() => {
   if (props.target === "root" && typeof document !== "undefined") {
@@ -119,6 +124,17 @@ watchEffect(() => {
     for (const [key, value] of Object.entries(resolvedAttributes.value)) {
       if (!appliedRootAttributes.has(key)) appliedRootAttributes.set(key, el.getAttribute(key));
       el.setAttribute(key, value);
+    }
+    const style = overrideStyle.value;
+    for (const name of appliedRootStyles) {
+      if (!(name in style)) {
+        el.style.removeProperty(name);
+        appliedRootStyles.delete(name);
+      }
+    }
+    for (const [name, value] of Object.entries(style)) {
+      el.style.setProperty(name, value);
+      appliedRootStyles.add(name);
     }
   }
 });
@@ -131,6 +147,8 @@ onBeforeUnmount(() => {
     else el.setAttribute(key, previous);
   }
   appliedRootAttributes.clear();
+  for (const name of appliedRootStyles) el.style.removeProperty(name);
+  appliedRootStyles.clear();
 });
 
 const context: MsThemeContext = {

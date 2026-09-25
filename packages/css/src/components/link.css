@@ -64,7 +64,7 @@
 }
 
 .ms-link--primary:hover {
-  color: var(--ms-color-interactive-primary-hover, var(--ms-color-interactive-primary));
+  color: var(--ms-color-interactive-primary-hover);
   text-decoration-color: currentColor;
 }
 

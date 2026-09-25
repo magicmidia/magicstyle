@@ -63,10 +63,10 @@
   width: 28px;
   height: 28px;
   padding: 0;
-  border: 1px solid var(--ms-color-border-subtle, #e2e8f0);
-  background-color: var(--ms-color-surface-raised, #ffffff);
-  color: var(--ms-color-text-secondary, #64748b);
-  border-radius: var(--ms-radius-full, 9999px);
+  border: 1px solid var(--ms-color-border-subtle);
+  background-color: var(--ms-color-surface-raised);
+  color: var(--ms-color-text-secondary);
+  border-radius: var(--ms-radius-full);
   cursor: pointer;
   box-shadow: var(--ms-elevation-1);
   transition:
@@ -77,9 +77,9 @@
 }
 
 .ms-tab-list__arrow:hover {
-  color: var(--ms-color-text-primary, #1e293b);
-  border-color: var(--ms-color-border-strong, #94a3b8);
-  background-color: var(--ms-color-surface-default, #f8fafc);
+  color: var(--ms-color-text-primary);
+  border-color: var(--ms-color-border-strong);
+  background-color: var(--ms-color-surface-default);
 }
 
 .ms-tab-list__arrow--left {
@@ -111,7 +111,7 @@
 
 /* Variant: Pill */
 .ms-tab-list--pill {
-  background-color: var(--ms-color-surface-sunken, #f1f5f9);
+  background-color: var(--ms-color-surface-sunken);
   border-radius: var(--ms-radius-full);
   padding: var(--ms-space-1);
   gap: var(--ms-space-1);
@@ -124,16 +124,16 @@
 
 /* Variant: Solid (preenchida) */
 .ms-tab-list--solid {
-  background-color: var(--ms-color-surface-sunken, #f1f5f9);
-  border: 1px solid var(--ms-color-border-subtle, #e2e8f0);
-  border-radius: var(--ms-radius-md, 8px);
-  padding: var(--ms-space-1, 4px);
-  gap: var(--ms-space-1, 4px);
+  background-color: var(--ms-color-surface-sunken);
+  border: 1px solid var(--ms-color-border-subtle);
+  border-radius: var(--ms-radius-md);
+  padding: var(--ms-space-1);
+  gap: var(--ms-space-1);
   display: inline-flex;
 }
 
 .ms-tabs--vertical .ms-tab-list--solid {
-  border-radius: var(--ms-radius-md, 8px);
+  border-radius: var(--ms-radius-md);
 }
 
 /* Variant: Enclosed */
@@ -223,19 +223,13 @@
 }
 
 .ms-tab--line.ms-tab--selected {
-  color: var(--ms-color-interactive-primary, var(--ms-color-interactive-accent, #2e86de));
-  border-bottom-color: var(
-    --ms-color-interactive-primary,
-    var(--ms-color-interactive-accent, #2e86de)
-  );
+  color: var(--ms-color-interactive-primary);
+  border-bottom-color: var(--ms-color-interactive-primary, var(--ms-color-interactive-accent));
   font-weight: var(--ms-typography-weight-semibold);
 }
 
 .ms-tabs--vertical .ms-tab--line.ms-tab--selected {
-  border-right-color: var(
-    --ms-color-interactive-primary,
-    var(--ms-color-interactive-accent, #2e86de)
-  );
+  border-right-color: var(--ms-color-interactive-primary, var(--ms-color-interactive-accent));
   border-bottom-color: transparent;
 }
 
@@ -263,24 +257,24 @@
 
 /* Solid tab styling (preenchida) */
 .ms-tab--solid {
-  color: var(--ms-color-text-secondary, #64748b);
-  border-radius: var(--ms-control-radius, 6px);
+  color: var(--ms-color-text-secondary);
+  border-radius: var(--ms-control-radius);
   padding: var(--ms-space-1-5, 6px) var(--ms-space-3-5, 14px);
 }
 
 .ms-tabs--vertical .ms-tab--solid {
-  border-radius: var(--ms-control-radius, 6px);
+  border-radius: var(--ms-control-radius);
   justify-content: flex-start;
 }
 
 .ms-tab--solid:hover:not(.ms-tab--disabled) {
-  color: var(--ms-color-text-primary, #1e293b);
-  background-color: color-mix(in oklch, var(--ms-color-surface-raised, #fff) 60%, transparent);
+  color: var(--ms-color-text-primary);
+  background-color: color-mix(in oklch, var(--ms-color-surface-raised) 60%, transparent);
 }
 
 .ms-tab--solid.ms-tab--selected {
-  color: var(--ms-color-text-on-accent, #ffffff);
-  background-color: var(--ms-color-interactive-primary, #2e86de);
+  color: var(--ms-color-text-on-accent);
+  background-color: var(--ms-color-interactive-primary);
   box-shadow: var(--ms-elevation-1);
   font-weight: var(--ms-typography-weight-semibold);
 }
@@ -290,7 +284,7 @@
 .ms-tab-list--segmented {
   background-color: var(--ms-color-surface-sunken);
   border: 1px solid var(--ms-color-border-subtle);
-  border-radius: var(--ms-radius-lg, 8px);
+  border-radius: var(--ms-radius-lg);
   padding: 3px;
   gap: 2px;
   display: inline-flex;
@@ -298,7 +292,7 @@
 .ms-tab--boxed,
 .ms-tab--segmented {
   color: var(--ms-color-text-secondary);
-  border-radius: var(--ms-radius-md, 6px);
+  border-radius: var(--ms-radius-md);
   padding: 6px 14px;
   font-weight: var(--ms-typography-weight-medium);
   transition: all var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);

@@ -47,24 +47,24 @@
 
 .ms-input[data-size="xs"] {
   block-size: 28px;
-  padding-inline: var(--ms-space-2, 8px);
+  padding-inline: var(--ms-space-2);
   font-size: 0.75rem;
 }
 .ms-input[data-size="sm"] {
-  block-size: var(--ms-layout-field-height-sm, 32px);
+  block-size: var(--ms-layout-field-height-sm);
   padding-inline: var(--ms-space-2-5, 10px);
 }
 .ms-input[data-size="md"] {
-  block-size: var(--ms-layout-field-height-md, 40px);
+  block-size: var(--ms-layout-field-height-md);
 }
 .ms-input[data-size="lg"] {
-  block-size: var(--ms-layout-field-height-lg, 48px);
+  block-size: var(--ms-layout-field-height-lg);
 }
 .ms-input[data-size="xl"] {
-  block-size: var(--ms-layout-field-height-xl, 56px);
+  block-size: var(--ms-layout-field-height-xl);
 }
 .ms-input[data-size="xxl"] {
-  block-size: var(--ms-layout-field-height-xxl, 64px);
+  block-size: var(--ms-layout-field-height-xxl);
 }
 
 /* Shape Geometry Modifiers (Harmonized with MsButton and MsSelect) */
@@ -74,20 +74,20 @@
 }
 .ms-input[data-shape="rounded-sm"],
 .ms-input--shape-rounded-sm {
-  border-radius: var(--ms-radius-sm, 4px);
+  border-radius: var(--ms-radius-sm);
 }
 .ms-input[data-shape="rounded"],
 .ms-input--shape-rounded {
-  border-radius: var(--ms-radius-md, 6px);
+  border-radius: var(--ms-radius-md);
 }
 .ms-input[data-shape="rounded-lg"],
 .ms-input--shape-rounded-lg {
-  border-radius: var(--ms-radius-lg, 8px);
+  border-radius: var(--ms-radius-lg);
 }
 .ms-input[data-shape="pill"],
 .ms-input--shape-pill {
   border-radius: 9999px;
-  padding-inline: var(--ms-space-4, 16px);
+  padding-inline: var(--ms-space-4);
 }
 
 .ms-input-native {
@@ -120,67 +120,67 @@
 /* ---------- Tone variations (border + focus follow the tone) ---------- */
 
 .ms-input[data-tone="primary"] {
-  border-color: var(--ms-color-primary, #2e86de);
+  border-color: var(--ms-color-primary);
 }
 .ms-input[data-tone="primary"]:focus-within {
-  border-color: var(--ms-color-primary, #2e86de);
-  box-shadow: 0 0 0 1px var(--ms-color-primary, #2e86de);
+  border-color: var(--ms-color-primary);
+  box-shadow: 0 0 0 1px var(--ms-color-primary);
 }
 
 .ms-input[data-tone="secondary"] {
-  border-color: var(--ms-color-secondary, #e15f41);
+  border-color: var(--ms-color-secondary);
 }
 .ms-input[data-tone="secondary"]:focus-within {
-  border-color: var(--ms-color-secondary, #e15f41);
-  box-shadow: 0 0 0 1px var(--ms-color-secondary, #e15f41);
+  border-color: var(--ms-color-secondary);
+  box-shadow: 0 0 0 1px var(--ms-color-secondary);
 }
 
 .ms-input[data-tone="accent"] {
-  border-color: var(--ms-color-accent, #341f97);
+  border-color: var(--ms-color-accent);
 }
 .ms-input[data-tone="accent"]:focus-within {
-  border-color: var(--ms-color-accent, #341f97);
-  box-shadow: 0 0 0 1px var(--ms-color-accent, #341f97);
+  border-color: var(--ms-color-accent);
+  box-shadow: 0 0 0 1px var(--ms-color-accent);
 }
 
 .ms-input[data-tone="neutral"] {
-  border-color: var(--ms-color-neutral, #222f3e);
+  border-color: var(--ms-color-neutral);
 }
 .ms-input[data-tone="neutral"]:focus-within {
-  border-color: var(--ms-color-neutral, #222f3e);
-  box-shadow: 0 0 0 1px var(--ms-color-neutral, #222f3e);
+  border-color: var(--ms-color-neutral);
+  box-shadow: 0 0 0 1px var(--ms-color-neutral);
 }
 
 .ms-input[data-tone="success"] {
-  border-color: var(--ms-color-success, #10ac84);
+  border-color: var(--ms-color-success);
 }
 .ms-input[data-tone="success"]:focus-within {
-  border-color: var(--ms-color-success, #10ac84);
-  box-shadow: 0 0 0 1px var(--ms-color-success, #10ac84);
+  border-color: var(--ms-color-success);
+  box-shadow: 0 0 0 1px var(--ms-color-success);
 }
 
 .ms-input[data-tone="info"] {
-  border-color: var(--ms-color-info, #0abde3);
+  border-color: var(--ms-color-info);
 }
 .ms-input[data-tone="info"]:focus-within {
-  border-color: var(--ms-color-info, #0abde3);
-  box-shadow: 0 0 0 1px var(--ms-color-info, #0abde3);
+  border-color: var(--ms-color-info);
+  box-shadow: 0 0 0 1px var(--ms-color-info);
 }
 
 .ms-input[data-tone="warning"] {
-  border-color: var(--ms-color-warning, #ff9f43);
+  border-color: var(--ms-color-warning);
 }
 .ms-input[data-tone="warning"]:focus-within {
-  border-color: var(--ms-color-warning, #ff9f43);
-  box-shadow: 0 0 0 1px var(--ms-color-warning, #ff9f43);
+  border-color: var(--ms-color-warning);
+  box-shadow: 0 0 0 1px var(--ms-color-warning);
 }
 
 .ms-input[data-tone="danger"] {
-  border-color: var(--ms-color-danger, #ee5253);
+  border-color: var(--ms-color-danger);
 }
 .ms-input[data-tone="danger"]:focus-within {
-  border-color: var(--ms-color-danger, #ee5253);
-  box-shadow: 0 0 0 1px var(--ms-color-danger, #ee5253);
+  border-color: var(--ms-color-danger);
+  box-shadow: 0 0 0 1px var(--ms-color-danger);
 }
 
 /* ---------- Addons: integrated input groups (shared silhouette) ---------- */
@@ -541,7 +541,7 @@
 .ms-input-addon {
   display: inline-flex;
   align-items: center;
-  padding-inline: var(--ms-space-3, 12px);
+  padding-inline: var(--ms-space-3);
   font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-secondary);
   background-color: var(--ms-color-surface-sunken);

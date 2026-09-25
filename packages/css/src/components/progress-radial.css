@@ -17,7 +17,7 @@
 }
 
 .ms-progress-radial__track {
-  stroke: var(--ms-color-border, #e2e8f0);
+  stroke: var(--ms-color-border);
   fill: transparent;
 }
 
@@ -30,35 +30,35 @@
 
 /* Tone Colors */
 .ms-progress-radial--tone-primary .ms-progress-radial__fill {
-  stroke: var(--ms-color-primary, #2e86de);
+  stroke: var(--ms-color-primary);
 }
 
 .ms-progress-radial--tone-secondary .ms-progress-radial__fill {
-  stroke: var(--ms-color-secondary, #e15f41);
+  stroke: var(--ms-color-secondary);
 }
 
 .ms-progress-radial--tone-accent .ms-progress-radial__fill {
-  stroke: var(--ms-color-accent, #341f97);
+  stroke: var(--ms-color-accent);
 }
 
 .ms-progress-radial--tone-neutral .ms-progress-radial__fill {
-  stroke: var(--ms-color-neutral, #222f3e);
+  stroke: var(--ms-color-neutral);
 }
 
 .ms-progress-radial--tone-success .ms-progress-radial__fill {
-  stroke: var(--ms-color-success, #10ac84);
+  stroke: var(--ms-color-success);
 }
 
 .ms-progress-radial--tone-info .ms-progress-radial__fill {
-  stroke: var(--ms-color-info, #0abde3);
+  stroke: var(--ms-color-info);
 }
 
 .ms-progress-radial--tone-warning .ms-progress-radial__fill {
-  stroke: var(--ms-color-warning, #ff9f43);
+  stroke: var(--ms-color-warning);
 }
 
 .ms-progress-radial--tone-danger .ms-progress-radial__fill {
-  stroke: var(--ms-color-danger, #ee5253);
+  stroke: var(--ms-color-danger);
 }
 
 /* Centered Label */
@@ -67,8 +67,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: var(--ms-typography-weight-semibold, 600);
-  color: var(--ms-color-text, #0f172a);
+  font-weight: var(--ms-typography-weight-semibold);
+  color: var(--ms-color-text);
   user-select: none;
 }
 
@@ -78,7 +78,7 @@
   height: 40px;
 }
 .ms-progress-radial--size-sm .ms-progress-radial__label {
-  font-size: var(--ms-typography-size-xs, 0.75rem);
+  font-size: var(--ms-typography-size-xs);
 }
 
 .ms-progress-radial--size-md {
@@ -86,7 +86,7 @@
   height: 64px;
 }
 .ms-progress-radial--size-md .ms-progress-radial__label {
-  font-size: var(--ms-typography-size-sm, 0.875rem);
+  font-size: var(--ms-typography-size-sm);
 }
 
 .ms-progress-radial--size-lg {
@@ -94,7 +94,7 @@
   height: 96px;
 }
 .ms-progress-radial--size-lg .ms-progress-radial__label {
-  font-size: var(--ms-typography-size-lg, 1.125rem);
+  font-size: var(--ms-typography-size-lg);
 }
 
 .ms-progress-radial--size-xl {
@@ -102,7 +102,7 @@
   height: 128px;
 }
 .ms-progress-radial--size-xl .ms-progress-radial__label {
-  font-size: var(--ms-typography-size-xl, 1.25rem);
+  font-size: var(--ms-typography-size-xl);
 }
 
 /* Indeterminate spin */

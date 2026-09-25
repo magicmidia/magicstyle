@@ -22,10 +22,9 @@ const vueExports = new Set(
   ].map((match) => match[1]),
 ).size;
 
-const themeSources = readdirSync(join(root, "packages/internal/themes/src")).filter((name) =>
-  /^theme-[a-z]+\.json$/.test(name),
-);
-const themes = themeSources.length + 1; // + baseline "magic"
+const themes = readdirSync(join(root, "packages/internal/themes/src/themes")).filter((name) =>
+  name.endsWith(".json"),
+).length;
 
 const countTokens = (node) => {
   if (node === null || typeof node !== "object") return 0;

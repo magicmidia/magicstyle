@@ -36,7 +36,7 @@
 }
 
 .ms-avatar[data-shape="square"] {
-  --_ms-avatar-radius: var(--ms-radius-xs, 4px);
+  --_ms-avatar-radius: var(--ms-radius-xs);
 }
 
 /* Sizing */
@@ -73,12 +73,12 @@
 
 .ms-avatar[data-size="2xl"] {
   --_ms-avatar-size: 76px;
-  --_ms-avatar-font-size: var(--ms-typography-size-2xl, 24px);
+  --_ms-avatar-font-size: var(--ms-typography-size-2xl);
 }
 
 .ms-avatar[data-size="3xl"] {
   --_ms-avatar-size: 96px;
-  --_ms-avatar-font-size: var(--ms-typography-size-3xl, 30px);
+  --_ms-avatar-font-size: var(--ms-typography-size-3xl);
 }
 
 /* Image */
@@ -122,7 +122,7 @@
     --ms-color-interactive-secondary-subtle,
     color-mix(in oklch, var(--ms-color-secondary) 15%, transparent)
   );
-  color: var(--ms-color-interactive-secondary-text, var(--ms-color-secondary));
+  color: var(--ms-color-interactive-secondary-text);
 }
 
 .ms-avatar[data-tone="info"] .ms-avatar-fallback {
@@ -130,7 +130,7 @@
     --ms-color-feedback-info-bg,
     color-mix(in oklch, var(--ms-color-info) 15%, transparent)
   );
-  color: var(--ms-color-feedback-info-text, var(--ms-color-info));
+  color: var(--ms-color-feedback-info-text);
 }
 
 .ms-avatar[data-tone="success"] .ms-avatar-fallback {
@@ -204,7 +204,7 @@
 /* Bordered / Outline Ring */
 .ms-avatar--bordered,
 .ms-avatar[data-bordered] {
-  box-shadow: 0 0 0 2px var(--ms-color-surface-raised, #ffffff);
+  box-shadow: 0 0 0 2px var(--ms-color-surface-raised);
 }
 
 /* ---------- Avatar Group (.ms-avatar-group) ---------- */
@@ -218,8 +218,8 @@
 
 .ms-avatar-group > .ms-avatar {
   margin-inline-start: -8px;
-  box-shadow: 0 0 0 2px var(--ms-color-surface-raised, #ffffff);
-  transition: transform var(--ms-motion-duration-fast, 150ms) ease;
+  box-shadow: 0 0 0 2px var(--ms-color-surface-raised);
+  transition: transform var(--ms-motion-duration-fast) ease;
 }
 
 .ms-avatar-group > .ms-avatar:first-child {
@@ -272,5 +272,5 @@
 .ms-avatar--excess {
   background-color: var(--ms-color-surface-sunken);
   color: var(--ms-color-text-secondary);
-  font-weight: var(--ms-typography-weight-semibold, 600);
+  font-weight: var(--ms-typography-weight-semibold);
 }

@@ -18,19 +18,19 @@
 .ms-choicebox--vertical {
   display: flex;
   flex-direction: column;
-  gap: var(--ms-space-3, 12px);
+  gap: var(--ms-space-3);
 }
 
 .ms-choicebox--horizontal {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: var(--ms-space-3, 12px);
+  gap: var(--ms-space-3);
 }
 
 .ms-choicebox--grid {
   display: grid;
-  gap: var(--ms-space-3, 12px);
+  gap: var(--ms-space-3);
 }
 
 .ms-choicebox--cols-1 {
@@ -62,11 +62,11 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  gap: var(--ms-space-3, 12px);
-  padding: var(--ms-space-4, 16px);
-  border-radius: var(--ms-radius-lg, 10px);
+  gap: var(--ms-space-3);
+  padding: var(--ms-space-4);
+  border-radius: var(--ms-radius-lg);
   background-color: var(--ms-color-surface-raised);
-  border: var(--ms-border-hairline, 1px) solid var(--ms-color-border-subtle);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
   cursor: pointer;
   transition:
     border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
@@ -78,12 +78,12 @@
 }
 
 .ms-choicebox-item:hover:not(.ms-choicebox-item--disabled) {
-  border-color: var(--ms-color-border-default, var(--ms-color-border-subtle));
-  box-shadow: var(--ms-elevation-card, 0 2px 4px rgba(0, 0, 0, 0.05));
+  border-color: var(--ms-color-border-default);
+  box-shadow: var(--ms-elevation-card);
 }
 
 .ms-choicebox-item:focus-visible {
-  outline: 2px solid var(--ms-color-focus-ring, var(--ms-color-brand-primary));
+  outline: 2px solid var(--ms-color-focus-ring);
   outline-offset: 2px;
 }
 
@@ -136,8 +136,7 @@
   width: 20px;
   height: 20px;
   flex-shrink: 0;
-  border: var(--ms-border-hairline, 1.5px) solid
-    var(--ms-color-border-default, var(--ms-color-border-subtle));
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
   background-color: var(--ms-color-surface-raised);
   transition: all var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
   margin-top: 2px;
@@ -145,7 +144,7 @@
 
 /* Indicator shapes */
 .ms-choicebox-item__indicator--radio {
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
 }
 
 .ms-choicebox-item__indicator--radio::after {
@@ -153,7 +152,7 @@
   display: block;
   width: 8px;
   height: 8px;
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
   background-color: var(--ms-color-brand-primary);
   transform: scale(0);
   transition: transform var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
@@ -170,13 +169,13 @@
 }
 
 .ms-choicebox-item__indicator--checkbox {
-  border-radius: var(--ms-radius-sm, 4px);
+  border-radius: var(--ms-radius-sm);
 }
 
 .ms-choicebox-item__indicator--checkbox svg {
   width: 14px;
   height: 14px;
-  stroke: var(--ms-color-text-inverse, #ffffff);
+  stroke: var(--ms-color-text-inverse);
   stroke-width: 2.5;
   fill: none;
   opacity: 0;
@@ -205,7 +204,7 @@
 .ms-choicebox-item__content {
   display: flex;
   flex-direction: column;
-  gap: var(--ms-space-1, 4px);
+  gap: var(--ms-space-1);
   flex: 1;
   min-width: 0;
 }
@@ -214,13 +213,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ms-space-2, 8px);
+  gap: var(--ms-space-2);
 }
 
 .ms-choicebox-item__title-wrap {
   display: flex;
   align-items: center;
-  gap: var(--ms-space-2, 8px);
+  gap: var(--ms-space-2);
   flex-wrap: wrap;
 }
 
@@ -234,10 +233,10 @@
 
 .ms-choicebox-item__title {
   font-family: var(--ms-font-family-sans, sans-serif);
-  font-size: var(--ms-typography-size-sm, 14px);
-  font-weight: var(--ms-typography-weight-semibold, 600);
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-semibold);
   color: var(--ms-color-text-primary);
-  line-height: var(--ms-typography-line-height-tight, 1.25);
+  line-height: var(--ms-typography-line-height-tight);
   margin: 0;
 }
 
@@ -247,40 +246,40 @@
   padding: 1px 6px;
   font-family: var(--ms-font-family-sans, sans-serif);
   font-size: 11px;
-  font-weight: var(--ms-typography-weight-semibold, 600);
-  border-radius: var(--ms-radius-full, 9999px);
+  font-weight: var(--ms-typography-weight-semibold);
+  border-radius: var(--ms-radius-full);
   background-color: var(--ms-color-surface-sunken);
   color: var(--ms-color-brand-primary);
-  border: var(--ms-border-hairline, 1px) solid var(--ms-color-border-subtle);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
 }
 
 .ms-choicebox-item__price {
   font-family: var(--ms-font-family-sans, sans-serif);
-  font-size: var(--ms-typography-size-sm, 14px);
-  font-weight: var(--ms-typography-weight-bold, 700);
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-bold);
   color: var(--ms-color-text-primary);
   white-space: nowrap;
 }
 
 .ms-choicebox-item__description {
   font-family: var(--ms-font-family-sans, sans-serif);
-  font-size: var(--ms-typography-size-xs, 12px);
+  font-size: var(--ms-typography-size-xs);
   color: var(--ms-color-text-muted);
-  line-height: var(--ms-typography-line-height-base, 1.5);
+  line-height: var(--ms-typography-line-height-base);
   margin: 0;
 }
 
 .ms-choicebox-item__extra {
-  margin-top: var(--ms-space-2, 8px);
+  margin-top: var(--ms-space-2);
 }
 
 /* Sizes */
 .ms-choicebox-item--sm {
-  padding: var(--ms-space-2-5, 10px) var(--ms-space-3, 12px);
-  gap: var(--ms-space-2, 8px);
+  padding: var(--ms-space-2-5, 10px) var(--ms-space-3);
+  gap: var(--ms-space-2);
 }
 .ms-choicebox-item--sm .ms-choicebox-item__title {
-  font-size: var(--ms-typography-size-xs, 12px);
+  font-size: var(--ms-typography-size-xs);
 }
 .ms-choicebox-item--sm .ms-choicebox-item__indicator {
   width: 16px;
@@ -292,12 +291,12 @@
 }
 
 .ms-choicebox-item--md {
-  padding: var(--ms-space-4, 16px);
+  padding: var(--ms-space-4);
 }
 
 .ms-choicebox-item--lg {
-  padding: var(--ms-space-5, 20px);
-  gap: var(--ms-space-4, 16px);
+  padding: var(--ms-space-5);
+  gap: var(--ms-space-4);
 }
 .ms-choicebox-item--lg .ms-choicebox-item__title {
   font-size: var(--ms-font-size-base, 16px);

@@ -39,22 +39,22 @@
 }
 
 .ms-tooltip--tone-light {
-  background-color: var(--ms-color-surface-raised, #ffffff);
-  color: var(--ms-color-text-primary, #0f172a);
-  border: var(--ms-border-hairline, 1px) solid var(--ms-color-border-subtle, #e2e8f0);
-  box-shadow: var(--ms-elevation-3, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
+  background-color: var(--ms-color-surface-raised);
+  color: var(--ms-color-text-primary);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  box-shadow: var(--ms-elevation-3);
 }
 
 .ms-tooltip--tone-primary {
   background-color: var(--ms-color-interactive-primary);
-  color: var(--ms-color-text-on-accent, #ffffff);
+  color: var(--ms-color-text-on-accent);
 }
 
 /* Sizes */
 .ms-tooltip--sm {
   font-size: 10px;
   padding: 2px 6px;
-  border-radius: var(--ms-radius-xs, 2px);
+  border-radius: var(--ms-radius-xs);
 }
 
 .ms-tooltip--md {

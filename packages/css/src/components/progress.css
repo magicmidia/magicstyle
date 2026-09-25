@@ -59,7 +59,7 @@
 .ms-progress__track {
   position: relative;
   width: 100%;
-  background-color: var(--ms-color-surface-sunken, #f1f5f9);
+  background-color: var(--ms-color-surface-sunken);
   border-radius: var(--ms-radius-full);
   overflow: hidden;
   box-sizing: border-box;
@@ -67,6 +67,7 @@
 
 .ms-progress__bar {
   height: 100%;
+  color: var(--ms-color-primary-content);
   border-radius: inherit;
   transition: width var(--ms-motion-duration-base) var(--ms-motion-easing-standard);
 }
@@ -106,7 +107,7 @@
 }
 
 .ms-progress--shape-rounded .ms-progress__track {
-  border-radius: var(--ms-radius-sm, 4px);
+  border-radius: var(--ms-radius-sm);
 }
 
 .ms-progress--shape-pill .ms-progress__track {
@@ -115,48 +116,56 @@
 
 /* Tone styling */
 .ms-progress--primary .ms-progress__bar {
-  background-color: var(--ms-color-primary, #2e86de);
+  background-color: var(--ms-color-primary);
+  color: var(--ms-color-primary-content);
 }
 
 .ms-progress--secondary .ms-progress__bar {
-  background-color: var(--ms-color-secondary, #e15f41);
+  background-color: var(--ms-color-secondary);
+  color: var(--ms-color-secondary-content);
 }
 
 .ms-progress--accent .ms-progress__bar {
-  background-color: var(--ms-color-accent, #341f97);
+  background-color: var(--ms-color-accent);
+  color: var(--ms-color-accent-content);
 }
 
 .ms-progress--neutral .ms-progress__bar {
-  background-color: var(--ms-color-neutral, #222f3e);
+  background-color: var(--ms-color-neutral);
+  color: var(--ms-color-neutral-content);
 }
 
 .ms-progress--success .ms-progress__bar {
-  background-color: var(--ms-color-success, #10ac84);
+  background-color: var(--ms-color-success);
+  color: var(--ms-color-success-content);
 }
 
 .ms-progress--info .ms-progress__bar {
-  background-color: var(--ms-color-info, #0abde3);
+  background-color: var(--ms-color-info);
+  color: var(--ms-color-info-content);
 }
 
 .ms-progress--warning .ms-progress__bar {
-  background-color: var(--ms-color-warning, #ff9f43);
+  background-color: var(--ms-color-warning);
+  color: var(--ms-color-warning-content);
 }
 
 .ms-progress--danger .ms-progress__bar {
-  background-color: var(--ms-color-danger, #ee5253);
+  background-color: var(--ms-color-danger);
+  color: var(--ms-color-danger-content);
 }
 
 /* Gradient effects */
 .ms-progress--gradient.ms-progress--primary .ms-progress__bar {
-  background-image: linear-gradient(90deg, #2e86de, #0abde3);
+  background-image: linear-gradient(90deg, var(--ms-color-primary), var(--ms-color-info));
 }
 
 .ms-progress--gradient.ms-progress--secondary .ms-progress__bar {
-  background-image: linear-gradient(90deg, #e15f41, #ff9f43);
+  background-image: linear-gradient(90deg, var(--ms-color-secondary), var(--ms-color-warning));
 }
 
 .ms-progress--gradient.ms-progress--accent .ms-progress__bar {
-  background-image: linear-gradient(90deg, #341f97, #2e86de);
+  background-image: linear-gradient(90deg, var(--ms-color-accent), var(--ms-color-primary));
 }
 
 .ms-progress--gradient.ms-progress--neutral .ms-progress__bar {
@@ -168,19 +177,19 @@
 }
 
 .ms-progress--gradient.ms-progress--success .ms-progress__bar {
-  background-image: linear-gradient(90deg, #10ac84, #0abde3);
+  background-image: linear-gradient(90deg, var(--ms-color-success), var(--ms-color-info));
 }
 
 .ms-progress--gradient.ms-progress--info .ms-progress__bar {
-  background-image: linear-gradient(90deg, #0abde3, #2e86de);
+  background-image: linear-gradient(90deg, var(--ms-color-info), var(--ms-color-primary));
 }
 
 .ms-progress--gradient.ms-progress--warning .ms-progress__bar {
-  background-image: linear-gradient(90deg, #ff9f43, #e15f41);
+  background-image: linear-gradient(90deg, var(--ms-color-warning), var(--ms-color-secondary));
 }
 
 .ms-progress--gradient.ms-progress--danger .ms-progress__bar {
-  background-image: linear-gradient(90deg, #ee5253, #e15f41);
+  background-image: linear-gradient(90deg, var(--ms-color-danger), var(--ms-color-secondary));
 }
 
 /* Inline bar text */
@@ -189,10 +198,10 @@
   align-items: center;
   justify-content: flex-end;
   height: 100%;
-  padding-inline-end: var(--ms-space-2, 8px);
-  font-size: var(--ms-typography-size-2xs, 10px);
-  font-weight: var(--ms-typography-weight-bold, 700);
-  color: #ffffff;
+  padding-inline-end: var(--ms-space-2);
+  font-size: var(--ms-typography-size-2xs);
+  font-weight: var(--ms-typography-weight-bold);
+  color: inherit;
   line-height: 1;
   white-space: nowrap;
   overflow: hidden;
