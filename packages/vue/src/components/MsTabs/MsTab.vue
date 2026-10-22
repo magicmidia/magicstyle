@@ -1,11 +1,11 @@
 <template>
   <button
+    :id="tabId"
     ref="buttonRef"
     type="button"
     role="tab"
-    :id="tabId"
     :aria-selected="isSelected"
-    :aria-controls="panelId"
+    :aria-controls="context?.hasPanel?.(props.value) ? panelId : undefined"
     :tabindex="isSelected ? 0 : -1"
     :disabled="disabled"
     :class="classes"
@@ -97,4 +97,9 @@ function handleKeyDown(event: KeyboardEvent) {
     context.onKeyDown(event, props.value);
   }
 }
+
+defineSlots<{
+  /** Tab label. */
+  default?(): unknown;
+}>();
 </script>

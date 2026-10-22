@@ -2,11 +2,12 @@
   <div :class="classes">
     <!-- Header with Tabs if tabs prop provided -->
     <div v-if="tabs && tabs.length > 0" class="ms-snippet__header">
-      <div class="ms-snippet__tabs" role="tablist" aria-label="Gerenciadores e comandos">
+      <div class="ms-snippet__tabs" role="tablist" :aria-label="t.snippet.label">
         <button
           v-for="(tab, index) in tabs"
           :id="`${snippetId}-tab-${index}`"
           :key="tab.id || index"
+          :ref="(el) => setItemRef(el, index)"
           type="button"
           role="tab"
           class="ms-snippet__tab"
@@ -16,6 +17,8 @@
           @click="selectTab(index)"
           @keydown.arrow-left.prevent="navigateTab(-1)"
           @keydown.arrow-right.prevent="navigateTab(1)"
+          @keydown.home.prevent="focusTab(0)"
+          @keydown.end.prevent="focusTab(tabs.length - 1)"
         >
           <slot name="tab" :tab="tab" :active="currentTabIndex === index" :index="index">
             {{ tab.label }}
@@ -30,8 +33,8 @@
           type="button"
           class="ms-snippet__copy-btn"
           :data-copied="copied"
-          :aria-label="copied ? 'Copiado para a área de transferência' : 'Copiar comando'"
-          :title="copied ? 'Copiado!' : 'Copiar'"
+          :aria-label="copied ? t.snippet.copied : t.snippet.copy"
+          :title="copied ? t.snippet.copiedShort : t.snippet.copyShort"
           @click="handleCopy"
         >
           <slot name="copy-button" :copied="copied">
@@ -93,8 +96,8 @@
         type="button"
         class="ms-snippet__copy-btn"
         :data-copied="copied"
-        :aria-label="copied ? 'Copiado para a área de transferência' : 'Copiar comando'"
-        :title="copied ? 'Copiado!' : 'Copiar'"
+        :aria-label="copied ? t.snippet.copied : t.snippet.copy"
+        :title="copied ? t.snippet.copiedShort : t.snippet.copyShort"
         @click="handleCopy"
       >
         <slot name="copy-button" :copied="copied">
@@ -136,9 +139,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, nextTick, ref, watch } from "vue";
 import { useMsId } from "../../composables/use-ms-id.ts";
-import type { MsSnippetProps, MsSnippetEmits } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
+import type { MsSnippetProps, MsSnippetEmits, MsSnippetItem } from "./types.ts";
 
 defineOptions({
   name: "MsSnippet",
@@ -158,6 +162,8 @@ const props = withDefaults(defineProps<MsSnippetProps>(), {
 });
 
 const emit = defineEmits<MsSnippetEmits>();
+
+const t = useMsMessages();
 
 const snippetId = useMsId("snippet");
 const copied = ref(false);
@@ -218,11 +224,22 @@ function selectTab(index: number) {
   emit("tab-change", item, index);
 }
 
+const tabRefs: (HTMLButtonElement | undefined)[] = [];
+const setItemRef = (el: unknown, index: number) => {
+  tabRefs[index] = el instanceof HTMLButtonElement ? el : undefined;
+};
+
+/** Selects a tab and moves focus to it (roving tabindex, WAI-ARIA tabs pattern). */
+function focusTab(index: number) {
+  selectTab(index);
+  void nextTick(() => tabRefs[index]?.focus());
+}
+
 function navigateTab(delta: number) {
   if (!props.tabs || props.tabs.length === 0) return;
   const count = props.tabs.length;
   const nextIndex = (internalActiveIndex.value + delta + count) % count;
-  selectTab(nextIndex);
+  focusTab(nextIndex);
 }
 
 let copyTimer: ReturnType<typeof setTimeout> | null = null;
@@ -252,4 +269,17 @@ async function handleCopy() {
     }
   }
 }
+
+defineSlots<{
+  /** Replaces the displayed code (the copy button still copies `code` or the active tab's code). */
+  default?(): unknown;
+  /** Replaces the prompt glyph before the code (shown when a prompt is set). */
+  prefix?(): unknown;
+  /** Replaces each tab label; receives the tab item, whether it is active and its index. */
+  tab?(props: { tab: MsSnippetItem; active: boolean; index: number }): unknown;
+  /** Extra header content before the copy button (tabbed snippets only). */
+  "header-extra"?(): unknown;
+  /** Replaces the copy button icon; `copied` is true briefly after a successful copy. */
+  "copy-button"?(props: { copied: boolean }): unknown;
+}>();
 </script>

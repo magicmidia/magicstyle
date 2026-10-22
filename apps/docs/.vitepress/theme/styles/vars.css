@@ -1,0 +1,46 @@
+/*
+ * The VitePress chrome follows the active Magic-Style theme, mode and dials:
+ * every --vp-* color and font maps onto a --ms-* token.
+ */
+:root,
+.dark {
+  --vp-font-family-base: var(--ms-font-sans);
+  --vp-font-family-mono: var(--ms-font-mono);
+
+  --vp-c-bg: var(--ms-color-surface-default);
+  --vp-c-bg-alt: var(--ms-color-surface-sunken);
+  --vp-c-bg-elv: var(--ms-color-surface-raised);
+  --vp-c-bg-soft: var(--ms-color-surface-sunken);
+
+  --vp-c-text-1: var(--ms-color-text-primary);
+  --vp-c-text-2: var(--ms-color-text-secondary);
+  --vp-c-text-3: var(--ms-color-text-muted);
+
+  --vp-c-divider: var(--ms-color-border-default);
+  --vp-c-border: var(--ms-color-border-default);
+  --vp-c-gutter: var(--ms-color-border-subtle);
+
+  --vp-c-brand-1: var(--ms-color-interactive-primary-text);
+  --vp-c-brand-2: var(--ms-color-interactive-primary-text);
+  --vp-c-brand-3: var(--ms-color-primary);
+  --vp-c-brand-soft: var(--ms-color-interactive-primary-subtle);
+
+  --vp-c-default-soft: var(--ms-color-interactive-neutral-subtle);
+
+  --vp-code-bg: var(--ms-color-surface-sunken);
+  --vp-code-color: var(--ms-color-text-primary);
+  --vp-code-block-bg: var(--ms-color-surface-sunken);
+  --vp-code-copy-code-bg: var(--ms-color-surface-raised);
+
+  --vp-nav-bg-color: color-mix(in oklab, var(--ms-color-surface-default) 85%, transparent);
+  --vp-local-nav-bg-color: var(--ms-color-surface-default);
+  --vp-sidebar-bg-color: var(--ms-color-surface-default);
+
+  --vp-button-brand-bg: var(--ms-color-primary);
+  --vp-button-brand-text: var(--ms-color-primary-content);
+  --vp-button-brand-hover-bg: var(--ms-color-interactive-primary-hover);
+  --vp-button-brand-hover-text: var(--ms-color-primary-content);
+
+  --vp-home-hero-name-color: var(--ms-color-text-primary);
+  --vp-layout-max-width: 1440px;
+}

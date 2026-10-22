@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ref, computed, watch, nextTick, onMounted } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsPinInputProps, MsPinInputEmits } from "./types.ts";
+import { useFieldControl } from "../../composables/use-field-context.ts";
 
+const t = useMsMessages();
 const props = withDefaults(defineProps<MsPinInputProps>(), {
   modelValue: "",
   length: 4,
@@ -14,6 +17,8 @@ const props = withDefaults(defineProps<MsPinInputProps>(), {
 });
 
 const emit = defineEmits<MsPinInputEmits>();
+
+const fieldControl = useFieldControl("ms-pin-input");
 
 const inputRefs = ref<HTMLInputElement[]>([]);
 const values = ref<string[]>(Array(props.length).fill(""));
@@ -115,10 +120,18 @@ const classes = computed(() => [
 </script>
 
 <template>
-  <div :class="classes" :data-size="props.size">
+  <div
+    :class="classes"
+    :data-size="props.size"
+    role="group"
+    :aria-labelledby="fieldControl.labelledBy.value"
+    :aria-describedby="fieldControl.describedBy.value"
+  >
     <template v-for="(_, index) in props.length" :key="index">
       <input
+        :id="index === 0 ? fieldControl.id : undefined"
         ref="inputRefs"
+        :aria-invalid="fieldControl.fieldInvalid.value || undefined"
         :type="props.mask ? 'password' : 'text'"
         :inputmode="props.type === 'numeric' ? 'numeric' : 'text'"
         maxlength="1"
@@ -126,7 +139,7 @@ const classes = computed(() => [
         :class="{ 'ms-pin-input__box--filled': values[index] }"
         :value="values[index]"
         :disabled="props.disabled"
-        :aria-label="`Dígito ${index + 1} de ${props.length}`"
+        :aria-label="t.pinInput.digit(index + 1, props.length)"
         @input="handleInput(index, $event)"
         @keydown="handleKeyDown(index, $event)"
         @paste="handlePaste"

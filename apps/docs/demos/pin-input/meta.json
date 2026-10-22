@@ -1,0 +1,71 @@
+{
+  "intro": {
+    "pt-BR": "Use para códigos curtos de tamanho fixo, como verificação em duas etapas, PIN ou cupons. O foco avança sozinho e colar o código inteiro preenche todas as caixas.",
+    "en-US": "Use it for short fixed-length codes, such as two-step verification, PINs or vouchers. Focus advances automatically and pasting the whole code fills every box.",
+    "es-ES": "Úsalo para códigos cortos de longitud fija, como verificación en dos pasos, PIN o cupones. El foco avanza solo y pegar el código completo llena todas las casillas."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Quatro caixas numéricas por padrão, com o código combinado em `v-model`.",
+        "en-US": "Four numeric boxes by default, with the combined code in `v-model`.",
+        "es-ES": "Cuatro casillas numéricas por defecto, con el código combinado en `v-model`."
+      }
+    },
+    {
+      "file": "VerifyCode",
+      "title": {
+        "pt-BR": "Verificação por e-mail",
+        "en-US": "Email verification",
+        "es-ES": "Verificación por correo"
+      },
+      "description": {
+        "pt-BR": "`length` define o número de caixas e `@complete` dispara a verificação assim que o código é preenchido.",
+        "en-US": "`length` sets the number of boxes and `@complete` triggers verification as soon as the code is filled.",
+        "es-ES": "`length` define el número de casillas y `@complete` inicia la verificación en cuanto se completa el código."
+      }
+    },
+    {
+      "file": "Masked",
+      "title": { "pt-BR": "Mascarado", "en-US": "Masked", "es-ES": "Enmascarado" },
+      "description": {
+        "pt-BR": "`mask` esconde os caracteres digitados, como em um campo de senha.",
+        "en-US": "`mask` hides the typed characters, like a password field.",
+        "es-ES": "`mask` oculta los caracteres escritos, como un campo de contraseña."
+      }
+    },
+    {
+      "file": "Alphanumeric",
+      "title": {
+        "pt-BR": "Alfanumérico com separador",
+        "en-US": "Alphanumeric with separator",
+        "es-ES": "Alfanumérico con separador"
+      },
+      "description": {
+        "pt-BR": "`type=\"alphanumeric\"` aceita letras e números; `separator` desenha um texto entre as caixas.",
+        "en-US": "`type=\"alphanumeric\"` accepts letters and digits; `separator` renders text between the boxes.",
+        "es-ES": "`type=\"alphanumeric\"` acepta letras y números; `separator` dibuja un texto entre las casillas."
+      }
+    },
+    {
+      "file": "SizesDisabled",
+      "title": {
+        "pt-BR": "Tamanhos e desabilitado",
+        "en-US": "Sizes and disabled",
+        "es-ES": "Tamaños y deshabilitado"
+      },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md` e `lg`; `disabled` bloqueia todas as caixas.",
+        "en-US": "`size` accepts `sm`, `md` and `lg`; `disabled` locks every box.",
+        "es-ES": "`size` acepta `sm`, `md` y `lg`; `disabled` bloquea todas las casillas."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O contêiner tem `role=\"group\"` e, dentro de `MsField`, recebe `aria-labelledby` com o rótulo do campo.\n- Cada caixa é um `input` com `aria-label` localizado indicando a posição (por exemplo, dígito 2 de 6).\n- `Tab`: percorre as caixas.\n- `Seta para esquerda`/`Seta para direita`: movem o foco entre caixas vizinhas.\n- `Backspace`: apaga a caixa atual ou, se estiver vazia, volta para a anterior e a apaga.\n- Colar um código preenche as caixas a partir da primeira.",
+    "en-US": "- The container has `role=\"group\"` and, inside `MsField`, gets `aria-labelledby` with the field label.\n- Each box is an `input` with a localized `aria-label` giving its position (for example, digit 2 of 6).\n- `Tab`: moves through the boxes.\n- `Arrow Left`/`Arrow Right`: move focus to the neighboring box.\n- `Backspace`: clears the current box or, if it is empty, moves back to the previous one and clears it.\n- Pasting a code fills the boxes starting from the first one.",
+    "es-ES": "- El contenedor tiene `role=\"group\"` y, dentro de `MsField`, recibe `aria-labelledby` con la etiqueta del campo.\n- Cada casilla es un `input` con `aria-label` localizado que indica su posición (por ejemplo, dígito 2 de 6).\n- `Tab`: recorre las casillas.\n- `Flecha izquierda`/`Flecha derecha`: mueven el foco a la casilla vecina.\n- `Retroceso`: borra la casilla actual o, si está vacía, vuelve a la anterior y la borra.\n- Pegar un código llena las casillas a partir de la primera."
+  }
+}

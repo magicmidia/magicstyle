@@ -7,8 +7,10 @@ export type MsCheckboxTone = Extract<
 >;
 
 export interface MsCheckboxProps {
-  /** Checked state (v-model:checked). */
-  checked?: boolean;
+  /** Checked state for `v-model` (e.g. `v-model="form.remember"`). */
+  modelValue?: boolean | undefined;
+  /** Checked state for `v-model:checked`. `modelValue` wins when both are bound. */
+  checked?: boolean | undefined;
   /** Indeterminate visual state (aria-checked="mixed"). */
   indeterminate?: boolean;
   /** Primary label text. */

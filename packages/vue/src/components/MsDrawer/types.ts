@@ -55,7 +55,10 @@ export interface MsDrawerProps {
 }
 
 export interface MsDrawerEmits {
+  /** Fires with `false` when the drawer requests to close (close button, Escape or backdrop click). */
   (e: "update:open", value: boolean): void;
+  /** Fires after `update:open` whenever the drawer requests to close. */
   (e: "close"): void;
+  /** Fires when `open` becomes `true` (including on mount). */
   (e: "open"): void;
 }

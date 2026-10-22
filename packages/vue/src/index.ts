@@ -304,6 +304,7 @@ export type {
   MsTimelineItemProps,
   MsTimelineDirection,
   MsTimelineTone,
+  MsTimelineTitleTag,
   MsTimelineContext,
 } from "./components/MsTimeline/types.ts";
 
@@ -322,7 +323,13 @@ export type { MsRatingProps, MsRatingEmits, MsRatingSize } from "./components/Ms
 
 export { default as MsToast } from "./components/MsToast/MsToast.vue";
 export { default as MsToastContainer } from "./components/MsToast/MsToastContainer.vue";
-export { useToast } from "./components/MsToast/useToast.ts";
+export {
+  useToast,
+  createMsToast,
+  createToastStore,
+  TOAST_STORE_KEY,
+  type MsToastStore,
+} from "./components/MsToast/useToast.ts";
 export type {
   MsToastProps,
   MsToastEmits,
@@ -427,6 +434,7 @@ export type {
   MsScrollSpyProps,
   MsScrollSpyEmits,
   MsScrollSpyItem,
+  MsScrollSpyContainer,
 } from "./components/MsScrollSpy/types.ts";
 
 export { default as MsSidebarMenu } from "./components/MsSidebarMenu/MsSidebarMenu.vue";
@@ -652,6 +660,7 @@ export type {
   MsDropzoneProps,
   MsDropzoneFile,
   MsDropzoneEmits,
+  MsDropzoneRejection,
 } from "./components/MsDropzone/types.ts";
 
 export { default as MsMarquee } from "./components/MsMarquee/MsMarquee.vue";
@@ -714,3 +723,105 @@ export type { MsAspectRatioProps, MsAspectRatioPreset } from "./components/MsAsp
 
 export { default as MsHoverCard } from "./components/MsHoverCard/MsHoverCard.vue";
 export type { MsHoverCardProps, MsHoverCardPlacement } from "./components/MsHoverCard/types.ts";
+
+// Additional public types (variants, sizes, tones, value shapes).
+export type { MsAlertSize, MsAlertAlign, MsAlertIconStyle } from "./components/MsAlert/types.ts";
+export type { MsBadgePlacement } from "./components/MsBadge/types.ts";
+export type {
+  MsBreadcrumbsVariant,
+  MsBreadcrumbsSize,
+  MsBreadcrumbsSeparatorType,
+} from "./components/MsBreadcrumbs/types.ts";
+export type { MsButtonShape } from "./components/MsButton/types.ts";
+export type { MsCardOrientation } from "./components/MsCard/types.ts";
+export type { MsCheckboxSize, MsCheckboxTone } from "./components/MsCheckbox/types.ts";
+export type {
+  MsDatePickerMode,
+  MsDatePickerRangeValue,
+  MsDatePickerModelValue,
+} from "./components/MsDatePicker/types.ts";
+export type { MsEmptyStateVariant, MsEmptyStateIconTone } from "./components/MsEmptyState/types.ts";
+export type { MsGridGap } from "./components/MsGrid/types.ts";
+export type { MsIconButtonShape } from "./components/MsIconButton/types.ts";
+export type { MsInputVariant } from "./components/MsInput/types.ts";
+export type {
+  MsNativeSelectVariant,
+  MsNativeSelectTone,
+} from "./components/MsNativeSelect/types.ts";
+export type { MsProgressShape } from "./components/MsProgress/types.ts";
+export type { MsSearchFieldVariant } from "./components/MsSearchField/types.ts";
+export type {
+  MsSelectTone,
+  MsSelectVariant,
+  MsSelectShape,
+  MsSelectPlacement,
+} from "./components/MsSelect/types.ts";
+export type {
+  MsSeparatorTone,
+  MsSeparatorThickness,
+  MsSeparatorSpacing,
+  MsSeparatorAlign,
+} from "./components/MsSeparator/types.ts";
+export type { MsSkeletonTone, MsSkeletonSpeed } from "./components/MsSkeleton/types.ts";
+export type {
+  MsSwitchSize,
+  MsSwitchTone,
+  MsSwitchLabelPlacement,
+} from "./components/MsSwitch/types.ts";
+export type { MsTextareaResize, MsTextareaEmits } from "./components/MsTextarea/types.ts";
+export type { MsToggleGroupKey } from "./components/MsToggleGroup/types.ts";
+export { defaultCriteria as msPasswordDefaultCriteria } from "./components/MsPasswordInput/types.ts";
+
+// Building blocks for custom components (same primitives the library uses).
+export {
+  FIELD_CONTEXT_KEY,
+  useFieldContext,
+  useFieldControl,
+  type MsFieldContext,
+  type MsFieldControl,
+} from "./composables/use-field-context.ts";
+export { THEME_CONTEXT_KEY } from "./composables/use-theme-context.ts";
+export { useFocusTrap, type FocusTrapOptions } from "./composables/use-focus-trap.ts";
+export {
+  useDismissableLayer,
+  type DismissReason,
+  type DismissableLayerOptions,
+} from "./composables/use-dismissable-layer.ts";
+export { useScrollLock } from "./composables/use-scroll-lock.ts";
+export { usePrefersReducedMotion } from "./composables/use-prefers-reduced-motion.ts";
+export { safeHref, safeRel } from "./composables/safe-url.ts";
+export { sanitizeSvg } from "./composables/sanitize-svg.ts";
+
+// Theming: contract, theme builder and contrast validation.
+export {
+  MS_THEME_CONTRACT,
+  checkMsThemeContrast,
+  defineMsTheme,
+  msThemeOverridesToStyle,
+  msThemeToCss,
+  type MsThemeColorRole,
+  type MsThemeContractEntry,
+  type MsThemeContrastIssue,
+  type MsThemeDefinition,
+  type MsThemeKey,
+  type MsThemeValues,
+} from "./theming.ts";
+
+// i18n: built-in component strings (English default; Portuguese and Spanish included).
+export {
+  MS_MESSAGES_KEY,
+  createMsI18n,
+  provideMsMessages,
+  useMsMessages,
+  type MsI18nOptions,
+} from "./composables/use-ms-messages.ts";
+export {
+  MS_BUILTIN_MESSAGES,
+  mergeMsMessages,
+  msMessagesEn,
+  msMessagesEs,
+  msMessagesForLocale,
+  msMessagesPtBR,
+  type MsMessages,
+  type MsMessagesOverride,
+} from "./i18n/messages.ts";

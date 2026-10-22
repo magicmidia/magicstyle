@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import type { MsColorPickerProps, MsColorPickerEmits } from "./types.ts";
+import { useFieldControl } from "../../composables/use-field-context.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const defaultSwatches = [
   "#6366f1", // Indigo
@@ -24,6 +26,10 @@ const props = withDefaults(defineProps<MsColorPickerProps>(), {
 });
 
 const emit = defineEmits<MsColorPickerEmits>();
+
+const t = useMsMessages();
+
+const fieldControl = useFieldControl("ms-color-picker");
 
 const activeSwatches = computed(() => props.swatches || defaultSwatches);
 
@@ -49,8 +55,11 @@ const handleInput = (event: Event) => {
       <!-- Native color trigger button -->
       <div class="ms-color-picker__preview-button" :style="{ backgroundColor: props.modelValue }">
         <input
+          :id="fieldControl.id"
           type="color"
           class="ms-color-picker__native-input"
+          :aria-label="fieldControl.field ? undefined : t.colorPicker.pick"
+          :aria-describedby="fieldControl.describedBy.value"
           :value="props.modelValue"
           :disabled="props.disabled"
           @input="handleInput"
@@ -62,6 +71,7 @@ const handleInput = (event: Event) => {
         v-if="props.showInput"
         type="text"
         class="ms-color-picker__input"
+        :aria-label="t.colorPicker.hex"
         :value="props.modelValue"
         :disabled="props.disabled"
         maxlength="9"
@@ -80,7 +90,8 @@ const handleInput = (event: Event) => {
           'ms-color-picker__swatch--active': props.modelValue.toLowerCase() === color.toLowerCase(),
         }"
         :style="{ backgroundColor: color }"
-        :aria-label="`Selecionar cor ${color}`"
+        :aria-label="`${t.colorPicker.pick} ${color}`"
+        :aria-pressed="props.modelValue.toLowerCase() === color.toLowerCase()"
         :disabled="props.disabled"
         @click="updateColor(color)"
       />

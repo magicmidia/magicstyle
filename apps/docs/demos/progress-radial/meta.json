@@ -1,0 +1,63 @@
+{
+  "intro": {
+    "pt-BR": "Indicador circular de progresso para espaços compactos, como cartões e painéis. Por padrão, mostra o percentual no centro.",
+    "en-US": "Circular progress indicator for compact spaces such as cards and dashboards. By default it shows the percentage in the center.",
+    "es-ES": "Indicador de progreso circular para espacios compactos, como tarjetas y paneles. De forma predeterminada muestra el porcentaje en el centro."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`value` vai de 0 a `max` (100 por padrão); dê um nome acessível com `aria-label`.",
+        "en-US": "`value` goes from 0 to `max` (100 by default); give it an accessible name with `aria-label`.",
+        "es-ES": "`value` va de 0 a `max` (100 por defecto); dale un nombre accesible con `aria-label`."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md`, `lg` e `xl`; `stroke-width` ajusta a espessura e `show-value` pode esconder o percentual.",
+        "en-US": "`size` accepts `sm`, `md`, `lg` and `xl`; `stroke-width` sets the thickness and `show-value` can hide the percentage.",
+        "es-ES": "`size` acepta `sm`, `md`, `lg` y `xl`; `stroke-width` ajusta el grosor y `show-value` puede ocultar el porcentaje."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "`tone` aceita os tons semânticos da biblioteca.",
+        "en-US": "`tone` accepts the library's semantic tones.",
+        "es-ES": "`tone` acepta los tonos semánticos de la biblioteca."
+      }
+    },
+    {
+      "file": "CustomLabel",
+      "title": {
+        "pt-BR": "Rótulo personalizado",
+        "en-US": "Custom label",
+        "es-ES": "Etiqueta personalizada"
+      },
+      "description": {
+        "pt-BR": "O slot padrão substitui o percentual; combine com `max` para contar itens em vez de porcentagem.",
+        "en-US": "The default slot replaces the percentage; combine it with `max` to count items instead of percent.",
+        "es-ES": "El slot predeterminado sustituye al porcentaje; combínalo con `max` para contar elementos en lugar de porcentaje."
+      }
+    },
+    {
+      "file": "Indeterminate",
+      "title": { "pt-BR": "Indeterminado", "en-US": "Indeterminate", "es-ES": "Indeterminado" },
+      "description": {
+        "pt-BR": "`indeterminate` gira continuamente quando a duração da tarefa é desconhecida.",
+        "en-US": "`indeterminate` spins continuously when the task duration is unknown.",
+        "es-ES": "`indeterminate` gira de forma continua cuando la duración de la tarea es desconocida."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza `role=\"progressbar\"` com `aria-valuemin`, `aria-valuemax` e `aria-valuenow`; no modo indeterminado, `aria-valuenow` é omitido.\n- O componente não tem prop de rótulo: passe `aria-label` (ou `aria-labelledby`), que é repassado ao elemento raiz.\n- O texto central é visual; o valor anunciado vem dos atributos ARIA.",
+    "en-US": "- Renders `role=\"progressbar\"` with `aria-valuemin`, `aria-valuemax` and `aria-valuenow`; in indeterminate mode `aria-valuenow` is omitted.\n- The component has no label prop: pass `aria-label` (or `aria-labelledby`), which is forwarded to the root element.\n- The center text is visual; the announced value comes from the ARIA attributes.",
+    "es-ES": "- Renderiza `role=\"progressbar\"` con `aria-valuemin`, `aria-valuemax` y `aria-valuenow`; en modo indeterminado se omite `aria-valuenow`.\n- El componente no tiene prop de etiqueta: pasa `aria-label` (o `aria-labelledby`), que se reenvía al elemento raíz.\n- El texto central es visual; el valor anunciado proviene de los atributos ARIA."
+  }
+}

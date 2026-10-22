@@ -8,9 +8,13 @@ const props = withDefaults(defineProps<MsStepProps>(), {
 });
 
 defineSlots<{
+  /** Extra step content rendered below the step trigger (e.g. details or actions). */
   default?(): unknown;
+  /** Replaces the number/check indicator. */
   indicator?(): unknown;
+  /** Rich title; replaces `title`. */
   title?(): unknown;
+  /** Rich subtitle; replaces `subtitle`. */
   subtitle?(): unknown;
 }>();
 
@@ -52,21 +56,25 @@ const stepClasses = computed(() => [
       :disabled="props.disabled || !stepper?.clickable.value"
       @click="handleClick"
     >
-      <div class="ms-step__indicator" aria-hidden="true">
+      <span class="ms-step__indicator" aria-hidden="true">
         <slot name="indicator">
           <span v-if="computedStatus === 'complete'">✓</span>
           <span v-else>{{ props.index + 1 }}</span>
         </slot>
-      </div>
+      </span>
 
-      <div class="ms-step__text">
+      <span class="ms-step__text">
         <span v-if="props.title || $slots.title" class="ms-step__title">
           <slot name="title">{{ props.title }}</slot>
         </span>
         <span v-if="props.subtitle || $slots.subtitle" class="ms-step__subtitle">
           <slot name="subtitle">{{ props.subtitle }}</slot>
         </span>
-      </div>
+      </span>
     </button>
+
+    <div v-if="$slots.default" class="ms-step__content">
+      <slot />
+    </div>
   </li>
 </template>

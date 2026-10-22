@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, getCurrentInstance, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
-import { useFieldContext } from "../../composables/use-field-context.ts";
-import { useMsId } from "../../composables/use-ms-id.ts";
+import { computed, getCurrentInstance, nextTick, onUnmounted, ref, watch } from "vue";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type {
   MsSelectEmits,
   MsSelectGroup,
@@ -9,6 +9,8 @@ import type {
   MsSelectOptionOrGroup,
   MsSelectProps,
 } from "./types.ts";
+
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<MsSelectProps>(), {
   size: "md",
@@ -24,27 +26,48 @@ const props = withDefaults(defineProps<MsSelectProps>(), {
   placement: "bottom",
   minSearchLength: 0,
   counter: false,
-  placeholder: "Select...",
-  searchPlaceholder: "Search...",
 });
 
 const emit = defineEmits<MsSelectEmits>();
 
+const t = useMsMessages();
+const placeholderText = computed(() => props.placeholder ?? t.value.select.placeholder);
+const searchPlaceholderText = computed(
+  () => props.searchPlaceholder ?? t.value.select.searchPlaceholder,
+);
+/** `select.create(query)` split around the query so it can be emphasized in the option. */
+const createParts = computed<{ before: string; after: string } | null>(() => {
+  const marker = "\u0000";
+  const parts = t.value.select.create(marker).split(marker);
+  if (parts.length !== 2) return null;
+  return { before: parts[0] ?? "", after: parts[1] ?? "" };
+});
+
 defineSlots<{
-  default?(): unknown;
+  /** Content of one option in the list (`active` = keyboard-highlighted). */
   option?(props: { option: MsSelectOption; selected: boolean; active: boolean }): unknown;
+  /** Displayed value of a single selection. */
   selectedOption?(props: { option: MsSelectOption }): unknown;
+  /** Replaces the whole value area (tags, counter or single value). */
   value?(props: {
     selectedOptions: MsSelectOption[];
     remove: (val: string | number) => void;
   }): unknown;
+  /** One tag of a multiple selection. */
   tag?(props: { option: MsSelectOption; remove: () => void }): unknown;
+  /** Selection count shown in counter mode. */
   counter?(props: { count: number; total: number }): unknown;
+  /** Leading content of the control (replaces `prefix`). */
   prefix?(): unknown;
+  /** Leading icon (used when the `prefix` slot is not provided). */
   icon?(): unknown;
+  /** Trailing content before the clear button and chevron. */
   suffix?(): unknown;
+  /** Content shown when no option matches. */
   empty?(): unknown;
+  /** Content at the top of the dropdown (above the search box). */
   header?(): unknown;
+  /** Content at the bottom of the dropdown. */
   footer?(): unknown;
 }>();
 
@@ -53,12 +76,11 @@ const searchInputRef = ref<HTMLInputElement | null>(null);
 const triggerRef = ref<HTMLElement | null>(null);
 const dropdownRef = ref<HTMLElement | null>(null);
 
-const field = useFieldContext();
-const baseId = useMsId("ms-select");
-const resolvedId = computed(() => field?.controlId ?? baseId);
+const fieldControl = useFieldControl("ms-select");
+const resolvedId = computed(() => fieldControl.id);
 const listboxId = computed(() => `${resolvedId.value}-listbox`);
-const describedBy = computed(() => field?.describedBy());
-const isInvalid = computed(() => props.invalid === true || field?.invalid() === true);
+const describedBy = computed(() => fieldControl.describedBy.value);
+const isInvalid = computed(() => props.invalid === true || fieldControl.fieldInvalid.value);
 
 const effectiveShape = computed(() => (props.pill ? "pill" : props.shape || "rounded"));
 
@@ -222,8 +244,13 @@ function isSelected(opt: MsSelectOption): boolean {
   return selectedValues.value.includes(opt.value);
 }
 
+/** Deterministic, collision-free id: "a b" and "a_b" (or 1 and "1") map to different ids. */
 function getOptionId(val: string | number): string {
-  return `${resolvedId.value}-opt-${String(val).replace(/[^a-zA-Z0-9-_]/g, "_")}`;
+  const encoded = String(val).replace(
+    /[^a-zA-Z0-9-]/g,
+    (char) => `_${char.charCodeAt(0).toString(16)}`,
+  );
+  return `${resolvedId.value}-opt-${typeof val === "number" ? "n" : "s"}${encoded}`;
 }
 
 const activeOptionId = computed(() => {
@@ -278,8 +305,10 @@ function handleWindowUpdate(): void {
 
 function setOpen(open: boolean): void {
   if (props.disabled) return;
-  if (internalOpen.value !== open) {
-    internalOpen.value = open;
+  // Compare with the effective state so a controlled parent always gets the request.
+  const changed = isDropdownOpen.value !== open;
+  internalOpen.value = open;
+  if (changed) {
     emit("update:open", open);
     emit("open-change", open);
   }
@@ -367,6 +396,12 @@ function onSearchInput(event: Event): void {
 function onTriggerKeyDown(event: KeyboardEvent): void {
   if (props.disabled) return;
 
+  // Select-only combobox: while open, focus stays on the trigger, so it drives the listbox.
+  if (isDropdownOpen.value && !props.searchable && event.key !== "Backspace") {
+    onDropdownKeyDown(event);
+    return;
+  }
+
   switch (event.key) {
     case "ArrowDown":
     case "ArrowUp":
@@ -419,6 +454,19 @@ function onDropdownKeyDown(event: KeyboardEvent): void {
       highlightedIndex.value = prev;
       break;
     }
+    case "Home":
+    case "End": {
+      event.preventDefault();
+      const enabled = options.flatMap((o, i) => (o.disabled ? [] : [i]));
+      if (enabled.length > 0) {
+        highlightedIndex.value = event.key === "Home" ? enabled[0]! : enabled[enabled.length - 1]!;
+      }
+      break;
+    }
+    case " ":
+      // Space types into the search box; in a select-only combobox it selects like Enter.
+      if (props.searchable) break;
+    // falls through
     case "Enter": {
       event.preventDefault();
       if (highlightedIndex.value >= 0 && highlightedIndex.value < count) {
@@ -492,6 +540,7 @@ onUnmounted(() => {
 
 <template>
   <div
+    v-bind="rootAttrs($attrs)"
     ref="rootRef"
     class="ms-select"
     :class="rootClasses"
@@ -526,10 +575,12 @@ onUnmounted(() => {
       :aria-activedescendant="activeOptionId"
       :aria-invalid="isInvalid || undefined"
       :aria-describedby="describedBy"
+      :aria-labelledby="fieldControl.labelledBy.value"
       :aria-disabled="props.disabled || undefined"
       :data-invalid="isInvalid || undefined"
       :data-disabled="props.disabled || undefined"
       :data-focused="isDropdownOpen || undefined"
+      v-bind="controlAttrs($attrs)"
       @click="toggleOpen"
       @keydown="onTriggerKeyDown"
     >
@@ -559,7 +610,9 @@ onUnmounted(() => {
           <!-- Counter only mode -->
           <template v-if="isCounterOnly">
             <slot name="counter" :count="selectedOptions.length" :total="allFlatOptions.length">
-              <span class="ms-select__counter"> {{ selectedOptions.length }} selecionados </span>
+              <span class="ms-select__counter">
+                {{ t.select.selectedCount(selectedOptions.length) }}
+              </span>
             </slot>
           </template>
 
@@ -572,7 +625,7 @@ onUnmounted(() => {
                   v-if="!props.disabled"
                   type="button"
                   class="ms-select__tag-remove"
-                  :aria-label="`Remove ${opt.label}`"
+                  :aria-label="t.select.removeOption(opt.label)"
                   @click="removeValue(opt.value, $event)"
                 >
                   <svg
@@ -594,7 +647,7 @@ onUnmounted(() => {
 
             <!-- Remaining counter badge if conditional counter is active -->
             <span v-if="remainingTagCount > 0" class="ms-select__counter">
-              +{{ remainingTagCount }} mais
+              {{ t.select.more(remainingTagCount) }}
             </span>
           </template>
         </template>
@@ -613,7 +666,7 @@ onUnmounted(() => {
           v-if="selectedOptions.length === 0 && (!props.floatingLabel || isDropdownOpen)"
           class="ms-select__placeholder"
         >
-          {{ props.placeholder }}
+          {{ placeholderText }}
         </span>
       </div>
 
@@ -625,7 +678,7 @@ onUnmounted(() => {
           v-if="props.clearable && selectedValues.length > 0 && !props.disabled"
           type="button"
           class="ms-select__clear"
-          aria-label="Clear selection"
+          :aria-label="t.select.clear"
           @click="clear"
         >
           <svg
@@ -681,6 +734,7 @@ onUnmounted(() => {
         :class="{ 'ms-select__dropdown--teleported': Boolean(teleportTarget) }"
         :style="teleportTarget ? dropdownStyle : undefined"
         :data-placement="props.placement"
+        data-ms-floating
         @keydown="onDropdownKeyDown"
       >
         <slot name="header" />
@@ -691,7 +745,13 @@ onUnmounted(() => {
             ref="searchInputRef"
             type="text"
             class="ms-select__search-input"
-            :placeholder="props.searchPlaceholder"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-expanded="true"
+            :aria-controls="listboxId"
+            :aria-activedescendant="activeOptionId"
+            :aria-label="searchPlaceholderText"
+            :placeholder="searchPlaceholderText"
             :value="searchQuery"
             @input="onSearchInput"
           />
@@ -796,7 +856,7 @@ onUnmounted(() => {
             class="ms-select__empty"
             role="presentation"
           >
-            <slot name="empty">No options found</slot>
+            <slot name="empty">{{ t.select.empty }}</slot>
           </li>
 
           <!-- Creatable option when query has no exact match -->
@@ -807,10 +867,11 @@ onUnmounted(() => {
             tabindex="0"
             @click="handleCreate"
           >
-            <span
-              >Create "<strong>{{ searchQuery }}</strong
-              >"</span
+            <span v-if="createParts"
+              >{{ createParts.before }}<strong>{{ searchQuery }}</strong
+              >{{ createParts.after }}</span
             >
+            <span v-else>{{ t.select.create(searchQuery) }}</span>
           </li>
         </ul>
 

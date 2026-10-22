@@ -1,0 +1,54 @@
+{
+  "intro": {
+    "pt-BR": "Use o seletor de emoji em status, reações e campos de mensagem. O catálogo embutido tem busca e filtro por categoria.",
+    "en-US": "Use the emoji picker for statuses, reactions and message fields. The built-in catalog has search and category filtering.",
+    "es-ES": "Usa el selector de emoji en estados, reacciones y campos de mensaje. El catálogo integrado tiene búsqueda y filtro por categoría."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "O `v-model` guarda o emoji escolhido, que aparece no próprio botão de abertura.",
+        "en-US": "`v-model` stores the chosen emoji, which shows on the trigger button itself.",
+        "es-ES": "`v-model` guarda el emoji elegido, que aparece en el propio botón de apertura."
+      }
+    },
+    {
+      "file": "Composer",
+      "title": {
+        "pt-BR": "Campo de mensagem",
+        "en-US": "Message field",
+        "es-ES": "Campo de mensaje"
+      },
+      "description": {
+        "pt-BR": "O evento `select` entrega o item completo; aqui ele insere o emoji no texto e limpa o `v-model` para o botão voltar ao `placeholder`.",
+        "en-US": "The `select` event delivers the full item; here it inserts the emoji into the text and clears `v-model` so the button goes back to `placeholder`.",
+        "es-ES": "El evento `select` entrega el ítem completo; aquí inserta el emoji en el texto y limpia `v-model` para que el botón vuelva al `placeholder`."
+      }
+    },
+    {
+      "file": "Reactions",
+      "title": { "pt-BR": "Reações", "en-US": "Reactions", "es-ES": "Reacciones" },
+      "description": {
+        "pt-BR": "Combine com `MsButton` para montar a barra de reações de uma publicação.",
+        "en-US": "Combine it with `MsButton` to build the reaction bar of a post.",
+        "es-ES": "Combínalo con `MsButton` para armar la barra de reacciones de una publicación."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": { "pt-BR": "Desabilitado", "en-US": "Disabled", "es-ES": "Deshabilitado" },
+      "description": {
+        "pt-BR": "`disabled` impede que o seletor seja aberto.",
+        "en-US": "`disabled` prevents the picker from opening.",
+        "es-ES": "`disabled` impide que el selector se abra."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O botão de abertura é um `<button>` nativo cujo nome acessível é o próprio emoji; ele não expõe `aria-expanded` nem `aria-haspopup`.\n- No painel, `Tab` percorre o campo de busca, os filtros de categoria e cada emoji; `Enter`/`Espaço` escolhem.\n- O campo de busca só tem `placeholder` como rótulo, e os filtros e emojis usam `title`, com nomes em português.\n- O painel não fecha com `Esc` nem ao clicar fora; ele fecha ao escolher um emoji ou ao clicar de novo no botão.",
+    "en-US": "- The trigger is a native `<button>` whose accessible name is the emoji itself; it exposes neither `aria-expanded` nor `aria-haspopup`.\n- In the panel, `Tab` moves through the search field, the category filters and each emoji; `Enter`/`Space` choose.\n- The search field is labeled only by its `placeholder`, and filters and emojis use `title`, with names in Portuguese.\n- The panel doesn't close on `Esc` or on outside click; it closes when an emoji is chosen or the trigger is clicked again.",
+    "es-ES": "- El botón de apertura es un `<button>` nativo cuyo nombre accesible es el propio emoji; no expone `aria-expanded` ni `aria-haspopup`.\n- En el panel, `Tab` recorre el campo de búsqueda, los filtros de categoría y cada emoji; `Enter`/`Espacio` eligen.\n- El campo de búsqueda solo tiene `placeholder` como etiqueta, y los filtros y emojis usan `title`, con nombres en portugués.\n- El panel no se cierra con `Esc` ni al hacer clic fuera; se cierra al elegir un emoji o al volver a hacer clic en el botón."
+  }
+}

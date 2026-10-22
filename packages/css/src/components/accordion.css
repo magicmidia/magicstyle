@@ -1,9 +1,14 @@
 /* ==========================================================================
    Magic-Style: Accordion Component
-   Collapsible panels for structured content disclosure
+   Collapsible panels for structured content disclosure.
+   Default look follows shadcn/ui: hairline item dividers, flush 16px trigger,
+   14px medium title with underline on hover, 16px muted chevron rotating 180°.
    ========================================================================== */
 
 .ms-accordion {
+  --_ms-accordion-py: 16px;
+  --_ms-accordion-px: 0px;
+  --_ms-accordion-font-size: var(--ms-typography-size-sm);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -11,51 +16,51 @@
 
 /* Variants */
 .ms-accordion--variant-bordered {
-  border: 1px solid var(--ms-color-border-subtle);
-  border-radius: var(--ms-radius-lg, 8px);
+  --_ms-accordion-px: 16px;
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border-radius: var(--ms-radius-lg);
+  background-color: var(--ms-color-surface-raised);
   overflow: hidden;
 }
 
 .ms-accordion--variant-bordered .ms-accordion-item:not(:last-child) {
-  border-bottom: 1px solid var(--ms-color-border-subtle);
+  border-bottom: var(--ms-border-hairline) solid var(--ms-color-border-default);
 }
 
 .ms-accordion--variant-separated {
-  gap: var(--ms-space-3, 12px);
+  --_ms-accordion-px: 16px;
+  gap: var(--ms-space-3);
 }
 
 .ms-accordion--variant-separated .ms-accordion-item {
-  border: 1px solid var(--ms-color-border-subtle);
-  border-radius: var(--ms-radius-lg, 8px);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border-radius: var(--ms-radius-lg);
   overflow: hidden;
   background-color: var(--ms-color-surface-raised);
+  box-shadow: var(--ms-elevation-card);
   transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    border-color calc(200ms * var(--ms-motion-scale, 1)) ease,
+    box-shadow calc(200ms * var(--ms-motion-scale, 1)) ease;
 }
 
 .ms-accordion--variant-separated .ms-accordion-item.ms-accordion-item--expanded {
-  border-color: color-mix(
-    in oklch,
-    var(--ms-color-interactive-primary) 35%,
-    var(--ms-color-border-subtle)
-  );
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.07);
+  border-color: color-mix(in oklab, var(--ms-color-primary) 35%, var(--ms-color-border-default));
+  box-shadow: var(--ms-elevation-md);
 }
 
 .ms-accordion--variant-flush .ms-accordion-item {
-  border-bottom: 1px solid var(--ms-color-border-subtle);
+  border-bottom: var(--ms-border-hairline) solid var(--ms-color-border-default);
   border-radius: 0;
 }
 
 .ms-accordion--variant-default .ms-accordion-item:not(:last-child) {
-  border-bottom: 1px solid var(--ms-color-border-subtle);
+  border-bottom: var(--ms-border-hairline) solid var(--ms-color-border-default);
 }
 
 /* Accordion Item */
 .ms-accordion-item {
-  background-color: var(--ms-color-surface-raised);
-  transition: background-color var(--ms-transition-duration-fast, 150ms);
+  background-color: transparent;
+  transition: background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-accordion-item--disabled {
@@ -67,57 +72,63 @@
 .ms-accordion-item__trigger {
   all: unset;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: var(--ms-space-4);
   width: 100%;
   box-sizing: border-box;
-  text-align: left;
+  padding: var(--_ms-accordion-py) var(--_ms-accordion-px);
+  border-radius: var(--ms-radius-md);
+  text-align: start;
   cursor: pointer;
   background: transparent;
   color: var(--ms-color-text-primary);
-  font-weight: var(--ms-font-weight-medium, 500);
+  font-family: var(--ms-font-sans);
+  font-size: var(--_ms-accordion-font-size);
+  font-weight: var(--ms-typography-weight-medium);
   user-select: none;
   transition:
-    background-color var(--ms-transition-duration-fast, 150ms),
-    color var(--ms-transition-duration-fast, 150ms);
+    color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-accordion-item__trigger:hover {
-  background-color: var(--ms-color-interactive-neutral-subtle);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .ms-accordion-item__trigger:focus-visible {
-  outline: 2px solid var(--ms-focus-ring-color);
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
   outline-offset: -2px;
 }
 
 /* Sizes */
 .ms-accordion--size-sm .ms-accordion-item__trigger {
-  padding: var(--ms-space-2, 8px) var(--ms-space-3, 12px);
-  font-size: var(--ms-font-size-sm, 0.875rem);
+  --_ms-accordion-py: 12px;
+  --_ms-accordion-font-size: var(--ms-typography-size-sm);
 }
 
 .ms-accordion--size-md .ms-accordion-item__trigger {
-  padding: var(--ms-space-3, 12px) var(--ms-space-4, 16px);
-  font-size: var(--ms-font-size-md, 1rem);
+  --_ms-accordion-py: 16px;
+  --_ms-accordion-font-size: var(--ms-typography-size-sm);
 }
 
 .ms-accordion--size-lg .ms-accordion-item__trigger {
-  padding: var(--ms-space-4, 16px) var(--ms-space-5, 20px);
-  font-size: var(--ms-font-size-lg, 1.125rem);
+  --_ms-accordion-py: 20px;
+  --_ms-accordion-font-size: var(--ms-typography-size-md);
 }
 
 .ms-accordion-item__header-content {
   display: flex;
   align-items: center;
-  gap: var(--ms-space-3, 12px);
+  gap: var(--ms-space-3);
   flex-grow: 1;
 }
 
 .ms-accordion-item__icon {
   display: inline-flex;
   align-items: center;
-  color: var(--ms-color-text-muted, #64748b);
+  color: var(--ms-color-text-muted);
   flex-shrink: 0;
 }
 
@@ -128,31 +139,38 @@
 }
 
 .ms-accordion-item__title {
-  font-weight: var(--ms-font-weight-semibold, 600);
-  line-height: var(--ms-line-height-tight, 1.25);
+  font-weight: var(--ms-typography-weight-medium);
+  line-height: var(--ms-typography-line-height-base);
 }
 
 .ms-accordion-item__subtitle {
-  font-size: var(--ms-font-size-xs, 0.75rem);
-  color: var(--ms-color-text-muted, #64748b);
-  font-weight: var(--ms-font-weight-regular, 400);
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-muted);
+  font-weight: var(--ms-typography-weight-regular);
 }
 
 .ms-accordion-item__trailing {
   display: flex;
   align-items: center;
-  gap: var(--ms-space-2, 8px);
-  margin-left: auto;
-  padding-left: var(--ms-space-3, 12px);
+  gap: var(--ms-space-2);
+  margin-inline-start: auto;
+  padding-inline-start: var(--ms-space-3);
 }
 
 .ms-accordion-item__chevron {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--ms-color-text-muted, #64748b);
-  transition: transform var(--ms-transition-duration-normal, 200ms)
-    var(--ms-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+  flex-shrink: 0;
+  margin-block-start: 2px;
+  color: var(--ms-color-text-muted);
+  pointer-events: none;
+  transition: transform var(--ms-motion-duration-base) var(--ms-motion-easing-standard);
+}
+
+.ms-accordion-item__chevron > svg {
+  inline-size: 16px;
+  block-size: 16px;
 }
 
 .ms-accordion-item--expanded .ms-accordion-item__chevron {
@@ -162,24 +180,25 @@
 /* Content Body */
 .ms-accordion-item__content {
   overflow: hidden;
-  color: var(--ms-color-text-secondary);
-  line-height: var(--ms-line-height-relaxed, 1.625);
-  animation: ms-accordion-down 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--ms-color-text-primary);
+  line-height: var(--ms-typography-line-height-relaxed);
+  animation: ms-accordion-down calc(200ms * var(--ms-motion-scale, 1))
+    var(--ms-motion-easing-standard);
 }
 
 .ms-accordion--size-sm .ms-accordion-item__content {
-  padding: 0 var(--ms-space-3, 12px) var(--ms-space-3, 12px) var(--ms-space-3, 12px);
-  font-size: var(--ms-font-size-sm, 0.875rem);
+  padding: 0 var(--_ms-accordion-px) 12px;
+  font-size: var(--ms-typography-size-sm);
 }
 
 .ms-accordion--size-md .ms-accordion-item__content {
-  padding: 0 var(--ms-space-4, 16px) var(--ms-space-4, 16px) var(--ms-space-4, 16px);
-  font-size: var(--ms-font-size-md, 1rem);
+  padding: 0 var(--_ms-accordion-px) 16px;
+  font-size: var(--ms-typography-size-sm);
 }
 
 .ms-accordion--size-lg .ms-accordion-item__content {
-  padding: 0 var(--ms-space-5, 20px) var(--ms-space-5, 20px) var(--ms-space-5, 20px);
-  font-size: var(--ms-font-size-md, 1rem);
+  padding: 0 var(--_ms-accordion-px) 20px;
+  font-size: var(--ms-typography-size-md);
 }
 
 @keyframes ms-accordion-down {

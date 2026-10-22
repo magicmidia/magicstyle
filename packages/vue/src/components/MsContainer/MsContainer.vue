@@ -9,6 +9,7 @@ const props = withDefaults(defineProps<MsContainerProps>(), {
 });
 
 defineSlots<{
+  /** Content constrained to `maxWidth`. */
   default?(): unknown;
 }>();
 

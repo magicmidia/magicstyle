@@ -1,0 +1,53 @@
+{
+  "intro": {
+    "pt-BR": "`MsPage` é o contêiner de uma tela do app, `MsPageHeader` reúne breadcrumbs, título, descrição e ações, e `MsPageActions` alinha a barra de botões ao fim de um formulário.",
+    "en-US": "`MsPage` is the container of an app screen, `MsPageHeader` groups breadcrumbs, title, description and actions, and `MsPageActions` aligns the button bar at the end of a form.",
+    "es-ES": "`MsPage` es el contenedor de una pantalla de la app, `MsPageHeader` agrupa breadcrumbs, título, descripción y acciones, y `MsPageActions` alinea la barra de botones al final de un formulario."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": {
+        "pt-BR": "Cabeçalho com ações",
+        "en-US": "Header with actions",
+        "es-ES": "Cabecera con acciones"
+      },
+      "description": {
+        "pt-BR": "`title` e `description` montam o cabeçalho e o slot `actions` recebe os botões; `compact` limita a página a 960px.",
+        "en-US": "`title` and `description` build the header and the `actions` slot takes the buttons; `compact` caps the page at 960px.",
+        "es-ES": "`title` y `description` forman la cabecera y el slot `actions` recibe los botones; `compact` limita la página a 960px."
+      }
+    },
+    {
+      "file": "WithBreadcrumbs",
+      "title": {
+        "pt-BR": "Breadcrumbs e título customizado",
+        "en-US": "Breadcrumbs and custom title",
+        "es-ES": "Breadcrumbs y título personalizado"
+      },
+      "description": {
+        "pt-BR": "Os slots `breadcrumbs`, `title` e `description` aceitam marcação própria, como um status ao lado do título.",
+        "en-US": "The `breadcrumbs`, `title` and `description` slots take custom markup, such as a status next to the title.",
+        "es-ES": "Los slots `breadcrumbs`, `title` y `description` aceptan marcado propio, como un estado junto al título."
+      }
+    },
+    {
+      "file": "Actions",
+      "title": {
+        "pt-BR": "Ações de página",
+        "en-US": "Page actions",
+        "es-ES": "Acciones de página"
+      },
+      "description": {
+        "pt-BR": "`MsPageActions` alinha os botões com `align` (`start`, `center` ou `end`, o padrão).",
+        "en-US": "`MsPageActions` aligns buttons with `align` (`start`, `center` or `end`, the default).",
+        "es-ES": "`MsPageActions` alinea los botones con `align` (`start`, `center` o `end`, el predeterminado)."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- A prop `title` renderiza um `<h1>`; mantenha um único `<h1>` por página ou use o slot `title` com o nível de heading adequado.\n- `description` vira um `<p>` logo abaixo do título.\n- Os slots não adicionam papéis ARIA; a ordem de foco segue o DOM (breadcrumbs, título, ações).",
+    "en-US": "- The `title` prop renders an `<h1>`; keep a single `<h1>` per page or use the `title` slot with the right heading level.\n- `description` becomes a `<p>` right below the title.\n- The slots add no ARIA roles; focus order follows the DOM (breadcrumbs, title, actions).",
+    "es-ES": "- La prop `title` renderiza un `<h1>`; mantén un único `<h1>` por página o usa el slot `title` con el nivel de encabezado adecuado.\n- `description` se convierte en un `<p>` justo debajo del título.\n- Los slots no añaden roles ARIA; el orden de foco sigue el DOM (breadcrumbs, título, acciones)."
+  }
+}

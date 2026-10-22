@@ -1,0 +1,50 @@
+{
+  "pt-BR": {
+    "title": "Bem-vindo de volta",
+    "subtitle": "Entre com seu e-mail para acessar o painel da Acme.",
+    "email": "E-mail",
+    "emailPlaceholder": "voce@empresa.com.br",
+    "password": "Senha",
+    "passwordPlaceholder": "Digite sua senha",
+    "remember": "Lembrar de mim",
+    "forgot": "Esqueceu a senha?",
+    "signIn": "Entrar",
+    "orContinue": "ou continue com",
+    "github": "GitHub",
+    "google": "Google",
+    "noAccount": "Ainda não tem conta?",
+    "signUp": "Criar conta"
+  },
+  "en-US": {
+    "title": "Welcome back",
+    "subtitle": "Sign in with your email to access your Acme dashboard.",
+    "email": "Email",
+    "emailPlaceholder": "you@company.com",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "remember": "Remember me",
+    "forgot": "Forgot password?",
+    "signIn": "Sign in",
+    "orContinue": "or continue with",
+    "github": "GitHub",
+    "google": "Google",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up"
+  },
+  "es-ES": {
+    "title": "Bienvenido de nuevo",
+    "subtitle": "Inicia sesión con tu correo para acceder al panel de Acme.",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "tu@empresa.com",
+    "password": "Contraseña",
+    "passwordPlaceholder": "Escribe tu contraseña",
+    "remember": "Recordarme",
+    "forgot": "¿Olvidaste tu contraseña?",
+    "signIn": "Iniciar sesión",
+    "orContinue": "o continúa con",
+    "github": "GitHub",
+    "google": "Google",
+    "noAccount": "¿No tienes cuenta?",
+    "signUp": "Regístrate"
+  }
+}

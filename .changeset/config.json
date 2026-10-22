@@ -7,7 +7,7 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependents": "always",
-  "ignore": [],
+  "ignore": ["magic-style-docs"],
   "privatePackages": {
     "version": true,
     "tag": false

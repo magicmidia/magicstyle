@@ -1,4 +1,4 @@
-import type { DtcgToken } from "./dtcg.ts";
+import { EXTENSION_NAMESPACE, type DtcgToken } from "./dtcg.ts";
 
 /** `color.surface.default` -> `--ms-color-surface-default` (doc 06 §3). */
 export function cssVarName(tokenPath: string): string {
@@ -12,6 +12,14 @@ export function cssVarValue(token: DtcgToken): string {
   }
   if (token.$type === "fontFamily" && Array.isArray(v)) {
     return v.join(", ");
+  }
+  if (token.$type === "cubicBezier" && Array.isArray(v)) {
+    return `cubic-bezier(${v.join(", ")})`;
+  }
+  // DTCG dimensions only allow px/rem: font-relative lengths are numbers with a unit extension.
+  const unit = token.$extensions?.[EXTENSION_NAMESPACE]?.["unit"];
+  if (token.$type === "number" && typeof unit === "string") {
+    return `${String(v)}${unit}`;
   }
   if (typeof v === "object" && v !== null && !Array.isArray(v)) {
     return JSON.stringify(v);
@@ -29,7 +37,7 @@ export function emitCss(tokens: ReadonlyMap<string, DtcgToken>, banner?: string)
   lines.push(" */");
   lines.push(":root {");
   for (const [path, token] of [...tokens].sort(([a], [b]) => a.localeCompare(b))) {
-    if (token.$type === "typography-role") continue;
+    if (token.$type === "typography") continue;
     const description = token.$description === undefined ? "" : ` /* ${token.$description} */`;
     lines.push(`  ${cssVarName(path)}: ${cssVarValue(token)};${description}`);
   }

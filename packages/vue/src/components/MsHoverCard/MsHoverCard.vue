@@ -6,7 +6,7 @@ const props = withDefaults(defineProps<MsHoverCardProps>(), {
   openDelay: 200,
   closeDelay: 150,
   placement: "bottom",
-  width: "300px",
+  width: "256px",
 });
 
 const isOpen = ref(false);
@@ -40,6 +40,11 @@ const handleMouseLeave = () => {
   }, props.closeDelay);
 };
 
+const close = () => {
+  clearTimers();
+  isOpen.value = false;
+};
+
 onBeforeUnmount(() => {
   clearTimers();
 });
@@ -52,6 +57,13 @@ const contentClasses = computed(() => [
   "ms-hover-card__content",
   `ms-hover-card__content--placement-${props.placement}`,
 ]);
+
+defineSlots<{
+  /** Trigger; hovering or focusing it opens the card after `openDelay`. */
+  default?(): unknown;
+  /** Card content, rendered only while open (may be interactive). */
+  content?(): unknown;
+}>();
 </script>
 
 <template>
@@ -61,12 +73,14 @@ const contentClasses = computed(() => [
     @mouseleave="handleMouseLeave"
     @focusin="handleMouseEnter"
     @focusout="handleMouseLeave"
+    @keydown.esc="close"
   >
     <div class="ms-hover-card__trigger">
       <slot />
     </div>
 
-    <div v-if="isOpen" :class="contentClasses" :style="contentStyle" role="tooltip">
+    <!-- Supplementary preview for pointer users; not a tooltip (it may hold interactive content). -->
+    <div v-if="isOpen" :class="contentClasses" :style="contentStyle">
       <slot name="content" />
     </div>
   </div>

@@ -25,10 +25,10 @@ describe("MsConfirmDialog", () => {
       props: {
         open: true,
         tone: "danger",
-        title: "Excluir Registro",
-        message: "Esta ação não pode ser desfeita.",
-        confirmLabel: "Sim, excluir",
-        cancelLabel: "Voltar",
+        title: "Delete record",
+        message: "This action cannot be undone.",
+        confirmLabel: "Yes, delete",
+        cancelLabel: "Go back",
       },
     });
 
@@ -42,17 +42,17 @@ describe("MsConfirmDialog", () => {
     expect(dialog?.classList.contains("ms-confirm-dialog--tone-danger")).toBe(true);
 
     const title = document.querySelector(".ms-confirm-dialog__title");
-    expect(title?.textContent).toContain("Excluir Registro");
+    expect(title?.textContent).toContain("Delete record");
 
     const message = document.querySelector(".ms-confirm-dialog__message");
-    expect(message?.textContent).toContain("Esta ação não pode ser desfeita.");
+    expect(message?.textContent).toContain("This action cannot be undone.");
   });
 
   it("emits cancel and update:open when cancel button is clicked", async () => {
     const wrapper = mount(MsConfirmDialog, {
       props: {
         open: true,
-        cancelLabel: "Cancelar",
+        cancelLabel: "Cancel",
       },
     });
 
@@ -70,7 +70,7 @@ describe("MsConfirmDialog", () => {
     const wrapper = mount(MsConfirmDialog, {
       props: {
         open: true,
-        confirmLabel: "Confirmar",
+        confirmLabel: "Confirm",
       },
     });
 

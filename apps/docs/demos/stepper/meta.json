@@ -1,0 +1,58 @@
+{
+  "intro": {
+    "pt-BR": "O stepper mostra o progresso em um processo com etapas numeradas, como checkout, onboarding ou um pipeline de deploy.",
+    "en-US": "The stepper shows progress through a process with numbered steps, such as checkout, onboarding or a deploy pipeline.",
+    "es-ES": "El stepper muestra el progreso en un proceso con pasos numerados, como un checkout, un onboarding o un pipeline de despliegue."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`v-model` guarda o índice da etapa atual; etapas anteriores ficam concluídas e as seguintes, pendentes.",
+        "en-US": "`v-model` holds the current step index; earlier steps show as complete and later ones as upcoming.",
+        "es-ES": "`v-model` guarda el índice del paso actual; los anteriores aparecen completados y los siguientes, pendientes."
+      }
+    },
+    {
+      "file": "Vertical",
+      "title": { "pt-BR": "Vertical", "en-US": "Vertical", "es-ES": "Vertical" },
+      "description": {
+        "pt-BR": "`direction=\"vertical\"` com `subtitle` funciona bem para rastrear um pedido.",
+        "en-US": "`direction=\"vertical\"` with `subtitle` works well for order tracking.",
+        "es-ES": "`direction=\"vertical\"` con `subtitle` funciona bien para seguir un pedido."
+      }
+    },
+    {
+      "file": "Clickable",
+      "title": {
+        "pt-BR": "Etapas clicáveis",
+        "en-US": "Clickable steps",
+        "es-ES": "Pasos clicables"
+      },
+      "description": {
+        "pt-BR": "Com `clickable`, cada etapa vira um botão que atualiza o `v-model` e emite `change`.",
+        "en-US": "With `clickable`, each step becomes a button that updates `v-model` and emits `change`.",
+        "es-ES": "Con `clickable`, cada paso se vuelve un botón que actualiza el `v-model` y emite `change`."
+      }
+    },
+    {
+      "file": "Status",
+      "title": {
+        "pt-BR": "Erro e desabilitado",
+        "en-US": "Error and disabled",
+        "es-ES": "Error y deshabilitado"
+      },
+      "description": {
+        "pt-BR": "`status` força o estado de uma etapa (aqui `error`), o slot `indicator` troca o número e `disabled` bloqueia a etapa.",
+        "en-US": "`status` forces a step state (here `error`), the `indicator` slot replaces the number and `disabled` locks the step.",
+        "es-ES": "`status` fuerza el estado de un paso (aquí `error`), el slot `indicator` reemplaza el número y `disabled` bloquea el paso."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza `<nav>` com `aria-label` vindo das mensagens da biblioteca e uma lista ordenada `<ol>`.\n- A etapa atual recebe `aria-current=\"step\"`; o indicador numérico tem `aria-hidden=\"true\"`.\n- Cada etapa é um `<button>`, desabilitado quando o stepper não é `clickable`.\n- Com `clickable`: `Tab` percorre as etapas e `Enter` ou `Espaço` ativa a etapa focada.",
+    "en-US": "- Renders a `<nav>` with an `aria-label` from the library messages and an ordered `<ol>` list.\n- The current step gets `aria-current=\"step\"`; the number indicator is `aria-hidden=\"true\"`.\n- Each step is a `<button>`, disabled when the stepper is not `clickable`.\n- With `clickable`: `Tab` moves through steps and `Enter` or `Space` activates the focused step.",
+    "es-ES": "- Renderiza un `<nav>` con un `aria-label` de los mensajes de la biblioteca y una lista ordenada `<ol>`.\n- El paso actual recibe `aria-current=\"step\"`; el indicador numérico es `aria-hidden=\"true\"`.\n- Cada paso es un `<button>`, deshabilitado cuando el stepper no es `clickable`.\n- Con `clickable`: `Tab` recorre los pasos y `Enter` o `Espacio` activa el paso enfocado."
+  }
+}

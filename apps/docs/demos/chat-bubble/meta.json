@@ -1,0 +1,67 @@
+{
+  "intro": {
+    "pt-BR": "Balão de mensagem para chats, suporte e comentários, com remetente, horário, avatar e status de entrega.",
+    "en-US": "Message bubble for chats, support and comments, with sender, time, avatar and delivery status.",
+    "es-ES": "Burbuja de mensaje para chats, soporte y comentarios, con remitente, hora, avatar y estado de entrega."
+  },
+  "demos": [
+    {
+      "file": "Conversation",
+      "title": { "pt-BR": "Conversa", "en-US": "Conversation", "es-ES": "Conversación" },
+      "description": {
+        "pt-BR": "`placement=\"end\"` alinha as mensagens enviadas à direita; `name` e `timestamp` formam o cabeçalho e o slot `avatar` mostra quem escreveu.",
+        "en-US": "`placement=\"end\"` aligns sent messages to the right; `name` and `timestamp` build the header and the `avatar` slot shows who wrote it.",
+        "es-ES": "`placement=\"end\"` alinea los mensajes enviados a la derecha; `name` y `timestamp` forman el encabezado y el slot `avatar` muestra quién escribió."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": {
+        "pt-BR": "Variantes e tons",
+        "en-US": "Variants and tones",
+        "es-ES": "Variantes y tonos"
+      },
+      "description": {
+        "pt-BR": "`variant` alterna entre `soft`, `solid` e `outline`; `tone` dá significado a mensagens de sistema.",
+        "en-US": "`variant` switches between `soft`, `solid` and `outline`; `tone` gives meaning to system messages.",
+        "es-ES": "`variant` alterna entre `soft`, `solid` y `outline`; `tone` da significado a los mensajes del sistema."
+      }
+    },
+    {
+      "file": "Status",
+      "title": {
+        "pt-BR": "Status de entrega",
+        "en-US": "Delivery status",
+        "es-ES": "Estado de entrega"
+      },
+      "description": {
+        "pt-BR": "`status` aceita `sending`, `sent` e `read`; use o slot `status` para um indicador próprio.",
+        "en-US": "`status` accepts `sending`, `sent` and `read`; use the `status` slot for a custom indicator.",
+        "es-ES": "`status` acepta `sending`, `sent` y `read`; usa el slot `status` para un indicador propio."
+      }
+    },
+    {
+      "file": "Typing",
+      "title": { "pt-BR": "Digitando", "en-US": "Typing", "es-ES": "Escribiendo" },
+      "description": {
+        "pt-BR": "`typing` troca o conteúdo pelos três pontos animados, com um rótulo traduzido para leitores de tela; ao desligar, o texto da mensagem aparece.",
+        "en-US": "`typing` replaces the content with the animated three dots, with a translated label for screen readers; turn it off to show the message text.",
+        "es-ES": "`typing` sustituye el contenido por los tres puntos animados, con una etiqueta traducida para lectores de pantalla; al desactivarlo aparece el texto del mensaje."
+      }
+    },
+    {
+      "file": "Support",
+      "title": { "pt-BR": "Chat de suporte", "en-US": "Support chat", "es-ES": "Chat de soporte" },
+      "description": {
+        "pt-BR": "Um chat simples com `MsInput`: cada mensagem enviada vira um novo balão.",
+        "en-US": "A simple chat with `MsInput`: each sent message becomes a new bubble.",
+        "es-ES": "Un chat sencillo con `MsInput`: cada mensaje enviado se convierte en una nueva burbuja."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Os balões são `<div>` sem papel ARIA: agrupe a conversa num contêiner com rótulo (por exemplo, `role=\"log\"` e `aria-label`) quando novas mensagens chegarem dinamicamente.\n- O ícone de `status` é um `role=\"img\"` com rótulo traduzido (mensagens `chatBubble.sending`, `sent` e `read`).\n- Com `typing`, o balão vira um `role=\"status\"` com o texto traduzido `chatBubble.typing`; os pontos animados ficam ocultos para tecnologias assistivas.\n- A cor do tom não deve ser a única pista: deixe o significado claro no texto.",
+    "en-US": "- Bubbles are `<div>` elements with no ARIA role: wrap the conversation in a labeled container (for example, `role=\"log\"` with `aria-label`) when new messages arrive dynamically.\n- The `status` icon is a `role=\"img\"` with a translated label (messages `chatBubble.sending`, `sent` and `read`).\n- With `typing`, the bubble becomes a `role=\"status\"` with the translated text `chatBubble.typing`; the animated dots are hidden from assistive technology.\n- Tone color shouldn't be the only cue: make the meaning clear in the text.",
+    "es-ES": "- Las burbujas son `<div>` sin rol ARIA: agrupa la conversación en un contenedor con etiqueta (por ejemplo, `role=\"log\"` y `aria-label`) cuando lleguen mensajes de forma dinámica.\n- El icono de `status` es un `role=\"img\"` con etiqueta traducida (mensajes `chatBubble.sending`, `sent` y `read`).\n- Con `typing`, la burbuja se convierte en un `role=\"status\"` con el texto traducido `chatBubble.typing`; los puntos animados quedan ocultos para las tecnologías de asistencia.\n- El color del tono no debe ser la única pista: deja claro el significado en el texto."
+  }
+}

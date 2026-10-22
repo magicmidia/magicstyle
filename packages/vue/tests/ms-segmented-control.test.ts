@@ -4,9 +4,9 @@ import MsSegmentedControl from "../src/components/MsSegmentedControl/MsSegmented
 
 describe("MsSegmentedControl", () => {
   const options = [
-    { label: "Diário", value: "daily" },
-    { label: "Semanal", value: "weekly" },
-    { label: "Mensal", value: "monthly", disabled: true },
+    { label: "Daily", value: "daily" },
+    { label: "Weekly", value: "weekly" },
+    { label: "Monthly", value: "monthly", disabled: true },
   ];
 
   it("renders with radiogroup semantics and items", () => {

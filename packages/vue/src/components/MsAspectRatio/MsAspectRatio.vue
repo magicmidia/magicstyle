@@ -22,6 +22,11 @@ const style = computed(() => {
   }
   return { "--ms-aspect-ratio": "16 / 9" };
 });
+
+defineSlots<{
+  /** Content constrained to the ratio (e.g. an image, video or iframe). */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

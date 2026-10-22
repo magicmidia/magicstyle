@@ -38,13 +38,13 @@ describe("MsSeparator", () => {
       props: {
         tone: "primary",
         thickness: 2,
-        label: "OU",
+        label: "OR",
         align: "center",
       },
     });
 
     expect(wrapper.find(".ms-separator-group").exists()).toBe(true);
-    expect(wrapper.find(".ms-separator__label").text()).toBe("OU");
+    expect(wrapper.find(".ms-separator__label").text()).toBe("OR");
     const parts = wrapper.findAll(".ms-separator-part");
     expect(parts).toHaveLength(2);
     expect(parts[0]!.classes()).toContain("ms-separator--tone-primary");

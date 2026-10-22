@@ -1,0 +1,44 @@
+{
+  "pt-BR": {
+    "email": "E-mail corporativo",
+    "emailPlaceholder": "voce@empresa.com.br",
+    "company": "Razão social",
+    "taxId": "Inscrição estadual",
+    "reference": "Código de referência",
+    "ifApplicable": "se houver",
+    "webhook": "URL do webhook",
+    "webhookHelp": "Enviaremos um POST para esta URL a cada pagamento aprovado.",
+    "small": "Rótulo pequeno",
+    "medium": "Rótulo médio",
+    "large": "Rótulo grande",
+    "disabled": "Rótulo desabilitado"
+  },
+  "en-US": {
+    "email": "Work email",
+    "emailPlaceholder": "you@company.com",
+    "company": "Legal company name",
+    "taxId": "VAT number",
+    "reference": "Reference code",
+    "ifApplicable": "if any",
+    "webhook": "Webhook URL",
+    "webhookHelp": "We send a POST request to this URL for every approved payment.",
+    "small": "Small label",
+    "medium": "Medium label",
+    "large": "Large label",
+    "disabled": "Disabled label"
+  },
+  "es-ES": {
+    "email": "Correo corporativo",
+    "emailPlaceholder": "tu@empresa.com",
+    "company": "Razón social",
+    "taxId": "Número de identificación fiscal",
+    "reference": "Código de referencia",
+    "ifApplicable": "si aplica",
+    "webhook": "URL del webhook",
+    "webhookHelp": "Enviaremos un POST a esta URL por cada pago aprobado.",
+    "small": "Etiqueta pequeña",
+    "medium": "Etiqueta mediana",
+    "large": "Etiqueta grande",
+    "disabled": "Etiqueta deshabilitada"
+  }
+}

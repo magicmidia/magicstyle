@@ -6,7 +6,7 @@
 .ms-rating {
   display: inline-flex;
   align-items: center;
-  gap: var(--ms-space-1, 4px);
+  gap: var(--ms-space-1);
   user-select: none;
 }
 
@@ -25,7 +25,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--ms-color-border, #cbd5e1);
+  color: var(--ms-color-border);
   transition:
     color var(--ms-transition-duration-fast, 120ms),
     transform var(--ms-transition-duration-fast, 120ms);
@@ -41,55 +41,39 @@
 }
 
 .ms-rating__item--filled {
-  color: var(--ms-color-warning, #f59e0b);
-  filter: drop-shadow(0 1px 2px rgba(245, 158, 11, 0.3));
+  color: var(--ms-tone, var(--ms-color-warning));
 }
 
-/* 8 Brand Semantic Tones */
-.ms-rating--tone-primary .ms-rating__item--filled {
-  color: var(--ms-color-primary, #6366f1);
-  filter: drop-shadow(0 1px 2px rgba(99, 102, 241, 0.3));
+/* Tones: the filled star uses the tone's fill color. */
+.ms-rating--tone-primary {
+  --ms-tone: var(--ms-color-primary);
 }
-
-.ms-rating--tone-secondary .ms-rating__item--filled {
-  color: var(--ms-color-secondary, #64748b);
-  filter: drop-shadow(0 1px 2px rgba(100, 116, 139, 0.3));
+.ms-rating--tone-secondary {
+  --ms-tone: var(--ms-color-secondary);
 }
-
-.ms-rating--tone-accent .ms-rating__item--filled {
-  color: var(--ms-color-accent, #8b5cf6);
-  filter: drop-shadow(0 1px 2px rgba(139, 92, 246, 0.3));
+.ms-rating--tone-accent {
+  --ms-tone: var(--ms-color-accent);
 }
-
-.ms-rating--tone-success .ms-rating__item--filled {
-  color: var(--ms-color-success, #10b981);
-  filter: drop-shadow(0 1px 2px rgba(16, 185, 129, 0.3));
+.ms-rating--tone-success {
+  --ms-tone: var(--ms-color-success);
 }
-
-.ms-rating--tone-warning .ms-rating__item--filled {
-  color: var(--ms-color-warning, #f59e0b);
-  filter: drop-shadow(0 1px 2px rgba(245, 158, 11, 0.3));
+.ms-rating--tone-warning {
+  --ms-tone: var(--ms-color-warning);
 }
-
-.ms-rating--tone-danger .ms-rating__item--filled {
-  color: var(--ms-color-danger, #ef4444);
-  filter: drop-shadow(0 1px 2px rgba(239, 68, 68, 0.3));
+.ms-rating--tone-danger {
+  --ms-tone: var(--ms-color-danger);
 }
-
-.ms-rating--tone-info .ms-rating__item--filled {
-  color: var(--ms-color-info, #0ea5e9);
-  filter: drop-shadow(0 1px 2px rgba(14, 165, 233, 0.3));
+.ms-rating--tone-info {
+  --ms-tone: var(--ms-color-info);
 }
-
-.ms-rating--tone-neutral .ms-rating__item--filled {
-  color: var(--ms-color-text-primary, #0f172a);
-  filter: none;
+.ms-rating--tone-neutral {
+  --ms-tone: var(--ms-color-text-primary);
 }
 
 .ms-rating__item:focus-visible {
-  outline: 2px solid var(--ms-color-primary, #6366f1);
+  outline: 2px solid var(--ms-color-primary);
   outline-offset: 2px;
-  border-radius: var(--ms-radius-sm, 4px);
+  border-radius: var(--ms-radius-sm);
 }
 
 /* Sizing */

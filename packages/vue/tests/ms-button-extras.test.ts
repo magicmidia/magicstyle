@@ -91,13 +91,13 @@ describe("MsButtonGroup", () => {
 
 describe("MsDropdownButton", () => {
   const items = [
-    { label: "Editar", value: "edit" },
-    { label: "Duplicar", value: "duplicate", suffix: "⌘D" },
-    { label: "Excluir", value: "delete", disabled: true },
+    { label: "Edit", value: "edit" },
+    { label: "Duplicate", value: "duplicate", suffix: "⌘D" },
+    { label: "Delete", value: "delete", disabled: true },
   ] as const;
 
   it("opens the menu on click and selects an item", async () => {
-    const wrapper = mount(MsDropdownButton, { props: { label: "Ações", items } });
+    const wrapper = mount(MsDropdownButton, { props: { label: "Actions", items } });
     expect(wrapper.find('[role="menu"]').exists()).toBe(false);
     await wrapper.find("button").trigger("click");
     await nextTick();
@@ -106,12 +106,12 @@ describe("MsDropdownButton", () => {
 
     await wrapper.findAll('[role="menuitem"]')[0]!.trigger("click");
     await nextTick();
-    expect(wrapper.emitted("select")?.[0]?.[0]).toMatchObject({ label: "Editar", value: "edit" });
+    expect(wrapper.emitted("select")?.[0]?.[0]).toMatchObject({ label: "Edit", value: "edit" });
     expect(wrapper.find('[role="menu"]').exists()).toBe(false);
   });
 
   it("closes on Escape", async () => {
-    const wrapper = mount(MsDropdownButton, { props: { label: "Ações", items } });
+    const wrapper = mount(MsDropdownButton, { props: { label: "Actions", items } });
     await wrapper.find("button").trigger("click");
     await nextTick();
     const menu = wrapper.find('[role="menu"]');
@@ -121,7 +121,7 @@ describe("MsDropdownButton", () => {
   });
 
   it("skips disabled items on keyboard activation", async () => {
-    const wrapper = mount(MsDropdownButton, { props: { label: "Ações", items } });
+    const wrapper = mount(MsDropdownButton, { props: { label: "Actions", items } });
     await wrapper.find("button").trigger("click");
     await nextTick();
     const menu = wrapper.find('[role="menu"]');
@@ -132,10 +132,10 @@ describe("MsDropdownButton", () => {
 
   it("skips disabled first item and focuses first enabled item on open", async () => {
     const customItems = [
-      { label: "Primeiro Desabilitado", value: "first_dis", disabled: true },
-      { label: "Segundo Habilitado", value: "second_en" },
+      { label: "First disabled", value: "first_dis", disabled: true },
+      { label: "Second enabled", value: "second_en" },
     ];
-    const wrapper = mount(MsDropdownButton, { props: { label: "Ações", items: customItems } });
+    const wrapper = mount(MsDropdownButton, { props: { label: "Actions", items: customItems } });
     await wrapper.find("button").trigger("click");
     await nextTick();
     const menu = wrapper.find('[role="menu"]');
@@ -146,8 +146,8 @@ describe("MsDropdownButton", () => {
 
   it("renders items with prefix, tone, divider, and aligns menu right", async () => {
     const customItems = [
-      { label: "Perfil", value: "profile", prefix: "👤" },
-      { label: "Excluir", value: "delete", tone: "danger" as const, divider: true },
+      { label: "Profile", value: "profile", prefix: "👤" },
+      { label: "Delete", value: "delete", tone: "danger" as const, divider: true },
     ];
     const wrapper = mount(MsDropdownButton, {
       props: { label: "Menu", items: customItems, align: "right", fullWidth: true },

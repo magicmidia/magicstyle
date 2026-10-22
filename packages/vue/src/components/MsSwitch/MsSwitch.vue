@@ -1,42 +1,55 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useFieldContext } from "../../composables/use-field-context.ts";
-import { useMsId } from "../../composables/use-ms-id.ts";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
 import type { MsSwitchProps } from "./types.ts";
 
 defineOptions({
   name: "MsSwitch",
+  inheritAttrs: false,
 });
 
 const props = withDefaults(defineProps<MsSwitchProps>(), {
+  // Explicit undefined keeps Vue from casting absent booleans to false (either binding may be used).
+  modelValue: undefined,
+  checked: undefined,
   size: "md",
   tone: "primary",
   labelPlacement: "right",
 });
 
+/** `v-model` and `v-model:checked` are both supported. */
+const isChecked = computed(() => props.modelValue ?? props.checked ?? false);
+
 const emit = defineEmits<{
+  /** Fires when the user toggles the switch; payload is the new checked state. */
+  "update:modelValue": [checked: boolean];
+  /** Same as `update:modelValue`, for `v-model:checked`. */
   "update:checked": [checked: boolean];
+  /** Fires after the update events with the new checked state. */
   change: [checked: boolean];
 }>();
 
 defineSlots<{
+  /** Rich label; replaces the `label` prop. */
   default?(): unknown;
+  /** Rich helper text below the label; replaces the `description` prop. */
   description?(): unknown;
 }>();
 
-const field = useFieldContext();
-const fallbackId = useMsId("ms-switch");
-const controlId = computed(() => field?.controlId ?? fallbackId);
+const fieldControl = useFieldControl("ms-switch");
+const controlId = computed(() => fieldControl.id);
 
 function onChange(event: Event): void {
-  const isChecked = (event.target as HTMLInputElement).checked;
-  emit("update:checked", isChecked);
-  emit("change", isChecked);
+  const next = (event.target as HTMLInputElement).checked;
+  emit("update:modelValue", next);
+  emit("update:checked", next);
+  emit("change", next);
 }
 </script>
 
 <template>
   <label
+    v-bind="rootAttrs($attrs)"
     class="ms-switch"
     :data-size="props.size"
     :data-tone="props.tone"
@@ -48,11 +61,13 @@ function onChange(event: Event): void {
       class="ms-switch-native"
       type="checkbox"
       role="switch"
-      :checked="props.checked"
+      :checked="isChecked"
       :disabled="props.disabled"
       :name="props.name"
       :value="props.value"
-      :aria-checked="props.checked"
+      :aria-invalid="fieldControl.fieldInvalid.value || undefined"
+      :aria-describedby="fieldControl.describedBy.value"
+      v-bind="controlAttrs($attrs)"
       @change="onChange"
     />
     <span class="ms-switch-track" aria-hidden="true" />

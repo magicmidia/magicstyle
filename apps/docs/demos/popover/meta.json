@@ -1,0 +1,58 @@
+{
+  "intro": {
+    "pt-BR": "Painel flutuante não modal preso a um gatilho. Use para detalhes extras, configurações rápidas ou pequenos formulários sem sair do contexto.",
+    "en-US": "Non-modal floating panel anchored to a trigger. Use it for extra details, quick settings or small forms without leaving the context.",
+    "es-ES": "Panel flotante no modal anclado a un disparador. Úsalo para detalles extra, ajustes rápidos o formularios pequeños sin salir del contexto."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "O gatilho vai no slot `trigger`; clique para abrir e clique fora ou pressione `Esc` para fechar.",
+        "en-US": "The trigger goes in the `trigger` slot; click to open, then click outside or press `Esc` to close.",
+        "es-ES": "El disparador va en el slot `trigger`; haz clic para abrir y haz clic fuera o pulsa `Esc` para cerrar."
+      }
+    },
+    {
+      "file": "Placements",
+      "title": { "pt-BR": "Posicionamento", "en-US": "Placement", "es-ES": "Posición" },
+      "description": {
+        "pt-BR": "`placement` aceita `top`, `bottom`, `left`, `right` e as variantes `-start` / `-end` de topo e base.",
+        "en-US": "`placement` accepts `top`, `bottom`, `left`, `right` and the `-start` / `-end` variants of top and bottom.",
+        "es-ES": "`placement` acepta `top`, `bottom`, `left`, `right` y las variantes `-start` / `-end` de arriba y abajo."
+      }
+    },
+    {
+      "file": "Form",
+      "title": {
+        "pt-BR": "Formulário controlado",
+        "en-US": "Controlled form",
+        "es-ES": "Formulario controlado"
+      },
+      "description": {
+        "pt-BR": "Com `v-model:open`, os botões do slot `footer` podem fechar o popover.",
+        "en-US": "With `v-model:open`, the buttons in the `footer` slot can close the popover.",
+        "es-ES": "Con `v-model:open`, los botones del slot `footer` pueden cerrar el popover."
+      }
+    },
+    {
+      "file": "Hover",
+      "title": {
+        "pt-BR": "Abrir ao passar o mouse",
+        "en-US": "Open on hover",
+        "es-ES": "Abrir al pasar el ratón"
+      },
+      "description": {
+        "pt-BR": "`trigger=\"hover\"` abre o painel com o ponteiro; para conteúdo essencial, prefira o clique, que também funciona no teclado.",
+        "en-US": "`trigger=\"hover\"` opens the panel on pointer hover; for essential content prefer click, which also works with the keyboard.",
+        "es-ES": "`trigger=\"hover\"` abre el panel con el puntero; para contenido esencial prefiere el clic, que también funciona con el teclado."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O painel usa `role=\"dialog\"` e é rotulado pelo título via `aria-labelledby`.\n- O controle focável do slot `trigger` recebe `aria-haspopup=\"dialog\"`, `aria-expanded` e `aria-controls` enquanto o painel está aberto.\n- `Enter` / `Espaço` no botão do gatilho: abre e fecha (no modo `click`).\n- `Esc`: fecha e devolve o foco ao gatilho.\n- O foco não é movido para dentro do painel nem preso nele; use `Tab` para alcançar o conteúdo.",
+    "en-US": "- The panel uses `role=\"dialog\"` and is labelled by its title through `aria-labelledby`.\n- The focusable control in the `trigger` slot gets `aria-haspopup=\"dialog\"`, `aria-expanded` and `aria-controls` while the panel is open.\n- `Enter` / `Space` on the trigger button: opens and closes (in `click` mode).\n- `Esc`: closes and returns focus to the trigger.\n- Focus is not moved into the panel nor trapped there; use `Tab` to reach its content.",
+    "es-ES": "- El panel usa `role=\"dialog\"` y se etiqueta con su título mediante `aria-labelledby`.\n- El control enfocable del slot `trigger` recibe `aria-haspopup=\"dialog\"`, `aria-expanded` y `aria-controls` mientras el panel está abierto.\n- `Enter` / `Espacio` en el botón disparador: abre y cierra (en modo `click`).\n- `Esc`: cierra y devuelve el foco al disparador.\n- El foco no se mueve al panel ni queda atrapado en él; usa `Tab` para llegar al contenido."
+  }
+}

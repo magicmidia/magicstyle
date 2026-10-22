@@ -8,7 +8,7 @@ describe("MsPagination component", () => {
       props: { total: 50, pageSize: 10, currentPage: 1 },
     });
     expect(wrapper.find(".ms-pagination").exists()).toBe(true);
-    expect(wrapper.text()).toContain("Total de 50 itens");
+    expect(wrapper.text()).toContain("50 items in total");
     const activeItem = wrapper.find(".ms-pagination__item--active");
     expect(activeItem.text()).toBe("1");
   });

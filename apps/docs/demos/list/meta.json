@@ -1,0 +1,84 @@
+{
+  "intro": {
+    "pt-BR": "Lista estruturada de itens com título, descrição e conteúdo à esquerda e à direita. Use para membros, recursos, configurações e navegação secundária.",
+    "en-US": "Structured list of items with a title, description and leading and trailing content. Use it for members, features, settings and secondary navigation.",
+    "es-ES": "Lista estructurada de elementos con título, descripción y contenido a la izquierda y a la derecha. Úsala para miembros, funciones, configuración y navegación secundaria."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Cada `MsListItem` recebe `title` e `description`.",
+        "en-US": "Each `MsListItem` takes a `title` and a `description`.",
+        "es-ES": "Cada `MsListItem` recibe `title` y `description`."
+      }
+    },
+    {
+      "file": "Members",
+      "title": {
+        "pt-BR": "Membros da equipe",
+        "en-US": "Team members",
+        "es-ES": "Miembros del equipo"
+      },
+      "description": {
+        "pt-BR": "Os slots `leading` e `trailing` recebem avatares, badges ou ações.",
+        "en-US": "The `leading` and `trailing` slots take avatars, badges or actions.",
+        "es-ES": "Los slots `leading` y `trailing` reciben avatares, badges o acciones."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": {
+        "pt-BR": "Variantes e tamanhos",
+        "en-US": "Variants and sizes",
+        "es-ES": "Variantes y tamaños"
+      },
+      "description": {
+        "pt-BR": "`variant` aceita `default`, `divided` e `bordered`; `size` ajusta espaçamento e tipografia.",
+        "en-US": "`variant` accepts `default`, `divided` and `bordered`; `size` adjusts spacing and type.",
+        "es-ES": "`variant` acepta `default`, `divided` y `bordered`; `size` ajusta el espaciado y la tipografía."
+      }
+    },
+    {
+      "file": "Separated",
+      "title": { "pt-BR": "Separada", "en-US": "Separated", "es-ES": "Separada" },
+      "description": {
+        "pt-BR": "`variant=\"separated\"` transforma cada item em um cartão próprio, com espaço entre eles.",
+        "en-US": "`variant=\"separated\"` turns each item into its own card, with space between them.",
+        "es-ES": "`variant=\"separated\"` convierte cada elemento en su propia tarjeta, con espacio entre ellos."
+      }
+    },
+    {
+      "file": "Settings",
+      "title": {
+        "pt-BR": "Navegação agrupada",
+        "en-US": "Grouped navigation",
+        "es-ES": "Navegación agrupada"
+      },
+      "description": {
+        "pt-BR": "`MsListGroup` fica dentro do `MsList` e rotula um subgrupo; itens `interactive` recebem foco, respondem a `Enter` e `Espaço`, e `active` marca o atual com `aria-current`.",
+        "en-US": "`MsListGroup` goes inside `MsList` and labels a sub-group; `interactive` items take focus and respond to `Enter` and `Space`, and `active` marks the current one with `aria-current`.",
+        "es-ES": "`MsListGroup` va dentro de `MsList` y etiqueta un subgrupo; los elementos `interactive` reciben foco y responden a `Enter` y `Espacio`, y `active` marca el actual con `aria-current`."
+      }
+    },
+    {
+      "file": "Selectable",
+      "title": {
+        "pt-BR": "Seleção única",
+        "en-US": "Single selection",
+        "es-ES": "Selección única"
+      },
+      "description": {
+        "pt-BR": "`selectable` transforma a lista em um `listbox`: `active` vira `aria-selected`, as setas movem o foco e `Enter` ou `Espaço` escolhem a opção. Dê um nome com `aria-label`.",
+        "en-US": "`selectable` turns the list into a `listbox`: `active` becomes `aria-selected`, arrow keys move focus and `Enter` or `Space` pick the option. Name it with `aria-label`.",
+        "es-ES": "`selectable` convierte la lista en un `listbox`: `active` pasa a ser `aria-selected`, las flechas mueven el foco y `Enter` o `Espacio` eligen la opción. Dale un nombre con `aria-label`."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- `MsList` renderiza `<ul role=\"list\">` e cada item um `<li>`.\n- Itens `interactive` recebem `tabindex=\"0\"`; `Enter` e `Espaço` disparam `click`. `active` vira `aria-current=\"true\"` e `disabled` vira `aria-disabled=\"true\"`.\n- `MsListGroup` é um `<li>` com uma lista aninhada `role=\"group\"`, rotulada pelo cabeçalho via `aria-labelledby`.\n- Com `selectable`, a lista vira `role=\"listbox\"` e os itens `role=\"option\"` com `aria-selected`:\n- `Tab`: entra na opção selecionada (ou na lista, que passa o foco para a primeira opção).\n- `↑` / `↓`: movem o foco entre as opções habilitadas; `Home` / `End` vão para a primeira e a última.\n- `Enter` / `Espaço`: ativam a opção focada.",
+    "en-US": "- `MsList` renders `<ul role=\"list\">` and each item an `<li>`.\n- `interactive` items get `tabindex=\"0\"`; `Enter` and `Space` fire `click`. `active` becomes `aria-current=\"true\"` and `disabled` becomes `aria-disabled=\"true\"`.\n- `MsListGroup` is an `<li>` holding a nested `role=\"group\"` list, labeled by its header through `aria-labelledby`.\n- With `selectable`, the list becomes a `role=\"listbox\"` and items become `role=\"option\"` with `aria-selected`:\n- `Tab`: moves to the selected option (or to the list, which forwards focus to the first option).\n- `↑` / `↓`: move focus between enabled options; `Home` / `End` jump to the first and last.\n- `Enter` / `Space`: activate the focused option.",
+    "es-ES": "- `MsList` renderiza `<ul role=\"list\">` y cada elemento un `<li>`.\n- Los elementos `interactive` reciben `tabindex=\"0\"`; `Enter` y `Espacio` disparan `click`. `active` pasa a `aria-current=\"true\"` y `disabled` a `aria-disabled=\"true\"`.\n- `MsListGroup` es un `<li>` con una lista anidada `role=\"group\"`, etiquetada por su encabezado mediante `aria-labelledby`.\n- Con `selectable`, la lista pasa a `role=\"listbox\"` y los elementos a `role=\"option\"` con `aria-selected`:\n- `Tab`: va a la opción seleccionada (o a la lista, que pasa el foco a la primera opción).\n- `↑` / `↓`: mueven el foco entre las opciones habilitadas; `Home` / `End` saltan a la primera y la última.\n- `Enter` / `Espacio`: activan la opción enfocada."
+  }
+}

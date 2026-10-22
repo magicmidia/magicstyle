@@ -1,0 +1,73 @@
+{
+  "$schema": "../theme.schema.json",
+  "name": "github",
+  "label": "Github",
+  "description": "Developer-first aesthetic inspired by GitHub Primer. Crisp borders, iconic GitHub green primary actions, and deep slate dark mode.",
+  "shared": {
+    "radius-selector": "4px",
+    "radius-field": "6px",
+    "radius-box": "6px",
+    "border-width": "1px",
+    "depth": "1",
+    "font-sans": "-apple-system, BlinkMacSystemFont, Segoe UI, Noto Sans, Helvetica, Arial, sans-serif",
+    "font-mono": "IBM Plex Mono, Cascadia Mono, ui-monospace, monospace"
+  },
+  "light": {
+    "color-base-100": "#f6f8fa",
+    "color-base-200": "#eaeef2",
+    "color-base-300": "#d0d7de",
+    "color-base-content": "#1f2328",
+    "color-base-raised": "#ffffff",
+    "color-primary": "#1f883d",
+    "color-primary-content": "#ffffff",
+    "color-secondary": "oklch(0.645 0.169 034)",
+    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-accent": "#0969da",
+    "color-accent-content": "#ffffff",
+    "color-neutral": "#f6f8fa",
+    "color-neutral-content": "#24292f",
+    "color-info": "oklch(0.738 0.133 219)",
+    "color-info-content": "oklch(0.170 0.020 252)",
+    "color-success": "oklch(0.663 0.131 168)",
+    "color-success-content": "oklch(0.170 0.020 252)",
+    "color-warning": "oklch(0.785 0.154 061)",
+    "color-warning-content": "oklch(0.170 0.020 252)",
+    "color-danger": "oklch(0.545 0.188 024)",
+    "color-danger-content": "oklch(1.000 0.003 252)"
+  },
+  "dark": {
+    "color-base-100": "#0d1117",
+    "color-base-200": "#010409",
+    "color-base-300": "#30363d",
+    "color-base-content": "#f0f6fc",
+    "color-base-raised": "#161b22",
+    "color-primary": "#238636",
+    "color-primary-content": "#ffffff",
+    "color-secondary": "oklch(0.715 0.152 034)",
+    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-accent": "#58a6ff",
+    "color-accent-content": "#0b0d12",
+    "color-neutral": "#21262d",
+    "color-neutral-content": "#c9d1d9",
+    "color-info": "oklch(0.738 0.133 219)",
+    "color-info-content": "oklch(0.170 0.020 252)",
+    "color-success": "oklch(0.663 0.131 168)",
+    "color-success-content": "oklch(0.170 0.020 252)",
+    "color-warning": "oklch(0.785 0.154 061)",
+    "color-warning-content": "oklch(0.170 0.020 252)",
+    "color-danger": "oklch(0.545 0.188 024)",
+    "color-danger-content": "oklch(1.000 0.003 252)"
+  },
+  "extras": {
+    "light": {
+      "elevation-button": "0px 1px 0px 0px rgba(27, 31, 36, 0.1)",
+      "elevation-card": "0px 1px 3px 0px rgba(31, 35, 40, 0.12), 0px 1px 2px 0px rgba(31, 35, 40, 0.06)",
+      "focus-ring-width": "3px"
+    },
+    "dark": {
+      "elevation-button": "none",
+      "elevation-card": "none",
+      "focus-ring-width": "3px"
+    }
+  }
+}

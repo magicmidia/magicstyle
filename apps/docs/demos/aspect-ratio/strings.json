@@ -1,0 +1,20 @@
+{
+  "pt-BR": {
+    "mountainsAlt": "Montanhas cobertas de neve sob o céu azul",
+    "forestAlt": "Trilha em uma floresta com luz da manhã",
+    "storyAlt": "Pessoa caminhando em uma praia ao entardecer",
+    "mapTitle": "Mapa da Avenida Paulista, em São Paulo"
+  },
+  "en-US": {
+    "mountainsAlt": "Snow-capped mountains under a blue sky",
+    "forestAlt": "Forest trail in morning light",
+    "storyAlt": "Person walking on a beach at sunset",
+    "mapTitle": "Map of Avenida Paulista, São Paulo"
+  },
+  "es-ES": {
+    "mountainsAlt": "Montañas nevadas bajo un cielo azul",
+    "forestAlt": "Sendero en un bosque con luz de la mañana",
+    "storyAlt": "Persona caminando por una playa al atardecer",
+    "mapTitle": "Mapa de la Avenida Paulista, en São Paulo"
+  }
+}

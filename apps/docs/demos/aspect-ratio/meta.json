@@ -1,0 +1,49 @@
+{
+  "intro": {
+    "pt-BR": "Use `MsAspectRatio` para reservar o espaço de imagens, vídeos e mapas numa proporção fixa, evitando saltos de layout enquanto o conteúdo carrega.",
+    "en-US": "Use `MsAspectRatio` to reserve space for images, videos and maps at a fixed ratio, avoiding layout shifts while content loads.",
+    "es-ES": "Usa `MsAspectRatio` para reservar el espacio de imágenes, vídeos y mapas con una proporción fija, evitando saltos de diseño mientras carga el contenido."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "O filho direto ocupa toda a área com `object-fit: cover`; a proporção padrão é `16/9`.",
+        "en-US": "The direct child fills the whole area with `object-fit: cover`; the default ratio is `16/9`.",
+        "es-ES": "El hijo directo ocupa toda el área con `object-fit: cover`; la proporción por defecto es `16/9`."
+      }
+    },
+    {
+      "file": "Presets",
+      "title": {
+        "pt-BR": "Proporções comuns",
+        "en-US": "Common ratios",
+        "es-ES": "Proporciones comunes"
+      },
+      "description": {
+        "pt-BR": "`ratio` aceita strings como `\"1/1\"`, `\"4/3\"`, `\"16/9\"` e `\"21/9\"` (também com `:`).",
+        "en-US": "`ratio` accepts strings such as `\"1/1\"`, `\"4/3\"`, `\"16/9\"` and `\"21/9\"` (also with `:`).",
+        "es-ES": "`ratio` acepta cadenas como `\"1/1\"`, `\"4/3\"`, `\"16/9\"` y `\"21/9\"` (también con `:`)."
+      }
+    },
+    {
+      "file": "Vertical",
+      "title": { "pt-BR": "Vertical", "en-US": "Vertical", "es-ES": "Vertical" },
+      "description": {
+        "pt-BR": "`9/16` serve para stories e vídeos curtos; a largura vem do contêiner.",
+        "en-US": "`9/16` suits stories and short videos; the width comes from the container.",
+        "es-ES": "`9/16` sirve para stories y vídeos cortos; el ancho lo define el contenedor."
+      }
+    },
+    {
+      "file": "Embed",
+      "title": { "pt-BR": "Mapa incorporado", "en-US": "Embedded map", "es-ES": "Mapa incrustado" },
+      "description": {
+        "pt-BR": "`ratio` também aceita um número, como `4 / 3`; um `iframe` com `title` descritivo preenche a área.",
+        "en-US": "`ratio` also takes a number, such as `4 / 3`; an `iframe` with a descriptive `title` fills the area.",
+        "es-ES": "`ratio` también acepta un número, como `4 / 3`; un `iframe` con un `title` descriptivo llena el área."
+      }
+    }
+  ]
+}

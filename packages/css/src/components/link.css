@@ -64,7 +64,7 @@
 }
 
 .ms-link--primary:hover {
-  color: var(--ms-color-interactive-primary-hover, var(--ms-color-interactive-primary));
+  color: var(--ms-color-interactive-primary-hover);
   text-decoration-color: currentColor;
 }
 
@@ -120,7 +120,7 @@
 
 /* Focus & Disabled */
 .ms-link:focus-visible {
-  outline: 2px solid var(--ms-color-interactive-focus);
+  outline: 2px solid var(--ms-focus-ring-color);
   outline-offset: 2px;
   border-radius: var(--ms-radius-xs);
 }

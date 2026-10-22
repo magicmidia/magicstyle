@@ -13,7 +13,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--ms-space-2);
-  height: var(--ms-control-height-md, 40px);
+  height: var(--ms-control-height-lg);
   padding: 0 var(--ms-space-3);
   font-family: var(--ms-font-sans);
   font-size: var(--ms-typography-size-sm);
@@ -41,13 +41,13 @@
 .ms-icon-picker__dropdown {
   position: absolute;
   top: calc(100% + 4px);
-  left: 0;
+  inset-inline-start: 0;
   z-index: 50;
   width: 320px;
   background-color: var(--ms-color-surface-raised);
   border: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
   border-radius: var(--ms-radius-lg);
-  box-shadow: var(--ms-shadow-md);
+  box-shadow: var(--ms-elevation-2);
   padding: var(--ms-space-3);
   display: flex;
   flex-direction: column;

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, provide, toRef } from "vue";
+import { computed, provide } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import MsAvatar from "./MsAvatar.vue";
 import {
   AVATAR_GROUP_CONTEXT_KEY,
@@ -18,6 +19,7 @@ const props = withDefaults(defineProps<MsAvatarGroupProps>(), {
 });
 
 defineSlots<{
+  /** `MsAvatar` children; used only when `items` is empty. Children inherit the group `size` and `bordered`. */
   default?(): unknown;
 }>();
 
@@ -31,6 +33,8 @@ const context: MsAvatarGroupContext = {
 };
 
 provide(AVATAR_GROUP_CONTEXT_KEY, context);
+
+const t = useMsMessages();
 
 const groupClasses = computed(() =>
   [
@@ -68,7 +72,8 @@ const excessCount = computed(() => {
         class="ms-avatar ms-avatar--excess"
         :data-size="props.size"
         :data-bordered="props.bordered || undefined"
-        aria-label="Mais membros"
+        role="img"
+        :aria-label="t.avatar.moreCount(excessCount)"
       >
         +{{ excessCount }}
       </div>

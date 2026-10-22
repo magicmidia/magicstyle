@@ -1,0 +1,45 @@
+{
+  "intro": {
+    "pt-BR": "Menu de ações aberto pelo clique direito sobre a área envolvida. Use como atalho para ações que também existem em outro lugar da interface.",
+    "en-US": "Action menu opened by right-clicking the wrapped area. Use it as a shortcut for actions that are also available elsewhere in the interface.",
+    "es-ES": "Menú de acciones que se abre con clic derecho sobre el área envuelta. Úsalo como atajo para acciones que también existen en otro lugar de la interfaz."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Envolva a área no slot padrão e passe as ações em `items`; `divider: true` cria um separador.",
+        "en-US": "Wrap the area in the default slot and pass the actions in `items`; `divider: true` adds a separator.",
+        "es-ES": "Envuelve el área en el slot predeterminado y pasa las acciones en `items`; `divider: true` añade un separador."
+      }
+    },
+    {
+      "file": "FileActions",
+      "title": {
+        "pt-BR": "Ações de arquivo",
+        "en-US": "File actions",
+        "es-ES": "Acciones de archivo"
+      },
+      "description": {
+        "pt-BR": "Itens com `icon`, `shortcut` e `danger`; o evento `select` informa o item escolhido (cada item também aceita um callback `action`).",
+        "en-US": "Items with `icon`, `shortcut` and `danger`; the `select` event reports the chosen item (each item also accepts an `action` callback).",
+        "es-ES": "Elementos con `icon`, `shortcut` y `danger`; el evento `select` informa del elemento elegido (cada elemento también acepta un callback `action`)."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": { "pt-BR": "Desabilitado", "en-US": "Disabled", "es-ES": "Deshabilitado" },
+      "description": {
+        "pt-BR": "Com `disabled`, o clique direito volta a abrir o menu nativo do navegador.",
+        "en-US": "With `disabled`, right-clicking opens the browser's native menu again.",
+        "es-ES": "Con `disabled`, el clic derecho vuelve a abrir el menú nativo del navegador."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- `Shift+F10` ou a tecla `Menu` do teclado abrem o menu a partir do elemento em foco; torne a área focável (por exemplo, `tabindex=\"0\"`).\n- O painel usa `role=\"menu\"`, itens `role=\"menuitem\"` (com `aria-disabled` nos desabilitados) e `role=\"separator\"`.\n- Ao abrir, o foco vai para o primeiro item habilitado.\n- `↓` / `↑`: próximo / anterior item, com retorno ao início; `Home` / `End`: primeiro / último.\n- `Enter` / `Espaço`: ativa o item; letras pulam para o item com a inicial digitada.\n- `Esc`: fecha e devolve o foco; `Tab` fecha o menu.",
+    "en-US": "- `Shift+F10` or the keyboard `Menu` key open the menu from the focused element; make the area focusable (for example, `tabindex=\"0\"`).\n- The panel uses `role=\"menu\"`, items use `role=\"menuitem\"` (with `aria-disabled` when disabled) and dividers `role=\"separator\"`.\n- On open, focus moves to the first enabled item.\n- `↓` / `↑`: next / previous item, wrapping around; `Home` / `End`: first / last.\n- `Enter` / `Space`: activates the item; letters jump to the item starting with the typed character.\n- `Esc`: closes and restores focus; `Tab` closes the menu.",
+    "es-ES": "- `Shift+F10` o la tecla `Menú` del teclado abren el menú desde el elemento enfocado; haz que el área sea enfocable (por ejemplo, `tabindex=\"0\"`).\n- El panel usa `role=\"menu\"`, los elementos `role=\"menuitem\"` (con `aria-disabled` cuando están deshabilitados) y los divisores `role=\"separator\"`.\n- Al abrirse, el foco va al primer elemento habilitado.\n- `↓` / `↑`: elemento siguiente / anterior, volviendo al inicio; `Home` / `End`: primero / último.\n- `Enter` / `Espacio`: activa el elemento; las letras saltan al elemento que empieza por la letra escrita.\n- `Esc`: cierra y devuelve el foco; `Tab` cierra el menú."
+  }
+}

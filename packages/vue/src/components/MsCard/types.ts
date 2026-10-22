@@ -1,4 +1,6 @@
-export type MsCardVariant = "raised" | "flat" | "outline" | "sunken" | "glass";
+import type { Component } from "vue";
+
+export type MsCardVariant = "raised" | "flat" | "outline" | "sunken" | "soft" | "glass";
 export type MsCardPadding = "none" | "xs" | "sm" | "md" | "lg" | "xl";
 export type MsCardOrientation = "vertical" | "horizontal";
 
@@ -11,8 +13,19 @@ export interface MsCardProps {
   title?: string;
   /** Secondary subtitle/description. */
   description?: string;
-  /** Enables hover/active interaction styling. @default false */
+  /**
+   * Button-like card: focusable, emits `click` on click/Enter/Space and gets hover/active
+   * styling. Ignored when `href` is set (the anchor already provides link semantics).
+   * @default false
+   */
   interactive?: boolean;
+  /** Renders the card as an `<a href>` link card (hover/focus styling, no button semantics). */
+  href?: string;
+  /**
+   * Root element tag or component (e.g. `"article"`, `"section"`, `RouterLink` with `to`).
+   * Ignored when `href` is set. @default "div"
+   */
+  as?: string | Component;
   /** Subtle lift and elevation on hover. @default false */
   hoverable?: boolean;
   /** Cover image URL. */
@@ -25,6 +38,9 @@ export interface MsCardProps {
   footerDivider?: boolean;
   /** Layout orientation: "vertical" | "horizontal". @default "vertical" */
   orientation?: MsCardOrientation;
-  /** Semantic brand accent tone. */
+  /**
+   * Semantic brand accent tone: a top accent border on most variants, or a tinted surface
+   * with `variant="soft"`.
+   */
   tone?: "primary" | "secondary" | "accent" | "neutral" | "success" | "info" | "warning" | "danger";
 }

@@ -1,10 +1,11 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { mount } from "@vue/test-utils";
+import { nextTick } from "vue";
 import { MsTruncate } from "../src/index.ts";
 
 describe("MsTruncate component", () => {
   const longText =
-    "Este é um texto longo que precisa ser truncado de maneira elegante pela biblioteca Magic-Style.";
+    "This is a long text that needs to be truncated gracefully by the Magic-Style library.";
 
   it("renders single-line truncation with tooltip title by default", () => {
     const wrapper = mount(MsTruncate, {
@@ -33,17 +34,34 @@ describe("MsTruncate component", () => {
     expect(wrapper.find(".ms-truncate__end").text()).toBe("abcdef");
   });
 
+  afterEach(() => vi.restoreAllMocks());
+
+  it("renders no toggle when the text fits", async () => {
+    const wrapper = mount(MsTruncate, { props: { text: "Short", expandable: true, lines: 2 } });
+    await nextTick();
+    expect(wrapper.find("button.ms-truncate__toggle").exists()).toBe(false);
+  });
+
   it("handles expand and collapse toggle button", async () => {
+    // jsdom has no layout: simulate overflowing content.
+    vi.spyOn(HTMLElement.prototype, "scrollHeight", "get").mockReturnValue(100);
+    vi.spyOn(HTMLElement.prototype, "clientHeight", "get").mockReturnValue(40);
     const wrapper = mount(MsTruncate, {
       props: { text: longText, expandable: true, lines: 2 },
     });
+    await nextTick();
     const btn = wrapper.find("button.ms-truncate__toggle");
     expect(btn.exists()).toBe(true);
-    expect(btn.text()).toBe("Ver mais");
+    expect(btn.text()).toBe("Show more");
+    expect(btn.attributes("aria-expanded")).toBe("false");
+    expect(btn.attributes("aria-controls")).toBe(
+      wrapper.find(".ms-truncate__content").attributes("id"),
+    );
 
     await btn.trigger("click");
     expect(wrapper.emitted("update:expanded")?.[0]).toEqual([true]);
     expect(wrapper.emitted("toggle")?.[0]).toEqual([true]);
-    expect(btn.text()).toBe("Ver menos");
+    expect(btn.text()).toBe("Show less");
+    expect(btn.attributes("aria-expanded")).toBe("true");
   });
 });

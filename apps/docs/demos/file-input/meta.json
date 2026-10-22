@@ -1,0 +1,67 @@
+{
+  "intro": {
+    "pt-BR": "Seletor de arquivos com `v-model`, área de soltar e lista de arquivos escolhidos. Use em formulários que enviam o arquivo junto com os outros campos.",
+    "en-US": "File picker with `v-model`, a drop area and a list of chosen files. Use it in forms that submit the file along with other fields.",
+    "es-ES": "Selector de archivos con `v-model`, área para soltar y lista de archivos elegidos. Úsalo en formularios que envían el archivo junto con los demás campos."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Sem `multiple`, o `v-model` guarda um único `File` (ou `null`).",
+        "en-US": "Without `multiple`, `v-model` holds a single `File` (or `null`).",
+        "es-ES": "Sin `multiple`, `v-model` guarda un único `File` (o `null`)."
+      }
+    },
+    {
+      "file": "Multiple",
+      "title": {
+        "pt-BR": "Vários arquivos",
+        "en-US": "Multiple files",
+        "es-ES": "Varios archivos"
+      },
+      "description": {
+        "pt-BR": "Com `multiple`, o `v-model` vira um array; `label` e `hint` personalizam o texto da área.",
+        "en-US": "With `multiple`, `v-model` becomes an array; `label` and `hint` customize the area text.",
+        "es-ES": "Con `multiple`, `v-model` pasa a ser un array; `label` y `hint` personalizan el texto del área."
+      }
+    },
+    {
+      "file": "MaxSize",
+      "title": { "pt-BR": "Tamanho máximo", "en-US": "Maximum size", "es-ES": "Tamaño máximo" },
+      "description": {
+        "pt-BR": "`max-size` (em bytes) recusa arquivos grandes e emite `@reject`; o slot `icon` troca o ícone.",
+        "en-US": "`max-size` (in bytes) refuses large files and emits `@reject`; the `icon` slot swaps the icon.",
+        "es-ES": "`max-size` (en bytes) rechaza archivos grandes y emite `@reject`; el slot `icon` cambia el icono."
+      }
+    },
+    {
+      "file": "Resume",
+      "title": {
+        "pt-BR": "Candidatura a vaga",
+        "en-US": "Job application",
+        "es-ES": "Postulación a una vacante"
+      },
+      "description": {
+        "pt-BR": "Dentro de `MsField`, a área usa o rótulo do campo e mostra o `error` quando nenhum arquivo foi anexado.",
+        "en-US": "Inside `MsField`, the area uses the field label and shows the `error` when no file is attached.",
+        "es-ES": "Dentro de `MsField`, el área usa la etiqueta del campo y muestra el `error` cuando no se adjuntó ningún archivo."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": { "pt-BR": "Desabilitado", "en-US": "Disabled", "es-ES": "Deshabilitado" },
+      "description": {
+        "pt-BR": "`disabled` bloqueia clique, teclado e arquivos soltos.",
+        "en-US": "`disabled` blocks clicks, keyboard and dropped files.",
+        "es-ES": "`disabled` bloquea los clics, el teclado y los archivos soltados."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- A área de soltar tem `role=\"button\"` e `tabindex=\"0\"`; dentro de `MsField`, recebe `aria-labelledby` e `aria-describedby` do campo.\n- `Tab`: foca a área e, depois, os botões de remover de cada arquivo (com `aria-label` localizado).\n- `Enter`/`Espaço`: abrem o explorador de arquivos do sistema.\n- `disabled` aplica `aria-disabled=\"true\"`.",
+    "en-US": "- The drop area has `role=\"button\"` and `tabindex=\"0\"`; inside `MsField`, it gets `aria-labelledby` and `aria-describedby` from the field.\n- `Tab`: focuses the area and then each file remove button (with a localized `aria-label`).\n- `Enter`/`Space`: open the system file browser.\n- `disabled` sets `aria-disabled=\"true\"`.",
+    "es-ES": "- El área para soltar tiene `role=\"button\"` y `tabindex=\"0\"`; dentro de `MsField`, recibe `aria-labelledby` y `aria-describedby` del campo.\n- `Tab`: enfoca el área y luego los botones de quitar de cada archivo (con `aria-label` localizado).\n- `Enter`/`Espacio`: abren el explorador de archivos del sistema.\n- `disabled` aplica `aria-disabled=\"true\"`."
+  }
+}

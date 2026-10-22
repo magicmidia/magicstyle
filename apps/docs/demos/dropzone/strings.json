@@ -1,0 +1,38 @@
+{
+  "pt-BR": {
+    "selectedCount": "Arquivos recebidos:",
+    "importTitle": "Importar contatos",
+    "importHint": "Envie um único arquivo .csv ou .xlsx com nome, e-mail e telefone.",
+    "photosTitle": "Fotos do produto",
+    "photosHint": "PNG, JPG ou WebP com até 2 MB cada.",
+    "tooLarge": "passa de 2 MB.",
+    "wrongType": "não é uma imagem PNG, JPG ou WebP.",
+    "tooMany": "não foi aceito: envie um arquivo por vez.",
+    "limitTitle": "Limite de armazenamento atingido",
+    "limitHint": "Libere espaço ou faça upgrade do plano para enviar novos arquivos."
+  },
+  "en-US": {
+    "selectedCount": "Files received:",
+    "importTitle": "Import contacts",
+    "importHint": "Upload a single .csv or .xlsx file with name, email and phone.",
+    "photosTitle": "Product photos",
+    "photosHint": "PNG, JPG or WebP up to 2 MB each.",
+    "tooLarge": "is larger than 2 MB.",
+    "wrongType": "is not a PNG, JPG or WebP image.",
+    "tooMany": "was not accepted: upload one file at a time.",
+    "limitTitle": "Storage limit reached",
+    "limitHint": "Free up space or upgrade your plan to upload new files."
+  },
+  "es-ES": {
+    "selectedCount": "Archivos recibidos:",
+    "importTitle": "Importar contactos",
+    "importHint": "Sube un único archivo .csv o .xlsx con nombre, correo y teléfono.",
+    "photosTitle": "Fotos del producto",
+    "photosHint": "PNG, JPG o WebP de hasta 2 MB cada una.",
+    "tooLarge": "supera los 2 MB.",
+    "wrongType": "no es una imagen PNG, JPG o WebP.",
+    "tooMany": "no se aceptó: sube un archivo a la vez.",
+    "limitTitle": "Límite de almacenamiento alcanzado",
+    "limitHint": "Libera espacio o mejora tu plan para subir archivos nuevos."
+  }
+}

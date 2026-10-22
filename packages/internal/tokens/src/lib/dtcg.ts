@@ -1,13 +1,29 @@
+/** Token types from the DTCG format (2025.10). */
 export type DtcgTokenType =
   | "color"
   | "dimension"
   | "fontFamily"
   | "fontWeight"
   | "duration"
+  | "cubicBezier"
   | "number"
   | "shadow"
-  | "other"
-  | "typography-role";
+  | "typography";
+
+export const DTCG_TOKEN_TYPES: readonly DtcgTokenType[] = [
+  "color",
+  "dimension",
+  "fontFamily",
+  "fontWeight",
+  "duration",
+  "cubicBezier",
+  "number",
+  "shadow",
+  "typography",
+];
+
+/** Vendor namespace for data DTCG has no field for (DTCG `$extensions`). */
+export const EXTENSION_NAMESPACE = "dev.magic-style";
 
 export interface ShadowLayer {
   readonly offsetX: string;
@@ -17,21 +33,23 @@ export interface ShadowLayer {
   readonly color: string;
 }
 
-export interface TypographyRole {
-  readonly family: string;
-  readonly size: string;
-  readonly "line-height": string;
-  readonly weight: string;
-  readonly feature?: string;
-  readonly tracking?: string;
+/** DTCG typography composite. */
+export interface DtcgTypography {
+  readonly fontFamily: string;
+  readonly fontSize: string;
+  readonly fontWeight: string;
+  readonly lineHeight: string;
+  readonly letterSpacing: string;
 }
 
-export type DtcgValue = string | number | readonly ShadowLayer[] | TypographyRole;
+export type DtcgValue =
+  string | number | readonly string[] | readonly number[] | readonly ShadowLayer[] | DtcgTypography;
 
 export interface DtcgToken {
   readonly $type: DtcgTokenType;
   readonly $value: DtcgValue;
   readonly $description?: string;
+  readonly $extensions?: Readonly<Record<string, Readonly<Record<string, unknown>>>>;
 }
 
 export type TokenTree = {

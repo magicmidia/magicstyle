@@ -1,0 +1,47 @@
+{
+  "pt-BR": {
+    "files": "Arquivos",
+    "mail": "E-mail",
+    "calendar": "Agenda",
+    "music": "Música",
+    "settings": "Ajustes",
+    "home": "Início",
+    "photos": "Fotos",
+    "notes": "Notas",
+    "maps": "Mapas",
+    "select": "Selecionar",
+    "frame": "Quadro",
+    "pen": "Caneta",
+    "text": "Texto"
+  },
+  "en-US": {
+    "files": "Files",
+    "mail": "Mail",
+    "calendar": "Calendar",
+    "music": "Music",
+    "settings": "Settings",
+    "home": "Home",
+    "photos": "Photos",
+    "notes": "Notes",
+    "maps": "Maps",
+    "select": "Select",
+    "frame": "Frame",
+    "pen": "Pen",
+    "text": "Text"
+  },
+  "es-ES": {
+    "files": "Archivos",
+    "mail": "Correo",
+    "calendar": "Calendario",
+    "music": "Música",
+    "settings": "Ajustes",
+    "home": "Inicio",
+    "photos": "Fotos",
+    "notes": "Notas",
+    "maps": "Mapas",
+    "select": "Seleccionar",
+    "frame": "Marco",
+    "pen": "Pluma",
+    "text": "Texto"
+  }
+}

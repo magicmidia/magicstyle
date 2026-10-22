@@ -9,8 +9,8 @@ describe("MsDock & MsDockItem", () => {
       components: { MsDock, MsDockItem },
       template: `
         <MsDock position="bottom" size="md">
-          <MsDockItem label="Início" active>🏠</MsDockItem>
-          <MsDockItem label="Mensagens">💬</MsDockItem>
+          <MsDockItem label="Home" active>🏠</MsDockItem>
+          <MsDockItem label="Messages">💬</MsDockItem>
         </MsDock>
       `,
     });

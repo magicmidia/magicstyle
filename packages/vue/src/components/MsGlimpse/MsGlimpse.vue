@@ -1,10 +1,11 @@
 <template>
-  <div ref="rootRef" class="ms-glimpse" @keydown.esc="handleCloseImmediate">
+  <span ref="rootRef" class="ms-glimpse" @keydown.esc="handleCloseImmediate">
+    <!-- Phrasing content only (spans): MsGlimpse is meant to sit inline inside a <p>. -->
     <!-- Trigger link / anchor -->
-    <div
+    <!-- aria-expanded/aria-controls live on the focusable element (the link), not this span. -->
+    <span
+      ref="triggerRef"
       class="ms-glimpse__trigger"
-      :aria-expanded="isOpen"
-      :aria-haspopup="'dialog'"
       @mouseenter="handleTriggerEnter"
       @mouseleave="handleTriggerLeave"
       @focusin="handleTriggerEnter"
@@ -13,23 +14,27 @@
     >
       <slot>
         <a
-          :href="href"
+          :href="safeHref(href)"
           :target="target"
-          :rel="rel || (target === '_blank' ? 'noopener noreferrer' : undefined)"
+          :rel="safeRel(rel, target)"
           class="ms-link ms-link--primary"
+          aria-haspopup="dialog"
+          :aria-expanded="disabled ? undefined : isOpen"
+          :aria-controls="disabled ? undefined : cardId"
+          data-ms-glimpse-link
         >
           {{ label || href }}
         </a>
       </slot>
-    </div>
+    </span>
 
     <!-- Floating Preview Hovercard -->
-    <div
+    <span
       v-if="!disabled"
-      ref="cardRef"
       :id="cardId"
+      ref="cardRef"
       role="dialog"
-      aria-label="Pré-visualização do link"
+      :aria-label="t.glimpse.label"
       :class="cardClasses"
       @mouseenter="handleCardEnter"
       @mouseleave="handleCardLeave"
@@ -37,34 +42,34 @@
       <slot name="preview" :loading="loading" :open="isOpen">
         <!-- Skeleton loading state -->
         <template v-if="loading">
-          <div class="ms-glimpse__skeleton-image" />
-          <div class="ms-glimpse__content">
-            <div class="ms-glimpse__skeleton-line" style="width: 40%; margin-bottom: 4px" />
-            <div class="ms-glimpse__skeleton-line" style="width: 90%; margin-bottom: 2px" />
-            <div class="ms-glimpse__skeleton-line" style="width: 70%" />
-          </div>
+          <span class="ms-glimpse__skeleton-image" />
+          <span class="ms-glimpse__content">
+            <span class="ms-glimpse__skeleton-line" style="width: 40%; margin-bottom: 4px" />
+            <span class="ms-glimpse__skeleton-line" style="width: 90%; margin-bottom: 2px" />
+            <span class="ms-glimpse__skeleton-line" style="width: 70%" />
+          </span>
         </template>
 
         <!-- Normal preview state -->
         <template v-else>
           <!-- Thumbnail Image -->
-          <div v-if="image || $slots.image" class="ms-glimpse__image-wrapper">
+          <span v-if="image || $slots.image" class="ms-glimpse__image-wrapper">
             <slot name="image">
               <img
                 :src="image"
-                :alt="title || 'Pré-visualização do link'"
+                :alt="title || t.glimpse.label"
                 class="ms-glimpse__image"
                 loading="lazy"
               />
             </slot>
-          </div>
+          </span>
 
           <!-- Metadata content -->
-          <div class="ms-glimpse__content">
+          <span class="ms-glimpse__content">
             <!-- Site & Domain header -->
-            <div v-if="computedDomain || badge || $slots.meta" class="ms-glimpse__site-header">
+            <span v-if="computedDomain || badge || $slots.meta" class="ms-glimpse__site-header">
               <slot name="meta">
-                <div class="ms-glimpse__domain-wrap">
+                <span class="ms-glimpse__domain-wrap">
                   <img
                     v-if="favicon"
                     :src="favicon"
@@ -73,31 +78,33 @@
                     aria-hidden="true"
                   />
                   <span>{{ computedDomain }}</span>
-                </div>
+                </span>
                 <span v-if="badge" class="ms-glimpse__badge">{{ badge }}</span>
               </slot>
-            </div>
+            </span>
 
             <!-- Title -->
-            <h4 v-if="title || $slots.title" class="ms-glimpse__title">
+            <span v-if="title || $slots.title" class="ms-glimpse__title">
               <slot name="title">{{ title }}</slot>
-            </h4>
+            </span>
 
             <!-- Description -->
-            <p v-if="description || $slots.description" class="ms-glimpse__description">
+            <span v-if="description || $slots.description" class="ms-glimpse__description">
               <slot name="description">{{ description }}</slot>
-            </p>
-          </div>
+            </span>
+          </span>
         </template>
       </slot>
-    </div>
-  </div>
+    </span>
+  </span>
 </template>
 
 <script setup lang="ts">
-import { computed, onUnmounted, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref, watch } from "vue";
 import { useMsId } from "../../composables/use-ms-id.ts";
 import type { MsGlimpseProps, MsGlimpseEmits } from "./types.ts";
+import { safeHref, safeRel } from "../../composables/safe-url.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({
   name: "MsGlimpse",
@@ -122,10 +129,36 @@ const props = withDefaults(defineProps<MsGlimpseProps>(), {
 
 const emit = defineEmits<MsGlimpseEmits>();
 
+const t = useMsMessages();
+
 const rootRef = ref<HTMLElement | null>(null);
 const cardRef = ref<HTMLElement | null>(null);
 const cardId = useMsId("glimpse-card");
 const isOpen = ref(false);
+const triggerRef = ref<HTMLElement | null>(null);
+
+const FOCUSABLE = "a[href], button, input, select, textarea, [tabindex]:not([tabindex='-1'])";
+
+/**
+ * Custom trigger content (default slot) gets the disclosure state on its first focusable
+ * element; the built-in link binds it in the template (so it is also in the SSR markup).
+ */
+function syncSlotTriggerAria(): void {
+  const trigger = triggerRef.value?.querySelector<HTMLElement>(FOCUSABLE);
+  if (!trigger || trigger.hasAttribute("data-ms-glimpse-link")) return;
+  if (props.disabled) {
+    for (const name of ["aria-expanded", "aria-controls", "aria-haspopup"]) {
+      trigger.removeAttribute(name);
+    }
+    return;
+  }
+  trigger.setAttribute("aria-haspopup", "dialog");
+  trigger.setAttribute("aria-expanded", String(isOpen.value));
+  trigger.setAttribute("aria-controls", cardId);
+}
+
+onMounted(syncSlotTriggerAria);
+watch([isOpen, () => props.disabled], syncSlotTriggerAria, { flush: "post" });
 
 let openTimer: ReturnType<typeof setTimeout> | null = null;
 let closeTimer: ReturnType<typeof setTimeout> | null = null;
@@ -217,4 +250,19 @@ function handleCloseImmediate() {
 onUnmounted(() => {
   clearTimers();
 });
+
+defineSlots<{
+  /** Replaces the trigger link (defaults to an anchor to `href` labelled `label`). */
+  default?(): unknown;
+  /** Replaces the whole card content; receives the `loading` and `open` states. */
+  preview?(props: { loading: boolean; open: boolean }): unknown;
+  /** Replaces the thumbnail image (`image` prop). */
+  image?(): unknown;
+  /** Replaces the site header (favicon, domain and badge). */
+  meta?(): unknown;
+  /** Rich title; replaces the `title` prop. */
+  title?(): unknown;
+  /** Rich description; replaces the `description` prop. */
+  description?(): unknown;
+}>();
 </script>

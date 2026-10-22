@@ -45,18 +45,18 @@
 }
 
 .ms-page-header__title {
-  font-size: var(--ms-font-size-2xl);
-  font-weight: var(--ms-font-weight-bold);
+  font-size: var(--ms-typography-size-2xl);
+  font-weight: var(--ms-typography-weight-bold);
   color: var(--ms-color-text-default);
   margin: 0;
-  line-height: var(--ms-line-height-tight);
+  line-height: var(--ms-typography-line-height-tight);
 }
 
 .ms-page-header__description {
-  font-size: var(--ms-font-size-sm);
+  font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-muted);
   margin: 0;
-  line-height: var(--ms-line-height-normal);
+  line-height: var(--ms-typography-line-height-base);
 }
 
 /* Page Actions */

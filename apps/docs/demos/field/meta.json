@@ -1,0 +1,67 @@
+{
+  "intro": {
+    "pt-BR": "O `MsField` envolve qualquer controle de formulário e conecta rótulo, texto de apoio e mensagem de erro por `for`, `aria-describedby` e `aria-invalid`, sem ids manuais.",
+    "en-US": "`MsField` wraps any form control and wires the label, helper text and error message through `for`, `aria-describedby` and `aria-invalid`, with no manual ids.",
+    "es-ES": "`MsField` envuelve cualquier control de formulario y conecta la etiqueta, el texto de ayuda y el mensaje de error mediante `for`, `aria-describedby` y `aria-invalid`, sin ids manuales."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`label` e `description` ficam ligados ao controle filho automaticamente.",
+        "en-US": "`label` and `description` are linked to the child control automatically.",
+        "es-ES": "`label` y `description` se vinculan automáticamente al control hijo."
+      }
+    },
+    {
+      "file": "States",
+      "title": {
+        "pt-BR": "Obrigatório, opcional e erro",
+        "en-US": "Required, optional and error",
+        "es-ES": "Obligatorio, opcional y error"
+      },
+      "description": {
+        "pt-BR": "`required` e `optional` indicam a obrigatoriedade; `error` exibe a mensagem e marca o controle como inválido.",
+        "en-US": "`required` and `optional` signal whether a value is needed; `error` shows the message and marks the control invalid.",
+        "es-ES": "`required` y `optional` indican si el valor es necesario; `error` muestra el mensaje y marca el control como inválido."
+      }
+    },
+    {
+      "file": "Horizontal",
+      "title": { "pt-BR": "Horizontal", "en-US": "Horizontal", "es-ES": "Horizontal" },
+      "description": {
+        "pt-BR": "`orientation=\"horizontal\"` coloca o rótulo ao lado do controle, útil em telas de configurações.",
+        "en-US": "`orientation=\"horizontal\"` places the label beside the control, handy for settings screens.",
+        "es-ES": "`orientation=\"horizontal\"` coloca la etiqueta junto al control, útil en pantallas de configuración."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "Combine o `size` do campo com o do controle: `sm`, `md` ou `lg`.",
+        "en-US": "Match the field `size` with the control size: `sm`, `md` or `lg`.",
+        "es-ES": "Combina el `size` del campo con el del control: `sm`, `md` o `lg`."
+      }
+    },
+    {
+      "file": "SignUp",
+      "title": {
+        "pt-BR": "Formulário de cadastro",
+        "en-US": "Sign-up form",
+        "es-ES": "Formulario de registro"
+      },
+      "description": {
+        "pt-BR": "Um cadastro completo com `MsInput`, `MsPasswordInput` e `MsCheckbox`, validado no envio com mensagens em `error`.",
+        "en-US": "A complete sign-up with `MsInput`, `MsPasswordInput` and `MsCheckbox`, validated on submit with messages in `error`.",
+        "es-ES": "Un registro completo con `MsInput`, `MsPasswordInput` y `MsCheckbox`, validado al enviar con mensajes en `error`."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O rótulo é um `label` nativo com `for` apontando para o primeiro controle do campo.\n- `description` e `error` entram no `aria-describedby` do controle; com `error`, o controle recebe `aria-invalid=\"true\"`.\n- A mensagem de erro usa `aria-live=\"polite\"` para ser anunciada quando aparece.\n- Controles de grupo (radio, PIN) recebem `aria-labelledby` com o id do rótulo.",
+    "en-US": "- The label is a native `label` whose `for` points to the first control in the field.\n- `description` and `error` are added to the control's `aria-describedby`; with `error`, the control gets `aria-invalid=\"true\"`.\n- The error message uses `aria-live=\"polite\"` so it is announced when it appears.\n- Group controls (radio, PIN) get `aria-labelledby` with the label id.",
+    "es-ES": "- La etiqueta es un `label` nativo cuyo `for` apunta al primer control del campo.\n- `description` y `error` se añaden al `aria-describedby` del control; con `error`, el control recibe `aria-invalid=\"true\"`.\n- El mensaje de error usa `aria-live=\"polite\"` para anunciarse cuando aparece.\n- Los controles de grupo (radio, PIN) reciben `aria-labelledby` con el id de la etiqueta."
+  }
+}

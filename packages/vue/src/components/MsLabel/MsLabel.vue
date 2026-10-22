@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsLabelProps } from "./types.ts";
 
 const props = withDefaults(defineProps<MsLabelProps>(), {
   required: false,
   optional: false,
-  optionalText: "(opcional)",
   size: "md",
   disabled: false,
 });
+
+const t = useMsMessages();
 
 const classes = computed(() => [
   "ms-label",
@@ -17,6 +19,15 @@ const classes = computed(() => [
     "ms-label--disabled": props.disabled,
   },
 ]);
+
+defineSlots<{
+  /** Label text. */
+  default?(): unknown;
+  /** Replaces the info icon of the tooltip trigger (shown with `tooltip` or this slot). */
+  tooltip?(): unknown;
+  /** Extra content at the end of the label. */
+  extra?(): unknown;
+}>();
 </script>
 
 <template>
@@ -29,11 +40,17 @@ const classes = computed(() => [
   >
     <slot />
 
-    <span v-if="props.required" class="ms-label__required" aria-hidden="true" title="Obrigatório"
+    <span
+      v-if="props.required"
+      class="ms-label__required"
+      aria-hidden="true"
+      :title="t.label.required"
       >*</span
     >
 
-    <span v-else-if="props.optional" class="ms-label__optional">{{ props.optionalText }}</span>
+    <span v-else-if="props.optional" class="ms-label__optional">{{
+      props.optionalText ?? t.label.optional
+    }}</span>
 
     <span
       v-if="props.tooltip || $slots.tooltip"

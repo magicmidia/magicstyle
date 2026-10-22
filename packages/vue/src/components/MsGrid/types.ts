@@ -2,21 +2,31 @@ export type MsGridCols = 1 | 2 | 3 | 4 | 5 | 6;
 export type MsGridGap = "xs" | "sm" | "md" | "lg" | "xl" | number;
 
 export interface MsBentoGridProps {
+  /** Number of grid columns. @default 3 */
   cols?: MsGridCols;
+  /** Gap between cells: a spacing token ("xs"–"xl") or pixels. @default "md" */
   gap?: MsGridGap;
+  /** Uses `grid-auto-flow: dense` so smaller items back-fill gaps. @default false */
   dense?: boolean;
 }
 
 export interface MsBentoItemProps {
+  /** Columns the item spans. @default 1 */
   colSpan?: 1 | 2 | 3 | 4 | 5 | 6;
+  /** Rows the item spans. @default 1 */
   rowSpan?: 1 | 2 | 3 | 4;
+  /** Hover lift styling only; put a link or button inside for real interaction. @default false */
   interactive?: boolean;
+  /** Surface style. @default "default" */
   variant?: "default" | "ghost" | "elevated" | "accent";
 }
 
 export interface MsMasonryGridProps {
+  /** Number of columns; items are distributed round-robin. @default 3 */
   cols?: number;
+  /** Gap between items: a spacing token ("xs"–"xl") or pixels. @default "md" */
   gap?: MsGridGap;
+  /** Items to lay out; each is passed to the default slot as `item` with its `index`. @default [] */
   items?: unknown[];
 }
 
@@ -27,29 +37,29 @@ export type MsRowJustify =
 export type MsRowAlign = "top" | "middle" | "bottom" | "stretch";
 
 export interface MsRowProps {
-  /** Espaçamento em pixels (horizontal ou [horizontal, vertical]) */
+  /** Spacing in pixels (horizontal or [horizontal, vertical]) */
   gutter?: number | [number, number];
-  /** Alinhamento horizontal dos filhos */
+  /** Horizontal alignment of children */
   justify?: MsRowJustify;
-  /** Alinhamento vertical dos filhos */
+  /** Vertical alignment of children */
   align?: MsRowAlign;
-  /** Permite quebra de linha (padrão: true) */
+  /** Allows wrapping (default: true) */
   wrap?: boolean;
 }
 
 export interface MsColProps {
-  /** Quantidade de colunas ocupadas (1 a 12) */
+  /** Number of columns spanned (1 to 12) */
   span?: number | "auto" | "flex-1";
-  /** Quantidade de colunas deslocadas à esquerda (1 a 11) */
+  /** Number of columns offset from the left (1 to 11) */
   offset?: number;
-  /** Ordem flexbox */
+  /** Flexbox order */
   order?: number;
-  /** Span em telas pequenas (>= 640px) */
+  /** Span on small screens (>= 640px) */
   sm?: number;
-  /** Span em telas médias (>= 768px) */
+  /** Span on medium screens (>= 768px) */
   md?: number;
-  /** Span em telas grandes (>= 1024px) */
+  /** Span on large screens (>= 1024px) */
   lg?: number;
-  /** Span em telas extra-grandes (>= 1280px) */
+  /** Span on extra-large screens (>= 1280px) */
   xl?: number;
 }

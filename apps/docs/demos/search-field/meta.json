@@ -1,0 +1,67 @@
+{
+  "intro": {
+    "pt-BR": "Campo de busca com ícone, botão de limpar, indicador de carregamento e dica de atalho. Use para filtrar listas ou disparar buscas.",
+    "en-US": "Search field with an icon, clear button, loading indicator and shortcut hint. Use it to filter lists or trigger searches.",
+    "es-ES": "Campo de búsqueda con icono, botón de borrar, indicador de carga y pista de atajo. Úsalo para filtrar listas o iniciar búsquedas."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`@search` dispara ao pressionar `Enter`; o botão de limpar aparece quando há texto e emite `@clear`.",
+        "en-US": "`@search` fires on `Enter`; the clear button appears when there is text and emits `@clear`.",
+        "es-ES": "`@search` se dispara al pulsar `Enter`; el botón de borrar aparece cuando hay texto y emite `@clear`."
+      }
+    },
+    {
+      "file": "Shortcut",
+      "title": { "pt-BR": "Dica de atalho", "en-US": "Shortcut hint", "es-ES": "Pista de atajo" },
+      "description": {
+        "pt-BR": "`shortcut` mostra a tecla de atalho enquanto o campo está vazio; o atalho em si deve ser registrado pela sua aplicação.",
+        "en-US": "`shortcut` shows the key hint while the field is empty; your app must register the shortcut itself.",
+        "es-ES": "`shortcut` muestra la tecla de atajo mientras el campo está vacío; tu aplicación debe registrar el atajo."
+      }
+    },
+    {
+      "file": "Filter",
+      "title": {
+        "pt-BR": "Filtrar uma lista",
+        "en-US": "Filter a list",
+        "es-ES": "Filtrar una lista"
+      },
+      "description": {
+        "pt-BR": "Use o `v-model` em um `computed` para filtrar os resultados enquanto a pessoa digita.",
+        "en-US": "Use `v-model` in a `computed` to filter results as people type.",
+        "es-ES": "Usa `v-model` en un `computed` para filtrar los resultados mientras se escribe."
+      }
+    },
+    {
+      "file": "Loading",
+      "title": { "pt-BR": "Carregando", "en-US": "Loading", "es-ES": "Cargando" },
+      "description": {
+        "pt-BR": "`loading` mostra um spinner enquanto a busca remota está em andamento.",
+        "en-US": "`loading` shows a spinner while a remote search is in progress.",
+        "es-ES": "`loading` muestra un spinner mientras la búsqueda remota está en curso."
+      }
+    },
+    {
+      "file": "VariantsSizes",
+      "title": {
+        "pt-BR": "Variantes, tamanhos e desabilitado",
+        "en-US": "Variants, sizes and disabled",
+        "es-ES": "Variantes, tamaños y deshabilitado"
+      },
+      "description": {
+        "pt-BR": "`variant` (`outline`, `filled`, `flushed`), `size` (`sm`, `md`, `lg`) e `disabled`.",
+        "en-US": "`variant` (`outline`, `filled`, `flushed`), `size` (`sm`, `md`, `lg`) and `disabled`.",
+        "es-ES": "`variant` (`outline`, `filled`, `flushed`), `size` (`sm`, `md`, `lg`) y `disabled`."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza um `input type=\"search\"` com `role=\"searchbox\"`. Fora de `MsField`, recebe um `aria-label` localizado automaticamente.\n- `Tab`: move o foco para o campo. O botão de limpar fica fora da ordem de tabulação (`tabindex=\"-1\"`).\n- `Enter`: emite `search` com o texto atual.\n- `Esc`: limpa o texto, quando houver.",
+    "en-US": "- Renders an `input type=\"search\"` with `role=\"searchbox\"`. Outside `MsField`, it gets a localized `aria-label` automatically.\n- `Tab`: moves focus to the field. The clear button is left out of the tab order (`tabindex=\"-1\"`).\n- `Enter`: emits `search` with the current text.\n- `Esc`: clears the text, if any.",
+    "es-ES": "- Renderiza un `input type=\"search\"` con `role=\"searchbox\"`. Fuera de `MsField`, recibe automáticamente un `aria-label` localizado.\n- `Tab`: mueve el foco al campo. El botón de borrar queda fuera del orden de tabulación (`tabindex=\"-1\"`).\n- `Enter`: emite `search` con el texto actual.\n- `Esc`: borra el texto, si lo hay."
+  }
+}

@@ -1,20 +1,24 @@
 <script setup lang="ts">
-import { ref, computed, watch } from "vue";
+import { ref, computed, nextTick, onBeforeUnmount, onMounted, watch } from "vue";
 import type { MsTruncateProps, MsTruncateEmits } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
+import { useMsId } from "../../composables/use-ms-id.ts";
 
 const props = withDefaults(defineProps<MsTruncateProps>(), {
   text: "",
   lines: 1,
   expandable: false,
   expanded: false,
-  expandText: "Ver mais",
-  collapseText: "Ver menos",
   showTooltip: true,
   position: "end",
   middleChars: 10,
 });
 
 const emit = defineEmits<MsTruncateEmits>();
+
+const t = useMsMessages();
+const expandLabel = computed(() => props.expandText ?? t.value.truncate.more);
+const collapseLabel = computed(() => props.collapseText ?? t.value.truncate.less);
 
 const internalExpanded = ref(props.expanded);
 
@@ -57,11 +61,47 @@ const style = computed(() => {
   return undefined;
 });
 
+const contentRef = ref<HTMLElement | null>(null);
+const contentId = useMsId("ms-truncate-content");
+
+/**
+ * Whether the collapsed text actually overflows. Only known in the browser, so the server
+ * (and the hydrating render) show no toggle; it appears after mount when needed.
+ */
+const isTruncated = ref(false);
+const showToggle = computed(
+  () => props.expandable && (isTruncated.value || internalExpanded.value),
+);
+
+function measure(): void {
+  const el = contentRef.value;
+  if (!el || internalExpanded.value) return;
+  isTruncated.value = el.scrollHeight > el.clientHeight + 1 || el.scrollWidth > el.clientWidth + 1;
+}
+
+let observer: ResizeObserver | null = null;
+onMounted(() => {
+  measure();
+  if (typeof ResizeObserver !== "undefined" && contentRef.value) {
+    observer = new ResizeObserver(() => measure());
+    observer.observe(contentRef.value);
+  }
+});
+onBeforeUnmount(() => observer?.disconnect());
+watch([() => props.text, () => props.lines, internalExpanded], () => void nextTick(measure));
+
 const toggleExpand = () => {
   internalExpanded.value = !internalExpanded.value;
   emit("update:expanded", internalExpanded.value);
   emit("toggle", internalExpanded.value);
 };
+
+defineSlots<{
+  /** Rich content to truncate; replaces the `text` prop (not used with middle truncation). */
+  default?(): unknown;
+  /** Replaces the show more/less button (shown when `expandable` and the content overflows); receives the state and a `toggle` function. */
+  "expand-trigger"?(props: { expanded: boolean; toggle: () => void }): unknown;
+}>();
 </script>
 
 <template>
@@ -81,18 +121,24 @@ const toggleExpand = () => {
 
     <!-- Normal / Multiline truncation -->
     <template v-else>
-      <div class="ms-truncate__content" :style="style">
+      <div :id="contentId" ref="contentRef" class="ms-truncate__content" :style="style">
         <slot>{{ props.text }}</slot>
       </div>
 
       <slot
-        v-if="props.expandable"
+        v-if="showToggle"
         name="expand-trigger"
         :expanded="internalExpanded"
         :toggle="toggleExpand"
       >
-        <button type="button" class="ms-truncate__toggle" @click="toggleExpand">
-          {{ internalExpanded ? props.collapseText : props.expandText }}
+        <button
+          type="button"
+          class="ms-truncate__toggle"
+          :aria-expanded="internalExpanded"
+          :aria-controls="contentId"
+          @click="toggleExpand"
+        >
+          {{ internalExpanded ? collapseLabel : expandLabel }}
         </button>
       </slot>
     </template>

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from "vue";
-import { useFieldContext } from "../../composables/use-field-context.ts";
-import { useMsId } from "../../composables/use-ms-id.ts";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
 import type { MsTextareaEmits, MsTextareaProps } from "./types.ts";
+
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<MsTextareaProps>(), {
   modelValue: "",
@@ -19,19 +20,20 @@ const props = withDefaults(defineProps<MsTextareaProps>(), {
 const emit = defineEmits<MsTextareaEmits>();
 
 defineSlots<{
-  default?(): unknown;
+  /** Helper text at the start of the footer row. */
   helper?(): unknown;
+  /** Replaces the character counter (shown with `showCount`); receives the current length and `maxLength`. */
   counter?(props: { count: number; max?: number | undefined }): unknown;
+  /** Extra footer content between the helper and the counter. */
   footer?(): unknown;
 }>();
 
 const textareaRef = ref<HTMLTextAreaElement | null>(null);
-const field = useFieldContext();
-const fallbackId = useMsId("ms-textarea");
+const fieldControl = useFieldControl("ms-textarea");
 
-const resolvedId = computed(() => field?.controlId ?? fallbackId);
-const describedBy = computed(() => field?.describedBy());
-const isInvalid = computed(() => props.invalid === true || field?.invalid() === true);
+const resolvedId = computed(() => fieldControl.id);
+const describedBy = computed(() => fieldControl.describedBy.value);
+const isInvalid = computed(() => props.invalid === true || fieldControl.fieldInvalid.value);
 const resolvedTone = computed(() => (isInvalid.value ? "danger" : props.tone));
 
 const currentLength = computed(() => props.modelValue?.length ?? 0);
@@ -39,11 +41,28 @@ const isExceeded = computed(
   () => props.maxLength !== undefined && currentLength.value > props.maxLength,
 );
 
+/** Height (content + vertical padding, like `scrollHeight`) of `rows` lines of text. */
+function rowsHeight(el: HTMLTextAreaElement, rows: number): number {
+  const style = getComputedStyle(el);
+  const fontSize = parseFloat(style.fontSize) || 16;
+  // "normal" line-height parses to NaN: approximate it like browsers do (~1.2em).
+  const lineHeight = parseFloat(style.lineHeight) || fontSize * 1.2;
+  const padding = (parseFloat(style.paddingTop) || 0) + (parseFloat(style.paddingBottom) || 0);
+  return lineHeight * rows + padding;
+}
+
 function adjustHeight(): void {
   if (!props.autoGrow || !textareaRef.value) return;
   const el = textareaRef.value;
   el.style.height = "auto";
-  el.style.height = `${el.scrollHeight}px`;
+  let height = el.scrollHeight;
+  // maxRows caps the growth; the rest of the content scrolls.
+  if (props.maxRows !== undefined && props.maxRows > 0) {
+    const max = rowsHeight(el, props.maxRows);
+    el.style.overflowY = height > max ? "auto" : "hidden";
+    height = Math.min(height, max);
+  }
+  el.style.height = `${height}px`;
 }
 
 function onInput(event: Event): void {
@@ -71,6 +90,7 @@ onMounted(() => {
 
 <template>
   <div
+    v-bind="rootAttrs($attrs)"
     class="ms-input ms-textarea"
     :class="[`ms-textarea--${props.size}`, `ms-textarea--resize-${props.resize}`]"
     :data-size="props.size"
@@ -92,6 +112,7 @@ onMounted(() => {
       :name="props.name"
       :aria-invalid="isInvalid || undefined"
       :aria-describedby="describedBy"
+      v-bind="controlAttrs($attrs)"
       @input="onInput"
       @change="onChange"
     />

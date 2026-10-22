@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onBeforeUnmount } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsCodeBlockProps, MsCodeBlockEmits } from "./types.ts";
 
 const props = withDefaults(defineProps<MsCodeBlockProps>(), {
@@ -15,6 +16,7 @@ const props = withDefaults(defineProps<MsCodeBlockProps>(), {
 });
 
 const emit = defineEmits<MsCodeBlockEmits>();
+const t = useMsMessages();
 
 const copied = ref(false);
 const isCollapsed = ref(props.defaultCollapsed);
@@ -81,31 +83,89 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
-function highlightCode(src: string, _lang?: string): string {
-  if (!src) return "";
-  const escaped = escapeHtml(src);
+const HASH_COMMENT_LANGS = new Set([
+  "sh",
+  "bash",
+  "shell",
+  "zsh",
+  "python",
+  "py",
+  "yaml",
+  "yml",
+  "toml",
+  "ruby",
+  "rb",
+  "dockerfile",
+  "makefile",
+  "powershell",
+  "ps1",
+  "r",
+  "ini",
+  "conf",
+]);
 
-  const masterRegex =
-    /(\/\/[^\n]*|\/\*[\s\S]*?\*\/|<!--[\s\S]*?-->|#[^\n]*)|(`(?:\\.|[^`\\])*`|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')|(&lt;\/?[a-zA-Z0-9_\-]+(?:\s|&gt;|\/)?|&gt;)|(\b[a-zA-Z0-9_:@.\-]+(?==["']))|(\b(?:const|let|var|function|return|if|else|for|while|switch|case|break|default|new|try|catch|finally|throw|class|extends|import|export|from|as|async|await|typeof|instanceof|interface|type|enum|implements|public|private|protected|readonly|static|get|set|def)\b)|(\b(?:true|false|null|undefined)\b)|(\b(?:string|number|boolean|any|void|unknown|never|Record|Array|Promise|Ref|ComputedRef|HTMLElement|object)\b)|(\b\d+(?:\.\d+)?\b)|(\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*\())/g;
+const TOKEN_CLASSES = [
+  "comment",
+  "string",
+  "tag",
+  "attr",
+  "keyword",
+  "boolean",
+  "type",
+  "number",
+  "function",
+] as const;
 
-  return escaped.replace(
-    masterRegex,
-    (_match, comment, str, tag, attr, kw, bool, type, num, fn) => {
-      if (comment) return `<span class="ms-code-token--comment">${comment}</span>`;
-      if (str) return `<span class="ms-code-token--string">${str}</span>`;
-      if (tag) return `<span class="ms-code-token--tag">${tag}</span>`;
-      if (attr) return `<span class="ms-code-token--attr">${attr}</span>`;
-      if (kw) return `<span class="ms-code-token--keyword">${kw}</span>`;
-      if (bool) return `<span class="ms-code-token--boolean">${bool}</span>`;
-      if (type) return `<span class="ms-code-token--type">${type}</span>`;
-      if (num) return `<span class="ms-code-token--number">${num}</span>`;
-      if (fn) return `<span class="ms-code-token--function">${fn}</span>`;
-      return _match;
-    },
+function tokenRegex(lang?: string): RegExp {
+  const hashComment = lang && HASH_COMMENT_LANGS.has(lang.toLowerCase()) ? "|#[^\\n]*" : "";
+  return new RegExp(
+    [
+      `(\\/\\/[^\\n]*|\\/\\*[\\s\\S]*?\\*\\/|<!--[\\s\\S]*?-->${hashComment})`,
+      "(`(?:\\\\.|[^`\\\\])*`|\"(?:\\\\.|[^\"\\\\\\n])*\"|'(?:\\\\.|[^'\\\\\\n])*')",
+      "(<\\/?[a-zA-Z0-9_\\-]+|\\/?>)",
+      "(\\b[a-zA-Z0-9_:@.\\-]+(?==[\"']))",
+      "(\\b(?:const|let|var|function|return|if|else|for|while|switch|case|break|default|new|try|catch|finally|throw|class|extends|import|export|from|as|async|await|typeof|instanceof|interface|type|enum|implements|public|private|protected|readonly|static|get|set|def)\\b)",
+      "(\\b(?:true|false|null|undefined)\\b)",
+      "(\\b(?:string|number|boolean|any|void|unknown|never|Record|Array|Promise|Ref|ComputedRef|HTMLElement|object)\\b)",
+      "(\\b\\d+(?:\\.\\d+)?\\b)",
+      "(\\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\\s*\\())",
+    ].join("|"),
+    "g",
   );
 }
 
+/**
+ * Tokenizes the raw source first and escapes every piece afterwards, so
+ * escaped entities (&#39;, &quot;) can never be re-matched as tokens.
+ */
+function highlightCode(src: string, lang?: string): string {
+  if (!src) return "";
+  let html = "";
+  let last = 0;
+  for (const match of src.matchAll(tokenRegex(lang))) {
+    const index = match.index ?? 0;
+    html += escapeHtml(src.slice(last, index));
+    const group = match.slice(1).findIndex((value) => value !== undefined);
+    const text = escapeHtml(match[0]);
+    html +=
+      group === -1 ? text : `<span class="ms-code-token--${TOKEN_CLASSES[group]}">${text}</span>`;
+    last = index + match[0].length;
+  }
+  return html + escapeHtml(src.slice(last));
+}
+
 const highlightedCode = computed(() => highlightCode(props.code, props.language));
+
+defineSlots<{
+  /** Raw code rendered unhighlighted inside `<pre><code>`; used only when `code` is empty. */
+  default?(): unknown;
+  /** Replaces the filename and language labels in the header. */
+  header?(): unknown;
+  /** Extra header actions, before the copy button. */
+  actions?(): unknown;
+  /** Replaces the footer (the expand/collapse button when `collapsible`). */
+  footer?(): unknown;
+}>();
 </script>
 
 <template>
@@ -147,8 +207,8 @@ const highlightedCode = computed(() => highlightCode(props.code, props.language)
           type="button"
           class="ms-code-block__copy-btn"
           :class="{ 'ms-code-block__copy-btn--copied': copied }"
-          :title="copied ? 'Copiado!' : 'Copiar código'"
-          :aria-label="copied ? 'Copiado!' : 'Copiar código'"
+          :title="copied ? t.code.copied : t.code.copy"
+          :aria-label="copied ? t.code.copied : t.code.copy"
           @click="handleCopy"
         >
           <svg
@@ -174,18 +234,27 @@ const highlightedCode = computed(() => highlightCode(props.code, props.language)
           >
             <polyline points="20 6 9 17 4 12" />
           </svg>
-          <span>{{ copied ? "Copiado" : "Copiar" }}</span>
+          <span>{{ copied ? t.codeBlock.copied : t.codeBlock.copy }}</span>
         </button>
       </div>
     </div>
 
-    <div class="ms-code-block__body" :style="{ maxHeight: formattedMaxHeight }">
+    <!-- Scrollable region: focusable so keyboard users can scroll it (axe scrollable-region-focusable). -->
+    <div
+      class="ms-code-block__body"
+      role="region"
+      tabindex="0"
+      :aria-label="props.filename || t.codeBlock.label"
+      :style="{ maxHeight: formattedMaxHeight }"
+    >
       <div v-if="props.showLineNumbers" class="ms-code-block__lines" aria-hidden="true">
         <span v-for="line in lines" :key="line">{{ line }}</span>
       </div>
+      <!-- eslint-disable vue/no-v-html -- highlightCode escapes every token (tested) -->
       <pre
         class="ms-code-block__pre"
       ><code v-if="props.code" v-html="highlightedCode" /><code v-else><slot /></code></pre>
+      <!-- eslint-enable vue/no-v-html -->
 
       <div
         v-if="props.collapsible && isCollapsed"
@@ -202,7 +271,7 @@ const highlightedCode = computed(() => highlightCode(props.code, props.language)
           class="ms-code-block__collapse-btn"
           @click="toggleCollapse"
         >
-          {{ isCollapsed ? "Mostrar mais linhas" : "Recolher código" }}
+          {{ isCollapsed ? t.codeBlock.expand : t.codeBlock.collapse }}
         </button>
       </slot>
     </div>

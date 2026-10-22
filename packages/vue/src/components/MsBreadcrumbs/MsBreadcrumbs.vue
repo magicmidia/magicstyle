@@ -1,5 +1,5 @@
 <template>
-  <nav :aria-label="ariaLabel" :class="classes">
+  <nav :aria-label="navLabel" :class="classes">
     <ol class="ms-breadcrumbs__list">
       <template v-if="displayItems && displayItems.length">
         <template v-for="(entry, idx) in displayItems" :key="idx">
@@ -8,7 +8,7 @@
             <button
               type="button"
               class="ms-breadcrumbs__ellipsis"
-              aria-label="Show all breadcrumb items"
+              :aria-label="t.breadcrumbs.showAll"
               @click="isExpanded = true"
             >
               &hellip;
@@ -19,14 +19,16 @@
           <!-- Standard item -->
           <template v-else>
             <MsBreadcrumbItem
-              :href="entry.item.href"
+              :href="safeHref(entry.item.href)"
               :current="entry.item.current || entry.isLast"
               :disabled="entry.item.disabled"
               :icon="entry.item.icon"
             >
               {{ entry.item.label }}
+              <template v-if="!entry.isLast" #separator>
+                <MsBreadcrumbSeparator />
+              </template>
             </MsBreadcrumbItem>
-            <MsBreadcrumbSeparator v-if="!entry.isLast" />
           </template>
         </template>
       </template>
@@ -47,6 +49,8 @@ import {
   type MsBreadcrumbsSize,
   type MsBreadcrumbsVariant,
 } from "./types.ts";
+import { safeHref } from "../../composables/safe-url.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({
   name: "MsBreadcrumbs",
@@ -56,10 +60,13 @@ const props = withDefaults(defineProps<MsBreadcrumbsProps>(), {
   variant: "plain",
   size: "md",
   separator: "›",
-  ariaLabel: "Navegação estrutural",
   itemsBeforeCollapse: 1,
   itemsAfterCollapse: 1,
 });
+
+const t = useMsMessages();
+
+const navLabel = computed(() => props.ariaLabel ?? t.value.breadcrumbs.label);
 
 const isExpanded = ref(false);
 
@@ -140,4 +147,9 @@ provide(BREADCRUMBS_CONTEXT_KEY, context);
 const classes = computed(() => {
   return ["ms-breadcrumbs", `ms-breadcrumbs--${props.variant}`, `ms-breadcrumbs--${props.size}`];
 });
+
+defineSlots<{
+  /** `MsBreadcrumbItem` children; used only when `items` is empty. */
+  default?(): unknown;
+}>();
 </script>

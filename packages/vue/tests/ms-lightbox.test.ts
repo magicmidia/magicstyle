@@ -4,8 +4,8 @@ import { MsLightbox } from "../src/index.ts";
 
 describe("MsLightbox component", () => {
   const items = [
-    { src: "/img1.jpg", title: "Foto 1", caption: "Descrição 1" },
-    { src: "/img2.jpg", title: "Foto 2", caption: "Descrição 2" },
+    { src: "/img1.jpg", title: "Photo 1", caption: "Caption 1" },
+    { src: "/img2.jpg", title: "Photo 2", caption: "Caption 2" },
   ];
 
   it("renders modal when modelValue is true", () => {

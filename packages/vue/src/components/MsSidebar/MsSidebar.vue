@@ -2,6 +2,7 @@
 import { computed, inject, getCurrentInstance } from "vue";
 import type { MsSidebarProps, MsSidebarEmits } from "./types";
 import { MS_APP_SHELL_KEY } from "../MsAppShell/types";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({
   name: "MsSidebar",
@@ -18,6 +19,8 @@ const props = withDefaults(defineProps<MsSidebarProps>(), {
 });
 
 const emit = defineEmits<MsSidebarEmits>();
+
+const t = useMsMessages();
 
 const shellContext = inject(MS_APP_SHELL_KEY, null);
 const instance = getCurrentInstance();
@@ -51,6 +54,17 @@ const classes = computed(() => [
   props.variant !== "default" ? `ms-sidebar--variant-${props.variant}` : undefined,
   props.tone !== "default" ? `ms-sidebar--tone-${props.tone}` : undefined,
 ]);
+
+defineSlots<{
+  /** Sidebar body (e.g. `MsSidebarMenu`). */
+  default?(): unknown;
+  /** Header content, before the collapse toggle button. */
+  header?(): unknown;
+  /** Replaces the icon inside the collapse toggle button (shown with `showToggle`). */
+  "toggle-icon"?(): unknown;
+  /** Footer pinned below the body. */
+  footer?(): unknown;
+}>();
 </script>
 
 <template>
@@ -69,7 +83,7 @@ const classes = computed(() => [
         v-if="showToggle"
         type="button"
         class="ms-sidebar__collapse-btn"
-        :aria-label="collapsed ? 'Expand sidebar' : 'Collapse sidebar'"
+        :aria-label="isCollapsed ? t.sidebar.expand : t.sidebar.collapse"
         @click="handleToggle"
       >
         <slot name="toggle-icon">

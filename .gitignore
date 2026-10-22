@@ -9,3 +9,8 @@ playwright-report/
 test-results/
 .DS_Store
 Thumbs.db
+
+# VitePress (apps/docs)
+.vitepress/cache/
+.vitepress/dist/
+apps/docs/.vitepress/generated/

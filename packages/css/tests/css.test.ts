@@ -33,8 +33,9 @@ describe("@magic-style/css distribution (doc 09 §10)", () => {
   });
 
   it("tokens and themes artifacts flow through unchanged", () => {
-    expect(read("tokens.css")).toContain("--ms-color-surface-default:");
+    expect(read("tokens.css")).toContain("--ms-space-4:");
     expect(read("themes.css")).toContain('[data-ms-theme="graphite"]');
+    expect(read("themes.css")).toContain("--ms-color-surface-default: var(--ms-color-base-100);");
   });
 });
 

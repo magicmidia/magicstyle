@@ -2,6 +2,7 @@
 import { computed, provide, toRef } from "vue";
 import type { MsStepperProps, MsStepperEmits } from "./types.ts";
 import { MS_STEPPER_KEY } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsStepperProps>(), {
   modelValue: 0,
@@ -11,7 +12,10 @@ const props = withDefaults(defineProps<MsStepperProps>(), {
 
 const emit = defineEmits<MsStepperEmits>();
 
+const t = useMsMessages();
+
 defineSlots<{
+  /** `MsStep` children. */
   default?(): unknown;
 }>();
 
@@ -37,7 +41,7 @@ const stepperClasses = computed(() => [
 </script>
 
 <template>
-  <nav aria-label="Passos do processo" data-ms-stepper>
+  <nav :aria-label="t.stepper.label" data-ms-stepper>
     <ol :class="stepperClasses">
       <slot />
     </ol>

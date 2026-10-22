@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ref, computed, onMounted, onUnmounted, watch } from "vue";
 import type { MsPointerProps } from "./types.ts";
+import { usePrefersReducedMotion } from "../../composables/use-prefers-reduced-motion.ts";
+
+defineOptions({ name: "MsPointer" });
 
 const props = withDefaults(defineProps<MsPointerProps>(), {
   variant: "dot",
@@ -37,21 +40,38 @@ const handleMouseMove = (e: MouseEvent) => {
   });
 };
 
-onMounted(() => {
-  if (typeof window !== "undefined") {
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-  }
-});
+const reducedMotion = usePrefersReducedMotion();
+const isMounted = ref(false);
+/** The follower is decorative motion: off when disabled or with reduced motion. */
+const active = computed(() => isMounted.value && !props.disabled && !reducedMotion.value);
+let listening = false;
 
-onUnmounted(() => {
+function detach(): void {
   if (rafId !== null) {
     cancelAnimationFrame(rafId);
     rafId = null;
   }
-  if (typeof window !== "undefined") {
+  if (listening) {
     window.removeEventListener("mousemove", handleMouseMove);
+    listening = false;
+  }
+}
+
+/** The global mousemove listener exists only while the follower is active. */
+watch(active, (value) => {
+  if (value && !listening) {
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    listening = true;
+  } else if (!value) {
+    detach();
   }
 });
+
+onMounted(() => {
+  isMounted.value = true;
+});
+
+onUnmounted(detach);
 
 const classes = computed(() => [
   "ms-pointer",
@@ -68,6 +88,11 @@ const style = computed(() => ({
 
 <template>
   <Teleport to="body">
-    <div v-if="!props.disabled" :class="classes" :style="style" aria-hidden="true" />
+    <div
+      v-if="!props.disabled && !reducedMotion"
+      :class="classes"
+      :style="style"
+      aria-hidden="true"
+    />
   </Teleport>
 </template>

@@ -1,0 +1,53 @@
+{
+  "pt-BR": {
+    "pin": "PIN de acesso",
+    "verifyTitle": "Confirme o seu e-mail",
+    "verifyText": "Enviamos um código de 6 dígitos para ana@empresa.com.br.",
+    "code": "Código de verificação",
+    "demoHint": "Nesta demonstração, o código correto é 246810.",
+    "codeError": "Código incorreto. Confira o e-mail e tente de novo.",
+    "verified": "E-mail confirmado!",
+    "resend": "Reenviar código",
+    "cardPin": "Senha do cartão",
+    "cardPinHint": "Os dígitos ficam ocultos enquanto você digita.",
+    "voucher": "Cupom de desconto",
+    "voucherHint": "Letras e números, como A7K-29Q.",
+    "small": "Pequeno",
+    "large": "Grande",
+    "disabled": "Desabilitado"
+  },
+  "en-US": {
+    "pin": "Access PIN",
+    "verifyTitle": "Confirm your email",
+    "verifyText": "We sent a 6-digit code to emily@company.com.",
+    "code": "Verification code",
+    "demoHint": "In this demo, the correct code is 246810.",
+    "codeError": "Incorrect code. Check your email and try again.",
+    "verified": "Email confirmed!",
+    "resend": "Resend code",
+    "cardPin": "Card PIN",
+    "cardPinHint": "Digits stay hidden while you type.",
+    "voucher": "Discount voucher",
+    "voucherHint": "Letters and numbers, such as A7K-29Q.",
+    "small": "Small",
+    "large": "Large",
+    "disabled": "Disabled"
+  },
+  "es-ES": {
+    "pin": "PIN de acceso",
+    "verifyTitle": "Confirma tu correo",
+    "verifyText": "Enviamos un código de 6 dígitos a lucia@empresa.com.",
+    "code": "Código de verificación",
+    "demoHint": "En esta demostración, el código correcto es 246810.",
+    "codeError": "Código incorrecto. Revisa tu correo e inténtalo de nuevo.",
+    "verified": "¡Correo confirmado!",
+    "resend": "Reenviar código",
+    "cardPin": "PIN de la tarjeta",
+    "cardPinHint": "Los dígitos permanecen ocultos mientras escribes.",
+    "voucher": "Cupón de descuento",
+    "voucherHint": "Letras y números, como A7K-29Q.",
+    "small": "Pequeño",
+    "large": "Grande",
+    "disabled": "Deshabilitado"
+  }
+}

@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { computed, watch, onMounted, onBeforeUnmount } from "vue";
+import { computed, ref, toRef, watch } from "vue";
 import type { MsDrawerProps, MsDrawerEmits } from "./types.ts";
 import { useMsId } from "../../composables/use-ms-id.ts";
+import { useScrollLock } from "../../composables/use-scroll-lock.ts";
+import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
+import { useFocusTrap } from "../../composables/use-focus-trap.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsDrawerProps>(), {
   open: false,
@@ -15,12 +19,20 @@ const props = withDefaults(defineProps<MsDrawerProps>(), {
 
 const emit = defineEmits<MsDrawerEmits>();
 
+const t = useMsMessages();
+
 defineSlots<{
+  /** Drawer body. */
   default?(): unknown;
+  /** Replaces the whole header (title, description and close button). */
   header?(): unknown;
+  /** Rich title; replaces the `title` prop and labels the drawer. */
   title?(): unknown;
+  /** Rich description; replaces the `description` prop and describes the drawer. */
   description?(): unknown;
+  /** Footer below the body (e.g. action buttons). */
   footer?(): unknown;
+  /** Replaces the glyph inside the close button (shown when `showClose`). */
   close?(): unknown;
 }>();
 
@@ -44,41 +56,20 @@ const handleBackdropClick = (event: MouseEvent) => {
   }
 };
 
-const handleKeydown = (event: KeyboardEvent) => {
-  if (props.open && props.closeOnEscape && event.key === "Escape") {
-    event.stopPropagation();
-    handleClose();
-  }
-};
+const isOpen = toRef(props, "open");
+const panelRef = ref<HTMLElement | null>(null);
 
-watch(
-  () => props.open,
-  (isOpen) => {
-    if (isOpen) {
-      emit("open");
-      if (typeof document !== "undefined") {
-        document.body.style.overflow = "hidden";
-      }
-    } else {
-      if (typeof document !== "undefined") {
-        document.body.style.overflow = "";
-      }
-    }
-  },
-  { immediate: true },
-);
+watch(isOpen, (open) => open && emit("open"), { immediate: true });
 
-onMounted(() => {
-  if (typeof window !== "undefined") {
-    window.addEventListener("keydown", handleKeydown);
-  }
-});
-
-onBeforeUnmount(() => {
-  if (typeof window !== "undefined") {
-    window.removeEventListener("keydown", handleKeydown);
-    document.body.style.overflow = "";
-  }
+useScrollLock(isOpen);
+useFocusTrap(panelRef, isOpen);
+useDismissableLayer({
+  active: isOpen,
+  inside: [panelRef],
+  onDismiss: handleClose,
+  closeOnEscape: () => props.closeOnEscape,
+  // The backdrop click is handled by handleBackdropClick.
+  closeOnOutside: () => false,
 });
 </script>
 
@@ -92,13 +83,14 @@ onBeforeUnmount(() => {
         @click="handleBackdropClick"
       >
         <div
+          ref="panelRef"
           :class="drawerClasses"
           role="dialog"
           aria-modal="true"
           :aria-labelledby="title || $slots.title ? titleId : undefined"
           :aria-describedby="description || $slots.description ? descriptionId : undefined"
           data-ms-drawer
-          @click.stop
+          tabindex="-1"
         >
           <!-- Header -->
           <header
@@ -122,18 +114,32 @@ onBeforeUnmount(() => {
                 v-if="showClose"
                 type="button"
                 class="ms-drawer__close"
-                aria-label="Close drawer"
+                :aria-label="t.drawer.close"
                 @click="handleClose"
               >
-                <slot name="close">✕</slot>
+                <slot name="close">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M18 6 6 18M6 6l12 12" />
+                  </svg>
+                </slot>
               </button>
             </slot>
           </header>
 
           <!-- Body Content -->
-          <main class="ms-drawer__body">
+          <div class="ms-drawer__body">
             <slot />
-          </main>
+          </div>
 
           <!-- Footer Actions -->
           <footer v-if="$slots.footer" class="ms-drawer__footer">

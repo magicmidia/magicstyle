@@ -1,0 +1,49 @@
+{
+  "intro": {
+    "pt-BR": "Use a paleta de comandos para dar acesso rápido, pelo teclado, a navegação e ações do app. Os comandos vêm sempre da prop `items`.",
+    "en-US": "Use the command palette to give fast keyboard access to app navigation and actions. Commands always come from the `items` prop.",
+    "es-ES": "Usa la paleta de comandos para dar acceso rápido, con el teclado, a la navegación y las acciones de la app. Los comandos siempre vienen de la prop `items`."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Abra a paleta com `v-model` ou com o atalho global `Ctrl`/`⌘` + `K`, ativo por padrão (`hotkey`).",
+        "en-US": "Open the palette with `v-model` or with the global `Ctrl`/`⌘` + `K` shortcut, enabled by default (`hotkey`).",
+        "es-ES": "Abre la paleta con `v-model` o con el atajo global `Ctrl`/`⌘` + `K`, activo por defecto (`hotkey`)."
+      }
+    },
+    {
+      "file": "Grouped",
+      "title": {
+        "pt-BR": "Grupos e atalhos",
+        "en-US": "Groups and shortcuts",
+        "es-ES": "Grupos y atajos"
+      },
+      "description": {
+        "pt-BR": "`group` agrupa os comandos, `shortcut` mostra a tecla de atalho e `disabled` bloqueia um item. Use `:hotkey=\"false\"` quando houver outra paleta na página.",
+        "en-US": "`group` groups the commands, `shortcut` shows the key binding and `disabled` blocks an item. Use `:hotkey=\"false\"` when there is another palette on the page.",
+        "es-ES": "`group` agrupa los comandos, `shortcut` muestra la tecla de atajo y `disabled` bloquea un ítem. Usa `:hotkey=\"false\"` cuando haya otra paleta en la página."
+      }
+    },
+    {
+      "file": "HandleSelect",
+      "title": {
+        "pt-BR": "Executando comandos",
+        "en-US": "Running commands",
+        "es-ES": "Ejecutar comandos"
+      },
+      "description": {
+        "pt-BR": "O evento `select` entrega o comando escolhido, e a paleta fecha em seguida.",
+        "en-US": "The `select` event delivers the chosen command, and the palette closes right after.",
+        "es-ES": "El evento `select` entrega el comando elegido, y la paleta se cierra enseguida."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- A paleta é um `role=\"dialog\"` com `aria-modal=\"true\"`: o foco fica preso nela, a rolagem da página é bloqueada e o campo de busca recebe o foco ao abrir.\n- O campo de busca é um `role=\"combobox\"` ligado à lista (`role=\"listbox\"`) por `aria-controls` e `aria-activedescendant`.\n- `↓`/`↑` movem o item ativo pulando os desabilitados, `Home`/`End` vão ao primeiro/último e `Enter` executa o comando.\n- `Esc` fecha a paleta; `Ctrl`/`⌘` + `K` abre e fecha quando `hotkey` está ativo.",
+    "en-US": "- The palette is a `role=\"dialog\"` with `aria-modal=\"true\"`: focus is trapped inside, page scrolling is locked and the search field gets focus on open.\n- The search field is a `role=\"combobox\"` linked to the list (`role=\"listbox\"`) through `aria-controls` and `aria-activedescendant`.\n- `↓`/`↑` move the active item skipping disabled ones, `Home`/`End` go to the first/last one and `Enter` runs the command.\n- `Esc` closes the palette; `Ctrl`/`⌘` + `K` opens and closes it when `hotkey` is on.",
+    "es-ES": "- La paleta es un `role=\"dialog\"` con `aria-modal=\"true\"`: el foco queda atrapado dentro, el desplazamiento de la página se bloquea y el campo de búsqueda recibe el foco al abrir.\n- El campo de búsqueda es un `role=\"combobox\"` vinculado a la lista (`role=\"listbox\"`) mediante `aria-controls` y `aria-activedescendant`.\n- `↓`/`↑` mueven el ítem activo saltando los deshabilitados, `Home`/`End` van al primero/último y `Enter` ejecuta el comando.\n- `Esc` cierra la paleta; `Ctrl`/`⌘` + `K` la abre y la cierra cuando `hotkey` está activo."
+  }
+}

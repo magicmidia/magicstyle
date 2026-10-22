@@ -12,5 +12,11 @@
       "dependsOn": ["^build"]
     },
     "lint": {}
-  }
+  },
+  "globalDependencies": [
+    "tsconfig.base.json",
+    "eslint.config.js",
+    "stylelint.config.mjs",
+    ".prettierrc.json"
+  ]
 }

@@ -8,20 +8,19 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  width: 100%;
+  inline-size: 100%;
   block-size: auto;
-  height: auto;
-  min-block-size: 88px;
-  padding: var(--ms-space-2, 8px) var(--ms-space-3, 12px);
+  min-block-size: 64px;
+  padding: var(--ms-space-2) var(--ms-space-3);
   box-sizing: border-box;
   resize: none; /* Resize is handled exclusively by the inner textarea */
   overflow: visible;
 }
 
 .ms-textarea .ms-input-native {
-  width: 100%;
+  inline-size: 100%;
   flex: 1;
-  min-height: 60px;
+  min-block-size: 46px;
   background: transparent;
   border: none;
   outline: none;
@@ -29,8 +28,8 @@
   margin: 0;
   font-family: inherit;
   font-size: inherit;
-  line-height: var(--ms-typography-line-height-base, 1.5);
-  color: var(--ms-color-text-primary, #1e293b);
+  line-height: var(--ms-typography-line-height-base);
+  color: var(--ms-color-text-primary);
   box-sizing: border-box;
 }
 
@@ -54,30 +53,30 @@
 /* Sizes */
 .ms-textarea[data-size="sm"],
 .ms-textarea--sm {
-  min-block-size: 64px;
-  padding: var(--ms-space-1-5, 6px) var(--ms-space-2-5, 10px);
-  font-size: var(--ms-typography-size-xs, 0.8125rem);
+  min-block-size: 56px;
+  padding: 6px 10px;
+  font-size: var(--ms-typography-size-sm);
 }
 
 .ms-textarea[data-size="md"],
 .ms-textarea--md {
-  min-block-size: 88px;
-  padding: var(--ms-space-2, 8px) var(--ms-space-3, 12px);
-  font-size: var(--ms-typography-size-sm, 0.875rem);
+  min-block-size: 64px;
+  padding: var(--ms-space-2) var(--ms-space-3);
+  font-size: var(--ms-typography-size-sm);
 }
 
 .ms-textarea[data-size="lg"],
 .ms-textarea--lg {
-  min-block-size: 120px;
-  padding: var(--ms-space-3, 12px) var(--ms-space-4, 16px);
-  font-size: var(--ms-typography-size-md, 1rem);
+  min-block-size: 96px;
+  padding: var(--ms-space-3) var(--ms-space-4);
+  font-size: var(--ms-typography-size-sm);
 }
 
 .ms-textarea[data-size="xl"],
 .ms-textarea--xl {
-  min-block-size: 160px;
-  padding: var(--ms-space-4, 16px) var(--ms-space-5, 20px);
-  font-size: var(--ms-typography-size-lg, 1.125rem);
+  min-block-size: 128px;
+  padding: var(--ms-space-4) var(--ms-space-5);
+  font-size: var(--ms-typography-size-md);
 }
 
 /* Footer, helper & counter */
@@ -85,21 +84,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: var(--ms-space-1, 4px);
-  padding-top: var(--ms-space-1, 4px);
-  border-top: 1px solid var(--ms-color-border-subtle, #e2e8f0);
-  font-size: var(--ms-typography-size-xs, 0.75rem);
-  color: var(--ms-color-text-muted, #94a3b8);
+  margin-block-start: var(--ms-space-1);
+  padding-block-start: var(--ms-space-1);
+  border-block-start: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-muted);
   user-select: none;
 }
 
 .ms-textarea__counter {
-  margin-left: auto;
-  font-family: var(--ms-font-mono, monospace);
-  font-size: 0.75rem;
+  margin-inline-start: auto;
+  font-family: var(--ms-font-mono);
+  font-size: var(--ms-typography-size-xs);
 }
 
 .ms-textarea__counter[data-exceeded="true"] {
-  color: var(--ms-color-danger-default, #ef4444);
-  font-weight: 600;
+  color: var(--ms-color-danger-default);
+  font-weight: var(--ms-typography-weight-semibold);
 }

@@ -13,7 +13,7 @@ export interface MsDatePickerProps {
   modelValue?: MsDatePickerModelValue;
   /** Picker mode: single date, date range, hour/time only, or mixed datetime */
   mode?: MsDatePickerMode;
-  /** Input placeholder text */
+  /** Input placeholder text (defaults to the messages `datePicker.placeholder*` for the mode) */
   placeholder?: string | undefined;
   /** Minimum selectable date (YYYY-MM-DD) */
   minDate?: string | undefined;
@@ -30,6 +30,8 @@ export interface MsDatePickerProps {
 }
 
 export interface MsDatePickerEmits {
+  /** Fires when a value is picked or cleared: a `YYYY-MM-DD` date, a `[start, end]` tuple (range), `HH:mm` (time), `YYYY-MM-DD HH:mm` (datetime), or `""` when cleared. */
   (e: "update:modelValue", value: MsDatePickerModelValue): void;
+  /** Fires alongside `update:modelValue` with the same payload. */
   (e: "change", value: MsDatePickerModelValue): void;
 }

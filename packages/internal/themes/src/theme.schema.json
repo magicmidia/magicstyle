@@ -1,0 +1,439 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Magic-Style theme",
+  "type": "object",
+  "required": [
+    "name",
+    "label",
+    "description"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Value of data-ms-theme."
+    },
+    "label": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "extends": {
+      "type": "string",
+      "description": "Theme to inherit from (default \"magic\")."
+    },
+    "shared": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "color-base-100": {
+          "type": "string",
+          "description": "Page and component surface."
+        },
+        "color-base-200": {
+          "type": "string",
+          "description": "Sunken/subtle surface (wells, table stripes, inputs on cards)."
+        },
+        "color-base-300": {
+          "type": "string",
+          "description": "Default border and divider color."
+        },
+        "color-base-content": {
+          "type": "string",
+          "description": "Main text color on base surfaces."
+        },
+        "color-primary": {
+          "type": "string",
+          "description": "Main action / brand fill color."
+        },
+        "color-primary-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-primary (must reach WCAG AA 4.5:1)."
+        },
+        "color-secondary": {
+          "type": "string",
+          "description": "Secondary action fill color."
+        },
+        "color-secondary-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-secondary (must reach WCAG AA 4.5:1)."
+        },
+        "color-accent": {
+          "type": "string",
+          "description": "Highlight fill color."
+        },
+        "color-accent-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-accent (must reach WCAG AA 4.5:1)."
+        },
+        "color-neutral": {
+          "type": "string",
+          "description": "Neutral (dark/inverse) action fill color."
+        },
+        "color-neutral-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-neutral (must reach WCAG AA 4.5:1)."
+        },
+        "color-info": {
+          "type": "string",
+          "description": "Informational feedback fill color."
+        },
+        "color-info-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-info (must reach WCAG AA 4.5:1)."
+        },
+        "color-success": {
+          "type": "string",
+          "description": "Success feedback fill color."
+        },
+        "color-success-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-success (must reach WCAG AA 4.5:1)."
+        },
+        "color-warning": {
+          "type": "string",
+          "description": "Warning feedback fill color."
+        },
+        "color-warning-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-warning (must reach WCAG AA 4.5:1)."
+        },
+        "color-danger": {
+          "type": "string",
+          "description": "Error / destructive fill color."
+        },
+        "color-danger-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-danger (must reach WCAG AA 4.5:1)."
+        },
+        "radius-selector": {
+          "type": "string",
+          "description": "Small elements: checkbox, tag, badge."
+        },
+        "radius-field": {
+          "type": "string",
+          "description": "Inputs and fields."
+        },
+        "radius-box": {
+          "type": "string",
+          "description": "Cards, dialogs, popovers."
+        },
+        "border-width": {
+          "type": "string",
+          "description": "Default border width."
+        },
+        "depth": {
+          "type": "string",
+          "description": "Shadow intensity multiplier (0 = flat, 1 = default)."
+        },
+        "font-sans": {
+          "type": "string",
+          "description": "UI font stack."
+        },
+        "font-mono": {
+          "type": "string",
+          "description": "Code font stack."
+        },
+        "color-base-raised": {
+          "type": "string",
+          "description": "Raised surface (cards/menus) when it differs from base-100. Default: base-100. (optional)"
+        },
+        "radius-control": {
+          "type": "string",
+          "description": "Buttons and controls when they differ from fields (e.g. pill buttons). Default: radius-field. (optional)"
+        },
+        "font-display": {
+          "type": "string",
+          "description": "Headings font stack. Default: font-sans. (optional)"
+        }
+      },
+      "description": "Values for both color modes."
+    },
+    "light": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "color-base-100": {
+          "type": "string",
+          "description": "Page and component surface."
+        },
+        "color-base-200": {
+          "type": "string",
+          "description": "Sunken/subtle surface (wells, table stripes, inputs on cards)."
+        },
+        "color-base-300": {
+          "type": "string",
+          "description": "Default border and divider color."
+        },
+        "color-base-content": {
+          "type": "string",
+          "description": "Main text color on base surfaces."
+        },
+        "color-primary": {
+          "type": "string",
+          "description": "Main action / brand fill color."
+        },
+        "color-primary-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-primary (must reach WCAG AA 4.5:1)."
+        },
+        "color-secondary": {
+          "type": "string",
+          "description": "Secondary action fill color."
+        },
+        "color-secondary-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-secondary (must reach WCAG AA 4.5:1)."
+        },
+        "color-accent": {
+          "type": "string",
+          "description": "Highlight fill color."
+        },
+        "color-accent-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-accent (must reach WCAG AA 4.5:1)."
+        },
+        "color-neutral": {
+          "type": "string",
+          "description": "Neutral (dark/inverse) action fill color."
+        },
+        "color-neutral-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-neutral (must reach WCAG AA 4.5:1)."
+        },
+        "color-info": {
+          "type": "string",
+          "description": "Informational feedback fill color."
+        },
+        "color-info-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-info (must reach WCAG AA 4.5:1)."
+        },
+        "color-success": {
+          "type": "string",
+          "description": "Success feedback fill color."
+        },
+        "color-success-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-success (must reach WCAG AA 4.5:1)."
+        },
+        "color-warning": {
+          "type": "string",
+          "description": "Warning feedback fill color."
+        },
+        "color-warning-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-warning (must reach WCAG AA 4.5:1)."
+        },
+        "color-danger": {
+          "type": "string",
+          "description": "Error / destructive fill color."
+        },
+        "color-danger-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-danger (must reach WCAG AA 4.5:1)."
+        },
+        "radius-selector": {
+          "type": "string",
+          "description": "Small elements: checkbox, tag, badge."
+        },
+        "radius-field": {
+          "type": "string",
+          "description": "Inputs and fields."
+        },
+        "radius-box": {
+          "type": "string",
+          "description": "Cards, dialogs, popovers."
+        },
+        "border-width": {
+          "type": "string",
+          "description": "Default border width."
+        },
+        "depth": {
+          "type": "string",
+          "description": "Shadow intensity multiplier (0 = flat, 1 = default)."
+        },
+        "font-sans": {
+          "type": "string",
+          "description": "UI font stack."
+        },
+        "font-mono": {
+          "type": "string",
+          "description": "Code font stack."
+        },
+        "color-base-raised": {
+          "type": "string",
+          "description": "Raised surface (cards/menus) when it differs from base-100. Default: base-100. (optional)"
+        },
+        "radius-control": {
+          "type": "string",
+          "description": "Buttons and controls when they differ from fields (e.g. pill buttons). Default: radius-field. (optional)"
+        },
+        "font-display": {
+          "type": "string",
+          "description": "Headings font stack. Default: font-sans. (optional)"
+        }
+      },
+      "description": "Light mode values."
+    },
+    "dark": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "color-base-100": {
+          "type": "string",
+          "description": "Page and component surface."
+        },
+        "color-base-200": {
+          "type": "string",
+          "description": "Sunken/subtle surface (wells, table stripes, inputs on cards)."
+        },
+        "color-base-300": {
+          "type": "string",
+          "description": "Default border and divider color."
+        },
+        "color-base-content": {
+          "type": "string",
+          "description": "Main text color on base surfaces."
+        },
+        "color-primary": {
+          "type": "string",
+          "description": "Main action / brand fill color."
+        },
+        "color-primary-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-primary (must reach WCAG AA 4.5:1)."
+        },
+        "color-secondary": {
+          "type": "string",
+          "description": "Secondary action fill color."
+        },
+        "color-secondary-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-secondary (must reach WCAG AA 4.5:1)."
+        },
+        "color-accent": {
+          "type": "string",
+          "description": "Highlight fill color."
+        },
+        "color-accent-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-accent (must reach WCAG AA 4.5:1)."
+        },
+        "color-neutral": {
+          "type": "string",
+          "description": "Neutral (dark/inverse) action fill color."
+        },
+        "color-neutral-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-neutral (must reach WCAG AA 4.5:1)."
+        },
+        "color-info": {
+          "type": "string",
+          "description": "Informational feedback fill color."
+        },
+        "color-info-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-info (must reach WCAG AA 4.5:1)."
+        },
+        "color-success": {
+          "type": "string",
+          "description": "Success feedback fill color."
+        },
+        "color-success-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-success (must reach WCAG AA 4.5:1)."
+        },
+        "color-warning": {
+          "type": "string",
+          "description": "Warning feedback fill color."
+        },
+        "color-warning-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-warning (must reach WCAG AA 4.5:1)."
+        },
+        "color-danger": {
+          "type": "string",
+          "description": "Error / destructive fill color."
+        },
+        "color-danger-content": {
+          "type": "string",
+          "description": "Text/icon color on top of --ms-color-danger (must reach WCAG AA 4.5:1)."
+        },
+        "radius-selector": {
+          "type": "string",
+          "description": "Small elements: checkbox, tag, badge."
+        },
+        "radius-field": {
+          "type": "string",
+          "description": "Inputs and fields."
+        },
+        "radius-box": {
+          "type": "string",
+          "description": "Cards, dialogs, popovers."
+        },
+        "border-width": {
+          "type": "string",
+          "description": "Default border width."
+        },
+        "depth": {
+          "type": "string",
+          "description": "Shadow intensity multiplier (0 = flat, 1 = default)."
+        },
+        "font-sans": {
+          "type": "string",
+          "description": "UI font stack."
+        },
+        "font-mono": {
+          "type": "string",
+          "description": "Code font stack."
+        },
+        "color-base-raised": {
+          "type": "string",
+          "description": "Raised surface (cards/menus) when it differs from base-100. Default: base-100. (optional)"
+        },
+        "radius-control": {
+          "type": "string",
+          "description": "Buttons and controls when they differ from fields (e.g. pill buttons). Default: radius-field. (optional)"
+        },
+        "font-display": {
+          "type": "string",
+          "description": "Headings font stack. Default: font-sans. (optional)"
+        }
+      },
+      "description": "Dark mode values."
+    },
+    "extras": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "shared": {
+          "type": "object",
+          "description": "Signature tokens outside the contract (names without --ms-). Keep it small.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "light": {
+          "type": "object",
+          "description": "Signature tokens outside the contract (names without --ms-). Keep it small.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "dark": {
+          "type": "object",
+          "description": "Signature tokens outside the contract (names without --ms-). Keep it small.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

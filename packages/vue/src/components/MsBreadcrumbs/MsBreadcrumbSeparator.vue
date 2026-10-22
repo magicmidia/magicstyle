@@ -1,7 +1,7 @@
 <template>
-  <span class="ms-breadcrumbs__separator" aria-hidden="true">
+  <component :is="props.as" class="ms-breadcrumbs__separator" aria-hidden="true">
     <slot>{{ context?.separator.value ?? "›" }}</slot>
-  </span>
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -12,9 +12,14 @@ defineOptions({
   name: "MsBreadcrumbSeparator",
 });
 
-withDefaults(defineProps<MsBreadcrumbSeparatorProps>(), {
+const props = withDefaults(defineProps<MsBreadcrumbSeparatorProps>(), {
   as: "span",
 });
 
 const context = inject(BREADCRUMBS_CONTEXT_KEY, undefined);
+
+defineSlots<{
+  /** Separator glyph (decorative); defaults to the parent `MsBreadcrumbs` separator, or `›`. */
+  default?(): unknown;
+}>();
 </script>

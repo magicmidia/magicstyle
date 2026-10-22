@@ -9,10 +9,15 @@ const props = withDefaults(defineProps<MsAccordionItemProps>(), {
 });
 
 defineSlots<{
+  /** Panel content, shown while the item is expanded. */
   default?(): unknown;
+  /** Rich title; replaces the `title` prop. */
   title?(): unknown;
+  /** Rich subtitle below the title; replaces the `subtitle` prop. */
   subtitle?(): unknown;
+  /** Leading icon in the header (decorative, `aria-hidden`). */
   icon?(): unknown;
+  /** Content before the chevron at the end of the header. */
   trailing?(): unknown;
 }>();
 
@@ -49,21 +54,21 @@ const itemClasses = computed(() => [
       :disabled="props.disabled"
       @click="handleToggle"
     >
-      <div class="ms-accordion-item__header-content">
+      <span class="ms-accordion-item__header-content">
         <span v-if="$slots.icon" class="ms-accordion-item__icon" aria-hidden="true">
           <slot name="icon" />
         </span>
-        <div class="ms-accordion-item__title-group">
+        <span class="ms-accordion-item__title-group">
           <span class="ms-accordion-item__title">
             <slot name="title">{{ props.title }}</slot>
           </span>
           <span v-if="props.subtitle || $slots.subtitle" class="ms-accordion-item__subtitle">
             <slot name="subtitle">{{ props.subtitle }}</slot>
           </span>
-        </div>
-      </div>
+        </span>
+      </span>
 
-      <div class="ms-accordion-item__trailing">
+      <span class="ms-accordion-item__trailing">
         <slot name="trailing" />
         <span class="ms-accordion-item__chevron" aria-hidden="true">
           <svg
@@ -79,7 +84,7 @@ const itemClasses = computed(() => [
             <polyline points="4 6 8 10 12 6" />
           </svg>
         </span>
-      </div>
+      </span>
     </button>
 
     <div

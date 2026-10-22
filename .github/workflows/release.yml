@@ -1,35 +1,40 @@
 name: Release
 
+# Versioning and publishing are separate steps:
+# - push to main: keeps the "chore: version packages" PR up to date (no publishing);
+# - manual run (Actions → Release → Run workflow): publishes the current versions to npm.
+# GitHub releases (vX.Y.Z) are created when a version is merged; see CONTRIBUTING.md.
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
-permissions:
-  contents: write
-  pull-requests: write
+permissions: {}
 
 jobs:
-  release:
-    name: Release / Version Packages
+  version:
+    name: Version Packages PR
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # version branch
+      pull-requests: write # "Version Packages" PR
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           fetch-depth: 0
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.34.5
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0 (version from packageManager)
 
       - name: Setup Node.js 24
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 24
           cache: "pnpm"
@@ -37,16 +42,58 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build packages
-        run: pnpm build
+      # Same health gate as CI: never publish from a red main.
+      - name: Run Full Health Gate
+        run: pnpm validate
 
-      - name: Create Release Pull Request or Publish
-        uses: changesets/action@v1
+      # No `publish` input: with pending changesets this opens/updates the version PR;
+      # without changesets it does nothing.
+      - name: Create or update the Version Packages PR
+        uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
         with:
-          publish: pnpm changeset publish
           version: pnpm version-packages
           title: "chore: version packages"
           commit: "chore: version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish:
+    name: Publish to npm (manual)
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    # Protected environment: configure required reviewers in Settings → Environments → npm.
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write # npm provenance / Trusted Publishing (OIDC)
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0 (version from packageManager)
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Same health gate as CI: never publish from a red main.
+      - name: Run Full Health Gate
+        run: pnpm validate
+
+      - name: Publish
+        run: pnpm changeset publish --no-git-tag
+        env:
+          # Bootstrap only: once npm Trusted Publishing is configured for both packages,
+          # delete this secret — OIDC (id-token above) then authenticates the publish.
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: "true"

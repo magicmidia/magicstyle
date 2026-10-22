@@ -1,0 +1,41 @@
+{
+  "pt-BR": {
+    "trustedBy": "Mais de 2.000 equipes confiam na nossa plataforma",
+    "topic1": "Acessibilidade",
+    "topic2": "Design tokens",
+    "topic3": "Modo escuro",
+    "topic4": "SSR",
+    "topic5": "TypeScript",
+    "topic6": "Internacionalização",
+    "review1": "“Os componentes economizaram semanas do nosso roadmap.”",
+    "review2": "“O melhor suporte a teclado que já vi em uma biblioteca Vue.”",
+    "review3": "“Temas personalizados em minutos, sem brigar com o CSS.”",
+    "review4": "“A documentação responde antes de eu precisar perguntar.”"
+  },
+  "en-US": {
+    "trustedBy": "Trusted by more than 2,000 teams",
+    "topic1": "Accessibility",
+    "topic2": "Design tokens",
+    "topic3": "Dark mode",
+    "topic4": "SSR",
+    "topic5": "TypeScript",
+    "topic6": "Internationalization",
+    "review1": "“The components saved us weeks on our roadmap.”",
+    "review2": "“The best keyboard support I've seen in a Vue library.”",
+    "review3": "“Custom themes in minutes, without fighting the CSS.”",
+    "review4": "“The docs answer my questions before I need to ask.”"
+  },
+  "es-ES": {
+    "trustedBy": "Más de 2000 equipos confían en nuestra plataforma",
+    "topic1": "Accesibilidad",
+    "topic2": "Design tokens",
+    "topic3": "Modo oscuro",
+    "topic4": "SSR",
+    "topic5": "TypeScript",
+    "topic6": "Internacionalización",
+    "review1": "“Los componentes nos ahorraron semanas del roadmap.”",
+    "review2": "“El mejor soporte de teclado que he visto en una biblioteca de Vue.”",
+    "review3": "“Temas personalizados en minutos, sin pelear con el CSS.”",
+    "review4": "“La documentación responde antes de que tenga que preguntar.”"
+  }
+}

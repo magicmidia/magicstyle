@@ -1,7 +1,7 @@
 {
   "name": "magic-style",
-  "description": "Enterprise Design System and component platform for Vue 3 and CSS: 82 accessible components, 10 authentic curated themes, 277 DTCG tokens, and WCAG 2.2 AA compliance.",
-  "version": "0.1.0",
+  "description": "Magic-Style design system for Vue 3 and framework-free CSS: 95 accessible components, 10 themes built on a 27-variable contract, 199 DTCG tokens, SSR and WCAG 2.2 AA.",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.34.5",
@@ -15,25 +15,34 @@
   },
   "keywords": [
     "design-system",
+    "vue",
     "vue3",
     "components",
     "ui-library",
+    "css",
+    "design-tokens",
     "dtcg-tokens",
     "oklch",
+    "theming",
+    "dark-mode",
     "accessibility",
     "wcag-aa",
-    "shadcn",
-    "bootstrap",
-    "material-design",
-    "linear",
-    "dark-mode"
+    "ssr",
+    "inertia",
+    "laravel",
+    "i18n",
+    "rtl",
+    "shadcn"
   ],
   "engines": {
-    "node": ">=24 <25"
+    "node": ">=24"
   },
   "scripts": {
-    "preview": "node apps/preview/serve.mjs",
-    "validate": "prettier --check . && eslint . && node scripts/check-architecture.mjs && turbo run lint typecheck test build",
+    "docs:dev": "pnpm --filter magic-style-docs dev",
+    "docs:build": "turbo run build --filter=magic-style-docs",
+    "docs:preview": "pnpm --filter magic-style-docs preview",
+    "docs:e2e": "pnpm --filter magic-style-docs e2e",
+    "validate": "prettier --check . && eslint . && stylelint \"packages/**/src/**/*.css\" \"apps/**/*.css\" && node scripts/check-architecture.mjs && node scripts/stats.mjs --check && turbo run typecheck test build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
@@ -41,17 +50,20 @@
     "test": "turbo run test",
     "build": "turbo run build",
     "architecture": "node scripts/check-architecture.mjs",
-    "dev:preview": "node apps/preview/serve.mjs",
     "changeset": "changeset",
-    "version-packages": "changeset version"
+    "version-packages": "changeset version",
+    "lint:css": "stylelint \"packages/**/src/**/*.css\" \"apps/**/*.css\""
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.1",
     "@eslint/js": "^10.0.1",
     "eslint": "^10.9.1",
+    "eslint-plugin-vue": "^10.11.1",
     "prettier": "^3.9.6",
+    "stylelint": "^17.15.0",
     "turbo": "^2.10.12",
     "typescript": "~5.9.3",
-    "typescript-eslint": "^8.68.0"
+    "typescript-eslint": "^8.68.0",
+    "vue-eslint-parser": "^10.4.1"
   }
 }

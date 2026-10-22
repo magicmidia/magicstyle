@@ -9,11 +9,14 @@ const props = withDefaults(defineProps<MsTableHeaderCellProps>(), {
 });
 
 const emit = defineEmits<{
+  /** Fires when a `sortable` header is clicked or activated with the keyboard; payload is the native event. Toggle `sortDirection` in response. */
   (e: "click", event: MouseEvent): void;
 }>();
 
 defineSlots<{
+  /** Header label. */
   default?(): unknown;
+  /** Replaces the sort indicator of a `sortable` header; `direction` is the current `sortDirection`. */
   sortIcon?(props: { direction: string }): unknown;
 }>();
 
@@ -40,7 +43,8 @@ function onClick(event: MouseEvent): void {
     :style="props.width ? { width: props.width } : undefined"
     @click="onClick"
   >
-    <div v-if="props.sortable" class="ms-table__th-inner">
+    <!-- A real button gives keyboard access (Enter/Space); its click bubbles to the th. -->
+    <button v-if="props.sortable" type="button" class="ms-table__th-inner ms-table__sort-button">
       <slot />
       <slot name="sortIcon" :direction="props.sortDirection">
         <span class="ms-table__sort-icon" aria-hidden="true">
@@ -85,7 +89,7 @@ function onClick(event: MouseEvent): void {
           </svg>
         </span>
       </slot>
-    </div>
+    </button>
     <slot v-else />
   </th>
 </template>

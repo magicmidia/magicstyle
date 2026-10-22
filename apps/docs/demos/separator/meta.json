@@ -1,0 +1,67 @@
+{
+  "intro": {
+    "pt-BR": "Use o separador para dividir visualmente grupos de conteúdo, na horizontal ou na vertical, com rótulo opcional no meio.",
+    "en-US": "Use the separator to visually divide groups of content, horizontally or vertically, with an optional label in the middle.",
+    "es-ES": "Usa el separador para dividir visualmente grupos de contenido, en horizontal o en vertical, con una etiqueta opcional en el centro."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Horizontal com `spacing` para a margem e `orientation=\"vertical\"` entre links; o vertical ocupa a altura do contêiner.",
+        "en-US": "Horizontal with `spacing` for the margin and `orientation=\"vertical\"` between links; the vertical one takes the container height.",
+        "es-ES": "Horizontal con `spacing` para el margen y `orientation=\"vertical\"` entre enlaces; el vertical ocupa la altura del contenedor."
+      }
+    },
+    {
+      "file": "WithLabel",
+      "title": { "pt-BR": "Com rótulo", "en-US": "With label", "es-ES": "Con etiqueta" },
+      "description": {
+        "pt-BR": "`label` coloca um texto entre as linhas, como o \"ou\" entre login social e por e-mail.",
+        "en-US": "`label` places text between the lines, like the \"or\" between social and email sign-in.",
+        "es-ES": "`label` coloca un texto entre las líneas, como el \"o\" entre el acceso social y por correo."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": { "pt-BR": "Variantes", "en-US": "Variants", "es-ES": "Variantes" },
+      "description": {
+        "pt-BR": "`variant`: `default`, `subtle`, `strong`, `dashed`, `dotted` e `gradient`; `align` move o rótulo para `start`, `center` ou `end`.",
+        "en-US": "`variant`: `default`, `subtle`, `strong`, `dashed`, `dotted` and `gradient`; `align` moves the label to `start`, `center` or `end`.",
+        "es-ES": "`variant`: `default`, `subtle`, `strong`, `dashed`, `dotted` y `gradient`; `align` mueve la etiqueta a `start`, `center` o `end`."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": {
+        "pt-BR": "Tons e espessura",
+        "en-US": "Tones and thickness",
+        "es-ES": "Tonos y grosor"
+      },
+      "description": {
+        "pt-BR": "`tone` colore a linha e `thickness` aceita 1, 2 ou 4 pixels.",
+        "en-US": "`tone` colors the line and `thickness` accepts 1, 2 or 4 pixels.",
+        "es-ES": "`tone` colorea la línea y `thickness` acepta 1, 2 o 4 píxeles."
+      }
+    },
+    {
+      "file": "Semantic",
+      "title": {
+        "pt-BR": "Separador semântico",
+        "en-US": "Semantic separator",
+        "es-ES": "Separador semántico"
+      },
+      "description": {
+        "pt-BR": "Com `:decorative=\"false\"`, o separador recebe `role=\"separator\"` e marca uma quebra temática, como uma mudança de cena.",
+        "en-US": "With `:decorative=\"false\"`, the separator gets `role=\"separator\"` and marks a thematic break, like a change of scene.",
+        "es-ES": "Con `:decorative=\"false\"`, el separador recibe `role=\"separator\"` y marca un corte temático, como un cambio de escena."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Por padrão (`decorative`), o separador tem `role=\"none\"` e `aria-hidden=\"true\"`: é ignorado por leitores de tela.\n- Com `:decorative=\"false\"`, recebe `role=\"separator\"` e, na vertical, `aria-orientation=\"vertical\"`.\n- O `label` também fica oculto no modo decorativo; se o texto importar (como \"ou\"), garanta que o contexto ao redor já o comunique.\n- Não é focável.",
+    "en-US": "- By default (`decorative`), the separator has `role=\"none\"` and `aria-hidden=\"true\"`: screen readers skip it.\n- With `:decorative=\"false\"`, it gets `role=\"separator\"` and, when vertical, `aria-orientation=\"vertical\"`.\n- The `label` is hidden too in decorative mode; if the text matters (like \"or\"), make sure the surrounding context conveys it.\n- It is not focusable.",
+    "es-ES": "- Por defecto (`decorative`), el separador tiene `role=\"none\"` y `aria-hidden=\"true\"`: los lectores de pantalla lo omiten.\n- Con `:decorative=\"false\"`, recibe `role=\"separator\"` y, en vertical, `aria-orientation=\"vertical\"`.\n- La `label` también queda oculta en modo decorativo; si el texto importa (como \"o\"), asegúrate de que el contexto lo comunique.\n- No es enfocable."
+  }
+}

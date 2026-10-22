@@ -1,22 +1,33 @@
 import { mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import { h } from "vue";
+import type { VueWrapper } from "@vue/test-utils";
 import MsTooltip from "../src/components/MsTooltip/MsTooltip.vue";
+
+/** The tooltip is always rendered (v-show) so aria-describedby stays valid; "shown" = not display:none. */
+const shown = (wrapper: VueWrapper) => {
+  const tooltip = wrapper.find('[role="tooltip"]');
+  return tooltip.exists() && !/display:\s*none/.test(tooltip.attributes("style") ?? "");
+};
 
 describe("MsTooltip (doc 05 §7)", () => {
   it("renders trigger element and does not render tooltip initially", () => {
     const wrapper = mount(MsTooltip, {
       props: {
-        content: "Dica de Ajuda",
+        content: "Help tip",
       },
       slots: {
-        default: () => h("button", "Passe o mouse"),
+        default: () => h("button", "Hover me"),
       },
     });
 
-    expect(wrapper.text()).toContain("Passe o mouse");
-    expect(wrapper.find('[role="tooltip"]').exists()).toBe(false);
+    expect(wrapper.text()).toContain("Hover me");
+    expect(shown(wrapper)).toBe(false);
     expect(wrapper.attributes("aria-describedby")).toBeUndefined();
+    // Described on the focusable trigger from the start (not on the wrapper).
+    expect(wrapper.find("button").attributes("aria-describedby")).toBe(
+      wrapper.find('[role="tooltip"]').attributes("id"),
+    );
   });
 
   it("shows tooltip on pointerenter and focusin with ARIA relationship", async () => {
@@ -24,12 +35,12 @@ describe("MsTooltip (doc 05 §7)", () => {
 
     const wrapper = mount(MsTooltip, {
       props: {
-        content: "Dica de Ajuda",
+        content: "Help tip",
         showDelay: 100,
         placement: "bottom",
       },
       slots: {
-        default: () => h("button", "Ação"),
+        default: () => h("button", "Action"),
       },
     });
 
@@ -38,14 +49,14 @@ describe("MsTooltip (doc 05 §7)", () => {
     await wrapper.vm.$nextTick();
 
     const tooltip = wrapper.find('[role="tooltip"]');
-    expect(tooltip.exists()).toBe(true);
-    expect(tooltip.text()).toBe("Dica de Ajuda");
+    expect(shown(wrapper)).toBe(true);
+    expect(tooltip.text()).toBe("Help tip");
     expect(tooltip.classes()).toContain("ms-tooltip--bottom");
 
     // Check aria-describedby
     const tooltipId = tooltip.attributes("id");
     expect(tooltipId).toBeDefined();
-    expect(wrapper.attributes("aria-describedby")).toBe(tooltipId);
+    expect(wrapper.find("button").attributes("aria-describedby")).toBe(tooltipId);
 
     vi.useRealTimers();
   });
@@ -55,30 +66,30 @@ describe("MsTooltip (doc 05 §7)", () => {
 
     const wrapper = mount(MsTooltip, {
       props: {
-        content: "Atalho ⌘S",
+        content: "Shortcut ⌘S",
         showDelay: 0,
         hideDelay: 50,
       },
       slots: {
-        default: () => h("button", "Salvar"),
+        default: () => h("button", "Save"),
       },
     });
 
     await wrapper.trigger("mouseenter");
-    expect(wrapper.find('[role="tooltip"]').exists()).toBe(true);
+    expect(shown(wrapper)).toBe(true);
 
     // Escape closes immediately
     await wrapper.trigger("keydown.esc");
-    expect(wrapper.find('[role="tooltip"]').exists()).toBe(false);
+    expect(shown(wrapper)).toBe(false);
 
     // Trigger again, then mouseleave with hide delay
     await wrapper.trigger("mouseenter");
-    expect(wrapper.find('[role="tooltip"]').exists()).toBe(true);
+    expect(shown(wrapper)).toBe(true);
 
     await wrapper.trigger("mouseleave");
     vi.advanceTimersByTime(50);
     await wrapper.vm.$nextTick();
-    expect(wrapper.find('[role="tooltip"]').exists()).toBe(false);
+    expect(shown(wrapper)).toBe(false);
 
     vi.useRealTimers();
   });
@@ -86,7 +97,7 @@ describe("MsTooltip (doc 05 §7)", () => {
   it("does not show tooltip when disabled", async () => {
     const wrapper = mount(MsTooltip, {
       props: {
-        content: "Desabilitado",
+        content: "Disabled",
         showDelay: 0,
         disabled: true,
       },
@@ -102,7 +113,7 @@ describe("MsTooltip (doc 05 §7)", () => {
   it("supports tone, size, arrow and maxWidth variations", async () => {
     const wrapper = mount(MsTooltip, {
       props: {
-        content: "Tooltip com variações ricas",
+        content: "Tooltip with rich variations",
         showDelay: 0,
         tone: "light",
         size: "lg",

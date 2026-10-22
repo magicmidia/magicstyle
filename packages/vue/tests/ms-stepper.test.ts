@@ -9,9 +9,9 @@ describe("MsStepper & MsStep", () => {
       components: { MsStepper, MsStep },
       template: `
         <MsStepper :model-value="1" clickable>
-          <MsStep :index="0" title="Identificação" />
-          <MsStep :index="1" title="Endereço" />
-          <MsStep :index="2" title="Pagamento" />
+          <MsStep :index="0" title="Identification" />
+          <MsStep :index="1" title="Address" />
+          <MsStep :index="2" title="Payment" />
         </MsStepper>
       `,
     });

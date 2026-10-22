@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { useFieldContext } from "../../composables/use-field-context.ts";
-import { useMsId } from "../../composables/use-ms-id.ts";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsInputProps } from "./types.ts";
 
 defineOptions({
   name: "MsInput",
+  inheritAttrs: false,
 });
 
 const props = withDefaults(defineProps<MsInputProps>(), {
@@ -19,15 +20,22 @@ const props = withDefaults(defineProps<MsInputProps>(), {
 });
 
 const emit = defineEmits<{
+  /** Fires on every input and with `""` when cleared; payload is the new value. */
   "update:modelValue": [value: string];
+  /** Fires alongside `update:modelValue` with the same value. */
   input: [value: string];
+  /** Fires after the clear button empties the value (with `clearable`). */
   clear: [];
 }>();
 
 defineSlots<{
+  /** Content before the input (e.g. an icon or unit). */
   prefix?(): unknown;
+  /** Content after the input and its built-in buttons. */
   suffix?(): unknown;
 }>();
+
+const t = useMsMessages();
 
 const showPassword = ref(false);
 
@@ -44,17 +52,17 @@ function onClear(): void {
   emit("clear");
 }
 
-const field = useFieldContext();
-const fallbackId = useMsId("ms-input");
+const fieldControl = useFieldControl("ms-input");
 
-const resolvedId = computed(() => field?.controlId ?? fallbackId);
-const describedBy = computed(() => field?.describedBy());
-const isInvalid = computed(() => props.invalid === true || field?.invalid() === true);
+const resolvedId = computed(() => fieldControl.id);
+const describedBy = computed(() => fieldControl.describedBy.value);
+const isInvalid = computed(() => props.invalid === true || fieldControl.fieldInvalid.value);
 const resolvedTone = computed(() => (isInvalid.value ? "danger" : props.tone));
 </script>
 
 <template>
   <div
+    v-bind="rootAttrs($attrs)"
     class="ms-input"
     :data-variant="props.variant !== 'outline' ? props.variant : undefined"
     :data-pill="props.pill || undefined"
@@ -80,6 +88,7 @@ const resolvedTone = computed(() => (isInvalid.value ? "danger" : props.tone));
       :autocomplete="props.autocomplete"
       :aria-invalid="isInvalid || undefined"
       :aria-describedby="describedBy"
+      v-bind="controlAttrs($attrs)"
       @input="
         emit('update:modelValue', ($event.target as HTMLInputElement).value);
         emit('input', ($event.target as HTMLInputElement).value);
@@ -94,7 +103,7 @@ const resolvedTone = computed(() => (isInvalid.value ? "danger" : props.tone));
       v-if="props.clearable && props.modelValue && !props.disabled && !props.readonly"
       type="button"
       class="ms-input-action-btn"
-      aria-label="Limpar campo"
+      :aria-label="t.input.clear"
       @click="onClear"
     >
       <svg
@@ -117,7 +126,7 @@ const resolvedTone = computed(() => (isInvalid.value ? "danger" : props.tone));
       v-if="props.type === 'password' && props.passwordToggle && !props.disabled"
       type="button"
       class="ms-input-action-btn"
-      :aria-label="showPassword ? 'Ocultar senha' : 'Exibir senha'"
+      :aria-label="showPassword ? t.input.hidePassword : t.input.showPassword"
       @click="showPassword = !showPassword"
     >
       <svg

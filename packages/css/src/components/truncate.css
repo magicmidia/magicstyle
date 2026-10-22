@@ -61,7 +61,7 @@
 }
 
 .ms-truncate__toggle:focus-visible {
-  outline: 2px solid var(--ms-color-interactive-focus);
+  outline: 2px solid var(--ms-focus-ring-color);
   outline-offset: 2px;
   border-radius: var(--ms-radius-xs);
 }

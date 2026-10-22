@@ -6,7 +6,7 @@
       </span>
       <slot />
     </span>
-    <a v-else-if="href && !disabled" class="ms-breadcrumbs__link" :href="href">
+    <a v-else-if="href && !disabled" class="ms-breadcrumbs__link" :href="safeHref(href)">
       <span v-if="$slots.icon || icon" class="ms-breadcrumbs__icon" aria-hidden="true">
         <slot name="icon">{{ icon }}</slot>
       </span>
@@ -18,12 +18,15 @@
       </span>
       <slot />
     </span>
+    <!-- Separators live inside the <li>: an <ol> may only contain <li> children. -->
+    <slot name="separator" />
   </li>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
 import type { MsBreadcrumbItemProps } from "./types.ts";
+import { safeHref } from "../../composables/safe-url.ts";
 
 defineOptions({
   name: "MsBreadcrumbItem",
@@ -43,4 +46,13 @@ const classes = computed(() => {
     },
   ];
 });
+
+defineSlots<{
+  /** Item label; rendered as a link when `href` is set (and not `disabled`/`current`). */
+  default?(): unknown;
+  /** Leading icon (decorative); replaces the `icon` prop. */
+  icon?(): unknown;
+  /** Separator rendered after the item, inside its `<li>` (e.g. `MsBreadcrumbSeparator`). */
+  separator?(): unknown;
+}>();
 </script>

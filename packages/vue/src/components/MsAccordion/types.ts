@@ -30,7 +30,9 @@ export interface MsAccordionProps {
 }
 
 export interface MsAccordionEmits {
+  /** Fires when an item is toggled; payload is the new expanded value (an array when `multiple`, otherwise the item value or `""` when collapsed). */
   (e: "update:modelValue", value: MsAccordionValue | MsAccordionValue[]): void;
+  /** Fires alongside `update:modelValue` with the same payload. */
   (e: "change", value: MsAccordionValue | MsAccordionValue[]): void;
 }
 

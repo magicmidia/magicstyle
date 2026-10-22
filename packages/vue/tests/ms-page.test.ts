@@ -8,12 +8,12 @@ describe("MsPage Suite", () => {
   it("renders page with default container classes", () => {
     const wrapper = mount(MsPage, {
       slots: {
-        default: "Conteúdo da Página",
+        default: "Page content",
       },
     });
 
     expect(wrapper.classes()).toContain("ms-page");
-    expect(wrapper.text()).toContain("Conteúdo da Página");
+    expect(wrapper.text()).toContain("Page content");
   });
 
   it("applies fluid and compact classes", () => {
@@ -27,16 +27,16 @@ describe("MsPage Suite", () => {
   it("renders header with title and description", () => {
     const wrapper = mount(MsPageHeader, {
       props: {
-        title: "Visão Geral",
-        description: "Métricas consolidadas do sistema.",
+        title: "Overview",
+        description: "Consolidated system metrics.",
       },
       slots: {
-        actions: "<button>Ação</button>",
+        actions: "<button>Action</button>",
       },
     });
 
-    expect(wrapper.find("h1").text()).toBe("Visão Geral");
-    expect(wrapper.find("p").text()).toBe("Métricas consolidadas do sistema.");
+    expect(wrapper.find("h1").text()).toBe("Overview");
+    expect(wrapper.find("p").text()).toBe("Consolidated system metrics.");
     expect(wrapper.find(".ms-page-header__actions").exists()).toBe(true);
   });
 
@@ -46,7 +46,7 @@ describe("MsPage Suite", () => {
         align: "start",
       },
       slots: {
-        default: "<button>Salvar</button>",
+        default: "<button>Save</button>",
       },
     });
 

@@ -29,7 +29,7 @@
 
 /* Vertical layout structure */
 .ms-timeline--direction-vertical .ms-timeline-item {
-  padding-bottom: var(--ms-space-6, 24px);
+  padding-bottom: var(--ms-space-6);
 }
 
 .ms-timeline--direction-vertical .ms-timeline-item:last-child {
@@ -39,13 +39,13 @@
 /* Track connector line */
 .ms-timeline-item__connector {
   position: absolute;
-  background-color: var(--ms-color-border-subtle);
+  background-color: var(--ms-color-border-default);
 }
 
 .ms-timeline--direction-vertical .ms-timeline-item__connector {
   top: 24px;
   bottom: 0;
-  left: 15px;
+  inset-inline-start: 15px;
   width: 2px;
 }
 
@@ -55,8 +55,8 @@
 
 .ms-timeline--direction-horizontal .ms-timeline-item__connector {
   top: 15px;
-  left: 32px;
-  right: 0;
+  inset-inline-start: 32px;
+  inset-inline-end: 0;
   height: 2px;
 }
 
@@ -73,12 +73,14 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border-radius: var(--ms-radius-full, 9999px);
-  font-size: var(--ms-font-size-xs, 0.75rem);
-  font-weight: var(--ms-font-weight-bold, 700);
+  border-radius: var(--ms-radius-full);
+  box-sizing: border-box;
+  font-family: var(--ms-font-sans);
+  font-size: var(--ms-typography-size-xs);
+  font-weight: var(--ms-typography-weight-medium);
   background-color: var(--ms-color-surface-raised);
-  border: 2px solid var(--ms-color-border-default);
-  color: var(--ms-color-text-secondary);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  color: var(--ms-color-text-muted);
   flex-shrink: 0;
   box-shadow: 0 0 0 4px var(--ms-color-surface-default);
   transition:
@@ -88,9 +90,9 @@
 
 /* Solid Node Variant */
 .ms-timeline-item--solid .ms-timeline-item__node {
-  background-color: var(--_ms-tl-tone-solid, var(--ms-color-interactive-primary));
-  border-color: var(--_ms-tl-tone-solid, var(--ms-color-interactive-primary));
-  color: var(--ms-color-text-on-accent, #ffffff);
+  background-color: var(--ms-tone, var(--ms-color-primary));
+  border-color: var(--ms-tone, var(--ms-color-primary));
+  color: var(--ms-tone-content, var(--ms-color-primary-content));
 }
 
 /* Pulsing Active Node */
@@ -98,7 +100,7 @@
   box-shadow:
     0 0 0 4px var(--ms-color-surface-default),
     0 0 0 8px color-mix(in oklch, currentColor 25%, transparent);
-  animation: ms-timeline-pulse 2s infinite ease-in-out;
+  animation: ms-timeline-pulse calc(2s * var(--ms-motion-scale, 1)) infinite ease-in-out;
 }
 
 @keyframes ms-timeline-pulse {
@@ -115,83 +117,91 @@
   }
 }
 
-/* Bullet Tones */
-.ms-timeline-item--tone-primary .ms-timeline-item__node {
-  border-color: var(--ms-color-primary, #2e86de);
-  background-color: var(--ms-color-primary-subtle);
-  color: var(--ms-color-primary, #2e86de);
+.ms-timeline-item__node > svg {
+  inline-size: 16px;
+  block-size: 16px;
+}
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-timeline-item--tone-primary {
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
+}
+.ms-timeline-item--tone-secondary {
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
+}
+.ms-timeline-item--tone-accent {
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
+}
+.ms-timeline-item--tone-neutral {
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
+}
+.ms-timeline-item--tone-info {
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
+}
+.ms-timeline-item--tone-success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
+.ms-timeline-item--tone-warning {
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
+}
+.ms-timeline-item--tone-danger {
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
 }
 
-.ms-timeline-item--tone-secondary .ms-timeline-item__node {
-  border-color: var(--ms-color-secondary, #e15f41);
-  background-color: var(--ms-color-secondary-subtle);
-  color: var(--ms-color-secondary, #e15f41);
-}
-
-.ms-timeline-item--tone-accent .ms-timeline-item__node {
-  border-color: var(--ms-color-accent, #341f97);
-  background-color: var(--ms-color-accent-subtle);
-  color: var(--ms-color-accent, #341f97);
-}
-
-.ms-timeline-item--tone-neutral .ms-timeline-item__node {
-  border-color: var(--ms-color-neutral, #222f3e);
-  background-color: var(--ms-color-neutral-subtle);
-  color: var(--ms-color-neutral, #222f3e);
-}
-
-.ms-timeline-item--tone-success .ms-timeline-item__node {
-  border-color: var(--ms-color-success, #10ac84);
-  background-color: var(--ms-color-success-subtle);
-  color: var(--ms-color-success, #10ac84);
-}
-
-.ms-timeline-item--tone-info .ms-timeline-item__node {
-  border-color: var(--ms-color-info, #0abde3);
-  background-color: var(--ms-color-info-subtle);
-  color: var(--ms-color-info, #0abde3);
-}
-
-.ms-timeline-item--tone-warning .ms-timeline-item__node {
-  border-color: var(--ms-color-warning, #ff9f43);
-  background-color: var(--ms-color-warning-subtle);
-  color: var(--ms-color-warning, #ff9f43);
-}
-
-.ms-timeline-item--tone-danger .ms-timeline-item__node {
-  border-color: var(--ms-color-danger, #ee5253);
-  background-color: var(--ms-color-danger-subtle);
-  color: var(--ms-color-danger, #ee5253);
+:is(
+    .ms-timeline-item--tone-primary,
+    .ms-timeline-item--tone-secondary,
+    .ms-timeline-item--tone-accent,
+    .ms-timeline-item--tone-neutral,
+    .ms-timeline-item--tone-info,
+    .ms-timeline-item--tone-success,
+    .ms-timeline-item--tone-warning,
+    .ms-timeline-item--tone-danger
+  )
+  .ms-timeline-item__node {
+  border-color: var(--ms-tone);
+  background-color: var(--ms-tone-subtle);
+  color: var(--ms-tone-text);
 }
 
 /* Content Container */
 .ms-timeline-item__content {
   flex-grow: 1;
-  padding-left: var(--ms-space-4, 16px);
+  padding-inline-start: var(--ms-space-4);
   padding-top: 4px;
 }
 
 .ms-timeline--direction-horizontal .ms-timeline-item__content {
-  padding-left: 0;
-  padding-top: var(--ms-space-3, 12px);
+  padding-inline-start: 0;
+  padding-top: var(--ms-space-3);
 }
 
 .ms-timeline-item__timestamp {
-  font-size: var(--ms-font-size-xs, 0.75rem);
-  color: var(--ms-color-text-muted, #64748b);
-  margin-bottom: var(--ms-space-1, 4px);
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-muted);
+  margin-bottom: var(--ms-space-1);
 }
 
 .ms-timeline-item__title {
-  font-size: var(--ms-font-size-md, 1rem);
-  font-weight: var(--ms-font-weight-semibold, 600);
+  display: block;
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-medium);
+  line-height: var(--ms-typography-line-height-tight);
   color: var(--ms-color-text-primary);
-  margin: 0 0 var(--ms-space-1, 4px) 0;
+  margin: 0 0 var(--ms-space-1) 0;
 }
 
 .ms-timeline-item__description {
-  font-size: var(--ms-font-size-sm, 0.875rem);
-  color: var(--ms-color-text-secondary);
-  line-height: var(--ms-line-height-relaxed, 1.625);
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text-muted);
+  line-height: var(--ms-typography-line-height-relaxed);
   margin: 0;
 }

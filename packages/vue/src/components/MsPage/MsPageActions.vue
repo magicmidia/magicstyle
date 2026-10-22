@@ -10,6 +10,11 @@ const classes = computed(() => [
   "ms-page-actions",
   props.align ? `ms-page-actions--${props.align}` : null,
 ]);
+
+defineSlots<{
+  /** Action buttons, aligned by `align`. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

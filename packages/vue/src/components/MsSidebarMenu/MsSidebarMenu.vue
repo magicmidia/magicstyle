@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, provide, ref, toRef, watch } from "vue";
+import { provide, ref, toRef, watch } from "vue";
 import {
   type MsSidebarMenuProps,
   type MsSidebarMenuEmits,
@@ -9,6 +9,8 @@ import {
 } from "./types";
 import MsSidebarMenuGroup from "./MsSidebarMenuGroup.vue";
 import MsSidebarMenuItem from "./MsSidebarMenuItem.vue";
+import { safeHref } from "../../composables/safe-url.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({
   name: "MsSidebarMenu",
@@ -25,6 +27,8 @@ const props = withDefaults(defineProps<MsSidebarMenuProps>(), {
 });
 
 const emit = defineEmits<MsSidebarMenuEmits>();
+
+const t = useMsMessages();
 
 const activeId = ref(props.modelValue);
 watch(
@@ -105,6 +109,11 @@ function isGroup(
 ): entry is MsSidebarMenuGroupData {
   return "items" in entry && Array.isArray((entry as MsSidebarMenuGroupData).items);
 }
+
+defineSlots<{
+  /** Declarative `MsSidebarMenuGroup`/`MsSidebarMenuItem` children; replaces the entries rendered from `items`. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>
@@ -115,7 +124,7 @@ function isGroup(
     :data-shape="shape"
     :data-collapsed="collapsed"
     role="navigation"
-    aria-label="Sidebar Navigation"
+    :aria-label="t.sidebarMenu.label"
   >
     <!-- Slot-based declarative markup -->
     <slot>
@@ -126,13 +135,13 @@ function isGroup(
           <MsSidebarMenuGroup v-if="isGroup(entry)" :title="entry.title">
             <MsSidebarMenuItem
               v-for="item in entry.items"
-              :key="item.id"
               :id="item.id"
+              :key="item.id"
               :label="item.label"
               :icon="item.icon"
               :badge="item.badge"
               :badge-tone="item.badgeTone"
-              :href="item.href"
+              :href="safeHref(item.href)"
               :disabled="item.disabled"
               :active="item.active"
               :open="item.open"
@@ -141,13 +150,13 @@ function isGroup(
               <template v-if="item.children && item.children.length > 0" #sub>
                 <MsSidebarMenuItem
                   v-for="child in item.children"
-                  :key="child.id"
                   :id="child.id"
+                  :key="child.id"
                   :label="child.label"
                   :icon="child.icon"
                   :badge="child.badge"
                   :badge-tone="child.badgeTone"
-                  :href="child.href"
+                  :href="safeHref(child.href)"
                   :disabled="child.disabled"
                   :active="child.active"
                   :open="child.open"
@@ -165,7 +174,7 @@ function isGroup(
               :icon="(entry as MsSidebarMenuItemData).icon"
               :badge="(entry as MsSidebarMenuItemData).badge"
               :badge-tone="(entry as MsSidebarMenuItemData).badgeTone"
-              :href="(entry as MsSidebarMenuItemData).href"
+              :href="safeHref((entry as MsSidebarMenuItemData).href)"
               :disabled="(entry as MsSidebarMenuItemData).disabled"
               :active="(entry as MsSidebarMenuItemData).active"
               :open="(entry as MsSidebarMenuItemData).open"
@@ -185,13 +194,13 @@ function isGroup(
               >
                 <MsSidebarMenuItem
                   v-for="child in (entry as MsSidebarMenuItemData).children"
-                  :key="child.id"
                   :id="child.id"
+                  :key="child.id"
                   :label="child.label"
                   :icon="child.icon"
                   :badge="child.badge"
                   :badge-tone="child.badgeTone"
-                  :href="child.href"
+                  :href="safeHref(child.href)"
                   :disabled="child.disabled"
                   :active="child.active"
                   :open="child.open"

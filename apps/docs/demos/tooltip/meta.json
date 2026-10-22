@@ -1,0 +1,63 @@
+{
+  "intro": {
+    "pt-BR": "Rótulo curto que aparece ao passar o mouse ou focar um elemento. Use para descrever ícones e atalhos, nunca para informação essencial ou conteúdo interativo.",
+    "en-US": "Short label shown when an element is hovered or focused. Use it to describe icons and shortcuts, never for essential information or interactive content.",
+    "es-ES": "Etiqueta breve que aparece al pasar el ratón o enfocar un elemento. Úsala para describir iconos y atajos, nunca para información esencial ni contenido interactivo."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Envolva o gatilho e passe o texto em `content`.",
+        "en-US": "Wrap the trigger and pass the text in `content`.",
+        "es-ES": "Envuelve el disparador y pasa el texto en `content`."
+      }
+    },
+    {
+      "file": "Placements",
+      "title": { "pt-BR": "Posicionamento", "en-US": "Placement", "es-ES": "Posición" },
+      "description": {
+        "pt-BR": "`placement` aceita `top` (padrão), `right`, `bottom` e `left`.",
+        "en-US": "`placement` accepts `top` (default), `right`, `bottom` and `left`.",
+        "es-ES": "`placement` acepta `top` (predeterminado), `right`, `bottom` y `left`."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "`tone` define a superfície: `primary` (padrão), `dark` ou `light`.",
+        "en-US": "`tone` sets the surface: `primary` (default), `dark` or `light`.",
+        "es-ES": "`tone` define la superficie: `primary` (predeterminado), `dark` o `light`."
+      }
+    },
+    {
+      "file": "Multiline",
+      "title": { "pt-BR": "Texto longo", "en-US": "Long text", "es-ES": "Texto largo" },
+      "description": {
+        "pt-BR": "Com `max-width`, o texto quebra em várias linhas.",
+        "en-US": "With `max-width`, the text wraps onto several lines.",
+        "es-ES": "Con `max-width`, el texto se divide en varias líneas."
+      }
+    },
+    {
+      "file": "Toolbar",
+      "title": {
+        "pt-BR": "Barra de ferramentas",
+        "en-US": "Toolbar",
+        "es-ES": "Barra de herramientas"
+      },
+      "description": {
+        "pt-BR": "O slot `content` aceita marcação, como atalhos com `MsKbd`; `disabled` desliga o tooltip.",
+        "en-US": "The `content` slot accepts markup, such as shortcuts with `MsKbd`; `disabled` turns the tooltip off.",
+        "es-ES": "El slot `content` acepta marcado, como atajos con `MsKbd`; `disabled` desactiva el tooltip."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O balão usa `role=\"tooltip\"` e fica sempre no DOM; o primeiro elemento focável do gatilho recebe `aria-describedby` apontando para ele.\n- Abre ao passar o mouse e ao receber foco com `Tab`, respeitando `show-delay`; fecha ao sair ou perder o foco.\n- `Esc`: fecha imediatamente sem mover o foco.\n- Botões só com ícone ainda precisam de `aria-label`: o tooltip descreve, não rotula.",
+    "en-US": "- The bubble uses `role=\"tooltip\"` and always stays in the DOM; the first focusable element in the trigger gets `aria-describedby` pointing at it.\n- Opens on hover and when focused with `Tab`, honoring `show-delay`; closes on leave or blur.\n- `Esc`: closes immediately without moving focus.\n- Icon-only buttons still need an `aria-label`: the tooltip describes, it does not label.",
+    "es-ES": "- El globo usa `role=\"tooltip\"` y siempre está en el DOM; el primer elemento enfocable del disparador recibe `aria-describedby` apuntando a él.\n- Se abre al pasar el ratón y al recibir el foco con `Tab`, respetando `show-delay`; se cierra al salir o perder el foco.\n- `Esc`: cierra de inmediato sin mover el foco.\n- Los botones solo con icono siguen necesitando `aria-label`: el tooltip describe, no etiqueta."
+  }
+}

@@ -5,10 +5,10 @@ import { MsButton, useMsId } from "../src/index.ts";
 
 describe("MsButton rendering", () => {
   it("renders label slot as a native button with defaults", () => {
-    const wrapper = mount(MsButton, { slots: { default: "Salvar" } });
+    const wrapper = mount(MsButton, { slots: { default: "Save" } });
     const btn = wrapper.find("button.ms-button");
     expect(btn.exists()).toBe(true);
-    expect(btn.text()).toBe("Salvar");
+    expect(btn.text()).toBe("Save");
     expect(btn.attributes("type")).toBe("button");
     expect(btn.attributes("data-variant")).toBe("solid");
     expect(btn.attributes("data-tone")).toBe("primary");
@@ -18,7 +18,7 @@ describe("MsButton rendering", () => {
   it("exposes variant/tone/size/width via data attributes (doc 09 §8)", () => {
     const wrapper = mount(MsButton, {
       props: { variant: "outline", tone: "warning", size: "lg", fullWidth: true },
-      slots: { default: "Excluir" },
+      slots: { default: "Delete" },
     });
     const attrs = wrapper.find("button").attributes();
     expect(attrs["data-variant"]).toBe("outline");
@@ -91,7 +91,7 @@ describe("MsButton states", () => {
     const onClick = vi.fn();
     const wrapper = mount(MsButton, {
       props: { loading: true, onClick },
-      slots: { default: "Enviando" },
+      slots: { default: "Sending" },
     });
     const btn = wrapper.find("button");
     expect(btn.attributes("aria-busy")).toBe("true");
@@ -126,5 +126,13 @@ describe("useMsId (doc 08 §12)", () => {
     expect(a.startsWith("ms-")).toBe(true);
     expect(b.startsWith("field-")).toBe(true);
     expect(a).not.toBe(b);
+  });
+});
+
+describe("MsButton aria-expanded", () => {
+  it("is absent unless `open` is set", () => {
+    expect(mount(MsButton).attributes("aria-expanded")).toBeUndefined();
+    expect(mount(MsButton, { props: { open: false } }).attributes("aria-expanded")).toBe("false");
+    expect(mount(MsButton, { props: { open: true } }).attributes("aria-expanded")).toBe("true");
   });
 });

@@ -1,0 +1,58 @@
+{
+  "intro": {
+    "pt-BR": "Use para confirmar ações destrutivas ou irreversíveis antes de executá-las. O componente não fecha sozinho ao confirmar: trate `@confirm` e feche com `v-model:open` quando a operação terminar.",
+    "en-US": "Use it to confirm destructive or irreversible actions before running them. The component does not close itself on confirm: handle `@confirm` and close it through `v-model:open` once the operation finishes.",
+    "es-ES": "Úsalo para confirmar acciones destructivas o irreversibles antes de ejecutarlas. El componente no se cierra solo al confirmar: maneja `@confirm` y ciérralo con `v-model:open` cuando termine la operación."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "O tom padrão é `danger`; `title`, `message` e os rótulos dos botões são props.",
+        "en-US": "The default tone is `danger`; `title`, `message` and the button labels are props.",
+        "es-ES": "El tono predeterminado es `danger`; `title`, `message` y las etiquetas de los botones son props."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "`tone` muda o ícone e a cor do botão de confirmação; um único diálogo pode servir a várias ações.",
+        "en-US": "`tone` changes the icon and the confirm button color; a single dialog can serve several actions.",
+        "es-ES": "`tone` cambia el icono y el color del botón de confirmación; un único diálogo puede servir a varias acciones."
+      }
+    },
+    {
+      "file": "Async",
+      "title": {
+        "pt-BR": "Confirmação assíncrona",
+        "en-US": "Async confirmation",
+        "es-ES": "Confirmación asíncrona"
+      },
+      "description": {
+        "pt-BR": "Com `loading`, o botão de confirmação mostra um spinner e o cancelamento fica bloqueado até a requisição terminar.",
+        "en-US": "With `loading`, the confirm button shows a spinner and cancelling is blocked until the request finishes.",
+        "es-ES": "Con `loading`, el botón de confirmación muestra un spinner y la cancelación queda bloqueada hasta que termine la petición."
+      }
+    },
+    {
+      "file": "CustomContent",
+      "title": {
+        "pt-BR": "Conteúdo e rodapé personalizados",
+        "en-US": "Custom content and footer",
+        "es-ES": "Contenido y pie personalizados"
+      },
+      "description": {
+        "pt-BR": "O slot padrão substitui `message`, e os slots `icon` e `footer` trocam o ícone e os botões.",
+        "en-US": "The default slot replaces `message`, and the `icon` and `footer` slots swap the icon and the buttons.",
+        "es-ES": "El slot predeterminado sustituye a `message`, y los slots `icon` y `footer` cambian el icono y los botones."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza `role=\"alertdialog\"` com `aria-modal=\"true\"`, `aria-labelledby` apontando para o título e `aria-describedby` para a mensagem.\n- Ao abrir, o foco vai para o botão de cancelar (a ação menos destrutiva) e fica preso no diálogo.\n- `Tab` / `Shift+Tab`: circulam entre os botões do diálogo.\n- `Esc`: cancela e fecha (desative com `close-on-escape=\"false\"`); fica bloqueado enquanto `loading` estiver ativo.\n- Ao fechar, o foco volta ao elemento que abriu o diálogo.",
+    "en-US": "- Renders `role=\"alertdialog\"` with `aria-modal=\"true\"`, `aria-labelledby` pointing at the title and `aria-describedby` at the message.\n- On open, focus moves to the cancel button (the least destructive action) and is trapped inside the dialog.\n- `Tab` / `Shift+Tab`: cycle through the dialog buttons.\n- `Esc`: cancels and closes (disable with `close-on-escape=\"false\"`); blocked while `loading` is on.\n- On close, focus returns to the element that opened the dialog.",
+    "es-ES": "- Renderiza `role=\"alertdialog\"` con `aria-modal=\"true\"`, `aria-labelledby` apuntando al título y `aria-describedby` al mensaje.\n- Al abrirse, el foco va al botón de cancelar (la acción menos destructiva) y queda atrapado en el diálogo.\n- `Tab` / `Shift+Tab`: recorren los botones del diálogo.\n- `Esc`: cancela y cierra (desactívalo con `close-on-escape=\"false\"`); queda bloqueado mientras `loading` esté activo.\n- Al cerrarse, el foco vuelve al elemento que abrió el diálogo."
+  }
+}

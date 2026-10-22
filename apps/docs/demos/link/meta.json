@@ -1,0 +1,92 @@
+{
+  "intro": {
+    "pt-BR": "Use `MsLink` para navegação em texto corrido e ações de baixa ênfase. Para ações que não mudam de página, prefira um botão.",
+    "en-US": "Use `MsLink` for navigation within running text and low-emphasis actions. For actions that don't change the page, prefer a button.",
+    "es-ES": "Usa `MsLink` para navegar dentro del texto y para acciones de baja énfasis. Para acciones que no cambian de página, prefiere un botón."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": {
+        "pt-BR": "Básico",
+        "en-US": "Basic",
+        "es-ES": "Básico"
+      },
+      "description": {
+        "pt-BR": "Links em linha dentro de um parágrafo, com sublinhado ao passar o mouse por padrão.",
+        "en-US": "Inline links inside a paragraph, underlined on hover by default.",
+        "es-ES": "Enlaces en línea dentro de un párrafo, subrayados al pasar el ratón por defecto."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": {
+        "pt-BR": "Variantes",
+        "en-US": "Variants",
+        "es-ES": "Variantes"
+      },
+      "description": {
+        "pt-BR": "`variant` define a cor: `primary`, `default`, `subtle` (herda a cor do texto ao redor), `muted` ou `danger`.",
+        "en-US": "`variant` sets the color: `primary`, `default`, `subtle` (inherits the surrounding text color), `muted` or `danger`.",
+        "es-ES": "`variant` define el color: `primary`, `default`, `subtle` (hereda el color del texto que lo rodea), `muted` o `danger`."
+      }
+    },
+    {
+      "file": "Underline",
+      "title": {
+        "pt-BR": "Sublinhado",
+        "en-US": "Underline",
+        "es-ES": "Subrayado"
+      },
+      "description": {
+        "pt-BR": "`underline` controla quando o sublinhado aparece: `none`, `hover` ou `always`.",
+        "en-US": "`underline` controls when the underline shows: `none`, `hover` or `always`.",
+        "es-ES": "`underline` controla cuándo aparece el subrayado: `none`, `hover` o `always`."
+      }
+    },
+    {
+      "file": "External",
+      "title": {
+        "pt-BR": "Externo e download",
+        "en-US": "External and download",
+        "es-ES": "Externo y descarga"
+      },
+      "description": {
+        "pt-BR": "URLs `http(s)` abrem em nova aba com `rel=\"noopener noreferrer\"` e ícone; `:external=\"false\"` desliga isso e `download` sugere o nome do arquivo.",
+        "en-US": "`http(s)` URLs open in a new tab with `rel=\"noopener noreferrer\"` and an icon; `:external=\"false\"` turns that off and `download` suggests a file name.",
+        "es-ES": "Las URL `http(s)` se abren en otra pestaña con `rel=\"noopener noreferrer\"` e icono; `:external=\"false\"` lo desactiva y `download` sugiere el nombre del archivo."
+      }
+    },
+    {
+      "file": "WithIcon",
+      "title": {
+        "pt-BR": "Com ícones",
+        "en-US": "With icons",
+        "es-ES": "Con iconos"
+      },
+      "description": {
+        "pt-BR": "Os slots `prefix` e `suffix` posicionam ícones antes ou depois do texto.",
+        "en-US": "The `prefix` and `suffix` slots place icons before or after the text.",
+        "es-ES": "Los slots `prefix` y `suffix` colocan iconos antes o después del texto."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": {
+        "pt-BR": "Desabilitado",
+        "en-US": "Disabled",
+        "es-ES": "Deshabilitado"
+      },
+      "description": {
+        "pt-BR": "Com `disabled`, o link perde o `href`, sai da ordem de tabulação e recebe `aria-disabled=\"true\"`.",
+        "en-US": "With `disabled`, the link drops its `href`, leaves the tab order and gets `aria-disabled=\"true\"`.",
+        "es-ES": "Con `disabled`, el enlace pierde su `href`, sale del orden de tabulación y recibe `aria-disabled=\"true\"`."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza um `<a>` nativo: `Tab` move o foco e `Enter` segue o link.\n- Links externos recebem `target=\"_blank\"` e `rel=\"noopener noreferrer\"`; o ícone externo tem `aria-hidden=\"true\"`, então avise no texto quando abrir outra aba for relevante.\n- `disabled` remove o `href`, aplica `tabindex=\"-1\"` e `aria-disabled=\"true\"`.",
+    "en-US": "- Renders a native `<a>`: `Tab` moves focus and `Enter` follows the link.\n- External links get `target=\"_blank\"` and `rel=\"noopener noreferrer\"`; the external icon is `aria-hidden=\"true\"`, so mention it in the text when opening a new tab matters.\n- `disabled` removes the `href` and applies `tabindex=\"-1\"` and `aria-disabled=\"true\"`.",
+    "es-ES": "- Renderiza un `<a>` nativo: `Tab` mueve el foco y `Enter` sigue el enlace.\n- Los enlaces externos reciben `target=\"_blank\"` y `rel=\"noopener noreferrer\"`; el icono externo es `aria-hidden=\"true\"`, así que indícalo en el texto cuando abrir otra pestaña sea relevante.\n- `disabled` quita el `href` y aplica `tabindex=\"-1\"` y `aria-disabled=\"true\"`."
+  }
+}

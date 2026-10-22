@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import type { MsNavbarProps, MsNavbarEmits } from "./types";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 defineOptions({
   name: "MsNavbar",
@@ -19,6 +20,8 @@ const props = withDefaults(defineProps<MsNavbarProps>(), {
 });
 
 const emit = defineEmits<MsNavbarEmits>();
+
+const t = useMsMessages();
 
 const internalMobileMenuOpen = ref(props.mobileMenuOpen);
 watch(
@@ -62,6 +65,19 @@ const containerClasses = computed(() => {
   const mod = typeof props.container === "string" ? props.container : "xl";
   return ["ms-navbar__container", `ms-navbar__container--${mod}`];
 });
+
+defineSlots<{
+  /** Main navigation content, between the brand and the actions. */
+  default?(): unknown;
+  /** Brand area (logo, name) at the start. */
+  brand?(): unknown;
+  /** Actions at the end (buttons, user menu). */
+  actions?(): unknown;
+  /** Replaces the hamburger icon inside the mobile menu toggle button. */
+  "mobile-toggle"?(): unknown;
+  /** Mobile menu panel, shown below the bar while the mobile menu is open; its presence enables the toggle button. */
+  "mobile-menu"?(): unknown;
+}>();
 </script>
 
 <template>
@@ -69,7 +85,7 @@ const containerClasses = computed(() => {
     :class="classes"
     :data-position="effectivePosition"
     :data-variant="variant"
-    :data-tone="tone"
+    :data-tone="tone !== 'default' ? tone : undefined"
     :data-size="size"
     :data-shadow="effectiveShadow"
     :data-floating="floating ? 'true' : undefined"
@@ -93,7 +109,7 @@ const containerClasses = computed(() => {
         type="button"
         class="ms-navbar__mobile-toggle"
         :aria-expanded="internalMobileMenuOpen ? 'true' : 'false'"
-        aria-label="Toggle navigation menu"
+        :aria-label="t.navbar.toggle"
         @click="handleToggleMenu"
       >
         <slot name="mobile-toggle">
@@ -134,7 +150,7 @@ const containerClasses = computed(() => {
         type="button"
         class="ms-navbar__mobile-toggle"
         :aria-expanded="internalMobileMenuOpen ? 'true' : 'false'"
-        aria-label="Toggle navigation menu"
+        :aria-label="t.navbar.toggle"
         @click="handleToggleMenu"
       >
         <slot name="mobile-toggle">

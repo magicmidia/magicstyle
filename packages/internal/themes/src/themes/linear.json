@@ -1,0 +1,73 @@
+{
+  "$schema": "../theme.schema.json",
+  "name": "linear",
+  "label": "Linear",
+  "description": "Sleek, ultra-modern product design inspired by Linear and Raycast. Deep obsidian surfaces, radiant electric indigo accents, and hairline borders.",
+  "shared": {
+    "radius-selector": "4px",
+    "radius-field": "6px",
+    "radius-box": "8px",
+    "border-width": "1px",
+    "depth": "1",
+    "font-sans": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+    "font-mono": "IBM Plex Mono, Cascadia Mono, ui-monospace, monospace"
+  },
+  "light": {
+    "color-base-100": "#f7f8f9",
+    "color-base-200": "#eef0f3",
+    "color-base-300": "#e2e4e9",
+    "color-base-content": "#1a1b1e",
+    "color-base-raised": "#ffffff",
+    "color-primary": "#5e6ad2",
+    "color-primary-content": "#ffffff",
+    "color-secondary": "oklch(0.645 0.169 034)",
+    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-accent": "#5e6ad2",
+    "color-accent-content": "#ffffff",
+    "color-neutral": "#f0f2f5",
+    "color-neutral-content": "#1a1b1e",
+    "color-info": "oklch(0.738 0.133 219)",
+    "color-info-content": "oklch(0.170 0.020 252)",
+    "color-success": "oklch(0.663 0.131 168)",
+    "color-success-content": "oklch(0.170 0.020 252)",
+    "color-warning": "oklch(0.785 0.154 061)",
+    "color-warning-content": "oklch(0.170 0.020 252)",
+    "color-danger": "oklch(0.545 0.188 024)",
+    "color-danger-content": "oklch(1.000 0.003 252)"
+  },
+  "dark": {
+    "color-base-100": "#08090a",
+    "color-base-200": "#050506",
+    "color-base-300": "#26282d",
+    "color-base-content": "#f7f8f8",
+    "color-base-raised": "#121316",
+    "color-primary": "#5e6ad2",
+    "color-primary-content": "#ffffff",
+    "color-secondary": "oklch(0.715 0.152 034)",
+    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-accent": "#5e6ad2",
+    "color-accent-content": "#ffffff",
+    "color-neutral": "#18191d",
+    "color-neutral-content": "#f7f8f8",
+    "color-info": "oklch(0.738 0.133 219)",
+    "color-info-content": "oklch(0.170 0.020 252)",
+    "color-success": "oklch(0.663 0.131 168)",
+    "color-success-content": "oklch(0.170 0.020 252)",
+    "color-warning": "oklch(0.785 0.154 061)",
+    "color-warning-content": "oklch(0.170 0.020 252)",
+    "color-danger": "oklch(0.545 0.188 024)",
+    "color-danger-content": "oklch(1.000 0.003 252)"
+  },
+  "extras": {
+    "light": {
+      "elevation-button": "0px 1px 2px 0px rgba(94, 106, 210, 0.25)",
+      "elevation-card": "0px 2px 8px 0px rgba(0, 0, 0, 0.08)",
+      "focus-ring-width": "2px"
+    },
+    "dark": {
+      "elevation-button": "0px 1px 2px 0px rgba(0, 0, 0, 0.4)",
+      "elevation-card": "0px 4px 16px 0px rgba(0, 0, 0, 0.5)",
+      "focus-ring-width": "2px"
+    }
+  }
+}

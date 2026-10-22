@@ -14,9 +14,9 @@ describe("MsContextMenu", () => {
   });
 
   const menuItems: MsContextMenuItem[] = [
-    { id: "edit", label: "Editar", icon: "✏️", shortcut: "Ctrl+E" },
+    { id: "edit", label: "Edit", icon: "✏️", shortcut: "Ctrl+E" },
     { divider: true },
-    { id: "delete", label: "Excluir", danger: true },
+    { id: "delete", label: "Delete", danger: true },
   ];
 
   it("opens context menu on right-click", async () => {
@@ -25,7 +25,7 @@ describe("MsContextMenu", () => {
         items: menuItems,
       },
       slots: {
-        default: () => `<div class="target-area">Clique com o botão direito aqui</div>`,
+        default: () => `<div class="target-area">Right-click here</div>`,
       },
     });
 
@@ -41,7 +41,7 @@ describe("MsContextMenu", () => {
 
     const panel = document.querySelector(".ms-context-menu-panel");
     expect(panel).not.toBeNull();
-    expect(panel?.textContent).toContain("Editar");
-    expect(panel?.textContent).toContain("Excluir");
+    expect(panel?.textContent).toContain("Edit");
+    expect(panel?.textContent).toContain("Delete");
   });
 });

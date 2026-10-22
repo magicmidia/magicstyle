@@ -2,7 +2,9 @@
 
 First off, thank you for considering contributing to **Magic-Style**! 🎉
 
-This repository is governed by the **Architecture Baseline 1.2** located in `docs/baseline/Magic-Style-Architecture-Baseline-1.2/`. Before making any significant architectural changes, please review the relevant documents or consult with core maintainers.
+English is the project language: code, comments, commit messages, issues, pull requests and documentation are written in English. The documentation site and the built-in component strings are also maintained in Portuguese and Spanish.
+
+This repository is governed by the **Architecture Baseline 1.2** located in `docs/baseline/Magic-Style-Architecture-Baseline-1.2/` (normative, written in Portuguese). Before making any significant architectural changes, please review the relevant documents or consult with core maintainers. Repository-level decisions are recorded in [`docs/adr/`](docs/adr/).
 
 ---
 
@@ -10,7 +12,7 @@ This repository is governed by the **Architecture Baseline 1.2** located in `doc
 
 ### Prerequisites
 
-- **Node.js**: Strictly `>=24 <25` (Node 24 LTS)
+- **Node.js**: `>=24` (Node 24 LTS recommended)
 - **pnpm**: `pnpm@10.34.5` (enforced via `packageManager`)
 
 ### Getting Started
@@ -28,11 +30,15 @@ This repository is governed by the **Architecture Baseline 1.2** located in `doc
    pnpm install --frozen-lockfile
    ```
 
-3. **Start the local preview server & documentation studio:**
+3. **Start the documentation site (VitePress; English, Portuguese and Spanish):**
    ```bash
-   pnpm preview
-   # Opens at http://localhost:4173 (Landing, Studio, Docs, and Changelog)
+   pnpm docs:dev
    ```
+   Component pages are generated from `apps/docs/catalog/components.ts`. Examples live in
+   `apps/docs/demos/<slug>/` (one SFC per example, `strings.json` for the 3 languages and
+   `meta.json` for titles and accessibility notes); `pnpm --filter magic-style-docs check:demos`
+   validates them. API tables are generated from the component types and JSDoc, so write
+   JSDoc (in English) for every public prop, event and slot.
 
 ---
 
@@ -41,17 +47,19 @@ This repository is governed by the **Architecture Baseline 1.2** located in `doc
 ```
 magic-style/
 ├── apps/
-│   └── preview/           # Interactive documentation, component studio & changelog
+│   └── docs/              # VitePress site: guides, component pages, themes, tokens, blocks (en, pt, es)
 ├── packages/
-│   ├── vue/               # @magic-style/vue (82 Accessible Vue 3 components)
-│   ├── css/               # @magic-style/css (Modular CSS, reset, utility tokens)
+│   ├── vue/               # @magic-style/vue (95 accessible Vue 3 components)
+│   ├── css/               # @magic-style/css (framework-free CSS: tokens, themes, components)
 │   └── internal/
-│       ├── tokens/        # @magic-style/tokens (DTCG design tokens)
-│       └── themes/        # @magic-style/themes (10 authentic curated themes)
+│       ├── tokens/        # @magic-style-internal/tokens (private: DTCG design tokens)
+│       └── themes/        # @magic-style-internal/themes (private: 10 curated themes)
 ├── docs/
-│   └── baseline/          # Architecture Baseline 1.2 canonical specs
+│   ├── adr/               # Architecture decision records
+│   └── baseline/          # Architecture Baseline 1.2 canonical specs (Portuguese)
 ├── scripts/
-│   └── check-architecture.mjs # Architectural boundary & forbidden edges verifier
+│   ├── check-architecture.mjs # Architectural boundary & forbidden edges verifier
+│   └── stats.mjs          # Keeps the numbers quoted in README/package.json in sync
 └── .github/
     └── workflows/         # CI/CD validation and release pipelines
 ```
@@ -68,12 +76,15 @@ $$\text{Request} \rightarrow \text{Context} \rightarrow \text{Spec} \rightarrow 
 
 | Command             | Description                                                                                                 |
 | :------------------ | :---------------------------------------------------------------------------------------------------------- |
-| `pnpm validate`     | Full health gate: format, lint, architecture check, types, unit tests, and build                            |
+| `pnpm validate`     | Full health gate: format, ESLint, Stylelint, architecture check, docs stats, types, unit tests, and build   |
 | `pnpm test`         | Run Vitest unit test suite                                                                                  |
 | `pnpm lint`         | Run ESLint across all workspaces                                                                            |
+| `pnpm lint:css`     | Run Stylelint on the CSS                                                                                    |
 | `pnpm typecheck`    | Run TypeScript strict type-checking via Turborepo                                                           |
 | `pnpm architecture` | Verify architectural boundary rules (no cyclic dependencies, no forbidden Node imports in browser packages) |
 | `pnpm format`       | Auto-format codebase using Prettier                                                                         |
+| `pnpm docs:dev`     | Run the documentation site with hot reload                                                                  |
+| `pnpm docs:e2e`     | Smoke-test every docs route and run axe over the build (Playwright)                                         |
 | `pnpm changeset`    | Generate a changeset for package release notes                                                              |
 
 ---
@@ -82,11 +93,12 @@ $$\text{Request} \rightarrow \text{Context} \rightarrow \text{Spec} \rightarrow 
 
 When adding or updating a component in `@magic-style/vue`:
 
-1. **Canonical Class Prefix:** Component classes must use the `ms-*` prefix (e.g., `ms-button`, `ms-select`).
+1. **Canonical Class Prefix:** Component classes must use the `ms-*` prefix (e.g., `ms-button`, `ms-select`); variants and states use `data-*` attributes (e.g., `data-variant="solid"`, `data-tone="primary"`).
 2. **Tokens & Theming:** Styles must reside in `@magic-style/css/src/components/*.css` using CSS custom properties (`--ms-*`). Do not hardcode raw hex values; always map to semantic tokens.
 3. **Accessibility (WCAG 2.2 AA):** All interactive components must support full keyboard navigation, proper WAI-ARIA roles, states, and focus rings.
-4. **Unit Tests:** Every component requires unit tests in `packages/vue/tests/` covering props, slots, events, and a11y attributes.
-5. **No Parallel Engines:** Advanced components follow unified engines (e.g., `MsSelect` handles single, multi, searchable, and async).
+4. **Unit Tests:** Every component requires unit tests in `packages/vue/tests/` covering props, slots, events, and a11y attributes. Components must also render during SSR (`renderToString`) without touching `window` or `document`.
+5. **Built-in Strings:** Never hardcode user-facing text. Accessible names, placeholders and empty states come from the `MsMessages` dictionary (English, Portuguese and Spanish).
+6. **No Parallel Engines:** Advanced components follow unified engines (e.g., `MsSelect` handles single, multi, searchable, and async).
 
 ---
 
@@ -108,6 +120,17 @@ Before submitting a Pull Request:
    ```
    and select the appropriate bump (`patch`, `minor`, `major`) with a concise summary.
 4. Ensure PR description follows `.github/pull_request_template.md`.
+
+---
+
+## 🏷️ Versioning & Releases
+
+Magic-Style follows [Semantic Versioning](https://semver.org/). `@magic-style/vue` and `@magic-style/css` always share the same version (changesets `fixed` group). While the major version is `0`, breaking changes bump the **minor** version and everything else bumps the **patch** version.
+
+1. Every change to a public package ships a changeset (`pnpm changeset`).
+2. On every push to `main`, the **Release** workflow opens or updates the **"chore: version packages"** PR. It runs `changeset version`, which bumps the versions, writes the package `CHANGELOG.md` files and removes the consumed changesets.
+3. When that PR is merged, add the release notes to the root [`CHANGELOG.md`](CHANGELOG.md), then tag the merge commit `vX.Y.Z` and publish a **GitHub Release** with those notes.
+4. Publishing to npm is a separate, manual step: **Actions → Release → Run workflow**. It runs the full health gate, then `changeset publish`, in the protected `npm` environment.
 
 ---
 

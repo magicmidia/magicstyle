@@ -1,17 +1,20 @@
 <script setup lang="ts">
 import { ref, computed, watch } from "vue";
-import type { MsFormWizardProps, MsFormWizardEmits } from "./types.ts";
+import type { MsFormWizardProps, MsFormWizardEmits, MsWizardStep } from "./types.ts";
 import MsButton from "../MsButton/MsButton.vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsFormWizardProps>(), {
   modelValue: 0,
   linear: true,
-  prevText: "Voltar",
-  nextText: "Avançar",
-  finishText: "Concluir",
 });
 
 const emit = defineEmits<MsFormWizardEmits>();
+
+const t = useMsMessages();
+const prevLabel = computed(() => props.prevText ?? t.value.formWizard.previous);
+const nextLabel = computed(() => props.nextText ?? t.value.formWizard.next);
+const finishLabel = computed(() => props.finishText ?? t.value.formWizard.finish);
 
 const activeIndex = ref(props.modelValue);
 
@@ -56,13 +59,32 @@ const handleNext = async () => {
 const handlePrev = async () => {
   await goToStep(activeIndex.value - 1);
 };
+
+defineSlots<
+  {
+    /** Per-step content: a slot named after a step's `id` renders while that step is active (falls back to the default slot). */
+    [stepId: string]:
+      ((props: { step: MsWizardStep | undefined; index: number }) => unknown) | undefined;
+  } & {
+    /** Active step content, used when no slot named after the active step's `id` is provided; receives the active step and its index. */
+    default?(props: { step: MsWizardStep | undefined; index: number }): unknown;
+    /** Replaces the previous/next buttons; receives `prev`/`next` navigation functions (which respect `beforeChange`), `isFirst`, `isLast` and `currentIndex`. */
+    footer?(props: {
+      prev: () => Promise<void>;
+      next: () => Promise<void>;
+      isFirst: boolean;
+      isLast: boolean;
+      currentIndex: number;
+    }): unknown;
+  }
+>();
 </script>
 
 <template>
   <div class="ms-form-wizard" :data-step="activeIndex">
     <!-- Header / Steps Tracker -->
     <div class="ms-form-wizard__header">
-      <nav class="ms-form-wizard__steps" aria-label="Progresso do formulário">
+      <nav class="ms-form-wizard__steps" :aria-label="t.formWizard.progress">
         <template v-for="(step, idx) in props.steps" :key="step.id">
           <div
             class="ms-form-wizard__step"
@@ -86,6 +108,9 @@ const handlePrev = async () => {
               >
                 <polyline points="20 6 9 17 4 12" />
               </svg>
+              <span v-else-if="step.icon" class="ms-form-wizard__step-icon" aria-hidden="true">
+                {{ step.icon }}
+              </span>
               <span v-else>{{ idx + 1 }}</span>
             </div>
 
@@ -129,11 +154,11 @@ const handlePrev = async () => {
         :current-index="activeIndex"
       >
         <MsButton variant="outline" :disabled="isFirst" @click="handlePrev">
-          {{ props.prevText }}
+          {{ prevLabel }}
         </MsButton>
 
         <MsButton variant="solid" tone="primary" @click="handleNext">
-          {{ isLast ? props.finishText : props.nextText }}
+          {{ isLast ? finishLabel : nextLabel }}
         </MsButton>
       </slot>
     </div>

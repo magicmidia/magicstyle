@@ -1,0 +1,76 @@
+{
+  "intro": {
+    "pt-BR": "Use abas para alternar entre visões do mesmo contexto sem sair da página. A variante padrão é `pill`, no estilo segmentado do shadcn/ui.",
+    "en-US": "Use tabs to switch between views of the same context without leaving the page. The default variant is `pill`, in the shadcn/ui segmented style.",
+    "es-ES": "Usa pestañas para alternar entre vistas del mismo contexto sin salir de la página. La variante por defecto es `pill`, al estilo segmentado de shadcn/ui."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": {
+        "pt-BR": "Básico com painéis",
+        "en-US": "Basic with panels",
+        "es-ES": "Básico con paneles"
+      },
+      "description": {
+        "pt-BR": "`MsTabList` agrupa os `MsTab` e `MsTabPanels` os `MsTabPanel`; o `value` liga cada aba ao seu painel e `fitted` divide a largura igualmente.",
+        "en-US": "`MsTabList` groups the `MsTab`s and `MsTabPanels` the `MsTabPanel`s; `value` links each tab to its panel and `fitted` splits the width evenly.",
+        "es-ES": "`MsTabList` agrupa los `MsTab` y `MsTabPanels` los `MsTabPanel`; `value` une cada pestaña con su panel y `fitted` reparte el ancho por igual."
+      }
+    },
+    {
+      "file": "Line",
+      "title": { "pt-BR": "Linha", "en-US": "Line", "es-ES": "Línea" },
+      "description": {
+        "pt-BR": "`variant=\"line\"` usa um sublinhado colorido na aba ativa, comum em cabeçalhos de página.",
+        "en-US": "`variant=\"line\"` uses a colored underline on the active tab, common in page headers.",
+        "es-ES": "`variant=\"line\"` usa un subrayado de color en la pestaña activa, habitual en cabeceras de página."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": { "pt-BR": "Variantes", "en-US": "Variants", "es-ES": "Variantes" },
+      "description": {
+        "pt-BR": "`pill`, `line`, `enclosed` (abas de pasta) e `solid` (contêiner preenchido de alto contraste).",
+        "en-US": "`pill`, `line`, `enclosed` (folder tabs) and `solid` (filled, high-contrast container).",
+        "es-ES": "`pill`, `line`, `enclosed` (pestañas de carpeta) y `solid` (contenedor relleno de alto contraste)."
+      }
+    },
+    {
+      "file": "Vertical",
+      "title": { "pt-BR": "Vertical", "en-US": "Vertical", "es-ES": "Vertical" },
+      "description": {
+        "pt-BR": "`orientation=\"vertical\"` coloca a lista ao lado dos painéis e troca as setas de navegação para cima e baixo.",
+        "en-US": "`orientation=\"vertical\"` places the list beside the panels and switches arrow navigation to up and down.",
+        "es-ES": "`orientation=\"vertical\"` coloca la lista junto a los paneles y cambia la navegación con flechas a arriba y abajo."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md` e `lg`.",
+        "en-US": "`size` accepts `sm`, `md` and `lg`.",
+        "es-ES": "`size` acepta `sm`, `md` y `lg`."
+      }
+    },
+    {
+      "file": "Manual",
+      "title": {
+        "pt-BR": "Ativação manual e aba desabilitada",
+        "en-US": "Manual activation and disabled tab",
+        "es-ES": "Activación manual y pestaña deshabilitada"
+      },
+      "description": {
+        "pt-BR": "Com `activation-mode=\"manual\"`, as setas só movem o foco e `Enter` ativa; `default-value` define a aba inicial sem `v-model` e `lazy` só monta o painel quando ele abre.",
+        "en-US": "With `activation-mode=\"manual\"`, arrows only move focus and `Enter` activates; `default-value` sets the initial tab without `v-model` and `lazy` mounts a panel only when it opens.",
+        "es-ES": "Con `activation-mode=\"manual\"`, las flechas solo mueven el foco y `Enter` activa; `default-value` define la pestaña inicial sin `v-model` y `lazy` monta el panel solo cuando se abre."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Segue o padrão APG de abas: `role=\"tablist\"` com `aria-orientation`, `role=\"tab\"` com `aria-selected` e `aria-controls`, e `role=\"tabpanel\"` com `aria-labelledby`.\n- Só a aba ativa entra na ordem de tabulação (`tabindex` itinerante).\n- `Seta direita` / `Seta esquerda` (horizontal) ou `Seta para baixo` / `Seta para cima` (vertical): move para a próxima ou anterior aba habilitada, em ciclo.\n- `Home` / `End`: primeira ou última aba habilitada.\n- `Enter` / `Espaço`: ativa a aba focada (necessário no modo `manual`).\n- Dê um `aria-label` ao `MsTabList`.",
+    "en-US": "- Follows the APG tabs pattern: `role=\"tablist\"` with `aria-orientation`, `role=\"tab\"` with `aria-selected` and `aria-controls`, and `role=\"tabpanel\"` with `aria-labelledby`.\n- Only the active tab is in the tab order (roving `tabindex`).\n- `ArrowRight` / `ArrowLeft` (horizontal) or `ArrowDown` / `ArrowUp` (vertical): move to the next or previous enabled tab, wrapping around.\n- `Home` / `End`: first or last enabled tab.\n- `Enter` / `Space`: activate the focused tab (required in `manual` mode).\n- Give `MsTabList` an `aria-label`.",
+    "es-ES": "- Sigue el patrón APG de pestañas: `role=\"tablist\"` con `aria-orientation`, `role=\"tab\"` con `aria-selected` y `aria-controls`, y `role=\"tabpanel\"` con `aria-labelledby`.\n- Solo la pestaña activa está en el orden de tabulación (`tabindex` itinerante).\n- `Flecha derecha` / `Flecha izquierda` (horizontal) o `Flecha abajo` / `Flecha arriba` (vertical): pasa a la pestaña habilitada siguiente o anterior, en ciclo.\n- `Inicio` / `Fin`: primera o última pestaña habilitada.\n- `Enter` / `Espacio`: activa la pestaña enfocada (necesario en modo `manual`).\n- Da un `aria-label` a `MsTabList`."
+  }
+}

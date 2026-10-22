@@ -18,6 +18,11 @@ const classes = computed(() => [
     "ms-bento-item--interactive": props.interactive,
   },
 ]);
+
+defineSlots<{
+  /** Tile content. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

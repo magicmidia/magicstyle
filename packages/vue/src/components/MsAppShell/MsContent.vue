@@ -12,6 +12,11 @@ const classes = computed(() => [
     "ms-content--padded": props.padded,
   },
 ]);
+
+defineSlots<{
+  /** Main page content, rendered inside `<main>`. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

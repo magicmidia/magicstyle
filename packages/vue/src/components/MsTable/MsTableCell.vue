@@ -6,6 +6,7 @@ const props = withDefaults(defineProps<MsTableCellProps>(), {
 });
 
 defineSlots<{
+  /** Cell content, rendered inside `<td>`. */
   default?(): unknown;
 }>();
 </script>

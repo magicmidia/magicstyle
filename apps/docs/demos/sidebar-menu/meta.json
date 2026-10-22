@@ -1,0 +1,71 @@
+{
+  "intro": {
+    "pt-BR": "`MsSidebarMenu` é a lista de navegação de uma barra lateral: grupos com título, badges, submenus recolhíveis e modo só com ícones. Use-o dentro de `MsSidebar` ou de qualquer painel.",
+    "en-US": "`MsSidebarMenu` is the navigation list of a sidebar: titled groups, badges, collapsible submenus and an icon-only mode. Use it inside `MsSidebar` or any panel.",
+    "es-ES": "`MsSidebarMenu` es la lista de navegación de una barra lateral: grupos con título, badges, submenús contraíbles y modo solo iconos. Úsalo dentro de `MsSidebar` o de cualquier panel."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Passe grupos em `items` (`title` + `items`); `v-model` guarda o `id` ativo e cada item aceita `badge`, `badgeTone` e `disabled`.",
+        "en-US": "Pass groups in `items` (`title` + `items`); `v-model` holds the active `id` and each item accepts `badge`, `badgeTone` and `disabled`.",
+        "es-ES": "Pasa grupos en `items` (`title` + `items`); `v-model` guarda el `id` activo y cada ítem acepta `badge`, `badgeTone` y `disabled`."
+      }
+    },
+    {
+      "file": "Nested",
+      "title": {
+        "pt-BR": "Submenus em acordeão",
+        "en-US": "Accordion submenus",
+        "es-ES": "Submenús en acordeón"
+      },
+      "description": {
+        "pt-BR": "Itens com `children` viram submenus; `open: true` abre um deles de início e `accordion` mantém só um aberto por vez.",
+        "en-US": "Items with `children` become submenus; `open: true` opens one initially and `accordion` keeps only one open at a time.",
+        "es-ES": "Los ítems con `children` se vuelven submenús; `open: true` abre uno al inicio y `accordion` mantiene solo uno abierto a la vez."
+      }
+    },
+    {
+      "file": "Declarative",
+      "title": {
+        "pt-BR": "Declarativo com ícones",
+        "en-US": "Declarative with icons",
+        "es-ES": "Declarativo con iconos"
+      },
+      "description": {
+        "pt-BR": "Componha `MsSidebarMenuGroup` e `MsSidebarMenuItem` no slot para usar ícones SVG no slot `icon`.",
+        "en-US": "Compose `MsSidebarMenuGroup` and `MsSidebarMenuItem` in the slot to use SVG icons in the `icon` slot.",
+        "es-ES": "Compón `MsSidebarMenuGroup` y `MsSidebarMenuItem` en el slot para usar iconos SVG en el slot `icon`."
+      }
+    },
+    {
+      "file": "Appearance",
+      "title": {
+        "pt-BR": "Tom, formato e densidade",
+        "en-US": "Tone, shape and density",
+        "es-ES": "Tono, forma y densidad"
+      },
+      "description": {
+        "pt-BR": "`tone` colore o item ativo, `shape` escolhe `rounded`, `pill` ou `square` e `density` ajusta a altura dos itens.",
+        "en-US": "`tone` colors the active item, `shape` picks `rounded`, `pill` or `square` and `density` adjusts item height.",
+        "es-ES": "`tone` colorea el ítem activo, `shape` elige `rounded`, `pill` o `square` y `density` ajusta la altura de los ítems."
+      }
+    },
+    {
+      "file": "Collapsed",
+      "title": { "pt-BR": "Só ícones", "en-US": "Icon-only", "es-ES": "Solo iconos" },
+      "description": {
+        "pt-BR": "`collapsed` esconde rótulos, badges e submenus; mantenha um texto visualmente oculto para o leitor de tela.",
+        "en-US": "`collapsed` hides labels, badges and submenus; keep a visually hidden text for screen readers.",
+        "es-ES": "`collapsed` oculta etiquetas, badges y submenús; mantén un texto visualmente oculto para lectores de pantalla."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza `<nav>` com `aria-label` vindo das mensagens da biblioteca; cada grupo tem `role=\"group\"`.\n- O item ativo recebe `aria-current=\"page\"`; itens com submenu têm `aria-expanded`.\n- `Tab`: percorre os itens (links ou botões nativos); `Enter` ou `Espaço` seleciona o item ou abre e fecha o submenu.\n- Não há navegação por setas.\n- No modo `collapsed` o rótulo fica com `display: none`; forneça um texto `ms-visually-hidden` para manter o nome acessível.",
+    "en-US": "- Renders a `<nav>` with an `aria-label` from the library messages; each group has `role=\"group\"`.\n- The active item gets `aria-current=\"page\"`; items with a submenu have `aria-expanded`.\n- `Tab`: moves through items (native links or buttons); `Enter` or `Space` selects the item or toggles its submenu.\n- There is no arrow-key navigation.\n- In `collapsed` mode the label is `display: none`; provide `ms-visually-hidden` text to keep an accessible name.",
+    "es-ES": "- Renderiza un `<nav>` con un `aria-label` de los mensajes de la biblioteca; cada grupo tiene `role=\"group\"`.\n- El ítem activo recibe `aria-current=\"page\"`; los ítems con submenú tienen `aria-expanded`.\n- `Tab`: recorre los ítems (enlaces o botones nativos); `Enter` o `Espacio` selecciona el ítem o abre y cierra su submenú.\n- No hay navegación con flechas.\n- En modo `collapsed` la etiqueta queda con `display: none`; añade un texto `ms-visually-hidden` para mantener el nombre accesible."
+  }
+}

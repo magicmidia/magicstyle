@@ -1,0 +1,47 @@
+{
+  "pt-BR": {
+    "title": "Magic-Style",
+    "subtitle": "Uma biblioteca de componentes Vue guiada por temas.",
+    "blog": "Blog",
+    "docs": "Documentação",
+    "source": "Código-fonte",
+    "continueGoogle": "Continuar com Google",
+    "continueGithub": "Continuar com GitHub",
+    "or": "ou",
+    "email": "E-mail",
+    "emailPlaceholder": "voce@empresa.com",
+    "sendLink": "Enviar link de acesso",
+    "chapterEnd": "Quando o último trem partiu, a estação ficou em silêncio. Helena guardou o bilhete no bolso e decidiu voltar a pé.",
+    "chapterStart": "Três anos depois, a mesma estação estava irreconhecível: vitrines novas, painéis digitais e nenhum rosto conhecido."
+  },
+  "en-US": {
+    "title": "Magic-Style",
+    "subtitle": "A theme-driven Vue component library.",
+    "blog": "Blog",
+    "docs": "Docs",
+    "source": "Source",
+    "continueGoogle": "Continue with Google",
+    "continueGithub": "Continue with GitHub",
+    "or": "or",
+    "email": "Email",
+    "emailPlaceholder": "you@company.com",
+    "sendLink": "Send sign-in link",
+    "chapterEnd": "When the last train left, the station fell silent. Helena put the ticket in her pocket and decided to walk home.",
+    "chapterStart": "Three years later, the same station was unrecognizable: new shop windows, digital boards and not a single familiar face."
+  },
+  "es-ES": {
+    "title": "Magic-Style",
+    "subtitle": "Una biblioteca de componentes Vue guiada por temas.",
+    "blog": "Blog",
+    "docs": "Documentación",
+    "source": "Código fuente",
+    "continueGoogle": "Continuar con Google",
+    "continueGithub": "Continuar con GitHub",
+    "or": "o",
+    "email": "Correo",
+    "emailPlaceholder": "tu@empresa.com",
+    "sendLink": "Enviar enlace de acceso",
+    "chapterEnd": "Cuando partió el último tren, la estación quedó en silencio. Helena guardó el billete en el bolsillo y decidió volver a pie.",
+    "chapterStart": "Tres años después, la misma estación era irreconocible: escaparates nuevos, paneles digitales y ninguna cara conocida."
+  }
+}

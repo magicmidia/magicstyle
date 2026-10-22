@@ -1,0 +1,29 @@
+{
+  "pt-BR": {
+    "courseProgress": "Progresso do curso",
+    "tasksDone": "Tarefas concluídas",
+    "tasks": "tarefas",
+    "sprintTitle": "Sprint 14",
+    "sprintDetail": "Faltam 6 tarefas e 3 dias para o fim da sprint.",
+    "syncing": "Sincronizando",
+    "syncingPhotos": "Sincronizando 248 fotos com a nuvem…"
+  },
+  "en-US": {
+    "courseProgress": "Course progress",
+    "tasksDone": "Tasks completed",
+    "tasks": "tasks",
+    "sprintTitle": "Sprint 14",
+    "sprintDetail": "6 tasks and 3 days left in the sprint.",
+    "syncing": "Syncing",
+    "syncingPhotos": "Syncing 248 photos to the cloud…"
+  },
+  "es-ES": {
+    "courseProgress": "Progreso del curso",
+    "tasksDone": "Tareas completadas",
+    "tasks": "tareas",
+    "sprintTitle": "Sprint 14",
+    "sprintDetail": "Quedan 6 tareas y 3 días para terminar el sprint.",
+    "syncing": "Sincronizando",
+    "syncingPhotos": "Sincronizando 248 fotos con la nube…"
+  }
+}

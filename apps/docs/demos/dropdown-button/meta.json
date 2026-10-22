@@ -1,0 +1,62 @@
+{
+  "intro": {
+    "pt-BR": "Use quando várias ações relacionadas não cabem na tela como botões separados. O menu segue o padrão *menu button* da APG.",
+    "en-US": "Use it when several related actions don't fit on screen as separate buttons. The menu follows the APG *menu button* pattern.",
+    "es-ES": "Úsalo cuando varias acciones relacionadas no caben en pantalla como botones separados. El menú sigue el patrón *menu button* de la APG."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Passe as ações em `items`; `divider` separa o item destrutivo e `tone: \"danger\"` o destaca.",
+        "en-US": "Pass the actions in `items`; `divider` separates the destructive item and `tone: \"danger\"` highlights it.",
+        "es-ES": "Pasa las acciones en `items`; `divider` separa el ítem destructivo y `tone: \"danger\"` lo resalta."
+      }
+    },
+    {
+      "file": "WithShortcuts",
+      "title": {
+        "pt-BR": "Ícones e atalhos",
+        "en-US": "Icons and shortcuts",
+        "es-ES": "Iconos y atajos"
+      },
+      "description": {
+        "pt-BR": "`prefix` mostra um ícone ou símbolo e `suffix` um atalho; itens com `disabled` são ignorados pelo teclado.",
+        "en-US": "`prefix` shows an icon or symbol and `suffix` a shortcut; items with `disabled` are skipped by the keyboard.",
+        "es-ES": "`prefix` muestra un icono o símbolo y `suffix` un atajo; los ítems con `disabled` se omiten con el teclado."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": {
+        "pt-BR": "Variantes e tamanhos",
+        "en-US": "Variants and sizes",
+        "es-ES": "Variantes y tamaños"
+      },
+      "description": {
+        "pt-BR": "O gatilho aceita as mesmas `variant`, `tone`, `size` e `pill` do `MsButton`.",
+        "en-US": "The trigger accepts the same `variant`, `tone`, `size` and `pill` as `MsButton`.",
+        "es-ES": "El disparador acepta las mismas `variant`, `tone`, `size` y `pill` que `MsButton`."
+      }
+    },
+    {
+      "file": "HandleSelect",
+      "title": {
+        "pt-BR": "Tratando a seleção",
+        "en-US": "Handling selection",
+        "es-ES": "Manejo de la selección"
+      },
+      "description": {
+        "pt-BR": "O evento `select` entrega o item escolhido; `align=\"right\"` alinha o menu à borda direita do gatilho.",
+        "en-US": "The `select` event delivers the chosen item; `align=\"right\"` aligns the menu to the trigger's right edge.",
+        "es-ES": "El evento `select` entrega el ítem elegido; `align=\"right\"` alinea el menú con el borde derecho del disparador."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O gatilho tem `aria-haspopup=\"menu\"`, `aria-expanded` e `aria-controls` apontando para o menu aberto.\n- `Enter` e `Espaço` no gatilho abrem o menu; `↓` abre e foca o primeiro item, `↑` abre e foca o último.\n- No menu (`role=\"menu\"`, itens `role=\"menuitem\"`): `↓`/`↑` movem o foco, `Home`/`End` vão ao primeiro/último item e digitar uma letra busca pelo rótulo.\n- `Enter` ou `Espaço` escolhem o item; `Esc` fecha e devolve o foco ao gatilho; `Tab` fecha o menu.",
+    "en-US": "- The trigger has `aria-haspopup=\"menu\"`, `aria-expanded` and `aria-controls` pointing to the open menu.\n- `Enter` and `Space` on the trigger open the menu; `↓` opens it and focuses the first item, `↑` opens it and focuses the last.\n- In the menu (`role=\"menu\"`, items `role=\"menuitem\"`): `↓`/`↑` move focus, `Home`/`End` go to the first/last item and typing a letter searches by label.\n- `Enter` or `Space` choose the item; `Esc` closes and returns focus to the trigger; `Tab` closes the menu.",
+    "es-ES": "- El disparador tiene `aria-haspopup=\"menu\"`, `aria-expanded` y `aria-controls` apuntando al menú abierto.\n- `Enter` y `Espacio` en el disparador abren el menú; `↓` lo abre y enfoca el primer ítem, `↑` lo abre y enfoca el último.\n- En el menú (`role=\"menu\"`, ítems `role=\"menuitem\"`): `↓`/`↑` mueven el foco, `Home`/`End` van al primer/último ítem y escribir una letra busca por etiqueta.\n- `Enter` o `Espacio` eligen el ítem; `Esc` cierra y devuelve el foco al disparador; `Tab` cierra el menú."
+  }
+}

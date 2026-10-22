@@ -5,9 +5,9 @@ import MsScrollSpy from "../src/components/MsScrollSpy/MsScrollSpy.vue";
 describe("MsScrollSpy", () => {
   it("renders navigation links for observed sections", () => {
     const items = [
-      { id: "intro", label: "Introdução" },
-      { id: "installation", label: "Instalação" },
-      { id: "usage", label: "Uso" },
+      { id: "intro", label: "Introduction" },
+      { id: "installation", label: "Installation" },
+      { id: "usage", label: "Usage" },
     ];
 
     const wrapper = mount(MsScrollSpy, {
@@ -19,8 +19,8 @@ describe("MsScrollSpy", () => {
     expect(wrapper.classes()).toContain("ms-scroll-spy");
     const links = wrapper.findAll(".ms-scroll-spy__link");
     expect(links.length).toBe(3);
-    expect(links[0]!.text()).toBe("Introdução");
-    expect(links[1]!.text()).toBe("Instalação");
-    expect(links[2]!.text()).toBe("Uso");
+    expect(links[0]!.text()).toBe("Introduction");
+    expect(links[1]!.text()).toBe("Installation");
+    expect(links[2]!.text()).toBe("Usage");
   });
 });

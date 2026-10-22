@@ -31,7 +31,9 @@ export interface MsTagProps {
   closable?: boolean;
 
   /**
-   * Whether clicking the tag triggers interactive actions.
+   * Makes the tag a button (`role="button"`, focusable, Enter/Space) that emits `click`.
+   * With `closable`, the tag content becomes the button and the close button is its
+   * sibling, so controls are never nested.
    * Default: false.
    */
   clickable?: boolean;
@@ -56,6 +58,8 @@ export interface MsTagProps {
 }
 
 export interface MsTagEmits {
+  /** The close button was clicked (the tag does not remove itself). */
   (e: "close", event: MouseEvent): void;
+  /** A `clickable` tag was activated by click, Enter or Space. */
   (e: "click", event: MouseEvent): void;
 }

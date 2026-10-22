@@ -1,6 +1,13 @@
 <script setup lang="ts">
+import { matchesAccept } from "../../composables/file-accept.ts";
 import { ref } from "vue";
-import type { MsDropzoneProps, MsDropzoneEmits, MsDropzoneFile } from "./types.ts";
+import type {
+  MsDropzoneProps,
+  MsDropzoneEmits,
+  MsDropzoneFile,
+  MsDropzoneRejection,
+} from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsDropzoneProps>(), {
   accept: "*/*",
@@ -9,6 +16,8 @@ const props = withDefaults(defineProps<MsDropzoneProps>(), {
 });
 
 const emit = defineEmits<MsDropzoneEmits>();
+
+const t = useMsMessages();
 
 const isDragOver = ref(false);
 const fileList = ref<MsDropzoneFile[]>([]);
@@ -27,26 +36,46 @@ const triggerBrowse = () => {
   inputRef.value?.click();
 };
 
+const fileMatchesAccept = (file: File): boolean => matchesAccept(file, props.accept);
+
 const processFiles = (rawFiles: FileList | null) => {
   if (!rawFiles || rawFiles.length === 0) return;
   const validFiles: File[] = [];
+  const rejected: MsDropzoneRejection[] = [];
+  // Dropped files bypass the input's accept/multiple, so enforce them here.
+  const candidates = Array.from(rawFiles);
+  if (!props.multiple && candidates.length > 1) {
+    for (const file of candidates.slice(1)) rejected.push({ file, reason: "multiple" });
+    candidates.length = 1;
+  }
 
-  for (let i = 0; i < rawFiles.length; i++) {
-    const f = rawFiles[i]!;
-    if (props.maxSize && f.size > props.maxSize) continue;
+  candidates.forEach((f, i) => {
+    if (!fileMatchesAccept(f)) {
+      rejected.push({ file: f, reason: "type" });
+      return;
+    }
+    if (props.maxSize && f.size > props.maxSize) {
+      rejected.push({ file: f, reason: "size" });
+      return;
+    }
 
     validFiles.push(f);
-    fileList.value.push({
+    const entry: MsDropzoneFile = {
       id: `${f.name}-${Date.now()}-${i}`,
       name: f.name,
       size: f.size,
       formattedSize: formatBytes(f.size),
       file: f,
-    });
-  }
+    };
+    if (props.multiple) fileList.value.push(entry);
+    else fileList.value = [entry];
+  });
 
   if (validFiles.length > 0) {
     emit("files-dropped", validFiles);
+  }
+  if (rejected.length > 0) {
+    emit("files-rejected", rejected);
   }
 };
 
@@ -77,6 +106,13 @@ const removeFile = (item: MsDropzoneFile) => {
   fileList.value = fileList.value.filter((f) => f.id !== item.id);
   emit("file-removed", item);
 };
+
+defineSlots<{
+  /** Replaces the prompt text (defaults to the `dropzone.prompt` message). */
+  title?(): unknown;
+  /** Replaces the hint text below the prompt (defaults to the `dropzone.hint` message). */
+  subtitle?(): unknown;
+}>();
 </script>
 
 <template>
@@ -95,6 +131,7 @@ const removeFile = (item: MsDropzoneFile) => {
       ref="inputRef"
       type="file"
       class="ms-dropzone__input"
+      :aria-label="t.dropzone.select"
       :accept="props.accept"
       :multiple="props.multiple"
       :disabled="props.disabled"
@@ -104,6 +141,7 @@ const removeFile = (item: MsDropzoneFile) => {
 
     <svg
       class="ms-dropzone__icon"
+      aria-hidden="true"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -117,10 +155,10 @@ const removeFile = (item: MsDropzoneFile) => {
     </svg>
 
     <div class="ms-dropzone__title">
-      <slot name="title">Arraste e solte arquivos aqui</slot>
+      <slot name="title">{{ t.dropzone.prompt }}</slot>
     </div>
     <div class="ms-dropzone__subtitle">
-      <slot name="subtitle">ou clique para selecionar do seu computador</slot>
+      <slot name="subtitle">{{ t.dropzone.hint }}</slot>
     </div>
 
     <!-- Uploaded file previews -->
@@ -137,7 +175,8 @@ const removeFile = (item: MsDropzoneFile) => {
         <button
           type="button"
           class="ms-dropzone__remove-btn"
-          title="Remover arquivo"
+          :title="t.dropzone.remove"
+          :aria-label="t.dropzone.removeFile(item.name)"
           @click="removeFile(item)"
         >
           ✕

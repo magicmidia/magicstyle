@@ -3,7 +3,9 @@
  * Syntax and multi-line code block display with line numbers, copy button, and expandable collapse.
  */
 
+/* Code reads left-to-right even inside RTL pages (gutter stays on the left). */
 .ms-code-block {
+  direction: ltr;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -22,7 +24,7 @@
 .ms-code-block--card {
   background-color: var(--ms-color-surface-raised);
   border-color: var(--ms-color-border-subtle);
-  box-shadow: var(--ms-shadow-sm);
+  box-shadow: var(--ms-elevation-1);
 }
 
 .ms-code-block--ghost {
@@ -98,7 +100,7 @@
 }
 
 .ms-code-block__copy-btn:focus-visible {
-  outline: 2px solid var(--ms-color-interactive-focus);
+  outline: 2px solid var(--ms-focus-ring-color);
   outline-offset: 1px;
 }
 
@@ -115,6 +117,11 @@
   padding: var(--ms-space-3);
   scrollbar-width: thin;
   scrollbar-color: var(--ms-color-border-strong) transparent;
+}
+
+.ms-code-block__body:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: calc(var(--ms-focus-ring-width) * -1);
 }
 
 .ms-code-block__lines {
@@ -203,43 +210,47 @@
   text-decoration: underline;
 }
 
-/* Syntax Highlighting Tokens */
+/*
+ * Syntax Highlighting Tokens
+ * Text-safe role tokens (interactive-*-text / feedback-*-text) that the theme engine
+ * mixes toward the ink color, so they keep AA contrast in light and dark modes.
+ */
 .ms-code-token--comment {
-  color: var(--ms-color-text-muted);
+  color: var(--ms-color-text-secondary);
   font-style: italic;
 }
 
 .ms-code-token--string {
-  color: var(--ms-color-brand-success, #10ac84);
+  color: var(--ms-color-feedback-success-text);
 }
 
 .ms-code-token--tag {
-  color: var(--ms-color-brand-danger, #ee5253);
+  color: var(--ms-color-feedback-danger-text);
   font-weight: var(--ms-typography-weight-semibold);
 }
 
 .ms-code-token--attr {
-  color: var(--ms-color-brand-warning, #ff9f43);
+  color: var(--ms-color-feedback-warning-text);
 }
 
 .ms-code-token--keyword {
-  color: var(--ms-color-brand-secondary, #e15f41);
+  color: var(--ms-color-interactive-secondary-text);
   font-weight: var(--ms-typography-weight-semibold);
 }
 
 .ms-code-token--boolean {
-  color: var(--ms-color-brand-accent, #341f97);
+  color: var(--ms-color-interactive-accent-text);
   font-weight: var(--ms-typography-weight-semibold);
 }
 
 .ms-code-token--type {
-  color: var(--ms-color-brand-info, #0abde3);
+  color: var(--ms-color-feedback-info-text);
 }
 
 .ms-code-token--number {
-  color: var(--ms-color-brand-warning, #ff9f43);
+  color: var(--ms-color-feedback-warning-text);
 }
 
 .ms-code-token--function {
-  color: var(--ms-color-brand-primary, #2e86de);
+  color: var(--ms-color-interactive-primary-text);
 }

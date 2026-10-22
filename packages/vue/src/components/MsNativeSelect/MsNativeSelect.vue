@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { useFieldContext } from "../../composables/use-field-context.ts";
-import { useMsId } from "../../composables/use-ms-id.ts";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
 import type { MsNativeSelectProps } from "./types.ts";
+
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<MsNativeSelectProps>(), {
   size: "md",
@@ -12,20 +13,22 @@ const props = withDefaults(defineProps<MsNativeSelectProps>(), {
 });
 
 const emit = defineEmits<{
+  /** Fires when the selection changes; payload is the native `<select>` value. */
   "update:modelValue": [value: string | number];
+  /** Fires alongside `update:modelValue` with the same value. */
   change: [value: string | number];
 }>();
 
 defineSlots<{
+  /** Native `<option>`/`<optgroup>` elements; used only when `options` is empty. */
   default?(): unknown;
 }>();
 
-const field = useFieldContext();
-const fallbackId = useMsId("ms-native-select");
+const fieldControl = useFieldControl("ms-native-select");
 
-const resolvedId = computed(() => field?.controlId ?? fallbackId);
-const describedBy = computed(() => field?.describedBy());
-const isInvalid = computed(() => props.invalid === true || field?.invalid() === true);
+const resolvedId = computed(() => fieldControl.id);
+const describedBy = computed(() => fieldControl.describedBy.value);
+const isInvalid = computed(() => props.invalid === true || fieldControl.fieldInvalid.value);
 
 function onChange(event: Event): void {
   const target = event.target as HTMLSelectElement;
@@ -35,7 +38,7 @@ function onChange(event: Event): void {
 </script>
 
 <template>
-  <div class="ms-native-select-wrapper">
+  <div v-bind="rootAttrs($attrs)" class="ms-native-select-wrapper">
     <select
       :id="resolvedId"
       class="ms-native-select"
@@ -51,6 +54,7 @@ function onChange(event: Event): void {
       :name="props.name"
       :aria-invalid="isInvalid || undefined"
       :aria-describedby="describedBy"
+      v-bind="controlAttrs($attrs)"
       @change="onChange"
     >
       <option

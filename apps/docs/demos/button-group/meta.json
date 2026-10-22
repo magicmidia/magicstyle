@@ -1,0 +1,63 @@
+{
+  "intro": {
+    "pt-BR": "Agrupe botões que atuam sobre o mesmo contexto, como navegação de calendário ou opções de exportação. Para escolher uma opção entre várias, use o controle segmentado.",
+    "en-US": "Group buttons that act on the same context, such as calendar navigation or export options. To pick one option among several, use a segmented control.",
+    "es-ES": "Agrupa botones que actúan sobre el mismo contexto, como la navegación de un calendario u opciones de exportación. Para elegir una opción entre varias, usa el control segmentado."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Por padrão os botões ficam unidos pelas bordas (`attached`) na horizontal.",
+        "en-US": "By default buttons are joined at the borders (`attached`) horizontally.",
+        "es-ES": "Por defecto los botones quedan unidos por los bordes (`attached`) en horizontal."
+      }
+    },
+    {
+      "file": "Vertical",
+      "title": { "pt-BR": "Vertical", "en-US": "Vertical", "es-ES": "Vertical" },
+      "description": {
+        "pt-BR": "Use `orientation=\"vertical\"` para empilhar as ações.",
+        "en-US": "Use `orientation=\"vertical\"` to stack the actions.",
+        "es-ES": "Usa `orientation=\"vertical\"` para apilar las acciones."
+      }
+    },
+    {
+      "file": "Spaced",
+      "title": { "pt-BR": "Espaçado", "en-US": "Spaced", "es-ES": "Separado" },
+      "description": {
+        "pt-BR": "Com `:attached=\"false\"`, os botões ganham espaço entre si e mantêm o agrupamento semântico.",
+        "en-US": "With `:attached=\"false\"`, buttons get space between them while keeping the semantic grouping.",
+        "es-ES": "Con `:attached=\"false\"`, los botones se separan y mantienen la agrupación semántica."
+      }
+    },
+    {
+      "file": "FullWidth",
+      "title": { "pt-BR": "Largura total", "en-US": "Full width", "es-ES": "Ancho completo" },
+      "description": {
+        "pt-BR": "`full-width` distribui os botões igualmente pela largura do contêiner.",
+        "en-US": "`full-width` spreads the buttons evenly across the container width.",
+        "es-ES": "`full-width` reparte los botones por igual en el ancho del contenedor."
+      }
+    },
+    {
+      "file": "Toolbar",
+      "title": {
+        "pt-BR": "Barra de ferramentas",
+        "en-US": "Toolbar",
+        "es-ES": "Barra de herramientas"
+      },
+      "description": {
+        "pt-BR": "Combine grupos de `MsIconButton` e `MsButton` para montar a barra de um editor.",
+        "en-US": "Combine groups of `MsIconButton` and `MsButton` to build an editor toolbar.",
+        "es-ES": "Combina grupos de `MsIconButton` y `MsButton` para armar la barra de un editor."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O contêiner tem `role=\"group\"`; dê um nome ao grupo com `aria-label`.\n- `Tab` percorre cada botão do grupo; não há navegação por setas.\n- Cada botão mantém o próprio comportamento de teclado (`Enter` e `Espaço`).",
+    "en-US": "- The container has `role=\"group\"`; name the group with `aria-label`.\n- `Tab` moves through each button in the group; there is no arrow-key navigation.\n- Each button keeps its own keyboard behavior (`Enter` and `Space`).",
+    "es-ES": "- El contenedor tiene `role=\"group\"`; nombra el grupo con `aria-label`.\n- `Tab` recorre cada botón del grupo; no hay navegación con flechas.\n- Cada botón conserva su propio comportamiento de teclado (`Enter` y `Espacio`)."
+  }
+}

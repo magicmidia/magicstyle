@@ -7,15 +7,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ms-space-4, 16px);
-  padding: var(--ms-space-3, 12px) var(--ms-space-4, 16px);
+  gap: var(--ms-space-4);
+  padding: var(--ms-space-3) var(--ms-space-4);
   box-sizing: border-box;
   font-family: var(--ms-font-sans);
-  font-size: var(--ms-typography-size-sm, 14px);
-  line-height: var(--ms-typography-line-height-snug, 1.4);
+  font-size: var(--ms-typography-size-sm);
+  line-height: var(--ms-typography-line-height-base);
   width: 100%;
   z-index: 50;
-  transition: opacity var(--ms-motion-duration-fast, 150ms) ease;
+  transition: opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 /* Fixed positioning */
@@ -31,13 +31,13 @@
 
 .ms-banner--position-inline {
   position: relative;
-  border-radius: var(--ms-radius-md, 4px);
+  border-radius: var(--ms-radius-lg);
 }
 
 .ms-banner__content {
   display: flex;
   align-items: center;
-  gap: var(--ms-space-3, 12px);
+  gap: var(--ms-space-3);
   flex: 1;
   min-width: 0;
 }
@@ -47,7 +47,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.125rem;
+  font-size: var(--ms-typography-size-md);
+}
+
+.ms-banner__icon > svg {
+  inline-size: 16px;
+  block-size: 16px;
 }
 
 .ms-banner__text {
@@ -56,31 +61,42 @@
 }
 
 .ms-banner__title {
-  font-weight: var(--ms-typography-weight-semibold, 600);
-  margin-right: var(--ms-space-2, 8px);
+  font-weight: var(--ms-typography-weight-medium);
+  margin-inline-end: var(--ms-space-2);
 }
 
 .ms-banner__actions {
   display: flex;
   align-items: center;
-  gap: var(--ms-space-2, 8px);
+  gap: var(--ms-space-2);
   flex-shrink: 0;
 }
 
 .ms-banner__action-btn {
-  font-size: var(--ms-typography-size-xs, 12px);
-  font-weight: var(--ms-typography-weight-semibold, 600);
+  display: inline-flex;
+  align-items: center;
+  block-size: var(--ms-control-height-sm);
+  font-family: inherit;
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-medium);
   background: transparent;
-  border: 1px solid currentColor;
-  padding: 4px 10px;
-  border-radius: var(--ms-radius-sm, 2px);
+  border: var(--ms-border-hairline) solid currentColor;
+  padding: 0 12px;
+  border-radius: var(--ms-control-radius);
   cursor: pointer;
   color: inherit;
-  transition: opacity var(--ms-motion-duration-fast, 150ms) ease;
+  transition:
+    opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-banner__action-btn:hover {
-  opacity: 0.85;
+  background-color: color-mix(in oklab, currentColor 10%, transparent);
+}
+
+.ms-banner__action-btn:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
 }
 
 .ms-banner__close {
@@ -92,150 +108,102 @@
   padding: 4px;
   cursor: pointer;
   color: inherit;
-  opacity: 0.75;
-  border-radius: var(--ms-radius-sm, 2px);
+  opacity: 0.7;
+  border-radius: var(--ms-radius-sm);
   line-height: 1;
-  font-size: 1.125rem;
+  font-size: var(--ms-typography-size-md);
+  transition: opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-banner__close:hover {
   opacity: 1;
 }
 
-/* --- TONES & VARIANTS --- */
-
-/* Soft Variant (Default) */
-.ms-banner--variant-soft.ms-banner--tone-primary {
-  background-color: var(--ms-color-interactive-primary-text, #2e86de);
-  color: var(--ms-color-primary-subtle, oklch(0.93 0.05 252));
-  border-bottom: 1px solid var(--ms-color-primary-200, oklch(0.86 0.082 252));
+.ms-banner__close:focus-visible {
+  opacity: 1;
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
+}
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-banner--tone-primary {
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
+}
+.ms-banner--tone-secondary {
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
+}
+.ms-banner--tone-accent {
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
+}
+.ms-banner--tone-neutral {
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
+}
+.ms-banner--tone-info {
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
+}
+.ms-banner--tone-success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
+.ms-banner--tone-warning {
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
+}
+.ms-banner--tone-danger {
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
 }
 
-.ms-banner--variant-soft.ms-banner--tone-secondary {
-  background-color: var(--ms-color-interactive-secondary-text, #e15f41);
-  color: var(--ms-color-secondary-subtle, oklch(0.955 0.054 034));
-  border-bottom: 1px solid var(--ms-color-secondary-200, oklch(0.885 0.088 034));
+.ms-banner--variant-soft:is(
+  .ms-banner--tone-primary,
+  .ms-banner--tone-secondary,
+  .ms-banner--tone-accent,
+  .ms-banner--tone-neutral,
+  .ms-banner--tone-info,
+  .ms-banner--tone-success,
+  .ms-banner--tone-warning,
+  .ms-banner--tone-danger
+) {
+  background-color: var(--ms-tone-subtle);
+  color: var(--ms-tone-text);
+  border-bottom: var(--ms-border-hairline) solid var(--ms-tone-border);
 }
-
-.ms-banner--variant-soft.ms-banner--tone-accent {
-  background-color: var(--ms-color-interactive-accent-text, #341f97);
-  color: var(--ms-color-accent-subtle, oklch(0.945 0.06 280));
-  border-bottom: 1px solid var(--ms-color-accent-200, oklch(0.87 0.09 280));
-}
-
-.ms-banner--variant-soft.ms-banner--tone-neutral {
-  background-color: var(--ms-color-interactive-neutral-text, #222f3e);
-  color: var(--ms-color-neutral-subtle, oklch(0.947 0.007 252));
-  border-bottom: 1px solid var(--ms-color-border-default, oklch(0.825 0.014 252));
-}
-
-.ms-banner--variant-soft.ms-banner--tone-info {
-  background-color: var(--ms-color-feedback-info-text, #0abde3);
-  color: var(--ms-color-info-subtle, oklch(0.975 0.043 219));
-  border-bottom: 1px solid var(--ms-color-feedback-info-border, oklch(0.94 0.069 219));
-}
-
-.ms-banner--variant-soft.ms-banner--tone-success {
-  background-color: var(--ms-color-feedback-success-text, #10ac84);
-  color: var(--ms-color-success-subtle, oklch(0.965 0.042 168));
-  border-bottom: 1px solid var(--ms-color-feedback-success-border, oklch(0.925 0.068 168));
-}
-
-.ms-banner--variant-soft.ms-banner--tone-warning {
-  background-color: var(--ms-color-feedback-warning-text, #ff9f43);
-  color: var(--ms-color-warning-subtle, oklch(0.985 0.049 061));
-  border-bottom: 1px solid var(--ms-color-feedback-warning-border, oklch(0.925 0.114 061));
-}
-
-.ms-banner--variant-soft.ms-banner--tone-danger {
-  background-color: var(--ms-color-feedback-danger-text, #ee5253);
-  color: var(--ms-color-danger-subtle, oklch(0.94 0.061 024));
-  border-bottom: 1px solid var(--ms-color-feedback-danger-border, oklch(0.875 0.1 024));
-}
-
-/* Solid Variant */
-.ms-banner--variant-solid.ms-banner--tone-primary {
-  background-color: var(--ms-color-primary, #2e86de);
-  color: var(--ms-color-text-on-accent);
-}
-
-.ms-banner--variant-solid.ms-banner--tone-secondary {
-  background-color: var(--ms-color-secondary, #e15f41);
-  color: var(--ms-color-text-on-accent);
-}
-
-.ms-banner--variant-solid.ms-banner--tone-accent {
-  background-color: var(--ms-color-accent, #341f97);
-  color: var(--ms-color-text-on-accent);
-}
-
-.ms-banner--variant-solid.ms-banner--tone-neutral {
-  background-color: var(--ms-color-neutral, #222f3e);
-  color: var(--ms-color-text-on-accent);
-}
-
-.ms-banner--variant-solid.ms-banner--tone-info {
-  background-color: var(--ms-color-info, #0abde3);
-  color: var(--ms-color-text-on-accent);
-}
-
-.ms-banner--variant-solid.ms-banner--tone-success {
-  background-color: var(--ms-color-success, #10ac84);
-  color: var(--ms-color-text-on-accent);
-}
-
-.ms-banner--variant-solid.ms-banner--tone-warning {
-  background-color: var(--ms-color-warning, #ff9f43);
-  color: var(--ms-color-text-primary);
-}
-
-.ms-banner--variant-solid.ms-banner--tone-danger {
-  background-color: var(--ms-color-danger, #ee5253);
-  color: var(--ms-color-text-on-accent);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-banner--variant-solid:is(
+  .ms-banner--tone-primary,
+  .ms-banner--tone-secondary,
+  .ms-banner--tone-accent,
+  .ms-banner--tone-neutral,
+  .ms-banner--tone-info,
+  .ms-banner--tone-success,
+  .ms-banner--tone-warning,
+  .ms-banner--tone-danger
+) {
+  background-color: var(--ms-tone);
+  color: var(--ms-tone-content);
 }
 
 /* Outline Variant */
 .ms-banner--variant-outline {
-  background-color: var(--ms-color-surface-default, #ffffff);
-  border: 1px solid var(--ms-color-border-default);
+  background-color: var(--ms-color-surface-raised);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
 }
-
-.ms-banner--variant-outline.ms-banner--tone-primary {
-  color: var(--ms-color-primary, #2e86de);
-  border-color: var(--ms-color-primary, #2e86de);
-}
-
-.ms-banner--variant-outline.ms-banner--tone-secondary {
-  color: var(--ms-color-secondary, #e15f41);
-  border-color: var(--ms-color-secondary, #e15f41);
-}
-
-.ms-banner--variant-outline.ms-banner--tone-accent {
-  color: var(--ms-color-accent, #341f97);
-  border-color: var(--ms-color-accent, #341f97);
-}
-
-.ms-banner--variant-outline.ms-banner--tone-neutral {
-  color: var(--ms-color-neutral, #222f3e);
-  border-color: var(--ms-color-border-strong);
-}
-
-.ms-banner--variant-outline.ms-banner--tone-info {
-  color: var(--ms-color-info, #0abde3);
-  border-color: var(--ms-color-info, #0abde3);
-}
-
-.ms-banner--variant-outline.ms-banner--tone-success {
-  color: var(--ms-color-success, #10ac84);
-  border-color: var(--ms-color-success, #10ac84);
-}
-
-.ms-banner--variant-outline.ms-banner--tone-warning {
-  color: var(--ms-color-warning, #ff9f43);
-  border-color: var(--ms-color-warning, #ff9f43);
-}
-
-.ms-banner--variant-outline.ms-banner--tone-danger {
-  color: var(--ms-color-danger, #ee5253);
-  border-color: var(--ms-color-danger, #ee5253);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-banner--variant-outline:is(
+  .ms-banner--tone-primary,
+  .ms-banner--tone-secondary,
+  .ms-banner--tone-accent,
+  .ms-banner--tone-neutral,
+  .ms-banner--tone-info,
+  .ms-banner--tone-success,
+  .ms-banner--tone-warning,
+  .ms-banner--tone-danger
+) {
+  color: var(--ms-tone-text);
+  border-color: var(--ms-tone);
 }

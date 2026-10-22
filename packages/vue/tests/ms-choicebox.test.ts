@@ -6,12 +6,12 @@ import MsChoiceboxItem from "../src/components/MsChoicebox/MsChoiceboxItem.vue";
 describe("MsChoicebox", () => {
   it("renders radio group and items with correct roles", () => {
     const items = [
-      { value: "starter", title: "Iniciante", description: "Até 3 membros", price: "Grátis" },
+      { value: "starter", title: "Starter", description: "Up to 3 members", price: "Free" },
       {
         value: "pro",
-        title: "Profissional",
-        description: "Equipes em expansão",
-        price: "R$ 49/mês",
+        title: "Professional",
+        description: "Growing teams",
+        price: "$49/month",
       },
     ];
 
@@ -68,8 +68,8 @@ describe("MsChoicebox", () => {
       },
       slots: {
         default: `
-          <MsChoiceboxItem value="notifications" title="Notificações" />
-          <MsChoiceboxItem value="analytics" title="Métricas" />
+          <MsChoiceboxItem value="notifications" title="Notifications" />
+          <MsChoiceboxItem value="analytics" title="Metrics" />
         `,
       },
       global: {
@@ -97,8 +97,8 @@ describe("MsChoicebox", () => {
       },
       slots: {
         default: `
-          <MsChoiceboxItem value="option1" title="Opção 1" />
-          <MsChoiceboxItem value="option2" title="Opção 2" />
+          <MsChoiceboxItem value="option1" title="Option 1" />
+          <MsChoiceboxItem value="option2" title="Option 2" />
         `,
       },
       global: {

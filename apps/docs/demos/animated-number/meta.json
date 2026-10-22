@@ -1,0 +1,45 @@
+{
+  "intro": {
+    "pt-BR": "Anima a transição entre dois valores numéricos. Ideal para KPIs, contadores e painéis que se atualizam em tempo real.",
+    "en-US": "Animates the transition between two numeric values. Ideal for KPIs, counters and dashboards that update in real time.",
+    "es-ES": "Anima la transición entre dos valores numéricos. Ideal para KPI, contadores y paneles que se actualizan en tiempo real."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Ao mudar `value`, o número anima do valor anterior até o novo com easing suave.",
+        "en-US": "When `value` changes, the number animates from the previous value to the new one with smooth easing.",
+        "es-ES": "Al cambiar `value`, el número se anima desde el valor anterior hasta el nuevo con un easing suave."
+      }
+    },
+    {
+      "file": "Formatting",
+      "title": { "pt-BR": "Formatação", "en-US": "Formatting", "es-ES": "Formato" },
+      "description": {
+        "pt-BR": "Combine `decimals`, `prefix` e `suffix`, ou passe uma função `format` com `Intl.NumberFormat` para moeda; `duration` controla a velocidade.",
+        "en-US": "Combine `decimals`, `prefix` and `suffix`, or pass a `format` function using `Intl.NumberFormat` for currency; `duration` controls the speed.",
+        "es-ES": "Combina `decimals`, `prefix` y `suffix`, o pasa una función `format` con `Intl.NumberFormat` para moneda; `duration` controla la velocidad."
+      }
+    },
+    {
+      "file": "Dashboard",
+      "title": {
+        "pt-BR": "Painel de métricas",
+        "en-US": "Metrics dashboard",
+        "es-ES": "Panel de métricas"
+      },
+      "description": {
+        "pt-BR": "Cards de KPI que animam juntos quando o período do relatório muda.",
+        "en-US": "KPI cards that animate together when the report period changes.",
+        "es-ES": "Tarjetas de KPI que se animan juntas cuando cambia el período del informe."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O número é renderizado em um `<span>` com `aria-live=\"polite\"`, então leitores de tela anunciam o valor quando ele muda.\n- Como os quadros intermediários também alteram o texto, prefira atualizações pouco frequentes para não gerar anúncios repetidos.\n- Coloque um rótulo visível junto ao número para dar contexto ao valor.",
+    "en-US": "- The number is rendered in a `<span>` with `aria-live=\"polite\"`, so screen readers announce the value when it changes.\n- Because intermediate frames also change the text, prefer infrequent updates to avoid repeated announcements.\n- Place a visible label next to the number to give the value context.",
+    "es-ES": "- El número se renderiza en un `<span>` con `aria-live=\"polite\"`, así que los lectores de pantalla anuncian el valor cuando cambia.\n- Como los fotogramas intermedios también cambian el texto, prefiere actualizaciones poco frecuentes para evitar anuncios repetidos.\n- Coloca una etiqueta visible junto al número para dar contexto al valor."
+  }
+}

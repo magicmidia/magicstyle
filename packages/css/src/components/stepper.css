@@ -26,12 +26,31 @@
 .ms-step {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   flex: 1;
 }
 
+/* Optional step content (default slot), on its own row below the trigger */
+.ms-step__content {
+  position: relative;
+  z-index: 1;
+  flex-basis: 100%;
+  margin-block-start: var(--ms-space-2);
+  font-size: var(--ms-typography-size-sm);
+  color: var(--ms-color-text-secondary);
+}
+
+.ms-stepper--direction-vertical .ms-step__content {
+  padding-inline-start: calc(32px + var(--ms-space-3));
+}
+
+.ms-stepper--direction-horizontal .ms-step__content {
+  text-align: center;
+}
+
 .ms-stepper--direction-vertical .ms-step {
-  padding-bottom: var(--ms-space-6, 24px);
+  padding-bottom: var(--ms-space-6);
   align-items: flex-start;
 }
 
@@ -42,14 +61,14 @@
 /* Connector line */
 .ms-step__connector {
   position: absolute;
-  background-color: var(--ms-color-border-subtle);
-  transition: background-color var(--ms-transition-duration-normal, 200ms);
+  background-color: var(--ms-color-border-default);
+  transition: background-color var(--ms-motion-duration-base) var(--ms-motion-easing-standard);
 }
 
 .ms-stepper--direction-horizontal .ms-step__connector {
   top: 16px;
-  left: calc(50% + 20px);
-  right: calc(-50% + 20px);
+  inset-inline-start: calc(50% + 20px);
+  inset-inline-end: calc(-50% + 20px);
   height: 2px;
   z-index: 0;
 }
@@ -61,7 +80,7 @@
 .ms-stepper--direction-vertical .ms-step__connector {
   top: 32px;
   bottom: 0;
-  left: 15px;
+  inset-inline-start: 15px;
   width: 2px;
   z-index: 0;
 }
@@ -71,7 +90,7 @@
 }
 
 .ms-step--complete .ms-step__connector {
-  background-color: var(--ms-color-primary, #6366f1);
+  background-color: var(--ms-color-primary);
 }
 
 /* Step Trigger Button */
@@ -79,11 +98,18 @@
   all: unset;
   display: flex;
   align-items: center;
-  gap: var(--ms-space-3, 12px);
+  gap: var(--ms-space-3);
   position: relative;
   z-index: 1;
   cursor: default;
-  color: var(--ms-color-text, #0f172a);
+  border-radius: var(--ms-radius-md);
+  color: var(--ms-color-text-primary);
+  font-family: var(--ms-font-sans);
+}
+
+.ms-step__trigger:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
 }
 
 .ms-stepper--clickable .ms-step:not(.ms-step--disabled) .ms-step__trigger {
@@ -103,39 +129,48 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border-radius: var(--ms-radius-full, 9999px);
-  font-size: var(--ms-font-size-sm, 0.875rem);
-  font-weight: var(--ms-font-weight-semibold, 600);
+  border-radius: var(--ms-radius-full);
+  box-sizing: border-box;
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-medium);
+  font-variant-numeric: tabular-nums;
   background-color: var(--ms-color-surface-raised);
-  border: 2px solid var(--ms-color-border-default);
-  color: var(--ms-color-text-secondary);
-  transition: all var(--ms-transition-duration-normal, 200ms);
+  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  color: var(--ms-color-text-muted);
+  transition:
+    background-color var(--ms-motion-duration-base) var(--ms-motion-easing-standard),
+    border-color var(--ms-motion-duration-base) var(--ms-motion-easing-standard),
+    color var(--ms-motion-duration-base) var(--ms-motion-easing-standard);
   box-shadow: 0 0 0 4px var(--ms-color-surface-default);
+}
+
+.ms-step__indicator > svg {
+  inline-size: 16px;
+  block-size: 16px;
 }
 
 .ms-step--current .ms-step__indicator {
   border-color: var(--ms-color-primary);
   background-color: var(--ms-color-primary);
-  color: var(--ms-color-text-on-accent);
-  box-shadow: 0 0 0 4px var(--ms-color-primary-subtle, rgba(99, 102, 241, 0.25));
+  color: var(--ms-color-primary-content);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--ms-color-primary) 20%, transparent);
 }
 
 .ms-step--complete .ms-step__indicator {
-  border-color: var(--ms-color-primary, #6366f1);
-  background-color: var(--ms-color-primary-subtle, #eef2ff);
-  color: var(--ms-color-primary, #6366f1);
-  box-shadow: 0 0 0 3px var(--ms-color-surface-default);
+  border-color: var(--ms-color-primary);
+  background-color: var(--ms-color-primary);
+  color: var(--ms-color-primary-content);
 }
 
 .ms-step--error .ms-step__indicator {
-  border-color: var(--ms-color-danger, #ef4444);
-  background-color: var(--ms-color-danger-subtle, #fef2f2);
-  color: var(--ms-color-danger, #ef4444);
-  box-shadow: 0 0 0 4px var(--ms-color-danger-subtle, rgba(239, 68, 68, 0.2));
+  border-color: var(--ms-color-danger);
+  background-color: var(--ms-color-danger-subtle);
+  color: var(--ms-color-danger);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--ms-color-danger) 18%, transparent);
 }
 
 .ms-stepper--clickable .ms-step:not(.ms-step--disabled):hover .ms-step__indicator {
-  transform: scale(1.08);
+  border-color: var(--ms-color-primary);
 }
 
 /* Step Text Group */
@@ -146,18 +181,18 @@
 }
 
 .ms-step__title {
-  font-size: var(--ms-font-size-sm, 0.875rem);
-  font-weight: var(--ms-font-weight-semibold, 600);
-  color: var(--ms-color-text, #0f172a);
-  line-height: 1.25;
+  font-size: var(--ms-typography-size-sm);
+  font-weight: var(--ms-typography-weight-medium);
+  color: var(--ms-color-text-primary);
+  line-height: var(--ms-typography-line-height-tight);
 }
 
 .ms-step--upcoming .ms-step__title {
-  color: var(--ms-color-text-muted, #64748b);
+  color: var(--ms-color-text-muted);
 }
 
 .ms-step__subtitle {
-  font-size: var(--ms-font-size-xs, 0.75rem);
-  color: var(--ms-color-text-muted, #64748b);
-  line-height: 1.4;
+  font-size: var(--ms-typography-size-xs);
+  color: var(--ms-color-text-muted);
+  line-height: var(--ms-typography-line-height-base);
 }

@@ -1,0 +1,76 @@
+{
+  "intro": {
+    "pt-BR": "Campo de texto de uma linha para nomes, e-mails, buscas e valores curtos. Envolva com `MsField` para ganhar rótulo, ajuda e mensagem de erro acessíveis.",
+    "en-US": "Single-line text field for names, emails, searches and short values. Wrap it in `MsField` to get an accessible label, help text and error message.",
+    "es-ES": "Campo de texto de una línea para nombres, correos, búsquedas y valores cortos. Envuélvelo en `MsField` para obtener una etiqueta, ayuda y mensaje de error accesibles."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Use `v-model` para o valor; atributos nativos como `autocomplete` e `aria-label` vão direto para o `input`.",
+        "en-US": "Use `v-model` for the value; native attributes such as `autocomplete` and `aria-label` go straight to the `input`.",
+        "es-ES": "Usa `v-model` para el valor; los atributos nativos como `autocomplete` y `aria-label` pasan directamente al `input`."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": { "pt-BR": "Variantes", "en-US": "Variants", "es-ES": "Variantes" },
+      "description": {
+        "pt-BR": "`variant` alterna entre `outline`, `filled` e `flushed`; `pill` deixa as bordas totalmente arredondadas.",
+        "en-US": "`variant` switches between `outline`, `filled` and `flushed`; `pill` makes the corners fully rounded.",
+        "es-ES": "`variant` alterna entre `outline`, `filled` y `flushed`; `pill` redondea por completo los bordes."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` vai de `xs` a `xxl`; alinhe com o tamanho dos botões ao lado.",
+        "en-US": "`size` ranges from `xs` to `xxl`; match it with nearby buttons.",
+        "es-ES": "`size` va de `xs` a `xxl`; combínalo con el tamaño de los botones cercanos."
+      }
+    },
+    {
+      "file": "PrefixSuffix",
+      "title": {
+        "pt-BR": "Prefixo, sufixo e limpar",
+        "en-US": "Prefix, suffix and clear",
+        "es-ES": "Prefijo, sufijo y borrar"
+      },
+      "description": {
+        "pt-BR": "Os slots `prefix` e `suffix` mostram unidades ou domínios; `clearable` adiciona um botão para apagar o texto.",
+        "en-US": "The `prefix` and `suffix` slots show units or domains; `clearable` adds a button that clears the text.",
+        "es-ES": "Los slots `prefix` y `suffix` muestran unidades o dominios; `clearable` añade un botón para borrar el texto."
+      }
+    },
+    {
+      "file": "FloatingLabel",
+      "title": {
+        "pt-BR": "Rótulo flutuante",
+        "en-US": "Floating label",
+        "es-ES": "Etiqueta flotante"
+      },
+      "description": {
+        "pt-BR": "`floating-label` mostra o rótulo dentro do campo e o move para cima ao digitar; `password-toggle` revela a senha.",
+        "en-US": "`floating-label` shows the label inside the field and moves it up while typing; `password-toggle` reveals the password.",
+        "es-ES": "`floating-label` muestra la etiqueta dentro del campo y la sube al escribir; `password-toggle` revela la contraseña."
+      }
+    },
+    {
+      "file": "States",
+      "title": { "pt-BR": "Estados", "en-US": "States", "es-ES": "Estados" },
+      "description": {
+        "pt-BR": "`disabled`, `readonly`, `invalid` e `processing`, que mostra um indicador de carregamento e bloqueia a digitação.",
+        "en-US": "`disabled`, `readonly`, `invalid` and `processing`, which shows a spinner and blocks typing.",
+        "es-ES": "`disabled`, `readonly`, `invalid` y `processing`, que muestra un indicador de carga y bloquea la escritura."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza um `input` nativo; atributos extras (`aria-label`, `autocomplete`, `inputmode`) são repassados a ele.\n- `Tab`: move o foco para o campo e, em seguida, para os botões de limpar ou revelar senha, quando presentes.\n- Os botões de limpar e revelar senha são `button` nativos com `aria-label` localizado.\n- `invalid` (ou um `error` no `MsField`) aplica `aria-invalid=\"true\"`.\n- Sem `MsField` nem `floating-label`, informe um `aria-label`.",
+    "en-US": "- Renders a native `input`; extra attributes (`aria-label`, `autocomplete`, `inputmode`) are forwarded to it.\n- `Tab`: moves focus to the field and then to the clear or reveal-password buttons, when present.\n- The clear and reveal-password buttons are native `button` elements with a localized `aria-label`.\n- `invalid` (or an `error` on `MsField`) sets `aria-invalid=\"true\"`.\n- Without `MsField` or `floating-label`, provide an `aria-label`.",
+    "es-ES": "- Renderiza un `input` nativo; los atributos extra (`aria-label`, `autocomplete`, `inputmode`) se le reenvían.\n- `Tab`: mueve el foco al campo y luego a los botones de borrar o mostrar contraseña, si existen.\n- Los botones de borrar y mostrar contraseña son `button` nativos con `aria-label` localizado.\n- `invalid` (o un `error` en `MsField`) aplica `aria-invalid=\"true\"`.\n- Sin `MsField` ni `floating-label`, proporciona un `aria-label`."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "pt-BR": {
+    "birthday": "Data de nascimento",
+    "value": "Valor:",
+    "checkInOut": "Check-in — check-out",
+    "meeting": "Data e hora da reunião",
+    "opensAt": "Abre às",
+    "closesAt": "Fecha às",
+    "appointment": "Escolha a data da consulta",
+    "bookingWindow": "Agendamentos a partir de amanhã, com até 30 dias de antecedência.",
+    "lockedDate": "Data da nota fiscal (bloqueada)",
+    "requiredDate": "Início do contrato (obrigatório)"
+  },
+  "en-US": {
+    "birthday": "Date of birth",
+    "value": "Value:",
+    "checkInOut": "Check-in — check-out",
+    "meeting": "Meeting date and time",
+    "opensAt": "Opens at",
+    "closesAt": "Closes at",
+    "appointment": "Pick an appointment date",
+    "bookingWindow": "Bookings open from tomorrow, up to 30 days ahead.",
+    "lockedDate": "Invoice date (locked)",
+    "requiredDate": "Contract start (required)"
+  },
+  "es-ES": {
+    "birthday": "Fecha de nacimiento",
+    "value": "Valor:",
+    "checkInOut": "Entrada — salida",
+    "meeting": "Fecha y hora de la reunión",
+    "opensAt": "Abre a las",
+    "closesAt": "Cierra a las",
+    "appointment": "Elige la fecha de la cita",
+    "bookingWindow": "Reservas a partir de mañana, con hasta 30 días de antelación.",
+    "lockedDate": "Fecha de la factura (bloqueada)",
+    "requiredDate": "Inicio del contrato (obligatorio)"
+  }
+}

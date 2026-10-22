@@ -15,7 +15,7 @@ describe("MsDialog", () => {
   it("does not render when open is false", () => {
     mount(MsDialog, {
       props: { open: false },
-      slots: { default: () => "Conteúdo" },
+      slots: { default: () => "Content" },
     });
 
     expect(document.querySelector(".ms-dialog-overlay")).toBeNull();
@@ -25,10 +25,10 @@ describe("MsDialog", () => {
     mount(MsDialog, {
       props: {
         open: true,
-        title: "Confirmar Ação",
-        description: "Tem certeza que deseja prosseguir?",
+        title: "Confirm action",
+        description: "Are you sure you want to continue?",
       },
-      slots: { default: () => "Corpo do diálogo" },
+      slots: { default: () => "Dialog body" },
     });
 
     await nextTick();
@@ -41,10 +41,10 @@ describe("MsDialog", () => {
     expect(dialog?.getAttribute("aria-modal")).toBe("true");
 
     const title = document.querySelector(".ms-dialog-title");
-    expect(title?.textContent?.trim()).toBe("Confirmar Ação");
+    expect(title?.textContent?.trim()).toBe("Confirm action");
 
     const desc = document.querySelector(".ms-dialog-description");
-    expect(desc?.textContent?.trim()).toBe("Tem certeza que deseja prosseguir?");
+    expect(desc?.textContent?.trim()).toBe("Are you sure you want to continue?");
 
     const titleId = title?.getAttribute("id");
     const descId = desc?.getAttribute("id");
@@ -58,7 +58,7 @@ describe("MsDialog", () => {
         open: true,
         title: "Modal",
       },
-      slots: { default: () => "Corpo" },
+      slots: { default: () => "Body" },
     });
 
     await nextTick();

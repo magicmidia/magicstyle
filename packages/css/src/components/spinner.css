@@ -86,7 +86,7 @@
 
 /* Tones */
 .ms-spinner--primary {
-  color: var(--ms-color-interactive-accent);
+  color: var(--ms-color-primary);
 }
 
 .ms-spinner--neutral {

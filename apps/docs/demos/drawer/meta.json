@@ -1,0 +1,54 @@
+{
+  "intro": {
+    "pt-BR": "Painel modal que desliza a partir de uma borda da tela. Use para conteúdo secundário que não deve tirar o usuário do contexto, como filtros, detalhes e notificações.",
+    "en-US": "Modal panel that slides in from an edge of the screen. Use it for secondary content that should not take users out of context, such as filters, details and notifications.",
+    "es-ES": "Panel modal que se desliza desde un borde de la pantalla. Úsalo para contenido secundario que no debe sacar al usuario de contexto, como filtros, detalles y notificaciones."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Por padrão o painel abre pela direita, com título, descrição e botão de fechar.",
+        "en-US": "By default the panel opens from the right, with a title, description and close button.",
+        "es-ES": "De forma predeterminada el panel se abre por la derecha, con título, descripción y botón de cerrar."
+      }
+    },
+    {
+      "file": "Placements",
+      "title": { "pt-BR": "Lados", "en-US": "Sides", "es-ES": "Lados" },
+      "description": {
+        "pt-BR": "`placement` aceita `left`, `right`, `top` e `bottom`.",
+        "en-US": "`placement` accepts `left`, `right`, `top` and `bottom`.",
+        "es-ES": "`placement` acepta `left`, `right`, `top` y `bottom`."
+      }
+    },
+    {
+      "file": "Filters",
+      "title": {
+        "pt-BR": "Painel de filtros",
+        "en-US": "Filter panel",
+        "es-ES": "Panel de filtros"
+      },
+      "description": {
+        "pt-BR": "Um formulário no corpo com as ações no slot `footer`, que fica fixo na base do painel.",
+        "en-US": "A form in the body with the actions in the `footer` slot, pinned to the bottom of the panel.",
+        "es-ES": "Un formulario en el cuerpo con las acciones en el slot `footer`, fijo en la parte inferior del panel."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` vai de `sm` a `xl`, além de `full` para ocupar a tela inteira.",
+        "en-US": "`size` goes from `sm` to `xl`, plus `full` to cover the whole screen.",
+        "es-ES": "`size` va de `sm` a `xl`, además de `full` para ocupar toda la pantalla."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza `role=\"dialog\"` com `aria-modal=\"true\"`; `aria-labelledby` e `aria-describedby` apontam para o título e a descrição.\n- Ao abrir, o foco fica preso no painel e a rolagem da página é bloqueada.\n- `Tab` / `Shift+Tab`: circulam entre os elementos focáveis do painel.\n- `Esc`: fecha (desative com `close-on-escape=\"false\"`).\n- O botão de fechar tem rótulo acessível traduzido; ao fechar, o foco volta ao elemento que abriu o painel.",
+    "en-US": "- Renders `role=\"dialog\"` with `aria-modal=\"true\"`; `aria-labelledby` and `aria-describedby` point at the title and description.\n- On open, focus is trapped inside the panel and page scrolling is locked.\n- `Tab` / `Shift+Tab`: cycle through the focusable elements of the panel.\n- `Esc`: closes (disable with `close-on-escape=\"false\"`).\n- The close button has a translated accessible label; on close, focus returns to the element that opened the panel.",
+    "es-ES": "- Renderiza `role=\"dialog\"` con `aria-modal=\"true\"`; `aria-labelledby` y `aria-describedby` apuntan al título y a la descripción.\n- Al abrirse, el foco queda atrapado en el panel y el desplazamiento de la página se bloquea.\n- `Tab` / `Shift+Tab`: recorren los elementos enfocables del panel.\n- `Esc`: cierra (desactívalo con `close-on-escape=\"false\"`).\n- El botón de cerrar tiene una etiqueta accesible traducida; al cerrarse, el foco vuelve al elemento que abrió el panel."
+  }
+}

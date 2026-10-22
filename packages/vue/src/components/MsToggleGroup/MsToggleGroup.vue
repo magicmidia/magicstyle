@@ -53,6 +53,11 @@ const classes = computed(() => [
   `ms-toggle-group--${props.variant}`,
   `ms-toggle-group--${props.size}`,
 ]);
+
+defineSlots<{
+  /** `MsToggleGroupItem` children; replaces the items rendered from `items`. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

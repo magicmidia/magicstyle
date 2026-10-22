@@ -1,0 +1,13 @@
+{
+  "demos": [
+    {
+      "file": "Block",
+      "title": { "pt-BR": "Login", "en-US": "Login", "es-ES": "Inicio de sesión" },
+      "description": {
+        "pt-BR": "Cartão de login centralizado com e-mail, senha, lembrar de mim, login social e link de cadastro.",
+        "en-US": "Centered sign-in card with email, password, remember me, social sign-in and a sign-up link.",
+        "es-ES": "Tarjeta de inicio de sesión centrada con correo, contraseña, recordarme, acceso social y enlace de registro."
+      }
+    }
+  ]
+}

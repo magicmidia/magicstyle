@@ -14,26 +14,48 @@ const props = withDefaults(defineProps<MsCardProps>(), {
   orientation: "vertical",
   headerDivider: false,
   footerDivider: false,
+  as: "div",
 });
 
 const emit = defineEmits<{
+  /** Click (or Enter/Space) on an `interactive` card, or click on an `href` link card. */
   click: [event: MouseEvent];
 }>();
 
 defineSlots<{
+  /** Card body. */
   default?(): unknown;
+  /** Replaces the whole header (title, description and actions). */
   header?(): unknown;
+  /** Rich title; replaces the `title` prop. */
   title?(): unknown;
+  /** Rich description; replaces the `description` prop. */
   description?(): unknown;
+  /** Header actions, beside the title. */
   actions?(): unknown;
+  /** Footer below the body. */
   footer?(): unknown;
+  /** Cover media above the header; replaces the `coverSrc` image. */
   cover?(): unknown;
 }>();
 
+/** Link cards are native anchors; button semantics would be redundant and conflicting. */
+const isLink = computed(() => Boolean(props.href));
+const isInteractive = computed(() => props.interactive && !isLink.value);
+const tag = computed(() => (isLink.value ? "a" : props.as));
+
 function onClick(event: MouseEvent): void {
-  if (props.interactive) {
+  if (isInteractive.value || isLink.value) {
     emit("click", event);
   }
+}
+
+/** Interactive cards are focusable, so Enter/Space must activate them like a click. */
+function onKeydown(event: KeyboardEvent): void {
+  if (!isInteractive.value || event.target !== event.currentTarget) return;
+  if (event.key !== "Enter" && event.key !== " ") return;
+  event.preventDefault();
+  emit("click", event as unknown as MouseEvent);
 }
 
 const cardClasses = computed(() =>
@@ -48,18 +70,22 @@ const cardClasses = computed(() =>
 </script>
 
 <template>
-  <div
+  <component
+    :is="tag"
     :class="cardClasses"
+    v-bind="isLink ? { href: props.href } : {}"
     :data-variant="props.variant"
     :data-padding="props.padding"
     :data-tone="props.tone"
-    :data-interactive="props.interactive || undefined"
+    :data-interactive="isInteractive || undefined"
+    :data-link="isLink || undefined"
     :data-hoverable="props.hoverable || undefined"
     :data-orientation="props.orientation !== 'vertical' ? props.orientation : undefined"
     :data-header-divider="props.headerDivider || undefined"
     :data-footer-divider="props.footerDivider || undefined"
-    :tabindex="props.interactive ? 0 : undefined"
+    :tabindex="isInteractive ? 0 : undefined"
     @click="onClick"
+    @keydown="onKeydown"
   >
     <!-- Cover Media -->
     <div v-if="$slots.cover || props.coverSrc" class="ms-card__cover">
@@ -104,5 +130,5 @@ const cardClasses = computed(() =>
         <slot name="footer" />
       </div>
     </div>
-  </div>
+  </component>
 </template>

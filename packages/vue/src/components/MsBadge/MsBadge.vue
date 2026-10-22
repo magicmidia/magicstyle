@@ -7,7 +7,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<MsBadgeProps>(), {
-  variant: "soft",
+  variant: "solid",
   tone: "primary",
   size: "md",
   pill: false,
@@ -17,6 +17,7 @@ const props = withDefaults(defineProps<MsBadgeProps>(), {
   dotOnly: false,
   pulse: false,
   bordered: false,
+  as: "span",
 });
 
 const slots = useSlots();
@@ -55,6 +56,11 @@ const badgeClasses = computed(() =>
     props.placement ? `ms-badge--placement-${props.placement}` : null,
   ].filter(Boolean),
 );
+
+defineSlots<{
+  /** Badge label (defaults to the formatted `count`). With `placement`, the slot is the wrapped element and the badge is positioned on its corner. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>
@@ -76,7 +82,8 @@ const badgeClasses = computed(() =>
     </span>
   </span>
 
-  <span
+  <component
+    :is="props.as"
     v-else-if="shouldRenderBadge"
     :class="badgeClasses"
     :data-variant="props.variant"
@@ -89,5 +96,5 @@ const badgeClasses = computed(() =>
   >
     <span v-if="props.dot && !props.dotOnly" class="ms-badge-dot" aria-hidden="true" />
     <slot>{{ displayContent }}</slot>
-  </span>
+  </component>
 </template>

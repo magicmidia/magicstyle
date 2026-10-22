@@ -1,0 +1,67 @@
+{
+  "intro": {
+    "pt-BR": "Mostra o andamento de uma tarefa com valor conhecido, ou uma animação contínua quando a duração é desconhecida.",
+    "en-US": "Shows the progress of a task with a known value, or a continuous animation when the duration is unknown.",
+    "es-ES": "Muestra el avance de una tarea con valor conocido, o una animación continua cuando la duración es desconocida."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "`label` descreve a tarefa e `show-value` exibe o percentual ao lado.",
+        "en-US": "`label` describes the task and `show-value` shows the percentage next to it.",
+        "es-ES": "`label` describe la tarea y `show-value` muestra el porcentaje al lado."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "`tone` aceita `primary`, `accent`, `neutral`, `success`, `warning` e `danger`; `gradient` aplica um degradê na barra.",
+        "en-US": "`tone` accepts `primary`, `accent`, `neutral`, `success`, `warning` and `danger`; `gradient` applies a gradient to the bar.",
+        "es-ES": "`tone` acepta `primary`, `accent`, `neutral`, `success`, `warning` y `danger`; `gradient` aplica un degradado a la barra."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` vai de `2xs` (2px) a `2xl` (24px); nos maiores, `inline-value` mostra o percentual dentro da barra.",
+        "en-US": "`size` goes from `2xs` (2px) to `2xl` (24px); on the larger ones, `inline-value` shows the percentage inside the bar.",
+        "es-ES": "`size` va de `2xs` (2px) a `2xl` (24px); en los más grandes, `inline-value` muestra el porcentaje dentro de la barra."
+      }
+    },
+    {
+      "file": "Indeterminate",
+      "title": {
+        "pt-BR": "Indeterminado e listrado",
+        "en-US": "Indeterminate and striped",
+        "es-ES": "Indeterminado y rayado"
+      },
+      "description": {
+        "pt-BR": "`indeterminate` anima a barra sem valor; `striped` com `animated` indica atividade em andamento.",
+        "en-US": "`indeterminate` animates the bar without a value; `striped` with `animated` signals ongoing activity.",
+        "es-ES": "`indeterminate` anima la barra sin valor; `striped` con `animated` indica actividad en curso."
+      }
+    },
+    {
+      "file": "Upload",
+      "title": {
+        "pt-BR": "Envio de arquivo",
+        "en-US": "File upload",
+        "es-ES": "Subida de archivo"
+      },
+      "description": {
+        "pt-BR": "Atualize `model-value` conforme a tarefa avança e troque o tom ao concluir.",
+        "en-US": "Update `model-value` as the task advances and switch the tone when it finishes.",
+        "es-ES": "Actualiza `model-value` a medida que avanza la tarea y cambia el tono al terminar."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- A trilha usa `role=\"progressbar\"` com `aria-valuemin`, `aria-valuemax`, `aria-valuenow` e `aria-valuetext` (percentual).\n- `label` vira o `aria-label` da barra; sem ele, a barra fica sem nome acessível.\n- No modo indeterminado, `aria-valuenow` é omitido e `aria-valuetext` anuncia o texto traduzido de carregamento.",
+    "en-US": "- The track uses `role=\"progressbar\"` with `aria-valuemin`, `aria-valuemax`, `aria-valuenow` and `aria-valuetext` (percentage).\n- `label` becomes the bar's `aria-label`; without it the bar has no accessible name.\n- In indeterminate mode `aria-valuenow` is omitted and `aria-valuetext` announces the translated loading text.",
+    "es-ES": "- La pista usa `role=\"progressbar\"` con `aria-valuemin`, `aria-valuemax`, `aria-valuenow` y `aria-valuetext` (porcentaje).\n- `label` se convierte en el `aria-label` de la barra; sin él, la barra no tiene nombre accesible.\n- En modo indeterminado se omite `aria-valuenow` y `aria-valuetext` anuncia el texto traducido de carga."
+  }
+}

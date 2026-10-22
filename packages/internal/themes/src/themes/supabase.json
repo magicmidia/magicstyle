@@ -1,0 +1,73 @@
+{
+  "$schema": "../theme.schema.json",
+  "name": "supabase",
+  "label": "Supabase",
+  "description": "Developer platform aesthetic inspired by Supabase. Dark emerald neon accents, modern dark slate surfaces, and clean dashboard typography.",
+  "shared": {
+    "radius-selector": "4px",
+    "radius-field": "6px",
+    "radius-box": "8px",
+    "border-width": "1px",
+    "depth": "1",
+    "font-sans": "Custom Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+    "font-mono": "IBM Plex Mono, Cascadia Mono, ui-monospace, monospace"
+  },
+  "light": {
+    "color-base-100": "#f8faf9",
+    "color-base-200": "#f0f4f1",
+    "color-base-300": "#d1d5db",
+    "color-base-content": "#171717",
+    "color-base-raised": "#ffffff",
+    "color-primary": "#24b47e",
+    "color-primary-content": "#11181c",
+    "color-secondary": "oklch(0.645 0.169 034)",
+    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-accent": "#3ecf8e",
+    "color-accent-content": "#11181c",
+    "color-neutral": "#f3f4f6",
+    "color-neutral-content": "#171717",
+    "color-info": "oklch(0.738 0.133 219)",
+    "color-info-content": "oklch(0.170 0.020 252)",
+    "color-success": "oklch(0.663 0.131 168)",
+    "color-success-content": "oklch(0.170 0.020 252)",
+    "color-warning": "oklch(0.785 0.154 061)",
+    "color-warning-content": "oklch(0.170 0.020 252)",
+    "color-danger": "oklch(0.545 0.188 024)",
+    "color-danger-content": "oklch(1.000 0.003 252)"
+  },
+  "dark": {
+    "color-base-100": "#171717",
+    "color-base-200": "#111111",
+    "color-base-300": "#2e2e2e",
+    "color-base-content": "#ededed",
+    "color-base-raised": "#1f1f1f",
+    "color-primary": "#3ecf8e",
+    "color-primary-content": "#000000",
+    "color-secondary": "oklch(0.715 0.152 034)",
+    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-accent": "#3ecf8e",
+    "color-accent-content": "#000000",
+    "color-neutral": "#262626",
+    "color-neutral-content": "#ededed",
+    "color-info": "oklch(0.738 0.133 219)",
+    "color-info-content": "oklch(0.170 0.020 252)",
+    "color-success": "oklch(0.663 0.131 168)",
+    "color-success-content": "oklch(0.170 0.020 252)",
+    "color-warning": "oklch(0.785 0.154 061)",
+    "color-warning-content": "oklch(0.170 0.020 252)",
+    "color-danger": "oklch(0.545 0.188 024)",
+    "color-danger-content": "oklch(1.000 0.003 252)"
+  },
+  "extras": {
+    "light": {
+      "elevation-button": "0px 1px 2px 0px rgba(0, 0, 0, 0.1)",
+      "elevation-card": "0px 2px 6px 0px rgba(0, 0, 0, 0.08)",
+      "focus-ring-width": "2px"
+    },
+    "dark": {
+      "elevation-button": "0px 1px 2px 0px rgba(0, 0, 0, 0.4)",
+      "elevation-card": "0px 2px 6px 0px rgba(0, 0, 0, 0.35)",
+      "focus-ring-width": "2px"
+    }
+  }
+}

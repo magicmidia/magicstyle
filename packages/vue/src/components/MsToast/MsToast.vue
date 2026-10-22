@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { computed, onMounted, onBeforeUnmount } from "vue";
 import type { MsToastProps, MsToastEmits } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
-const props = defineProps<MsToastProps>();
+const props = withDefaults(defineProps<MsToastProps>(), { announce: true });
 const emit = defineEmits<MsToastEmits>();
+
+const t = useMsMessages();
 
 let timer: ReturnType<typeof setTimeout> | null = null;
 let remaining = props.toast.duration;
@@ -16,6 +19,8 @@ const defaultIcons: Record<string, string> = {
   danger: "🚫",
   primary: "✨",
   neutral: "💬",
+  secondary: "ℹ️",
+  accent: "ℹ️",
 };
 
 const toastClasses = computed(() => ["ms-toast", `ms-toast--tone-${props.toast.tone}`]);
@@ -57,11 +62,12 @@ onBeforeUnmount(() => {
 <template>
   <div
     :class="toastClasses"
-    role="status"
-    aria-live="polite"
+    :role="props.announce ? (props.toast.tone === 'danger' ? 'alert' : 'status') : undefined"
     data-ms-toast
     @mouseenter="pauseTimer"
     @mouseleave="resumeTimer"
+    @focusin="pauseTimer"
+    @focusout="resumeTimer"
   >
     <span class="ms-toast__icon" aria-hidden="true">
       {{ defaultIcons[props.toast.tone] }}
@@ -80,7 +86,7 @@ onBeforeUnmount(() => {
       v-if="props.toast.dismissible"
       type="button"
       class="ms-toast__close"
-      aria-label="Fechar notificação"
+      :aria-label="t.toast.dismiss"
       @click="handleDismiss"
     >
       ✕

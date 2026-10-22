@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<MsButtonGroupProps>(), {
 });
 
 defineSlots<{
+  /** `MsButton` children, rendered inside a `role="group"` container. */
   default?(): unknown;
 }>();
 

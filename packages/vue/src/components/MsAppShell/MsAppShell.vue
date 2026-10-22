@@ -4,17 +4,18 @@ import { type MsAppShellProps, type MsAppShellEmits, MS_APP_SHELL_KEY } from "./
 
 const props = withDefaults(defineProps<MsAppShellProps>(), {
   fullHeight: true,
-  sidebarCollapsed: false,
+  // undefined (not false) so the shell is uncontrolled when v-model is not used.
+  sidebarCollapsed: undefined,
 });
 
 const emit = defineEmits<MsAppShellEmits>();
 
-const internalCollapsed = ref(props.sidebarCollapsed);
+const internalCollapsed = ref(props.sidebarCollapsed ?? false);
 
 watch(
   () => props.sidebarCollapsed,
   (newVal) => {
-    internalCollapsed.value = newVal ?? false;
+    if (typeof newVal === "boolean") internalCollapsed.value = newVal;
   },
 );
 
@@ -41,6 +42,23 @@ const classes = computed(() => [
     "ms-app-shell--full-height": props.fullHeight,
   },
 ]);
+
+defineSlots<{
+  /** Main region, between the sidebar and the aside (typically `MsContent`). */
+  default?(): unknown;
+  /** Top bar above the body (typically `MsTopbar`). */
+  topbar?(): unknown;
+  /** Navigation rail at the start of the body (typically `MsNavigationRail`). */
+  rail?(): unknown;
+  /** Sidebar after the rail (typically `MsSidebar`); reads the shell's collapse state. */
+  sidebar?(): unknown;
+  /** Secondary column at the end of the body (typically `MsAside`). */
+  aside?(): unknown;
+  /** Footer below the body (typically `MsAppShellFooter`). */
+  footer?(): unknown;
+  /** Status bar at the very bottom (typically `MsStatusBar`). */
+  statusbar?(): unknown;
+}>();
 </script>
 
 <template>

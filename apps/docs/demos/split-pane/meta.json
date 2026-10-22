@@ -1,0 +1,54 @@
+{
+  "intro": {
+    "pt-BR": "`MsSplitPane` divide uma área em dois painéis redimensionáveis por arraste ou teclado. Ele ocupa 100% da altura do pai, então dê uma altura ao contêiner.",
+    "en-US": "`MsSplitPane` splits an area into two panels resizable by dragging or keyboard. It takes 100% of its parent's height, so give the container a height.",
+    "es-ES": "`MsSplitPane` divide un área en dos paneles redimensionables arrastrando o con el teclado. Ocupa el 100 % de la altura del padre, así que da una altura al contenedor."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Os slots `first` e `second` recebem os painéis; arraste o divisor para redimensionar.",
+        "en-US": "The `first` and `second` slots hold the panels; drag the divider to resize.",
+        "es-ES": "Los slots `first` y `second` contienen los paneles; arrastra el divisor para redimensionar."
+      }
+    },
+    {
+      "file": "Vertical",
+      "title": { "pt-BR": "Vertical", "en-US": "Vertical", "es-ES": "Vertical" },
+      "description": {
+        "pt-BR": "`direction=\"vertical\"` empilha os painéis; `split` define a porcentagem inicial do primeiro.",
+        "en-US": "`direction=\"vertical\"` stacks the panels; `split` sets the first panel's initial percentage.",
+        "es-ES": "`direction=\"vertical\"` apila los paneles; `split` define el porcentaje inicial del primero."
+      }
+    },
+    {
+      "file": "Controlled",
+      "title": {
+        "pt-BR": "Controlado com limites",
+        "en-US": "Controlled with limits",
+        "es-ES": "Controlado con límites"
+      },
+      "description": {
+        "pt-BR": "`v-model:split` sincroniza a posição com botões externos; `min` e `max` limitam o arraste em porcentagem.",
+        "en-US": "`v-model:split` syncs the position with external buttons; `min` and `max` bound dragging as percentages.",
+        "es-ES": "`v-model:split` sincroniza la posición con botones externos; `min` y `max` limitan el arrastre en porcentaje."
+      }
+    },
+    {
+      "file": "Nested",
+      "title": { "pt-BR": "Aninhado", "en-US": "Nested", "es-ES": "Anidado" },
+      "description": {
+        "pt-BR": "Um split vertical dentro do segundo painel monta o layout clássico de IDE: arquivos, editor e terminal.",
+        "en-US": "A vertical split inside the second panel builds the classic IDE layout: files, editor and terminal.",
+        "es-ES": "Un split vertical dentro del segundo panel arma el diseño clásico de IDE: archivos, editor y terminal."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O divisor segue o padrão APG de separador de janela: `role=\"separator\"`, `tabindex=\"0\"`, `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-orientation` e `aria-label` vindo das mensagens da biblioteca.\n- `Seta esquerda` / `Seta direita` (horizontal) ou `Seta para cima` / `Seta para baixo` (vertical): move 1%; com `Shift`, 10%. Em RTL, as setas horizontais se invertem.\n- `Home` / `End`: vai para `min` ou `max`.",
+    "en-US": "- The divider follows the APG window splitter pattern: `role=\"separator\"`, `tabindex=\"0\"`, `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-orientation` and an `aria-label` from the library messages.\n- `ArrowLeft` / `ArrowRight` (horizontal) or `ArrowUp` / `ArrowDown` (vertical): move 1%; with `Shift`, 10%. In RTL, horizontal arrows are reversed.\n- `Home` / `End`: jump to `min` or `max`.",
+    "es-ES": "- El divisor sigue el patrón APG de separador de ventana: `role=\"separator\"`, `tabindex=\"0\"`, `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-orientation` y un `aria-label` de los mensajes de la biblioteca.\n- `Flecha izquierda` / `Flecha derecha` (horizontal) o `Flecha arriba` / `Flecha abajo` (vertical): mueve un 1 %; con `Shift`, un 10 %. En RTL, las flechas horizontales se invierten.\n- `Inicio` / `Fin`: salta a `min` o `max`."
+  }
+}

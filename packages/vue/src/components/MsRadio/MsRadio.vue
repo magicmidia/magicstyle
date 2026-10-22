@@ -4,17 +4,26 @@ import { useMsId } from "../../composables/use-ms-id.ts";
 import type { MsRadioGroupContext, MsRadioSize, MsRadioTone } from "../MsRadioGroup/types.ts";
 
 const props = defineProps<{
+  /** Value emitted to the parent `MsRadioGroup` when this radio is chosen. */
   value: unknown;
+  /** Label text (the default slot can replace it). */
   label?: string;
+  /** Secondary text below the label. */
   description?: string;
+  /** Disables this radio (the group's `disabled` also applies). */
   disabled?: boolean;
+  /** Size scale; falls back to the group's `size`, then "md". */
   size?: MsRadioSize;
+  /** Checked color; falls back to the group's `tone`, then "primary". */
   tone?: MsRadioTone;
+  /** Card layout (bordered, whole card clickable); falls back to the group's `card`. */
   card?: boolean;
 }>();
 
 defineSlots<{
+  /** Rich label; replaces `label`. */
   default?(): unknown;
+  /** Rich description; replaces `description`. */
   description?(): unknown;
 }>();
 

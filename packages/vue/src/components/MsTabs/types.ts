@@ -17,9 +17,9 @@ export interface MsTabsProps {
   defaultValue?: string | number;
 
   /**
-   * Visual variant:
-   * - "line": subtle border with colored active indicator bar.
-   * - "pill": segmented capsule background for active tab.
+   * Visual variant. @default "pill"
+   * - "pill": shadcn segmented list — sunken track with a raised active trigger (default).
+   * - "line": underline — subtle border with colored active indicator bar.
    * - "enclosed": folder-like tab cards.
    * - "solid": filled high-contrast segmented container.
    */
@@ -59,13 +59,24 @@ export interface MsTabsProps {
 }
 
 export interface MsTabsEmits {
+  /** Fires when a tab is activated (click, or arrow keys with `activationMode: "automatic"`); payload is the tab `value`. */
   (e: "update:modelValue", value: string | number): void;
+  /** Fires alongside `update:modelValue` with the same value. */
   (e: "change", value: string | number): void;
 }
 
 export interface MsTabListProps {
+  /** Accessible name of the `role="tablist"` (e.g. "Account settings"). */
   ariaLabel?: string;
+  /**
+   * Scrolls horizontally when tabs overflow. Falls back to the parent `MsTabs` value,
+   * then true.
+   */
   scrollable?: boolean;
+  /**
+   * Shows previous/next arrow buttons while the list overflows (never in vertical
+   * orientation). Falls back to the parent `MsTabs` value, then true.
+   */
   showArrows?: boolean;
 }
 
@@ -82,6 +93,7 @@ export interface MsTabProps {
 }
 
 export interface MsTabPanelsProps {
+  /** Element tag of the panels container. @default "div" */
   as?: string;
 }
 
@@ -118,6 +130,11 @@ export interface MsTabsContext {
   registerTab: (item: TabRegistryItem) => void;
   unregisterTab: (value: string | number) => void;
   updateTabElement: (value: string | number, el: HTMLElement | null, disabled: boolean) => void;
+  /** Panels register after mount so tabs only point `aria-controls` at panels that exist. */
+  registerPanel?: (value: string | number, lazy: boolean) => void;
+  unregisterPanel?: (value: string | number) => void;
+  /** True when the panel for `value` is in the DOM (lazy panels only while selected). */
+  hasPanel?: (value: string | number) => boolean;
   onKeyDown: (event: KeyboardEvent, currentValue: string | number) => void;
 }
 

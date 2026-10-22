@@ -1,0 +1,41 @@
+{
+  "pt-BR": {
+    "basicBefore": "Este site foi construído com",
+    "basicAfter": "e passe o cursor ou foque o link para ver a prévia.",
+    "vueTitle": "Introdução | Vue.js",
+    "vueDescription": "O framework progressivo de JavaScript para construir interfaces web.",
+    "docsBadge": "Docs",
+    "vitepressDescription": "Gerador de sites estáticos com Vite e Vue.",
+    "loadingBefore": "Antes de publicar, revise o",
+    "loadingLabel": "guia de ARIA da MDN",
+    "loadingAfter": "para conferir papéis e estados.",
+    "mdnTitle": "ARIA - Acessibilidade | MDN",
+    "mdnDescription": "Accessible Rich Internet Applications: atributos que tornam conteúdo web mais acessível."
+  },
+  "en-US": {
+    "basicBefore": "This site was built with",
+    "basicAfter": "and you can hover or focus the link to see its preview.",
+    "vueTitle": "Introduction | Vue.js",
+    "vueDescription": "The progressive JavaScript framework for building web user interfaces.",
+    "docsBadge": "Docs",
+    "vitepressDescription": "Static site generator powered by Vite and Vue.",
+    "loadingBefore": "Before shipping, review the",
+    "loadingLabel": "MDN ARIA guide",
+    "loadingAfter": "to double-check roles and states.",
+    "mdnTitle": "ARIA - Accessibility | MDN",
+    "mdnDescription": "Accessible Rich Internet Applications: attributes that make web content more accessible."
+  },
+  "es-ES": {
+    "basicBefore": "Este sitio se construyó con",
+    "basicAfter": "y puedes pasar el cursor o enfocar el enlace para ver la vista previa.",
+    "vueTitle": "Introducción | Vue.js",
+    "vueDescription": "El framework progresivo de JavaScript para construir interfaces web.",
+    "docsBadge": "Docs",
+    "vitepressDescription": "Generador de sitios estáticos con Vite y Vue.",
+    "loadingBefore": "Antes de publicar, revisa la",
+    "loadingLabel": "guía de ARIA de MDN",
+    "loadingAfter": "para comprobar roles y estados.",
+    "mdnTitle": "ARIA - Accesibilidad | MDN",
+    "mdnDescription": "Accessible Rich Internet Applications: atributos que hacen el contenido web más accesible."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "pt-BR": {
+    "syncing": "Sincronizando caixa de entrada",
+    "syncingInbox": "Sincronizando caixa de entrada…",
+    "saving": "Salvando"
+  },
+  "en-US": {
+    "syncing": "Syncing inbox",
+    "syncingInbox": "Syncing inbox…",
+    "saving": "Saving"
+  },
+  "es-ES": {
+    "syncing": "Sincronizando bandeja de entrada",
+    "syncingInbox": "Sincronizando bandeja de entrada…",
+    "saving": "Guardando"
+  }
+}

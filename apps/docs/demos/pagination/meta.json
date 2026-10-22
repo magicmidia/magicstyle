@@ -1,0 +1,76 @@
+{
+  "intro": {
+    "pt-BR": "Use a paginação para dividir listas longas em páginas. O componente é controlado: guarde a página em `v-model:current-page`.",
+    "en-US": "Use pagination to split long lists into pages. The component is controlled: keep the page in `v-model:current-page`.",
+    "es-ES": "Usa la paginación para dividir listas largas en páginas. El componente es controlado: guarda la página en `v-model:current-page`."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Informe `total` de itens; o número de páginas sai de `page-size` (10 por padrão) e o total aparece à esquerda.",
+        "en-US": "Pass the item `total`; the page count comes from `page-size` (10 by default) and the total shows on the left.",
+        "es-ES": "Indica el `total` de ítems; el número de páginas sale de `page-size` (10 por defecto) y el total aparece a la izquierda."
+      }
+    },
+    {
+      "file": "Jumper",
+      "title": { "pt-BR": "Ir para página", "en-US": "Jump to page", "es-ES": "Ir a la página" },
+      "description": {
+        "pt-BR": "`show-jumper` adiciona um campo numérico; digite a página e pressione `Enter`.",
+        "en-US": "`show-jumper` adds a number field; type a page and press `Enter`.",
+        "es-ES": "`show-jumper` añade un campo numérico; escribe la página y pulsa `Enter`."
+      }
+    },
+    {
+      "file": "Siblings",
+      "title": {
+        "pt-BR": "Vizinhos e extremos",
+        "en-US": "Siblings and edges",
+        "es-ES": "Vecinos y extremos"
+      },
+      "description": {
+        "pt-BR": "`sibling-count` define quantas páginas aparecem ao redor da atual; `:show-edges=\"false\"` esconde os botões de primeira e última página.",
+        "en-US": "`sibling-count` sets how many pages show around the current one; `:show-edges=\"false\"` hides the first and last page buttons.",
+        "es-ES": "`sibling-count` define cuántas páginas se muestran alrededor de la actual; `:show-edges=\"false\"` oculta los botones de primera y última página."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md` e `lg`.",
+        "en-US": "`size` accepts `sm`, `md` and `lg`.",
+        "es-ES": "`size` acepta `sm`, `md` y `lg`."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": { "pt-BR": "Desabilitado", "en-US": "Disabled", "es-ES": "Deshabilitado" },
+      "description": {
+        "pt-BR": "`disabled` bloqueia a navegação, por exemplo enquanto a próxima página carrega.",
+        "en-US": "`disabled` blocks navigation, for example while the next page is loading.",
+        "es-ES": "`disabled` bloquea la navegación, por ejemplo mientras carga la página siguiente."
+      }
+    },
+    {
+      "file": "Table",
+      "title": {
+        "pt-BR": "Lista de faturas",
+        "en-US": "Invoice list",
+        "es-ES": "Lista de facturas"
+      },
+      "description": {
+        "pt-BR": "Fatie os dados com a página atual e o `page-size` escolhido num seletor; ao trocar o tamanho, volte para a página 1.",
+        "en-US": "Slice the data with the current page and a `page-size` picked in a select; when the size changes, go back to page 1.",
+        "es-ES": "Recorta los datos con la página actual y un `page-size` elegido en un selector; al cambiar el tamaño, vuelve a la página 1."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza `<nav>` com `aria-label` vindo das mensagens da biblioteca; a página atual recebe `aria-current=\"page\"`.\n- Os botões de primeira, anterior, próxima e última página têm `aria-label` e `title`.\n- As reticências têm `aria-hidden=\"true\"`.\n- `Tab`: percorre os botões; `Enter` ou `Espaço` muda de página.\n- No campo de ir para página, `Enter` confirma.",
+    "en-US": "- Renders a `<nav>` with an `aria-label` from the library messages; the current page gets `aria-current=\"page\"`.\n- First, previous, next and last buttons have `aria-label` and `title`.\n- Ellipses are `aria-hidden=\"true\"`.\n- `Tab`: moves through the buttons; `Enter` or `Space` changes page.\n- In the jump field, `Enter` confirms.",
+    "es-ES": "- Renderiza un `<nav>` con un `aria-label` de los mensajes de la biblioteca; la página actual recibe `aria-current=\"page\"`.\n- Los botones de primera, anterior, siguiente y última página tienen `aria-label` y `title`.\n- Los puntos suspensivos son `aria-hidden=\"true\"`.\n- `Tab`: recorre los botones; `Enter` o `Espacio` cambia de página.\n- En el campo de ir a página, `Enter` confirma."
+  }
+}

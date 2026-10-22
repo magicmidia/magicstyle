@@ -9,6 +9,7 @@ const props = withDefaults(defineProps<MsStatusProps>(), {
 });
 
 defineSlots<{
+  /** Rich label next to the indicator dot; replaces the `label` prop. */
   default?(): unknown;
 }>();
 

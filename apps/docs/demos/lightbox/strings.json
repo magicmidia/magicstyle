@@ -1,0 +1,50 @@
+{
+  "pt-BR": {
+    "day1": "Dia 1 · Chegada ao vale",
+    "day1Caption": "Primeira parada da viagem, logo depois do nascer do sol.",
+    "day2": "Dia 2 · Trilha das pedras",
+    "day2Caption": "Doze quilômetros de subida até o mirante principal.",
+    "day3": "Dia 3 · Acampamento",
+    "day3Caption": "Noite de céu limpo, 4 °C na madrugada.",
+    "day4": "Dia 4 · Cachoeira",
+    "day4Caption": "Último banho gelado antes de voltar para a cidade.",
+    "viewCover": "Ver capa em tamanho real",
+    "coverTitle": "Capa da edição de outubro",
+    "coverCaption": "Fotografia de Tomás Andrade para a revista Horizonte.",
+    "coverAlt": "Foto de paisagem usada na capa da revista Horizonte de outubro",
+    "resume": "Continuar de onde parei",
+    "lastViewed": "Última foto vista:"
+  },
+  "en-US": {
+    "day1": "Day 1 · Arriving in the valley",
+    "day1Caption": "First stop of the trip, right after sunrise.",
+    "day2": "Day 2 · Stone trail",
+    "day2Caption": "Seven miles uphill to the main lookout.",
+    "day3": "Day 3 · Camp",
+    "day3Caption": "Clear skies all night, 39 °F before dawn.",
+    "day4": "Day 4 · Waterfall",
+    "day4Caption": "One last cold swim before heading back to the city.",
+    "viewCover": "View full-size cover",
+    "coverTitle": "October issue cover",
+    "coverCaption": "Photograph by Tomás Andrade for Horizon magazine.",
+    "coverAlt": "Landscape photo used on the October cover of Horizon magazine",
+    "resume": "Resume where I left off",
+    "lastViewed": "Last photo viewed:"
+  },
+  "es-ES": {
+    "day1": "Día 1 · Llegada al valle",
+    "day1Caption": "Primera parada del viaje, justo después del amanecer.",
+    "day2": "Día 2 · Sendero de piedra",
+    "day2Caption": "Doce kilómetros de subida hasta el mirador principal.",
+    "day3": "Día 3 · Campamento",
+    "day3Caption": "Noche despejada, 4 °C de madrugada.",
+    "day4": "Día 4 · Cascada",
+    "day4Caption": "Último baño helado antes de volver a la ciudad.",
+    "viewCover": "Ver portada a tamaño real",
+    "coverTitle": "Portada de la edición de octubre",
+    "coverCaption": "Fotografía de Tomás Andrade para la revista Horizonte.",
+    "coverAlt": "Foto de paisaje usada en la portada de octubre de la revista Horizonte",
+    "resume": "Continuar donde lo dejé",
+    "lastViewed": "Última foto vista:"
+  }
+}

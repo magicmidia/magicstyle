@@ -5,6 +5,7 @@ export interface MsMenuItem {
   label: string;
   /** Payload emitted on select. */
   value: unknown;
+  /** Skipped by keyboard navigation and cannot be selected. */
   disabled?: boolean | undefined;
   /** Suffix hint (kbd shortcut, badge). */
   suffix?: string | undefined;

@@ -5,8 +5,10 @@ export type MsSwitchTone = Extract<MsTone, "primary" | "success" | "warning" | "
 export type MsSwitchLabelPlacement = "left" | "right";
 
 export interface MsSwitchProps {
-  /** Checked state (v-model:checked). */
-  checked?: boolean;
+  /** Checked state for `v-model` (e.g. `v-model="form.remember"`). */
+  modelValue?: boolean | undefined;
+  /** Checked state for `v-model:checked`. `modelValue` wins when both are bound. */
+  checked?: boolean | undefined;
   /** Primary label text. */
   label?: string;
   /** Secondary description or helper text. */

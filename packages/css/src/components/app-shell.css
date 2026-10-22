@@ -74,29 +74,29 @@
   display: flex;
   align-items: center;
   gap: var(--ms-space-3);
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
-/* --- SIDEBAR --- */
-.ms-sidebar {
+/* --- SIDEBAR (namespaced: .ms-sidebar belongs to MsSidebar, sidebar.css) --- */
+.ms-app-shell__sidebar {
   display: flex;
   flex-direction: column;
   width: var(--ms-app-shell-sidebar-width);
   background-color: var(--ms-color-surface-default);
-  border-right: 1px solid var(--ms-color-border-subtle);
+  border-inline-end: 1px solid var(--ms-color-border-subtle);
   flex-shrink: 0;
-  transition: width var(--ms-motion-duration-normal) var(--ms-motion-easing-ease-out);
+  transition: width var(--ms-motion-duration-base) var(--ms-motion-easing-standard);
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
   z-index: var(--ms-zindex-docked, 10);
 }
 
-.ms-sidebar--collapsed {
+.ms-app-shell__sidebar--collapsed {
   width: var(--ms-app-shell-sidebar-collapsed-width);
 }
 
-.ms-sidebar__header {
+.ms-app-shell__sidebar-header {
   padding: var(--ms-space-4);
   display: flex;
   align-items: center;
@@ -106,7 +106,7 @@
   box-sizing: border-box;
 }
 
-.ms-sidebar__content {
+.ms-app-shell__sidebar-content {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
@@ -114,7 +114,7 @@
   gap: var(--ms-space-1);
 }
 
-.ms-sidebar__footer {
+.ms-app-shell__sidebar-footer {
   padding: var(--ms-space-3);
   border-top: 1px solid var(--ms-color-border-subtle);
   margin-top: auto;
@@ -127,7 +127,7 @@
   align-items: center;
   width: var(--ms-app-shell-rail-width);
   background-color: var(--ms-color-surface-default);
-  border-right: 1px solid var(--ms-color-border-subtle);
+  border-inline-end: 1px solid var(--ms-color-border-subtle);
   padding: var(--ms-space-3) 0;
   gap: var(--ms-space-3);
   flex-shrink: 0;
@@ -157,25 +157,29 @@
   flex-direction: column;
   width: 280px;
   background-color: var(--ms-color-surface-default);
-  border-left: 1px solid var(--ms-color-border-subtle);
+  border-inline-start: 1px solid var(--ms-color-border-subtle);
   flex-shrink: 0;
   box-sizing: border-box;
   overflow-y: auto;
   z-index: var(--ms-zindex-docked, 10);
 }
 
-/* --- FOOTER --- */
-.ms-footer {
+/* --- FOOTER (namespaced: .ms-footer belongs to MsFooter, footer.css) --- */
+.ms-app-shell__footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: var(--ms-space-4) var(--ms-page-gutter, 24px);
   background-color: var(--ms-color-surface-default);
-  border-top: 1px solid var(--ms-color-border-subtle);
-  font-size: var(--ms-font-size-sm);
+  font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-muted);
   flex-shrink: 0;
   box-sizing: border-box;
+}
+
+/* `bordered` (default): hairline separating the footer from the content */
+.ms-app-shell__footer[data-bordered] {
+  border-block-start: var(--ms-border-hairline) solid var(--ms-color-border-subtle);
 }
 
 /* --- STATUS BAR --- */
@@ -187,7 +191,7 @@
   padding: 0 var(--ms-space-3);
   background-color: var(--ms-color-surface-default);
   border-top: 1px solid var(--ms-color-border-subtle);
-  font-size: var(--ms-font-size-xs);
+  font-size: var(--ms-typography-size-xs);
   color: var(--ms-color-text-muted);
   flex-shrink: 0;
   box-sizing: border-box;
@@ -195,21 +199,21 @@
 }
 
 .ms-status-bar--info {
-  background-color: var(--ms-color-info-subtle);
-  color: var(--ms-color-info);
+  background-color: var(--ms-color-feedback-info-bg);
+  color: var(--ms-color-feedback-info-text);
 }
 
 .ms-status-bar--success {
-  background-color: var(--ms-color-success-subtle);
-  color: var(--ms-color-success);
+  background-color: var(--ms-color-feedback-success-bg);
+  color: var(--ms-color-feedback-success-text);
 }
 
 .ms-status-bar--warning {
-  background-color: var(--ms-color-warning-subtle);
-  color: var(--ms-color-warning);
+  background-color: var(--ms-color-feedback-warning-bg);
+  color: var(--ms-color-feedback-warning-text);
 }
 
 .ms-status-bar--danger {
-  background-color: var(--ms-color-danger-subtle);
-  color: var(--ms-color-danger);
+  background-color: var(--ms-color-feedback-danger-bg);
+  color: var(--ms-color-feedback-danger-text);
 }

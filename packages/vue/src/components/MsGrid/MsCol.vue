@@ -20,6 +20,11 @@ const style = computed(() => {
   }
   return {};
 });
+
+defineSlots<{
+  /** Column content. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

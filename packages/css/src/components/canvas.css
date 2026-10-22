@@ -154,7 +154,7 @@
 .ms-canvas--blueprint {
   background-color: color-mix(
     in oklch,
-    var(--ms-color-brand-primary, #3b82f6) 18%,
+    var(--ms-color-brand-primary) 18%,
     var(--ms-color-surface-sunken)
   );
 }
@@ -162,21 +162,21 @@
 .ms-canvas--blueprint .ms-canvas__pattern {
   background-image:
     linear-gradient(
-      color-mix(in oklch, var(--ms-color-brand-primary, #3b82f6) 40%, transparent) 1px,
+      color-mix(in oklch, var(--ms-color-brand-primary) 40%, transparent) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      color-mix(in oklch, var(--ms-color-brand-primary, #3b82f6) 40%, transparent) 1px,
+      color-mix(in oklch, var(--ms-color-brand-primary) 40%, transparent) 1px,
       transparent 1px
     ),
     linear-gradient(
-      color-mix(in oklch, var(--ms-color-brand-primary, #3b82f6) 20%, transparent) 1px,
+      color-mix(in oklch, var(--ms-color-brand-primary) 20%, transparent) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      color-mix(in oklch, var(--ms-color-brand-primary, #3b82f6) 20%, transparent) 1px,
+      color-mix(in oklch, var(--ms-color-brand-primary) 20%, transparent) 1px,
       transparent 1px
     );
   background-size:

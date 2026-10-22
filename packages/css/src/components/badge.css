@@ -1,31 +1,32 @@
 /*
  * Magic-Style Badge component layer — semantic status and counter tags.
  * Classes: .ms-badge, .ms-badge-dot.
- * Variants: soft (default), solid, outline.
+ * Variants: solid (default), soft, outline, ghost.
  * Tones: primary, secondary, accent, neutral, success, info, warning, danger.
  * Sizes: sm, md (default), lg.
  * States/Mod: data-pill.
  */
 
 .ms-badge {
-  --_ms-badge-height: 22px;
-  --_ms-badge-padding: var(--ms-space-2) var(--ms-space-2-5, 8px);
+  --_ms-badge-height: auto;
+  --_ms-badge-padding: 2px 8px;
   --_ms-badge-font-size: var(--ms-typography-size-xs);
+  --_ms-badge-icon-size: 12px;
 
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--ms-space-1-5, 6px);
+  gap: 4px;
   box-sizing: border-box;
   block-size: var(--_ms-badge-height);
   padding: var(--_ms-badge-padding);
   border: var(--ms-border-hairline) solid transparent;
-  border-radius: var(--ms-radius-sm, 4px);
+  border-radius: var(--ms-radius-md);
   font-family: var(--ms-font-sans);
   font-size: var(--_ms-badge-font-size);
   font-weight: var(--ms-typography-weight-medium);
-  line-height: 1;
+  line-height: var(--ms-typography-line-height-tight);
   text-decoration: none;
   white-space: nowrap;
   vertical-align: middle;
@@ -36,6 +37,14 @@
     color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
+/* Icons inherit the 12px badge icon size */
+.ms-badge > svg {
+  inline-size: var(--_ms-badge-icon-size);
+  block-size: var(--_ms-badge-icon-size);
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
 /* Opt-in pill shape */
 .ms-badge[data-pill] {
   border-radius: var(--ms-radius-full);
@@ -43,28 +52,26 @@
 
 /* Sizing */
 .ms-badge[data-size="xs"] {
-  --_ms-badge-height: 16px;
-  --_ms-badge-padding: 0 var(--ms-space-1, 4px);
-  --_ms-badge-font-size: 10px;
+  --_ms-badge-padding: 0 4px;
+  --_ms-badge-font-size: var(--ms-typography-size-2xs);
+  --_ms-badge-icon-size: 10px;
 }
 
 .ms-badge[data-size="sm"] {
-  --_ms-badge-height: 18px;
-  --_ms-badge-padding: 0 var(--ms-space-1-5, 6px);
-  --_ms-badge-font-size: 11px;
+  --_ms-badge-padding: 1px 6px;
+  --_ms-badge-font-size: var(--ms-typography-size-xs);
 }
 
 .ms-badge[data-size="lg"] {
-  --_ms-badge-height: 26px;
-  --_ms-badge-padding: 0 var(--ms-space-3);
+  --_ms-badge-padding: 2px 10px;
   --_ms-badge-font-size: var(--ms-typography-size-sm);
+  --_ms-badge-icon-size: 14px;
 }
 
 .ms-badge[data-size="xl"] {
-  --_ms-badge-height: 32px;
-  --_ms-badge-padding: 0 var(--ms-space-3-5, 14px);
-  --_ms-badge-font-size: var(--ms-typography-size-md, 14px);
-  font-weight: var(--ms-typography-weight-semibold, 600);
+  --_ms-badge-padding: 4px 12px;
+  --_ms-badge-font-size: var(--ms-typography-size-sm);
+  --_ms-badge-icon-size: 16px;
 }
 
 /* Dot-only mode */
@@ -108,110 +115,40 @@
   background-color: currentColor;
   flex-shrink: 0;
 }
-
-/* ---------- Tones ---------- */
-
-.ms-badge[data-tone="primary"],
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
 .ms-badge:not([data-tone]) {
-  --_ms-badge-solid-bg: var(--ms-color-interactive-primary);
-  --_ms-badge-solid-fg: var(--ms-color-text-on-accent);
-  --_ms-badge-soft-bg: var(--ms-color-interactive-primary-subtle);
-  --_ms-badge-soft-fg: var(--ms-color-interactive-primary-text);
-  --_ms-badge-soft-border: color-mix(
-    in oklch,
-    var(--ms-color-interactive-primary) 20%,
-    transparent
-  );
-  --_ms-badge-outline-fg: var(--ms-color-interactive-primary);
-  --_ms-badge-outline-border: var(--ms-color-interactive-primary);
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
 }
 
-.ms-badge[data-tone="secondary"] {
-  --_ms-badge-solid-bg: var(--ms-color-interactive-secondary);
-  --_ms-badge-solid-fg: var(--ms-color-interactive-secondary-fg);
-  --_ms-badge-soft-bg: var(--ms-color-interactive-secondary-subtle);
-  --_ms-badge-soft-fg: var(--ms-color-interactive-secondary-text);
-  --_ms-badge-soft-border: color-mix(
-    in oklch,
-    var(--ms-color-interactive-secondary) 25%,
-    transparent
-  );
-  --_ms-badge-outline-fg: var(--ms-color-interactive-secondary);
-  --_ms-badge-outline-border: var(--ms-color-interactive-secondary);
+.ms-badge:is([data-tone], :not([data-tone])) {
+  --_ms-badge-solid-bg: var(--ms-tone);
+  --_ms-badge-solid-fg: var(--ms-tone-content);
+  --_ms-badge-soft-bg: var(--ms-tone-subtle);
+  --_ms-badge-soft-fg: var(--ms-tone-text);
+  --_ms-badge-soft-border: var(--ms-tone-border);
+  --_ms-badge-outline-fg: var(--ms-tone-text);
+  --_ms-badge-outline-border: var(--ms-tone);
 }
 
-.ms-badge[data-tone="accent"] {
-  --_ms-badge-solid-bg: var(--ms-color-interactive-accent);
-  --_ms-badge-solid-fg: var(--ms-color-text-on-accent);
-  --_ms-badge-soft-bg: var(--ms-color-interactive-accent-subtle);
-  --_ms-badge-soft-fg: var(--ms-color-interactive-accent-text);
-  --_ms-badge-soft-border: color-mix(in oklch, var(--ms-color-interactive-accent) 25%, transparent);
-  --_ms-badge-outline-fg: var(--ms-color-interactive-accent-text);
-  --_ms-badge-outline-border: var(--ms-color-interactive-accent);
-}
-
-.ms-badge[data-tone="neutral"] {
-  --_ms-badge-solid-bg: var(--ms-color-interactive-neutral);
-  --_ms-badge-solid-fg: var(--ms-color-interactive-neutral-fg);
-  --_ms-badge-soft-bg: var(--ms-color-interactive-neutral-subtle);
-  --_ms-badge-soft-fg: var(--ms-color-interactive-neutral-text);
-  --_ms-badge-soft-border: var(--ms-color-border-subtle);
-  --_ms-badge-outline-fg: var(--ms-color-text-secondary);
+/* Default/primary/neutral outline follows shadcn: neutral border + primary text. */
+.ms-badge:is(:not([data-tone]), [data-tone="primary"], [data-tone="neutral"]) {
+  --_ms-badge-outline-fg: var(--ms-color-text-primary);
   --_ms-badge-outline-border: var(--ms-color-border-default);
-}
-
-.ms-badge[data-tone="success"] {
-  --_ms-badge-solid-bg: var(--ms-color-feedback-success-solid);
-  --_ms-badge-solid-fg: var(--ms-color-text-on-accent);
-  --_ms-badge-soft-bg: var(--ms-color-feedback-success-bg);
-  --_ms-badge-soft-fg: var(--ms-color-feedback-success-text);
-  --_ms-badge-soft-border: var(--ms-color-feedback-success-border);
-  --_ms-badge-outline-fg: var(--ms-color-feedback-success-text);
-  --_ms-badge-outline-border: var(--ms-color-feedback-success-solid);
-}
-
-.ms-badge[data-tone="info"] {
-  --_ms-badge-solid-bg: var(--ms-color-feedback-info-solid);
-  --_ms-badge-solid-fg: var(--ms-color-text-primary);
-  --_ms-badge-soft-bg: var(--ms-color-feedback-info-bg);
-  --_ms-badge-soft-fg: var(--ms-color-feedback-info-text);
-  --_ms-badge-soft-border: var(--ms-color-feedback-info-border);
-  --_ms-badge-outline-fg: var(--ms-color-feedback-info-text);
-  --_ms-badge-outline-border: var(--ms-color-feedback-info-solid);
-}
-
-.ms-badge[data-tone="warning"] {
-  --_ms-badge-solid-bg: var(--ms-color-feedback-warning-solid);
-  --_ms-badge-solid-fg: var(--ms-color-text-primary);
-  --_ms-badge-soft-bg: var(--ms-color-feedback-warning-bg);
-  --_ms-badge-soft-fg: var(--ms-color-feedback-warning-text);
-  --_ms-badge-soft-border: var(--ms-color-feedback-warning-border);
-  --_ms-badge-outline-fg: var(--ms-color-feedback-warning-text);
-  --_ms-badge-outline-border: var(--ms-color-feedback-warning-solid);
-}
-
-.ms-badge[data-tone="danger"] {
-  --_ms-badge-solid-bg: var(--ms-color-feedback-danger-solid);
-  --_ms-badge-solid-fg: var(--ms-color-text-on-accent);
-  --_ms-badge-soft-bg: var(--ms-color-feedback-danger-bg);
-  --_ms-badge-soft-fg: var(--ms-color-feedback-danger-text);
-  --_ms-badge-soft-border: var(--ms-color-feedback-danger-border);
-  --_ms-badge-outline-fg: var(--ms-color-feedback-danger-text);
-  --_ms-badge-outline-border: var(--ms-color-feedback-danger-solid);
 }
 
 /* ---------- Variants ---------- */
 
-/* Soft (Default) */
-.ms-badge[data-variant="soft"],
-.ms-badge:not([data-variant]) {
+/* Soft */
+.ms-badge[data-variant="soft"] {
   background-color: var(--_ms-badge-soft-bg);
   color: var(--_ms-badge-soft-fg);
   border-color: var(--_ms-badge-soft-border);
 }
 
-/* Solid */
-.ms-badge[data-variant="solid"] {
+/* Solid (Default) */
+.ms-badge[data-variant="solid"],
+.ms-badge:not([data-variant]) {
   background-color: var(--_ms-badge-solid-bg);
   color: var(--_ms-badge-solid-fg);
   border-color: transparent;
@@ -227,7 +164,7 @@
 /* Bordered / Inverse Ring (for dark or busy surfaces) */
 .ms-badge--bordered,
 .ms-badge[data-bordered] {
-  box-shadow: 0 0 0 2px var(--ms-color-surface-raised, #ffffff);
+  box-shadow: 0 0 0 2px var(--ms-color-surface-raised);
 }
 
 /* Pulse / Ping Animation */
@@ -251,7 +188,8 @@
   border-radius: inherit;
   background-color: inherit;
   pointer-events: none;
-  animation: ms-badge-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation: ms-badge-ping calc(1.8s * var(--ms-motion-scale, 1)) cubic-bezier(0, 0, 0.2, 1)
+    infinite;
   z-index: -1;
 }
 
@@ -331,7 +269,8 @@
 .ms-badge[data-pulse] .ms-badge-dot,
 .ms-badge--pulsing .ms-badge-dot,
 .ms-badge--dot-only[data-pulse] {
-  animation: ms-badge-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: ms-badge-pulse calc(2s * var(--ms-motion-scale, 1)) cubic-bezier(0.4, 0, 0.6, 1)
+    infinite;
 }
 
 /* Removable tag button inside badge */
@@ -350,10 +289,14 @@
   opacity: 0.7;
   padding: 0;
   transition:
-    opacity 0.15s ease,
-    background-color 0.15s ease;
+    opacity var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 .ms-badge__remove:hover {
   opacity: 1;
   background-color: color-mix(in oklch, currentColor 15%, transparent);
+}
+.ms-badge__remove:focus-visible {
+  outline: var(--ms-focus-ring-width) solid var(--ms-focus-ring-color);
+  outline-offset: var(--ms-focus-ring-offset);
 }

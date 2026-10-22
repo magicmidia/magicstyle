@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import { computed, watch, onMounted, onBeforeUnmount } from "vue";
+import { computed, ref, toRef } from "vue";
 import type { MsConfirmDialogProps, MsConfirmDialogEmits } from "./types.ts";
 import MsButton from "../MsButton/MsButton.vue";
 import { useMsId } from "../../composables/use-ms-id.ts";
+import { useScrollLock } from "../../composables/use-scroll-lock.ts";
+import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
+import { useFocusTrap } from "../../composables/use-focus-trap.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsConfirmDialogProps>(), {
   open: false,
   tone: "danger",
-  title: "Confirmar ação",
-  confirmLabel: "Confirmar",
-  cancelLabel: "Cancelar",
   loading: false,
   closeOnBackdrop: true,
   closeOnEscape: true,
@@ -18,10 +19,19 @@ const props = withDefaults(defineProps<MsConfirmDialogProps>(), {
 
 const emit = defineEmits<MsConfirmDialogEmits>();
 
+const t = useMsMessages();
+const titleText = computed(() => props.title ?? t.value.confirmDialog.title);
+const confirmText = computed(() => props.confirmLabel ?? t.value.confirmDialog.confirm);
+const cancelText = computed(() => props.cancelLabel ?? t.value.confirmDialog.cancel);
+
 defineSlots<{
+  /** Rich message; replaces the `message` prop and describes the dialog. */
   default?(): unknown;
+  /** Replaces the tone's default emoji icon. */
   icon?(): unknown;
+  /** Rich title; replaces the `title` prop. */
   title?(): unknown;
+  /** Replaces the cancel and confirm buttons. */
   footer?(): unknown;
 }>();
 
@@ -55,33 +65,20 @@ const handleBackdropClick = (event: MouseEvent) => {
   }
 };
 
-const handleKeydown = (event: KeyboardEvent) => {
-  if (props.open && props.closeOnEscape && event.key === "Escape") {
-    handleCancel();
-  }
-};
+const isOpen = toRef(props, "open");
+const dialogRef = ref<HTMLElement | null>(null);
 
-watch(
-  () => props.open,
-  (isOpen) => {
-    if (typeof document !== "undefined") {
-      document.body.style.overflow = isOpen ? "hidden" : "";
-    }
-  },
-  { immediate: true },
-);
-
-onMounted(() => {
-  if (typeof window !== "undefined") {
-    window.addEventListener("keydown", handleKeydown);
-  }
+useScrollLock(isOpen);
+// APG alertdialog: initial focus on the least destructive action.
+useFocusTrap(dialogRef, isOpen, {
+  initialFocus: () => dialogRef.value?.querySelector<HTMLElement>("[data-ms-confirm-cancel]"),
 });
-
-onBeforeUnmount(() => {
-  if (typeof window !== "undefined") {
-    window.removeEventListener("keydown", handleKeydown);
-    document.body.style.overflow = "";
-  }
+useDismissableLayer({
+  active: isOpen,
+  inside: [dialogRef],
+  onDismiss: handleCancel,
+  closeOnEscape: () => props.closeOnEscape,
+  closeOnOutside: () => false,
 });
 
 const dialogClasses = computed(() => [
@@ -100,13 +97,14 @@ const dialogClasses = computed(() => [
         @click="handleBackdropClick"
       >
         <div
+          ref="dialogRef"
           :class="dialogClasses"
           role="alertdialog"
           aria-modal="true"
           :aria-labelledby="titleId"
           :aria-describedby="message || $slots.default ? messageId : undefined"
           data-ms-confirm-dialog
-          @click.stop
+          tabindex="-1"
         >
           <div class="ms-confirm-dialog__body">
             <div class="ms-confirm-dialog__icon" aria-hidden="true">
@@ -114,7 +112,7 @@ const dialogClasses = computed(() => [
             </div>
             <div class="ms-confirm-dialog__text-group">
               <h3 :id="titleId" class="ms-confirm-dialog__title">
-                <slot name="title">{{ props.title }}</slot>
+                <slot name="title">{{ titleText }}</slot>
               </h3>
               <div
                 v-if="props.message || $slots.default"
@@ -128,8 +126,14 @@ const dialogClasses = computed(() => [
 
           <div class="ms-confirm-dialog__footer">
             <slot name="footer">
-              <MsButton variant="outline" size="sm" :disabled="props.loading" @click="handleCancel">
-                {{ props.cancelLabel }}
+              <MsButton
+                variant="outline"
+                size="sm"
+                :disabled="props.loading"
+                data-ms-confirm-cancel
+                @click="handleCancel"
+              >
+                {{ cancelText }}
               </MsButton>
               <MsButton
                 variant="solid"
@@ -138,7 +142,7 @@ const dialogClasses = computed(() => [
                 :loading="props.loading"
                 @click="handleConfirm"
               >
-                {{ props.confirmLabel }}
+                {{ confirmText }}
               </MsButton>
             </slot>
           </div>

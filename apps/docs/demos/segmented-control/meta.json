@@ -1,0 +1,79 @@
+{
+  "intro": {
+    "pt-BR": "Use o controle segmentado para alternar entre poucas opções mutuamente exclusivas, como modos de visualização ou períodos. Para mais de cinco opções, prefira um select.",
+    "en-US": "Use a segmented control to switch between a few mutually exclusive options, such as view modes or time ranges. For more than five options, prefer a select.",
+    "es-ES": "Usa el control segmentado para alternar entre pocas opciones mutuamente excluyentes, como modos de vista o períodos. Para más de cinco opciones, prefiere un select."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": {
+        "pt-BR": "Básico",
+        "en-US": "Basic",
+        "es-ES": "Básico"
+      },
+      "description": {
+        "pt-BR": "Passe os segmentos em `options` e ligue o valor escolhido com `v-model`.",
+        "en-US": "Pass the segments in `options` and bind the chosen value with `v-model`.",
+        "es-ES": "Pasa los segmentos en `options` y enlaza el valor elegido con `v-model`."
+      }
+    },
+    {
+      "file": "WithIcons",
+      "title": {
+        "pt-BR": "Com ícones",
+        "en-US": "With icons",
+        "es-ES": "Con iconos"
+      },
+      "description": {
+        "pt-BR": "Cada opção aceita `icon`, e `tone` muda a cor do segmento ativo.",
+        "en-US": "Each option accepts `icon`, and `tone` changes the active segment color.",
+        "es-ES": "Cada opción acepta `icon`, y `tone` cambia el color del segmento activo."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": {
+        "pt-BR": "Tamanhos",
+        "en-US": "Sizes",
+        "es-ES": "Tamaños"
+      },
+      "description": {
+        "pt-BR": "`size` vai de `xs` a `xl`; o padrão é `md`.",
+        "en-US": "`size` goes from `xs` to `xl`; the default is `md`.",
+        "es-ES": "`size` va de `xs` a `xl`; el valor por defecto es `md`."
+      }
+    },
+    {
+      "file": "Billing",
+      "title": {
+        "pt-BR": "Ciclo de cobrança",
+        "en-US": "Billing cycle",
+        "es-ES": "Ciclo de facturación"
+      },
+      "description": {
+        "pt-BR": "Com `full-width` e `shape=\"pill\"`, o controle vira o seletor de plano de uma página de preços.",
+        "en-US": "With `full-width` and `shape=\"pill\"`, the control becomes the plan switcher of a pricing page.",
+        "es-ES": "Con `full-width` y `shape=\"pill\"`, el control se convierte en el selector de plan de una página de precios."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": {
+        "pt-BR": "Desabilitado",
+        "en-US": "Disabled",
+        "es-ES": "Deshabilitado"
+      },
+      "description": {
+        "pt-BR": "Desabilite uma opção com `disabled` na própria opção ou o controle inteiro com a prop `disabled`.",
+        "en-US": "Disable one option with `disabled` on the option itself, or the whole control with the `disabled` prop.",
+        "es-ES": "Deshabilita una opción con `disabled` en la propia opción, o todo el control con la prop `disabled`."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O contêiner tem `role=\"radiogroup\"` e cada segmento é um `<button role=\"radio\">` com `aria-checked`; dê nome ao grupo com `aria-label`.\n- `Tab` entra no grupo pelo segmento selecionado (tabindex itinerante); sem valor selecionado, nenhum segmento recebe foco pelo `Tab`.\n- `→`/`↓` e `←`/`↑` selecionam o próximo ou o anterior, com retorno ao início, pulando opções desabilitadas; o foco do teclado não acompanha a seleção.\n- `Enter` e `Espaço` selecionam o segmento focado.",
+    "en-US": "- The container has `role=\"radiogroup\"` and each segment is a `<button role=\"radio\">` with `aria-checked`; name the group with `aria-label`.\n- `Tab` enters the group on the selected segment (roving tabindex); with no selected value, no segment is reachable with `Tab`.\n- `→`/`↓` and `←`/`↑` select the next or previous segment, wrapping around and skipping disabled options; keyboard focus does not follow the selection.\n- `Enter` and `Space` select the focused segment.",
+    "es-ES": "- El contenedor tiene `role=\"radiogroup\"` y cada segmento es un `<button role=\"radio\">` con `aria-checked`; nombra el grupo con `aria-label`.\n- `Tab` entra al grupo por el segmento seleccionado (tabindex itinerante); sin valor seleccionado, ningún segmento recibe foco con `Tab`.\n- `→`/`↓` y `←`/`↑` seleccionan el segmento siguiente o anterior, volviendo al inicio y saltando las opciones deshabilitadas; el foco del teclado no sigue a la selección.\n- `Enter` y `Espacio` seleccionan el segmento enfocado."
+  }
+}

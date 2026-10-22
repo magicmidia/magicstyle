@@ -1,23 +1,30 @@
 <template>
-  <div class="ms-date-picker">
+  <div ref="rootRef" class="ms-date-picker" @focusout="onFocusout">
     <div class="ms-date-picker__input-wrapper">
       <input
+        :id="controlId"
+        ref="inputRef"
         type="text"
         class="ms-date-picker__input"
+        :aria-describedby="describedBy"
+        :aria-invalid="fieldInvalid || undefined"
         :value="displayValue"
         :placeholder="props.placeholder || defaultPlaceholder"
         :disabled="props.disabled"
         readonly
+        aria-haspopup="dialog"
+        :aria-expanded="isOpen"
+        :aria-controls="isOpen ? dialogId : undefined"
         @click="toggleDropdown"
         @keydown.space.prevent="toggleDropdown"
         @keydown.enter.prevent="toggleDropdown"
-        @keydown.esc="isOpen = false"
+        @keydown.down.prevent="openDropdown"
       />
       <button
         v-if="clearable && displayValue && !disabled"
         type="button"
         class="ms-date-picker__clear-btn"
-        aria-label="Limpar data"
+        :aria-label="t.datePicker.clear"
         @click.stop="handleClear"
       >
         ✕
@@ -54,56 +61,80 @@
       </span>
     </div>
 
-    <div v-if="isOpen" class="ms-date-picker__dropdown">
+    <div
+      v-if="isOpen"
+      :id="dialogId"
+      class="ms-date-picker__dropdown"
+      role="dialog"
+      :aria-label="dialogLabel"
+    >
       <!-- Calendar View (for date, range, datetime) -->
       <template v-if="mode !== 'time'">
         <div class="ms-date-picker__header">
           <button
             type="button"
             class="ms-date-picker__nav-btn"
-            aria-label="Mês anterior"
+            :aria-label="t.datePicker.previousMonth"
             @click="prevMonth"
           >
             ‹
           </button>
-          <div class="ms-date-picker__title">{{ headerTitle }}</div>
+          <div :id="titleId" class="ms-date-picker__title" aria-live="polite">
+            {{ headerTitle }}
+          </div>
           <button
             type="button"
             class="ms-date-picker__nav-btn"
-            aria-label="Próximo mês"
+            :aria-label="t.datePicker.nextMonth"
             @click="nextMonth"
           >
             ›
           </button>
         </div>
 
-        <div class="ms-date-picker__weekdays">
-          <span v-for="d in ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']" :key="d">
-            {{ d }}
-          </span>
-        </div>
+        <div ref="gridRef" role="grid" :aria-labelledby="titleId" @keydown="onGridKeydown">
+          <div class="ms-date-picker__weekdays" role="row">
+            <span v-for="w in weekdays" :key="w.short" role="columnheader" :abbr="w.long">
+              {{ w.short }}
+            </span>
+          </div>
 
-        <div class="ms-date-picker__days">
-          <button
-            v-for="(dayObj, idx) in daysInMonth"
-            :key="idx"
-            type="button"
-            class="ms-date-picker__day"
-            :class="getDayClasses(dayObj)"
-            :disabled="isDateDisabled(dayObj)"
-            @click="handleDayClick(dayObj)"
-            @mouseenter="handleDayHover(dayObj)"
-          >
-            {{ dayObj.day }}
-          </button>
+          <div class="ms-date-picker__days">
+            <div v-for="(week, w) in weeks" :key="w" class="ms-date-picker__week" role="row">
+              <button
+                v-for="dayObj in week"
+                :key="dayObj.dateString"
+                type="button"
+                role="gridcell"
+                class="ms-date-picker__day"
+                :class="getDayClasses(dayObj)"
+                :data-date="dayObj.dateString"
+                :tabindex="dayObj.dateString === tabbableDate ? 0 : -1"
+                :aria-label="formatLongDate(dayObj)"
+                :aria-selected="isDaySelected(dayObj)"
+                :aria-current="dayObj.dateString === todayStr ? 'date' : undefined"
+                :aria-disabled="isDateDisabled(dayObj) || undefined"
+                @click="handleDayClick(dayObj)"
+                @mouseenter="handleDayHover(dayObj)"
+                @focus="focusedDate = dayObj.dateString"
+              >
+                {{ dayObj.day }}
+              </button>
+            </div>
+          </div>
         </div>
       </template>
 
       <!-- Time Picker Panel (for time or datetime) -->
       <div v-if="mode === 'time' || mode === 'datetime'" class="ms-date-picker__time-panel">
-        <div class="ms-date-picker__time-header">Horário</div>
+        <div class="ms-date-picker__time-header">{{ t.datePicker.time }}</div>
         <div class="ms-date-picker__time-selectors">
-          <select v-model="selectedHour" class="ms-date-picker__time-select" @change="onTimeChange">
+          <select
+            v-model="displayHour"
+            class="ms-date-picker__time-select"
+            :aria-label="t.datePicker.hour"
+            @change="onTimeChange"
+          >
             <option v-for="h in hourOptions" :key="h" :value="h">
               {{ String(h).padStart(2, "0") }}
             </option>
@@ -112,31 +143,62 @@
           <select
             v-model="selectedMinute"
             class="ms-date-picker__time-select"
+            :aria-label="t.datePicker.minutes"
             @change="onTimeChange"
           >
             <option v-for="m in minuteOptions" :key="m" :value="m">
               {{ String(m).padStart(2, "0") }}
             </option>
           </select>
+          <select
+            v-if="!props.format24h"
+            v-model="meridiem"
+            class="ms-date-picker__time-select"
+            :aria-label="t.datePicker.meridiem"
+            @change="onTimeChange"
+          >
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
         </div>
       </div>
 
       <!-- Quick Presets -->
       <div v-if="mode === 'date'" class="ms-date-picker__presets">
-        <button type="button" class="ms-date-picker__preset-btn" @click="selectPreset('today')">
-          Hoje
+        <button
+          type="button"
+          class="ms-date-picker__preset-btn"
+          :disabled="isPresetDisabled(0)"
+          @click="selectPreset(0)"
+        >
+          {{ t.datePicker.today }}
         </button>
-        <button type="button" class="ms-date-picker__preset-btn" @click="selectPreset('tomorrow')">
-          Amanhã
+        <button
+          type="button"
+          class="ms-date-picker__preset-btn"
+          :disabled="isPresetDisabled(1)"
+          @click="selectPreset(1)"
+        >
+          {{ t.datePicker.tomorrow }}
         </button>
       </div>
 
       <div v-else-if="mode === 'range'" class="ms-date-picker__presets">
-        <button type="button" class="ms-date-picker__preset-btn" @click="selectRangePreset(7)">
-          Próximos 7 dias
+        <button
+          type="button"
+          class="ms-date-picker__preset-btn"
+          :disabled="isPresetDisabled(0, 7)"
+          @click="selectRangePreset(7)"
+        >
+          {{ t.datePicker.nextDays(7) }}
         </button>
-        <button type="button" class="ms-date-picker__preset-btn" @click="selectRangePreset(30)">
-          Próximos 30 dias
+        <button
+          type="button"
+          class="ms-date-picker__preset-btn"
+          :disabled="isPresetDisabled(0, 30)"
+          @click="selectRangePreset(30)"
+        >
+          {{ t.datePicker.nextDays(30) }}
         </button>
       </div>
     </div>
@@ -144,8 +206,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
-import type { MsDatePickerProps, MsDatePickerEmits, MsDatePickerModelValue } from "./types.ts";
+import { computed, nextTick, onMounted, ref, watch } from "vue";
+import type { MsDatePickerProps, MsDatePickerEmits } from "./types.ts";
+import { useMsId } from "../../composables/use-ms-id.ts";
+import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
+import { useFieldControl } from "../../composables/use-field-context.ts";
 
 defineOptions({
   name: "MsDatePicker",
@@ -165,7 +231,19 @@ const props = withDefaults(defineProps<MsDatePickerProps>(), {
 
 const emit = defineEmits<MsDatePickerEmits>();
 
+const t = useMsMessages();
+/** Connects the input to a surrounding MsField (label `for`, description, error). */
+const { id: controlId, describedBy, fieldInvalid } = useFieldControl("ms-date-picker");
+
 const isOpen = ref(false);
+const rootRef = ref<HTMLElement | null>(null);
+const inputRef = ref<HTMLInputElement | null>(null);
+const gridRef = ref<HTMLElement | null>(null);
+const dialogId = useMsId("ms-date-picker-dialog");
+const titleId = useMsId("ms-date-picker-title");
+
+/** Day that owns the roving tabindex inside the grid ("YYYY-MM-DD"). */
+const focusedDate = ref("");
 
 // Range state
 const rangeStart = ref<string>("");
@@ -180,6 +258,27 @@ const selectedMinute = ref<number>(0);
 const now = new Date();
 const currentYear = ref(now.getFullYear());
 const currentMonth = ref(now.getMonth());
+/** "Today" is only known on the client (server timezone may differ): set after mount. */
+const todayStr = ref("");
+onMounted(() => {
+  const today = new Date();
+  todayStr.value = formatDateStr(today.getFullYear(), today.getMonth(), today.getDate());
+});
+
+/**
+ * Parses "YYYY-MM-DD" and "YYYY-MM-DD HH:mm" (the formats this component emits) as
+ * local time. `new Date("YYYY-MM-DD")` is UTC (off by a day west of Greenwich) and
+ * Safari rejects "YYYY-MM-DD HH:mm".
+ */
+function parseLocalDate(value: string): Date | null {
+  const match = /^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/.exec(value.trim());
+  if (match) {
+    const [, y, mo, d, h, mi] = match;
+    return new Date(Number(y), Number(mo) - 1, Number(d), Number(h ?? 0), Number(mi ?? 0));
+  }
+  const fallback = new Date(value);
+  return isNaN(fallback.getTime()) ? null : fallback;
+}
 
 function parseInitialValue() {
   if (!props.modelValue) return;
@@ -196,6 +295,11 @@ function parseInitialValue() {
       rangeStart.value = parts[0]?.trim() || "";
       rangeEnd.value = parts[1]?.trim() || "";
     }
+    const start = rangeStart.value ? parseLocalDate(rangeStart.value) : null;
+    if (start) {
+      currentYear.value = start.getFullYear();
+      currentMonth.value = start.getMonth();
+    }
   } else if (props.mode === "time") {
     if (typeof props.modelValue === "string" && props.modelValue.includes(":")) {
       const parts = props.modelValue.split(":").map(Number);
@@ -207,8 +311,8 @@ function parseInitialValue() {
   } else {
     // date or datetime
     if (typeof props.modelValue === "string") {
-      const d = new Date(props.modelValue);
-      if (!isNaN(d.getTime())) {
+      const d = parseLocalDate(props.modelValue);
+      if (d) {
         currentYear.value = d.getFullYear();
         currentMonth.value = d.getMonth();
         selectedHour.value = d.getHours();
@@ -221,16 +325,18 @@ function parseInitialValue() {
 watch(() => props.modelValue, parseInitialValue, { immediate: true });
 
 const defaultPlaceholder = computed(() => {
-  if (props.mode === "range") return "Selecione o período (início até fim)...";
-  if (props.mode === "time") return "Selecione o horário (HH:mm)...";
-  if (props.mode === "datetime") return "Selecione data e horário...";
-  return "Selecione uma data...";
+  const m = t.value.datePicker;
+  if (props.mode === "range") return m.placeholderRange;
+  if (props.mode === "time") return m.placeholderTime;
+  if (props.mode === "datetime") return m.placeholderDateTime;
+  return m.placeholderDate;
 });
 
 const displayValue = computed(() => {
+  const sep = t.value.datePicker.rangeSeparator;
   if (!props.modelValue) {
     if (props.mode === "range" && (rangeStart.value || rangeEnd.value)) {
-      return `${rangeStart.value} até ${rangeEnd.value || "..."}`;
+      return `${rangeStart.value}${sep}${rangeEnd.value || "..."}`;
     }
     return "";
   }
@@ -238,12 +344,12 @@ const displayValue = computed(() => {
   if (props.mode === "range") {
     if (Array.isArray(props.modelValue)) {
       return props.modelValue[0] && props.modelValue[1]
-        ? `${props.modelValue[0]} até ${props.modelValue[1]}`
+        ? `${props.modelValue[0]}${sep}${props.modelValue[1]}`
         : props.modelValue[0] || "";
     }
     if (typeof props.modelValue === "object") {
       return props.modelValue.start && props.modelValue.end
-        ? `${props.modelValue.start} até ${props.modelValue.end}`
+        ? `${props.modelValue.start}${sep}${props.modelValue.end}`
         : props.modelValue.start || "";
     }
     return String(props.modelValue);
@@ -256,28 +362,65 @@ const displayValue = computed(() => {
   return String(props.modelValue);
 });
 
-const monthNames = [
-  "Janeiro",
-  "Fevereiro",
-  "Março",
-  "Abril",
-  "Maio",
-  "Junho",
-  "Julho",
-  "Agosto",
-  "Setembro",
-  "Outubro",
-  "Novembro",
-  "Dezembro",
-];
+function capitalize(text: string): string {
+  return text.charAt(0).toLocaleUpperCase(t.value.locale) + text.slice(1);
+}
+
+/** Month, weekday and long-date names come from Intl in the messages' locale. */
+const monthFormatter = computed(() => new Intl.DateTimeFormat(t.value.locale, { month: "long" }));
+const longDateFormatter = computed(
+  () => new Intl.DateTimeFormat(t.value.locale, { day: "numeric", month: "long", year: "numeric" }),
+);
 
 const headerTitle = computed(() => {
-  return `${monthNames[currentMonth.value]} ${currentYear.value}`;
+  const month = monthFormatter.value.format(new Date(currentYear.value, currentMonth.value, 1));
+  return `${capitalize(month)} ${currentYear.value}`;
 });
 
-const hourOptions = computed(() => {
-  const max = props.format24h ? 24 : 12;
-  return Array.from({ length: max }, (_, i) => i);
+/** Sunday-first column headers; 2023-01-01 (local time) is a Sunday. */
+const weekdays = computed(() => {
+  const short = new Intl.DateTimeFormat(t.value.locale, { weekday: "short" });
+  const long = new Intl.DateTimeFormat(t.value.locale, { weekday: "long" });
+  return Array.from({ length: 7 }, (_, i) => {
+    const date = new Date(2023, 0, 1 + i);
+    return {
+      short: capitalize(short.format(date).replace(/\.$/, "")),
+      long: capitalize(long.format(date)),
+    };
+  });
+});
+
+const dialogLabel = computed(() => {
+  if (props.mode === "range") return t.value.datePicker.chooseRange;
+  if (props.mode === "time") return t.value.datePicker.chooseTime;
+  return t.value.datePicker.chooseDate;
+});
+
+// Hours are stored as 0-23; the 12h format only changes presentation (1-12 + AM/PM).
+const hourOptions = computed(() =>
+  props.format24h
+    ? Array.from({ length: 24 }, (_, i) => i)
+    : Array.from({ length: 12 }, (_, i) => i + 1),
+);
+
+const displayHour = computed<number>({
+  get: () => (props.format24h ? selectedHour.value : selectedHour.value % 12 || 12),
+  set: (hour) => {
+    if (props.format24h) {
+      selectedHour.value = hour;
+      return;
+    }
+    const pm = selectedHour.value >= 12;
+    selectedHour.value = (hour % 12) + (pm ? 12 : 0);
+  },
+});
+
+const meridiem = computed<"AM" | "PM">({
+  get: () => (selectedHour.value >= 12 ? "PM" : "AM"),
+  set: (value) => {
+    const base = selectedHour.value % 12;
+    selectedHour.value = value === "PM" ? base + 12 : base;
+  },
 });
 
 const minuteOptions = computed(() => {
@@ -290,6 +433,7 @@ const minuteOptions = computed(() => {
 });
 
 function prevMonth() {
+  shiftFocusedMonth(-1);
   if (currentMonth.value === 0) {
     currentMonth.value = 11;
     currentYear.value--;
@@ -299,12 +443,21 @@ function prevMonth() {
 }
 
 function nextMonth() {
+  shiftFocusedMonth(1);
   if (currentMonth.value === 11) {
     currentMonth.value = 0;
     currentYear.value++;
   } else {
     currentMonth.value++;
   }
+}
+
+/** Header month buttons carry the focused day along, so the grid keeps a sensible tab stop. */
+function shiftFocusedMonth(months: number) {
+  const date = focusedDate.value ? parseLocalDate(focusedDate.value) : null;
+  if (!date) return;
+  const next = addMonths(date, months);
+  focusedDate.value = formatDateStr(next.getFullYear(), next.getMonth(), next.getDate());
 }
 
 interface DayItem {
@@ -364,21 +517,49 @@ const daysInMonth = computed<DayItem[]>(() => {
   return days;
 });
 
+const weeks = computed<DayItem[][]>(() =>
+  Array.from({ length: 6 }, (_, w) => daysInMonth.value.slice(w * 7, w * 7 + 7)),
+);
+
+/** The roving tab stop: the focused day when visible, else the selected day, today or the 1st. */
+const tabbableDate = computed(() => {
+  const visible = daysInMonth.value.filter((d) => !d.isOtherMonth).map((d) => d.dateString);
+  const candidates = [focusedDate.value, selectedDateStr(), todayStr.value];
+  return candidates.find((c) => c && visible.includes(c)) ?? visible[0] ?? "";
+});
+
+function formatLongDate(dayObj: DayItem): string {
+  return longDateFormatter.value.format(new Date(dayObj.year, dayObj.month, dayObj.day));
+}
+
+function selectedDateStr(): string {
+  if (props.mode === "range") return rangeStart.value;
+  return typeof props.modelValue === "string" ? props.modelValue.slice(0, 10) : "";
+}
+
+function isDaySelected(dayObj: DayItem): boolean {
+  if (props.mode === "range") {
+    if (!rangeStart.value) return false;
+    const end = rangeEnd.value || rangeStart.value;
+    return dayObj.dateString >= rangeStart.value && dayObj.dateString <= end;
+  }
+  return Boolean(props.modelValue) && String(props.modelValue).startsWith(dayObj.dateString);
+}
+
 function formatDateStr(y: number, m: number, d: number): string {
   const mm = String(m + 1).padStart(2, "0");
   const dd = String(d).padStart(2, "0");
   return `${y}-${mm}-${dd}`;
 }
 
-function isDateDisabled(dayObj: DayItem): boolean {
+function isDateDisabled(dayObj: Pick<DayItem, "dateString">): boolean {
   if (props.minDate && dayObj.dateString < props.minDate) return true;
   if (props.maxDate && dayObj.dateString > props.maxDate) return true;
   return false;
 }
 
 function getDayClasses(dayObj: DayItem) {
-  const todayStr = formatDateStr(now.getFullYear(), now.getMonth(), now.getDate());
-  const isToday = dayObj.dateString === todayStr;
+  const isToday = todayStr.value !== "" && dayObj.dateString === todayStr.value;
 
   if (props.mode === "range") {
     const isStart = rangeStart.value && dayObj.dateString === rangeStart.value;
@@ -424,19 +605,20 @@ function handleDayClick(dayObj: DayItem) {
       const rangeResult: [string, string] = [rangeStart.value, rangeEnd.value];
       emit("update:modelValue", rangeResult);
       emit("change", rangeResult);
-      isOpen.value = false;
+      close(true);
     }
   } else if (props.mode === "datetime") {
-    const timeStr = `${String(selectedHour.value).padStart(2, "0")}:${String(selectedMinute.value).padStart(2, "0")}`;
-    const result = `${dayObj.dateString} ${timeStr}`;
+    // The time chosen before a date existed is kept and applied here; the panel stays
+    // open so the time can still be adjusted after picking the day.
+    const result = `${dayObj.dateString} ${timeString()}`;
+    focusedDate.value = dayObj.dateString;
     emit("update:modelValue", result);
     emit("change", result);
-    isOpen.value = false;
   } else {
     // single date
     emit("update:modelValue", dayObj.dateString);
     emit("change", dayObj.dateString);
-    isOpen.value = false;
+    close(true);
   }
 }
 
@@ -446,8 +628,13 @@ function handleDayHover(dayObj: DayItem) {
   }
 }
 
+function timeString(): string {
+  return `${String(selectedHour.value).padStart(2, "0")}:${String(selectedMinute.value).padStart(2, "0")}`;
+}
+
+/** Without a date yet (datetime mode), the time is only stored and applied on the next day pick. */
 function onTimeChange() {
-  const timeStr = `${String(selectedHour.value).padStart(2, "0")}:${String(selectedMinute.value).padStart(2, "0")}`;
+  const timeStr = timeString();
   if (props.mode === "time") {
     emit("update:modelValue", timeStr);
     emit("change", timeStr);
@@ -459,16 +646,31 @@ function onTimeChange() {
   }
 }
 
-function selectPreset(type: "today" | "tomorrow") {
+/** Local "YYYY-MM-DD" for today plus `offset` days. */
+function offsetDateStr(offset: number): string {
   const target = new Date();
-  if (type === "tomorrow") target.setDate(target.getDate() + 1);
-  const str = formatDateStr(target.getFullYear(), target.getMonth(), target.getDate());
+  target.setDate(target.getDate() + offset);
+  return formatDateStr(target.getFullYear(), target.getMonth(), target.getDate());
+}
+
+/** A preset (single day, or a start..end range of offsets) is unavailable outside minDate/maxDate. */
+function isPresetDisabled(startOffset: number, endOffset = startOffset): boolean {
+  return (
+    isDateDisabled({ dateString: offsetDateStr(startOffset) }) ||
+    isDateDisabled({ dateString: offsetDateStr(endOffset) })
+  );
+}
+
+function selectPreset(offset: number) {
+  if (isPresetDisabled(offset)) return;
+  const str = offsetDateStr(offset);
   emit("update:modelValue", str);
   emit("change", str);
-  isOpen.value = false;
+  close(true);
 }
 
 function selectRangePreset(days: number) {
+  if (isPresetDisabled(0, days)) return;
   const start = new Date();
   const end = new Date();
   end.setDate(end.getDate() + days);
@@ -481,7 +683,7 @@ function selectRangePreset(days: number) {
   const result: [string, string] = [startStr, endStr];
   emit("update:modelValue", result);
   emit("change", result);
-  isOpen.value = false;
+  close(true);
 }
 
 function handleClear() {
@@ -492,7 +694,105 @@ function handleClear() {
 }
 
 function toggleDropdown() {
-  if (props.disabled) return;
-  isOpen.value = !isOpen.value;
+  if (isOpen.value) close(false);
+  else openDropdown();
+}
+
+/** Opens the calendar and moves focus to the selected day (or today), per the APG date picker. */
+function openDropdown() {
+  if (props.disabled || isOpen.value) return;
+  isOpen.value = true;
+  if (props.mode === "time") return;
+  const start = selectedDateStr() || todayStr.value;
+  const date = start ? parseLocalDate(start) : null;
+  if (date) {
+    currentYear.value = date.getFullYear();
+    currentMonth.value = date.getMonth();
+  }
+  focusedDate.value = start;
+  focusDay();
+}
+
+function close(restoreFocus: boolean) {
+  if (!isOpen.value) return;
+  isOpen.value = false;
+  hoveredDate.value = "";
+  if (restoreFocus) void nextTick(() => inputRef.value?.focus());
+}
+
+useDismissableLayer({
+  active: isOpen,
+  inside: [rootRef],
+  onDismiss: (reason) => close(reason === "escape"),
+});
+
+/** Keyboard focus leaving the whole picker (Tab past the last control) closes it. */
+function onFocusout(event: FocusEvent) {
+  const next = event.relatedTarget;
+  if (isOpen.value && next instanceof Node && !rootRef.value?.contains(next)) close(false);
+}
+
+function focusDay() {
+  void nextTick(() => {
+    gridRef.value?.querySelector<HTMLElement>(`[data-date="${tabbableDate.value}"]`)?.focus();
+  });
+}
+
+/** Moves the focused day, switching the visible month when the target falls outside it. */
+function moveFocus(to: Date) {
+  const str = formatDateStr(to.getFullYear(), to.getMonth(), to.getDate());
+  currentYear.value = to.getFullYear();
+  currentMonth.value = to.getMonth();
+  focusedDate.value = str;
+  if (props.mode === "range" && rangeStart.value && !rangeEnd.value) hoveredDate.value = str;
+  focusDay();
+}
+
+function addMonths(date: Date, months: number): Date {
+  const target = new Date(date.getFullYear(), date.getMonth() + months, 1);
+  const lastDay = new Date(target.getFullYear(), target.getMonth() + 1, 0).getDate();
+  target.setDate(Math.min(date.getDate(), lastDay));
+  return target;
+}
+
+function onGridKeydown(event: KeyboardEvent) {
+  const target = event.target as HTMLElement;
+  const current = target.dataset.date ? parseLocalDate(target.dataset.date) : null;
+  if (!current) return;
+  const rtl = getComputedStyle(target).direction === "rtl";
+  const day = (offset: number) =>
+    new Date(current.getFullYear(), current.getMonth(), current.getDate() + offset);
+
+  let next: Date;
+  switch (event.key) {
+    case "ArrowLeft":
+      next = day(rtl ? 1 : -1);
+      break;
+    case "ArrowRight":
+      next = day(rtl ? -1 : 1);
+      break;
+    case "ArrowUp":
+      next = day(-7);
+      break;
+    case "ArrowDown":
+      next = day(7);
+      break;
+    case "Home":
+      next = day(-current.getDay());
+      break;
+    case "End":
+      next = day(6 - current.getDay());
+      break;
+    case "PageUp":
+      next = addMonths(current, event.shiftKey ? -12 : -1);
+      break;
+    case "PageDown":
+      next = addMonths(current, event.shiftKey ? 12 : 1);
+      break;
+    default:
+      return;
+  }
+  event.preventDefault();
+  moveFocus(next);
 }
 </script>

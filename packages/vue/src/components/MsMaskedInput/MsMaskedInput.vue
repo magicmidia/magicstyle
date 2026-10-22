@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import type { MsMaskedInputProps, MsMaskedInputEmits } from "./types.ts";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
+
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<MsMaskedInputProps>(), {
   modelValue: "",
@@ -15,6 +19,11 @@ const props = withDefaults(defineProps<MsMaskedInputProps>(), {
 });
 
 const emit = defineEmits<MsMaskedInputEmits>();
+
+const t = useMsMessages();
+
+const fieldControl = useFieldControl("ms-masked-input");
+const isInvalid = computed(() => props.invalid === true || fieldControl.fieldInvalid.value);
 
 const maskPatterns: Record<string, string> = {
   cpf: "999.999.999-99",
@@ -80,22 +89,26 @@ const classes = computed(() => [
   "ms-masked-input",
   `ms-masked-input--${props.size}`,
   {
-    "ms-masked-input--invalid": props.invalid,
+    "ms-masked-input--invalid": isInvalid.value,
     "ms-masked-input--disabled": props.disabled,
   },
 ]);
 </script>
 
 <template>
-  <div :class="classes" :data-invalid="props.invalid ? '' : undefined">
+  <div v-bind="rootAttrs($attrs)" :class="classes" :data-invalid="isInvalid ? '' : undefined">
     <input
+      :id="fieldControl.id"
       type="text"
       class="ms-masked-input__field"
+      :aria-invalid="isInvalid || undefined"
+      :aria-describedby="fieldControl.describedBy.value"
       :value="props.modelValue"
       :placeholder="props.placeholder || activePattern"
       :disabled="props.disabled"
       :readonly="props.readonly"
       :data-size="props.size"
+      v-bind="controlAttrs($attrs)"
       @input="handleInput"
     />
 
@@ -103,8 +116,8 @@ const classes = computed(() => [
       v-if="props.clearable && props.modelValue && !props.disabled && !props.readonly"
       type="button"
       class="ms-masked-input__clear"
-      aria-label="Limpar campo"
-      title="Limpar campo"
+      :aria-label="t.input.clear"
+      :title="t.input.clear"
       @click="handleClear"
     >
       <svg

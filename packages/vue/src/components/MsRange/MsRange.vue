@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import type { MsRangeProps, MsRangeEmits } from "./types.ts";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
+
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(defineProps<MsRangeProps>(), {
   modelValue: 0,
@@ -15,8 +18,11 @@ const props = withDefaults(defineProps<MsRangeProps>(), {
 
 const emit = defineEmits<MsRangeEmits>();
 
+const fieldControl = useFieldControl("ms-range");
+const isInvalid = fieldControl.fieldInvalid;
+
 defineSlots<{
-  default?(): unknown;
+  /** Replaces the value readout (shown with `showValue` or this slot); receives the current value. */
   value?(props: { value: number }): unknown;
 }>();
 
@@ -46,9 +52,12 @@ const rangeClasses = computed(() => [
 </script>
 
 <template>
-  <div class="ms-range-wrapper" data-ms-range-wrapper>
+  <div v-bind="rootAttrs($attrs)" class="ms-range-wrapper" data-ms-range-wrapper>
     <input
+      :id="fieldControl.id"
       type="range"
+      :aria-invalid="isInvalid || undefined"
+      :aria-describedby="fieldControl.describedBy.value"
       :class="rangeClasses"
       :min="props.min"
       :max="props.max"
@@ -57,6 +66,7 @@ const rangeClasses = computed(() => [
       :disabled="props.disabled"
       :style="{ '--ms-range-percent': `${percentage}%` }"
       data-ms-range
+      v-bind="controlAttrs($attrs)"
       @input="handleInput"
       @change="handleChange"
     />

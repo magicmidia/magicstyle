@@ -1,8 +1,8 @@
 {
   "name": "@magic-style/vue",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Magic-Style Vue 3 components: accessible, responsive, theme-aware. Premium by default.",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
@@ -15,19 +15,27 @@
     "dist"
   ],
   "scripts": {
-    "build": "node scripts/clean.mjs && vite build",
+    "build": "node scripts/clean.mjs && vite build && node scripts/check-dts.mjs",
     "typecheck": "vue-tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "lint": "eslint ."
   },
   "sideEffects": false,
   "peerDependencies": {
+    "@magic-style/css": "workspace:^",
     "vue": "^3.5.0"
   },
+  "peerDependenciesMeta": {
+    "@magic-style/css": {
+      "optional": true
+    }
+  },
   "devDependencies": {
+    "@magic-style-internal/themes": "workspace:*",
     "@types/node": "^26.3.0",
     "@vitejs/plugin-vue": "^6.0.8",
     "@vue/test-utils": "^2.4.11",
+    "axe-core": "^4.13.0",
     "happy-dom": "^20.11.6",
     "typescript": "~5.9.3",
     "vite": "^8.2.2",
@@ -35,5 +43,15 @@
     "vitest": "^4.1.11",
     "vue": "^3.5.41",
     "vue-tsc": "^3.3.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magicmidia/magicstyle.git",
+    "directory": "packages/vue"
+  },
+  "homepage": "https://github.com/magicmidia/magicstyle#readme",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

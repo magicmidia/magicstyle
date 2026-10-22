@@ -1,45 +1,57 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
-import { useFieldContext } from "../../composables/use-field-context.ts";
-import { useMsId } from "../../composables/use-ms-id.ts";
+import { computed, onMounted, ref, watch } from "vue";
+import { controlAttrs, rootAttrs, useFieldControl } from "../../composables/use-field-context.ts";
 import type { MsCheckboxProps } from "./types.ts";
 
 defineOptions({
   name: "MsCheckbox",
+  inheritAttrs: false,
 });
 
 const props = withDefaults(defineProps<MsCheckboxProps>(), {
+  // Explicit undefined keeps Vue from casting absent booleans to false (either binding may be used).
+  modelValue: undefined,
+  checked: undefined,
   size: "md",
   tone: "primary",
   card: false,
 });
 
+/** `v-model` and `v-model:checked` are both supported. */
+const isChecked = computed(() => props.modelValue ?? props.checked ?? false);
+
 const emit = defineEmits<{
+  /** Fires when the user toggles the checkbox; payload is the new checked state. */
+  "update:modelValue": [checked: boolean];
+  /** Same as `update:modelValue`, for `v-model:checked`. */
   "update:checked": [checked: boolean];
+  /** Fires after the update events with the new checked state. */
   change: [checked: boolean];
 }>();
 
 defineSlots<{
+  /** Rich label; replaces the `label` prop. */
   default?(): unknown;
+  /** Rich helper text below the label; replaces the `description` prop. */
   description?(): unknown;
 }>();
 
-const field = useFieldContext();
-const fallbackId = useMsId("ms-checkbox");
+const fieldControl = useFieldControl("ms-checkbox");
 const inputRef = ref<HTMLInputElement | null>(null);
 
-const resolvedId = computed(() => field?.controlId ?? fallbackId);
+const resolvedId = computed(() => fieldControl.id);
 
-watch(
-  () => props.indeterminate,
-  (value) => {
-    if (inputRef.value !== null) inputRef.value.indeterminate = value === true;
-  },
-  { immediate: true },
-);
+// `indeterminate` is a DOM property, not an attribute: apply it once the input exists and on
+// every change (the browser also clears it on user clicks, so re-sync after checked changes).
+function syncIndeterminate(): void {
+  if (inputRef.value !== null) inputRef.value.indeterminate = props.indeterminate === true;
+}
+onMounted(syncIndeterminate);
+watch(() => [props.indeterminate, isChecked.value], syncIndeterminate, { flush: "post" });
 
 function onChange(event: Event): void {
   const checked = (event.target as HTMLInputElement).checked;
+  emit("update:modelValue", checked);
   emit("update:checked", checked);
   emit("change", checked);
 }
@@ -47,6 +59,7 @@ function onChange(event: Event): void {
 
 <template>
   <label
+    v-bind="rootAttrs($attrs)"
     class="ms-checkbox"
     :data-size="props.size"
     :data-tone="props.tone"
@@ -58,11 +71,14 @@ function onChange(event: Event): void {
       ref="inputRef"
       class="ms-checkbox-native"
       type="checkbox"
-      :checked="props.checked"
+      :checked="isChecked"
       :disabled="props.disabled"
       :name="props.name"
       :value="props.value"
-      :aria-checked="props.indeterminate ? 'mixed' : props.checked"
+      :aria-checked="props.indeterminate ? 'mixed' : undefined"
+      :aria-invalid="fieldControl.fieldInvalid.value || undefined"
+      :aria-describedby="fieldControl.describedBy.value"
+      v-bind="controlAttrs($attrs)"
       @change="onChange"
     />
     <span class="ms-checkbox-box" aria-hidden="true" />

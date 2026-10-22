@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, inject, ref, watch } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import { AVATAR_GROUP_CONTEXT_KEY, type MsAvatarProps } from "./types.ts";
 
 defineOptions({
@@ -13,8 +14,11 @@ const props = withDefaults(defineProps<MsAvatarProps>(), {
 });
 
 defineSlots<{
+  /** Fallback content shown when there is no `src` or the image fails to load; defaults to the initials of `name`. */
   default?(): unknown;
 }>();
+
+const t = useMsMessages();
 
 const groupContext = inject(AVATAR_GROUP_CONTEXT_KEY, undefined);
 
@@ -52,7 +56,7 @@ const initials = computed(() => {
       v-if="props.src && !hasError"
       class="ms-avatar-image"
       :src="props.src"
-      :alt="props.name || 'Avatar'"
+      :alt="props.name || t.avatar.fallback"
       @error="hasError = true"
     />
     <span v-else class="ms-avatar-fallback">

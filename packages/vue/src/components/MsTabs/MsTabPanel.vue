@@ -2,8 +2,8 @@
   <template v-if="lazy">
     <div
       v-if="isSelected"
-      role="tabpanel"
       :id="panelId"
+      role="tabpanel"
       :aria-labelledby="tabId"
       tabindex="0"
       :class="classes"
@@ -14,8 +14,8 @@
   <template v-else>
     <div
       v-show="isSelected"
-      role="tabpanel"
       :id="panelId"
+      role="tabpanel"
       :aria-labelledby="tabId"
       tabindex="0"
       :class="classes"
@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject } from "vue";
+import { computed, inject, onMounted, onUnmounted, watch } from "vue";
 import { TABS_CONTEXT_KEY, type MsTabPanelProps } from "./types.ts";
 
 defineOptions({
@@ -51,6 +51,17 @@ const panelId = computed(() => {
   return context ? context.getPanelId(props.value) : undefined;
 });
 
+// Registered after mount (never during SSR), so server and first client render match.
+onMounted(() => context?.registerPanel?.(props.value, props.lazy));
+watch(
+  () => [props.value, props.lazy] as const,
+  ([value, lazy], [oldValue]) => {
+    context?.unregisterPanel?.(oldValue);
+    context?.registerPanel?.(value, lazy);
+  },
+);
+onUnmounted(() => context?.unregisterPanel?.(props.value));
+
 const classes = computed(() => {
   return [
     "ms-tab-panel",
@@ -59,4 +70,9 @@ const classes = computed(() => {
     },
   ];
 });
+
+defineSlots<{
+  /** Panel content, shown while its tab is selected (mounted only then with `lazy`). */
+  default?(): unknown;
+}>();
 </script>

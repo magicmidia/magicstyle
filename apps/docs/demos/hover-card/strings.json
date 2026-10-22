@@ -1,0 +1,29 @@
+{
+  "pt-BR": {
+    "bio": "Engenheira de front-end na Magic-Style. Escreve sobre acessibilidade e design systems.",
+    "joined": "Entrou em março de 2023",
+    "placementBody": "Pré-visualização posicionada ao redor do gatilho.",
+    "builtWith": "Esta tela foi feita com",
+    "public": "Público",
+    "repoDescription": "Componentes Vue 3 acessíveis, com temas e tokens CSS.",
+    "repoStats": "TypeScript · 2,4 mil estrelas · atualizado ontem"
+  },
+  "en-US": {
+    "bio": "Front-end engineer at Magic-Style. Writes about accessibility and design systems.",
+    "joined": "Joined March 2023",
+    "placementBody": "Preview positioned around the trigger.",
+    "builtWith": "This screen was built with",
+    "public": "Public",
+    "repoDescription": "Accessible Vue 3 components with themes and CSS tokens.",
+    "repoStats": "TypeScript · 2.4k stars · updated yesterday"
+  },
+  "es-ES": {
+    "bio": "Ingeniera front-end en Magic-Style. Escribe sobre accesibilidad y design systems.",
+    "joined": "Se unió en marzo de 2023",
+    "placementBody": "Vista previa posicionada alrededor del disparador.",
+    "builtWith": "Esta pantalla se hizo con",
+    "public": "Público",
+    "repoDescription": "Componentes Vue 3 accesibles, con temas y tokens CSS.",
+    "repoStats": "TypeScript · 2,4 mil estrellas · actualizado ayer"
+  }
+}

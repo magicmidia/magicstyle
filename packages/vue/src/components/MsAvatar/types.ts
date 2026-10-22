@@ -8,14 +8,14 @@ export type MsAvatarStatus = "online" | "offline" | "busy" | "away";
 export type MsAvatarStatusPlacement = "bottom-right" | "top-right";
 export type MsAvatarTone = Extract<
   MsTone,
-  "neutral" | "primary" | "accent" | "success" | "warning" | "danger"
+  "neutral" | "primary" | "secondary" | "accent" | "info" | "success" | "warning" | "danger"
 >;
 
 export interface MsAvatarProps {
   /** Image source URL. */
-  src?: string;
+  src?: string | undefined;
   /** Name of the entity for alt text and initials fallback. */
-  name?: string;
+  name?: string | undefined;
   /** Size scale. @default "md" */
   size?: MsAvatarSize;
   /** Shape geometry. @default "circle" */

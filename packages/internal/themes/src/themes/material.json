@@ -1,0 +1,76 @@
+{
+  "$schema": "../theme.schema.json",
+  "name": "material",
+  "label": "Material",
+  "description": "Tonal surfaces and expressive palettes inspired by Material Design 3 (M3 / MUI). Soft rounded contours and rich tonal depth.",
+  "shared": {
+    "radius-selector": "8px",
+    "radius-field": "12px",
+    "radius-box": "16px",
+    "radius-control": "9999px",
+    "border-width": "1px",
+    "depth": "1",
+    "font-sans": "Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+    "font-mono": "IBM Plex Mono, Cascadia Mono, ui-monospace, monospace"
+  },
+  "light": {
+    "color-base-100": "#fef7ff",
+    "color-base-200": "#ede7f0",
+    "color-base-300": "#cac4d0",
+    "color-base-content": "#1d1b20",
+    "color-base-raised": "#f7f2fa",
+    "color-primary": "#6750a4",
+    "color-primary-content": "#ffffff",
+    "color-secondary": "oklch(0.645 0.169 034)",
+    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-accent": "#7d5260",
+    "color-accent-content": "#ffffff",
+    "color-neutral": "#625b71",
+    "color-neutral-content": "#ffffff",
+    "color-info": "oklch(0.738 0.133 219)",
+    "color-info-content": "oklch(0.170 0.020 252)",
+    "color-success": "oklch(0.663 0.131 168)",
+    "color-success-content": "oklch(0.170 0.020 252)",
+    "color-warning": "oklch(0.785 0.154 061)",
+    "color-warning-content": "oklch(0.170 0.020 252)",
+    "color-danger": "oklch(0.545 0.188 024)",
+    "color-danger-content": "oklch(1.000 0.003 252)"
+  },
+  "dark": {
+    "color-base-100": "#141218",
+    "color-base-200": "#1d1b20",
+    "color-base-300": "#49454f",
+    "color-base-content": "#e6e0e9",
+    "color-base-raised": "#211f26",
+    "color-primary": "#d0bcff",
+    "color-primary-content": "#381e72",
+    "color-secondary": "oklch(0.715 0.152 034)",
+    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-accent": "#efb8c8",
+    "color-accent-content": "#381e72",
+    "color-neutral": "#ccc2dc",
+    "color-neutral-content": "#332d41",
+    "color-info": "oklch(0.738 0.133 219)",
+    "color-info-content": "oklch(0.170 0.020 252)",
+    "color-success": "oklch(0.663 0.131 168)",
+    "color-success-content": "oklch(0.170 0.020 252)",
+    "color-warning": "oklch(0.785 0.154 061)",
+    "color-warning-content": "oklch(0.170 0.020 252)",
+    "color-danger": "oklch(0.545 0.188 024)",
+    "color-danger-content": "oklch(1.000 0.003 252)"
+  },
+  "extras": {
+    "light": {
+      "elevation-button": "0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30)",
+      "elevation-card": "0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30)",
+      "elevation-dropdown": "0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30)",
+      "elevation-modal": "0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.30)",
+      "focus-ring-width": "3px"
+    },
+    "dark": {
+      "elevation-button": "0px 1px 3px 1px rgba(0, 0, 0, 0.4), 0px 1px 2px 0px rgba(0, 0, 0, 0.6)",
+      "elevation-card": "0px 2px 6px 2px rgba(0, 0, 0, 0.35)",
+      "focus-ring-width": "3px"
+    }
+  }
+}

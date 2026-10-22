@@ -1,4 +1,14 @@
-import { inject, provide, ref, type ComputedRef, type InjectionKey, type Ref } from "vue";
+import {
+  getCurrentInstance,
+  inject,
+  onBeforeUnmount,
+  onMounted,
+  provide,
+  ref,
+  type ComputedRef,
+  type InjectionKey,
+  type Ref,
+} from "vue";
 
 export type ThemeName = "magic" | "graphite" | (string & {});
 export type ColorModePreference = "light" | "dark" | "system";
@@ -30,25 +40,34 @@ export interface MsThemeContext {
 export const THEME_CONTEXT_KEY: InjectionKey<MsThemeContext> = Symbol("ms-theme-context");
 
 /**
- * Hook to resolve system color mode preference.
+ * Resolves the OS color scheme. It reads `matchMedia` only after mount (SSR and the
+ * first client render agree on "light") and removes its listener on unmount.
+ * Providers render `data-ms-color-mode="system"` meanwhile, which CSS resolves
+ * through `prefers-color-scheme`, so there is no flash and no hydration mismatch.
  */
 export function useSystemColorMode(): Ref<ColorMode> {
   const systemMode = ref<ColorMode>("light");
+  if (!getCurrentInstance()) return systemMode;
 
-  if (typeof window !== "undefined" && typeof window.matchMedia === "function") {
+  let mediaQuery: MediaQueryList | undefined;
+  const handler = (event: MediaQueryListEvent) => {
+    systemMode.value = event.matches ? "dark" : "light";
+  };
+
+  onMounted(() => {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") return;
     try {
-      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
       systemMode.value = mediaQuery.matches ? "dark" : "light";
-
-      const handler = (e: MediaQueryListEvent) => {
-        systemMode.value = e.matches ? "dark" : "light";
-      };
-
       mediaQuery.addEventListener?.("change", handler);
     } catch {
-      // Fallback silently if media query fails or in constrained env
+      // Constrained environments without media query support keep "light".
     }
-  }
+  });
+
+  onBeforeUnmount(() => {
+    mediaQuery?.removeEventListener?.("change", handler);
+  });
 
   return systemMode;
 }

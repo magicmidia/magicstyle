@@ -15,6 +15,16 @@ const props = withDefaults(defineProps<MsIconButtonProps>(), {
 
 const emit = defineEmits<MsIconButtonEmits>();
 
+const accessibleName = computed(() => props.label ?? props.ariaLabel);
+
+if (
+  !accessibleName.value &&
+  typeof process !== "undefined" &&
+  process.env.NODE_ENV !== "production"
+) {
+  console.warn("[MsIconButton] missing accessible name: set `label` or `aria-label`.");
+}
+
 const resolvedShape = computed(() => {
   if (props.shape) return props.shape;
   if (props.circle) return "circle";
@@ -49,13 +59,18 @@ const handleClick = (event: MouseEvent) => {
   }
   emit("click", event);
 };
+
+defineSlots<{
+  /** The icon; replaced by a spinner while `loading`. The accessible name comes from `label`. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>
   <button
     :class="classes"
     :type="type"
-    :aria-label="ariaLabel"
+    :aria-label="accessibleName"
     :aria-pressed="active !== undefined ? (active ? 'true' : 'false') : undefined"
     :disabled="isDisabled"
     :aria-disabled="isDisabled ? 'true' : undefined"

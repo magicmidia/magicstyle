@@ -1,15 +1,18 @@
 <template>
-  <component :is="as" :class="classes" v-bind="wrapperAttributes">
+  <component :is="as" :class="classes" :style="wrapperStyle" v-bind="wrapperAttributes">
     <slot />
   </component>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch, watchEffect, onUnmounted } from "vue";
+import { computed, ref, watch, watchEffect, onBeforeUnmount } from "vue";
 import type { MsProviderProps } from "./types.ts";
+import { msThemeOverridesToStyle } from "../../theme-overrides.ts";
+import { provideMsMessages } from "../../composables/use-ms-messages.ts";
 import {
   provideThemeContext,
   useSystemColorMode,
+  useThemeContext,
   type ColorMode,
   type ColorModePreference,
   type Contrast,
@@ -34,8 +37,12 @@ const props = withDefaults(defineProps<MsProviderProps>(), {
   as: "div",
 });
 
+provideMsMessages(() => ({ locale: props.locale, messages: props.messages }));
+
 const internalTheme = ref<string>(props.theme);
-const internalColorMode = ref<ColorModePreference>(props.colorMode);
+const internalColorMode = ref<ColorModePreference | "inherit">(props.colorMode);
+/** Read before providing our own context: the ancestor that "inherit" follows. */
+const parentContext = useThemeContext();
 const internalDensity = ref<Density>(props.density);
 const internalContrast = ref<Contrast>(props.contrast);
 const internalRadius = ref<RadiusDial>(props.radius);
@@ -80,7 +87,24 @@ watch(
 
 const systemColorMode = useSystemColorMode();
 
+/**
+ * Preference exposed to descendants. "inherit" reports the ancestor provider's preference
+ * (or "system" without one); setting it through the context switches to an explicit mode.
+ */
+const colorModePreference = computed<ColorModePreference>({
+  get: () =>
+    internalColorMode.value === "inherit"
+      ? (parentContext?.colorModePreference.value ?? "system")
+      : internalColorMode.value,
+  set: (mode) => {
+    internalColorMode.value = mode;
+  },
+});
+
 const resolvedColorMode = computed<ColorMode>(() => {
+  if (internalColorMode.value === "inherit") {
+    return parentContext?.resolvedColorMode.value ?? systemColorMode.value;
+  }
   if (internalColorMode.value === "system") {
     return systemColorMode.value;
   }
@@ -88,14 +112,21 @@ const resolvedColorMode = computed<ColorMode>(() => {
 });
 
 const resolvedAttributes = computed<Record<string, string>>(() => {
-  return {
-    "data-ms-theme": internalTheme.value,
-    "data-ms-color-mode": resolvedColorMode.value,
-    "data-ms-density": internalDensity.value,
-    "data-ms-contrast": internalContrast.value,
-    "data-ms-radius": internalRadius.value,
-    dir: internalDir.value,
-  };
+  const inherit = internalColorMode.value === "inherit";
+  const attributes: Record<string, string> = {};
+  attributes["data-ms-theme"] = internalTheme.value;
+  // "inherit": no attribute; themes.css resolves a theme scope without data-ms-color-mode
+  // with the nearest ancestor's mode (@scope proximity), in any theme.
+  if (!inherit) {
+    // "system" is resolved by CSS (prefers-color-scheme): identical SSR/client markup, no flash.
+    attributes["data-ms-color-mode"] =
+      internalColorMode.value === "system" ? "system" : resolvedColorMode.value;
+  }
+  attributes["data-ms-density"] = internalDensity.value;
+  attributes["data-ms-contrast"] = internalContrast.value;
+  attributes["data-ms-radius"] = internalRadius.value;
+  attributes.dir = internalDir.value;
+  return attributes;
 });
 
 const wrapperAttributes = computed(() => {
@@ -105,30 +136,53 @@ const wrapperAttributes = computed(() => {
   return {};
 });
 
+const overrideStyle = computed(() => msThemeOverridesToStyle(props.overrides));
+const wrapperStyle = computed(() => (props.target === "wrapper" ? overrideStyle.value : undefined));
+
 const classes = computed(() => {
   return ["ms-provider"];
 });
 
-// If target is root, sync attributes to document.documentElement
+// If target is root, sync attributes and overrides to document.documentElement (and undo on unmount).
+const appliedRootAttributes = new Map<string, string | null>();
+const appliedRootStyles = new Set<string>();
+
 watchEffect(() => {
   if (props.target === "root" && typeof document !== "undefined") {
     const el = document.documentElement;
-    const attrs = resolvedAttributes.value;
-    for (const [key, value] of Object.entries(attrs)) {
+    for (const [key, value] of Object.entries(resolvedAttributes.value)) {
+      if (!appliedRootAttributes.has(key)) appliedRootAttributes.set(key, el.getAttribute(key));
       el.setAttribute(key, value);
+    }
+    const style = overrideStyle.value;
+    for (const name of appliedRootStyles) {
+      if (!(name in style)) {
+        el.style.removeProperty(name);
+        appliedRootStyles.delete(name);
+      }
+    }
+    for (const [name, value] of Object.entries(style)) {
+      el.style.setProperty(name, value);
+      appliedRootStyles.add(name);
     }
   }
 });
 
-onUnmounted(() => {
-  if (props.target === "root" && typeof document !== "undefined") {
-    // Optionally clean up attributes if this provider unmounts
+onBeforeUnmount(() => {
+  if (typeof document === "undefined") return;
+  const el = document.documentElement;
+  for (const [key, previous] of appliedRootAttributes) {
+    if (previous === null) el.removeAttribute(key);
+    else el.setAttribute(key, previous);
   }
+  appliedRootAttributes.clear();
+  for (const name of appliedRootStyles) el.style.removeProperty(name);
+  appliedRootStyles.clear();
 });
 
 const context: MsThemeContext = {
   theme: internalTheme,
-  colorModePreference: internalColorMode,
+  colorModePreference,
   resolvedColorMode,
   density: internalDensity,
   contrast: internalContrast,
@@ -158,4 +212,9 @@ const context: MsThemeContext = {
 };
 
 provideThemeContext(context);
+
+defineSlots<{
+  /** Content that receives the provided theme, color mode, density, contrast, radius, direction and messages. */
+  default?(): unknown;
+}>();
 </script>

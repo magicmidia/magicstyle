@@ -1,0 +1,26 @@
+{
+  "pt-BR": {
+    "inlineBefore": "Rode",
+    "inlineMiddle": "para iniciar o servidor local em",
+    "inlineAfter": ". As variáveis de ambiente ficam em",
+    "apiKeyLabel": "Chave de API",
+    "webhookLabel": "URL do webhook",
+    "copiedHint": "Copiado para a área de transferência."
+  },
+  "en-US": {
+    "inlineBefore": "Run",
+    "inlineMiddle": "to start the local server at",
+    "inlineAfter": ". Environment variables live in",
+    "apiKeyLabel": "API key",
+    "webhookLabel": "Webhook URL",
+    "copiedHint": "Copied to the clipboard."
+  },
+  "es-ES": {
+    "inlineBefore": "Ejecuta",
+    "inlineMiddle": "para iniciar el servidor local en",
+    "inlineAfter": ". Las variables de entorno están en",
+    "apiKeyLabel": "Clave de API",
+    "webhookLabel": "URL del webhook",
+    "copiedHint": "Copiado al portapapeles."
+  }
+}

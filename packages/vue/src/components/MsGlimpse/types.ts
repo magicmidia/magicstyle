@@ -34,6 +34,8 @@ export interface MsGlimpseProps {
 }
 
 export interface MsGlimpseEmits {
+  /** Fires when the preview card opens (after `showDelay` on hover/focus, or on first tap on touch devices). */
   (e: "open"): void;
+  /** Fires when the preview card closes (after `hideDelay` on leave/blur, or immediately on Escape). */
   (e: "close"): void;
 }

@@ -1,0 +1,62 @@
+{
+  "intro": {
+    "pt-BR": "Exibe comandos de terminal de uma linha com botão de copiar, com abas opcionais para alternar entre gerenciadores de pacotes.",
+    "en-US": "Displays one-line terminal commands with a copy button, with optional tabs to switch between package managers.",
+    "es-ES": "Muestra comandos de terminal de una línea con botón para copiar y pestañas opcionales para alternar entre gestores de paquetes."
+  },
+  "demos": [
+    {
+      "file": "Install",
+      "title": {
+        "pt-BR": "Instalação com abas",
+        "en-US": "Install tabs",
+        "es-ES": "Instalación con pestañas"
+      },
+      "description": {
+        "pt-BR": "`tabs` recebe uma lista de `MsSnippetItem`; `v-model:active-tab` guarda o `id` (ou índice) da aba ativa.",
+        "en-US": "`tabs` takes a list of `MsSnippetItem`; `v-model:active-tab` holds the active tab's `id` (or index).",
+        "es-ES": "`tabs` recibe una lista de `MsSnippetItem`; `v-model:active-tab` guarda el `id` (o índice) de la pestaña activa."
+      }
+    },
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Comando único", "en-US": "Single command", "es-ES": "Comando único" },
+      "description": {
+        "pt-BR": "Com `code`, o snippet mostra o prompt `$ ` e copia apenas o comando.",
+        "en-US": "With `code`, the snippet shows the `$ ` prompt and copies only the command.",
+        "es-ES": "Con `code`, el snippet muestra el prompt `$ ` y copia solo el comando."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": {
+        "pt-BR": "Variantes, tons e tamanhos",
+        "en-US": "Variants, tones and sizes",
+        "es-ES": "Variantes, tonos y tamaños"
+      },
+      "description": {
+        "pt-BR": "`variant` aceita `default`, `bordered` e `flat`; `tone` e `size` ajustam o destaque.",
+        "en-US": "`variant` accepts `default`, `bordered` and `flat`; `tone` and `size` adjust emphasis.",
+        "es-ES": "`variant` acepta `default`, `bordered` y `flat`; `tone` y `size` ajustan el énfasis."
+      }
+    },
+    {
+      "file": "Prompt",
+      "title": {
+        "pt-BR": "Prompt e quebra de linha",
+        "en-US": "Prompt and wrapping",
+        "es-ES": "Prompt y ajuste de línea"
+      },
+      "description": {
+        "pt-BR": "`prompt` troca ou remove o símbolo; `copy-prompt` o inclui na cópia e `wrap-lines` quebra comandos longos.",
+        "en-US": "`prompt` changes or removes the symbol; `copy-prompt` includes it in the copied text and `wrap-lines` wraps long commands.",
+        "es-ES": "`prompt` cambia o quita el símbolo; `copy-prompt` lo incluye al copiar y `wrap-lines` ajusta los comandos largos."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- As abas seguem o padrão `tablist`/`tab`/`tabpanel`, com `aria-selected` e tabindex móvel: só a aba ativa está na ordem de `Tab`.\n- `←` / `→`: ativam a aba anterior ou a seguinte (em loop). Atenção: o foco do teclado permanece no botão da aba anterior.\n- O prompt é `aria-hidden=\"true\"`, então leitores de tela leem só o comando.\n- O botão de copiar é um `<button>` com `aria-label` traduzido que muda após a cópia.",
+    "en-US": "- Tabs follow the `tablist`/`tab`/`tabpanel` pattern, with `aria-selected` and a roving tabindex: only the active tab is in the `Tab` order.\n- `←` / `→`: activate the previous or next tab (wrapping around). Note: keyboard focus stays on the previous tab button.\n- The prompt is `aria-hidden=\"true\"`, so screen readers read only the command.\n- The copy button is a `<button>` with a translated `aria-label` that changes after copying.",
+    "es-ES": "- Las pestañas siguen el patrón `tablist`/`tab`/`tabpanel`, con `aria-selected` y tabindex móvil: solo la pestaña activa está en el orden de `Tab`.\n- `←` / `→`: activan la pestaña anterior o la siguiente (en bucle). Atención: el foco del teclado permanece en el botón de la pestaña anterior.\n- El prompt es `aria-hidden=\"true\"`, así que los lectores de pantalla leen solo el comando.\n- El botón para copiar es un `<button>` con un `aria-label` traducido que cambia después de copiar."
+  }
+}

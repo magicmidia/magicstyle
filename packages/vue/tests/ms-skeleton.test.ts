@@ -8,7 +8,7 @@ describe("MsSkeleton (doc 05 §8)", () => {
 
     expect(wrapper.classes()).toContain("ms-skeleton");
     expect(wrapper.classes()).toContain("ms-skeleton--text");
-    expect(wrapper.classes()).toContain("ms-skeleton--shimmer");
+    expect(wrapper.classes()).toContain("ms-skeleton--pulse");
     expect(wrapper.attributes("aria-hidden")).toBe("true");
   });
 

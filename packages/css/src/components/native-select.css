@@ -15,48 +15,51 @@
   appearance: none;
   -webkit-appearance: none;
   inline-size: 100%;
-  block-size: var(--ms-layout-field-height-md);
+  block-size: var(--ms-control-height-md);
   padding-inline-start: var(--ms-space-3);
   padding-inline-end: var(--ms-space-8);
   font-family: var(--ms-font-sans);
   font-size: var(--ms-typography-size-sm);
   color: var(--ms-color-text-primary);
-  background-color: var(--ms-color-surface-raised);
-  border: var(--ms-border-hairline) solid var(--ms-color-border-default);
-  border-radius: var(--ms-control-radius);
+  background-color: transparent;
+  border: var(--ms-border-hairline) solid var(--ms-color-border-field);
+  border-radius: var(--ms-radius-md);
+  box-shadow: var(--ms-elevation-input);
   cursor: pointer;
   outline: none;
   transition:
+    background-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
     border-color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard),
     box-shadow var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 
 .ms-native-select:hover:not(:disabled):not([data-invalid]) {
-  border-color: var(--ms-color-border-strong);
+  border-color: var(--ms-color-border-field-hover);
 }
 
 .ms-native-select:focus-visible {
+  outline: none;
   border-color: var(--ms-focus-ring-color);
-  box-shadow: 0 0 0 1px var(--ms-focus-ring-color);
+  box-shadow: var(--ms-elevation-input), var(--ms-focus-ring-shadow);
 }
 
 .ms-native-select:disabled,
 .ms-native-select[data-disabled] {
-  background-color: var(--ms-color-surface-sunken);
-  color: var(--ms-color-text-disabled);
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
 .ms-native-select[data-invalid],
 .ms-native-select[aria-invalid="true"] {
-  border-color: var(--ms-color-feedback-danger-border);
+  border-color: var(--ms-color-danger);
 }
 
 .ms-native-select[data-invalid]:focus-visible,
 .ms-native-select[aria-invalid="true"]:focus-visible {
-  border-color: var(--ms-color-feedback-danger-border);
-  box-shadow: 0 0 0 1px var(--ms-color-feedback-danger-border);
+  border-color: var(--ms-color-danger);
+  box-shadow:
+    var(--ms-elevation-input),
+    0 0 0 3px color-mix(in oklab, var(--ms-color-danger) 20%, transparent);
 }
 
 /* Variants */
@@ -68,7 +71,7 @@
   background-color: var(--ms-color-surface-subtle);
 }
 .ms-native-select[data-variant="filled"]:focus-visible {
-  background-color: var(--ms-color-surface-raised);
+  background-color: transparent;
   border-color: var(--ms-focus-ring-color);
 }
 
@@ -76,12 +79,13 @@
   background-color: transparent;
   border-inline: none;
   border-block-start: none;
-  border-block-end: var(--ms-border-hairline) solid var(--ms-color-border-default);
+  border-block-end: var(--ms-border-hairline) solid var(--ms-color-border-field);
   border-radius: 0;
+  box-shadow: none;
   padding-inline-start: 0;
 }
 .ms-native-select[data-variant="flushed"]:hover:not(:disabled) {
-  border-block-end-color: var(--ms-color-border-strong);
+  border-block-end-color: var(--ms-color-border-field-hover);
 }
 .ms-native-select[data-variant="flushed"]:focus-visible {
   border-block-end-color: var(--ms-focus-ring-color);
@@ -106,24 +110,21 @@
 
 /* Sizing */
 .ms-native-select[data-size="sm"] {
-  block-size: var(--ms-layout-field-height-sm);
-  padding-inline-start: var(--ms-space-2);
-  padding-inline-end: var(--ms-space-6);
-  font-size: var(--ms-typography-size-xs);
+  block-size: var(--ms-control-height-sm);
+  padding-inline-start: var(--ms-space-3);
+  padding-inline-end: var(--ms-space-8);
 }
 
 .ms-native-select[data-size="lg"] {
-  block-size: var(--ms-layout-field-height-lg);
-  padding-inline-start: var(--ms-space-4);
+  block-size: var(--ms-control-height-lg);
+  padding-inline-start: var(--ms-space-3);
   padding-inline-end: var(--ms-space-8);
-  font-size: var(--ms-typography-size-md);
 }
 
 .ms-native-select[data-size="xl"] {
-  block-size: var(--ms-layout-field-height-xl);
+  block-size: var(--ms-control-height-xl);
   padding-inline-start: var(--ms-space-4);
   padding-inline-end: var(--ms-space-8);
-  font-size: var(--ms-typography-size-lg);
 }
 
 /* Chevron icon overlay */
@@ -134,7 +135,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--ms-color-text-secondary);
+  color: var(--ms-color-text-muted);
   transition: color var(--ms-motion-duration-fast) var(--ms-motion-easing-standard);
 }
 

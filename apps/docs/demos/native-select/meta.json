@@ -1,0 +1,67 @@
+{
+  "intro": {
+    "pt-BR": "Um `select` nativo com o visual da biblioteca. Prefira-o em listas curtas e em telas móveis, onde o seletor do sistema é a melhor experiência.",
+    "en-US": "A native `select` styled to match the library. Prefer it for short lists and on mobile, where the system picker is the best experience.",
+    "es-ES": "Un `select` nativo con el estilo de la biblioteca. Prefiérelo en listas cortas y en móviles, donde el selector del sistema ofrece la mejor experiencia."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Passe elementos `option` no slot padrão; `placeholder` cria uma primeira opção desabilitada.",
+        "en-US": "Pass `option` elements in the default slot; `placeholder` adds a disabled first option.",
+        "es-ES": "Pasa elementos `option` en el slot predeterminado; `placeholder` añade una primera opción deshabilitada."
+      }
+    },
+    {
+      "file": "Options",
+      "title": {
+        "pt-BR": "Opções por prop",
+        "en-US": "Options prop",
+        "es-ES": "Opciones por prop"
+      },
+      "description": {
+        "pt-BR": "`options` recebe um array de `{ label, value, disabled }` quando as opções vêm de dados.",
+        "en-US": "`options` takes an array of `{ label, value, disabled }` when the options come from data.",
+        "es-ES": "`options` recibe un array de `{ label, value, disabled }` cuando las opciones vienen de datos."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": { "pt-BR": "Variantes", "en-US": "Variants", "es-ES": "Variantes" },
+      "description": {
+        "pt-BR": "`variant` alterna entre `outline`, `filled` e `flushed`; `pill` arredonda as bordas.",
+        "en-US": "`variant` switches between `outline`, `filled` and `flushed`; `pill` rounds the corners.",
+        "es-ES": "`variant` alterna entre `outline`, `filled` y `flushed`; `pill` redondea los bordes."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md`, `lg` e `xl`.",
+        "en-US": "`size` accepts `sm`, `md`, `lg` and `xl`.",
+        "es-ES": "`size` acepta `sm`, `md`, `lg` y `xl`."
+      }
+    },
+    {
+      "file": "States",
+      "title": {
+        "pt-BR": "Validação, tom e desabilitado",
+        "en-US": "Validation, tone and disabled",
+        "es-ES": "Validación, tono y deshabilitado"
+      },
+      "description": {
+        "pt-BR": "Um `error` no `MsField` marca o select como inválido; `tone` reforça um estado e `disabled` bloqueia a escolha.",
+        "en-US": "An `error` on `MsField` marks the select invalid; `tone` highlights a state and `disabled` locks the choice.",
+        "es-ES": "Un `error` en `MsField` marca el select como inválido; `tone` resalta un estado y `disabled` bloquea la elección."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza um `select` nativo, com todo o suporte de teclado do navegador.\n- `Tab`: move o foco para o select.\n- `Seta para cima`/`Seta para baixo`: trocam a opção; `Espaço` ou `Alt + Seta para baixo` abrem a lista, conforme o sistema.\n- Dentro de `MsField`, recebe `aria-describedby` e `aria-invalid` do campo. Fora dele, use `aria-label`.",
+    "en-US": "- Renders a native `select`, with all of the browser keyboard support.\n- `Tab`: moves focus to the select.\n- `Arrow Up`/`Arrow Down`: change the option; `Space` or `Alt + Arrow Down` open the list, depending on the platform.\n- Inside `MsField`, it receives `aria-describedby` and `aria-invalid` from the field. Outside of it, use `aria-label`.",
+    "es-ES": "- Renderiza un `select` nativo, con todo el soporte de teclado del navegador.\n- `Tab`: mueve el foco al select.\n- `Flecha arriba`/`Flecha abajo`: cambian la opción; `Espacio` o `Alt + Flecha abajo` abren la lista, según la plataforma.\n- Dentro de `MsField`, recibe `aria-describedby` y `aria-invalid` del campo. Fuera de él, usa `aria-label`."
+  }
+}

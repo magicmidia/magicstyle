@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import type { MsFooterProps } from "./types";
+import { safeHref } from "../../composables/safe-url.ts";
 
 defineOptions({
   name: "MsFooter",
@@ -45,6 +46,21 @@ const containerClasses = computed(() => {
   const mod = typeof props.container === "string" ? props.container : "xl";
   return ["ms-footer__container", `ms-footer__container--${mod}`];
 });
+
+defineSlots<{
+  /** Free-form content between the columns grid and the bottom row. */
+  default?(): unknown;
+  /** Brand area (logo, tagline) at the top. */
+  brand?(): unknown;
+  /** Replaces the link columns rendered from the `columns` prop. */
+  columns?(): unknown;
+  /** Replaces the whole bottom row (copyright and social). */
+  bottom?(): unknown;
+  /** Rich copyright text; replaces the `copyright` prop. */
+  copyright?(): unknown;
+  /** Social links at the end of the bottom row. */
+  social?(): unknown;
+}>();
 </script>
 
 <template>
@@ -70,7 +86,7 @@ const containerClasses = computed(() => {
             <a
               v-for="(link, linkIndex) in col.links"
               :key="linkIndex"
-              :href="link.href || '#'"
+              :href="safeHref(link.href) ?? '#'"
               class="ms-footer__link"
             >
               {{ link.label }}
@@ -114,7 +130,7 @@ const containerClasses = computed(() => {
             <a
               v-for="(link, linkIndex) in col.links"
               :key="linkIndex"
-              :href="link.href || '#'"
+              :href="safeHref(link.href) ?? '#'"
               class="ms-footer__link"
             >
               {{ link.label }}

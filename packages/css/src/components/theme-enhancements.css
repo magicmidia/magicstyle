@@ -15,7 +15,7 @@
    1. MaterialUI (Material Design 3)
    ========================================================================== */
 :is([data-ms-theme="material"], [data-theme="material"]) .ms-button {
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
   font-weight: 500;
   letter-spacing: 0.01em;
 }
@@ -37,11 +37,11 @@
 }
 
 :is([data-ms-theme="material"], [data-theme="material"]) .ms-badge {
-  border-radius: var(--ms-radius-full, 9999px);
+  border-radius: var(--ms-radius-full);
 }
 
 :is([data-ms-theme="material"], [data-theme="material"]) .ms-card {
-  border-radius: var(--ms-radius-lg, 16px);
+  border-radius: var(--ms-radius-lg);
   box-shadow:
     0 1px 3px 0 rgba(0, 0, 0, 0.12),
     0 1px 2px 0 rgba(0, 0, 0, 0.24);
@@ -94,32 +94,8 @@
 }
 
 /* ==========================================================================
-   3. Shadcn UI
+   3. Shadcn UI — no overrides: the base components follow the shadcn structure.
    ========================================================================== */
-:is([data-ms-theme="shadcn"], [data-theme="shadcn"]) .ms-button {
-  border-radius: 6px;
-  font-weight: 500;
-}
-
-:is([data-ms-theme="shadcn"], [data-theme="shadcn"]) .ms-button[data-variant="solid"] {
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-
-:is([data-ms-theme="shadcn"], [data-theme="shadcn"]) .ms-card {
-  border-radius: 8px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--ms-color-border-default);
-}
-
-:is([data-ms-theme="shadcn"], [data-theme="shadcn"]) .ms-input {
-  border-radius: 6px;
-  border-color: var(--ms-color-border-default);
-}
-
-:is([data-ms-theme="shadcn"], [data-theme="shadcn"]) .ms-input:focus-within {
-  border-color: var(--ms-color-border-focus);
-  box-shadow: 0 0 0 1px var(--ms-color-border-focus);
-}
 
 /* ==========================================================================
    4. GitHub Primer
@@ -234,4 +210,23 @@
 :is([data-ms-theme="nord"], [data-theme="nord"]) .ms-card {
   border-radius: 10px;
   box-shadow: 0 4px 12px 0 rgba(46, 52, 64, 0.15);
+}
+
+/* data-ms-color-mode="system": same dark rules, resolved by the OS preference. */
+@media (prefers-color-scheme: dark) {
+  :is([data-ms-theme="bootstrap"], [data-theme="bootstrap"])[data-ms-color-mode="system"]
+    .ms-input:focus-within,
+  :is([data-ms-theme="bootstrap"], [data-theme="bootstrap"])[data-ms-color-mode="system"]
+    .ms-textarea:focus,
+  :is([data-ms-theme="bootstrap"], [data-theme="bootstrap"])[data-ms-color-mode="system"]
+    .ms-native-select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
+  }
+
+  :is([data-ms-theme="github"], [data-theme="github"])[data-ms-color-mode="system"]
+    .ms-button[data-variant="solid"] {
+    box-shadow: 0 0 transparent;
+    border-color: rgba(240, 246, 252, 0.1);
+  }
 }

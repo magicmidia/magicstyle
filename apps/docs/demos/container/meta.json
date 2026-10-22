@@ -1,0 +1,44 @@
+{
+  "intro": {
+    "pt-BR": "`MsContainer` centraliza o conteúdo e limita a largura máxima a um dos breakpoints do tema, com padding lateral que cresce com a tela.",
+    "en-US": "`MsContainer` centers content and caps its maximum width at one of the theme breakpoints, with side padding that grows with the screen.",
+    "es-ES": "`MsContainer` centra el contenido y limita el ancho máximo a uno de los breakpoints del tema, con padding lateral que crece con la pantalla."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Uma faixa de largura total com o texto contido em `max-width=\"sm\"`, como numa seção de landing page.",
+        "en-US": "A full-width band with text constrained to `max-width=\"sm\"`, as in a landing page section.",
+        "es-ES": "Una franja de ancho completo con el texto limitado a `max-width=\"sm\"`, como en una sección de landing page."
+      }
+    },
+    {
+      "file": "Widths",
+      "title": {
+        "pt-BR": "Larguras máximas",
+        "en-US": "Maximum widths",
+        "es-ES": "Anchos máximos"
+      },
+      "description": {
+        "pt-BR": "`max-width` aceita `sm`, `md`, `lg`, `xl` (padrão), `2xl` e `fluid`; larguras maiores que a coluna desta página aparecem iguais a `fluid`.",
+        "en-US": "`max-width` accepts `sm`, `md`, `lg`, `xl` (default), `2xl` and `fluid`; widths larger than this page's column look the same as `fluid`.",
+        "es-ES": "`max-width` acepta `sm`, `md`, `lg`, `xl` (por defecto), `2xl` y `fluid`; los anchos mayores que la columna de esta página se ven igual que `fluid`."
+      }
+    },
+    {
+      "file": "Padded",
+      "title": {
+        "pt-BR": "Padding e tag",
+        "en-US": "Padding and tag",
+        "es-ES": "Padding y etiqueta"
+      },
+      "description": {
+        "pt-BR": "`:padded=\"false\"` remove o padding lateral e `as` troca o elemento renderizado (aqui, `section`).",
+        "en-US": "`:padded=\"false\"` removes the side padding and `as` changes the rendered element (here, `section`).",
+        "es-ES": "`:padded=\"false\"` quita el padding lateral y `as` cambia el elemento renderizado (aquí, `section`)."
+      }
+    }
+  ]
+}

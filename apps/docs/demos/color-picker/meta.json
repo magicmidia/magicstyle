@@ -1,0 +1,59 @@
+{
+  "intro": {
+    "pt-BR": "Use o seletor de cores para personalizar temas, etiquetas e marcas. Ele combina o seletor nativo do navegador, um campo hexadecimal e uma paleta de amostras.",
+    "en-US": "Use the color picker to customize themes, labels and brands. It combines the browser's native picker, a hex field and a palette of swatches.",
+    "es-ES": "Usa el selector de color para personalizar temas, etiquetas y marcas. Combina el selector nativo del navegador, un campo hexadecimal y una paleta de muestras."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "O `v-model` recebe a cor em hexadecimal; o padrão é `#6366f1`.",
+        "en-US": "`v-model` holds the color as a hex string; the default is `#6366f1`.",
+        "es-ES": "`v-model` recibe el color en hexadecimal; el valor por defecto es `#6366f1`."
+      }
+    },
+    {
+      "file": "CustomSwatches",
+      "title": { "pt-BR": "Paleta própria", "en-US": "Custom palette", "es-ES": "Paleta propia" },
+      "description": {
+        "pt-BR": "Troque as amostras com `swatches` e esconda o campo de texto com `:show-input=\"false\"`.",
+        "en-US": "Replace the swatches with `swatches` and hide the text field with `:show-input=\"false\"`.",
+        "es-ES": "Reemplaza las muestras con `swatches` y oculta el campo de texto con `:show-input=\"false\"`."
+      }
+    },
+    {
+      "file": "WithField",
+      "title": { "pt-BR": "Com MsField", "en-US": "With MsField", "es-ES": "Con MsField" },
+      "description": {
+        "pt-BR": "Dentro de um `MsField`, o rótulo e a descrição ficam ligados ao seletor nativo.",
+        "en-US": "Inside an `MsField`, the label and description are linked to the native picker.",
+        "es-ES": "Dentro de un `MsField`, la etiqueta y la descripción quedan vinculadas al selector nativo."
+      }
+    },
+    {
+      "file": "LivePreview",
+      "title": { "pt-BR": "Pré-visualização", "en-US": "Live preview", "es-ES": "Vista previa" },
+      "description": {
+        "pt-BR": "Use o valor do `v-model` para atualizar a interface enquanto a cor muda, como na cor de uma etiqueta.",
+        "en-US": "Use the `v-model` value to update the UI as the color changes, like the color of a label.",
+        "es-ES": "Usa el valor de `v-model` para actualizar la interfaz mientras cambia el color, como el color de una etiqueta."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": { "pt-BR": "Desabilitado", "en-US": "Disabled", "es-ES": "Deshabilitado" },
+      "description": {
+        "pt-BR": "`disabled` bloqueia o seletor nativo, o campo hexadecimal e as amostras.",
+        "en-US": "`disabled` locks the native picker, the hex field and the swatches.",
+        "es-ES": "`disabled` bloquea el selector nativo, el campo hexadecimal y las muestras."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O seletor é um `<input type=\"color\">` nativo; fora de um `MsField`, recebe um `aria-label` padrão das mensagens da biblioteca.\n- O campo hexadecimal tem `aria-label` próprio e aplica o valor no evento `change` (ao sair do campo ou pressionar `Enter`).\n- Cada amostra é um `<button>` com `aria-label` que inclui o código da cor: `Tab` percorre as amostras e `Enter`/`Espaço` aplicam a cor.\n- A amostra ativa só é indicada visualmente; não há `aria-pressed`.",
+    "en-US": "- The picker is a native `<input type=\"color\">`; outside an `MsField`, it gets a default `aria-label` from the library messages.\n- The hex field has its own `aria-label` and applies the value on `change` (when leaving the field or pressing `Enter`).\n- Each swatch is a `<button>` with an `aria-label` that includes the color code: `Tab` moves through the swatches and `Enter`/`Space` apply the color.\n- The active swatch is only indicated visually; there is no `aria-pressed`.",
+    "es-ES": "- El selector es un `<input type=\"color\">` nativo; fuera de un `MsField`, recibe un `aria-label` por defecto de los mensajes de la biblioteca.\n- El campo hexadecimal tiene su propio `aria-label` y aplica el valor en el evento `change` (al salir del campo o pulsar `Enter`).\n- Cada muestra es un `<button>` con un `aria-label` que incluye el código del color: `Tab` recorre las muestras y `Enter`/`Espacio` aplican el color.\n- La muestra activa solo se indica visualmente; no hay `aria-pressed`."
+  }
+}

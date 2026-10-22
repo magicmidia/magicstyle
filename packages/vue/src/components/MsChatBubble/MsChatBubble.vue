@@ -1,18 +1,25 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsChatBubbleProps } from "./types.ts";
 
 const props = withDefaults(defineProps<MsChatBubbleProps>(), {
   placement: "start",
   variant: "soft",
   tone: "neutral",
+  typing: false,
 });
 
 defineSlots<{
+  /** Message content (not rendered while `typing`). */
   default?(): unknown;
+  /** Avatar next to the bubble. */
   avatar?(): unknown;
+  /** Replaces the name/timestamp header. */
   header?(): unknown;
+  /** Replaces the whole footer (including the status). */
   footer?(): unknown;
+  /** Replaces the delivery status indicator. */
   status?(): unknown;
 }>();
 
@@ -25,7 +32,10 @@ const bubbleClasses = computed(() => [
   "ms-chat-bubble",
   `ms-chat-bubble--variant-${props.variant}`,
   `ms-chat-bubble--tone-${props.tone}`,
+  { "ms-chat-bubble--typing": props.typing },
 ]);
+
+const t = useMsMessages();
 
 const statusIcons: Record<string, string> = {
   sending: "⏳",
@@ -53,7 +63,13 @@ const statusIcons: Record<string, string> = {
       </div>
 
       <!-- Bubble Body -->
-      <div :class="bubbleClasses">
+      <div v-if="props.typing" :class="bubbleClasses" role="status">
+        <span class="ms-chat-bubble__typing-label">{{ t.chatBubble.typing }}</span>
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
+      </div>
+      <div v-else :class="bubbleClasses">
         <slot />
       </div>
 
@@ -61,7 +77,12 @@ const statusIcons: Record<string, string> = {
       <div v-if="props.status || $slots.footer || $slots.status" class="ms-chat-bubble-footer">
         <slot name="footer">
           <slot name="status">
-            <span v-if="props.status" class="ms-chat-bubble-status" :aria-label="props.status">
+            <span
+              v-if="props.status"
+              class="ms-chat-bubble-status"
+              role="img"
+              :aria-label="t.chatBubble[props.status] ?? props.status"
+            >
               {{ statusIcons[props.status] || props.status }}
             </span>
           </slot>

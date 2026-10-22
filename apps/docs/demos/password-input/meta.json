@@ -1,0 +1,75 @@
+{
+  "intro": {
+    "pt-BR": "Campo de senha com botão para revelar o texto e, opcionalmente, medidor de força e lista de requisitos atualizada enquanto a pessoa digita.",
+    "en-US": "Password field with a reveal button and, optionally, a strength meter and a requirements list that updates as people type.",
+    "es-ES": "Campo de contraseña con botón para mostrar el texto y, opcionalmente, medidor de seguridad y lista de requisitos que se actualiza mientras se escribe."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "O botão de revelar vem ligado por padrão; use `autocomplete` para ajudar gerenciadores de senha.",
+        "en-US": "The reveal button is on by default; use `autocomplete` to help password managers.",
+        "es-ES": "El botón para mostrar viene activado por defecto; usa `autocomplete` para ayudar a los gestores de contraseñas."
+      }
+    },
+    {
+      "file": "Strength",
+      "title": {
+        "pt-BR": "Força e requisitos",
+        "en-US": "Strength and requirements",
+        "es-ES": "Seguridad y requisitos"
+      },
+      "description": {
+        "pt-BR": "`show-strength-meter` exibe quatro níveis e `show-criteria` lista os requisitos padrão.",
+        "en-US": "`show-strength-meter` shows four levels and `show-criteria` lists the default requirements.",
+        "es-ES": "`show-strength-meter` muestra cuatro niveles y `show-criteria` lista los requisitos predeterminados."
+      }
+    },
+    {
+      "file": "CustomCriteria",
+      "title": {
+        "pt-BR": "Requisitos personalizados",
+        "en-US": "Custom requirements",
+        "es-ES": "Requisitos personalizados"
+      },
+      "description": {
+        "pt-BR": "`criteria` recebe regras com `id`, `label` e `validator`, e a pontuação do medidor passa a considerar essas regras.",
+        "en-US": "`criteria` takes rules with `id`, `label` and `validator`, and the meter score is computed from those rules.",
+        "es-ES": "`criteria` recibe reglas con `id`, `label` y `validator`, y la puntuación del medidor se calcula con esas reglas."
+      }
+    },
+    {
+      "file": "ChangePassword",
+      "title": {
+        "pt-BR": "Alterar senha",
+        "en-US": "Change password",
+        "es-ES": "Cambiar contraseña"
+      },
+      "description": {
+        "pt-BR": "Formulário real com confirmação e mensagens de erro no `MsField`; `:show-toggle=\"false\"` esconde o botão de revelar.",
+        "en-US": "A real form with confirmation and error messages on `MsField`; `:show-toggle=\"false\"` hides the reveal button.",
+        "es-ES": "Un formulario real con confirmación y mensajes de error en `MsField`; `:show-toggle=\"false\"` oculta el botón para mostrar."
+      }
+    },
+    {
+      "file": "States",
+      "title": {
+        "pt-BR": "Tamanhos e desabilitado",
+        "en-US": "Sizes and disabled",
+        "es-ES": "Tamaños y deshabilitado"
+      },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md` e `lg`; `disabled` bloqueia o campo.",
+        "en-US": "`size` accepts `sm`, `md` and `lg`; `disabled` locks the field.",
+        "es-ES": "`size` acepta `sm`, `md` y `lg`; `disabled` bloquea el campo."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza um `input` nativo que alterna entre `type=\"password\"` e `type=\"text\"`.\n- `Tab`: move o foco para o campo e depois para o botão de revelar, um `button` com `aria-label` localizado que muda entre mostrar e ocultar.\n- `Enter`/`Espaço` no botão: revela ou oculta a senha.\n- Dentro de `MsField`, recebe `aria-describedby` e `aria-invalid` do campo.\n- O medidor de força e a lista de requisitos não são anunciados automaticamente; considere repetir o resultado em uma mensagem de `MsField`.",
+    "en-US": "- Renders a native `input` that toggles between `type=\"password\"` and `type=\"text\"`.\n- `Tab`: moves focus to the field and then to the reveal button, a `button` with a localized `aria-label` that switches between show and hide.\n- `Enter`/`Space` on the button: shows or hides the password.\n- Inside `MsField`, it receives `aria-describedby` and `aria-invalid` from the field.\n- The strength meter and requirements list are not announced automatically; consider repeating the result in an `MsField` message.",
+    "es-ES": "- Renderiza un `input` nativo que alterna entre `type=\"password\"` y `type=\"text\"`.\n- `Tab`: mueve el foco al campo y luego al botón para mostrar, un `button` con `aria-label` localizado que cambia entre mostrar y ocultar.\n- `Enter`/`Espacio` en el botón: muestra u oculta la contraseña.\n- Dentro de `MsField`, recibe `aria-describedby` y `aria-invalid` del campo.\n- El medidor de seguridad y la lista de requisitos no se anuncian automáticamente; considera repetir el resultado en un mensaje de `MsField`."
+  }
+}

@@ -1,14 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { mount } from "@vue/test-utils";
+import { nextTick } from "vue";
 import { MsIconPicker } from "../src/index.ts";
 
 describe("MsIconPicker component", () => {
   it("renders trigger and opens icon grid on click", async () => {
     const wrapper = mount(MsIconPicker, {
-      props: { placeholder: "Escolha um ícone" },
+      props: { placeholder: "Pick an icon" },
     });
     const trigger = wrapper.find("button.ms-icon-picker__trigger");
-    expect(trigger.text()).toContain("Escolha um ícone");
+    expect(trigger.text()).toContain("Pick an icon");
 
     await trigger.trigger("click");
     const dropdown = wrapper.find(".ms-icon-picker__dropdown");
@@ -36,7 +37,7 @@ describe("MsIconPicker component", () => {
     expect(previewSvg.exists()).toBe(true);
   });
 
-  it("sanitizes malicious script and onload/onerror attributes in custom icons", () => {
+  it("sanitizes malicious script and onload/onerror attributes in custom icons", async () => {
     const maliciousIcons = [
       {
         id: "xss-icon",
@@ -51,11 +52,33 @@ describe("MsIconPicker component", () => {
         modelValue: "xss-icon",
       },
     });
+    await nextTick(); // custom SVGs render after mount (SSR-safe)
     const html = wrapper.html();
     expect(html).not.toContain("<script>");
     expect(html).not.toContain("alert(");
     expect(html).not.toContain("onload=");
     expect(html).not.toContain("onerror=");
     expect(html).toContain('<path d="M10 10"');
+  });
+
+  it("does not render executable payloads from custom icon markup", async () => {
+    const wrapper = mount(MsIconPicker, {
+      props: {
+        icons: [
+          {
+            id: "evil",
+            name: "Evil",
+            category: "Test",
+            svg: '<a href=javascript:alert(1)><path d="M1 1"/></a><foreignObject><iframe srcdoc="x"></iframe></foreignObject>',
+          },
+        ],
+        modelValue: "evil",
+      },
+    });
+    await nextTick();
+    const html = wrapper.find(".ms-icon-picker__preview").html();
+    expect(html).not.toContain("javascript:");
+    expect(html).not.toContain("foreignObject");
+    expect(html).not.toContain("iframe");
   });
 });

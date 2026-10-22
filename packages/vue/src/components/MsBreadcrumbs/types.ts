@@ -63,7 +63,7 @@ export interface MsBreadcrumbsProps {
 
   /**
    * Accessible navigation label for screen readers.
-   * Default: "Navegação estrutural".
+   * @default messages.breadcrumbs.label
    */
   ariaLabel?: string;
 }
@@ -93,6 +93,10 @@ export interface MsBreadcrumbItemProps {
 }
 
 export interface MsBreadcrumbSeparatorProps {
+  /**
+   * Element to render. Use "li" when placing the separator directly inside the list,
+   * or put it in MsBreadcrumbItem's `separator` slot. @default "span"
+   */
   as?: string;
 }
 

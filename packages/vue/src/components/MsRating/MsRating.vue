@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import { useFieldControl } from "../../composables/use-field-context.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsRatingProps, MsRatingEmits } from "./types.ts";
 
 const props = withDefaults(defineProps<MsRatingProps>(), {
@@ -12,6 +14,9 @@ const props = withDefaults(defineProps<MsRatingProps>(), {
 });
 
 const emit = defineEmits<MsRatingEmits>();
+
+const t = useMsMessages();
+const fieldControl = useFieldControl("ms-rating");
 
 const hoverValue = ref<number | null>(null);
 
@@ -57,9 +62,14 @@ const ratingClasses = computed(() => [
 
 <template>
   <div
+    :id="fieldControl.id"
     :class="ratingClasses"
     role="slider"
     tabindex="0"
+    :aria-labelledby="fieldControl.labelledBy.value"
+    :aria-describedby="fieldControl.describedBy.value"
+    :aria-invalid="fieldControl.fieldInvalid.value || undefined"
+    :aria-valuetext="t.rating.star(props.modelValue, props.max)"
     :aria-valuenow="props.modelValue"
     :aria-valuemin="0"
     :aria-valuemax="props.max"
@@ -76,7 +86,7 @@ const ratingClasses = computed(() => [
       tabindex="-1"
       class="ms-rating__item"
       :class="{ 'ms-rating__item--filled': index <= activeValue }"
-      :aria-label="`${index} de ${props.max} estrelas`"
+      :aria-label="t.rating.star(index, props.max)"
       @click="setRating(index)"
       @mouseenter="handleMouseEnter(index)"
     >

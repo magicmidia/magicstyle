@@ -16,7 +16,7 @@ export interface MsTooltipProps {
 
   /**
    * Visual surface tone: "dark", "light", "primary".
-   * Default: "dark".
+   * Default: "primary".
    */
   tone?: MsTooltipTone;
 

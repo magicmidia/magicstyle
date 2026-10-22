@@ -5,15 +5,15 @@
 
 @keyframes ms-progress-indeterminate {
   0% {
-    left: -40%;
+    inset-inline-start: -40%;
     width: 35%;
   }
   60% {
-    left: 100%;
+    inset-inline-start: 100%;
     width: 100%;
   }
   100% {
-    left: 100%;
+    inset-inline-start: 100%;
     width: 0%;
   }
 }
@@ -30,7 +30,7 @@
 .ms-progress {
   display: flex;
   flex-direction: column;
-  gap: var(--ms-space-1);
+  gap: var(--ms-space-2);
   width: 100%;
   box-sizing: border-box;
 }
@@ -39,9 +39,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--ms-typography-size-xs);
+  font-size: var(--ms-typography-size-sm);
   font-weight: var(--ms-typography-weight-medium);
-  color: var(--ms-color-text-secondary);
+  color: var(--ms-color-text-primary);
 }
 
 .ms-progress__label {
@@ -52,14 +52,16 @@
 .ms-progress__value {
   display: inline-flex;
   font-variant-numeric: tabular-nums;
-  color: var(--ms-color-text-primary);
-  font-weight: var(--ms-typography-weight-semibold);
+  color: var(--ms-color-text-muted);
+  font-weight: var(--ms-typography-weight-medium);
 }
 
+/* shadcn: the track is the bar color at 20% (per tone via the tone engine). */
 .ms-progress__track {
   position: relative;
   width: 100%;
-  background-color: var(--ms-color-surface-sunken, #f1f5f9);
+  height: 8px;
+  background-color: color-mix(in oklab, var(--ms-tone, var(--ms-color-primary)) 20%, transparent);
   border-radius: var(--ms-radius-full);
   overflow: hidden;
   box-sizing: border-box;
@@ -67,6 +69,8 @@
 
 .ms-progress__bar {
   height: 100%;
+  background-color: var(--ms-color-primary);
+  color: var(--ms-color-primary-content);
   border-radius: inherit;
   transition: width var(--ms-motion-duration-base) var(--ms-motion-easing-standard);
 }
@@ -106,81 +110,97 @@
 }
 
 .ms-progress--shape-rounded .ms-progress__track {
-  border-radius: var(--ms-radius-sm, 4px);
+  border-radius: var(--ms-radius-sm);
 }
 
 .ms-progress--shape-pill .ms-progress__track {
   border-radius: var(--ms-radius-full);
 }
-
-/* Tone styling */
-.ms-progress--primary .ms-progress__bar {
-  background-color: var(--ms-color-primary, #2e86de);
+/* Tones: --ms-tone/--ms-tone-content come from [data-tone] (tone engine) or the tone class; states are derived. */
+.ms-progress--primary {
+  --ms-tone: var(--ms-color-primary);
+  --ms-tone-content: var(--ms-color-primary-content);
+}
+.ms-progress--secondary {
+  --ms-tone: var(--ms-color-secondary);
+  --ms-tone-content: var(--ms-color-secondary-content);
+}
+.ms-progress--accent {
+  --ms-tone: var(--ms-color-accent);
+  --ms-tone-content: var(--ms-color-accent-content);
+}
+.ms-progress--neutral {
+  --ms-tone: var(--ms-color-neutral);
+  --ms-tone-content: var(--ms-color-neutral-content);
+  --ms-tone-text-mix: 0%;
+}
+.ms-progress--info {
+  --ms-tone: var(--ms-color-info);
+  --ms-tone-content: var(--ms-color-info-content);
+}
+.ms-progress--success {
+  --ms-tone: var(--ms-color-success);
+  --ms-tone-content: var(--ms-color-success-content);
+}
+.ms-progress--warning {
+  --ms-tone: var(--ms-color-warning);
+  --ms-tone-content: var(--ms-color-warning-content);
+}
+.ms-progress--danger {
+  --ms-tone: var(--ms-color-danger);
+  --ms-tone-content: var(--ms-color-danger-content);
 }
 
-.ms-progress--secondary .ms-progress__bar {
-  background-color: var(--ms-color-secondary, #e15f41);
-}
-
-.ms-progress--accent .ms-progress__bar {
-  background-color: var(--ms-color-accent, #341f97);
-}
-
-.ms-progress--neutral .ms-progress__bar {
-  background-color: var(--ms-color-neutral, #222f3e);
-}
-
-.ms-progress--success .ms-progress__bar {
-  background-color: var(--ms-color-success, #10ac84);
-}
-
-.ms-progress--info .ms-progress__bar {
-  background-color: var(--ms-color-info, #0abde3);
-}
-
-.ms-progress--warning .ms-progress__bar {
-  background-color: var(--ms-color-warning, #ff9f43);
-}
-
-.ms-progress--danger .ms-progress__bar {
-  background-color: var(--ms-color-danger, #ee5253);
+:is(
+    .ms-progress--primary,
+    .ms-progress--secondary,
+    .ms-progress--accent,
+    .ms-progress--neutral,
+    .ms-progress--info,
+    .ms-progress--success,
+    .ms-progress--warning,
+    .ms-progress--danger
+  )
+  .ms-progress__bar {
+  background-color: var(--ms-tone);
+  color: var(--ms-tone-content);
 }
 
 /* Gradient effects */
 .ms-progress--gradient.ms-progress--primary .ms-progress__bar {
-  background-image: linear-gradient(90deg, #2e86de, #0abde3);
+  background-image: linear-gradient(90deg, var(--ms-color-primary), var(--ms-color-info));
 }
 
 .ms-progress--gradient.ms-progress--secondary .ms-progress__bar {
-  background-image: linear-gradient(90deg, #e15f41, #ff9f43);
+  background-image: linear-gradient(90deg, var(--ms-color-secondary), var(--ms-color-warning));
 }
 
 .ms-progress--gradient.ms-progress--accent .ms-progress__bar {
-  background-image: linear-gradient(90deg, #341f97, #2e86de);
+  background-image: linear-gradient(90deg, var(--ms-color-accent), var(--ms-color-primary));
 }
 
 .ms-progress--gradient.ms-progress--neutral .ms-progress__bar {
   background-image: linear-gradient(
     90deg,
-    var(--ms-color-neutral-600),
-    var(--ms-color-neutral-800)
+    var(--ms-color-neutral),
+    var(--ms-color-interactive-neutral-hover)
   );
 }
 
 .ms-progress--gradient.ms-progress--success .ms-progress__bar {
-  background-image: linear-gradient(90deg, #10ac84, #0abde3);
+  background-image: linear-gradient(90deg, var(--ms-color-success), var(--ms-color-info));
 }
 
 .ms-progress--gradient.ms-progress--info .ms-progress__bar {
-  background-image: linear-gradient(90deg, #0abde3, #2e86de);
+  background-image: linear-gradient(90deg, var(--ms-color-info), var(--ms-color-primary));
 }
 
 .ms-progress--gradient.ms-progress--warning .ms-progress__bar {
-  background-image: linear-gradient(90deg, #ff9f43, #e15f41);
+  background-image: linear-gradient(90deg, var(--ms-color-warning), var(--ms-color-secondary));
 }
 
 .ms-progress--gradient.ms-progress--danger .ms-progress__bar {
-  background-image: linear-gradient(90deg, #ee5253, #e15f41);
+  background-image: linear-gradient(90deg, var(--ms-color-danger), var(--ms-color-secondary));
 }
 
 /* Inline bar text */
@@ -189,10 +209,10 @@
   align-items: center;
   justify-content: flex-end;
   height: 100%;
-  padding-inline-end: var(--ms-space-2, 8px);
-  font-size: var(--ms-typography-size-2xs, 10px);
-  font-weight: var(--ms-typography-weight-bold, 700);
-  color: #ffffff;
+  padding-inline-end: var(--ms-space-2);
+  font-size: var(--ms-typography-size-2xs);
+  font-weight: var(--ms-typography-weight-semibold);
+  color: inherit;
   line-height: 1;
   white-space: nowrap;
   overflow: hidden;
@@ -203,18 +223,22 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  animation: ms-progress-indeterminate 1.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  animation: ms-progress-indeterminate calc(1.4s * var(--ms-motion-scale, 1))
+    cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 
 /* Striped state */
 .ms-progress__track--striped .ms-progress__bar {
   background-image: linear-gradient(
     45deg,
-    rgba(255, 255, 255, 0.18) 25%,
+    color-mix(in oklab, var(--ms-tone-content, var(--ms-color-primary-content)) 18%, transparent)
+      25%,
     transparent 25%,
     transparent 50%,
-    rgba(255, 255, 255, 0.18) 50%,
-    rgba(255, 255, 255, 0.18) 75%,
+    color-mix(in oklab, var(--ms-tone-content, var(--ms-color-primary-content)) 18%, transparent)
+      50%,
+    color-mix(in oklab, var(--ms-tone-content, var(--ms-color-primary-content)) 18%, transparent)
+      75%,
     transparent 75%,
     transparent
   );
@@ -223,7 +247,7 @@
 
 /* Animated stripes */
 .ms-progress__track--animated .ms-progress__bar {
-  animation: ms-progress-stripes 1s linear infinite;
+  animation: ms-progress-stripes calc(1s * var(--ms-motion-scale, 1)) linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

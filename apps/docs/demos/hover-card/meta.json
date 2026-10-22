@@ -1,0 +1,49 @@
+{
+  "intro": {
+    "pt-BR": "Cartão de pré-visualização que aparece ao passar o mouse ou focar um link, como perfis e repositórios. É um complemento: o mesmo conteúdo deve estar acessível pelo destino do link.",
+    "en-US": "Preview card shown when a link is hovered or focused, such as profiles and repositories. It is supplementary: the same content should be reachable through the link destination.",
+    "es-ES": "Tarjeta de vista previa que aparece al pasar el ratón o enfocar un enlace, como perfiles y repositorios. Es complementaria: el mismo contenido debe estar disponible en el destino del enlace."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": {
+        "pt-BR": "Perfil de usuário",
+        "en-US": "User profile",
+        "es-ES": "Perfil de usuario"
+      },
+      "description": {
+        "pt-BR": "O gatilho vai no slot padrão e a pré-visualização no slot `content`; `width` ajusta a largura do cartão.",
+        "en-US": "The trigger goes in the default slot and the preview in the `content` slot; `width` sets the card width.",
+        "es-ES": "El disparador va en el slot predeterminado y la vista previa en el slot `content`; `width` ajusta el ancho de la tarjeta."
+      }
+    },
+    {
+      "file": "Placements",
+      "title": { "pt-BR": "Posicionamento", "en-US": "Placement", "es-ES": "Posición" },
+      "description": {
+        "pt-BR": "`placement` aceita `bottom` (padrão), `top`, `left` e `right`.",
+        "en-US": "`placement` accepts `bottom` (default), `top`, `left` and `right`.",
+        "es-ES": "`placement` acepta `bottom` (predeterminado), `top`, `left` y `right`."
+      }
+    },
+    {
+      "file": "Repository",
+      "title": {
+        "pt-BR": "Atrasos de abertura e fechamento",
+        "en-US": "Open and close delays",
+        "es-ES": "Retrasos de apertura y cierre"
+      },
+      "description": {
+        "pt-BR": "`open-delay` e `close-delay` (em ms) evitam aberturas acidentais ao passar o mouse pelo texto.",
+        "en-US": "`open-delay` and `close-delay` (in ms) prevent accidental opening while the pointer moves across the text.",
+        "es-ES": "`open-delay` y `close-delay` (en ms) evitan aperturas accidentales al mover el puntero por el texto."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Abre ao passar o mouse e quando o gatilho recebe foco (`Tab`); fecha ao sair ou quando o foco deixa o componente.\n- `Esc`: fecha o cartão.\n- O cartão não tem papel ARIA nem é anunciado pelo leitor de tela; não coloque nele informação que não exista em outro lugar.",
+    "en-US": "- Opens on hover and when the trigger receives focus (`Tab`); closes on leave or when focus leaves the component.\n- `Esc`: closes the card.\n- The card has no ARIA role and is not announced by screen readers; do not put information in it that is not available elsewhere.",
+    "es-ES": "- Se abre al pasar el ratón y cuando el disparador recibe el foco (`Tab`); se cierra al salir o cuando el foco abandona el componente.\n- `Esc`: cierra la tarjeta.\n- La tarjeta no tiene rol ARIA ni la anuncian los lectores de pantalla; no pongas en ella información que no esté disponible en otro lugar."
+  }
+}

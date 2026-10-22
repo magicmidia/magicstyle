@@ -75,6 +75,11 @@ describe("MsAvatar", () => {
     expect(indicator.attributes("data-status")).toBe("online");
   });
 
+  it.each(["secondary", "info"] as const)("accepts the %s tone (tone engine)", (tone) => {
+    const wrapper = mount(MsAvatar, { props: { name: "Ada Lovelace", tone } });
+    expect(wrapper.attributes("data-tone")).toBe(tone);
+  });
+
   it("supports square shape, bordered ring, and top-right status placement", () => {
     const wrapper = mount(MsAvatar, {
       props: {

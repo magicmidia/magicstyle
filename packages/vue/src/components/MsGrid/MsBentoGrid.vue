@@ -31,6 +31,11 @@ const classes = computed(() => [
     "ms-bento-grid--dense": props.dense,
   },
 ]);
+
+defineSlots<{
+  /** `MsBentoItem` children. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

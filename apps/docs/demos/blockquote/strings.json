@@ -1,0 +1,50 @@
+{
+  "pt-BR": {
+    "designLead": "Head de Design na Lumen",
+    "quoteDesign": "Um bom sistema de design não limita a criatividade: ele elimina as decisões repetidas para que a equipe possa se concentrar nas que realmente importam.",
+    "sourceTalk": "Palestra no Design Systems Brasil 2025",
+    "ctoRole": "CTO da Rota Logística",
+    "quoteShip": "Reduzimos o tempo de entrega de novas telas de semanas para dias depois de padronizar nossos componentes.",
+    "supportRole": "Coordenadora de Suporte",
+    "quoteSupport": "Os chamados sobre a tela de pagamento caíram 40% depois que revisamos os textos de erro.",
+    "quoteMinimal": "Simplicidade é a sofisticação máxima.",
+    "notePrimary": "Toda mudança em pacote público precisa de um changeset.",
+    "noteAccent": "Os tokens de cor são gerados a partir do tema ativo.",
+    "noteInfo": "A versão 2.0 remove as props marcadas como obsoletas na 1.8.",
+    "noteWarning": "Não edite arquivos gerados manualmente; eles são sobrescritos no build.",
+    "founderRole": "Fundadora da Casa Aurora",
+    "quoteTestimonial": "Migramos o painel inteiro em um fim de semana. Os componentes são acessíveis por padrão e o tema escuro simplesmente funcionou."
+  },
+  "en-US": {
+    "designLead": "Head of Design at Lumen",
+    "quoteDesign": "A good design system doesn't limit creativity: it removes repeated decisions so the team can focus on the ones that really matter.",
+    "sourceTalk": "Talk at Design Systems Summit 2025",
+    "ctoRole": "CTO at Route Logistics",
+    "quoteShip": "We cut the time to ship new screens from weeks to days after standardizing our components.",
+    "supportRole": "Support Lead",
+    "quoteSupport": "Tickets about the checkout page dropped 40% after we rewrote the error messages.",
+    "quoteMinimal": "Simplicity is the ultimate sophistication.",
+    "notePrimary": "Every change to a public package needs a changeset.",
+    "noteAccent": "Color tokens are generated from the active theme.",
+    "noteInfo": "Version 2.0 removes the props deprecated in 1.8.",
+    "noteWarning": "Don't edit generated files by hand; they are overwritten on build.",
+    "founderRole": "Founder of Aurora House",
+    "quoteTestimonial": "We migrated the whole dashboard in a weekend. The components are accessible by default and dark mode just worked."
+  },
+  "es-ES": {
+    "designLead": "Head of Design en Lumen",
+    "quoteDesign": "Un buen sistema de diseño no limita la creatividad: elimina las decisiones repetidas para que el equipo se concentre en las que realmente importan.",
+    "sourceTalk": "Charla en Design Systems Summit 2025",
+    "ctoRole": "CTO de Ruta Logística",
+    "quoteShip": "Redujimos el tiempo de entrega de nuevas pantallas de semanas a días después de estandarizar nuestros componentes.",
+    "supportRole": "Coordinadora de Soporte",
+    "quoteSupport": "Los tickets sobre la página de pago bajaron un 40 % después de reescribir los mensajes de error.",
+    "quoteMinimal": "La simplicidad es la máxima sofisticación.",
+    "notePrimary": "Todo cambio en un paquete público necesita un changeset.",
+    "noteAccent": "Los tokens de color se generan a partir del tema activo.",
+    "noteInfo": "La versión 2.0 elimina las props marcadas como obsoletas en la 1.8.",
+    "noteWarning": "No edites archivos generados a mano; se sobrescriben en el build.",
+    "founderRole": "Fundadora de Casa Aurora",
+    "quoteTestimonial": "Migramos todo el panel en un fin de semana. Los componentes son accesibles por defecto y el modo oscuro simplemente funcionó."
+  }
+}

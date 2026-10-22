@@ -1,0 +1,71 @@
+{
+  "intro": {
+    "pt-BR": "Use o switch para configurações que têm efeito imediato, como ligar notificações. Para aceites e escolhas que só valem após enviar um formulário, prefira o checkbox.",
+    "en-US": "Use a switch for settings that take effect immediately, such as turning on notifications. For agreements and choices that only apply after submitting a form, prefer a checkbox.",
+    "es-ES": "Usa el interruptor para ajustes que se aplican de inmediato, como activar notificaciones. Para aceptaciones y opciones que solo valen tras enviar un formulario, prefiere la casilla."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Ligue o estado a um booleano com `v-model`.",
+        "en-US": "Bind the state to a boolean with `v-model`.",
+        "es-ES": "Vincula el estado a un booleano con `v-model`."
+      }
+    },
+    {
+      "file": "Description",
+      "title": {
+        "pt-BR": "Com descrição",
+        "en-US": "With description",
+        "es-ES": "Con descripción"
+      },
+      "description": {
+        "pt-BR": "`description` explica o efeito da configuração abaixo do rótulo.",
+        "en-US": "`description` explains the effect of the setting below the label.",
+        "es-ES": "`description` explica el efecto del ajuste debajo de la etiqueta."
+      }
+    },
+    {
+      "file": "Settings",
+      "title": {
+        "pt-BR": "Painel de preferências",
+        "en-US": "Preferences panel",
+        "es-ES": "Panel de preferencias"
+      },
+      "description": {
+        "pt-BR": "`label-placement=\"left\"` alinha o texto à esquerda e o switch à direita, como em telas de configurações.",
+        "en-US": "`label-placement=\"left\"` puts the text first and the switch after it, as in settings screens.",
+        "es-ES": "`label-placement=\"left\"` coloca el texto primero y el interruptor después, como en pantallas de ajustes."
+      }
+    },
+    {
+      "file": "SizesTones",
+      "title": {
+        "pt-BR": "Tamanhos e tons",
+        "en-US": "Sizes and tones",
+        "es-ES": "Tamaños y tonos"
+      },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md` e `lg`; `tone` muda a cor do estado ligado.",
+        "en-US": "`size` accepts `sm`, `md` and `lg`; `tone` changes the on color.",
+        "es-ES": "`size` acepta `sm`, `md` y `lg`; `tone` cambia el color del estado activado."
+      }
+    },
+    {
+      "file": "Disabled",
+      "title": { "pt-BR": "Desabilitado", "en-US": "Disabled", "es-ES": "Deshabilitado" },
+      "description": {
+        "pt-BR": "`disabled` mantém o valor visível, mas impede a alteração.",
+        "en-US": "`disabled` keeps the value visible but prevents changes.",
+        "es-ES": "`disabled` mantiene el valor visible pero impide cambiarlo."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Usa um `input type=\"checkbox\"` nativo com `role=\"switch\"`, envolvido por um `label`.\n- `Tab`: move o foco para o switch.\n- `Espaço`: liga ou desliga.\n- Dentro de `MsField`, recebe `aria-describedby` e `aria-invalid` do campo.",
+    "en-US": "- Uses a native `input type=\"checkbox\"` with `role=\"switch\"`, wrapped in a `label`.\n- `Tab`: moves focus to the switch.\n- `Space`: turns it on or off.\n- Inside `MsField`, it receives `aria-describedby` and `aria-invalid` from the field.",
+    "es-ES": "- Usa un `input type=\"checkbox\"` nativo con `role=\"switch\"`, envuelto en un `label`.\n- `Tab`: mueve el foco al interruptor.\n- `Espacio`: lo activa o desactiva.\n- Dentro de `MsField`, recibe `aria-describedby` y `aria-invalid` del campo."
+  }
+}

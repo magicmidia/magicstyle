@@ -94,7 +94,7 @@
 
 /* Full Width */
 .ms-button-group--full-width {
-  width: 100%;
+  inline-size: 100%;
 }
 
 .ms-button-group--full-width .ms-button {

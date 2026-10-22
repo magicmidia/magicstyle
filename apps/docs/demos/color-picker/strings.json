@@ -1,0 +1,32 @@
+{
+  "pt-BR": {
+    "selected": "Cor selecionada:",
+    "accentLabel": "Cor de destaque",
+    "accentHelp": "Usada em botões, links e no foco dos campos.",
+    "labelName": "bug",
+    "issues": "12 issues",
+    "lockedLabel": "Cor da marca",
+    "lockedHelp": "Somente administradores podem alterar a cor da marca.",
+    "brandPalette": "Paleta da marca"
+  },
+  "en-US": {
+    "selected": "Selected color:",
+    "accentLabel": "Accent color",
+    "accentHelp": "Used for buttons, links and field focus.",
+    "labelName": "bug",
+    "issues": "12 issues",
+    "lockedLabel": "Brand color",
+    "lockedHelp": "Only admins can change the brand color.",
+    "brandPalette": "Brand palette"
+  },
+  "es-ES": {
+    "selected": "Color seleccionado:",
+    "accentLabel": "Color de acento",
+    "accentHelp": "Se usa en botones, enlaces y el foco de los campos.",
+    "labelName": "bug",
+    "issues": "12 incidencias",
+    "lockedLabel": "Color de marca",
+    "lockedHelp": "Solo los administradores pueden cambiar el color de marca.",
+    "brandPalette": "Paleta de la marca"
+  }
+}

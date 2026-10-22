@@ -1,0 +1,54 @@
+{
+  "intro": {
+    "pt-BR": "Destaca trechos curtos de código, comandos, nomes de arquivo e valores técnicos dentro do texto. Para blocos com várias linhas, use o `MsCodeBlock`.",
+    "en-US": "Highlights short code fragments, commands, file names and technical values within text. For multi-line blocks, use `MsCodeBlock`.",
+    "es-ES": "Destaca fragmentos cortos de código, comandos, nombres de archivo y valores técnicos dentro del texto. Para bloques de varias líneas, usa `MsCodeBlock`."
+  },
+  "demos": [
+    {
+      "file": "Inline",
+      "title": { "pt-BR": "No texto", "en-US": "Inline", "es-ES": "En el texto" },
+      "description": {
+        "pt-BR": "`MsCode` renderiza um `<code>` que acompanha o fluxo do parágrafo.",
+        "en-US": "`MsCode` renders a `<code>` element that follows the paragraph flow.",
+        "es-ES": "`MsCode` renderiza un `<code>` que sigue el flujo del párrafo."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": {
+        "pt-BR": "Variantes e tons",
+        "en-US": "Variants and tones",
+        "es-ES": "Variantes y tonos"
+      },
+      "description": {
+        "pt-BR": "`variant` alterna entre `subtle`, `outline` e `solid`; `tone` indica o significado do valor.",
+        "en-US": "`variant` switches between `subtle`, `outline` and `solid`; `tone` conveys the value's meaning.",
+        "es-ES": "`variant` alterna entre `subtle`, `outline` y `solid`; `tone` indica el significado del valor."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md` e `lg`.",
+        "en-US": "`size` accepts `sm`, `md` and `lg`.",
+        "es-ES": "`size` acepta `sm`, `md` y `lg`."
+      }
+    },
+    {
+      "file": "Copyable",
+      "title": { "pt-BR": "Copiável", "en-US": "Copyable", "es-ES": "Copiable" },
+      "description": {
+        "pt-BR": "`copyable` adiciona um botão de copiar; o evento `copy` entrega o texto copiado.",
+        "en-US": "`copyable` adds a copy button; the `copy` event provides the copied text.",
+        "es-ES": "`copyable` agrega un botón para copiar; el evento `copy` entrega el texto copiado."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O conteúdo fica num `<code>` nativo.\n- Com `copyable`, o botão de copiar é um `<button>` com `aria-label` traduzido que muda para \"Copiado!\" após a cópia.\n- `Tab` leva o foco ao botão; `Enter` / `Espaço` copiam.",
+    "en-US": "- The content is wrapped in a native `<code>` element.\n- With `copyable`, the copy button is a `<button>` with a translated `aria-label` that changes to \"Copied!\" after copying.\n- `Tab` moves focus to the button; `Enter` / `Space` copy.",
+    "es-ES": "- El contenido está en un `<code>` nativo.\n- Con `copyable`, el botón para copiar es un `<button>` con un `aria-label` traducido que cambia a \"¡Copiado!\" después de copiar.\n- `Tab` lleva el foco al botón; `Enter` / `Espacio` copian."
+  }
+}

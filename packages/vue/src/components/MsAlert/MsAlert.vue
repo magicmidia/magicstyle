@@ -1,26 +1,36 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 import type { MsAlertProps } from "./types.ts";
 
 const props = withDefaults(defineProps<MsAlertProps>(), {
   variant: "soft",
-  tone: "info",
+  tone: "neutral",
   size: "md",
   align: "center",
   iconStyle: "plain",
   dismissible: false,
 });
 
+const t = useMsMessages();
+
 const emit = defineEmits<{
+  /** Fires when the dismiss button is clicked; the alert hides itself. */
   close: [];
+  /** Fires with `false` when the alert is dismissed. */
   "update:open": [value: boolean];
 }>();
 
 defineSlots<{
+  /** Alert body; replaces the `description` prop. */
   default?(): unknown;
+  /** Replaces the tone's default icon (decorative, `aria-hidden`). */
   icon?(): unknown;
+  /** Rich title; replaces the `title` prop. */
   title?(): unknown;
+  /** Action buttons below the description. */
   actions?(): unknown;
+  /** Replaces the glyph inside the dismiss button (shown when `dismissible`). */
   close?(): unknown;
 }>();
 
@@ -144,7 +154,7 @@ const iconClasses = computed(() => {
       v-if="props.dismissible"
       type="button"
       class="ms-alert-close"
-      aria-label="Fechar alerta"
+      :aria-label="t.alert.dismiss"
       @click="onClose"
     >
       <slot name="close">

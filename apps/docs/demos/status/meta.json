@@ -1,0 +1,59 @@
+{
+  "intro": {
+    "pt-BR": "Ponto colorido com rótulo para indicar o estado de um serviço, usuário ou processo. O tom padrão é `success`.",
+    "en-US": "Colored dot with a label to show the state of a service, user or process. The default tone is `success`.",
+    "es-ES": "Punto de color con etiqueta para indicar el estado de un servicio, usuario o proceso. El tono predeterminado es `success`."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Passe o texto em `label` ou no slot padrão.",
+        "en-US": "Pass the text in `label` or in the default slot.",
+        "es-ES": "Pasa el texto en `label` o en el slot predeterminado."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "`tone` define a cor do ponto; o texto deve dizer o estado, sem depender só da cor.",
+        "en-US": "`tone` sets the dot color; the text should state the status without relying on color alone.",
+        "es-ES": "`tone` define el color del punto; el texto debe indicar el estado sin depender solo del color."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "`size` aceita `sm`, `md` (padrão) e `lg`.",
+        "en-US": "`size` accepts `sm`, `md` (default) and `lg`.",
+        "es-ES": "`size` acepta `sm`, `md` (predeterminado) y `lg`."
+      }
+    },
+    {
+      "file": "Pulse",
+      "title": { "pt-BR": "Pulso", "en-US": "Pulse", "es-ES": "Pulso" },
+      "description": {
+        "pt-BR": "`pulse` anima um anel ao redor do ponto para estados ao vivo ou que pedem atenção.",
+        "en-US": "`pulse` animates a ring around the dot for live states or ones that need attention.",
+        "es-ES": "`pulse` anima un anillo alrededor del punto para estados en directo o que requieren atención."
+      }
+    },
+    {
+      "file": "ServiceList",
+      "title": { "pt-BR": "Página de status", "en-US": "Status page", "es-ES": "Página de estado" },
+      "description": {
+        "pt-BR": "Lista de serviços com o estado de cada um, destacando incidentes com `pulse`.",
+        "en-US": "List of services with each one's status, highlighting incidents with `pulse`.",
+        "es-ES": "Lista de servicios con el estado de cada uno, destacando incidentes con `pulse`."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- O ponto e o pulso são decorativos (`aria-hidden`); apenas o rótulo é lido.\n- O componente não é uma região viva: mudanças de estado não são anunciadas. Se precisar anunciá-las, use um toast ou uma região `aria-live`.",
+    "en-US": "- The dot and pulse are decorative (`aria-hidden`); only the label is read.\n- The component is not a live region: status changes are not announced. If you need to announce them, use a toast or an `aria-live` region.",
+    "es-ES": "- El punto y el pulso son decorativos (`aria-hidden`); solo se lee la etiqueta.\n- El componente no es una región viva: los cambios de estado no se anuncian. Si necesitas anunciarlos, usa un toast o una región `aria-live`."
+  }
+}

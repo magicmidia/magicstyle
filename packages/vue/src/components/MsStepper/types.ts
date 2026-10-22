@@ -24,7 +24,9 @@ export interface MsStepperProps {
 }
 
 export interface MsStepperEmits {
+  /** Fires when a step is clicked while `clickable`; payload is its index. */
   (e: "update:modelValue", index: number): void;
+  /** Fires alongside `update:modelValue` with the same index. */
   (e: "change", index: number): void;
 }
 

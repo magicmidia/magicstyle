@@ -1,0 +1,50 @@
+{
+  "pt-BR": {
+    "volume": "Volume",
+    "budget": "Orçamento mensal de anúncios",
+    "budgetHint": "Ajuste em passos de R$ 250.",
+    "currency": "R$",
+    "seats": "Licenças",
+    "cpu": "Uso de CPU",
+    "memory": "Uso de memória",
+    "disk": "Uso de disco",
+    "accent": "Tom de destaque",
+    "small": "Controle pequeno",
+    "medium": "Controle médio",
+    "large": "Controle grande",
+    "quality": "Qualidade do vídeo",
+    "qualityHint": "Faça upgrade para escolher uma qualidade maior."
+  },
+  "en-US": {
+    "volume": "Volume",
+    "budget": "Monthly ad budget",
+    "budgetHint": "Adjust in $250 steps.",
+    "currency": "$",
+    "seats": "Seats",
+    "cpu": "CPU usage",
+    "memory": "Memory usage",
+    "disk": "Disk usage",
+    "accent": "Accent tone",
+    "small": "Small slider",
+    "medium": "Medium slider",
+    "large": "Large slider",
+    "quality": "Video quality",
+    "qualityHint": "Upgrade to choose a higher quality."
+  },
+  "es-ES": {
+    "volume": "Volumen",
+    "budget": "Presupuesto mensual de anuncios",
+    "budgetHint": "Ajusta en pasos de 250 USD.",
+    "currency": "USD",
+    "seats": "Licencias",
+    "cpu": "Uso de CPU",
+    "memory": "Uso de memoria",
+    "disk": "Uso de disco",
+    "accent": "Tono de acento",
+    "small": "Control pequeño",
+    "medium": "Control mediano",
+    "large": "Control grande",
+    "quality": "Calidad del video",
+    "qualityHint": "Mejora tu plan para elegir una calidad mayor."
+  }
+}

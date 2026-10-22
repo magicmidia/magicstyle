@@ -1,0 +1,63 @@
+{
+  "intro": {
+    "pt-BR": "`MsFooter` é o rodapé do site ou do app: copyright, links institucionais e, no layout de colunas, o mapa do site.",
+    "en-US": "`MsFooter` is the site or app footer: copyright, company links and, in the column layout, a sitemap.",
+    "es-ES": "`MsFooter` es el pie del sitio o de la app: copyright, enlaces institucionales y, en el diseño de columnas, el mapa del sitio."
+  },
+  "demos": [
+    {
+      "file": "Simple",
+      "title": { "pt-BR": "Simples", "en-US": "Simple", "es-ES": "Simple" },
+      "description": {
+        "pt-BR": "O layout `simple` (padrão) alinha `copyright` à esquerda e o slot `social` à direita.",
+        "en-US": "The `simple` layout (default) aligns `copyright` to the left and the `social` slot to the right.",
+        "es-ES": "El diseño `simple` (por defecto) alinea `copyright` a la izquierda y el slot `social` a la derecha."
+      }
+    },
+    {
+      "file": "MultiColumn",
+      "title": { "pt-BR": "Várias colunas", "en-US": "Multi-column", "es-ES": "Varias columnas" },
+      "description": {
+        "pt-BR": "`columns` recebe grupos com `title` e `links`; o slot `brand` fica acima e `container` limita a largura.",
+        "en-US": "`columns` takes groups with `title` and `links`; the `brand` slot sits above and `container` caps the width.",
+        "es-ES": "`columns` recibe grupos con `title` y `links`; el slot `brand` va encima y `container` limita el ancho."
+      }
+    },
+    {
+      "file": "Centered",
+      "title": {
+        "pt-BR": "Centralizado e invertido",
+        "en-US": "Centered and inverse",
+        "es-ES": "Centrado e invertido"
+      },
+      "description": {
+        "pt-BR": "`layout=\"centered\"` empilha tudo no centro e `variant=\"inverse\"` usa fundo escuro.",
+        "en-US": "`layout=\"centered\"` stacks everything in the center and `variant=\"inverse\"` uses a dark background.",
+        "es-ES": "`layout=\"centered\"` apila todo en el centro y `variant=\"inverse\"` usa un fondo oscuro."
+      }
+    },
+    {
+      "file": "Compact",
+      "title": { "pt-BR": "Compacto", "en-US": "Compact", "es-ES": "Compacto" },
+      "description": {
+        "pt-BR": "`layout=\"compact\"` reduz altura e fonte, bom para rodapés de painéis administrativos.",
+        "en-US": "`layout=\"compact\"` shrinks height and font size, good for admin dashboard footers.",
+        "es-ES": "`layout=\"compact\"` reduce la altura y la fuente, ideal para pies de paneles de administración."
+      }
+    },
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "`tone` pinta o rodapé com `primary`, `accent` ou `neutral`.",
+        "en-US": "`tone` paints the footer with `primary`, `accent` or `neutral`.",
+        "es-ES": "`tone` pinta el pie con `primary`, `accent` o `neutral`."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza `<footer>`; no nível da página ele vira o landmark `contentinfo`.\n- Envolva grupos de links em `<nav>` com `aria-label` próprio.\n- Os links de `columns` são `<a>` nativos; sem `href` eles apontam para `#`.",
+    "en-US": "- Renders a `<footer>`; at page level it becomes the `contentinfo` landmark.\n- Wrap groups of links in a `<nav>` with its own `aria-label`.\n- Links from `columns` are native `<a>` elements; without `href` they point to `#`.",
+    "es-ES": "- Renderiza un `<footer>`; a nivel de página se convierte en el landmark `contentinfo`.\n- Envuelve los grupos de enlaces en un `<nav>` con su propio `aria-label`.\n- Los enlaces de `columns` son `<a>` nativos; sin `href` apuntan a `#`."
+  }
+}

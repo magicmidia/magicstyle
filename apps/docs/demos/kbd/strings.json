@@ -1,0 +1,32 @@
+{
+  "pt-BR": {
+    "pressBefore": "Pressione",
+    "pressMiddle": "para abrir a busca e",
+    "pressAfter": "para fechar.",
+    "search": "Buscar",
+    "newDoc": "Novo documento",
+    "save": "Salvar",
+    "toggleSidebar": "Mostrar/ocultar barra lateral",
+    "help": "Atalhos de teclado"
+  },
+  "en-US": {
+    "pressBefore": "Press",
+    "pressMiddle": "to open search and",
+    "pressAfter": "to close it.",
+    "search": "Search",
+    "newDoc": "New document",
+    "save": "Save",
+    "toggleSidebar": "Toggle sidebar",
+    "help": "Keyboard shortcuts"
+  },
+  "es-ES": {
+    "pressBefore": "Pulsa",
+    "pressMiddle": "para abrir la búsqueda y",
+    "pressAfter": "para cerrarla.",
+    "search": "Buscar",
+    "newDoc": "Nuevo documento",
+    "save": "Guardar",
+    "toggleSidebar": "Mostrar u ocultar la barra lateral",
+    "help": "Atajos de teclado"
+  }
+}

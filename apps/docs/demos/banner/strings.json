@@ -1,0 +1,53 @@
+{
+  "pt-BR": {
+    "releaseTitle": "Novidade:",
+    "releaseBody": "agora você pode agendar relatórios para serem enviados toda segunda-feira.",
+    "seeWhatsNew": "Ver novidades",
+    "neutralBody": "Você está visualizando o espaço de trabalho como convidado.",
+    "successBody": "Seu domínio acme.com.br foi verificado com sucesso.",
+    "warningBody": "Seu cartão expira este mês. Atualize os dados de pagamento para evitar interrupções.",
+    "dangerBody": "Estamos com instabilidade no envio de e-mails. Nossa equipe já está trabalhando na correção.",
+    "soft": "Soft",
+    "outline": "Outline",
+    "solid": "Solid",
+    "variantBody": "O modo escuro chegou ao aplicativo móvel.",
+    "eventTitle": "Magic Conf 2026",
+    "eventBody": "Inscrições abertas até 30 de outubro, com 20% de desconto para equipes.",
+    "register": "Inscrever-se",
+    "showAgain": "Mostrar banner novamente"
+  },
+  "en-US": {
+    "releaseTitle": "New:",
+    "releaseBody": "you can now schedule reports to be sent every Monday.",
+    "seeWhatsNew": "See what's new",
+    "neutralBody": "You are viewing this workspace as a guest.",
+    "successBody": "Your domain acme.com was verified successfully.",
+    "warningBody": "Your card expires this month. Update your payment details to avoid interruptions.",
+    "dangerBody": "Email delivery is currently degraded. Our team is already working on a fix.",
+    "soft": "Soft",
+    "outline": "Outline",
+    "solid": "Solid",
+    "variantBody": "Dark mode has arrived in the mobile app.",
+    "eventTitle": "Magic Conf 2026",
+    "eventBody": "Registration is open until October 30, with 20% off for teams.",
+    "register": "Register",
+    "showAgain": "Show banner again"
+  },
+  "es-ES": {
+    "releaseTitle": "Novedad:",
+    "releaseBody": "ahora puedes programar informes para que se envíen cada lunes.",
+    "seeWhatsNew": "Ver novedades",
+    "neutralBody": "Estás viendo el espacio de trabajo como invitado.",
+    "successBody": "Tu dominio acme.com se verificó correctamente.",
+    "warningBody": "Tu tarjeta vence este mes. Actualiza los datos de pago para evitar interrupciones.",
+    "dangerBody": "El envío de correos presenta fallos. Nuestro equipo ya está trabajando en la solución.",
+    "soft": "Soft",
+    "outline": "Outline",
+    "solid": "Solid",
+    "variantBody": "El modo oscuro llegó a la app móvil.",
+    "eventTitle": "Magic Conf 2026",
+    "eventBody": "Inscripciones abiertas hasta el 30 de octubre, con un 20 % de descuento para equipos.",
+    "register": "Inscribirme",
+    "showAgain": "Mostrar el banner de nuevo"
+  }
+}

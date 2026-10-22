@@ -1,3 +1,5 @@
+import type { Component } from "vue";
+
 export type MsButtonVariant =
   | "solid"
   | "squared"
@@ -33,14 +35,31 @@ export interface MsButtonProps {
   responsive?: boolean;
   /** Luminous wave ripple effect on click. */
   wave?: boolean;
-  /** Renders a dropdown caret and sets aria-expanded. */
+  /**
+   * Renders a decorative dropdown caret. It does not set `aria-expanded` by itself: pass
+   * `open` to expose the disclosure state (and rotate the caret).
+   */
   caret?: boolean;
   /** Controlled open state for caret buttons (aria-expanded + rotation). */
-  open?: boolean;
+  open?: boolean | undefined;
   /** Shows spinner and blocks interaction. */
   loading?: boolean;
+  /**
+   * Disables the button. Native buttons get the `disabled` attribute; links and custom
+   * components get `aria-disabled="true"`, `tabindex="-1"`, no `href` and blocked clicks.
+   */
   disabled?: boolean;
-  /** Native button type. @default "button" */
+  /**
+   * Link target. Without `as`, the button renders as an `<a href>` styled like a button.
+   * Removed while `disabled` or `loading`.
+   */
+  href?: string;
+  /**
+   * Element tag or component to render instead of `<button>` (e.g. `"a"`, `RouterLink`,
+   * Inertia `Link`). Extra attributes such as `to` are passed through.
+   */
+  as?: string | Component;
+  /** Native button type; only applied when rendering a native `<button>`. @default "button" */
   type?: "button" | "submit" | "reset";
   /** Stretches to fill the container width. */
   fullWidth?: boolean;

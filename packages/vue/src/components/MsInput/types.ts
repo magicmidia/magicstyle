@@ -15,13 +15,15 @@ export type MsInputTone =
 export type MsInputVariant = "outline" | "filled" | "flushed";
 
 export interface MsInputProps {
+  /** Text value (`v-model`). */
   modelValue?: string;
-  /** @default "text" */
+  /** Native input type ("text", "email", "password", "number"…). @default "text" */
   type?: string;
+  /** Native placeholder text (leave empty when using `floatingLabel`). */
   placeholder?: string;
   /** Visual variant: "outline" | "filled" | "flushed". @default "outline" */
   variant?: MsInputVariant;
-  /** @default "md" */
+  /** Control height scale. @default "md" */
   size?: MsInputSize;
   /** Border/focus tint. @default "default" */
   tone?: MsInputTone;
@@ -35,10 +37,14 @@ export interface MsInputProps {
   clearable?: boolean;
   /** Shows an eye button to reveal/hide password when type is password. */
   passwordToggle?: boolean;
+  /** Disables the input. */
   disabled?: boolean;
+  /** Makes the input read-only (also hides the clear button). */
   readonly?: boolean;
   /** Marks the control invalid (field error wires this automatically). */
   invalid?: boolean;
+  /** Native form field name. */
   name?: string;
+  /** Native `autocomplete` hint (e.g. "email", "current-password", "off"). */
   autocomplete?: string;
 }

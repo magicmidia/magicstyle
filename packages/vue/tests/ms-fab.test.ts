@@ -14,8 +14,8 @@ describe("MsFab component", () => {
 
   it("toggles speed-dial menu when actions are present", async () => {
     const actions = [
-      { id: "share", label: "Compartilhar", icon: "🔗" },
-      { id: "print", label: "Imprimir", icon: "🖨️" },
+      { id: "share", label: "Share", icon: "🔗" },
+      { id: "print", label: "Print", icon: "🖨️" },
     ];
     const wrapper = mount(MsFab, {
       props: { actions },

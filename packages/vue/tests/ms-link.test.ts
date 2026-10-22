@@ -6,11 +6,11 @@ describe("MsLink component", () => {
   it("renders anchor with default attributes", () => {
     const wrapper = mount(MsLink, {
       props: { href: "/docs" },
-      slots: { default: "Documentação" },
+      slots: { default: "Documentation" },
     });
     const a = wrapper.find("a.ms-link");
     expect(a.exists()).toBe(true);
-    expect(a.text()).toBe("Documentação");
+    expect(a.text()).toBe("Documentation");
     expect(a.attributes("href")).toBe("/docs");
     expect(a.attributes("data-variant")).toBe("primary");
     expect(a.attributes("data-underline")).toBe("hover");

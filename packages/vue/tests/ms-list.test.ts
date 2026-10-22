@@ -10,9 +10,9 @@ describe("MsList, MsListItem, MsListGroup", () => {
       components: { MsList, MsListItem, MsListGroup },
       template: `
         <MsList variant="bordered" size="md">
-          <MsListGroup title="Configurações">
-            <MsListItem title="Notificações" description="Gerenciar alertas push" interactive />
-            <MsListItem title="Segurança" active />
+          <MsListGroup title="Settings">
+            <MsListItem title="Notifications" description="Manage push alerts" interactive />
+            <MsListItem title="Security" active />
           </MsListGroup>
         </MsList>
       `,
@@ -22,13 +22,13 @@ describe("MsList, MsListItem, MsListGroup", () => {
     expect(wrapper.classes()).toContain("ms-list--variant-bordered");
 
     const header = wrapper.find(".ms-list-group__header");
-    expect(header.text()).toBe("Configurações");
+    expect(header.text()).toBe("Settings");
 
     const items = wrapper.findAll(".ms-list-item");
     expect(items.length).toBe(2);
     expect(items[0]!.classes()).toContain("ms-list-item--interactive");
-    expect(items[0]!.text()).toContain("Notificações");
-    expect(items[0]!.text()).toContain("Gerenciar alertas push");
+    expect(items[0]!.text()).toContain("Notifications");
+    expect(items[0]!.text()).toContain("Manage push alerts");
     expect(items[1]!.classes()).toContain("ms-list-item--active");
   });
 });

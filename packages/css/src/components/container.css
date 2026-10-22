@@ -11,40 +11,40 @@
 
 /* Padded variant */
 .ms-container--padded {
-  padding-inline: var(--ms-space-4, 16px);
+  padding-inline: var(--ms-space-4);
 }
 
 @media (min-width: 768px) {
   .ms-container--padded {
-    padding-inline: var(--ms-space-6, 24px);
+    padding-inline: var(--ms-space-6);
   }
 }
 
 @media (min-width: 1280px) {
   .ms-container--padded {
-    padding-inline: var(--ms-space-8, 32px);
+    padding-inline: var(--ms-space-8);
   }
 }
 
 /* Max-width scales derived from breakpoints */
 .ms-container--max-sm {
-  max-width: var(--ms-breakpoint-sm, 640px);
+  max-width: var(--ms-breakpoint-sm);
 }
 
 .ms-container--max-md {
-  max-width: var(--ms-breakpoint-md, 768px);
+  max-width: var(--ms-breakpoint-md);
 }
 
 .ms-container--max-lg {
-  max-width: var(--ms-breakpoint-lg, 1024px);
+  max-width: var(--ms-breakpoint-lg);
 }
 
 .ms-container--max-xl {
-  max-width: var(--ms-breakpoint-xl, 1280px);
+  max-width: var(--ms-breakpoint-xl);
 }
 
 .ms-container--max-2xl {
-  max-width: var(--ms-breakpoint-2xl, 1536px);
+  max-width: var(--ms-breakpoint-2xl);
 }
 
 .ms-container--max-fluid {

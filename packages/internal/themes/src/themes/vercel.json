@@ -1,0 +1,71 @@
+{
+  "$schema": "../theme.schema.json",
+  "name": "vercel",
+  "label": "Vercel",
+  "description": "Hyper-minimalist monochrome design inspired by Vercel Geist. High-contrast pure black and white, razor-sharp geometric precision.",
+  "shared": {
+    "radius-selector": "4px",
+    "radius-field": "6px",
+    "radius-box": "8px",
+    "border-width": "1px",
+    "depth": "1",
+    "font-sans": "Geist, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+    "font-mono": "IBM Plex Mono, Cascadia Mono, ui-monospace, monospace"
+  },
+  "light": {
+    "color-base-100": "#ffffff",
+    "color-base-200": "#fafafa",
+    "color-base-300": "#eaeaea",
+    "color-base-content": "#000000",
+    "color-primary": "#000000",
+    "color-primary-content": "#ffffff",
+    "color-secondary": "oklch(0.645 0.169 034)",
+    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-accent": "#000000",
+    "color-accent-content": "#ffffff",
+    "color-neutral": "#f5f5f5",
+    "color-neutral-content": "#000000",
+    "color-info": "oklch(0.738 0.133 219)",
+    "color-info-content": "oklch(0.170 0.020 252)",
+    "color-success": "oklch(0.663 0.131 168)",
+    "color-success-content": "oklch(0.170 0.020 252)",
+    "color-warning": "oklch(0.785 0.154 061)",
+    "color-warning-content": "oklch(0.170 0.020 252)",
+    "color-danger": "oklch(0.545 0.188 024)",
+    "color-danger-content": "oklch(1.000 0.003 252)"
+  },
+  "dark": {
+    "color-base-100": "#000000",
+    "color-base-200": "#111111",
+    "color-base-300": "#333333",
+    "color-base-content": "#ffffff",
+    "color-primary": "#ffffff",
+    "color-primary-content": "#000000",
+    "color-secondary": "oklch(0.715 0.152 034)",
+    "color-secondary-content": "oklch(0.170 0.020 252)",
+    "color-accent": "#ffffff",
+    "color-accent-content": "#000000",
+    "color-neutral": "#222222",
+    "color-neutral-content": "#ffffff",
+    "color-info": "oklch(0.738 0.133 219)",
+    "color-info-content": "oklch(0.170 0.020 252)",
+    "color-success": "oklch(0.663 0.131 168)",
+    "color-success-content": "oklch(0.170 0.020 252)",
+    "color-warning": "oklch(0.785 0.154 061)",
+    "color-warning-content": "oklch(0.170 0.020 252)",
+    "color-danger": "oklch(0.545 0.188 024)",
+    "color-danger-content": "oklch(1.000 0.003 252)"
+  },
+  "extras": {
+    "light": {
+      "elevation-button": "none",
+      "elevation-card": "0px 1px 2px 0px rgba(0, 0, 0, 0.04)",
+      "focus-ring-width": "2px"
+    },
+    "dark": {
+      "elevation-button": "none",
+      "elevation-card": "none",
+      "focus-ring-width": "2px"
+    }
+  }
+}

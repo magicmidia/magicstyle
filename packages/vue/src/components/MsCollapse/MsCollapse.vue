@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from "vue";
 import type { MsCollapseProps, MsCollapseEmits } from "./types.ts";
+import { useMsId } from "../../composables/use-ms-id.ts";
 
 const props = withDefaults(defineProps<MsCollapseProps>(), {
   modelValue: false,
@@ -12,6 +13,7 @@ const props = withDefaults(defineProps<MsCollapseProps>(), {
 const emit = defineEmits<MsCollapseEmits>();
 
 const isOpen = ref(props.modelValue);
+const contentId = useMsId("ms-collapse-content");
 
 watch(
   () => props.modelValue,
@@ -35,6 +37,19 @@ const classes = computed(() => [
     "ms-collapse--disabled": props.disabled,
   },
 ]);
+
+defineSlots<{
+  /** Panel content; `inert` while collapsed. */
+  default?(): unknown;
+  /** Replaces the whole header label area (including the `title` slot). */
+  header?(): unknown;
+  /** Rich title; replaces the `title` prop. */
+  title?(): unknown;
+  /** Extra header content before the chevron. */
+  extra?(): unknown;
+  /** Replaces the chevron icon; `open` is the current open state. */
+  chevron?(props: { open: boolean }): unknown;
+}>();
 </script>
 
 <template>
@@ -44,15 +59,16 @@ const classes = computed(() => [
       class="ms-collapse__header"
       :disabled="props.disabled"
       :aria-expanded="isOpen ? 'true' : 'false'"
+      :aria-controls="contentId"
       @click="toggle"
     >
-      <div class="ms-collapse__title">
+      <span class="ms-collapse__title">
         <slot name="header">
           <slot name="title">{{ props.title }}</slot>
         </slot>
-      </div>
+      </span>
 
-      <div class="ms-collapse__actions">
+      <span class="ms-collapse__actions">
         <slot name="extra" />
         <slot name="chevron" :open="isOpen">
           <svg
@@ -63,14 +79,16 @@ const classes = computed(() => [
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
+            aria-hidden="true"
           >
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </slot>
-      </div>
+      </span>
     </button>
 
-    <div class="ms-collapse__wrapper" :aria-hidden="!isOpen">
+    <!-- inert: collapsed content is neither focusable nor exposed to assistive tech. -->
+    <div :id="contentId" class="ms-collapse__wrapper" :inert="!isOpen || undefined">
       <div class="ms-collapse__content">
         <div class="ms-collapse__inner">
           <slot />

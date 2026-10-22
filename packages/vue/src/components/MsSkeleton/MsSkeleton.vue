@@ -15,7 +15,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<MsSkeletonProps>(), {
   variant: "text",
-  animation: "shimmer",
+  animation: "pulse",
   tone: "default",
   speed: "normal",
   count: 1,

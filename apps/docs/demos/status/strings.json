@@ -1,0 +1,53 @@
+{
+  "pt-BR": {
+    "online": "Online",
+    "operational": "Operacional",
+    "maintenance": "Em manutenção",
+    "degraded": "Desempenho reduzido",
+    "outage": "Fora do ar",
+    "paused": "Pausado",
+    "small": "Pequeno",
+    "medium": "Médio",
+    "large": "Grande",
+    "live": "Ao vivo",
+    "recording": "Gravando",
+    "dashboard": "Painel web",
+    "webhooks": "Webhooks",
+    "emailDelivery": "Envio de e-mails",
+    "cdn": "CDN de imagens"
+  },
+  "en-US": {
+    "online": "Online",
+    "operational": "Operational",
+    "maintenance": "Under maintenance",
+    "degraded": "Degraded performance",
+    "outage": "Outage",
+    "paused": "Paused",
+    "small": "Small",
+    "medium": "Medium",
+    "large": "Large",
+    "live": "Live",
+    "recording": "Recording",
+    "dashboard": "Web dashboard",
+    "webhooks": "Webhooks",
+    "emailDelivery": "Email delivery",
+    "cdn": "Image CDN"
+  },
+  "es-ES": {
+    "online": "En línea",
+    "operational": "Operativo",
+    "maintenance": "En mantenimiento",
+    "degraded": "Rendimiento reducido",
+    "outage": "Fuera de servicio",
+    "paused": "En pausa",
+    "small": "Pequeño",
+    "medium": "Mediano",
+    "large": "Grande",
+    "live": "En directo",
+    "recording": "Grabando",
+    "dashboard": "Panel web",
+    "webhooks": "Webhooks",
+    "emailDelivery": "Envío de correos",
+    "cdn": "CDN de imágenes"
+  }
+}

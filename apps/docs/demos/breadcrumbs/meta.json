@@ -1,0 +1,76 @@
+{
+  "intro": {
+    "pt-BR": "Use breadcrumbs para mostrar onde a página atual fica na hierarquia do site e permitir voltar a níveis anteriores com um clique.",
+    "en-US": "Use breadcrumbs to show where the current page sits in the site hierarchy and let people jump back to a parent level in one click.",
+    "es-ES": "Usa breadcrumbs para mostrar dónde está la página actual en la jerarquía del sitio y volver a un nivel superior con un clic."
+  },
+  "demos": [
+    {
+      "file": "Basic",
+      "title": { "pt-BR": "Básico", "en-US": "Basic", "es-ES": "Básico" },
+      "description": {
+        "pt-BR": "Componha `MsBreadcrumbItem` e `MsBreadcrumbSeparator` no slot; o item com `current` recebe `aria-current=\"page\"`.",
+        "en-US": "Compose `MsBreadcrumbItem` and `MsBreadcrumbSeparator` in the slot; the `current` item gets `aria-current=\"page\"`.",
+        "es-ES": "Compón `MsBreadcrumbItem` y `MsBreadcrumbSeparator` en el slot; el ítem con `current` recibe `aria-current=\"page\"`."
+      }
+    },
+    {
+      "file": "Separators",
+      "title": { "pt-BR": "Separadores", "en-US": "Separators", "es-ES": "Separadores" },
+      "description": {
+        "pt-BR": "Passe os níveis em `items` e escolha o separador com `separator-type`; o último item vira a página atual.",
+        "en-US": "Pass the levels in `items` and pick the separator with `separator-type`; the last item becomes the current page.",
+        "es-ES": "Pasa los niveles en `items` y elige el separador con `separator-type`; el último ítem es la página actual."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": { "pt-BR": "Variantes", "en-US": "Variants", "es-ES": "Variantes" },
+      "description": {
+        "pt-BR": "`plain` para links em linha, `pills` para cápsulas e `solid` para um contêiner fechado.",
+        "en-US": "`plain` for inline links, `pills` for capsules and `solid` for an enclosed container.",
+        "es-ES": "`plain` para enlaces en línea, `pills` para cápsulas y `solid` para un contenedor cerrado."
+      }
+    },
+    {
+      "file": "Sizes",
+      "title": { "pt-BR": "Tamanhos", "en-US": "Sizes", "es-ES": "Tamaños" },
+      "description": {
+        "pt-BR": "Ajuste a escala com `size`: `sm`, `md` ou `lg`.",
+        "en-US": "Adjust the scale with `size`: `sm`, `md` or `lg`.",
+        "es-ES": "Ajusta la escala con `size`: `sm`, `md` o `lg`."
+      }
+    },
+    {
+      "file": "Collapsed",
+      "title": {
+        "pt-BR": "Caminho longo recolhido",
+        "en-US": "Collapsed long path",
+        "es-ES": "Ruta larga contraída"
+      },
+      "description": {
+        "pt-BR": "Com `max-items`, os níveis do meio viram reticências; clique nelas para expandir o caminho completo.",
+        "en-US": "With `max-items`, middle levels collapse into an ellipsis; click it to expand the full path.",
+        "es-ES": "Con `max-items`, los niveles intermedios se contraen en puntos suspensivos; haz clic para expandir la ruta."
+      }
+    },
+    {
+      "file": "WithIcon",
+      "title": {
+        "pt-BR": "Com ícone e item desabilitado",
+        "en-US": "With icon and disabled item",
+        "es-ES": "Con icono e ítem deshabilitado"
+      },
+      "description": {
+        "pt-BR": "Use o slot `icon` para um ícone decorativo e `disabled` para um nível sem link.",
+        "en-US": "Use the `icon` slot for a decorative icon and `disabled` for a level without a link.",
+        "es-ES": "Usa el slot `icon` para un icono decorativo y `disabled` para un nivel sin enlace."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Renderiza `<nav>` com `aria-label` (padrão vindo das mensagens da biblioteca, ajustável por `aria-label`) e uma lista ordenada `<ol>`.\n- O item atual recebe `aria-current=\"page\"` e não é link.\n- Os separadores têm `aria-hidden=\"true\"`.\n- `Tab`: percorre os links e o botão de reticências; `Enter` segue o link ou expande o caminho recolhido.",
+    "en-US": "- Renders a `<nav>` with `aria-label` (defaults to the library messages, configurable via `aria-label`) and an ordered `<ol>` list.\n- The current item gets `aria-current=\"page\"` and is not a link.\n- Separators are `aria-hidden=\"true\"`.\n- `Tab`: moves through the links and the ellipsis button; `Enter` follows a link or expands the collapsed path.",
+    "es-ES": "- Renderiza un `<nav>` con `aria-label` (por defecto de los mensajes de la biblioteca, configurable con `aria-label`) y una lista ordenada `<ol>`.\n- El ítem actual recibe `aria-current=\"page\"` y no es enlace.\n- Los separadores tienen `aria-hidden=\"true\"`.\n- `Tab`: recorre los enlaces y el botón de puntos suspensivos; `Enter` sigue el enlace o expande la ruta contraída."
+  }
+}

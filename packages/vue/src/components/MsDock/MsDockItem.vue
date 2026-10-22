@@ -6,8 +6,17 @@ const props = withDefaults(defineProps<MsDockItemProps>(), {
 });
 
 defineSlots<{
+  /** Item content (typically an icon); the accessible name comes from `label`. */
   default?(): unknown;
 }>();
+
+/** role="button" needs Enter/Space activation; it forwards to the native click listeners. */
+function onKeydown(event: KeyboardEvent): void {
+  if (event.target !== event.currentTarget) return;
+  if (event.key !== "Enter" && event.key !== " ") return;
+  event.preventDefault();
+  (event.currentTarget as HTMLElement).click();
+}
 </script>
 
 <template>
@@ -18,6 +27,7 @@ defineSlots<{
     role="button"
     tabindex="0"
     data-ms-dock-item
+    @keydown="onKeydown"
   >
     <slot />
     <span v-if="props.active" class="ms-dock-item__dot" aria-hidden="true" />

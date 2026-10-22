@@ -1,6 +1,7 @@
 export type MsEmptyStateSize = "sm" | "md" | "lg";
 export type MsEmptyStateVariant = "dashed" | "plain" | "card";
-export type MsEmptyStateIconTone = "neutral" | "primary" | "success" | "warning" | "danger";
+export type MsEmptyStateIconTone =
+  "neutral" | "primary" | "secondary" | "accent" | "info" | "success" | "warning" | "danger";
 
 export interface MsEmptyStateProps {
   /**
@@ -32,4 +33,10 @@ export interface MsEmptyStateProps {
    * Default: "neutral".
    */
   iconTone?: MsEmptyStateIconTone;
+
+  /**
+   * Adds a soft halo ring (in the icon's color) around the icon badge.
+   * Default: false.
+   */
+  ring?: boolean;
 }

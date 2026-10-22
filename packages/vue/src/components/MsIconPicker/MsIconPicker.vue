@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, nextTick, onMounted } from "vue";
+import { sanitizeSvg } from "../../composables/sanitize-svg.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
+import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
+import { useMsId } from "../../composables/use-ms-id.ts";
 import type { MsIconPickerProps, MsIconPickerEmits, MsIconItem } from "./types.ts";
 
 const ICON_PATHS: Record<string, string> = {
@@ -50,70 +54,72 @@ const ICON_PATHS: Record<string, string> = {
 };
 
 const defaultIcons: MsIconItem[] = [
-  { id: "home", name: "Home", category: "Navegação" },
-  { id: "arrow-right", name: "Seta Direita", category: "Navegação" },
-  { id: "arrow-left", name: "Seta Esquerda", category: "Navegação" },
-  { id: "menu", name: "Menu", category: "Navegação" },
-  { id: "search", name: "Busca", category: "Ações" },
-  { id: "check", name: "Confirmar", category: "Ações" },
-  { id: "x", name: "Fechar", category: "Ações" },
-  { id: "trash", name: "Excluir", category: "Ações" },
-  { id: "edit", name: "Editar", category: "Ações" },
-  { id: "copy", name: "Copiar", category: "Ações" },
-  { id: "download", name: "Download", category: "Ações" },
-  { id: "upload", name: "Upload", category: "Ações" },
-  { id: "refresh", name: "Atualizar", category: "Ações" },
-  { id: "play", name: "Play", category: "Mídia" },
-  { id: "pause", name: "Pause", category: "Mídia" },
-  { id: "image", name: "Imagem", category: "Mídia" },
-  { id: "heart", name: "Favorito", category: "Interface" },
-  { id: "star", name: "Estrela", category: "Interface" },
-  { id: "bell", name: "Notificação", category: "Interface" },
-  { id: "user", name: "Usuário", category: "Interface" },
-  { id: "settings", name: "Configurações", category: "Interface" },
-  { id: "shield", name: "Segurança", category: "Interface" },
-  { id: "calendar", name: "Calendário", category: "Sistema" },
-  { id: "clock", name: "Horário", category: "Sistema" },
-  { id: "folder", name: "Pasta", category: "Sistema" },
-  { id: "file", name: "Arquivo", category: "Sistema" },
-  { id: "lock", name: "Bloqueado", category: "Sistema" },
-  { id: "unlock", name: "Desbloqueado", category: "Sistema" },
-  { id: "sun", name: "Sol (Claro)", category: "Sistema" },
-  { id: "moon", name: "Lua (Escuro)", category: "Sistema" },
-  { id: "info", name: "Informação", category: "Sistema" },
-  { id: "alert", name: "Alerta", category: "Sistema" },
-  { id: "external-link", name: "Link Externo", category: "Navegação" },
+  { id: "home", name: "Home", category: "Navigation" },
+  { id: "arrow-right", name: "Arrow Right", category: "Navigation" },
+  { id: "arrow-left", name: "Arrow Left", category: "Navigation" },
+  { id: "menu", name: "Menu", category: "Navigation" },
+  { id: "search", name: "Search", category: "Actions" },
+  { id: "check", name: "Check", category: "Actions" },
+  { id: "x", name: "Close", category: "Actions" },
+  { id: "trash", name: "Delete", category: "Actions" },
+  { id: "edit", name: "Edit", category: "Actions" },
+  { id: "copy", name: "Copy", category: "Actions" },
+  { id: "download", name: "Download", category: "Actions" },
+  { id: "upload", name: "Upload", category: "Actions" },
+  { id: "refresh", name: "Refresh", category: "Actions" },
+  { id: "play", name: "Play", category: "Media" },
+  { id: "pause", name: "Pause", category: "Media" },
+  { id: "image", name: "Image", category: "Media" },
+  { id: "heart", name: "Favorite", category: "Interface" },
+  { id: "star", name: "Star", category: "Interface" },
+  { id: "bell", name: "Notification", category: "Interface" },
+  { id: "user", name: "User", category: "Interface" },
+  { id: "settings", name: "Settings", category: "Interface" },
+  { id: "shield", name: "Security", category: "Interface" },
+  { id: "calendar", name: "Calendar", category: "System" },
+  { id: "clock", name: "Clock", category: "System" },
+  { id: "folder", name: "Folder", category: "System" },
+  { id: "file", name: "File", category: "System" },
+  { id: "lock", name: "Locked", category: "System" },
+  { id: "unlock", name: "Unlocked", category: "System" },
+  { id: "sun", name: "Sun (Light)", category: "System" },
+  { id: "moon", name: "Moon (Dark)", category: "System" },
+  { id: "info", name: "Info", category: "System" },
+  { id: "alert", name: "Alert", category: "System" },
+  { id: "external-link", name: "External Link", category: "Navigation" },
 ];
 
 const props = withDefaults(defineProps<MsIconPickerProps>(), {
   modelValue: "",
-  placeholder: "Selecione um ícone...",
   disabled: false,
 });
+
+const t = useMsMessages();
+const resolvedPlaceholder = computed(() => props.placeholder ?? t.value.iconPicker.placeholder);
 
 const emit = defineEmits<MsIconPickerEmits>();
 
 const isOpen = ref(false);
 const searchQuery = ref("");
-const selectedCategory = ref("Todos");
+/** Sentinel for the "all categories" filter; its label comes from the messages. */
+const ALL_CATEGORIES = "";
+const selectedCategory = ref(ALL_CATEGORIES);
 
 const activeIcons = computed(() => props.icons || defaultIcons);
 
-function sanitizeSvg(raw: string): string {
-  if (!raw) return "";
-  // Block script/style tags, event handlers (on*), and javascript: URIs
-  return raw
-    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
-    .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, "")
-    .replace(/\bon\w+\s*=\s*(?:'[^']*'|"[^"]*"|[^\s>]+)/gi, "")
-    .replace(/(?:href|src)\s*=\s*(?:'javascript:[^']*'|"javascript:[^"]*")/gi, "")
-    .replace(/^<svg[^>]*>/i, "")
-    .replace(/<\/svg>$/i, "");
-}
+/**
+ * sanitizeSvg() needs DOMParser, which the server lacks (it returns ""). Custom SVGs
+ * therefore render only after mount, so SSR and the hydrating render both show the
+ * fallback glyph and there is no hydration mismatch.
+ */
+const isMounted = ref(false);
+onMounted(() => {
+  isMounted.value = true;
+});
 
 const getIconContent = (id: string): string => {
   const custom = activeIcons.value.find((i) => i.id === id);
-  if (custom?.svg) return sanitizeSvg(custom.svg);
+  if (custom?.svg) return isMounted.value ? sanitizeSvg(custom.svg) : "";
   return ICON_PATHS[id] || "";
 };
 
@@ -122,12 +128,12 @@ const categories = computed(() => {
   activeIcons.value.forEach((i) => {
     if (i.category) cats.add(i.category);
   });
-  return ["Todos", ...Array.from(cats)];
+  return [ALL_CATEGORIES, ...Array.from(cats)];
 });
 
 const filteredIcons = computed(() => {
   let list = activeIcons.value;
-  if (selectedCategory.value !== "Todos") {
+  if (selectedCategory.value !== ALL_CATEGORIES) {
     list = list.filter((i) => i.category === selectedCategory.value);
   }
   if (searchQuery.value.trim()) {
@@ -137,27 +143,52 @@ const filteredIcons = computed(() => {
   return list;
 });
 
+/** Human-readable name of the selected icon (falls back to the id for unknown values). */
+const selectedName = computed(() => {
+  if (!props.modelValue) return "";
+  return activeIcons.value.find((i) => i.id === props.modelValue)?.name ?? props.modelValue;
+});
+
+const rootRef = ref<HTMLElement | null>(null);
+const triggerRef = ref<HTMLButtonElement | null>(null);
+const searchRef = ref<HTMLInputElement | null>(null);
+const panelId = useMsId("ms-icon-picker-panel");
+
+/** Closes the panel and hands focus back to the trigger (APG disclosure/dialog pattern). */
+function close(): void {
+  isOpen.value = false;
+  triggerRef.value?.focus();
+}
+
+useDismissableLayer({ active: isOpen, inside: [rootRef], onDismiss: close });
+
 const selectIcon = (icon: MsIconItem) => {
   emit("update:modelValue", icon.id);
   emit("select", icon);
-  isOpen.value = false;
+  close();
 };
 
 const toggleDropdown = () => {
   if (props.disabled) return;
   isOpen.value = !isOpen.value;
+  if (isOpen.value) void nextTick(() => searchRef.value?.focus());
 };
 </script>
 
 <template>
-  <div class="ms-icon-picker">
+  <div ref="rootRef" class="ms-icon-picker">
     <button
+      ref="triggerRef"
       type="button"
       class="ms-icon-picker__trigger"
       :disabled="props.disabled"
+      aria-haspopup="dialog"
+      :aria-expanded="isOpen"
+      :aria-controls="isOpen ? panelId : undefined"
       @click="toggleDropdown"
     >
-      <span class="ms-icon-picker__preview">
+      <span class="ms-icon-picker__preview" aria-hidden="true">
+        <!-- eslint-disable vue/no-v-html -- built-in paths or sanitizeSvg() allowlist output -->
         <svg
           v-if="props.modelValue && getIconContent(props.modelValue)"
           width="18"
@@ -170,17 +201,26 @@ const toggleDropdown = () => {
           stroke-linejoin="round"
           v-html="getIconContent(props.modelValue)"
         />
+        <!-- eslint-enable vue/no-v-html -->
         <span v-else>❖</span>
       </span>
-      <span>{{ props.modelValue || props.placeholder }}</span>
+      <span>{{ selectedName || resolvedPlaceholder }}</span>
     </button>
 
-    <div v-if="isOpen" class="ms-icon-picker__dropdown">
+    <div
+      v-if="isOpen"
+      :id="panelId"
+      class="ms-icon-picker__dropdown"
+      role="dialog"
+      :aria-label="t.iconPicker.label"
+    >
       <input
+        ref="searchRef"
         v-model="searchQuery"
         type="text"
         class="ms-icon-picker__search"
-        placeholder="Buscar ícones..."
+        :aria-label="t.iconPicker.searchLabel"
+        :placeholder="t.iconPicker.search"
       />
 
       <div class="ms-icon-picker__categories">
@@ -190,9 +230,10 @@ const toggleDropdown = () => {
           type="button"
           class="ms-icon-picker__category-btn"
           :class="{ 'ms-icon-picker__category-btn--active': selectedCategory === cat }"
+          :aria-pressed="selectedCategory === cat"
           @click="selectedCategory = cat"
         >
-          {{ cat }}
+          {{ cat === ALL_CATEGORIES ? t.iconPicker.all : cat }}
         </button>
       </div>
 
@@ -204,10 +245,14 @@ const toggleDropdown = () => {
           class="ms-icon-picker__item"
           :class="{ 'ms-icon-picker__item--selected': props.modelValue === icon.id }"
           :title="icon.name"
+          :aria-label="icon.name"
+          :aria-pressed="props.modelValue === icon.id"
           @click="selectIcon(icon)"
         >
+          <!-- eslint-disable vue/no-v-html -- built-in paths or sanitizeSvg() allowlist output -->
           <svg
             v-if="getIconContent(icon.id)"
+            aria-hidden="true"
             width="18"
             height="18"
             viewBox="0 0 24 24"
@@ -218,6 +263,7 @@ const toggleDropdown = () => {
             stroke-linejoin="round"
             v-html="getIconContent(icon.id)"
           />
+          <!-- eslint-enable vue/no-v-html -->
           <span v-else>❖</span>
         </button>
       </div>

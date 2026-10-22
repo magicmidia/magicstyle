@@ -7,16 +7,16 @@ describe("MsGlimpse", () => {
     const wrapper = mount(MsGlimpse, {
       props: {
         href: "https://magic-style.dev",
-        label: "Visitar MagicStyle",
-        title: "MagicStyle Documentação",
-        description: "Biblioteca enterprise de componentes para Vue e CSS",
+        label: "Visit MagicStyle",
+        title: "MagicStyle Documentation",
+        description: "Enterprise component library for Vue and CSS",
         domain: "magic-style.dev",
       },
     });
 
     const link = wrapper.find("a");
     expect(link.exists()).toBe(true);
-    expect(link.text()).toBe("Visitar MagicStyle");
+    expect(link.text()).toBe("Visit MagicStyle");
     expect(link.attributes("href")).toBe("https://magic-style.dev");
     expect(wrapper.find(".ms-glimpse__card").exists()).toBe(true);
   });

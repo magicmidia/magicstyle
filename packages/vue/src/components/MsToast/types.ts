@@ -22,9 +22,17 @@ export interface MsToastItem extends MsToastOptions {
 }
 
 export interface MsToastProps {
+  /** The toast to render (usually an item of `useToast().toasts`): message, tone, duration… */
   toast: MsToastItem;
+  /**
+   * Render the toast as its own live region (status/alert). MsToastContainer
+   * disables it and announces through persistent live regions instead.
+   * @default true
+   */
+  announce?: boolean;
 }
 
 export interface MsToastEmits {
+  /** Fires when the close button is clicked or the `duration` timer elapses; payload is the toast id. */
   (e: "dismiss", id: string): void;
 }

@@ -7,18 +7,18 @@ describe("MsChatBubble", () => {
     const wrapper = mount(MsChatBubble, {
       props: {
         placement: "start",
-        name: "Assistente IA",
+        name: "AI assistant",
         timestamp: "14:32",
       },
       slots: {
-        default: () => "Olá! Como posso ajudar você hoje?",
+        default: () => "Hi! How can I help you today?",
       },
     });
 
     expect(wrapper.classes()).toContain("ms-chat-bubble-wrapper--start");
-    expect(wrapper.text()).toContain("Assistente IA");
+    expect(wrapper.text()).toContain("AI assistant");
     expect(wrapper.text()).toContain("14:32");
-    expect(wrapper.text()).toContain("Olá! Como posso ajudar você hoje?");
+    expect(wrapper.text()).toContain("Hi! How can I help you today?");
   });
 
   it("supports end placement, tone, and read status", () => {
@@ -29,7 +29,7 @@ describe("MsChatBubble", () => {
         status: "read",
       },
       slots: {
-        default: () => "Mensagem enviada pelo usuário",
+        default: () => "Message sent by the user",
       },
     });
 

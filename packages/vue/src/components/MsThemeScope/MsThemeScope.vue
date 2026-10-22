@@ -1,5 +1,5 @@
 <template>
-  <component :is="as" :class="classes" v-bind="resolvedAttributes">
+  <component :is="as" :class="classes" :style="overrideStyle" v-bind="resolvedAttributes">
     <slot />
   </component>
 </template>
@@ -7,6 +7,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import type { MsThemeScopeProps } from "./types.ts";
+import { msThemeOverridesToStyle } from "../../theme-overrides.ts";
 import {
   provideThemeContext,
   useSystemColorMode,
@@ -109,13 +110,17 @@ const effectiveDir = computed<Direction>(() => {
 const resolvedAttributes = computed<Record<string, string>>(() => {
   return {
     "data-ms-theme": effectiveTheme.value,
-    "data-ms-color-mode": effectiveResolvedColorMode.value,
+    // "system" is resolved by CSS (prefers-color-scheme): identical SSR/client markup, no flash.
+    "data-ms-color-mode":
+      effectiveColorModePref.value === "system" ? "system" : effectiveResolvedColorMode.value,
     "data-ms-density": effectiveDensity.value,
     "data-ms-contrast": effectiveContrast.value,
     "data-ms-radius": effectiveRadius.value,
     dir: effectiveDir.value,
   };
 });
+
+const overrideStyle = computed(() => msThemeOverridesToStyle(props.overrides));
 
 const classes = computed(() => {
   return ["ms-theme-scope"];
@@ -154,4 +159,9 @@ const context: MsThemeContext = {
 };
 
 provideThemeContext(context);
+
+defineSlots<{
+  /** Content that receives the scoped theme, color mode, density, contrast, radius and direction. */
+  default?(): unknown;
+}>();
 </script>

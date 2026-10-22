@@ -1,0 +1,58 @@
+{
+  "intro": {
+    "pt-BR": "Etiqueta para categorias, palavras-chave e filtros, que pode ser removível ou clicável. Para status somente leitura, o `MsBadge` costuma ser mais adequado.",
+    "en-US": "A label for categories, keywords and filters that can be removable or clickable. For read-only statuses, `MsBadge` is usually a better fit.",
+    "es-ES": "Etiqueta para categorías, palabras clave y filtros, que puede ser removible o clicable. Para estados de solo lectura, `MsBadge` suele ser más adecuado."
+  },
+  "demos": [
+    {
+      "file": "Tones",
+      "title": { "pt-BR": "Tons", "en-US": "Tones", "es-ES": "Tonos" },
+      "description": {
+        "pt-BR": "A variante padrão é `soft` com `tone=\"neutral\"`; os demais tons ajudam a categorizar.",
+        "en-US": "The default variant is `soft` with `tone=\"neutral\"`; the other tones help categorize.",
+        "es-ES": "La variante por defecto es `soft` con `tone=\"neutral\"`; los demás tonos ayudan a categorizar."
+      }
+    },
+    {
+      "file": "Variants",
+      "title": {
+        "pt-BR": "Variantes, formatos e tamanhos",
+        "en-US": "Variants, shapes and sizes",
+        "es-ES": "Variantes, formas y tamaños"
+      },
+      "description": {
+        "pt-BR": "`variant` (`soft`, `solid`, `outline`), `shape` (`square`, `rounded`, `pill`), `size` (`sm` a `lg`) e `dot` para um indicador de cor.",
+        "en-US": "`variant` (`soft`, `solid`, `outline`), `shape` (`square`, `rounded`, `pill`), `size` (`sm` to `lg`) and `dot` for a color indicator.",
+        "es-ES": "`variant` (`soft`, `solid`, `outline`), `shape` (`square`, `rounded`, `pill`), `size` (`sm` a `lg`) y `dot` para un indicador de color."
+      }
+    },
+    {
+      "file": "Removable",
+      "title": { "pt-BR": "Removível", "en-US": "Removable", "es-ES": "Removible" },
+      "description": {
+        "pt-BR": "`closable` adiciona o botão de remover, que emite `close`; `disabled` bloqueia a interação.",
+        "en-US": "`closable` adds a remove button that emits `close`; `disabled` blocks interaction.",
+        "es-ES": "`closable` agrega un botón para quitar que emite `close`; `disabled` bloquea la interacción."
+      }
+    },
+    {
+      "file": "Filters",
+      "title": {
+        "pt-BR": "Filtros clicáveis",
+        "en-US": "Clickable filters",
+        "es-ES": "Filtros clicables"
+      },
+      "description": {
+        "pt-BR": "Com `clickable`, a tag vira um botão focável que emite `click`; combine com `aria-pressed` para filtros liga/desliga.",
+        "en-US": "With `clickable`, the tag becomes a focusable button that emits `click`; pair it with `aria-pressed` for on/off filters.",
+        "es-ES": "Con `clickable`, la etiqueta se convierte en un botón enfocable que emite `click`; combínalo con `aria-pressed` para filtros de activar/desactivar."
+      }
+    }
+  ],
+  "a11y": {
+    "pt-BR": "- Com `clickable`, a tag recebe `role=\"button\"` e `tabindex=\"0\"`; `Enter` e `Espaço` emitem `click`. Para filtros liga/desliga, informe `aria-pressed`.\n- O botão de remover tem `aria-label` traduzido genérico (\"Remover\"), sem o nome da tag.\n- Limitação atual: a tag intercepta `Enter` e `Espaço` com `preventDefault` em todos os casos, o que impede acionar o botão de remover pelo teclado.\n- O ponto de `dot` é decorativo (`aria-hidden=\"true\"`).",
+    "en-US": "- With `clickable`, the tag gets `role=\"button\"` and `tabindex=\"0\"`; `Enter` and `Space` emit `click`. For on/off filters, set `aria-pressed`.\n- The remove button has a generic translated `aria-label` (\"Remove\"), without the tag's name.\n- Current limitation: the tag intercepts `Enter` and `Space` with `preventDefault` in every case, which prevents activating the remove button from the keyboard.\n- The `dot` indicator is decorative (`aria-hidden=\"true\"`).",
+    "es-ES": "- Con `clickable`, la etiqueta recibe `role=\"button\"` y `tabindex=\"0\"`; `Enter` y `Espacio` emiten `click`. Para filtros de activar/desactivar, indica `aria-pressed`.\n- El botón para quitar tiene un `aria-label` traducido genérico (\"Quitar\"), sin el nombre de la etiqueta.\n- Limitación actual: la etiqueta intercepta `Enter` y `Espacio` con `preventDefault` en todos los casos, lo que impide activar el botón para quitar con el teclado.\n- El punto de `dot` es decorativo (`aria-hidden=\"true\"`)."
+  }
+}

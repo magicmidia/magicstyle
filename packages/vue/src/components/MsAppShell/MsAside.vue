@@ -11,6 +11,11 @@ const style = computed(() => {
   }
   return styles;
 });
+
+defineSlots<{
+  /** Aside content. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { computed, watch, onMounted, onBeforeUnmount } from "vue";
+import { computed, ref, toRef } from "vue";
 import { useMsId } from "../../composables/use-ms-id.ts";
+import { useScrollLock } from "../../composables/use-scroll-lock.ts";
+import { useDismissableLayer } from "../../composables/use-dismissable-layer.ts";
+import { useFocusTrap } from "../../composables/use-focus-trap.ts";
 import type { MsDialogProps } from "./types.ts";
+import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
 const props = withDefaults(defineProps<MsDialogProps>(), {
   open: false,
@@ -15,16 +19,24 @@ const props = withDefaults(defineProps<MsDialogProps>(), {
 });
 
 const emit = defineEmits<{
+  /** Fires with `false` when the dialog requests to close (close button, Escape or overlay click). */
   "update:open": [value: boolean];
+  /** Fires after `update:open` whenever the dialog requests to close. */
   close: [];
 }>();
 
 defineSlots<{
+  /** Dialog body. */
   default?(): unknown;
+  /** Replaces the header (the `title` and `description`). */
   header?(): unknown;
+  /** Footer below the body (e.g. action buttons). */
   footer?(): unknown;
+  /** Replaces the glyph inside the close button (shown when `showClose`). */
   close?(): unknown;
 }>();
+
+const t = useMsMessages();
 
 const titleId = useMsId("ms-dialog-title");
 const descriptionId = useMsId("ms-dialog-desc");
@@ -43,42 +55,18 @@ function onOverlayClick(event: MouseEvent): void {
   }
 }
 
-function onKeydown(event: KeyboardEvent): void {
-  if (event.key === "Escape" && props.closeOnEscape && props.open) {
-    event.preventDefault();
-    requestClose();
-  }
-}
+const isOpen = toRef(props, "open");
+const contentRef = ref<HTMLElement | null>(null);
 
-let prevBodyOverflow = "";
-
-watch(
-  () => props.open,
-  (isOpen) => {
-    if (typeof document === "undefined") return;
-    if (isOpen) {
-      prevBodyOverflow = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-    } else if (prevBodyOverflow !== undefined) {
-      document.body.style.overflow = prevBodyOverflow;
-    }
-  },
-  { immediate: true },
-);
-
-onMounted(() => {
-  if (typeof window !== "undefined") {
-    window.addEventListener("keydown", onKeydown);
-  }
-});
-
-onBeforeUnmount(() => {
-  if (typeof window !== "undefined") {
-    window.removeEventListener("keydown", onKeydown);
-  }
-  if (typeof document !== "undefined" && props.open) {
-    document.body.style.overflow = prevBodyOverflow;
-  }
+useScrollLock(isOpen);
+useFocusTrap(contentRef, isOpen);
+useDismissableLayer({
+  active: isOpen,
+  inside: [contentRef],
+  onDismiss: requestClose,
+  closeOnEscape: () => props.closeOnEscape,
+  // The backdrop click is handled by onOverlayClick.
+  closeOnOutside: () => false,
 });
 </script>
 
@@ -91,6 +79,7 @@ onBeforeUnmount(() => {
         @click="onOverlayClick"
       >
         <div
+          ref="contentRef"
           class="ms-dialog-content"
           :role="props.role"
           aria-modal="true"
@@ -104,7 +93,7 @@ onBeforeUnmount(() => {
             v-if="props.showClose"
             type="button"
             class="ms-dialog-close"
-            aria-label="Fechar"
+            :aria-label="t.dialog.close"
             @click="requestClose"
           >
             <slot name="close">

@@ -6,6 +6,15 @@ defineOptions({
 });
 
 defineProps<MsSidebarMenuGroupProps>();
+
+defineSlots<{
+  /** `MsSidebarMenuItem` children, rendered inside a list. */
+  default?(): unknown;
+  /** Rich group heading; replaces the `title` prop. */
+  title?(): unknown;
+  /** Extra content after the heading (e.g. an action button); rendered only when there is a title. */
+  extra?(): unknown;
+}>();
 </script>
 
 <template>
