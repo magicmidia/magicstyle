@@ -1,6 +1,6 @@
 # Competitive analysis
 
-**Scope:** how Magic-Style compares with the reference libraries in the Vue ecosystem and with shadcn/ui, which currently sets the standard for look and documentation. The document records what has already been addressed, what is planned for this release and what stays in the backlog.
+**Scope:** how Magic-Style compares with the reference libraries in the Vue ecosystem and with shadcn/ui, which currently sets the standard for look and documentation. The document records what has been addressed and what stays in the backlog.
 
 **Libraries analyzed:** shadcn/ui (React) and shadcn-vue, Nuxt UI v3, PrimeVue 4, Vuetify 3 and Reka UI (formerly Radix Vue).
 
@@ -8,16 +8,16 @@ Statements about other libraries describe public, stable characteristics of thos
 
 ## Summary
 
-| Axis          | Reference                                                               | Magic-Style before                             | Magic-Style now                                                                                              | Next                                                            |
-| :------------ | :---------------------------------------------------------------------- | :--------------------------------------------- | :----------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------- |
-| Default look  | shadcn/ui (new-york)                                                    | Custom look, 5 focus styles, bluish shadows    | shadcn structure in every theme; a single focus style with a halo; shadows on the Tailwind scale             | Review niche components (FAB, speed dial, lightbox)             |
-| Themes        | Nuxt UI (app.config + CSS vars), PrimeVue (presets), daisyUI (contract) | 27-variable contract with validated contrast   | Gallery of the 10 themes and a theme generator with AA checks on the site                                    | Planned for this release: export to DTCG / Tokens Studio        |
-| Documentation | shadcn/ui, Nuxt UI                                                      | 34k-line hand-written preview, Portuguese only | VitePress site in English, Portuguese and Spanish, 95 pages per language with demos, code and generated API  | Planned for this release: Blocks page and StackBlitz playground |
-| Generated API | Nuxt UI, PrimeVue                                                       | Duplicated by hand                             | `vue-component-meta` generates props, events and slots from the code; JSDoc on every public prop             | Turn on `gen-api --strict` in the build                         |
-| Accessibility | Reka UI (WAI-ARIA primitives)                                           | APG patterns, 3:1 focus ring                   | Same foundation, plus keyboard notes per component, a11y bugs fixed and an axe audit of the built site in CI | Planned for this release: the remaining a11y findings below     |
-| i18n          | Vuetify (locale adapter), PrimeVue (locale)                             | pt-BR and en                                   | English (default), Portuguese and Spanish in the components and on the site                                  | More languages through contributions                            |
-| Distribution  | shadcn (CLI copies the code), Nuxt UI (module)                          | npm package                                    | npm packages; the CSS works without Vue                                                                      | Backlog: shadcn-vue-compatible registry                         |
-| SSR           | Nuxt UI (native Nuxt)                                                   | SSR without mismatch                           | Laravel + Inertia guide with SSR in all 3 languages                                                          | Nuxt module                                                     |
+| Axis          | Reference                                                               | Magic-Style before                             | Magic-Style now                                                                                              | Next                                                     |
+| :------------ | :---------------------------------------------------------------------- | :--------------------------------------------- | :----------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
+| Default look  | shadcn/ui (new-york)                                                    | Custom look, 5 focus styles, bluish shadows    | shadcn structure in every theme; a single focus style with a halo; shadows on the Tailwind scale             | Review niche components (FAB, speed dial, lightbox)      |
+| Themes        | Nuxt UI (app.config + CSS vars), PrimeVue (presets), daisyUI (contract) | 27-variable contract with validated contrast   | Gallery of the 10 themes and a theme generator with AA checks on the site                                    | Done: export to DTCG / Tokens Studio                     |
+| Documentation | shadcn/ui, Nuxt UI                                                      | 34k-line hand-written preview, Portuguese only | VitePress site in English, Portuguese and Spanish, 95 pages per language with demos, code and generated API  | Done: Blocks page; StackBlitz playground (behind a flag) |
+| Generated API | Nuxt UI, PrimeVue                                                       | Duplicated by hand                             | `vue-component-meta` generates props, events and slots from the code; JSDoc on every public prop             | Turn on `gen-api --strict` in the build                  |
+| Accessibility | Reka UI (WAI-ARIA primitives)                                           | APG patterns, 3:1 focus ring                   | Same foundation, plus keyboard notes per component, a11y bugs fixed and an axe audit of the built site in CI | Done: the a11y findings below                            |
+| i18n          | Vuetify (locale adapter), PrimeVue (locale)                             | pt-BR and en                                   | English (default), Portuguese and Spanish in the components and on the site                                  | More languages through contributions                     |
+| Distribution  | shadcn (CLI copies the code), Nuxt UI (module)                          | npm package                                    | npm packages; the CSS works without Vue                                                                      | Backlog: shadcn-vue-compatible registry                  |
+| SSR           | Nuxt UI (native Nuxt)                                                   | SSR without mismatch                           | Laravel + Inertia guide with SSR in all 3 languages                                                          | Nuxt module                                              |
 
 ## By axis
 
@@ -41,7 +41,7 @@ shadcn/ui became the reference because it makes few decisions and all of them ar
 
 The theme generator on the site makes this visual, with a preview on the real components and ready-to-copy `defineMsTheme` and CSS code. It is the equivalent of the shadcn/ui theme generator, with contrast checks.
 
-**Planned for this release:** export the generated theme as DTCG or Tokens Studio JSON.
+**Done:** the generator exports the resolved theme as DTCG or Tokens Studio JSON (copy or download).
 
 **Next:** allow editing every contract color in the generator, not only the primary color and the neutral hue.
 
@@ -66,10 +66,11 @@ shadcn/ui and Nuxt UI set today's expectations:
 - keyboard and ARIA notes checked against the source code;
 - a Playwright smoke test of every route with an axe audit, in CI.
 
-**Planned for this release:**
+**Done in this release:**
 
-- a "Blocks" page with complete screens (login, dashboard, settings), like shadcn's blocks;
-- a playground (StackBlitz) opened from each demo.
+- a "Blocks" page with six complete screens (login, sign-up, dashboard, settings, pricing, inbox), responsive through container queries and previewable at desktop, tablet and mobile widths;
+- "Open in StackBlitz" on each demo, enabled with `MS_DOCS_PLAYGROUND=1` once `@magic-style/*` is published on npm;
+- every prop, event and slot documented (the build fails otherwise) and translated into Portuguese and Spanish.
 
 ### Distribution
 
@@ -91,7 +92,7 @@ The agents that wrote the demos audited the source of every component and found 
 - `MsField` and `MsRating` had hardcoded Portuguese strings.
 - The `MsCommandPalette` item icon was ignored.
 
-**Planned for this release (found, not yet fixed):**
+**Fixed in this release** (`a11y-backlog-and-api-docs` changeset):
 
 - `MsEmojiPicker` and `MsIconPicker`: no `aria-expanded`, no Escape to close, and names only in Portuguese.
 - `MsDatePicker`: the input doesn't get the `MsField` id, and the shortcuts ignore `minDate`/`maxDate`.
@@ -107,7 +108,7 @@ The agents that wrote the demos audited the source of every component and found 
 - `MsBlockquote`: `cite` goes to the native attribute, which expects a URL. `MsTimelineItem`: the title is always an `<h4>`.
 - `MsCarousel`: `totalSlides` is passed by hand, even though slides register themselves.
 
-Later changesets (for example `a11y-overlays-keyboard-phase-3`, which makes Escape return focus from `MsMenu`) touched some of these components, so check the current source before picking an item up.
+The e2e audit (Playwright + axe on the built site, in CI) reports no serious or critical violation on the key pages and blocks, in light and dark mode.
 
 ### API
 
@@ -115,21 +116,15 @@ Later changesets (for example `a11y-overlays-keyboard-phase-3`, which makes Esca
 - **Nuxt UI v3:** a `ui` prop to override classes per slot.
 - **PrimeVue:** `pt` (pass-through).
 
-Magic-Style has none of these mechanisms, and the most visible gap is a button rendered as a link (the landing page uses an anchor with the button classes). shadcn solves this with `asChild`.
+Magic-Style now covers the most common case, rendering a button or card as a link or router component, with `as`/`href`. A per-slot class override is still missing.
 
-**Planned for this release:** `as`/`href` on `MsButton`, `MsBadge` and `MsCard`.
+**Done:** `as`/`href` on `MsButton` (links, `RouterLink`, Inertia `Link`), `as` on `MsBadge` and `as`/`href` on `MsCard`.
 
 **Backlog:** a simple per-slot `pt` (pass-through).
 
 ## Priorities
 
-Planned for this release:
-
-1. `as`/`href` on `MsButton`, `MsBadge` and `MsCard` (the most requested item, by the demo agents and by the landing page).
-2. The accessibility findings above.
-3. The Blocks page (complete screens) on the site.
-4. A StackBlitz playground from each demo.
-5. Theme export (DTCG / Tokens Studio) from the theme generator.
+Done in this release: `as`/`href`, the accessibility findings above, the Blocks page, the StackBlitz playground (behind a flag until the packages are on npm), theme export, and fully documented and translated API tables.
 
 Backlog:
 
