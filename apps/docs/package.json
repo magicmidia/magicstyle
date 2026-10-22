@@ -6,12 +6,13 @@
   "description": "Magic-Style documentation site and landing page (VitePress, pt-BR / en / es).",
   "scripts": {
     "dev": "node scripts/gen-api.ts --if-stale && vitepress dev",
-    "build": "node scripts/gen-api.ts && vitepress build",
+    "build": "node scripts/gen-api.ts --strict && node scripts/api-i18n.ts --check && vitepress build",
     "preview": "vitepress preview --port 4173",
     "typecheck": "vue-tsc -p tsconfig.json --noEmit",
     "e2e": "node scripts/e2e.ts",
     "test": "vitest run --passWithNoTests",
     "gen:api": "node scripts/gen-api.ts",
+    "api:i18n": "node scripts/api-i18n.ts",
     "check:demos": "node scripts/check-demos.ts"
   },
   "dependencies": {
