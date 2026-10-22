@@ -17,4 +17,9 @@ const props = withDefaults(defineProps<MsBreadcrumbSeparatorProps>(), {
 });
 
 const context = inject(BREADCRUMBS_CONTEXT_KEY, undefined);
+
+defineSlots<{
+  /** Separator glyph (decorative); defaults to the parent `MsBreadcrumbs` separator, or `›`. */
+  default?(): unknown;
+}>();
 </script>

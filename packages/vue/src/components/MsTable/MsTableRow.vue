@@ -7,10 +7,12 @@ const props = withDefaults(defineProps<MsTableRowProps>(), {
 });
 
 defineEmits<{
+  /** Fires on every click on the row; payload is the native event. */
   (e: "click", event: MouseEvent): void;
 }>();
 
 defineSlots<{
+  /** `MsTableCell`/`MsTableHeaderCell` children, rendered inside `<tr>`. */
   default?(): unknown;
 }>();
 </script>

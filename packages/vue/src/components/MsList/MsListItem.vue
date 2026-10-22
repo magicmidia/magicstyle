@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject, onBeforeUnmount } from "vue";
+import { computed, inject } from "vue";
 import { MS_LIST_KEY, type MsListItemProps } from "./types.ts";
 
 defineOptions({ name: "MsListItem" });
@@ -26,16 +26,15 @@ defineSlots<{
 
 const list = inject(MS_LIST_KEY, null);
 const isOption = computed(() => list?.selectable.value === true);
-const unregister = list?.registerActive?.(() => props.active);
-if (unregister) onBeforeUnmount(unregister);
 
 /**
- * Listbox options use a roving tab stop (the selected option); interactive items in a
- * plain list are focusable. Disabled items are never in the tab order.
+ * Listbox options are focusable but never tab stops: the listbox is the single tab stop and
+ * forwards focus to the selected option. Interactive items in a plain list are focusable.
+ * Disabled items are never in the tab order.
  */
 const tabindex = computed(() => {
-  if (props.disabled) return isOption.value ? -1 : undefined;
-  if (isOption.value) return props.active ? 0 : -1;
+  if (isOption.value) return -1;
+  if (props.disabled) return undefined;
   return props.interactive ? 0 : undefined;
 });
 

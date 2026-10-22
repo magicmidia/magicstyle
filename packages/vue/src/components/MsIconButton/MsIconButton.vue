@@ -59,6 +59,11 @@ const handleClick = (event: MouseEvent) => {
   }
   emit("click", event);
 };
+
+defineSlots<{
+  /** The icon; replaced by a spinner while `loading`. The accessible name comes from `label`. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

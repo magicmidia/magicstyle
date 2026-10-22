@@ -64,4 +64,17 @@ const iconClasses = computed(() => {
     props.ring ? "ms-empty-state__icon--ring" : undefined,
   ];
 });
+
+defineSlots<{
+  /** Actions area content (e.g. buttons); ignored when the `actions` slot is used. */
+  default?(): unknown;
+  /** Replaces the default box illustration. */
+  icon?(): unknown;
+  /** Rich title; replaces the `title` prop. */
+  title?(): unknown;
+  /** Rich description; replaces the `description` prop. */
+  description?(): unknown;
+  /** Actions below the description; takes precedence over the default slot. */
+  actions?(): unknown;
+}>();
 </script>

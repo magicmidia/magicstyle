@@ -13,11 +13,14 @@ const props = withDefaults(defineProps<MsNativeSelectProps>(), {
 });
 
 const emit = defineEmits<{
+  /** Fires when the selection changes; payload is the native `<select>` value. */
   "update:modelValue": [value: string | number];
+  /** Fires alongside `update:modelValue` with the same value. */
   change: [value: string | number];
 }>();
 
 defineSlots<{
+  /** Native `<option>`/`<optgroup>` elements; used only when `options` is empty. */
   default?(): unknown;
 }>();
 

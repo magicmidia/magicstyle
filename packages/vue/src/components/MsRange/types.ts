@@ -53,6 +53,8 @@ export interface MsRangeProps {
 }
 
 export interface MsRangeEmits {
+  /** Fires continuously while the slider moves (native `input`); payload is the new value. */
   (e: "update:modelValue", value: number): void;
+  /** Fires when the user commits a value (native `change`, e.g. on release); payload is the value. */
   (e: "change", value: number): void;
 }

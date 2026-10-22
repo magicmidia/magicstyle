@@ -12,6 +12,7 @@ const props = withDefaults(defineProps<MsDockProps>(), {
 const t = useMsMessages();
 
 defineSlots<{
+  /** `MsDockItem` children, rendered inside a `role="toolbar"` list. */
   default?(): unknown;
 }>();
 

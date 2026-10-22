@@ -14,7 +14,9 @@ const props = withDefaults(defineProps<MsTableProps>(), {
 });
 
 const slots = defineSlots<{
+  /** Table sections (`MsTableHead`, `MsTableBody`, `MsTableFooter`), rendered inside `<table>`. */
   default?(): unknown;
+  /** Rich caption; replaces the `caption` prop and names the table. */
   caption?(): unknown;
 }>();
 

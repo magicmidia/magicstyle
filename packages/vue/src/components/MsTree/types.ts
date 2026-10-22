@@ -28,9 +28,13 @@ export interface MsTreeProps {
 }
 
 export interface MsTreeEmits {
+  /** Fires when a node is selected (click or keyboard); payload is its key. */
   (e: "update:selectedKey", key: MsTreeKey): void;
+  /** Fires when a node is expanded or collapsed; payload is the new list of expanded keys. */
   (e: "update:expandedKeys", keys: MsTreeKey[]): void;
+  /** Fires alongside `update:selectedKey`; payload is the selected node. */
   (e: "select", node: MsTreeNodeData): void;
+  /** Fires alongside `update:expandedKeys`; payload is the node and whether it is now expanded. */
   (e: "toggle", node: MsTreeNodeData, expanded: boolean): void;
 }
 

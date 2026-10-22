@@ -19,6 +19,7 @@ const props = withDefaults(defineProps<MsAvatarGroupProps>(), {
 });
 
 defineSlots<{
+  /** `MsAvatar` children; used only when `items` is empty. Children inherit the group `size` and `bordered`. */
   default?(): unknown;
 }>();
 

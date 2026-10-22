@@ -147,4 +147,9 @@ provide(BREADCRUMBS_CONTEXT_KEY, context);
 const classes = computed(() => {
   return ["ms-breadcrumbs", `ms-breadcrumbs--${props.variant}`, `ms-breadcrumbs--${props.size}`];
 });
+
+defineSlots<{
+  /** `MsBreadcrumbItem` children; used only when `items` is empty. */
+  default?(): unknown;
+}>();
 </script>

@@ -18,7 +18,9 @@ const props = withDefaults(defineProps<MsSidebarMenuItemProps>(), {
 });
 
 const emit = defineEmits<{
+  /** Fires on click unless the item is disabled; payload is the native event. */
   (e: "click", evt: MouseEvent): void;
+  /** Fires when a `hasChildren` item without an `id` (or outside `MsSidebarMenu`) toggles its submenu; payload is the new open state. Items with an `id` report through the menu's `toggle` event instead. */
   (e: "toggle", open: boolean): void;
 }>();
 
@@ -79,6 +81,19 @@ function handleClick(evt: MouseEvent) {
     menuCtx.selectItem(props.id, itemData);
   }
 }
+
+defineSlots<{
+  /** Rich label; replaces the `label` prop. */
+  default?(): unknown;
+  /** Leading icon; replaces the `icon` prop. */
+  icon?(): unknown;
+  /** Badge after the label; replaces the `badge` prop. */
+  badge?(): unknown;
+  /** Replaces the submenu chevron (shown with `hasChildren`). */
+  arrow?(): unknown;
+  /** Nested `MsSidebarMenuItem` children, shown in the collapsible submenu (with `hasChildren`). */
+  sub?(): unknown;
+}>();
 </script>
 
 <template>

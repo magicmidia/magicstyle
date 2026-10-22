@@ -118,4 +118,11 @@ const tooltipStyle = computed(() => {
   const maxW = typeof props.maxWidth === "number" ? `${props.maxWidth}px` : props.maxWidth;
   return { maxWidth: maxW };
 });
+
+defineSlots<{
+  /** Trigger; hovering or focusing it shows the tooltip, which is linked via `aria-describedby`. */
+  default?(): unknown;
+  /** Rich tooltip content; replaces the `content` prop. */
+  content?(): unknown;
+}>();
 </script>

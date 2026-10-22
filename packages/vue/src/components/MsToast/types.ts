@@ -33,5 +33,6 @@ export interface MsToastProps {
 }
 
 export interface MsToastEmits {
+  /** Fires when the close button is clicked or the `duration` timer elapses; payload is the toast id. */
   (e: "dismiss", id: string): void;
 }

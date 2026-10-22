@@ -13,6 +13,11 @@ const style = computed(() => {
   }
   return styles;
 });
+
+defineSlots<{
+  /** Rail items, rendered inside a labelled `<nav>`. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

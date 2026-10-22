@@ -12,6 +12,15 @@ const classes = computed(() => [
     "ms-topbar--fixed": props.fixed,
   },
 ]);
+
+defineSlots<{
+  /** Center content of the bar. */
+  default?(): unknown;
+  /** Start content (e.g. brand, menu toggle). */
+  leading?(): unknown;
+  /** End content (e.g. actions, user menu). */
+  trailing?(): unknown;
+}>();
 </script>
 
 <template>

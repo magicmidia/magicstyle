@@ -19,14 +19,20 @@ const props = withDefaults(defineProps<MsDialogProps>(), {
 });
 
 const emit = defineEmits<{
+  /** Fires with `false` when the dialog requests to close (close button, Escape or overlay click). */
   "update:open": [value: boolean];
+  /** Fires after `update:open` whenever the dialog requests to close. */
   close: [];
 }>();
 
 defineSlots<{
+  /** Dialog body. */
   default?(): unknown;
+  /** Replaces the header (the `title` and `description`). */
   header?(): unknown;
+  /** Footer below the body (e.g. action buttons). */
   footer?(): unknown;
+  /** Replaces the glyph inside the close button (shown when `showClose`). */
   close?(): unknown;
 }>();
 

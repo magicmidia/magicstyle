@@ -18,9 +18,13 @@ const props = withDefaults(defineProps<MsPopoverProps>(), {
 const emit = defineEmits<MsPopoverEmits>();
 
 defineSlots<{
+  /** Popover body. */
   default?(): unknown;
+  /** Trigger element; receives the open state and a `toggle` function. */
   trigger?(props: { isOpen: boolean; toggle: () => void }): unknown;
+  /** Rich title; replaces the `title` prop and labels the popover. */
   title?(): unknown;
+  /** Footer below the body. */
   footer?(): unknown;
 }>();
 

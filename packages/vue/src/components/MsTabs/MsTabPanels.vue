@@ -14,4 +14,9 @@ defineOptions({
 withDefaults(defineProps<MsTabPanelsProps>(), {
   as: "div",
 });
+
+defineSlots<{
+  /** `MsTabPanel` children. */
+  default?(): unknown;
+}>();
 </script>

@@ -70,4 +70,9 @@ const classes = computed(() => {
     },
   ];
 });
+
+defineSlots<{
+  /** Panel content, shown while its tab is selected (mounted only then with `lazy`). */
+  default?(): unknown;
+}>();
 </script>

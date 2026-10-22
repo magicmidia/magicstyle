@@ -37,6 +37,19 @@ const classes = computed(() => [
     "ms-collapse--disabled": props.disabled,
   },
 ]);
+
+defineSlots<{
+  /** Panel content; `inert` while collapsed. */
+  default?(): unknown;
+  /** Replaces the whole header label area (including the `title` slot). */
+  header?(): unknown;
+  /** Rich title; replaces the `title` prop. */
+  title?(): unknown;
+  /** Extra header content before the chevron. */
+  extra?(): unknown;
+  /** Replaces the chevron icon; `open` is the current open state. */
+  chevron?(props: { open: boolean }): unknown;
+}>();
 </script>
 
 <template>

@@ -12,6 +12,7 @@ const props = withDefaults(defineProps<MsAccordionProps>(), {
 const emit = defineEmits<MsAccordionEmits>();
 
 defineSlots<{
+  /** `MsAccordionItem` children. */
   default?(): unknown;
 }>();
 

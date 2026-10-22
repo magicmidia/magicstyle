@@ -54,6 +54,17 @@ const classes = computed(() => [
   props.variant !== "default" ? `ms-sidebar--variant-${props.variant}` : undefined,
   props.tone !== "default" ? `ms-sidebar--tone-${props.tone}` : undefined,
 ]);
+
+defineSlots<{
+  /** Sidebar body (e.g. `MsSidebarMenu`). */
+  default?(): unknown;
+  /** Header content, before the collapse toggle button. */
+  header?(): unknown;
+  /** Replaces the icon inside the collapse toggle button (shown with `showToggle`). */
+  "toggle-icon"?(): unknown;
+  /** Footer pinned below the body. */
+  footer?(): unknown;
+}>();
 </script>
 
 <template>

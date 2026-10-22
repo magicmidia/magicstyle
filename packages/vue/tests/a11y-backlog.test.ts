@@ -396,10 +396,54 @@ describe("MsList semantics", () => {
     expect(wrapper.attributes("role")).toBe("listbox");
     const options = wrapper.findAll("[role='option']");
     expect(options.map((o) => o.attributes("aria-selected"))).toEqual(["false", "true", "false"]);
-    expect(options.map((o) => o.attributes("tabindex"))).toEqual(["-1", "0", "-1"]);
+    // The listbox is the single tab stop; options are only focused programmatically.
+    expect(wrapper.attributes("tabindex")).toBe("0");
+    expect(options.map((o) => o.attributes("tabindex"))).toEqual(["-1", "-1", "-1"]);
     (options[1]!.element as HTMLElement).focus();
     await wrapper.trigger("keydown", { key: "ArrowDown" });
     expect(document.activeElement).toBe(options[2]!.element);
+  });
+
+  it("forwards listbox focus to the selected option, else the first one", async () => {
+    const items = (active: boolean) => () => [
+      h(MsListItem, { title: "A" }),
+      h(MsListItem, { title: "B", active }),
+    ];
+    const selected = track(
+      mount(MsList, {
+        props: { selectable: true },
+        slots: { default: items(true) },
+        attachTo: document.body,
+      }),
+    );
+    (selected.element as HTMLElement).focus();
+    expect(document.activeElement).toBe(selected.findAll("[role='option']")[1]!.element);
+
+    const none = track(
+      mount(MsList, {
+        props: { selectable: true },
+        slots: { default: items(false) },
+        attachTo: document.body,
+      }),
+    );
+    (none.element as HTMLElement).focus();
+    expect(document.activeElement).toBe(none.findAll("[role='option']")[0]!.element);
+  });
+
+  it("leaves the tab order on Shift+Tab from an option until focus leaves the listbox", async () => {
+    const wrapper = track(
+      mount(MsList, {
+        props: { selectable: true },
+        slots: { default: () => [h(MsListItem, { title: "A", active: true })] },
+        attachTo: document.body,
+      }),
+    );
+    const list = wrapper.element as HTMLElement;
+    const option = wrapper.find("[role='option']");
+    await option.trigger("keydown", { key: "Tab", shiftKey: true });
+    expect(list.tabIndex).toBe(-1);
+    await option.trigger("focusout", { relatedTarget: document.body });
+    expect(list.tabIndex).toBe(0);
   });
 });
 

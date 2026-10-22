@@ -65,6 +65,19 @@ const containerClasses = computed(() => {
   const mod = typeof props.container === "string" ? props.container : "xl";
   return ["ms-navbar__container", `ms-navbar__container--${mod}`];
 });
+
+defineSlots<{
+  /** Main navigation content, between the brand and the actions. */
+  default?(): unknown;
+  /** Brand area (logo, name) at the start. */
+  brand?(): unknown;
+  /** Actions at the end (buttons, user menu). */
+  actions?(): unknown;
+  /** Replaces the hamburger icon inside the mobile menu toggle button. */
+  "mobile-toggle"?(): unknown;
+  /** Mobile menu panel, shown below the bar while the mobile menu is open; its presence enables the toggle button. */
+  "mobile-menu"?(): unknown;
+}>();
 </script>
 
 <template>

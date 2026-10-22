@@ -11,6 +11,7 @@ const props = withDefaults(defineProps<MsFieldProps>(), {
 });
 
 defineSlots<{
+  /** The form control; Ms inputs inside pick up the field's id, label, description/error and invalid state. */
   default?(): unknown;
 }>();
 

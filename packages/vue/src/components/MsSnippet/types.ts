@@ -36,7 +36,10 @@ export interface MsSnippetProps {
 }
 
 export interface MsSnippetEmits {
+  /** Fires when a tab is selected (click or arrow/Home/End keys); payload is the tab `id`, or its index when it has none. */
   (e: "update:activeTab", tab: string | number): void;
+  /** Fires after the code was copied; payload has the copied text (including the prompt with `copyPrompt`) and the active tab id or index. */
   (e: "copy", payload: { code: string; tab?: string | number }): void;
+  /** Fires alongside `update:activeTab`; payload is the selected tab item and its index. */
   (e: "tab-change", tab: MsSnippetItem, index: number): void;
 }

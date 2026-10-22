@@ -20,13 +20,18 @@ const props = withDefaults(defineProps<MsInputProps>(), {
 });
 
 const emit = defineEmits<{
+  /** Fires on every input and with `""` when cleared; payload is the new value. */
   "update:modelValue": [value: string];
+  /** Fires alongside `update:modelValue` with the same value. */
   input: [value: string];
+  /** Fires after the clear button empties the value (with `clearable`). */
   clear: [];
 }>();
 
 defineSlots<{
+  /** Content before the input (e.g. an icon or unit). */
   prefix?(): unknown;
+  /** Content after the input and its built-in buttons. */
   suffix?(): unknown;
 }>();
 

@@ -51,6 +51,11 @@ const partClasses = computed(() =>
     `ms-separator--thickness-${props.thickness}`,
   ].filter(Boolean),
 );
+
+defineSlots<{
+  /** Rich label centered in the line (horizontal only); replaces the `label` prop. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

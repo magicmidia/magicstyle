@@ -46,4 +46,13 @@ const classes = computed(() => {
     },
   ];
 });
+
+defineSlots<{
+  /** Item label; rendered as a link when `href` is set (and not `disabled`/`current`). */
+  default?(): unknown;
+  /** Leading icon (decorative); replaces the `icon` prop. */
+  icon?(): unknown;
+  /** Separator rendered after the item, inside its `<li>` (e.g. `MsBreadcrumbSeparator`). */
+  separator?(): unknown;
+}>();
 </script>

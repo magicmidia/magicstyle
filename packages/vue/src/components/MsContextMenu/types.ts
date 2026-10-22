@@ -23,5 +23,6 @@ export interface MsContextMenuProps {
 }
 
 export interface MsContextMenuEmits {
+  /** Fires when an enabled item is chosen (after its `action` runs); the menu then closes. */
   (e: "select", item: MsContextMenuItem): void;
 }

@@ -8,6 +8,7 @@ const props = withDefaults(defineProps<MsTimelineProps>(), {
 });
 
 defineSlots<{
+  /** `MsTimelineItem` children, rendered inside an ordered list. */
   default?(): unknown;
 }>();
 

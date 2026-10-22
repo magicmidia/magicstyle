@@ -9,11 +9,14 @@ const props = withDefaults(defineProps<MsTableHeaderCellProps>(), {
 });
 
 const emit = defineEmits<{
+  /** Fires when a `sortable` header is clicked or activated with the keyboard; payload is the native event. Toggle `sortDirection` in response. */
   (e: "click", event: MouseEvent): void;
 }>();
 
 defineSlots<{
+  /** Header label. */
   default?(): unknown;
+  /** Replaces the sort indicator of a `sortable` header; `direction` is the current `sortDirection`. */
   sortIcon?(props: { direction: string }): unknown;
 }>();
 

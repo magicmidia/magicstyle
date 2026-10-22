@@ -8,7 +8,7 @@ export type MsAvatarStatus = "online" | "offline" | "busy" | "away";
 export type MsAvatarStatusPlacement = "bottom-right" | "top-right";
 export type MsAvatarTone = Extract<
   MsTone,
-  "neutral" | "primary" | "accent" | "success" | "warning" | "danger"
+  "neutral" | "primary" | "secondary" | "accent" | "info" | "success" | "warning" | "danger"
 >;
 
 export interface MsAvatarProps {

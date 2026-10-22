@@ -53,7 +53,10 @@ export interface MsPopoverProps {
 }
 
 export interface MsPopoverEmits {
+  /** Fires whenever the open state changes (trigger click/hover, `toggle`, Escape, outside click); payload is the new state. */
   (e: "update:open", value: boolean): void;
+  /** Fires after `update:open` when the popover opens. */
   (e: "open"): void;
+  /** Fires after `update:open` when the popover closes. */
   (e: "close"): void;
 }

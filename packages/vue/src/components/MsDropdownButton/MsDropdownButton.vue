@@ -15,6 +15,7 @@ const props = withDefaults(defineProps<MsDropdownButtonProps>(), {
 });
 
 const emit = defineEmits<{
+  /** Fires when a menu item is chosen; the menu closes and payload is the item. */
   select: [item: MsMenuItem];
 }>();
 

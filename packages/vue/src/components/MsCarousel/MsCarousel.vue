@@ -18,6 +18,7 @@ const emit = defineEmits<MsCarouselEmits>();
 const t = useMsMessages();
 
 defineSlots<{
+  /** `MsCarouselSlide` children, indexed in mount order. */
   default?(): unknown;
 }>();
 

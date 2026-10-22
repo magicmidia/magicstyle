@@ -215,4 +215,9 @@ const context: MsThemeContext = {
 };
 
 provideThemeContext(context);
+
+defineSlots<{
+  /** Content that receives the provided theme, color mode, density, contrast, radius, direction and messages. */
+  default?(): unknown;
+}>();
 </script>

@@ -15,6 +15,7 @@ const emit = defineEmits<MsStepperEmits>();
 const t = useMsMessages();
 
 defineSlots<{
+  /** `MsStep` children. */
   default?(): unknown;
 }>();
 

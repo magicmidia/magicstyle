@@ -192,4 +192,9 @@ const classes = computed(() => {
     },
   ];
 });
+
+defineSlots<{
+  /** `MsTabList` and `MsTabPanels` (or `MsTabPanel`) children. */
+  default?(): unknown;
+}>();
 </script>

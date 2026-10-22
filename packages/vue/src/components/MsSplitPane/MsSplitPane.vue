@@ -109,6 +109,13 @@ const firstPaneStyle = computed(() => {
 const secondPaneStyle = computed(() => ({
   flex: 1,
 }));
+
+defineSlots<{
+  /** First pane (left when horizontal, top when vertical); sized by `split`. */
+  first?(): unknown;
+  /** Second pane; takes the remaining space. */
+  second?(): unknown;
+}>();
 </script>
 
 <template>

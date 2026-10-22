@@ -81,6 +81,11 @@ const handleJumper = () => {
     jumperValue.value = "";
   }
 };
+
+defineSlots<{
+  /** Replaces the total label (shown with `showTotal`); receives the item count and the page count. */
+  total?(props: { total: number; totalPages: number }): unknown;
+}>();
 </script>
 
 <template>

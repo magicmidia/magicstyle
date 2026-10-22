@@ -6,6 +6,7 @@ const props = withDefaults(defineProps<MsDockItemProps>(), {
 });
 
 defineSlots<{
+  /** Item content (typically an icon); the accessible name comes from `label`. */
   default?(): unknown;
 }>();
 

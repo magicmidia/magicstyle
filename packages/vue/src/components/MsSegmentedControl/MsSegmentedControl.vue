@@ -79,6 +79,11 @@ const handleKeyDown = (event: KeyboardEvent, currentIndex: number) => {
   selectOption(targetOption);
   void nextTick(() => itemRefs[nextIndex]?.focus());
 };
+
+defineSlots<{
+  /** Replaces the content of each segment (icon and label); receives the option and whether it is selected. */
+  option?(props: { option: MsSegmentedControlOption<T>; active: boolean }): unknown;
+}>();
 </script>
 
 <template>

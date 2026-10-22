@@ -21,13 +21,18 @@ const props = withDefaults(defineProps<MsCheckboxProps>(), {
 const isChecked = computed(() => props.modelValue ?? props.checked ?? false);
 
 const emit = defineEmits<{
+  /** Fires when the user toggles the checkbox; payload is the new checked state. */
   "update:modelValue": [checked: boolean];
+  /** Same as `update:modelValue`, for `v-model:checked`. */
   "update:checked": [checked: boolean];
+  /** Fires after the update events with the new checked state. */
   change: [checked: boolean];
 }>();
 
 defineSlots<{
+  /** Rich label; replaces the `label` prop. */
   default?(): unknown;
+  /** Rich helper text below the label; replaces the `description` prop. */
   description?(): unknown;
 }>();
 

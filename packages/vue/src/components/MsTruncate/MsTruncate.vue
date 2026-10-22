@@ -95,6 +95,13 @@ const toggleExpand = () => {
   emit("update:expanded", internalExpanded.value);
   emit("toggle", internalExpanded.value);
 };
+
+defineSlots<{
+  /** Rich content to truncate; replaces the `text` prop (not used with middle truncation). */
+  default?(): unknown;
+  /** Replaces the show more/less button (shown when `expandable` and the content overflows); receives the state and a `toggle` function. */
+  "expand-trigger"?(props: { expanded: boolean; toggle: () => void }): unknown;
+}>();
 </script>
 
 <template>

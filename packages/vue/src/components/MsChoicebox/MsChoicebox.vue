@@ -182,4 +182,9 @@ const context: MsChoiceboxContext = {
 };
 
 provide(MS_CHOICEBOX_KEY, context);
+
+defineSlots<{
+  /** `MsChoiceboxItem` children; replaces the items rendered from the `items` prop. */
+  default?(): unknown;
+}>();
 </script>

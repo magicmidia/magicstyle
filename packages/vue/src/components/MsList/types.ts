@@ -75,10 +75,6 @@ export interface MsListContext {
   size: Ref<MsListSize>;
   /** true when the list is a `role="listbox"`. */
   selectable: Readonly<Ref<boolean>>;
-  /** Whether any registered item is active. */
-  hasActive?: Readonly<Ref<boolean>>;
-  /** Registers an item's `active` getter; returns the unregister function. */
-  registerActive?: (isActive: () => boolean) => () => void;
 }
 
 export const MS_LIST_KEY: InjectionKey<MsListContext> = Symbol("MS_LIST_KEY");

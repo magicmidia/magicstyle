@@ -155,6 +155,17 @@ function highlightCode(src: string, lang?: string): string {
 }
 
 const highlightedCode = computed(() => highlightCode(props.code, props.language));
+
+defineSlots<{
+  /** Raw code rendered unhighlighted inside `<pre><code>`; used only when `code` is empty. */
+  default?(): unknown;
+  /** Replaces the filename and language labels in the header. */
+  header?(): unknown;
+  /** Extra header actions, before the copy button. */
+  actions?(): unknown;
+  /** Replaces the footer (the expand/collapse button when `collapsible`). */
+  footer?(): unknown;
+}>();
 </script>
 
 <template>

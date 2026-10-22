@@ -32,6 +32,11 @@ const handleClick = () => {
   if (isDisabled.value || !group) return;
   group.selectItem(props.value);
 };
+
+defineSlots<{
+  /** Item content (label or icon). */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

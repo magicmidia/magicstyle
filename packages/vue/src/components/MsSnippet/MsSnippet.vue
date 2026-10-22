@@ -142,7 +142,7 @@
 import { computed, nextTick, ref, watch } from "vue";
 import { useMsId } from "../../composables/use-ms-id.ts";
 import { useMsMessages } from "../../composables/use-ms-messages.ts";
-import type { MsSnippetProps, MsSnippetEmits } from "./types.ts";
+import type { MsSnippetProps, MsSnippetEmits, MsSnippetItem } from "./types.ts";
 
 defineOptions({
   name: "MsSnippet",
@@ -269,4 +269,17 @@ async function handleCopy() {
     }
   }
 }
+
+defineSlots<{
+  /** Replaces the displayed code (the copy button still copies `code` or the active tab's code). */
+  default?(): unknown;
+  /** Replaces the prompt glyph before the code (shown when a prompt is set). */
+  prefix?(): unknown;
+  /** Replaces each tab label; receives the tab item, whether it is active and its index. */
+  tab?(props: { tab: MsSnippetItem; active: boolean; index: number }): unknown;
+  /** Extra header content before the copy button (tabbed snippets only). */
+  "header-extra"?(): unknown;
+  /** Replaces the copy button icon; `copied` is true briefly after a successful copy. */
+  "copy-button"?(props: { copied: boolean }): unknown;
+}>();
 </script>

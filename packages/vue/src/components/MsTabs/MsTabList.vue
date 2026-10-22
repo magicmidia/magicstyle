@@ -177,4 +177,9 @@ const classes = computed(() => {
     isScrollable.value ? "ms-tab-list--scrollable" : "",
   ].filter(Boolean);
 });
+
+defineSlots<{
+  /** `MsTab` children, rendered inside the `role="tablist"` element. */
+  default?(): unknown;
+}>();
 </script>

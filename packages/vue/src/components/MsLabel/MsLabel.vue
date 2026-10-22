@@ -19,6 +19,15 @@ const classes = computed(() => [
     "ms-label--disabled": props.disabled,
   },
 ]);
+
+defineSlots<{
+  /** Label text. */
+  default?(): unknown;
+  /** Replaces the info icon of the tooltip trigger (shown with `tooltip` or this slot). */
+  tooltip?(): unknown;
+  /** Extra content at the end of the label. */
+  extra?(): unknown;
+}>();
 </script>
 
 <template>

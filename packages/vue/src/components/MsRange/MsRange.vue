@@ -22,7 +22,7 @@ const fieldControl = useFieldControl("ms-range");
 const isInvalid = fieldControl.fieldInvalid;
 
 defineSlots<{
-  default?(): unknown;
+  /** Replaces the value readout (shown with `showValue` or this slot); receives the current value. */
   value?(props: { value: number }): unknown;
 }>();
 

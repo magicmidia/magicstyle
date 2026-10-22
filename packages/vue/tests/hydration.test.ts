@@ -3,10 +3,12 @@
  * data-ms-color-mode="system" on both sides, and "today" is resolved only after mount.
  */
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { createSSRApp, h, type Component } from "vue";
+import { createSSRApp, h, nextTick, type Component } from "vue";
 import { renderToString } from "vue/server-renderer";
 import {
   MsDatePicker,
+  MsList,
+  MsListItem,
   MsGlimpse,
   MsIconPicker,
   MsProvider,
@@ -102,6 +104,24 @@ describe("hydration", () => {
     const html = await renderToString(createSSRApp({ render }));
     const { warnings } = mountHydrated(html, render);
     expect(warnings.filter((w) => /hydrat|mismatch/i.test(w))).toEqual([]);
+  });
+
+  it("selectable MsList has a single tab stop in the server HTML and after hydration", async () => {
+    const render = () =>
+      h(MsList, { selectable: true }, () => [
+        h(MsListItem, { title: "A" }),
+        h(MsListItem, { title: "B", active: true }),
+      ]);
+    const html = await renderToString(createSSRApp({ render }));
+    const tabStops = (root: ParentNode) =>
+      Array.from(root.querySelectorAll('[tabindex="0"]')).map((el) => el.getAttribute("role"));
+    const server = document.createElement("div");
+    server.innerHTML = html;
+    expect(tabStops(server)).toEqual(["listbox"]);
+    const { container, warnings } = mountHydrated(html, render);
+    await nextTick();
+    expect(warnings.filter((w) => /hydrat|mismatch/i.test(w))).toEqual([]);
+    expect(tabStops(container)).toEqual(["listbox"]);
   });
 
   it("MsGlimpse inside a <p> hydrates without mismatch", async () => {

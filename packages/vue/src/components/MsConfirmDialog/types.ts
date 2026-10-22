@@ -62,7 +62,10 @@ export interface MsConfirmDialogProps {
 }
 
 export interface MsConfirmDialogEmits {
+  /** Fires with `false` when the dialog is cancelled (cancel button, Escape or backdrop click); not while `loading`. */
   (e: "update:open", value: boolean): void;
+  /** Fires when the confirm button is clicked; the dialog stays open until `open` is set to `false`. */
   (e: "confirm"): void;
+  /** Fires after `update:open` when the dialog is cancelled. */
   (e: "cancel"): void;
 }

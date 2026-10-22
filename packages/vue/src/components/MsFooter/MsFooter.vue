@@ -46,6 +46,21 @@ const containerClasses = computed(() => {
   const mod = typeof props.container === "string" ? props.container : "xl";
   return ["ms-footer__container", `ms-footer__container--${mod}`];
 });
+
+defineSlots<{
+  /** Free-form content between the columns grid and the bottom row. */
+  default?(): unknown;
+  /** Brand area (logo, tagline) at the top. */
+  brand?(): unknown;
+  /** Replaces the link columns rendered from the `columns` prop. */
+  columns?(): unknown;
+  /** Replaces the whole bottom row (copyright and social). */
+  bottom?(): unknown;
+  /** Rich copyright text; replaces the `copyright` prop. */
+  copyright?(): unknown;
+  /** Social links at the end of the bottom row. */
+  social?(): unknown;
+}>();
 </script>
 
 <template>

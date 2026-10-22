@@ -74,6 +74,11 @@ const rootStyle = computed(() => {
   }
   return style;
 });
+
+defineSlots<{
+  /** Scrollable content. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

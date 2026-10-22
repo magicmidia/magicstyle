@@ -97,4 +97,9 @@ function handleKeyDown(event: KeyboardEvent) {
     context.onKeyDown(event, props.value);
   }
 }
+
+defineSlots<{
+  /** Tab label. */
+  default?(): unknown;
+}>();
 </script>

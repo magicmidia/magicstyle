@@ -56,6 +56,11 @@ const badgeClasses = computed(() =>
     props.placement ? `ms-badge--placement-${props.placement}` : null,
   ].filter(Boolean),
 );
+
+defineSlots<{
+  /** Badge label (defaults to the formatted `count`). With `placement`, the slot is the wrapped element and the badge is positioned on its corner. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

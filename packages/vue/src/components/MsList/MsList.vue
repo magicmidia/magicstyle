@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, provide, reactive, ref, toRef } from "vue";
+import { computed, provide, ref, toRef } from "vue";
 import type { MsListProps } from "./types.ts";
 import { MS_LIST_KEY } from "./types.ts";
 
@@ -18,21 +18,10 @@ defineSlots<{
 
 const rootRef = ref<HTMLElement | null>(null);
 
-/** Active flags of the rendered items (listbox mode needs to know whether one is selected). */
-const activeFlags = reactive(new Set<() => boolean>());
-const hasActive = computed(() => Array.from(activeFlags).some((isActive) => isActive()));
-
 provide(MS_LIST_KEY, {
   variant: toRef(props, "variant"),
   size: toRef(props, "size"),
   selectable: toRef(props, "selectable"),
-  hasActive,
-  registerActive(isActive) {
-    activeFlags.add(isActive);
-    return () => {
-      activeFlags.delete(isActive);
-    };
-  },
 });
 
 const listClasses = computed(() => [
@@ -48,15 +37,34 @@ function options(): HTMLElement[] {
   );
 }
 
-/** Listbox without a selected option: the list is the tab stop and forwards focus. */
+/**
+ * The listbox itself is the entry tab stop, derived from props only so the server HTML and the
+ * first client render agree (items cannot report their `active` state before they render).
+ * Tabbing into it forwards focus to the selected option, else the first enabled one.
+ */
 function onFocus(event: FocusEvent): void {
-  if (!props.selectable || hasActive.value || event.target !== rootRef.value) return;
-  options()[0]?.focus();
+  if (!props.selectable || event.target !== rootRef.value) return;
+  const list = options();
+  (list.find((option) => option.getAttribute("aria-selected") === "true") ?? list[0])?.focus();
+}
+
+/**
+ * Shift+Tab from an option would land on the listbox (it precedes its options) and bounce
+ * back in: take the listbox out of the tab order until focus has left it.
+ */
+function onFocusout(event: FocusEvent): void {
+  const root = rootRef.value;
+  if (!root || root.contains(event.relatedTarget as Node | null)) return;
+  if (props.selectable) root.tabIndex = 0;
 }
 
 /** Listbox keyboard model (APG): arrows/Home/End move focus between enabled options. */
 function onKeydown(event: KeyboardEvent): void {
   if (!props.selectable) return;
+  if (event.key === "Tab" && event.shiftKey && event.target !== rootRef.value) {
+    rootRef.value!.tabIndex = -1;
+    return;
+  }
   const list = options();
   if (list.length === 0) return;
   const current = list.findIndex((option) => option === document.activeElement);
@@ -87,10 +95,11 @@ function onKeydown(event: KeyboardEvent): void {
     ref="rootRef"
     :class="listClasses"
     :role="props.selectable ? 'listbox' : 'list'"
-    :tabindex="props.selectable && !hasActive ? 0 : undefined"
+    :tabindex="props.selectable ? 0 : undefined"
     data-ms-list
     :data-selectable="props.selectable || undefined"
     @focus="onFocus"
+    @focusout="onFocusout"
     @keydown="onKeydown"
   >
     <slot />

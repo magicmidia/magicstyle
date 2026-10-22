@@ -23,12 +23,19 @@ const emit = defineEmits<{
 }>();
 
 defineSlots<{
+  /** Card body. */
   default?(): unknown;
+  /** Replaces the whole header (title, description and actions). */
   header?(): unknown;
+  /** Rich title; replaces the `title` prop. */
   title?(): unknown;
+  /** Rich description; replaces the `description` prop. */
   description?(): unknown;
+  /** Header actions, beside the title. */
   actions?(): unknown;
+  /** Footer below the body. */
   footer?(): unknown;
+  /** Cover media above the header; replaces the `coverSrc` image. */
   cover?(): unknown;
 }>();
 

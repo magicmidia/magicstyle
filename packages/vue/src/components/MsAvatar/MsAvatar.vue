@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<MsAvatarProps>(), {
 });
 
 defineSlots<{
+  /** Fallback content shown when there is no `src` or the image fails to load; defaults to the initials of `name`. */
   default?(): unknown;
 }>();
 

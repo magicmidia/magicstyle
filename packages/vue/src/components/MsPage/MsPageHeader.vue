@@ -2,6 +2,17 @@
 import type { MsPageHeaderProps } from "./types";
 
 defineProps<MsPageHeaderProps>();
+
+defineSlots<{
+  /** Breadcrumbs above the title row. */
+  breadcrumbs?(): unknown;
+  /** Replaces the `<h1>` rendered from the `title` prop. */
+  title?(): unknown;
+  /** Replaces the paragraph rendered from the `description` prop. */
+  description?(): unknown;
+  /** Actions at the end of the title row. */
+  actions?(): unknown;
+}>();
 </script>
 
 <template>

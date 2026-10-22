@@ -42,6 +42,23 @@ const classes = computed(() => [
     "ms-app-shell--full-height": props.fullHeight,
   },
 ]);
+
+defineSlots<{
+  /** Main region, between the sidebar and the aside (typically `MsContent`). */
+  default?(): unknown;
+  /** Top bar above the body (typically `MsTopbar`). */
+  topbar?(): unknown;
+  /** Navigation rail at the start of the body (typically `MsNavigationRail`). */
+  rail?(): unknown;
+  /** Sidebar after the rail (typically `MsSidebar`); reads the shell's collapse state. */
+  sidebar?(): unknown;
+  /** Secondary column at the end of the body (typically `MsAside`). */
+  aside?(): unknown;
+  /** Footer below the body (typically `MsAppShellFooter`). */
+  footer?(): unknown;
+  /** Status bar at the very bottom (typically `MsStatusBar`). */
+  statusbar?(): unknown;
+}>();
 </script>
 
 <template>

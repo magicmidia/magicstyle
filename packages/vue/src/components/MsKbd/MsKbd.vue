@@ -14,6 +14,11 @@ const classes = computed(() => [
   `ms-kbd--variant-${props.variant}`,
   props.tone !== "neutral" ? `ms-kbd--tone-${props.tone}` : null,
 ]);
+
+defineSlots<{
+  /** Key label, rendered inside `<kbd>`. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

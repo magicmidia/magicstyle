@@ -9,10 +9,15 @@ const props = withDefaults(defineProps<MsAccordionItemProps>(), {
 });
 
 defineSlots<{
+  /** Panel content, shown while the item is expanded. */
   default?(): unknown;
+  /** Rich title; replaces the `title` prop. */
   title?(): unknown;
+  /** Rich subtitle below the title; replaces the `subtitle` prop. */
   subtitle?(): unknown;
+  /** Leading icon in the header (decorative, `aria-hidden`). */
   icon?(): unknown;
+  /** Content before the chevron at the end of the header. */
   trailing?(): unknown;
 }>();
 

@@ -63,7 +63,7 @@
 
 <script setup lang="ts">
 import { computed, inject, onBeforeUnmount } from "vue";
-import { MS_CHOICEBOX_KEY, type MsChoiceboxItemProps } from "./types.ts";
+import { MS_CHOICEBOX_KEY, type MsChoiceboxItemProps, type MsChoiceboxType } from "./types.ts";
 
 defineOptions({
   name: "MsChoiceboxItem",
@@ -118,4 +118,23 @@ function handleClick() {
     group.toggleValue(props.value);
   }
 }
+
+defineSlots<{
+  /** Extra content at the bottom of the item, after the `extra` slot. */
+  default?(): unknown;
+  /** Replaces the radio/checkbox indicator glyph; receives the selection state and resolved type. */
+  indicator?(props: { selected: boolean; type: MsChoiceboxType }): unknown;
+  /** Icon before the title; replaces the `icon` prop. */
+  icon?(): unknown;
+  /** Rich title; replaces the `title` prop. */
+  title?(): unknown;
+  /** Badge next to the title; replaces the `badge` prop. */
+  badge?(): unknown;
+  /** Price at the end of the header; replaces the `price` prop. */
+  price?(): unknown;
+  /** Rich description; replaces the `description` prop. */
+  description?(): unknown;
+  /** Extra content at the bottom of the item, before the default slot. */
+  extra?(): unknown;
+}>();
 </script>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 defineSlots<{
+  /** Header `MsTableRow` children, rendered inside `<thead>`. */
   default?(): unknown;
 }>();
 </script>

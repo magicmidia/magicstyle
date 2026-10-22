@@ -50,6 +50,17 @@ const handleClick = (event: MouseEvent) => {
   }
   emit("click", event);
 };
+
+defineSlots<{
+  /** Link text. */
+  default?(): unknown;
+  /** Content before the text (e.g. an icon). */
+  prefix?(): unknown;
+  /** Content after the text. */
+  suffix?(): unknown;
+  /** Replaces the external-link icon shown for external links (decorative). */
+  "external-icon"?(): unknown;
+}>();
 </script>
 
 <template>

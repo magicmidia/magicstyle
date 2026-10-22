@@ -30,6 +30,8 @@ export interface MsDatePickerProps {
 }
 
 export interface MsDatePickerEmits {
+  /** Fires when a value is picked or cleared: a `YYYY-MM-DD` date, a `[start, end]` tuple (range), `HH:mm` (time), `YYYY-MM-DD HH:mm` (datetime), or `""` when cleared. */
   (e: "update:modelValue", value: MsDatePickerModelValue): void;
+  /** Fires alongside `update:modelValue` with the same payload. */
   (e: "change", value: MsDatePickerModelValue): void;
 }

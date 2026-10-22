@@ -51,6 +51,11 @@ const handleCopy = async (event: MouseEvent) => {
     }
   }
 };
+
+defineSlots<{
+  /** Inline code text (also the text copied when `copyable`). */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

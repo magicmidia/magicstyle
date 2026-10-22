@@ -99,4 +99,11 @@ const trackClasses = computed(() => {
     },
   ];
 });
+
+defineSlots<{
+  /** Rich label above the bar; replaces the `label` prop. */
+  label?(): unknown;
+  /** Replaces the value text (shown with `showValue` or this slot); receives the computed percentage and the raw `modelValue`. */
+  value?(props: { percentage: number; value: number | undefined }): unknown;
+}>();
 </script>

@@ -19,6 +19,11 @@ const classes = computed(() => [
 const style = computed(() => ({
   "--ms-canvas-size": `${props.size}px`,
 }));
+
+defineSlots<{
+  /** Content layered above the background pattern. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

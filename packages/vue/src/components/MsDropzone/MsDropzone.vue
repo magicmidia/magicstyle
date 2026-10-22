@@ -106,6 +106,13 @@ const removeFile = (item: MsDropzoneFile) => {
   fileList.value = fileList.value.filter((f) => f.id !== item.id);
   emit("file-removed", item);
 };
+
+defineSlots<{
+  /** Replaces the prompt text (defaults to the `dropzone.prompt` message). */
+  title?(): unknown;
+  /** Replaces the hint text below the prompt (defaults to the `dropzone.hint` message). */
+  subtitle?(): unknown;
+}>();
 </script>
 
 <template>

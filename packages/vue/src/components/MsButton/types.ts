@@ -35,7 +35,10 @@ export interface MsButtonProps {
   responsive?: boolean;
   /** Luminous wave ripple effect on click. */
   wave?: boolean;
-  /** Renders a dropdown caret and sets aria-expanded. */
+  /**
+   * Renders a decorative dropdown caret. It does not set `aria-expanded` by itself: pass
+   * `open` to expose the disclosure state (and rotate the caret).
+   */
   caret?: boolean;
   /** Controlled open state for caret buttons (aria-expanded + rotation). */
   open?: boolean | undefined;

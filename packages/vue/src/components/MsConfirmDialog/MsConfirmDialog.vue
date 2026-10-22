@@ -25,9 +25,13 @@ const confirmText = computed(() => props.confirmLabel ?? t.value.confirmDialog.c
 const cancelText = computed(() => props.cancelLabel ?? t.value.confirmDialog.cancel);
 
 defineSlots<{
+  /** Rich message; replaces the `message` prop and describes the dialog. */
   default?(): unknown;
+  /** Replaces the tone's default emoji icon. */
   icon?(): unknown;
+  /** Rich title; replaces the `title` prop. */
   title?(): unknown;
+  /** Replaces the cancel and confirm buttons. */
   footer?(): unknown;
 }>();
 

@@ -22,11 +22,17 @@ const emit = defineEmits<MsDrawerEmits>();
 const t = useMsMessages();
 
 defineSlots<{
+  /** Drawer body. */
   default?(): unknown;
+  /** Replaces the whole header (title, description and close button). */
   header?(): unknown;
+  /** Rich title; replaces the `title` prop and labels the drawer. */
   title?(): unknown;
+  /** Rich description; replaces the `description` prop and describes the drawer. */
   description?(): unknown;
+  /** Footer below the body (e.g. action buttons). */
   footer?(): unknown;
+  /** Replaces the glyph inside the close button (shown when `showClose`). */
   close?(): unknown;
 }>();
 

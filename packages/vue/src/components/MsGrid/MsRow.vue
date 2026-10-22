@@ -28,6 +28,11 @@ const classes = computed(() => [
 ]);
 
 provide("msRowGutter", props.gutter);
+
+defineSlots<{
+  /** `MsCol` children. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

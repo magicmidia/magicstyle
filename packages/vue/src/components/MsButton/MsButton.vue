@@ -16,10 +16,15 @@ const props = withDefaults(defineProps<MsButtonProps>(), {
 const slots = useSlots();
 
 defineSlots<{
+  /** Button label; when omitted the button is treated as icon-only (`data-icon-only`). */
   default?(): unknown;
+  /** Content before the start icon. */
   prefix?(): unknown;
+  /** Content after the label (before the end icon). */
   suffix?(): unknown;
+  /** Icon before the label. */
   "icon-start"?(): unknown;
+  /** Icon after the label. */
   "icon-end"?(): unknown;
 }>();
 

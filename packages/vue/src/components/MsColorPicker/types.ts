@@ -24,6 +24,8 @@ export interface MsColorPickerProps {
 }
 
 export interface MsColorPickerEmits {
+  /** Fires when a color is picked (native picker, hex input on change, or swatch); payload is the color string. */
   (e: "update:modelValue", color: string): void;
+  /** Fires alongside `update:modelValue` with the same color. */
   (e: "change", color: string): void;
 }

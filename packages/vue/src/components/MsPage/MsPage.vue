@@ -14,6 +14,11 @@ const classes = computed(() => [
     "ms-page--compact": props.compact,
   },
 ]);
+
+defineSlots<{
+  /** Page content (typically `MsPageHeader`, sections and `MsPageActions`). */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

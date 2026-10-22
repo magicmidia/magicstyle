@@ -12,7 +12,9 @@ const props = withDefaults(defineProps<MsContextMenuProps>(), {
 const emit = defineEmits<MsContextMenuEmits>();
 
 defineSlots<{
+  /** Trigger area; right-click, Shift+F10 or the ContextMenu key opens the menu at that point. */
   default?(): unknown;
+  /** Replaces the content of each (non-divider) item; receives the item. */
   item?(props: { item: MsContextMenuItem }): unknown;
 }>();
 

@@ -109,6 +109,11 @@ function isGroup(
 ): entry is MsSidebarMenuGroupData {
   return "items" in entry && Array.isArray((entry as MsSidebarMenuGroupData).items);
 }
+
+defineSlots<{
+  /** Declarative `MsSidebarMenuGroup`/`MsSidebarMenuItem` children; replaces the entries rendered from `items`. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>

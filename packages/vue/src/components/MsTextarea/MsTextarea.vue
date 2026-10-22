@@ -20,9 +20,11 @@ const props = withDefaults(defineProps<MsTextareaProps>(), {
 const emit = defineEmits<MsTextareaEmits>();
 
 defineSlots<{
-  default?(): unknown;
+  /** Helper text at the start of the footer row. */
   helper?(): unknown;
+  /** Replaces the character counter (shown with `showCount`); receives the current length and `maxLength`. */
   counter?(props: { count: number; max?: number | undefined }): unknown;
+  /** Extra footer content between the helper and the counter. */
   footer?(): unknown;
 }>();
 

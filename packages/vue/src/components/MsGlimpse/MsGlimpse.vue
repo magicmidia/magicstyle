@@ -250,4 +250,19 @@ function handleCloseImmediate() {
 onUnmounted(() => {
   clearTimers();
 });
+
+defineSlots<{
+  /** Replaces the trigger link (defaults to an anchor to `href` labelled `label`). */
+  default?(): unknown;
+  /** Replaces the whole card content; receives the `loading` and `open` states. */
+  preview?(props: { loading: boolean; open: boolean }): unknown;
+  /** Replaces the thumbnail image (`image` prop). */
+  image?(): unknown;
+  /** Replaces the site header (favicon, domain and badge). */
+  meta?(): unknown;
+  /** Rich title; replaces the `title` prop. */
+  title?(): unknown;
+  /** Rich description; replaces the `description` prop. */
+  description?(): unknown;
+}>();
 </script>

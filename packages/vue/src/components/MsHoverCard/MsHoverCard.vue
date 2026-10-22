@@ -57,6 +57,13 @@ const contentClasses = computed(() => [
   "ms-hover-card__content",
   `ms-hover-card__content--placement-${props.placement}`,
 ]);
+
+defineSlots<{
+  /** Trigger; hovering or focusing it opens the card after `openDelay`. */
+  default?(): unknown;
+  /** Card content, rendered only while open (may be interactive). */
+  content?(): unknown;
+}>();
 </script>
 
 <template>

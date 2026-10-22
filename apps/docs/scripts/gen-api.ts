@@ -2,6 +2,7 @@
  * Generates .vitepress/generated/api/<Component>.json from the library source with
  * vue-component-meta (props, events, slots, exposed), so API tables never drift.
  * Usage: node scripts/gen-api.ts [--if-stale] [--strict]
+ * --strict fails when a prop, event or slot has no JSDoc description.
  */
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
@@ -98,6 +99,31 @@ const byName = <T extends { name: string }>(a: T, b: T) => a.name.localeCompare(
 const missing: string[] = [];
 
 mkdirSync(outDir, { recursive: true });
+/**
+ * vue-component-meta only keeps event JSDoc for generic components: for the others Vue
+ * compiles `defineEmits<T>()` to a runtime array of names. Fall back to the JSDoc written
+ * on the emits declaration, in the component file or its folder's types.ts:
+ * `/** doc *\/ (e: "name", …): void`, `/** doc *\/ "name": […]` or `/** doc *\/ name: […]`.
+ */
+function eventDocFromSource(file: string, event: string): string {
+  const candidates = [file, join(dirname(file), "types.ts")].filter((f) => existsSync(f));
+  const escaped = event.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = new RegExp(
+    `/\\*\\*((?:(?!\\*/)[\\s\\S])*?)\\*/\\s*(?:\\(e:\\s*"${escaped}"|"${escaped}"\\s*:|${escaped}\\s*:)`,
+  );
+  for (const candidate of candidates) {
+    const match = pattern.exec(readFileSync(candidate, "utf8"));
+    if (match) {
+      return match[1]!
+        .split("\n")
+        .map((line) => line.replace(/^\s*\*\s?/, "").trim())
+        .filter(Boolean)
+        .join(" ");
+    }
+  }
+  return "";
+}
+
 for (const { name, file } of exports) {
   const meta = checker.getComponentMeta(file);
   const tagDefault = (tags: { name: string; text?: string }[]) =>
@@ -122,14 +148,22 @@ for (const { name, file } of exports) {
       })
       .sort(byName),
     events: meta.events
-      .map((e) => ({
-        name: e.name,
-        signature: clean(e.signature),
-        description: clean(e.description),
-      }))
+      .map((e) => {
+        const event = {
+          name: e.name,
+          signature: clean(e.signature),
+          description: clean(e.description) || clean(eventDocFromSource(file, e.name)),
+        };
+        if (!event.description) missing.push(`${name} event ${e.name}`);
+        return event;
+      })
       .sort(byName),
     slots: meta.slots
-      .map((s) => ({ name: s.name, type: clean(s.type), description: clean(s.description) }))
+      .map((s) => {
+        const slot = { name: s.name, type: clean(s.type), description: clean(s.description) };
+        if (!slot.description) missing.push(`${name} slot ${s.name}`);
+        return slot;
+      })
       .sort(byName),
     exposed: meta.exposed
       .filter((x) => !x.name.startsWith("$") && !/^[A-Z]/.test(x.name))
@@ -143,7 +177,7 @@ writeFileSync(hashFile, digest);
 
 console.log(`[gen-api] ${exports.length} components -> ${relative(process.cwd(), outDir)}`);
 if (missing.length > 0) {
-  console.log(`[gen-api] ${missing.length} props without description`);
+  console.log(`[gen-api] ${missing.length} props, events or slots without description`);
   if (args.has("--strict")) {
     console.error(missing.join("\n"));
     process.exit(1);

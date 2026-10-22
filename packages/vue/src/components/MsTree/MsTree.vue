@@ -11,7 +11,9 @@ const props = withDefaults(defineProps<MsTreeProps>(), {
 const emit = defineEmits<MsTreeEmits>();
 
 defineSlots<{
+  /** Replaces each node's label (defaults to `node.label`); receives the node. */
   default?(props: { node: MsTreeNodeData }): unknown;
+  /** Replaces each node's icon (defaults to `node.icon`); receives the node. */
   icon?(props: { node: MsTreeNodeData }): unknown;
 }>();
 

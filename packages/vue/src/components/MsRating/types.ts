@@ -42,6 +42,8 @@ export interface MsRatingProps {
 }
 
 export interface MsRatingEmits {
+  /** Fires when a star is clicked or the value is changed with the arrow keys (not when `readonly`/`disabled`); payload is the new rating. */
   (e: "update:modelValue", value: number): void;
+  /** Fires alongside `update:modelValue` with the same rating. */
   (e: "change", value: number): void;
 }

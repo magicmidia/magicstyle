@@ -59,7 +59,9 @@ export interface MsTabsProps {
 }
 
 export interface MsTabsEmits {
+  /** Fires when a tab is activated (click, or arrow keys with `activationMode: "automatic"`); payload is the tab `value`. */
   (e: "update:modelValue", value: string | number): void;
+  /** Fires alongside `update:modelValue` with the same value. */
   (e: "change", value: string | number): void;
 }
 

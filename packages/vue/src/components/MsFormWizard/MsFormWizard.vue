@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch } from "vue";
-import type { MsFormWizardProps, MsFormWizardEmits } from "./types.ts";
+import type { MsFormWizardProps, MsFormWizardEmits, MsWizardStep } from "./types.ts";
 import MsButton from "../MsButton/MsButton.vue";
 import { useMsMessages } from "../../composables/use-ms-messages.ts";
 
@@ -59,6 +59,25 @@ const handleNext = async () => {
 const handlePrev = async () => {
   await goToStep(activeIndex.value - 1);
 };
+
+defineSlots<
+  {
+    /** Per-step content: a slot named after a step's `id` renders while that step is active (falls back to the default slot). */
+    [stepId: string]:
+      ((props: { step: MsWizardStep | undefined; index: number }) => unknown) | undefined;
+  } & {
+    /** Active step content, used when no slot named after the active step's `id` is provided; receives the active step and its index. */
+    default?(props: { step: MsWizardStep | undefined; index: number }): unknown;
+    /** Replaces the previous/next buttons; receives `prev`/`next` navigation functions (which respect `beforeChange`), `isFirst`, `isLast` and `currentIndex`. */
+    footer?(props: {
+      prev: () => Promise<void>;
+      next: () => Promise<void>;
+      isFirst: boolean;
+      isLast: boolean;
+      currentIndex: number;
+    }): unknown;
+  }
+>();
 </script>
 
 <template>

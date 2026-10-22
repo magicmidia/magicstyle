@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<MsProgressRadialProps>(), {
 });
 
 defineSlots<{
+  /** Replaces the centered label (defaults to the percentage, shown with `showValue` when not indeterminate). */
   default?(): unknown;
 }>();
 

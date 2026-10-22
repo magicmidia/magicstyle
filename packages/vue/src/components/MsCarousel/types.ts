@@ -8,8 +8,10 @@ export interface MsCarouselProps {
   modelValue?: number;
 
   /**
-   * Total number of slides (used for navigation and indicators). Optional: defaults to
-   * the number of `MsCarouselSlide` children.
+   * Total number of slides (used for navigation and indicators). Optional on the client:
+   * defaults to the number of `MsCarouselSlide` children. Recommended with SSR: slides
+   * register while they render, so without it the server counts a single slide and omits
+   * the arrows, indicators and autoplay control until the client hydrates.
    */
   totalSlides?: number;
 

@@ -35,6 +35,15 @@ const style = computed(() => {
   }
   return styles;
 });
+
+defineSlots<{
+  /** Sidebar body; `collapsed` is the resolved collapsed state. */
+  default?(props: { collapsed: boolean }): unknown;
+  /** Header above the body; `collapsed` is the resolved collapsed state. */
+  header?(props: { collapsed: boolean }): unknown;
+  /** Footer below the body; `collapsed` is the resolved collapsed state. */
+  footer?(props: { collapsed: boolean }): unknown;
+}>();
 </script>
 
 <template>

@@ -10,6 +10,11 @@ const classes = computed(() => [
   "ms-status-bar",
   props.tone !== "default" ? `ms-status-bar--${props.tone}` : null,
 ]);
+
+defineSlots<{
+  /** Status content, announced via `role="status"`. */
+  default?(): unknown;
+}>();
 </script>
 
 <template>
