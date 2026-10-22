@@ -70,6 +70,23 @@ describe("theme contract", () => {
     expect(css).toContain("@media (prefers-color-scheme: dark)");
   });
 
+  it("resolves a theme scope without a color mode from the nearest ancestor's mode", () => {
+    for (const theme of THEMES) {
+      const scope = `[data-ms-theme="${theme.name}"]:not([data-ms-color-mode])`;
+      for (const mode of ["light", "dark", "system"]) {
+        expect(css).toContain(`@scope ([data-ms-color-mode="${mode}"]) {\n  ${scope} {`);
+      }
+      // The OS-driven dark variant of "system" lives in the media query.
+      expect(css).toContain(`  @scope ([data-ms-color-mode="system"]) {\n    ${scope} {`);
+    }
+    const dark = resolveThemeMode("nord", "dark").values["color-base-100"]!;
+    const scoped = css.slice(
+      css.indexOf('@scope ([data-ms-color-mode="dark"]) {\n  [data-ms-theme="nord"]'),
+    );
+    expect(scoped.slice(0, scoped.indexOf("}"))).toContain(`--ms-color-base-100: ${dark};`);
+    expect(scoped).toContain("color-scheme: dark;");
+  });
+
   it("builds a user theme from a partial definition (inherits magic)", () => {
     const brand: ThemeSource = {
       name: "acme",

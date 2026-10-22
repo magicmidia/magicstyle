@@ -684,7 +684,7 @@ describe("MsScrollSpy", () => {
 });
 
 describe("MsProvider colorMode inherit", () => {
-  it("omits data-ms-color-mode (and an unchanged theme) on the wrapper", () => {
+  it("omits data-ms-color-mode on the wrapper and keeps the theme scope", () => {
     const wrapper = track(
       mount(MsProvider, {
         props: { colorMode: "dark" },
@@ -696,7 +696,8 @@ describe("MsProvider colorMode inherit", () => {
     );
     const inner = wrapper.find(".inner");
     expect(inner.attributes("data-ms-color-mode")).toBeUndefined();
-    expect(inner.attributes("data-ms-theme")).toBeUndefined();
+    // The theme scope stays: themes.css resolves its palette from the ancestor's mode.
+    expect(inner.attributes("data-ms-theme")).toBe("magic");
     expect(inner.attributes("data-ms-density")).toBe("compact");
     expect(wrapper.attributes("data-ms-color-mode")).toBe("dark");
   });

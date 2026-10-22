@@ -43,6 +43,20 @@ Para cambiar el modo solo en una parte de la página, usa `MsThemeScope`:
 </MsThemeScope>
 ```
 
+## Los temas anidados siguen el modo de la página
+
+Un `MsProvider` anidado con `color-mode="inherit"` no define un modo de color propio: su tema usa la paleta clara u oscura del ancestro más cercano, incluido `system`. Funciona también con un tema distinto y, con varios providers anidados, gana el más cercano.
+
+```vue
+<MsProvider target="root" theme="magic" color-mode="system">
+  <MsProvider theme="nord" color-mode="inherit">
+    <!-- Nord, claro u oscuro según la página -->
+  </MsProvider>
+</MsProvider>
+```
+
+En HTML puro, la misma regla aplica a cualquier elemento con `data-ms-theme` y sin `data-ms-color-mode`.
+
 ## Cambiar en tiempo de ejecución
 
 `useThemeContext()` (o su alias `useMagicStyle()`) devuelve el contexto del provider más cercano:

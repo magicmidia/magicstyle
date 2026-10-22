@@ -114,12 +114,9 @@ const resolvedColorMode = computed<ColorMode>(() => {
 const resolvedAttributes = computed<Record<string, string>>(() => {
   const inherit = internalColorMode.value === "inherit";
   const attributes: Record<string, string> = {};
-  // A `[data-ms-theme]` scope re-declares the theme's light palette, so "inherit" leaves it
-  // out while the theme matches the inherited one ("magic" without an ancestor provider).
-  if (!inherit || internalTheme.value !== (parentContext?.theme.value ?? "magic")) {
-    attributes["data-ms-theme"] = internalTheme.value;
-  }
-  // "inherit": no attribute, so the nearest ancestor's color mode applies through CSS.
+  attributes["data-ms-theme"] = internalTheme.value;
+  // "inherit": no attribute; themes.css resolves a theme scope without data-ms-color-mode
+  // with the nearest ancestor's mode (@scope proximity), in any theme.
   if (!inherit) {
     // "system" is resolved by CSS (prefers-color-scheme): identical SSR/client markup, no flash.
     attributes["data-ms-color-mode"] =

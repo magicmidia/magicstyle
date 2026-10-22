@@ -43,6 +43,20 @@ To change the mode for part of the page, use `MsThemeScope`:
 </MsThemeScope>
 ```
 
+## Nested themes follow the page mode
+
+A nested `MsProvider` with `color-mode="inherit"` sets no color mode of its own: its theme renders in the light or dark palette of the closest ancestor, including `system`. That works with a different theme too, and with several nested providers the nearest one wins.
+
+```vue
+<MsProvider target="root" theme="magic" color-mode="system">
+  <MsProvider theme="nord" color-mode="inherit">
+    <!-- Nord, light or dark following the page -->
+  </MsProvider>
+</MsProvider>
+```
+
+In plain HTML the same rule applies to any element with `data-ms-theme` and no `data-ms-color-mode`.
+
 ## Switching at runtime
 
 `useThemeContext()` (or its alias `useMagicStyle()`) returns the nearest provider's context:

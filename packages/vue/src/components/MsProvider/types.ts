@@ -19,9 +19,8 @@ export interface MsProviderProps {
    * "system" renders `data-ms-color-mode="system"`, which CSS resolves through
    * `prefers-color-scheme`. "inherit" (meant for `target="wrapper"`) sets no
    * `data-ms-color-mode`, so the wrapper follows the nearest ancestor's mode (e.g. a
-   * nested provider that only changes the locale or density). While `theme` equals the
-   * inherited theme, `data-ms-theme` is omitted too, because a theme scope re-declares
-   * its light palette; a different `theme` with "inherit" therefore renders light colors.
+   * nested provider that only changes the locale, the density or the theme): the theme's
+   * light or dark palette follows that ancestor, including OS-driven "system".
    * Default: "system".
    */
   colorMode?: ColorModePreference | "inherit";

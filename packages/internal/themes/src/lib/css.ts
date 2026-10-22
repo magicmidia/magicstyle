@@ -72,12 +72,26 @@ export function themeToCss(
   const light = resolveThemeMode(theme.name, "light", sources);
   const dark = resolveThemeMode(theme.name, "dark", sources);
   const sel = selectorsFor(theme.name);
+  const lightDecls = modeDeclarations("light", light.values, light.extras);
+  const darkDecls = modeDeclarations("dark", dark.values, dark.extras);
+  // A theme scope without its own data-ms-color-mode (MsProvider colorMode="inherit")
+  // follows the nearest ancestor's mode. @scope proximity makes the closest
+  // data-ms-color-mode ancestor win when several are nested.
+  const inherited = [`[data-ms-theme="${theme.name}"]:not([data-ms-color-mode])`];
+  const scoped = (mode: string, decls: ReturnType<typeof modeDeclarations>, indent = "") =>
+    `${indent}@scope ([data-ms-color-mode="${mode}"]) {\n` +
+    rule(inherited, decls, `${indent}  `) +
+    `${indent}}\n`;
   return {
     base:
       `/* ${theme.label} — ${theme.description} */\n` +
-      rule(sel.light, modeDeclarations("light", light.values, light.extras)) +
-      rule(sel.dark, modeDeclarations("dark", dark.values, dark.extras)),
-    system: rule(sel.system, modeDeclarations("dark", dark.values, dark.extras), "  "),
+      rule(sel.light, lightDecls) +
+      rule(sel.dark, darkDecls) +
+      scoped("light", lightDecls) +
+      scoped("dark", darkDecls) +
+      // "system" is light unless the media query below switches it to dark.
+      scoped("system", lightDecls),
+    system: rule(sel.system, darkDecls, "  ") + scoped("system", darkDecls, "  "),
   };
 }
 
