@@ -1,0 +1,50 @@
+name: GitHub Release
+
+# Pushing a vX.Y.Z tag publishes the GitHub Release for that version, with the notes
+# from its section in the root CHANGELOG.md. npm publishing stays a separate, manual
+# run of the Release workflow.
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions: {}
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # create the release
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24
+
+      - name: Check the tag matches the package version
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          version=$(node -p 'require("./packages/vue/package.json").version')
+          if [ "v$version" != "$TAG" ]; then
+            echo "::error::Tag $TAG does not match @magic-style/vue $version"
+            exit 1
+          fi
+
+      - name: Extract release notes from CHANGELOG.md
+        env:
+          TAG: ${{ github.ref_name }}
+          REPO: ${{ github.repository }}
+        run: node scripts/release-notes.mjs "$TAG" --repo "$REPO" > release-notes.md
+
+      - name: Publish the GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+        run: gh release create "$TAG" --repo "$GITHUB_REPOSITORY" --title "$TAG" --notes-file release-notes.md --verify-tag --latest

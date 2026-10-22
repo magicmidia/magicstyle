@@ -129,7 +129,7 @@ Magic-Style follows [Semantic Versioning](https://semver.org/). `@magic-style/vu
 
 1. Every change to a public package ships a changeset (`pnpm changeset`).
 2. On every push to `main`, the **Release** workflow opens or updates the **"chore: version packages"** PR. It runs `changeset version`, which bumps the versions, writes the package `CHANGELOG.md` files and removes the consumed changesets.
-3. When that PR is merged, add the release notes to the root [`CHANGELOG.md`](CHANGELOG.md), then tag the merge commit `vX.Y.Z` and publish a **GitHub Release** with those notes.
+3. When that PR is merged, add a `## [X.Y.Z] - YYYY-MM-DD` section to the root [`CHANGELOG.md`](CHANGELOG.md), then push the tag: `git tag -a vX.Y.Z -m "vX.Y.Z" && git push origin vX.Y.Z`. The **GitHub Release** workflow checks that the tag matches the package version and publishes the release with that changelog section (`node scripts/release-notes.mjs X.Y.Z` previews it).
 4. Publishing to npm is a separate, manual step: **Actions → Release → Run workflow**. It runs the full health gate, then `changeset publish`, in the protected `npm` environment.
 
 ---
