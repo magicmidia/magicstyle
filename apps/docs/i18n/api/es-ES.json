@@ -17,6 +17,22 @@
         "text": "Variante visual del marco.",
         "source": "Visual framing variant."
       }
+    },
+    "events": {
+      "change": {
+        "text": "Se emite junto con `update:modelValue` con el mismo payload.",
+        "source": "Fires alongside `update:modelValue` with the same payload."
+      },
+      "update:modelValue": {
+        "text": "Se emite cuando se alterna un elemento; el payload es el nuevo valor expandido (un array cuando `multiple`; en caso contrario, el valor del elemento o `\"\"` al contraerse).",
+        "source": "Fires when an item is toggled; payload is the new expanded value (an array when `multiple`, otherwise the item value or `\"\"` when collapsed)."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsAccordionItem`.",
+        "source": "`MsAccordionItem` children."
+      }
     }
   },
   "MsAccordionItem": {
@@ -36,6 +52,28 @@
       "value": {
         "text": "Identificador único que se compara con modelValue.",
         "source": "Unique identifier matching or checked against modelValue."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido del panel, mostrado mientras el elemento está expandido.",
+        "source": "Panel content, shown while the item is expanded."
+      },
+      "icon": {
+        "text": "Icono inicial en la cabecera (decorativo, `aria-hidden`).",
+        "source": "Leading icon in the header (decorative, `aria-hidden`)."
+      },
+      "subtitle": {
+        "text": "Subtítulo enriquecido bajo el título; reemplaza la prop `subtitle`.",
+        "source": "Rich subtitle below the title; replaces the `subtitle` prop."
+      },
+      "title": {
+        "text": "Título enriquecido; reemplaza la prop `title`.",
+        "source": "Rich title; replaces the `title` prop."
+      },
+      "trailing": {
+        "text": "Contenido antes del chevron al final de la cabecera.",
+        "source": "Content before the chevron at the end of the header."
       }
     }
   },
@@ -72,6 +110,38 @@
       "variant": {
         "text": "Variante visual.",
         "source": "Visual variant."
+      }
+    },
+    "events": {
+      "close": {
+        "text": "Se emite cuando se hace clic en el botón de cierre; la alerta se oculta sola.",
+        "source": "Fires when the dismiss button is clicked; the alert hides itself."
+      },
+      "update:open": {
+        "text": "Se emite con `false` cuando se cierra la alerta.",
+        "source": "Fires with `false` when the alert is dismissed."
+      }
+    },
+    "slots": {
+      "actions": {
+        "text": "Botones de acción bajo la descripción.",
+        "source": "Action buttons below the description."
+      },
+      "close": {
+        "text": "Reemplaza el glifo dentro del botón de cierre (mostrado cuando `dismissible`).",
+        "source": "Replaces the glyph inside the dismiss button (shown when `dismissible`)."
+      },
+      "default": {
+        "text": "Cuerpo de la alerta; reemplaza la prop `description`.",
+        "source": "Alert body; replaces the `description` prop."
+      },
+      "icon": {
+        "text": "Reemplaza el icono predeterminado del tono (decorativo, `aria-hidden`).",
+        "source": "Replaces the tone's default icon (decorative, `aria-hidden`)."
+      },
+      "title": {
+        "text": "Título enriquecido; reemplaza la prop `title`.",
+        "source": "Rich title; replaces the `title` prop."
       }
     }
   },
@@ -113,13 +183,55 @@
         "text": "Estado contraído de la barra lateral del contenedor, compartido con el `MsSidebar` hijo (admite `v-model:sidebarCollapsed`).",
         "source": "Collapsed state of the shell sidebar, shared with child `MsSidebar` (supports `v-model:sidebarCollapsed`)."
       }
+    },
+    "events": {
+      "update:sidebarCollapsed": {
+        "text": "Se emite cuando se alterna el estado contraído de la barra lateral mediante el contexto del shell; el payload es el nuevo estado contraído.",
+        "source": "Fires when the sidebar collapse state is toggled via the shell context; payload is the new collapsed state."
+      }
+    },
+    "slots": {
+      "aside": {
+        "text": "Columna secundaria al final del cuerpo (normalmente `MsAside`).",
+        "source": "Secondary column at the end of the body (typically `MsAside`)."
+      },
+      "default": {
+        "text": "Región principal, entre la barra lateral y el aside (normalmente `MsContent`).",
+        "source": "Main region, between the sidebar and the aside (typically `MsContent`)."
+      },
+      "footer": {
+        "text": "Pie bajo el cuerpo (normalmente `MsAppShellFooter`).",
+        "source": "Footer below the body (typically `MsAppShellFooter`)."
+      },
+      "rail": {
+        "text": "Riel de navegación al inicio del cuerpo (normalmente `MsNavigationRail`).",
+        "source": "Navigation rail at the start of the body (typically `MsNavigationRail`)."
+      },
+      "sidebar": {
+        "text": "Barra lateral después del riel (normalmente `MsSidebar`); lee el estado contraído del shell.",
+        "source": "Sidebar after the rail (typically `MsSidebar`); reads the shell's collapse state."
+      },
+      "statusbar": {
+        "text": "Barra de estado en la parte inferior (normalmente `MsStatusBar`).",
+        "source": "Status bar at the very bottom (typically `MsStatusBar`)."
+      },
+      "topbar": {
+        "text": "Barra superior sobre el cuerpo (normalmente `MsTopbar`).",
+        "source": "Top bar above the body (typically `MsTopbar`)."
+      }
     }
   },
   "MsAppShellFooter": {
     "props": {
       "bordered": {
-        "text": "Reservado para un pie con borde; actualmente el componente no lo aplica.",
-        "source": "Reserved for a bordered footer; currently not applied by the component."
+        "text": "Dibuja el borde superior (`--ms-color-border-subtle`) que separa el pie del contenido; establécelo en `false` para un pie sin borde.",
+        "source": "Draws the top border (`--ms-color-border-subtle`) that separates the footer from the content; set `false` for a borderless footer."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido del pie (copyright, enlaces, estado).",
+        "source": "Footer content (copyright, links, status)."
       }
     }
   },
@@ -137,6 +249,20 @@
         "text": "Ancho expandido (cualquier longitud CSS), aplicado mientras no está contraído.",
         "source": "Expanded width (any CSS length), applied while not collapsed."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Cuerpo de la barra lateral; `collapsed` es el estado contraído resuelto.",
+        "source": "Sidebar body; `collapsed` is the resolved collapsed state."
+      },
+      "footer": {
+        "text": "Pie bajo el cuerpo; `collapsed` es el estado contraído resuelto.",
+        "source": "Footer below the body; `collapsed` is the resolved collapsed state."
+      },
+      "header": {
+        "text": "Cabecera sobre el cuerpo; `collapsed` es el estado contraído resuelto.",
+        "source": "Header above the body; `collapsed` is the resolved collapsed state."
+      }
     }
   },
   "MsAside": {
@@ -145,6 +271,12 @@
         "text": "Ancho del aside (cualquier longitud CSS).",
         "source": "Aside width (any CSS length)."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido del aside.",
+        "source": "Aside content."
+      }
     }
   },
   "MsAspectRatio": {
@@ -152,6 +284,12 @@
       "ratio": {
         "text": "Proporción numérica (p. ej. 16/9 = 1.777) o string (p. ej. \"16/9\", \"4/3\", \"1/1\")",
         "source": "Numeric ratio (e.g. 16/9 = 1.777) or string (e.g. \"16/9\", \"4/3\", \"1/1\")"
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido ajustado a la proporción (p. ej. una imagen, un vídeo o un iframe).",
+        "source": "Content constrained to the ratio (e.g. an image, video or iframe)."
       }
     }
   },
@@ -189,6 +327,12 @@
         "text": "Tono de fondo para las iniciales de respaldo.",
         "source": "Background tone for initials fallback."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido alternativo mostrado cuando no hay `src` o la imagen no se carga; por defecto, las iniciales de `name`.",
+        "source": "Fallback content shown when there is no `src` or the image fails to load; defaults to the initials of `name`."
+      }
     }
   },
   "MsAvatarGroup": {
@@ -212,6 +356,12 @@
       "spacing": {
         "text": "Espaciado de superposición entre avatares.",
         "source": "Overlap spacing between avatars."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsAvatar`; solo se usan cuando `items` está vacío. Los hijos heredan `size` y `bordered` del grupo.",
+        "source": "`MsAvatar` children; used only when `items` is empty. Children inherit the group `size` and `bordered`."
       }
     }
   },
@@ -269,6 +419,12 @@
         "text": "Variante visual.",
         "source": "Visual variant."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Etiqueta de la insignia (por defecto, el `count` formateado). Con `placement`, el slot es el elemento envuelto y la insignia se posiciona en su esquina.",
+        "source": "Badge label (defaults to the formatted `count`). With `placement`, the slot is the wrapped element and the badge is positioned on its corner."
+      }
     }
   },
   "MsBanner": {
@@ -286,8 +442,8 @@
         "source": "Display positioning: \"top\" (sticky header), \"bottom\" (sticky footer), \"inline\". Default: \"inline\"."
       },
       "title": {
-        "text": "Prefijo de título opcional.",
-        "source": "Optional title text prefix."
+        "text": "Título opcional en negrita antes del mensaje; también se convierte en el nombre accesible de la región.",
+        "source": "Optional bold title before the message; also becomes the region's accessible name."
       },
       "tone": {
         "text": "Tono de color semántico. Predeterminado: \"info\".",
@@ -296,6 +452,82 @@
       "variant": {
         "text": "Variante visual de la superficie. Predeterminado: \"soft\".",
         "source": "Visual surface variant. Default: \"soft\"."
+      }
+    },
+    "events": {
+      "action": {
+        "text": "Se hizo clic en el botón predeterminado de `actionLabel`.",
+        "source": "The default `actionLabel` button was clicked."
+      },
+      "dismiss": {
+        "text": "Se hizo clic en el botón de cierre (el banner se oculta solo).",
+        "source": "The dismiss button was clicked (the banner hides itself)."
+      }
+    },
+    "slots": {
+      "actions": {
+        "text": "Reemplaza el botón de acción predeterminado (el botón de cierre se mantiene).",
+        "source": "Replaces the default action button (the dismiss button is kept)."
+      },
+      "default": {
+        "text": "Cuerpo del mensaje del banner.",
+        "source": "Banner message body."
+      },
+      "icon": {
+        "text": "Reemplaza el icono emoji predeterminado del tono.",
+        "source": "Replaces the tone's default emoji icon."
+      },
+      "title": {
+        "text": "Título enriquecido; reemplaza la prop `title` y da nombre a la región.",
+        "source": "Rich title; replaces the `title` prop and names the region."
+      }
+    }
+  },
+  "MsBentoGrid": {
+    "props": {
+      "cols": {
+        "text": "Número de columnas de la cuadrícula.",
+        "source": "Number of grid columns."
+      },
+      "dense": {
+        "text": "Usa `grid-auto-flow: dense` para que los elementos más pequeños rellenen los huecos.",
+        "source": "Uses `grid-auto-flow: dense` so smaller items back-fill gaps."
+      },
+      "gap": {
+        "text": "Espacio entre celdas: un token de espaciado (\"xs\"–\"xl\") o píxeles.",
+        "source": "Gap between cells: a spacing token (\"xs\"–\"xl\") or pixels."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsBentoItem`.",
+        "source": "`MsBentoItem` children."
+      }
+    }
+  },
+  "MsBentoItem": {
+    "props": {
+      "colSpan": {
+        "text": "Columnas que abarca el elemento.",
+        "source": "Columns the item spans."
+      },
+      "interactive": {
+        "text": "Solo estilo de elevación al pasar el cursor; coloca un enlace o botón dentro para una interacción real.",
+        "source": "Hover lift styling only; put a link or button inside for real interaction."
+      },
+      "rowSpan": {
+        "text": "Filas que abarca el elemento.",
+        "source": "Rows the item spans."
+      },
+      "variant": {
+        "text": "Estilo de la superficie.",
+        "source": "Surface style."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido del mosaico.",
+        "source": "Tile content."
       }
     }
   },
@@ -314,8 +546,12 @@
         "source": "Author role or title shown below the name."
       },
       "cite": {
-        "text": "Fuente de la cita: se establece como el atributo nativo `cite` y se renderiza en el pie.",
-        "source": "Source of the quote: set as the native `cite` attribute and rendered in the footer."
+        "text": "Título visible de la fuente de la cita, renderizado en un `<cite>` en el pie.",
+        "source": "Visible title of the quote's source, rendered in a `<cite>` in the footer."
+      },
+      "citeUrl": {
+        "text": "URL de la fuente de la cita, establecida como el atributo nativo `cite` de `<blockquote>`.",
+        "source": "URL of the quote's source, set as the native `cite` attribute of `<blockquote>`."
       },
       "icon": {
         "text": "Muestra el icono decorativo de cita cuando es truthy; usa el slot `icon` para contenido personalizado.",
@@ -332,6 +568,28 @@
       "variant": {
         "text": "Estilo visual.",
         "source": "Visual style."
+      }
+    },
+    "slots": {
+      "author": {
+        "text": "Nombre enriquecido del autor; reemplaza `author`.",
+        "source": "Rich author name; replaces `author`."
+      },
+      "cite": {
+        "text": "Título enriquecido de la fuente dentro de `<cite>`; reemplaza `cite`.",
+        "source": "Rich source title inside `<cite>`; replaces `cite`."
+      },
+      "default": {
+        "text": "El texto citado.",
+        "source": "The quoted text."
+      },
+      "icon": {
+        "text": "Icono de cita personalizado (se muestra incluso cuando `icon` es false).",
+        "source": "Custom quote icon (shown even when `icon` is false)."
+      },
+      "role": {
+        "text": "Rol enriquecido del autor; reemplaza `authorRole`.",
+        "source": "Rich author role; replaces `authorRole`."
       }
     }
   },
@@ -353,6 +611,20 @@
         "text": "SVG o texto opcional de icono inicial.",
         "source": "Optional leading icon SVG or text."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Etiqueta del elemento; se renderiza como enlace cuando se establece `href` (y no es `disabled`/`current`).",
+        "source": "Item label; rendered as a link when `href` is set (and not `disabled`/`current`)."
+      },
+      "icon": {
+        "text": "Icono inicial (decorativo); reemplaza la prop `icon`.",
+        "source": "Leading icon (decorative); replaces the `icon` prop."
+      },
+      "separator": {
+        "text": "Separador renderizado después del elemento, dentro de su `<li>` (p. ej. `MsBreadcrumbSeparator`).",
+        "source": "Separator rendered after the item, inside its `<li>` (e.g. `MsBreadcrumbSeparator`)."
+      }
     }
   },
   "MsBreadcrumbSeparator": {
@@ -360,6 +632,12 @@
       "as": {
         "text": "Elemento que se renderiza. Usa \"li\" al colocar el separador directamente dentro de la lista, o colócalo en el slot `separator` de MsBreadcrumbItem.",
         "source": "Element to render. Use \"li\" when placing the separator directly inside the list, or put it in MsBreadcrumbItem's `separator` slot."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Glifo separador (decorativo); por defecto, el separador del `MsBreadcrumbs` padre, o `›`.",
+        "source": "Separator glyph (decorative); defaults to the parent `MsBreadcrumbs` separator, or `›`."
       }
     }
   },
@@ -401,6 +679,12 @@
         "text": "Variante visual: - \"plain\": enlaces en línea simples y limpios. - \"pills\": insignias en forma de cápsula redondeada con el activo resaltado. - \"solid\": contenedor tipo tarjeta cerrado. Predeterminado: \"plain\".",
         "source": "Visual variant: - \"plain\": standard clean inline links. - \"pills\": rounded capsule badges with active highlighted. - \"solid\": enclosed card container. Default: \"plain\"."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsBreadcrumbItem`; solo se usan cuando `items` está vacío.",
+        "source": "`MsBreadcrumbItem` children; used only when `items` is empty."
+      }
     }
   },
   "MsButton": {
@@ -414,8 +698,8 @@
         "source": "Full container width."
       },
       "caret": {
-        "text": "Renderiza un símbolo de despliegue (caret) y establece aria-expanded.",
-        "source": "Renders a dropdown caret and sets aria-expanded."
+        "text": "Renderiza un indicador desplegable decorativo. No establece `aria-expanded` por sí mismo: pasa `open` para exponer el estado de despliegue (y girar el indicador).",
+        "source": "Renders a decorative dropdown caret. It does not set `aria-expanded` by itself: pass `open` to expose the disclosure state (and rotate the caret)."
       },
       "disabled": {
         "text": "Deshabilita el botón. Los botones nativos reciben el atributo `disabled`; los enlaces y componentes personalizados reciben `aria-disabled=\"true\"`, `tabindex=\"-1\"`, sin `href` y con los clics bloqueados.",
@@ -473,6 +757,28 @@
         "text": "CTA destacado con ancho horizontal ampliado.",
         "source": "Prominent CTA with extended horizontal width."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Etiqueta del botón; si se omite, el botón se trata como solo icono (`data-icon-only`).",
+        "source": "Button label; when omitted the button is treated as icon-only (`data-icon-only`)."
+      },
+      "icon-end": {
+        "text": "Icono después de la etiqueta.",
+        "source": "Icon after the label."
+      },
+      "icon-start": {
+        "text": "Icono antes de la etiqueta.",
+        "source": "Icon before the label."
+      },
+      "prefix": {
+        "text": "Contenido antes del icono inicial.",
+        "source": "Content before the start icon."
+      },
+      "suffix": {
+        "text": "Contenido después de la etiqueta (antes del icono final).",
+        "source": "Content after the label (before the end icon)."
+      }
     }
   },
   "MsButtonGroup": {
@@ -489,6 +795,12 @@
         "text": "Orientación del grupo de botones. Predeterminado: \"horizontal\".",
         "source": "Layout orientation of the button group. Default: \"horizontal\"."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsButton`, renderizados dentro de un contenedor `role=\"group\"`.",
+        "source": "`MsButton` children, rendered inside a `role=\"group\"` container."
+      }
     }
   },
   "MsCanvas": {
@@ -504,6 +816,12 @@
       "size": {
         "text": "Tamaño de la celda del patrón en píxeles.",
         "source": "Pattern cell size in pixels."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido superpuesto sobre el patrón de fondo.",
+        "source": "Content layered above the background pattern."
       }
     }
   },
@@ -565,6 +883,42 @@
         "text": "Estilo de la superficie.",
         "source": "Surface style."
       }
+    },
+    "events": {
+      "click": {
+        "text": "Clic (o Enter/Space) en una tarjeta `interactive`, o clic en una tarjeta enlace con `href`.",
+        "source": "Click (or Enter/Space) on an `interactive` card, or click on an `href` link card."
+      }
+    },
+    "slots": {
+      "actions": {
+        "text": "Acciones de la cabecera, junto al título.",
+        "source": "Header actions, beside the title."
+      },
+      "cover": {
+        "text": "Medio de portada sobre la cabecera; reemplaza la imagen de `coverSrc`.",
+        "source": "Cover media above the header; replaces the `coverSrc` image."
+      },
+      "default": {
+        "text": "Cuerpo de la tarjeta.",
+        "source": "Card body."
+      },
+      "description": {
+        "text": "Descripción enriquecida; reemplaza la prop `description`.",
+        "source": "Rich description; replaces the `description` prop."
+      },
+      "footer": {
+        "text": "Pie bajo el cuerpo.",
+        "source": "Footer below the body."
+      },
+      "header": {
+        "text": "Reemplaza toda la cabecera (título, descripción y acciones).",
+        "source": "Replaces the whole header (title, description and actions)."
+      },
+      "title": {
+        "text": "Título enriquecido; reemplaza la prop `title`.",
+        "source": "Rich title; replaces the `title` prop."
+      }
     }
   },
   "MsCarousel": {
@@ -594,8 +948,32 @@
         "source": "Whether to show bottom dot indicators."
       },
       "totalSlides": {
-        "text": "Número total de diapositivas (usado para la navegación y los indicadores).",
-        "source": "Total number of slides (used for navigation and indicators)."
+        "text": "Número total de diapositivas (usado para la navegación y los indicadores). Opcional en el cliente: por defecto, el número de hijos `MsCarouselSlide`. Recomendado con SSR: las diapositivas se registran mientras se renderizan, así que sin él el servidor cuenta una sola diapositiva y omite las flechas, los indicadores y el control de reproducción automática hasta que el cliente se hidrata.",
+        "source": "Total number of slides (used for navigation and indicators). Optional on the client: defaults to the number of `MsCarouselSlide` children. Recommended with SSR: slides register while they render, so without it the server counts a single slide and omits the arrows, indicators and autoplay control until the client hydrates."
+      }
+    },
+    "events": {
+      "change": {
+        "text": "Mismo payload que `update:modelValue`, para listeners sin v-model.",
+        "source": "Same payload as `update:modelValue`, for non-v-model listeners."
+      },
+      "update:modelValue": {
+        "text": "Cambió el índice de la diapositiva activa (flechas, indicadores, reproducción automática).",
+        "source": "Active slide index changed (arrows, indicators, autoplay)."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsCarouselSlide`, indexados en orden de montaje.",
+        "source": "`MsCarouselSlide` children, indexed in mount order."
+      }
+    }
+  },
+  "MsCarouselSlide": {
+    "slots": {
+      "default": {
+        "text": "Contenido de la diapositiva.",
+        "source": "Slide content."
       }
     }
   },
@@ -610,8 +988,8 @@
         "source": "Message alignment: 'start' for received/left, 'end' for sent/right."
       },
       "status": {
-        "text": "Indicador de estado de entrega.",
-        "source": "Delivery status indicator."
+        "text": "Indicador de estado de entrega (\"sending\", \"sent\" o \"read\"), con una etiqueta localizada.",
+        "source": "Delivery status indicator (\"sending\", \"sent\" or \"read\"), with a localized label."
       },
       "timestamp": {
         "text": "Texto opcional de marca de tiempo.",
@@ -621,9 +999,35 @@
         "text": "Tema de color semántico.",
         "source": "Semantic color theme."
       },
+      "typing": {
+        "text": "Muestra el indicador animado de tres puntos \"is typing\" en lugar del contenido del mensaje, como `role=\"status\"` con una etiqueta localizada (mensajes `chatBubble.typing`).",
+        "source": "Shows the animated three-dot \"is typing\" indicator instead of the message content, as a `role=\"status\"` with a localized label (messages `chatBubble.typing`)."
+      },
       "variant": {
         "text": "Estilo de relleno de la superficie.",
         "source": "Surface fill style."
+      }
+    },
+    "slots": {
+      "avatar": {
+        "text": "Avatar junto a la burbuja.",
+        "source": "Avatar next to the bubble."
+      },
+      "default": {
+        "text": "Contenido del mensaje (no se renderiza mientras `typing`).",
+        "source": "Message content (not rendered while `typing`)."
+      },
+      "footer": {
+        "text": "Reemplaza todo el pie (incluido el estado).",
+        "source": "Replaces the whole footer (including the status)."
+      },
+      "header": {
+        "text": "Reemplaza la cabecera de nombre/marca de tiempo.",
+        "source": "Replaces the name/timestamp header."
+      },
+      "status": {
+        "text": "Reemplaza el indicador de estado de entrega.",
+        "source": "Replaces the delivery status indicator."
       }
     }
   },
@@ -673,6 +1077,30 @@
         "text": "Valor cuando está dentro de grupos de formulario/array.",
         "source": "Value when inside form/array groups."
       }
+    },
+    "events": {
+      "change": {
+        "text": "Se emite después de los eventos de actualización con el nuevo estado marcado.",
+        "source": "Fires after the update events with the new checked state."
+      },
+      "update:checked": {
+        "text": "Igual que `update:modelValue`, para `v-model:checked`.",
+        "source": "Same as `update:modelValue`, for `v-model:checked`."
+      },
+      "update:modelValue": {
+        "text": "Se emite cuando el usuario alterna la casilla; el payload es el nuevo estado marcado.",
+        "source": "Fires when the user toggles the checkbox; payload is the new checked state."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Etiqueta enriquecida; reemplaza la prop `label`.",
+        "source": "Rich label; replaces the `label` prop."
+      },
+      "description": {
+        "text": "Texto de ayuda enriquecido bajo la etiqueta; reemplaza la prop `description`.",
+        "source": "Rich helper text below the label; replaces the `description` prop."
+      }
     }
   },
   "MsChoicebox": {
@@ -702,8 +1130,8 @@
         "source": "Model value: string/number for radio, array for checkbox"
       },
       "name": {
-        "text": "Nombre de formulario del grupo",
-        "source": "Group form name"
+        "text": "Nombre del campo de formulario: si se establece, los inputs ocultos envían los valores seleccionados con un formulario.",
+        "source": "Form field name: when set, hidden inputs submit the selected value(s) with a form."
       },
       "size": {
         "text": "Escala de tamaño",
@@ -716,6 +1144,104 @@
       "type": {
         "text": "Tipo de selección",
         "source": "Selection type"
+      }
+    },
+    "events": {
+      "change": {
+        "text": "Mismo payload que `update:modelValue`, para listeners sin v-model.",
+        "source": "Same payload as `update:modelValue`, for non-v-model listeners."
+      },
+      "update:modelValue": {
+        "text": "Cambió la selección: un valor (radio) o el nuevo array de valores (checkbox).",
+        "source": "The selection changed: a value (radio) or the new array of values (checkbox)."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsChoiceboxItem`; reemplazan los elementos renderizados desde la prop `items`.",
+        "source": "`MsChoiceboxItem` children; replaces the items rendered from the `items` prop."
+      }
+    }
+  },
+  "MsChoiceboxItem": {
+    "props": {
+      "badge": {
+        "text": "Insignia pequeña junto al título.",
+        "source": "Small badge next to the title."
+      },
+      "description": {
+        "text": "Texto secundario bajo la cabecera.",
+        "source": "Secondary text below the header."
+      },
+      "disabled": {
+        "text": "Hace que el elemento no sea seleccionable y lo quita del orden de tabulación.",
+        "source": "Makes the item unselectable and removes it from the tab order."
+      },
+      "icon": {
+        "text": "Texto/glifo de icono antes del título.",
+        "source": "Icon text/glyph before the title."
+      },
+      "indicatorPlacement": {
+        "text": "Sobrescritura de la posición del indicador; recurre a la ubicación del grupo y, después, a \"left\".",
+        "source": "Indicator position override; falls back to the group's placement, then \"left\"."
+      },
+      "price": {
+        "text": "Precio (o cualquier texto final) al final de la cabecera.",
+        "source": "Price (or any trailing text) at the end of the header."
+      },
+      "size": {
+        "text": "Sobrescritura del tamaño; recurre al tamaño del grupo y, después, a \"md\".",
+        "source": "Size override; falls back to the group's size, then \"md\"."
+      },
+      "title": {
+        "text": "Título del elemento (renderizado como `h4`; el slot `title` lo reemplaza).",
+        "source": "Item title (rendered as an `h4`; the `title` slot replaces it)."
+      },
+      "tone": {
+        "text": "Sobrescritura del tono; recurre al tono del grupo y, después, a \"primary\".",
+        "source": "Tone override; falls back to the group's tone, then \"primary\"."
+      },
+      "type": {
+        "text": "Sobrescritura del comportamiento de selección (\"radio\" o \"checkbox\"); recurre al tipo del grupo.",
+        "source": "Selection behavior override (\"radio\" or \"checkbox\"); falls back to the group's type."
+      },
+      "value": {
+        "text": "Valor que se alterna en el modelo del `MsChoicebox` padre cuando se elige el elemento.",
+        "source": "Value toggled in the parent `MsChoicebox` model when the item is chosen."
+      }
+    },
+    "slots": {
+      "badge": {
+        "text": "Insignia junto al título; reemplaza la prop `badge`.",
+        "source": "Badge next to the title; replaces the `badge` prop."
+      },
+      "default": {
+        "text": "Contenido adicional en la parte inferior del elemento, después del slot `extra`.",
+        "source": "Extra content at the bottom of the item, after the `extra` slot."
+      },
+      "description": {
+        "text": "Descripción enriquecida; reemplaza la prop `description`.",
+        "source": "Rich description; replaces the `description` prop."
+      },
+      "extra": {
+        "text": "Contenido adicional en la parte inferior del elemento, antes del slot predeterminado.",
+        "source": "Extra content at the bottom of the item, before the default slot."
+      },
+      "icon": {
+        "text": "Icono antes del título; reemplaza la prop `icon`.",
+        "source": "Icon before the title; replaces the `icon` prop."
+      },
+      "indicator": {
+        "text": "Reemplaza el glifo del indicador radio/checkbox; recibe el estado de selección y el tipo resuelto.",
+        "source": "Replaces the radio/checkbox indicator glyph; receives the selection state and resolved type."
+      },
+      "price": {
+        "text": "Precio al final de la cabecera; reemplaza la prop `price`.",
+        "source": "Price at the end of the header; replaces the `price` prop."
+      },
+      "title": {
+        "text": "Título enriquecido; reemplaza la prop `title`.",
+        "source": "Rich title; replaces the `title` prop."
       }
     }
   },
@@ -736,6 +1262,18 @@
       "variant": {
         "text": "Estilo visual.",
         "source": "Visual style."
+      }
+    },
+    "events": {
+      "copy": {
+        "text": "Se emite después de copiar el texto al portapapeles; el payload es el texto copiado (recortado).",
+        "source": "Fires after the text was copied to the clipboard; payload is the copied (trimmed) text."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Texto de código en línea (también el texto que se copia cuando `copyable`).",
+        "source": "Inline code text (also the text copied when `copyable`)."
       }
     }
   },
@@ -781,6 +1319,34 @@
         "text": "Ajusta las líneas largas en lugar de desplazarse horizontalmente.",
         "source": "Wraps long lines instead of scrolling horizontally."
       }
+    },
+    "events": {
+      "copy": {
+        "text": "Se emite después de copiar `code` al portapapeles; el payload es el código copiado.",
+        "source": "Fires after `code` was copied to the clipboard; payload is the copied code."
+      },
+      "toggle-collapse": {
+        "text": "Se emite cuando se hace clic en el botón de expandir/contraer; el payload es el nuevo estado contraído.",
+        "source": "Fires when the expand/collapse button is clicked; payload is the new collapsed state."
+      }
+    },
+    "slots": {
+      "actions": {
+        "text": "Acciones adicionales de la cabecera, antes del botón de copiar.",
+        "source": "Extra header actions, before the copy button."
+      },
+      "default": {
+        "text": "Código sin procesar renderizado sin resaltado dentro de `<pre><code>`; solo se usa cuando `code` está vacío.",
+        "source": "Raw code rendered unhighlighted inside `<pre><code>`; used only when `code` is empty."
+      },
+      "footer": {
+        "text": "Reemplaza el pie (el botón de expandir/contraer cuando `collapsible`).",
+        "source": "Replaces the footer (the expand/collapse button when `collapsible`)."
+      },
+      "header": {
+        "text": "Reemplaza las etiquetas de nombre de archivo y lenguaje en la cabecera.",
+        "source": "Replaces the filename and language labels in the header."
+      }
     }
   },
   "MsCol": {
@@ -813,6 +1379,12 @@
         "text": "Columnas que ocupa en pantallas extragrandes (>= 1280px)",
         "source": "Span on extra-large screens (>= 1280px)"
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido de la columna.",
+        "source": "Column content."
+      }
     }
   },
   "MsCollapse": {
@@ -832,6 +1404,38 @@
       "variant": {
         "text": "Estilo visual.",
         "source": "Visual style."
+      }
+    },
+    "events": {
+      "toggle": {
+        "text": "Se emite junto con `update:modelValue` en cada alternancia; el payload es el nuevo estado abierto.",
+        "source": "Fires alongside `update:modelValue` on each toggle; payload is the new open state."
+      },
+      "update:modelValue": {
+        "text": "Se emite cuando se hace clic en la cabecera para alternar el panel; el payload es el nuevo estado abierto.",
+        "source": "Fires when the header is clicked to toggle the panel; payload is the new open state."
+      }
+    },
+    "slots": {
+      "chevron": {
+        "text": "Reemplaza el icono chevron; `open` es el estado abierto actual.",
+        "source": "Replaces the chevron icon; `open` is the current open state."
+      },
+      "default": {
+        "text": "Contenido del panel; `inert` mientras está contraído.",
+        "source": "Panel content; `inert` while collapsed."
+      },
+      "extra": {
+        "text": "Contenido adicional de la cabecera antes del chevron.",
+        "source": "Extra header content before the chevron."
+      },
+      "header": {
+        "text": "Reemplaza toda el área de la etiqueta de la cabecera (incluido el slot `title`).",
+        "source": "Replaces the whole header label area (including the `title` slot)."
+      },
+      "title": {
+        "text": "Título enriquecido; reemplaza la prop `title`.",
+        "source": "Rich title; replaces the `title` prop."
       }
     }
   },
@@ -853,6 +1457,16 @@
         "text": "Muestras de la paleta predefinida.",
         "source": "Preset palette swatches."
       }
+    },
+    "events": {
+      "change": {
+        "text": "Se emite junto con `update:modelValue` con el mismo color.",
+        "source": "Fires alongside `update:modelValue` with the same color."
+      },
+      "update:modelValue": {
+        "text": "Se emite cuando se elige un color (selector nativo, input hexadecimal al cambiar, o muestra); el payload es la cadena del color.",
+        "source": "Fires when a color is picked (native picker, hex input on change, or swatch); payload is the color string."
+      }
     }
   },
   "MsCommandPalette": {
@@ -869,9 +1483,23 @@
         "text": "Comandos que se listan. Sin elementos, la paleta muestra su estado vacío.",
         "source": "Commands to list. Without items the palette shows its empty state."
       },
+      "modelValue": {
+        "text": "Estado abierto (`v-model`); Ctrl/⌘+K lo alterna cuando `hotkey` está activado.",
+        "source": "Open state (`v-model`); Ctrl/⌘+K toggles it when `hotkey` is on."
+      },
       "placeholder": {
         "text": "Placeholder del campo de búsqueda (también es el nombre accesible del campo y del listbox).",
         "source": "Search input placeholder (also the input and listbox accessible name)."
+      }
+    },
+    "events": {
+      "select": {
+        "text": "Se eligió un comando (la paleta se cierra a continuación).",
+        "source": "A command was chosen (the palette then closes)."
+      },
+      "update:modelValue": {
+        "text": "La paleta se abrió o se cerró (atajo de teclado, Escape, selección).",
+        "source": "The palette opened or closed (hotkey, Escape, selection)."
       }
     }
   },
@@ -917,6 +1545,38 @@
         "text": "Tono que afecta al icono y al botón de confirmación.",
         "source": "Tone theme affecting the icon and confirmation button."
       }
+    },
+    "events": {
+      "cancel": {
+        "text": "Se emite después de `update:open` cuando se cancela el diálogo.",
+        "source": "Fires after `update:open` when the dialog is cancelled."
+      },
+      "confirm": {
+        "text": "Se emite cuando se hace clic en el botón de confirmar; el diálogo permanece abierto hasta que `open` se establece en `false`.",
+        "source": "Fires when the confirm button is clicked; the dialog stays open until `open` is set to `false`."
+      },
+      "update:open": {
+        "text": "Se emite con `false` cuando se cancela el diálogo (botón de cancelar, Escape o clic en el fondo); no mientras `loading`.",
+        "source": "Fires with `false` when the dialog is cancelled (cancel button, Escape or backdrop click); not while `loading`."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Mensaje enriquecido; reemplaza la prop `message` y describe el diálogo.",
+        "source": "Rich message; replaces the `message` prop and describes the dialog."
+      },
+      "footer": {
+        "text": "Reemplaza los botones de cancelar y confirmar.",
+        "source": "Replaces the cancel and confirm buttons."
+      },
+      "icon": {
+        "text": "Reemplaza el icono emoji predeterminado del tono.",
+        "source": "Replaces the tone's default emoji icon."
+      },
+      "title": {
+        "text": "Título enriquecido; reemplaza la prop `title`.",
+        "source": "Rich title; replaces the `title` prop."
+      }
     }
   },
   "MsContainer": {
@@ -933,6 +1593,12 @@
         "text": "Aplica tokens de padding horizontal adaptable. Predeterminado: true.",
         "source": "Applies responsive horizontal padding tokens. Default: true."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido limitado a `maxWidth`.",
+        "source": "Content constrained to `maxWidth`."
+      }
     }
   },
   "MsContent": {
@@ -940,6 +1606,12 @@
       "padded": {
         "text": "Aplica padding interno al área de contenido principal.",
         "source": "Applies inner padding to the main content area."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido principal de la página, renderizado dentro de `<main>`.",
+        "source": "Main page content, rendered inside `<main>`."
       }
     }
   },
@@ -952,6 +1624,22 @@
       "items": {
         "text": "Array de elementos de acción y divisores del menú.",
         "source": "Array of menu action items and dividers."
+      }
+    },
+    "events": {
+      "select": {
+        "text": "Se emite cuando se elige un elemento habilitado (después de que se ejecute su `action`); a continuación el menú se cierra.",
+        "source": "Fires when an enabled item is chosen (after its `action` runs); the menu then closes."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Área disparadora; clic derecho, Shift+F10 o la tecla ContextMenu abre el menú en ese punto.",
+        "source": "Trigger area; right-click, Shift+F10 or the ContextMenu key opens the menu at that point."
+      },
+      "item": {
+        "text": "Reemplaza el contenido de cada elemento (que no sea divisor); recibe el elemento.",
+        "source": "Replaces the content of each (non-divider) item; receives the item."
       }
     }
   },
@@ -992,6 +1680,16 @@
       "placeholder": {
         "text": "Texto del placeholder del campo (por defecto, los mensajes `datePicker.placeholder*` del modo)",
         "source": "Input placeholder text (defaults to the messages `datePicker.placeholder*` for the mode)"
+      }
+    },
+    "events": {
+      "change": {
+        "text": "Se emite junto con `update:modelValue` con el mismo payload.",
+        "source": "Fires alongside `update:modelValue` with the same payload."
+      },
+      "update:modelValue": {
+        "text": "Se emite cuando se elige o se borra un valor: una fecha `YYYY-MM-DD`, una tupla `[start, end]` (rango), `HH:mm` (hora), `YYYY-MM-DD HH:mm` (fecha y hora), o `\"\"` al borrarse.",
+        "source": "Fires when a value is picked or cleared: a `YYYY-MM-DD` date, a `[start, end]` tuple (range), `HH:mm` (time), `YYYY-MM-DD HH:mm` (datetime), or `\"\"` when cleared."
       }
     }
   },
@@ -1037,6 +1735,34 @@
         "text": "Tono semántico del indicador: \"default\", \"danger\", \"warning\", \"success\", \"info\".",
         "source": "Semantic indicator tone: \"default\", \"danger\", \"warning\", \"success\", \"info\"."
       }
+    },
+    "events": {
+      "close": {
+        "text": "Se emite después de `update:open` cada vez que el diálogo solicita cerrarse.",
+        "source": "Fires after `update:open` whenever the dialog requests to close."
+      },
+      "update:open": {
+        "text": "Se emite con `false` cuando el diálogo solicita cerrarse (botón de cierre, Escape o clic en la superposición).",
+        "source": "Fires with `false` when the dialog requests to close (close button, Escape or overlay click)."
+      }
+    },
+    "slots": {
+      "close": {
+        "text": "Reemplaza el glifo dentro del botón de cierre (mostrado cuando `showClose`).",
+        "source": "Replaces the glyph inside the close button (shown when `showClose`)."
+      },
+      "default": {
+        "text": "Cuerpo del diálogo.",
+        "source": "Dialog body."
+      },
+      "footer": {
+        "text": "Pie bajo el cuerpo (p. ej. botones de acción).",
+        "source": "Footer below the body (e.g. action buttons)."
+      },
+      "header": {
+        "text": "Reemplaza la cabecera (el `title` y la `description`).",
+        "source": "Replaces the header (the `title` and `description`)."
+      }
     }
   },
   "MsDock": {
@@ -1049,6 +1775,12 @@
         "text": "Escala de dimensión de los iconos del dock.",
         "source": "Dock icon dimension scale."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsDockItem`, renderizados dentro de una lista `role=\"toolbar\"`.",
+        "source": "`MsDockItem` children, rendered inside a `role=\"toolbar\"` list."
+      }
     }
   },
   "MsDockItem": {
@@ -1060,6 +1792,12 @@
       "label": {
         "text": "Etiqueta para el título accesible y el tooltip.",
         "source": "Label for accessibility title and tooltip."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido del elemento (normalmente un icono); el nombre accesible proviene de `label`.",
+        "source": "Item content (typically an icon); the accessible name comes from `label`."
       }
     }
   },
@@ -1101,6 +1839,46 @@
         "text": "Título de la cabecera del drawer.",
         "source": "Drawer header title."
       }
+    },
+    "events": {
+      "close": {
+        "text": "Se emite después de `update:open` cada vez que el drawer solicita cerrarse.",
+        "source": "Fires after `update:open` whenever the drawer requests to close."
+      },
+      "open": {
+        "text": "Se emite cuando `open` pasa a `true` (también al montarse).",
+        "source": "Fires when `open` becomes `true` (including on mount)."
+      },
+      "update:open": {
+        "text": "Se emite con `false` cuando el drawer solicita cerrarse (botón de cierre, Escape o clic en el fondo).",
+        "source": "Fires with `false` when the drawer requests to close (close button, Escape or backdrop click)."
+      }
+    },
+    "slots": {
+      "close": {
+        "text": "Reemplaza el glifo dentro del botón de cierre (mostrado cuando `showClose`).",
+        "source": "Replaces the glyph inside the close button (shown when `showClose`)."
+      },
+      "default": {
+        "text": "Cuerpo del drawer.",
+        "source": "Drawer body."
+      },
+      "description": {
+        "text": "Descripción enriquecida; reemplaza la prop `description` y describe el drawer.",
+        "source": "Rich description; replaces the `description` prop and describes the drawer."
+      },
+      "footer": {
+        "text": "Pie bajo el cuerpo (p. ej. botones de acción).",
+        "source": "Footer below the body (e.g. action buttons)."
+      },
+      "header": {
+        "text": "Reemplaza toda la cabecera (título, descripción y botón de cierre).",
+        "source": "Replaces the whole header (title, description and close button)."
+      },
+      "title": {
+        "text": "Título enriquecido; reemplaza la prop `title` y etiqueta el drawer.",
+        "source": "Rich title; replaces the `title` prop and labels the drawer."
+      }
     }
   },
   "MsDropdownButton": {
@@ -1137,6 +1915,56 @@
         "text": "Estilo visual del botón disparador.",
         "source": "Visual style of the trigger button."
       }
+    },
+    "events": {
+      "select": {
+        "text": "Se emite cuando se elige un elemento del menú; el menú se cierra y el payload es el elemento.",
+        "source": "Fires when a menu item is chosen; the menu closes and payload is the item."
+      }
+    }
+  },
+  "MsDropzone": {
+    "props": {
+      "accept": {
+        "text": "Tipos aceptados, como el atributo nativo `accept` (\".pdf\", \"image/*\"…); también se aplica a los archivos soltados (motivo de rechazo \"type\"). Por defecto acepta cualquier tipo.",
+        "source": "Accepted types, like the native `accept` attribute (\".pdf\", \"image/*\"…); enforced for dropped files too (rejection reason \"type\"). Accepts any type by default."
+      },
+      "disabled": {
+        "text": "Deshabilita soltar y explorar archivos.",
+        "source": "Disables dropping and browsing."
+      },
+      "maxSize": {
+        "text": "Tamaño máximo de archivo en bytes; los archivos más grandes se rechazan con el motivo \"size\".",
+        "source": "Maximum file size in bytes; larger files are rejected with reason \"size\"."
+      },
+      "multiple": {
+        "text": "Acepta varios archivos; en caso contrario, los archivos adicionales se rechazan con el motivo \"multiple\".",
+        "source": "Accepts several files; otherwise extra files are rejected with reason \"multiple\"."
+      }
+    },
+    "events": {
+      "file-removed": {
+        "text": "Se eliminó un archivo de la lista.",
+        "source": "A file was removed from the list."
+      },
+      "files-dropped": {
+        "text": "Archivos aceptados al soltarlos o desde el selector de archivos.",
+        "source": "Accepted files from a drop or the file picker."
+      },
+      "files-rejected": {
+        "text": "Archivos rechazados por `accept`, `maxSize` o `multiple`, con el motivo.",
+        "source": "Files refused by `accept`, `maxSize` or `multiple`, with the reason."
+      }
+    },
+    "slots": {
+      "subtitle": {
+        "text": "Reemplaza el texto de ayuda bajo el mensaje principal (por defecto, el mensaje `dropzone.hint`).",
+        "source": "Replaces the hint text below the prompt (defaults to the `dropzone.hint` message)."
+      },
+      "title": {
+        "text": "Reemplaza el texto del mensaje principal (por defecto, el mensaje `dropzone.prompt`).",
+        "source": "Replaces the prompt text (defaults to the `dropzone.prompt` message)."
+      }
     }
   },
   "MsEmojiPicker": {
@@ -1153,6 +1981,16 @@
         "text": "Contenido del disparador mostrado mientras no hay ningún emoji seleccionado.",
         "source": "Trigger content shown while no emoji is selected."
       }
+    },
+    "events": {
+      "select": {
+        "text": "Se emite cuando se elige un emoji; el payload es el elemento completo del catálogo.",
+        "source": "Fires when an emoji is picked; payload is the full catalog item."
+      },
+      "update:modelValue": {
+        "text": "Se emite cuando se elige un emoji; el payload es el carácter del emoji.",
+        "source": "Fires when an emoji is picked; payload is the emoji character."
+      }
     }
   },
   "MsEmptyState": {
@@ -1165,6 +2003,10 @@
         "text": "Tono semántico de la insignia del icono. Predeterminado: \"neutral\".",
         "source": "Semantic tone for the icon badge. Default: \"neutral\"."
       },
+      "ring": {
+        "text": "Añade un anillo de halo suave (del color del icono) alrededor de la insignia del icono. Predeterminado: false.",
+        "source": "Adds a soft halo ring (in the icon's color) around the icon badge. Default: false."
+      },
       "size": {
         "text": "Escala de tamaño: \"sm\" | \"md\" | \"lg\". Predeterminado: \"md\".",
         "source": "Scale size: \"sm\" | \"md\" | \"lg\". Default: \"md\"."
@@ -1176,6 +2018,28 @@
       "variant": {
         "text": "Estilo visual del contenedor: - \"dashed\": contorno sutil con borde discontinuo (predeterminado) - \"plain\": sin borde, fondo transparente - \"card\": borde sólido con sombra de elevación",
         "source": "Container visual style: - \"dashed\": subtle dashed border outline (default) - \"plain\": no border, transparent background - \"card\": solid border with elevation shadow"
+      }
+    },
+    "slots": {
+      "actions": {
+        "text": "Acciones bajo la descripción; tiene prioridad sobre el slot predeterminado.",
+        "source": "Actions below the description; takes precedence over the default slot."
+      },
+      "default": {
+        "text": "Contenido del área de acciones (p. ej. botones); se ignora cuando se usa el slot `actions`.",
+        "source": "Actions area content (e.g. buttons); ignored when the `actions` slot is used."
+      },
+      "description": {
+        "text": "Descripción enriquecida; reemplaza la prop `description`.",
+        "source": "Rich description; replaces the `description` prop."
+      },
+      "icon": {
+        "text": "Reemplaza la ilustración de caja predeterminada.",
+        "source": "Replaces the default box illustration."
+      },
+      "title": {
+        "text": "Título enriquecido; reemplaza la prop `title`.",
+        "source": "Rich title; replaces the `title` prop."
       }
     }
   },
@@ -1196,6 +2060,22 @@
       "position": {
         "text": "Esquina del viewport a la que se ancla el botón.",
         "source": "Viewport corner the button is anchored to."
+      }
+    },
+    "events": {
+      "action-click": {
+        "text": "Se emite cuando se hace clic en una acción del speed dial (a continuación se cierra); el payload es la acción.",
+        "source": "Fires when a speed-dial action is clicked (the dial then closes); payload is the action."
+      },
+      "click": {
+        "text": "Se emite cuando se hace clic en el botón principal (también cuando alterna el speed dial).",
+        "source": "Fires when the main button is clicked (also when it toggles the speed dial)."
+      }
+    },
+    "slots": {
+      "icon": {
+        "text": "Reemplaza el glifo del botón principal.",
+        "source": "Replaces the glyph of the main button."
       }
     }
   },
@@ -1229,13 +2109,19 @@
         "text": "Escala de tamaño del texto: \"sm\", \"md\" (predeterminado), \"lg\".",
         "source": "Text sizing scale: \"sm\", \"md\" (default), \"lg\"."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "El control del formulario; los inputs Ms que contiene toman el id, la etiqueta, la descripción/error y el estado inválido del campo.",
+        "source": "The form control; Ms inputs inside pick up the field's id, label, description/error and invalid state."
+      }
     }
   },
   "MsFileInput": {
     "props": {
       "accept": {
-        "text": "Formatos de archivo aceptados (p. ej. '.pdf,image/*').",
-        "source": "Accepted file formats (e.g. '.pdf,image/*')."
+        "text": "Formatos de archivo aceptados (p. ej. '.pdf,image/*'). También se aplica a los archivos soltados, que se rechazan con el motivo `\"accept\"`.",
+        "source": "Accepted file formats (e.g. '.pdf,image/*'). Also enforced for dropped files, which are rejected with reason `\"accept\"`."
       },
       "disabled": {
         "text": "Si el campo está deshabilitado.",
@@ -1254,8 +2140,8 @@
         "source": "Maximum single file size allowed in bytes."
       },
       "modelValue": {
-        "text": "Archivo o array de archivos vinculado (v-model).",
-        "source": "Bound file or array of files (v-model)."
+        "text": "Archivo o array de archivos vinculado (v-model). Establecerlo en `null` o `[]` vacía la lista.",
+        "source": "Bound file or array of files (v-model). Setting it to `null` or `[]` clears the list."
       },
       "multiple": {
         "text": "Permite seleccionar varios archivos.",
@@ -1264,6 +2150,30 @@
       "showFileList": {
         "text": "Si se muestra la vista previa de la lista de archivos seleccionados.",
         "source": "Whether to display the selected files list preview."
+      }
+    },
+    "events": {
+      "change": {
+        "text": "Se emite con la lista de archivos actual después de añadir o eliminar archivos.",
+        "source": "Fires with the current file list after files are added or removed."
+      },
+      "reject": {
+        "text": "Se rechazó un archivo: no coincide con `accept` o supera `maxSize`.",
+        "source": "A file was refused: it does not match `accept` or exceeds `maxSize`."
+      },
+      "update:modelValue": {
+        "text": "Nueva selección: un `File` (simple), `File[]` (`multiple`) o `null` tras eliminarlo.",
+        "source": "New selection: a `File` (single), `File[]` (`multiple`) or `null` after removal."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Reemplaza el texto del mensaje de la zona de soltar (`label`).",
+        "source": "Replaces the dropzone prompt text (`label`)."
+      },
+      "icon": {
+        "text": "Reemplaza el icono de carpeta predeterminado.",
+        "source": "Replaces the default folder icon."
       }
     }
   },
@@ -1305,6 +2215,32 @@
         "text": "Estilo de la superficie.",
         "source": "Surface style."
       }
+    },
+    "slots": {
+      "bottom": {
+        "text": "Reemplaza toda la fila inferior (copyright y redes sociales).",
+        "source": "Replaces the whole bottom row (copyright and social)."
+      },
+      "brand": {
+        "text": "Área de marca (logotipo, eslogan) en la parte superior.",
+        "source": "Brand area (logo, tagline) at the top."
+      },
+      "columns": {
+        "text": "Reemplaza las columnas de enlaces renderizadas desde la prop `columns`.",
+        "source": "Replaces the link columns rendered from the `columns` prop."
+      },
+      "copyright": {
+        "text": "Texto de copyright enriquecido; reemplaza la prop `copyright`.",
+        "source": "Rich copyright text; replaces the `copyright` prop."
+      },
+      "default": {
+        "text": "Contenido libre entre la cuadrícula de columnas y la fila inferior.",
+        "source": "Free-form content between the columns grid and the bottom row."
+      },
+      "social": {
+        "text": "Enlaces sociales al final de la fila inferior.",
+        "source": "Social links at the end of the bottom row."
+      }
     }
   },
   "MsFormWizard": {
@@ -1336,6 +2272,30 @@
       "steps": {
         "text": "Lista ordenada de pasos del asistente.",
         "source": "Ordered list of wizard steps."
+      }
+    },
+    "events": {
+      "finish": {
+        "text": "Se emite cuando se activa \"next\" en el último paso y `beforeChange` lo permite.",
+        "source": "Fires when \"next\" is activated on the last step and `beforeChange` allows it."
+      },
+      "step-change": {
+        "text": "Se emite después de cambiar el paso activo, con los índices del paso anterior y del nuevo.",
+        "source": "Fires after the active step changes, with the previous and new step indexes."
+      },
+      "update:modelValue": {
+        "text": "Se emite después de cambiar el paso activo; el payload es el índice del nuevo paso.",
+        "source": "Fires after the active step changes; payload is the new step index."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido del paso activo, usado cuando no se proporciona un slot con el nombre del `id` del paso activo; recibe el paso activo y su índice.",
+        "source": "Active step content, used when no slot named after the active step's `id` is provided; receives the active step and its index."
+      },
+      "footer": {
+        "text": "Reemplaza los botones anterior/siguiente; recibe las funciones de navegación `prev`/`next` (que respetan `beforeChange`), `isFirst`, `isLast` y `currentIndex`.",
+        "source": "Replaces the previous/next buttons; receives `prev`/`next` navigation functions (which respect `beforeChange`), `isFirst`, `isLast` and `currentIndex`."
       }
     }
   },
@@ -1401,6 +2361,42 @@
         "text": "Título de la vista previa",
         "source": "Preview title"
       }
+    },
+    "events": {
+      "close": {
+        "text": "Se emite cuando se cierra la tarjeta de vista previa (tras `hideDelay` al salir o perder el foco, o de inmediato con Escape).",
+        "source": "Fires when the preview card closes (after `hideDelay` on leave/blur, or immediately on Escape)."
+      },
+      "open": {
+        "text": "Se emite cuando se abre la tarjeta de vista previa (tras `showDelay` al pasar el cursor o enfocar, o al primer toque en dispositivos táctiles).",
+        "source": "Fires when the preview card opens (after `showDelay` on hover/focus, or on first tap on touch devices)."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Reemplaza el enlace disparador (por defecto, un ancla a `href` con la etiqueta `label`).",
+        "source": "Replaces the trigger link (defaults to an anchor to `href` labelled `label`)."
+      },
+      "description": {
+        "text": "Descripción enriquecida; reemplaza la prop `description`.",
+        "source": "Rich description; replaces the `description` prop."
+      },
+      "image": {
+        "text": "Reemplaza la imagen en miniatura (prop `image`).",
+        "source": "Replaces the thumbnail image (`image` prop)."
+      },
+      "meta": {
+        "text": "Reemplaza la cabecera del sitio (favicon, dominio e insignia).",
+        "source": "Replaces the site header (favicon, domain and badge)."
+      },
+      "preview": {
+        "text": "Reemplaza todo el contenido de la tarjeta; recibe los estados `loading` y `open`.",
+        "source": "Replaces the whole card content; receives the `loading` and `open` states."
+      },
+      "title": {
+        "text": "Título enriquecido; reemplaza la prop `title`.",
+        "source": "Rich title; replaces the `title` prop."
+      }
     }
   },
   "MsGrid": {
@@ -1421,6 +2417,12 @@
         "text": "Permite el salto de línea (predeterminado: true)",
         "source": "Allows wrapping (default: true)"
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsCol`.",
+        "source": "`MsCol` children."
+      }
     }
   },
   "MsHoverCard": {
@@ -1440,6 +2442,16 @@
       "width": {
         "text": "Ancho personalizado de la tarjeta (p. ej. \"320px\")",
         "source": "Custom card width (e.g. \"320px\")"
+      }
+    },
+    "slots": {
+      "content": {
+        "text": "Contenido de la tarjeta, renderizado solo mientras está abierta (puede ser interactivo).",
+        "source": "Card content, rendered only while open (may be interactive)."
+      },
+      "default": {
+        "text": "Disparador; al pasar el cursor o enfocarlo, la tarjeta se abre tras `openDelay`.",
+        "source": "Trigger; hovering or focusing it opens the card after `openDelay`."
       }
     }
   },
@@ -1489,21 +2501,63 @@
         "text": "Estilo visual.",
         "source": "Visual style."
       }
+    },
+    "events": {
+      "click": {
+        "text": "Se emite al hacer clic, salvo que el botón esté deshabilitado o cargando; el payload es el evento nativo.",
+        "source": "Fires on click unless the button is disabled or loading; payload is the native event."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "El icono; se reemplaza por un spinner mientras `loading`. El nombre accesible proviene de `label`.",
+        "source": "The icon; replaced by a spinner while `loading`. The accessible name comes from `label`."
+      }
     }
   },
   "MsIconPicker": {
     "props": {
+      "disabled": {
+        "text": "Deshabilita el disparador para que el selector no pueda abrirse.",
+        "source": "Disables the trigger so the picker cannot be opened."
+      },
+      "icons": {
+        "text": "Catálogo de iconos entre los que elegir. Por defecto, el conjunto integrado de ~30 iconos de interfaz.",
+        "source": "Icon catalog to pick from. Defaults to the built-in set of ~30 interface icons."
+      },
+      "modelValue": {
+        "text": "Id del icono seleccionado (`v-model`). El disparador muestra el icono correspondiente y su nombre.",
+        "source": "Selected icon id (`v-model`). The trigger shows the matching icon and its name."
+      },
       "placeholder": {
         "text": "Texto del disparador cuando no hay nada seleccionado.",
         "source": "Trigger text when nothing is selected."
+      }
+    },
+    "events": {
+      "select": {
+        "text": "Se emite cuando se elige un icono; el payload es el elemento completo del catálogo.",
+        "source": "Fires when an icon is picked; payload is the full catalog item."
+      },
+      "update:modelValue": {
+        "text": "Se emite cuando se elige un icono; el payload es el id del icono.",
+        "source": "Fires when an icon is picked; payload is the icon id."
       }
     }
   },
   "MsInput": {
     "props": {
+      "autocomplete": {
+        "text": "Sugerencia nativa de `autocomplete` (p. ej. \"email\", \"current-password\", \"off\").",
+        "source": "Native `autocomplete` hint (e.g. \"email\", \"current-password\", \"off\")."
+      },
       "clearable": {
         "text": "Muestra un botón de borrar cuando hay texto.",
         "source": "Displays a clear button when text is present."
+      },
+      "disabled": {
+        "text": "Deshabilita el input.",
+        "source": "Disables the input."
       },
       "floatingLabel": {
         "text": "Etiqueta flotante opcional (el placeholder debe quedar vacío).",
@@ -1513,6 +2567,14 @@
         "text": "Marca el control como inválido (el error del campo lo conecta automáticamente).",
         "source": "Marks the control invalid (field error wires this automatically)."
       },
+      "modelValue": {
+        "text": "Valor de texto (`v-model`).",
+        "source": "Text value (`v-model`)."
+      },
+      "name": {
+        "text": "Nombre nativo del campo de formulario.",
+        "source": "Native form field name."
+      },
       "passwordToggle": {
         "text": "Muestra un botón de ojo para mostrar/ocultar la contraseña cuando type es password.",
         "source": "Shows an eye button to reveal/hide password when type is password."
@@ -1521,17 +2583,57 @@
         "text": "Estilo de campo en forma de píldora totalmente redondeada.",
         "source": "Fully rounded pill input style."
       },
+      "placeholder": {
+        "text": "Texto de placeholder nativo (déjalo vacío al usar `floatingLabel`).",
+        "source": "Native placeholder text (leave empty when using `floatingLabel`)."
+      },
       "processing": {
         "text": "Muestra un spinner en el sufijo y bloquea la entrada.",
         "source": "Shows a spinner in the suffix and blocks input."
+      },
+      "readonly": {
+        "text": "Hace que el input sea de solo lectura (también oculta el botón de borrar).",
+        "source": "Makes the input read-only (also hides the clear button)."
+      },
+      "size": {
+        "text": "Escala de altura del control.",
+        "source": "Control height scale."
       },
       "tone": {
         "text": "Tinte del borde/foco.",
         "source": "Border/focus tint."
       },
+      "type": {
+        "text": "Tipo de input nativo (\"text\", \"email\", \"password\", \"number\"…).",
+        "source": "Native input type (\"text\", \"email\", \"password\", \"number\"…)."
+      },
       "variant": {
         "text": "Variante visual: \"outline\" | \"filled\" | \"flushed\".",
         "source": "Visual variant: \"outline\" | \"filled\" | \"flushed\"."
+      }
+    },
+    "events": {
+      "clear": {
+        "text": "Se emite después de que el botón de borrar vacíe el valor (con `clearable`).",
+        "source": "Fires after the clear button empties the value (with `clearable`)."
+      },
+      "input": {
+        "text": "Se emite junto con `update:modelValue` con el mismo valor.",
+        "source": "Fires alongside `update:modelValue` with the same value."
+      },
+      "update:modelValue": {
+        "text": "Se emite en cada entrada y con `\"\"` al borrarse; el payload es el nuevo valor.",
+        "source": "Fires on every input and with `\"\"` when cleared; payload is the new value."
+      }
+    },
+    "slots": {
+      "prefix": {
+        "text": "Contenido antes del input (p. ej. un icono o una unidad).",
+        "source": "Content before the input (e.g. an icon or unit)."
+      },
+      "suffix": {
+        "text": "Contenido después del input y de sus botones integrados.",
+        "source": "Content after the input and its built-in buttons."
       }
     }
   },
@@ -1548,6 +2650,12 @@
       "variant": {
         "text": "Variante de estilo visual",
         "source": "Visual style variant"
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Etiqueta de la tecla, renderizada dentro de `<kbd>`.",
+        "source": "Key label, rendered inside `<kbd>`."
       }
     }
   },
@@ -1581,6 +2689,20 @@
         "text": "Texto del tooltip mostrado en un icono de ayuda junto a la etiqueta.",
         "source": "Tooltip text shown on a help icon next to the label."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Texto de la etiqueta.",
+        "source": "Label text."
+      },
+      "extra": {
+        "text": "Contenido adicional al final de la etiqueta.",
+        "source": "Extra content at the end of the label."
+      },
+      "tooltip": {
+        "text": "Reemplaza el icono de información del disparador del tooltip (mostrado con `tooltip` o con este slot).",
+        "source": "Replaces the info icon of the tooltip trigger (shown with `tooltip` or this slot)."
+      }
     }
   },
   "MsLightbox": {
@@ -1596,6 +2718,16 @@
       "modelValue": {
         "text": "Estado abierto (`v-model`).",
         "source": "Open state (`v-model`)."
+      }
+    },
+    "events": {
+      "update:index": {
+        "text": "Se emite al navegar a la imagen anterior/siguiente (botones o teclas de flecha); el payload es el nuevo índice.",
+        "source": "Fires when navigating to the previous/next image (buttons or arrow keys); payload is the new index."
+      },
+      "update:modelValue": {
+        "text": "Se emite con `false` cuando se cierra el lightbox (botón de cierre, clic en el fondo, Escape).",
+        "source": "Fires with `false` when the lightbox is dismissed (close button, backdrop click, Escape)."
       }
     }
   },
@@ -1633,10 +2765,38 @@
         "text": "Estilo de color.",
         "source": "Color style."
       }
+    },
+    "events": {
+      "click": {
+        "text": "Se emite al hacer clic, salvo que el enlace esté deshabilitado; el payload es el evento nativo.",
+        "source": "Fires on click unless the link is disabled; payload is the native event."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Texto del enlace.",
+        "source": "Link text."
+      },
+      "external-icon": {
+        "text": "Reemplaza el icono de enlace externo mostrado en los enlaces externos (decorativo).",
+        "source": "Replaces the external-link icon shown for external links (decorative)."
+      },
+      "prefix": {
+        "text": "Contenido antes del texto (p. ej. un icono).",
+        "source": "Content before the text (e.g. an icon)."
+      },
+      "suffix": {
+        "text": "Contenido después del texto.",
+        "source": "Content after the text."
+      }
     }
   },
   "MsList": {
     "props": {
+      "selectable": {
+        "text": "Convierte la lista en un `role=\"listbox\"` de selección única: los elementos pasan a ser opciones con `aria-selected` (a partir de `active`), navegación con teclas de flecha y activación con Enter/Space. Sin ella, la lista es un `role=\"list\"` simple y `active` se corresponde con `aria-current`.",
+        "source": "Turns the list into a single-select `role=\"listbox\"`: items become options with `aria-selected` (from `active`), arrow-key navigation and Enter/Space activation. Without it the list is a plain `role=\"list\"` and `active` maps to `aria-current`."
+      },
       "size": {
         "text": "Escala de tamaño para el padding y la tipografía.",
         "source": "Sizing scale for padding and typography."
@@ -1645,25 +2805,41 @@
         "text": "Variante visual del marco.",
         "source": "Visual framing variant."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsListItem` y `MsListGroup`.",
+        "source": "`MsListItem` and `MsListGroup` children."
+      }
     }
   },
   "MsListGroup": {
     "props": {
       "title": {
-        "text": "Etiqueta de la cabecera del grupo.",
-        "source": "Group header label."
+        "text": "Etiqueta de la cabecera del grupo; también es el nombre accesible de la lista anidada `role=\"group\"`.",
+        "source": "Group header label; also the accessible name of the nested `role=\"group\"` list."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsListItem` del grupo.",
+        "source": "`MsListItem` children of the group."
+      },
+      "header": {
+        "text": "Cabecera de grupo enriquecida; reemplaza `title` y etiqueta el grupo.",
+        "source": "Rich group header; replaces `title` and labels the group."
       }
     }
   },
   "MsListItem": {
     "props": {
       "active": {
-        "text": "Si este elemento representa el elemento activo o seleccionado.",
-        "source": "Whether this item represents the active or selected item."
+        "text": "Si este elemento es el activo/seleccionado: `aria-selected` en una lista `selectable`; `aria-current=\"true\"` en caso contrario.",
+        "source": "Whether this item is the active/selected one: `aria-selected` in a `selectable` list, `aria-current=\"true\"` otherwise."
       },
       "as": {
-        "text": "Etiqueta HTML que se renderiza para el elemento.",
-        "source": "HTML tag to render for the item."
+        "text": "Etiqueta HTML que se renderiza para el elemento (mantén `li` dentro de `MsList` para que la lista sea válida).",
+        "source": "HTML tag to render for the item (keep `li` inside `MsList` for a valid list)."
       },
       "description": {
         "text": "Línea de descripción de apoyo.",
@@ -1674,17 +2850,43 @@
         "source": "Whether this item is disabled."
       },
       "interactive": {
-        "text": "Si el elemento es interactivo (efectos de hover y foco).",
-        "source": "Whether the item is interactive (hover and focus effects)."
+        "text": "Si el elemento es interactivo: estilo al pasar el cursor, enfocable (tabindex 0) y activable con Enter/Space, que disparan un clic. Escúchalo con `@click`.",
+        "source": "Whether the item is interactive: hover styling, focusable (tabindex 0) and activated by Enter/Space, which dispatch a click. Listen with `@click`."
       },
       "title": {
         "text": "Título principal o etiqueta de texto.",
         "source": "Primary title or text label."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido adicional del cuerpo bajo el título/descripción.",
+        "source": "Extra body content below the title/description."
+      },
+      "description": {
+        "text": "Descripción enriquecida; reemplaza la prop `description`.",
+        "source": "Rich description; replaces the `description` prop."
+      },
+      "leading": {
+        "text": "Medio inicial (icono, avatar).",
+        "source": "Leading media (icon, avatar)."
+      },
+      "title": {
+        "text": "Título enriquecido; reemplaza la prop `title`.",
+        "source": "Rich title; replaces the `title` prop."
+      },
+      "trailing": {
+        "text": "Contenido final (metadatos, insignia, acción).",
+        "source": "Trailing content (meta, badge, action)."
+      }
     }
   },
   "MsMarquee": {
     "props": {
+      "controls": {
+        "text": "Muestra un botón de pausa/reproducción (mecanismo de pausa WCAG 2.2.2, etiquetas de los mensajes `marquee.pause`/`marquee.play`). Con `prefers-reduced-motion: reduce`, el marquee empieza en pausa. Desactívalo solo si proporcionas tu propio control de pausa.",
+        "source": "Shows a pause/play button (WCAG 2.2.2 pause mechanism, labels from messages `marquee.pause`/`marquee.play`). With `prefers-reduced-motion: reduce` the marquee starts paused. Only disable it when you provide your own pause control."
+      },
       "fade": {
         "text": "Desvanece el contenido en ambos bordes.",
         "source": "Fades the content out at both edges."
@@ -1694,8 +2896,8 @@
         "source": "Gap between repeated items (any CSS length)."
       },
       "pauseOnHover": {
-        "text": "Pausa la animación mientras el cursor está encima.",
-        "source": "Pauses the animation while hovered."
+        "text": "Pausa la animación mientras se pasa el cursor o mientras el foco está dentro.",
+        "source": "Pauses the animation while hovered or while focus is inside."
       },
       "reverse": {
         "text": "Se desplaza en la dirección opuesta.",
@@ -1704,6 +2906,12 @@
       "speed": {
         "text": "Duración de un ciclo completo de desplazamiento, en segundos (cuanto mayor, más lento).",
         "source": "Duration of one full scroll cycle, in seconds (higher is slower)."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos que se desplazan; se renderizan dos veces (la copia es aria-hidden) para un bucle continuo.",
+        "source": "Items to scroll; rendered twice (the copy is aria-hidden) for a seamless loop."
       }
     }
   },
@@ -1745,6 +2953,42 @@
         "text": "Valor solo con dígitos, sin los caracteres de la máscara (`v-model:unmasked`); solo de salida, el componente no lo lee.",
         "source": "Digits-only value without mask characters (`v-model:unmasked`); output only, not read by the component."
       }
+    },
+    "events": {
+      "complete": {
+        "text": "Se emite cuando el valor enmascarado completa todo el patrón; el payload es el valor enmascarado.",
+        "source": "Fires when the masked value fills the whole pattern; payload is the masked value."
+      },
+      "update:modelValue": {
+        "text": "Se emite al escribir y al borrar; el payload es el valor enmascarado.",
+        "source": "Fires on input and on clear; payload is the masked value."
+      },
+      "update:unmasked": {
+        "text": "Se emite al escribir y al borrar; el payload es el valor solo con dígitos (el valor sin procesar cuando no hay máscara).",
+        "source": "Fires on input and on clear; payload is the digits-only value (the raw value when no mask is set)."
+      }
+    }
+  },
+  "MsMasonryGrid": {
+    "props": {
+      "cols": {
+        "text": "Número de columnas; los elementos se distribuyen de forma rotatoria.",
+        "source": "Number of columns; items are distributed round-robin."
+      },
+      "gap": {
+        "text": "Espacio entre elementos: un token de espaciado (\"xs\"–\"xl\") o píxeles.",
+        "source": "Gap between items: a spacing token (\"xs\"–\"xl\") or pixels."
+      },
+      "items": {
+        "text": "Elementos que se distribuyen; cada uno se pasa al slot predeterminado como `item` con su `index`.",
+        "source": "Items to lay out; each is passed to the default slot as `item` with its `index`."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Renderiza un elemento; `index` es la posición del elemento en `items` (no dentro de su columna).",
+        "source": "Renders one item; `index` is the item's position in `items` (not within its column)."
+      }
     }
   },
   "MsMenu": {
@@ -1756,14 +3000,68 @@
       "initialFocus": {
         "text": "Qué elemento habilitado recibe el foco al abrirse el menú.",
         "source": "Which enabled item receives focus when the menu opens."
+      },
+      "items": {
+        "text": "Entradas del menú, renderizadas en orden como filas `role=\"menuitem\"`.",
+        "source": "Menu entries, rendered in order as `role=\"menuitem\"` rows."
+      },
+      "open": {
+        "text": "Si el menú está abierto. Al abrirse, enfoca el elemento `initialFocus`; el menú emite `update:open` false con Escape, Tab y clics fuera.",
+        "source": "Whether the menu is open. Opening focuses the `initialFocus` item; the menu emits `update:open` false on Escape, Tab and outside clicks."
+      }
+    },
+    "events": {
+      "dismiss": {
+        "text": "Por qué se cierra el menú: \"escape\", \"outside\", \"tab\" o \"select\".",
+        "source": "Why the menu is closing: \"escape\", \"outside\", \"tab\" or \"select\"."
+      },
+      "select": {
+        "text": "Se activó un elemento habilitado (clic, Enter o Space).",
+        "source": "An enabled item was activated (click, Enter or Space)."
+      },
+      "update:open": {
+        "text": "Se emite con `false` cuando el menú solicita cerrarse (Escape, Tab, clic fuera).",
+        "source": "Emitted with `false` when the menu asks to close (Escape, Tab, outside click)."
       }
     }
   },
   "MsNativeSelect": {
     "props": {
+      "disabled": {
+        "text": "Deshabilita el select.",
+        "source": "Disables the select."
+      },
+      "invalid": {
+        "text": "Marca el select como inválido (un error de un MsField padre también lo hace).",
+        "source": "Marks the select invalid (a parent MsField error also does)."
+      },
+      "modelValue": {
+        "text": "Valor seleccionado (`v-model`).",
+        "source": "Selected value (`v-model`)."
+      },
+      "name": {
+        "text": "Nombre nativo del campo de formulario.",
+        "source": "Native form field name."
+      },
+      "options": {
+        "text": "Opciones que se renderizan; cuando está vacío, se usa el slot predeterminado (elementos `<option>` sin procesar).",
+        "source": "Options to render; when empty, the default slot (raw `<option>` elements) is used."
+      },
       "pill": {
         "text": "Redondeo completo en forma de píldora.",
         "source": "Full pill rounding."
+      },
+      "placeholder": {
+        "text": "Primera opción deshabilitada que se muestra mientras no hay ningún valor seleccionado.",
+        "source": "Disabled first option shown while no value is selected."
+      },
+      "required": {
+        "text": "Restricción nativa `required`.",
+        "source": "Native `required` constraint."
+      },
+      "size": {
+        "text": "Escala de altura del control.",
+        "source": "Control height scale."
       },
       "tone": {
         "text": "Tono semántico del borde.",
@@ -1772,6 +3070,22 @@
       "variant": {
         "text": "Variante visual: \"outline\", \"filled\", \"flushed\".",
         "source": "Visual variant: \"outline\", \"filled\", \"flushed\"."
+      }
+    },
+    "events": {
+      "change": {
+        "text": "Se emite junto con `update:modelValue` con el mismo valor.",
+        "source": "Fires alongside `update:modelValue` with the same value."
+      },
+      "update:modelValue": {
+        "text": "Se emite cuando cambia la selección; el payload es el valor del `<select>` nativo.",
+        "source": "Fires when the selection changes; payload is the native `<select>` value."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos nativos `<option>`/`<optgroup>`; solo se usan cuando `options` está vacío.",
+        "source": "Native `<option>`/`<optgroup>` elements; used only when `options` is empty."
       }
     }
   },
@@ -1813,6 +3127,38 @@
         "text": "Estilo de la superficie.",
         "source": "Surface style."
       }
+    },
+    "events": {
+      "toggle-menu": {
+        "text": "Se emite cuando se hace clic en el botón que alterna el menú móvil.",
+        "source": "Fires when the mobile menu toggle button is clicked."
+      },
+      "update:mobileMenuOpen": {
+        "text": "Se emite cuando se hace clic en el botón que alterna el menú móvil; el payload es el nuevo estado abierto.",
+        "source": "Fires when the mobile menu toggle button is clicked; payload is the new open state."
+      }
+    },
+    "slots": {
+      "actions": {
+        "text": "Acciones al final (botones, menú de usuario).",
+        "source": "Actions at the end (buttons, user menu)."
+      },
+      "brand": {
+        "text": "Área de marca (logotipo, nombre) al inicio.",
+        "source": "Brand area (logo, name) at the start."
+      },
+      "default": {
+        "text": "Contenido principal de navegación, entre la marca y las acciones.",
+        "source": "Main navigation content, between the brand and the actions."
+      },
+      "mobile-menu": {
+        "text": "Panel del menú móvil, mostrado bajo la barra mientras el menú móvil está abierto; su presencia habilita el botón de alternancia.",
+        "source": "Mobile menu panel, shown below the bar while the mobile menu is open; its presence enables the toggle button."
+      },
+      "mobile-toggle": {
+        "text": "Reemplaza el icono de hamburguesa dentro del botón que alterna el menú móvil.",
+        "source": "Replaces the hamburger icon inside the mobile menu toggle button."
+      }
     }
   },
   "MsNavigationRail": {
@@ -1820,6 +3166,12 @@
       "width": {
         "text": "Ancho del rail (cualquier longitud CSS).",
         "source": "Rail width (any CSS length)."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos del riel, renderizados dentro de un `<nav>` etiquetado.",
+        "source": "Rail items, rendered inside a labelled `<nav>`."
       }
     }
   },
@@ -1833,6 +3185,12 @@
         "text": "Elimina la restricción de ancho máximo para que la página ocupe todo el ancho.",
         "source": "Removes the max-width constraint so the page spans the full width."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido de la página (normalmente `MsPageHeader`, secciones y `MsPageActions`).",
+        "source": "Page content (typically `MsPageHeader`, sections and `MsPageActions`)."
+      }
     }
   },
   "MsPageActions": {
@@ -1840,6 +3198,12 @@
       "align": {
         "text": "Alineación horizontal de las acciones.",
         "source": "Horizontal alignment of the actions."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Botones de acción, alineados según `align`.",
+        "source": "Action buttons, aligned by `align`."
       }
     }
   },
@@ -1852,6 +3216,24 @@
       "title": {
         "text": "Título de la página renderizado como `h1` (se puede sobrescribir mediante el slot `title`).",
         "source": "Page title rendered as an `h1` (overridable via the `title` slot)."
+      }
+    },
+    "slots": {
+      "actions": {
+        "text": "Acciones al final de la fila del título.",
+        "source": "Actions at the end of the title row."
+      },
+      "breadcrumbs": {
+        "text": "Ruta de navegación sobre la fila del título.",
+        "source": "Breadcrumbs above the title row."
+      },
+      "description": {
+        "text": "Reemplaza el párrafo renderizado desde la prop `description`.",
+        "source": "Replaces the paragraph rendered from the `description` prop."
+      },
+      "title": {
+        "text": "Reemplaza el `<h1>` renderizado desde la prop `title`.",
+        "source": "Replaces the `<h1>` rendered from the `title` prop."
       }
     }
   },
@@ -1893,6 +3275,22 @@
         "text": "Número total de elementos.",
         "source": "Total number of items."
       }
+    },
+    "events": {
+      "change": {
+        "text": "Se emite junto con `update:currentPage`; el payload es la nueva página (base 1).",
+        "source": "Fires alongside `update:currentPage`; payload is the new 1-based page."
+      },
+      "update:currentPage": {
+        "text": "Se emite cuando se selecciona otra página válida; el payload es la nueva página (base 1).",
+        "source": "Fires when a different valid page is selected; payload is the new 1-based page."
+      }
+    },
+    "slots": {
+      "total": {
+        "text": "Reemplaza la etiqueta del total (mostrada con `showTotal`); recibe el número de elementos y el número de páginas.",
+        "source": "Replaces the total label (shown with `showTotal`); receives the item count and the page count."
+      }
     }
   },
   "MsParallax": {
@@ -1902,8 +3300,68 @@
         "source": "Container height (number in pixels or any CSS length)."
       },
       "speed": {
-        "text": "Factor de desplazamiento aplicado al offset de la capa `background` (valores mayores la mueven más).",
-        "source": "Scroll factor applied to the `background` layer offset (larger values move it more)."
+        "text": "Factor de desplazamiento aplicado al offset de la capa `background` (los valores mayores la mueven más). Se ignora (sin movimiento) cuando el usuario prefiere movimiento reducido.",
+        "source": "Scroll factor applied to the `background` layer offset (larger values move it more). Ignored (no motion) when the user prefers reduced motion."
+      }
+    },
+    "slots": {
+      "background": {
+        "text": "Capa de fondo que se mueve a velocidad `speed` respecto al desplazamiento de la página.",
+        "source": "Background layer that moves at `speed` relative to the page scroll."
+      },
+      "default": {
+        "text": "Contenido en primer plano, renderizado sobre la capa en movimiento.",
+        "source": "Foreground content, rendered above the moving layer."
+      }
+    }
+  },
+  "MsPasswordInput": {
+    "props": {
+      "criteria": {
+        "text": "Reglas personalizadas; por defecto, los `defaultCriteria` integrados con etiquetas localizadas.",
+        "source": "Custom rules; defaults to the built-in `defaultCriteria` with localized labels."
+      },
+      "disabled": {
+        "text": "Deshabilita el input y el botón de visibilidad.",
+        "source": "Disables the input and the visibility toggle."
+      },
+      "invalid": {
+        "text": "Marca el input como inválido (un error de un MsField padre también lo hace).",
+        "source": "Marks the input invalid (a parent MsField error also does)."
+      },
+      "modelValue": {
+        "text": "Valor de la contraseña (`v-model`).",
+        "source": "Password value (`v-model`)."
+      },
+      "placeholder": {
+        "text": "Texto de placeholder.",
+        "source": "Placeholder text."
+      },
+      "showCriteria": {
+        "text": "Enumera los criterios con su estado cumplido/no cumplido.",
+        "source": "Lists the criteria with a met/unmet state."
+      },
+      "showStrengthMeter": {
+        "text": "Muestra un medidor de fortaleza de 4 pasos según cuántos criterios se cumplen.",
+        "source": "Shows a 4-step strength meter based on how many criteria are met."
+      },
+      "showToggle": {
+        "text": "Muestra el botón para mostrar/ocultar la contraseña.",
+        "source": "Shows the show/hide password button."
+      },
+      "size": {
+        "text": "Escala de tamaño.",
+        "source": "Size scale."
+      }
+    },
+    "events": {
+      "strength-change": {
+        "text": "Cambió la puntuación de fortaleza: 0 si está vacía, 1 para ≤1 criterio cumplido, 2 para 2, 3 para 3–4 y 4 para 5 o más.",
+        "source": "The strength score changed: 0 when empty, 1 for ≤1 met criterion, 2 for 2, 3 for 3–4 and 4 for 5 or more."
+      },
+      "update:modelValue": {
+        "text": "Se emite en cada entrada; el payload es la nueva contraseña.",
+        "source": "Fires on every input; payload is the new password."
       }
     }
   },
@@ -1941,13 +3399,27 @@
         "text": "Caracteres aceptados: solo dígitos, o letras ASCII y dígitos.",
         "source": "Accepted characters: digits only, or ASCII letters and digits."
       }
+    },
+    "events": {
+      "change": {
+        "text": "Se emite junto con `update:modelValue`; el payload es el código combinado.",
+        "source": "Fires alongside `update:modelValue`; payload is the combined code."
+      },
+      "complete": {
+        "text": "Se emite cuando se rellenan todas las casillas; el payload es el código completo.",
+        "source": "Fires when every box is filled; payload is the full code."
+      },
+      "update:modelValue": {
+        "text": "Se emite en cada entrada, borrado o pegado; el payload es el código combinado.",
+        "source": "Fires on every input, deletion or paste; payload is the combined code."
+      }
     }
   },
   "MsPointer": {
     "props": {
       "disabled": {
-        "text": "Oculta el seguidor y deja de seguir el ratón.",
-        "source": "Hides the follower and stops tracking the mouse."
+        "text": "Oculta el seguidor y elimina el listener global del ratón. El seguidor también se desactiva cuando el usuario prefiere movimiento reducido.",
+        "source": "Hides the follower and removes the global mouse listener. The follower is also off when the user prefers reduced motion."
       },
       "variant": {
         "text": "Estilo visual del seguidor del cursor.",
@@ -1988,6 +3460,38 @@
       "width": {
         "text": "Ancho predefinido del panel del popover.",
         "source": "Preset width for the popover panel."
+      }
+    },
+    "events": {
+      "close": {
+        "text": "Se emite después de `update:open` cuando el popover se cierra.",
+        "source": "Fires after `update:open` when the popover closes."
+      },
+      "open": {
+        "text": "Se emite después de `update:open` cuando el popover se abre.",
+        "source": "Fires after `update:open` when the popover opens."
+      },
+      "update:open": {
+        "text": "Se emite cada vez que cambia el estado abierto (clic/hover en el disparador, `toggle`, Escape, clic fuera); el payload es el nuevo estado.",
+        "source": "Fires whenever the open state changes (trigger click/hover, `toggle`, Escape, outside click); payload is the new state."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Cuerpo del popover.",
+        "source": "Popover body."
+      },
+      "footer": {
+        "text": "Pie bajo el cuerpo.",
+        "source": "Footer below the body."
+      },
+      "title": {
+        "text": "Título enriquecido; reemplaza la prop `title` y etiqueta el popover.",
+        "source": "Rich title; replaces the `title` prop and labels the popover."
+      },
+      "trigger": {
+        "text": "Elemento disparador; recibe el estado abierto y una función `toggle`.",
+        "source": "Trigger element; receives the open state and a `toggle` function."
       }
     }
   },
@@ -2045,6 +3549,16 @@
         "text": "Tono semántico: \"primary\", \"accent\", \"neutral\", \"success\", \"warning\", \"danger\". Predeterminado: \"primary\".",
         "source": "Semantic tone: \"primary\", \"accent\", \"neutral\", \"success\", \"warning\", \"danger\". Default: \"primary\"."
       }
+    },
+    "slots": {
+      "label": {
+        "text": "Etiqueta enriquecida sobre la barra; reemplaza la prop `label`.",
+        "source": "Rich label above the bar; replaces the `label` prop."
+      },
+      "value": {
+        "text": "Reemplaza el texto del valor (mostrado con `showValue` o con este slot); recibe el porcentaje calculado y el `modelValue` sin procesar.",
+        "source": "Replaces the value text (shown with `showValue` or this slot); receives the computed percentage and the raw `modelValue`."
+      }
     }
   },
   "MsProgressRadial": {
@@ -2077,6 +3591,12 @@
         "text": "Valor actual del progreso entre 0 y max.",
         "source": "Current progress value between 0 and max."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Reemplaza la etiqueta centrada (por defecto, el porcentaje, mostrado con `showValue` cuando no es indeterminado).",
+        "source": "Replaces the centered label (defaults to the percentage, shown with `showValue` when not indeterminate)."
+      }
     }
   },
   "MsProvider": {
@@ -2086,8 +3606,8 @@
         "source": "HTML element tag when rendering container. Default: \"div\"."
       },
       "colorMode": {
-        "text": "Preferencia de modo de color: \"light\", \"dark\" o \"system\". En el DOM, \"system\" se resuelve como \"light\" o \"dark\". Predeterminado: \"system\".",
-        "source": "Color mode preference: \"light\", \"dark\", or \"system\". In DOM, \"system\" is resolved to \"light\" or \"dark\". Default: \"system\"."
+        "text": "Preferencia de modo de color: \"light\", \"dark\", \"system\" o \"inherit\". \"system\" renderiza `data-ms-color-mode=\"system\"`, que el CSS resuelve mediante `prefers-color-scheme`. \"inherit\" (pensado para `target=\"wrapper\"`) no establece `data-ms-color-mode`, de modo que el contenedor sigue el modo del ancestro más cercano (p. ej. un provider anidado que solo cambia el idioma o la densidad). Mientras `theme` sea igual al tema heredado, también se omite `data-ms-theme`, porque un ámbito de tema vuelve a declarar su paleta clara; por tanto, un `theme` distinto con \"inherit\" renderiza colores claros. Predeterminado: \"system\".",
+        "source": "Color mode preference: \"light\", \"dark\", \"system\" or \"inherit\". \"system\" renders `data-ms-color-mode=\"system\"`, which CSS resolves through `prefers-color-scheme`. \"inherit\" (meant for `target=\"wrapper\"`) sets no `data-ms-color-mode`, so the wrapper follows the nearest ancestor's mode (e.g. a nested provider that only changes the locale or density). While `theme` equals the inherited theme, `data-ms-theme` is omitted too, because a theme scope re-declares its light palette; a different `theme` with \"inherit\" therefore renders light colors. Default: \"system\"."
       },
       "contrast": {
         "text": "Nivel de contraste: \"normal\", \"high\". Predeterminado: \"normal\".",
@@ -2125,13 +3645,97 @@
         "text": "Paleta del tema visual. Predeterminado: \"magic\".",
         "source": "Visual theme palette. Default: \"magic\"."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido que recibe el tema, el modo de color, la densidad, el contraste, el radio, la dirección y los mensajes proporcionados.",
+        "source": "Content that receives the provided theme, color mode, density, contrast, radius, direction and messages."
+      }
+    }
+  },
+  "MsRadio": {
+    "props": {
+      "card": {
+        "text": "Diseño de tarjeta (con borde, toda la tarjeta es clicable); recurre a `card` del grupo.",
+        "source": "Card layout (bordered, whole card clickable); falls back to the group's `card`."
+      },
+      "description": {
+        "text": "Texto secundario bajo la etiqueta.",
+        "source": "Secondary text below the label."
+      },
+      "disabled": {
+        "text": "Deshabilita este radio (también se aplica `disabled` del grupo).",
+        "source": "Disables this radio (the group's `disabled` also applies)."
+      },
+      "label": {
+        "text": "Texto de la etiqueta (el slot predeterminado puede reemplazarlo).",
+        "source": "Label text (the default slot can replace it)."
+      },
+      "size": {
+        "text": "Escala de tamaño; recurre a `size` del grupo y, después, a \"md\".",
+        "source": "Size scale; falls back to the group's `size`, then \"md\"."
+      },
+      "tone": {
+        "text": "Color de marcado; recurre a `tone` del grupo y, después, a \"primary\".",
+        "source": "Checked color; falls back to the group's `tone`, then \"primary\"."
+      },
+      "value": {
+        "text": "Valor emitido al `MsRadioGroup` padre cuando se elige este radio.",
+        "source": "Value emitted to the parent `MsRadioGroup` when this radio is chosen."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Etiqueta enriquecida; reemplaza `label`.",
+        "source": "Rich label; replaces `label`."
+      },
+      "description": {
+        "text": "Descripción enriquecida; reemplaza `description`.",
+        "source": "Rich description; replaces `description`."
+      }
     }
   },
   "MsRadioGroup": {
     "props": {
+      "card": {
+        "text": "Renderiza los radios como tarjetas seleccionables (prevalece el `card` propio de cada radio).",
+        "source": "Renders the radios as selectable cards (a radio's own `card` wins)."
+      },
+      "disabled": {
+        "text": "Deshabilita todos los radios del grupo.",
+        "source": "Disables every radio in the group."
+      },
       "modelValue": {
         "text": "Valor seleccionado (v-model).",
         "source": "Selected value (v-model)."
+      },
+      "name": {
+        "text": "`name` nativo compartido por los radios (si se omite, se genera uno único).",
+        "source": "Native `name` shared by the radios (a unique one is generated when omitted)."
+      },
+      "orientation": {
+        "text": "Dirección de disposición de los radios.",
+        "source": "Layout direction of the radios."
+      },
+      "size": {
+        "text": "Tamaño predeterminado de los radios (prevalece el `size` propio de cada radio).",
+        "source": "Default size for the radios (a radio's own `size` wins)."
+      },
+      "tone": {
+        "text": "Color de marcado predeterminado de los radios (prevalece el `tone` propio de cada radio).",
+        "source": "Default checked color for the radios (a radio's own `tone` wins)."
+      }
+    },
+    "events": {
+      "update:modelValue": {
+        "text": "Se eligió un radio; el payload es su `value`.",
+        "source": "A radio was chosen; payload is its `value`."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsRadio`.",
+        "source": "`MsRadio` children."
       }
     }
   },
@@ -2169,6 +3773,22 @@
         "text": "Color del tono semántico.",
         "source": "Semantic tone color."
       }
+    },
+    "events": {
+      "change": {
+        "text": "Se emite cuando el usuario confirma un valor (`change` nativo, p. ej. al soltar); el payload es el valor.",
+        "source": "Fires when the user commits a value (native `change`, e.g. on release); payload is the value."
+      },
+      "update:modelValue": {
+        "text": "Se emite de forma continua mientras se mueve el slider (`input` nativo); el payload es el nuevo valor.",
+        "source": "Fires continuously while the slider moves (native `input`); payload is the new value."
+      }
+    },
+    "slots": {
+      "value": {
+        "text": "Reemplaza la lectura del valor (mostrada con `showValue` o con este slot); recibe el valor actual.",
+        "source": "Replaces the value readout (shown with `showValue` or this slot); receives the current value."
+      }
     }
   },
   "MsRating": {
@@ -2197,6 +3817,16 @@
         "text": "Tono semántico.",
         "source": "Semantic tone."
       }
+    },
+    "events": {
+      "change": {
+        "text": "Se emite junto con `update:modelValue` con la misma valoración.",
+        "source": "Fires alongside `update:modelValue` with the same rating."
+      },
+      "update:modelValue": {
+        "text": "Se emite cuando se hace clic en una estrella o se cambia el valor con las teclas de flecha (no cuando `readonly`/`disabled`); el payload es la nueva valoración.",
+        "source": "Fires when a star is clicked or the value is changed with the arrow keys (not when `readonly`/`disabled`); payload is the new rating."
+      }
     }
   },
   "MsRow": {
@@ -2217,17 +3847,39 @@
         "text": "Permite el salto de línea (predeterminado: true)",
         "source": "Allows wrapping (default: true)"
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsCol`.",
+        "source": "`MsCol` children."
+      }
     }
   },
   "MsScrollSpy": {
     "props": {
+      "container": {
+        "text": "Elemento desplazable que contiene las secciones (elemento, ref o selector CSS, resuelto tras el montaje). Por defecto, la ventana.",
+        "source": "Scrollable element that contains the sections (element, ref or CSS selector, resolved after mount). Defaults to the window."
+      },
       "items": {
         "text": "Lista de IDs de secciones observadas y etiquetas de navegación.",
         "source": "List of observed section IDs and navigation labels."
       },
       "offset": {
-        "text": "Umbral de desplazamiento en píxeles desde la parte superior del viewport.",
-        "source": "Pixel threshold offset from top of viewport."
+        "text": "Umbral de desplazamiento en píxeles desde la parte superior del viewport (o de `container`).",
+        "source": "Pixel threshold offset from the top of the viewport (or of `container`)."
+      }
+    },
+    "events": {
+      "activeChange": {
+        "text": "Cambió la sección activa durante el desplazamiento; el payload es su id.",
+        "source": "The active section changed while scrolling; payload is its id."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido adicional renderizado dentro del nav, después de los enlaces de las secciones.",
+        "source": "Extra content rendered inside the nav, after the section links."
       }
     }
   },
@@ -2281,6 +3933,92 @@
         "text": "Visibilidad; \"auto\" muestra la barra de desplazamiento mientras se desplaza y la oculta 1 s después de que se detiene.",
         "source": "Visibility; \"auto\" reveals the scrollbar while scrolling and hides it 1s after it stops."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido desplazable.",
+        "source": "Scrollable content."
+      }
+    }
+  },
+  "MsSearchField": {
+    "props": {
+      "autofocus": {
+        "text": "`autofocus` nativo en el input.",
+        "source": "Native `autofocus` on the input."
+      },
+      "clearable": {
+        "text": "Muestra un botón de borrar mientras hay texto; Escape también borra.",
+        "source": "Shows a clear button while there is text; Escape also clears."
+      },
+      "disabled": {
+        "text": "Deshabilita el input (y el botón de borrar).",
+        "source": "Disables the input (and the clear button)."
+      },
+      "id": {
+        "text": "Id del input; por defecto, el id del control del MsField que lo rodea o uno generado.",
+        "source": "Input id; defaults to the surrounding MsField's control id or a generated one."
+      },
+      "loading": {
+        "text": "Muestra un spinner en el área de acciones (p. ej. mientras se cargan los resultados).",
+        "source": "Shows a spinner in the actions area (e.g. while results load)."
+      },
+      "modelValue": {
+        "text": "Texto de la consulta (`v-model`).",
+        "source": "Query text (`v-model`)."
+      },
+      "placeholder": {
+        "text": "Texto de placeholder.",
+        "source": "Placeholder text."
+      },
+      "readonly": {
+        "text": "Hace que el input sea de solo lectura (sin borrado).",
+        "source": "Makes the input read-only (no clearing)."
+      },
+      "shortcut": {
+        "text": "Sugerencia de teclado mostrada al final (p. ej. \"⌘K\") mientras el botón de borrar está oculto. Solo visual: la propia aplicación debe vincular el atajo.",
+        "source": "Keyboard hint shown at the end (e.g. \"⌘K\") while the clear button is hidden. Display only: the shortcut itself must be bound by the app."
+      },
+      "size": {
+        "text": "Escala de tamaño.",
+        "source": "Size scale."
+      },
+      "variant": {
+        "text": "Variante visual.",
+        "source": "Visual variant."
+      }
+    },
+    "events": {
+      "blur": {
+        "text": "El input perdió el foco.",
+        "source": "The input lost focus."
+      },
+      "clear": {
+        "text": "Se borró la consulta (botón de borrar o Escape).",
+        "source": "The query was cleared (clear button or Escape)."
+      },
+      "focus": {
+        "text": "El input recibió el foco.",
+        "source": "The input received focus."
+      },
+      "search": {
+        "text": "Se pulsó Enter; el payload es la consulta actual.",
+        "source": "Enter was pressed; payload is the current query."
+      },
+      "update:modelValue": {
+        "text": "Se emite en cada entrada y al borrarse; el payload es la consulta.",
+        "source": "Fires on every input and when cleared; payload is the query."
+      }
+    },
+    "slots": {
+      "actions": {
+        "text": "Controles adicionales al final del campo (después del spinner, el botón de borrar y el atajo).",
+        "source": "Extra controls at the end of the field (after spinner/clear/shortcut)."
+      },
+      "icon": {
+        "text": "Reemplaza el icono de lupa inicial.",
+        "source": "Replaces the leading magnifier icon."
+      }
     }
   },
   "MsSegmentedControl": {
@@ -2327,6 +4065,204 @@
         "text": "Se emite cuando se selecciona un segmento con clic o con las teclas de flecha; el payload es su valor.",
         "source": "Fires when a segment is selected by click or arrow keys; payload is its value."
       }
+    },
+    "slots": {
+      "option": {
+        "text": "Reemplaza el contenido de cada segmento (icono y etiqueta); recibe la opción y si está seleccionada.",
+        "source": "Replaces the content of each segment (icon and label); receives the option and whether it is selected."
+      }
+    }
+  },
+  "MsSelect": {
+    "props": {
+      "clearable": {
+        "text": "Muestra un botón de borrar mientras hay un valor seleccionado.",
+        "source": "Shows a clear button while a value is selected."
+      },
+      "conditionalCounter": {
+        "text": "Con `multiple`, muestra todas las etiquetas hasta que la selección supera este número; a partir de ahí, solo esa cantidad de etiquetas más una insignia \"+N más\" (sobrescribe `maxTagCount`).",
+        "source": "With `multiple`, shows every tag until the selection exceeds this number, then only that many tags plus a \"+N more\" badge (overrides `maxTagCount`)."
+      },
+      "counter": {
+        "text": "Con `multiple`, muestra un recuento de la selección en lugar de etiquetas.",
+        "source": "With `multiple`, shows a selection count instead of tags."
+      },
+      "creatable": {
+        "text": "Con `searchable`, ofrece una opción \"Crear …\" para las consultas sin coincidencia exacta; al elegirla se emite `create` y se selecciona el texto escrito.",
+        "source": "With `searchable`, offers a \"Create …\" option for queries without an exact match; choosing it emits `create` and selects the typed text."
+      },
+      "disabled": {
+        "text": "Deshabilita el control.",
+        "source": "Disables the control."
+      },
+      "filterFn": {
+        "text": "Predicado de búsqueda personalizado (recibe la consulta recortada y en minúsculas); por defecto, una coincidencia de subcadena en la etiqueta.",
+        "source": "Custom search predicate (receives the trimmed, lower-cased query); defaults to a label substring match."
+      },
+      "floatingLabel": {
+        "text": "Texto de la etiqueta flotante dentro del control (el placeholder solo se muestra mientras está abierto).",
+        "source": "Floating label text inside the control (the placeholder shows only while open)."
+      },
+      "invalid": {
+        "text": "Marca el control como inválido (un error de un MsField padre también lo hace).",
+        "source": "Marks the control invalid (a parent MsField error also does)."
+      },
+      "loading": {
+        "text": "Muestra un spinner en el control (p. ej. mientras se cargan las opciones).",
+        "source": "Shows a spinner in the control (e.g. while options load)."
+      },
+      "maxTagCount": {
+        "text": "Con `multiple`, el número de etiquetas que se muestran antes de una insignia \"+N más\"; `0` muestra solo un recuento.",
+        "source": "With `multiple`, the number of tags shown before a \"+N more\" badge; `0` shows only a count."
+      },
+      "minSearchLength": {
+        "text": "Longitud mínima de la consulta para que la búsqueda filtre las opciones.",
+        "source": "Minimum query length before the search filters the options."
+      },
+      "modelValue": {
+        "text": "Valor seleccionado (`v-model`): un valor, un array de valores con `multiple`, o `null`.",
+        "source": "Selected value (`v-model`): a value, an array of values with `multiple`, or `null`."
+      },
+      "multiple": {
+        "text": "Permite seleccionar varios valores (mostrados como etiquetas eliminables).",
+        "source": "Allows selecting several values (shown as removable tags)."
+      },
+      "name": {
+        "text": "Nombre del campo de formulario; un input oculto envía el valor (solo con selección única).",
+        "source": "Form field name; a hidden input submits the value (single selection only)."
+      },
+      "open": {
+        "text": "Estado abierto controlado (`v-model:open`); no controlado si se omite.",
+        "source": "Controlled open state (`v-model:open`); uncontrolled when omitted."
+      },
+      "options": {
+        "text": "Opciones y grupos de opciones entre los que elegir.",
+        "source": "Options and option groups to choose from."
+      },
+      "pill": {
+        "text": "Atajo para `shape=\"pill\"`.",
+        "source": "Shorthand for `shape=\"pill\"`."
+      },
+      "placeholder": {
+        "text": "Texto mostrado mientras no hay nada seleccionado.",
+        "source": "Text shown while nothing is selected."
+      },
+      "placement": {
+        "text": "Lado por el que se abre el desplegable: \"bottom\" o \"top\" (\"auto\" actualmente se abre hacia abajo).",
+        "source": "Side the dropdown opens on: \"bottom\" or \"top\" (\"auto\" currently opens below)."
+      },
+      "prefix": {
+        "text": "Texto/glifo inicial en el control (los slots `prefix`/`icon` lo reemplazan).",
+        "source": "Leading text/glyph in the control (the `prefix`/`icon` slots replace it)."
+      },
+      "searchLimit": {
+        "text": "Número máximo de opciones listadas (después de filtrar); ilimitado si no se establece o es 0.",
+        "source": "Maximum number of options listed (after filtering); unlimited when unset or 0."
+      },
+      "searchPlaceholder": {
+        "text": "Placeholder del cuadro de búsqueda del desplegable.",
+        "source": "Placeholder of the dropdown search box."
+      },
+      "searchable": {
+        "text": "Añade al desplegable un cuadro de búsqueda que filtra las opciones.",
+        "source": "Adds a search box to the dropdown that filters the options."
+      },
+      "shape": {
+        "text": "Geometría de las esquinas del control.",
+        "source": "Corner geometry of the control."
+      },
+      "size": {
+        "text": "Escala de tamaño.",
+        "source": "Size scale."
+      },
+      "teleport": {
+        "text": "Teletransporta el desplegable (con posición fija bajo el control): `true` para `body` o un selector CSS. Útil dentro de contenedores que recortan el contenido.",
+        "source": "Teleports the dropdown (fixed-positioned under the control): `true` for `body` or a CSS selector. Useful inside clipping containers."
+      },
+      "tone": {
+        "text": "Color de acento para el foco y la selección.",
+        "source": "Accent color for focus and selection."
+      },
+      "variant": {
+        "text": "Variante visual.",
+        "source": "Visual variant."
+      }
+    },
+    "events": {
+      "change": {
+        "text": "Mismo payload que `update:modelValue`, para listeners sin v-model.",
+        "source": "Same payload as `update:modelValue`, for non-v-model listeners."
+      },
+      "clear": {
+        "text": "Se usó el botón de borrar.",
+        "source": "The clear button was used."
+      },
+      "create": {
+        "text": "Se creó una opción nueva a partir de la consulta (`creatable`); el payload es su etiqueta.",
+        "source": "A new option was created from the query (`creatable`); payload is its label."
+      },
+      "open-change": {
+        "text": "El desplegable se abrió o se cerró (alias de `update:open`).",
+        "source": "The dropdown opened or closed (alias of `update:open`)."
+      },
+      "search": {
+        "text": "Cambió la consulta de búsqueda; el payload es la consulta.",
+        "source": "The search query changed; payload is the query."
+      },
+      "update:modelValue": {
+        "text": "Cambió la selección; `null` (simple) o `[]` (múltiple) tras borrarla.",
+        "source": "The selection changed; `null` (single) or `[]` (multiple) after clearing."
+      },
+      "update:open": {
+        "text": "El desplegable se abrió o se cerró (para `v-model:open`).",
+        "source": "The dropdown opened or closed (for `v-model:open`)."
+      }
+    },
+    "slots": {
+      "counter": {
+        "text": "Recuento de la selección mostrado en el modo contador.",
+        "source": "Selection count shown in counter mode."
+      },
+      "empty": {
+        "text": "Contenido mostrado cuando ninguna opción coincide.",
+        "source": "Content shown when no option matches."
+      },
+      "footer": {
+        "text": "Contenido en la parte inferior del desplegable.",
+        "source": "Content at the bottom of the dropdown."
+      },
+      "header": {
+        "text": "Contenido en la parte superior del desplegable (sobre el cuadro de búsqueda).",
+        "source": "Content at the top of the dropdown (above the search box)."
+      },
+      "icon": {
+        "text": "Icono inicial (se usa cuando no se proporciona el slot `prefix`).",
+        "source": "Leading icon (used when the `prefix` slot is not provided)."
+      },
+      "option": {
+        "text": "Contenido de una opción de la lista (`active` = resaltada con el teclado).",
+        "source": "Content of one option in the list (`active` = keyboard-highlighted)."
+      },
+      "prefix": {
+        "text": "Contenido inicial del control (reemplaza `prefix`).",
+        "source": "Leading content of the control (replaces `prefix`)."
+      },
+      "selectedOption": {
+        "text": "Valor mostrado de una selección simple.",
+        "source": "Displayed value of a single selection."
+      },
+      "suffix": {
+        "text": "Contenido final antes del botón de borrar y el chevron.",
+        "source": "Trailing content before the clear button and chevron."
+      },
+      "tag": {
+        "text": "Una etiqueta de una selección múltiple.",
+        "source": "One tag of a multiple selection."
+      },
+      "value": {
+        "text": "Reemplaza toda el área del valor (etiquetas, contador o valor simple).",
+        "source": "Replaces the whole value area (tags, counter or single value)."
+      }
     }
   },
   "MsSeparator": {
@@ -2340,8 +4276,8 @@
         "source": "If true, separator is hidden from accessibility tree (decorative). Default: true."
       },
       "label": {
-        "text": "Etiqueta de texto opcional incrustada en un separador horizontal (p. ej. \"OU\").",
-        "source": "Optional text label to render embedded in a horizontal separator (e.g. \"OU\")."
+        "text": "Etiqueta de texto opcional incrustada en un separador horizontal (p. ej. \"O\").",
+        "source": "Optional text label to render embedded in a horizontal separator (e.g. \"OR\")."
       },
       "orientation": {
         "text": "Dirección del diseño: \"horizontal\" | \"vertical\". Predeterminado: \"horizontal\".",
@@ -2362,6 +4298,12 @@
       "variant": {
         "text": "Estilo visual de la línea: \"default\" | \"subtle\" | \"strong\" | \"dashed\" | \"dotted\" | \"gradient\". Predeterminado: \"default\".",
         "source": "Visual line style: \"default\" | \"subtle\" | \"strong\" | \"dashed\" | \"dotted\" | \"gradient\". Default: \"default\"."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Etiqueta enriquecida centrada en la línea (solo horizontal); reemplaza la prop `label`.",
+        "source": "Rich label centered in the line (horizontal only); replaces the `label` prop."
       }
     }
   },
@@ -2395,6 +4337,34 @@
         "text": "Ancho predefinido.",
         "source": "Preset width."
       }
+    },
+    "events": {
+      "toggle": {
+        "text": "Se emite cuando se hace clic en el botón de alternancia (también alterna un `MsAppShell` contenedor).",
+        "source": "Fires when the toggle button is clicked (also toggles an enclosing `MsAppShell`)."
+      },
+      "update:collapsed": {
+        "text": "Se emite cuando se hace clic en el botón de alternancia; el payload es el nuevo estado contraído.",
+        "source": "Fires when the toggle button is clicked; payload is the new collapsed state."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Cuerpo de la barra lateral (p. ej. `MsSidebarMenu`).",
+        "source": "Sidebar body (e.g. `MsSidebarMenu`)."
+      },
+      "footer": {
+        "text": "Pie fijado bajo el cuerpo.",
+        "source": "Footer pinned below the body."
+      },
+      "header": {
+        "text": "Contenido de la cabecera, antes del botón para contraer.",
+        "source": "Header content, before the collapse toggle button."
+      },
+      "toggle-icon": {
+        "text": "Reemplaza el icono dentro del botón para contraer (mostrado con `showToggle`).",
+        "source": "Replaces the icon inside the collapse toggle button (shown with `showToggle`)."
+      }
     }
   },
   "MsSidebarMenu": {
@@ -2427,6 +4397,26 @@
         "text": "Rol de color del elemento activo.",
         "source": "Color role of the active item."
       }
+    },
+    "events": {
+      "select": {
+        "text": "Se emite cuando se selecciona un elemento hoja; el payload son los datos del elemento.",
+        "source": "Fires when a leaf item is selected; payload is the item data."
+      },
+      "toggle": {
+        "text": "Se emite cuando se abre o se cierra el submenú de un elemento; el payload contiene el id del elemento y el nuevo estado abierto.",
+        "source": "Fires when an item's submenu is opened or closed; payload has the item id and new open state."
+      },
+      "update:modelValue": {
+        "text": "Se emite cuando se selecciona un elemento hoja con id; el payload es el id del elemento.",
+        "source": "Fires when a leaf item with an id is selected; payload is the item id."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos declarativos `MsSidebarMenuGroup`/`MsSidebarMenuItem`; reemplazan las entradas renderizadas desde `items`.",
+        "source": "Declarative `MsSidebarMenuGroup`/`MsSidebarMenuItem` children; replaces the entries rendered from `items`."
+      }
     }
   },
   "MsSidebarMenuGroup": {
@@ -2434,6 +4424,20 @@
       "title": {
         "text": "Encabezado del grupo (se puede sobrescribir mediante el slot `title`).",
         "source": "Group heading (overridable via the `title` slot)."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsSidebarMenuItem`, renderizados dentro de una lista.",
+        "source": "`MsSidebarMenuItem` children, rendered inside a list."
+      },
+      "extra": {
+        "text": "Contenido adicional después del encabezado (p. ej. un botón de acción); solo se renderiza cuando hay título.",
+        "source": "Extra content after the heading (e.g. an action button); rendered only when there is a title."
+      },
+      "title": {
+        "text": "Encabezado de grupo enriquecido; reemplaza la prop `title`.",
+        "source": "Rich group heading; replaces the `title` prop."
       }
     }
   },
@@ -2478,6 +4482,38 @@
       "open": {
         "text": "Estado abierto del submenú cuando el elemento no está controlado por un menú padre.",
         "source": "Open state of the submenu when the item is not controlled by a parent menu."
+      }
+    },
+    "events": {
+      "click": {
+        "text": "Se emite al hacer clic, salvo que el elemento esté deshabilitado; el payload es el evento nativo.",
+        "source": "Fires on click unless the item is disabled; payload is the native event."
+      },
+      "toggle": {
+        "text": "Se emite cuando un elemento `hasChildren` sin `id` (o fuera de `MsSidebarMenu`) alterna su submenú; el payload es el nuevo estado abierto. Los elementos con `id` lo notifican mediante el evento `toggle` del menú.",
+        "source": "Fires when a `hasChildren` item without an `id` (or outside `MsSidebarMenu`) toggles its submenu; payload is the new open state. Items with an `id` report through the menu's `toggle` event instead."
+      }
+    },
+    "slots": {
+      "arrow": {
+        "text": "Reemplaza el chevron del submenú (mostrado con `hasChildren`).",
+        "source": "Replaces the submenu chevron (shown with `hasChildren`)."
+      },
+      "badge": {
+        "text": "Insignia después de la etiqueta; reemplaza la prop `badge`.",
+        "source": "Badge after the label; replaces the `badge` prop."
+      },
+      "default": {
+        "text": "Etiqueta enriquecida; reemplaza la prop `label`.",
+        "source": "Rich label; replaces the `label` prop."
+      },
+      "icon": {
+        "text": "Icono inicial; reemplaza la prop `icon`.",
+        "source": "Leading icon; replaces the `icon` prop."
+      },
+      "sub": {
+        "text": "Elementos hijos `MsSidebarMenuItem` anidados, mostrados en el submenú contraíble (con `hasChildren`).",
+        "source": "Nested `MsSidebarMenuItem` children, shown in the collapsible submenu (with `hasChildren`)."
       }
     }
   },
@@ -2563,6 +4599,42 @@
         "text": "Permite el salto de línea del texto",
         "source": "Allow text wrapping"
       }
+    },
+    "events": {
+      "copy": {
+        "text": "Se emite después de copiar el código; el payload contiene el texto copiado (incluido el prompt con `copyPrompt`) y el id o índice de la pestaña activa.",
+        "source": "Fires after the code was copied; payload has the copied text (including the prompt with `copyPrompt`) and the active tab id or index."
+      },
+      "tab-change": {
+        "text": "Se emite junto con `update:activeTab`; el payload es la pestaña seleccionada y su índice.",
+        "source": "Fires alongside `update:activeTab`; payload is the selected tab item and its index."
+      },
+      "update:activeTab": {
+        "text": "Se emite cuando se selecciona una pestaña (clic o teclas de flecha/Home/End); el payload es el `id` de la pestaña, o su índice si no tiene.",
+        "source": "Fires when a tab is selected (click or arrow/Home/End keys); payload is the tab `id`, or its index when it has none."
+      }
+    },
+    "slots": {
+      "copy-button": {
+        "text": "Reemplaza el icono del botón de copiar; `copied` es true brevemente después de una copia correcta.",
+        "source": "Replaces the copy button icon; `copied` is true briefly after a successful copy."
+      },
+      "default": {
+        "text": "Reemplaza el código mostrado (el botón de copiar sigue copiando `code` o el código de la pestaña activa).",
+        "source": "Replaces the displayed code (the copy button still copies `code` or the active tab's code)."
+      },
+      "header-extra": {
+        "text": "Contenido adicional de la cabecera antes del botón de copiar (solo fragmentos con pestañas).",
+        "source": "Extra header content before the copy button (tabbed snippets only)."
+      },
+      "prefix": {
+        "text": "Reemplaza el glifo del prompt antes del código (mostrado cuando se establece un prompt).",
+        "source": "Replaces the prompt glyph before the code (shown when a prompt is set)."
+      },
+      "tab": {
+        "text": "Reemplaza cada etiqueta de pestaña; recibe la pestaña, si está activa y su índice.",
+        "source": "Replaces each tab label; receives the tab item, whether it is active and its index."
+      }
     }
   },
   "MsSpinner": {
@@ -2607,6 +4679,26 @@
         "text": "Tamaño del primer panel como porcentaje del contenedor (`v-model:split`).",
         "source": "Size of the first pane as a percentage of the container (`v-model:split`)."
       }
+    },
+    "events": {
+      "resize": {
+        "text": "Se emite junto con `update:split`; el payload es el nuevo porcentaje.",
+        "source": "Fires alongside `update:split`; payload is the new percentage."
+      },
+      "update:split": {
+        "text": "Se emite cuando la división cambia al arrastrar o con el teclado; el payload es el nuevo porcentaje, redondeado y limitado.",
+        "source": "Fires when the split changes by dragging or keyboard; payload is the new rounded, clamped percentage."
+      }
+    },
+    "slots": {
+      "first": {
+        "text": "Primer panel (izquierdo en horizontal, superior en vertical); su tamaño lo define `split`.",
+        "source": "First pane (left when horizontal, top when vertical); sized by `split`."
+      },
+      "second": {
+        "text": "Segundo panel; ocupa el espacio restante.",
+        "source": "Second pane; takes the remaining space."
+      }
     }
   },
   "MsStatus": {
@@ -2627,6 +4719,12 @@
         "text": "Color del tono semántico.",
         "source": "Semantic tone color."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Etiqueta enriquecida junto al punto indicador; reemplaza la prop `label`.",
+        "source": "Rich label next to the indicator dot; replaces the `label` prop."
+      }
     }
   },
   "MsStatusBar": {
@@ -2634,6 +4732,12 @@
       "tone": {
         "text": "Rol de color semántico.",
         "source": "Semantic color role."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido del estado, anunciado mediante `role=\"status\"`.",
+        "source": "Status content, announced via `role=\"status\"`."
       }
     }
   },
@@ -2659,6 +4763,24 @@
         "text": "Título principal del paso.",
         "source": "Primary title of the step."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido adicional del paso renderizado bajo el disparador del paso (p. ej. detalles o acciones).",
+        "source": "Extra step content rendered below the step trigger (e.g. details or actions)."
+      },
+      "indicator": {
+        "text": "Reemplaza el indicador de número/marca de verificación.",
+        "source": "Replaces the number/check indicator."
+      },
+      "subtitle": {
+        "text": "Subtítulo enriquecido; reemplaza `subtitle`.",
+        "source": "Rich subtitle; replaces `subtitle`."
+      },
+      "title": {
+        "text": "Título enriquecido; reemplaza `title`.",
+        "source": "Rich title; replaces `title`."
+      }
     }
   },
   "MsStepper": {
@@ -2674,6 +4796,22 @@
       "modelValue": {
         "text": "Índice del paso activo (empezando en 0).",
         "source": "Active step index (0-indexed)."
+      }
+    },
+    "events": {
+      "change": {
+        "text": "Se emite junto con `update:modelValue` con el mismo índice.",
+        "source": "Fires alongside `update:modelValue` with the same index."
+      },
+      "update:modelValue": {
+        "text": "Se emite cuando se hace clic en un paso con `clickable`; el payload es su índice.",
+        "source": "Fires when a step is clicked while `clickable`; payload is its index."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsStep`.",
+        "source": "`MsStep` children."
       }
     }
   },
@@ -2719,6 +4857,30 @@
         "text": "Atributo value del formulario.",
         "source": "Form value attribute."
       }
+    },
+    "events": {
+      "change": {
+        "text": "Se emite después de los eventos de actualización con el nuevo estado marcado.",
+        "source": "Fires after the update events with the new checked state."
+      },
+      "update:checked": {
+        "text": "Igual que `update:modelValue`, para `v-model:checked`.",
+        "source": "Same as `update:modelValue`, for `v-model:checked`."
+      },
+      "update:modelValue": {
+        "text": "Se emite cuando el usuario alterna el interruptor; el payload es el nuevo estado marcado.",
+        "source": "Fires when the user toggles the switch; payload is the new checked state."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Etiqueta enriquecida; reemplaza la prop `label`.",
+        "source": "Rich label; replaces the `label` prop."
+      },
+      "description": {
+        "text": "Texto de ayuda enriquecido bajo la etiqueta; reemplaza la prop `description`.",
+        "source": "Rich helper text below the label; replaces the `description` prop."
+      }
     }
   },
   "MsTab": {
@@ -2731,6 +4893,34 @@
         "text": "Identificador único que se corresponde con el MsTabPanel asociado.",
         "source": "Unique identifier matching corresponding MsTabPanel."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Etiqueta de la pestaña.",
+        "source": "Tab label."
+      }
+    }
+  },
+  "MsTabList": {
+    "props": {
+      "ariaLabel": {
+        "text": "Nombre accesible del `role=\"tablist\"` (p. ej. \"Ajustes de la cuenta\").",
+        "source": "Accessible name of the `role=\"tablist\"` (e.g. \"Account settings\")."
+      },
+      "scrollable": {
+        "text": "Se desplaza horizontalmente cuando las pestañas desbordan. Recurre al valor del `MsTabs` padre y, después, a true.",
+        "source": "Scrolls horizontally when tabs overflow. Falls back to the parent `MsTabs` value, then true."
+      },
+      "showArrows": {
+        "text": "Muestra botones de flecha anterior/siguiente mientras la lista desborda (nunca en orientación vertical). Recurre al valor del `MsTabs` padre y, después, a true.",
+        "source": "Shows previous/next arrow buttons while the list overflows (never in vertical orientation). Falls back to the parent `MsTabs` value, then true."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsTab`, renderizados dentro del elemento `role=\"tablist\"`.",
+        "source": "`MsTab` children, rendered inside the `role=\"tablist\"` element."
+      }
     }
   },
   "MsTabPanel": {
@@ -2742,6 +4932,26 @@
       "value": {
         "text": "Valor que se corresponde con el disparador MsTab asociado.",
         "source": "Value corresponding to the associated MsTab trigger."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido del panel, mostrado mientras su pestaña está seleccionada (con `lazy`, solo se monta entonces).",
+        "source": "Panel content, shown while its tab is selected (mounted only then with `lazy`)."
+      }
+    }
+  },
+  "MsTabPanels": {
+    "props": {
+      "as": {
+        "text": "Etiqueta del elemento contenedor de los paneles.",
+        "source": "Element tag of the panels container."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsTabPanel`.",
+        "source": "`MsTabPanel` children."
       }
     }
   },
@@ -2775,6 +4985,24 @@
         "text": "Estilo visual de la superficie del contenedor: \"default\", \"surface\", \"flush\".",
         "source": "Visual container surface style: \"default\", \"surface\", \"flush\"."
       }
+    },
+    "slots": {
+      "caption": {
+        "text": "Leyenda enriquecida; reemplaza la prop `caption` y da nombre a la tabla.",
+        "source": "Rich caption; replaces the `caption` prop and names the table."
+      },
+      "default": {
+        "text": "Secciones de la tabla (`MsTableHead`, `MsTableBody`, `MsTableFooter`), renderizadas dentro de `<table>`.",
+        "source": "Table sections (`MsTableHead`, `MsTableBody`, `MsTableFooter`), rendered inside `<table>`."
+      }
+    }
+  },
+  "MsTableBody": {
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsTableRow`, renderizados dentro de `<tbody>`.",
+        "source": "`MsTableRow` children, rendered inside `<tbody>`."
+      }
     }
   },
   "MsTableCell": {
@@ -2782,6 +5010,28 @@
       "align": {
         "text": "Alineación del texto de la celda.",
         "source": "Cell text alignment."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido de la celda, renderizado dentro de `<td>`.",
+        "source": "Cell content, rendered inside `<td>`."
+      }
+    }
+  },
+  "MsTableFooter": {
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsTableRow`, renderizados dentro de `<tfoot>`.",
+        "source": "`MsTableRow` children, rendered inside `<tfoot>`."
+      }
+    }
+  },
+  "MsTableHead": {
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsTableRow` de cabecera, renderizados dentro de `<thead>`.",
+        "source": "Header `MsTableRow` children, rendered inside `<thead>`."
       }
     }
   },
@@ -2803,6 +5053,22 @@
         "text": "Ancho explícito opcional (p. ej. \"120px\", \"20%\")",
         "source": "Optional explicit width (e.g. \"120px\", \"20%\")"
       }
+    },
+    "events": {
+      "click": {
+        "text": "Se emite cuando se hace clic en una cabecera `sortable` o se activa con el teclado; el payload es el evento nativo. Alterna `sortDirection` en respuesta.",
+        "source": "Fires when a `sortable` header is clicked or activated with the keyboard; payload is the native event. Toggle `sortDirection` in response."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Etiqueta de la cabecera.",
+        "source": "Header label."
+      },
+      "sortIcon": {
+        "text": "Reemplaza el indicador de ordenación de una cabecera `sortable`; `direction` es el `sortDirection` actual.",
+        "source": "Replaces the sort indicator of a `sortable` header; `direction` is the current `sortDirection`."
+      }
     }
   },
   "MsTableRow": {
@@ -2814,6 +5080,18 @@
       "selected": {
         "text": "Resalta la fila como seleccionada",
         "source": "Highlights the row as selected"
+      }
+    },
+    "events": {
+      "click": {
+        "text": "Se emite en cada clic en la fila; el payload es el evento nativo.",
+        "source": "Fires on every click on the row; payload is the native event."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsTableCell`/`MsTableHeaderCell`, renderizados dentro de `<tr>`.",
+        "source": "`MsTableCell`/`MsTableHeaderCell` children, rendered inside `<tr>`."
       }
     }
   },
@@ -2855,13 +5133,29 @@
         "text": "Variante visual.",
         "source": "Visual variant."
       }
+    },
+    "events": {
+      "change": {
+        "text": "Se emite junto con `update:modelValue` con el mismo valor.",
+        "source": "Fires alongside `update:modelValue` with the same value."
+      },
+      "update:modelValue": {
+        "text": "Se emite cuando se activa una pestaña (clic, o teclas de flecha con `activationMode: \"automatic\"`); el payload es el `value` de la pestaña.",
+        "source": "Fires when a tab is activated (click, or arrow keys with `activationMode: \"automatic\"`); payload is the tab `value`."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsTabList` y `MsTabPanels` (o `MsTabPanel`).",
+        "source": "`MsTabList` and `MsTabPanels` (or `MsTabPanel`) children."
+      }
     }
   },
   "MsTag": {
     "props": {
       "clickable": {
-        "text": "Si al hacer clic en la etiqueta se activan acciones interactivas. Predeterminado: false.",
-        "source": "Whether clicking the tag triggers interactive actions. Default: false."
+        "text": "Convierte la etiqueta en un botón (`role=\"button\"`, enfocable, Enter/Space) que emite `click`. Con `closable`, el contenido de la etiqueta pasa a ser el botón y el botón de cierre es su hermano, de modo que los controles nunca se anidan. Predeterminado: false.",
+        "source": "Makes the tag a button (`role=\"button\"`, focusable, Enter/Space) that emits `click`. With `closable`, the tag content becomes the button and the close button is its sibling, so controls are never nested. Default: false."
       },
       "closable": {
         "text": "Si se muestra un botón interactivo de cerrar/eliminar. Predeterminado: false.",
@@ -2891,6 +5185,34 @@
         "text": "Variante visual: - \"soft\": fondo tintado sutil con texto a juego (predeterminado) - \"solid\": relleno completo del tono con texto invertido - \"outline\": fondo transparente con borde semántico",
         "source": "Visual variant: - \"soft\": subtle tinted background with matching text (default) - \"solid\": full tone fill with inverse text - \"outline\": transparent background with semantic border"
       }
+    },
+    "events": {
+      "click": {
+        "text": "Se activó una etiqueta `clickable` con clic, Enter o Space.",
+        "source": "A `clickable` tag was activated by click, Enter or Space."
+      },
+      "close": {
+        "text": "Se hizo clic en el botón de cierre (la etiqueta no se elimina sola).",
+        "source": "The close button was clicked (the tag does not remove itself)."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Texto de la etiqueta; también se usa para construir la etiqueta \"Eliminar …\" del botón de cierre.",
+        "source": "Tag text; also used to build the close button's \"Remove …\" label."
+      },
+      "icon": {
+        "text": "Icono inicial.",
+        "source": "Leading icon."
+      },
+      "prefix": {
+        "text": "Contenido inicial (alias de `icon`, usado cuando no se proporciona `icon`).",
+        "source": "Leading content (alias of `icon`, used when `icon` is not provided)."
+      },
+      "suffix": {
+        "text": "Contenido final antes del botón de cierre.",
+        "source": "Trailing content before the close button."
+      }
     }
   },
   "MsTextarea": {
@@ -2912,8 +5234,8 @@
         "source": "Maximum number of characters (native `maxlength`; also shown by the counter)."
       },
       "maxRows": {
-        "text": "Número máximo de filas para `autoGrow`; actualmente el componente no lo aplica.",
-        "source": "Maximum rows for `autoGrow`; currently not applied by the component."
+        "text": "Con `autoGrow`, limita la altura a este número de filas de texto (line-height × filas + padding vertical); el contenido más largo se desplaza dentro del textarea.",
+        "source": "With `autoGrow`, caps the height at this many text rows (line-height × rows + vertical padding); longer content scrolls inside the textarea."
       },
       "modelValue": {
         "text": "Valor de texto (`v-model`).",
@@ -2951,6 +5273,34 @@
         "text": "Rol de color semántico (se fuerza a \"danger\" mientras es inválido).",
         "source": "Semantic color role (forced to \"danger\" while invalid)."
       }
+    },
+    "events": {
+      "change": {
+        "text": "Evento nativo `change`, reenviado cuando se confirma el valor (p. ej. al perder el foco).",
+        "source": "Native `change` event, forwarded when the value is committed (e.g. on blur)."
+      },
+      "input": {
+        "text": "Evento nativo `input`, reenviado después de `update:modelValue`.",
+        "source": "Native `input` event, forwarded after `update:modelValue`."
+      },
+      "update:modelValue": {
+        "text": "Se emite en cada entrada; el payload es el nuevo texto.",
+        "source": "Fires on every input; payload is the new text."
+      }
+    },
+    "slots": {
+      "counter": {
+        "text": "Reemplaza el contador de caracteres (mostrado con `showCount`); recibe la longitud actual y `maxLength`.",
+        "source": "Replaces the character counter (shown with `showCount`); receives the current length and `maxLength`."
+      },
+      "footer": {
+        "text": "Contenido adicional del pie entre el texto de ayuda y el contador.",
+        "source": "Extra footer content between the helper and the counter."
+      },
+      "helper": {
+        "text": "Texto de ayuda al inicio de la fila del pie.",
+        "source": "Helper text at the start of the footer row."
+      }
     }
   },
   "MsThemeScope": {
@@ -2987,6 +5337,12 @@
         "text": "Sobrescribe el tema visual para este ámbito.",
         "source": "Override visual theme for this scope."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido que recibe el tema, el modo de color, la densidad, el contraste, el radio y la dirección del ámbito.",
+        "source": "Content that receives the scoped theme, color mode, density, contrast, radius and direction."
+      }
     }
   },
   "MsTimeline": {
@@ -2995,13 +5351,27 @@
         "text": "Dirección del diseño de los hitos.",
         "source": "Layout direction of milestones."
       }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsTimelineItem`, renderizados dentro de una lista ordenada.",
+        "source": "`MsTimelineItem` children, rendered inside an ordered list."
+      }
     }
   },
   "MsTimelineItem": {
     "props": {
+      "active": {
+        "text": "Marca el hito actual: un halo pulsante en el nodo y `aria-current=\"step\"`.",
+        "source": "Marks the current milestone: a pulsing halo on the node and `aria-current=\"step\"`."
+      },
       "description": {
         "text": "Texto del contenido de la descripción.",
         "source": "Description content text."
+      },
+      "solid": {
+        "text": "Rellena el nodo indicador con el color del tono (p. ej. para hitos completados).",
+        "source": "Fills the indicator node with the tone color (e.g. for completed milestones)."
       },
       "timestamp": {
         "text": "Etiqueta opcional de marca de tiempo o fecha.",
@@ -3011,9 +5381,31 @@
         "text": "Texto del título del hito.",
         "source": "Title text of the milestone."
       },
+      "titleTag": {
+        "text": "Elemento del título; elige el nivel de encabezado que encaje en la estructura de la página, o \"p\"/\"span\" cuando los hitos no deban ser encabezados.",
+        "source": "Element for the title; pick the heading level that fits the page outline, or \"p\"/\"span\" when milestones should not be headings."
+      },
       "tone": {
         "text": "Tono de color semántico del punto indicador del hito.",
         "source": "Semantic color tone for the milestone indicator bullet."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Descripción enriquecida; reemplaza `description`.",
+        "source": "Rich description; replaces `description`."
+      },
+      "node": {
+        "text": "Contenido personalizado de la viñeta indicadora.",
+        "source": "Custom indicator bullet content."
+      },
+      "timestamp": {
+        "text": "Marca de tiempo enriquecida; reemplaza `timestamp`.",
+        "source": "Rich timestamp; replaces `timestamp`."
+      },
+      "title": {
+        "text": "Título enriquecido; reemplaza `title` (renderizado dentro de `titleTag`).",
+        "source": "Rich title; replaces `title` (rendered inside `titleTag`)."
       }
     }
   },
@@ -3022,6 +5414,24 @@
       "announce": {
         "text": "Renderiza el toast como su propia región live (status/alert). MsToastContainer lo desactiva y en su lugar anuncia mediante regiones live persistentes.",
         "source": "Render the toast as its own live region (status/alert). MsToastContainer disables it and announces through persistent live regions instead."
+      },
+      "toast": {
+        "text": "El toast que se renderiza (normalmente un elemento de `useToast().toasts`): mensaje, tono, duración…",
+        "source": "The toast to render (usually an item of `useToast().toasts`): message, tone, duration…"
+      }
+    },
+    "events": {
+      "dismiss": {
+        "text": "Se emite cuando se hace clic en el botón de cierre o se agota el temporizador `duration`; el payload es el id del toast.",
+        "source": "Fires when the close button is clicked or the `duration` timer elapses; payload is the toast id."
+      }
+    }
+  },
+  "MsToastContainer": {
+    "props": {
+      "teleportTo": {
+        "text": "Destino del teleport (selector CSS) en el que se renderizan las pilas de toasts.",
+        "source": "Teleport target (CSS selector) the toast stacks render into."
       }
     }
   },
@@ -3054,6 +5464,40 @@
       "variant": {
         "text": "Estilo visual.",
         "source": "Visual style."
+      }
+    },
+    "events": {
+      "change": {
+        "text": "Se emite junto con `update:modelValue` con el mismo payload.",
+        "source": "Fires alongside `update:modelValue` with the same payload."
+      },
+      "update:modelValue": {
+        "text": "Se emite cuando se alterna un elemento; el payload es el nuevo valor (`\"\"` al deseleccionarse en modo simple, un array en modo múltiple).",
+        "source": "Fires when an item is toggled; payload is the new value (`\"\"` when deselected in single mode, array in multiple mode)."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Elementos hijos `MsToggleGroupItem`; reemplazan los elementos renderizados desde `items`.",
+        "source": "`MsToggleGroupItem` children; replaces the items rendered from `items`."
+      }
+    }
+  },
+  "MsToggleGroupItem": {
+    "props": {
+      "disabled": {
+        "text": "Deshabilita este elemento (también se aplica `disabled` del grupo).",
+        "source": "Disables this item (the group's `disabled` also applies)."
+      },
+      "value": {
+        "text": "Valor que se añade al `v-model` del grupo padre (o se establece en él) cuando se pulsa el elemento.",
+        "source": "Value added to/set on the parent group's `v-model` when the item is pressed."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido del elemento (etiqueta o icono).",
+        "source": "Item content (label or icon)."
       }
     }
   },
@@ -3095,6 +5539,16 @@
         "text": "Tono visual de la superficie: \"dark\", \"light\", \"primary\". Predeterminado: \"primary\".",
         "source": "Visual surface tone: \"dark\", \"light\", \"primary\". Default: \"primary\"."
       }
+    },
+    "slots": {
+      "content": {
+        "text": "Contenido enriquecido del tooltip; reemplaza la prop `content`.",
+        "source": "Rich tooltip content; replaces the `content` prop."
+      },
+      "default": {
+        "text": "Disparador; al pasar el cursor o enfocarlo se muestra el tooltip, que se vincula mediante `aria-describedby`.",
+        "source": "Trigger; hovering or focusing it shows the tooltip, which is linked via `aria-describedby`."
+      }
     }
   },
   "MsTopbar": {
@@ -3102,6 +5556,20 @@
       "fixed": {
         "text": "Fija la barra superior mientras el contenido se desplaza.",
         "source": "Fixes the topbar in place while content scrolls."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido central de la barra.",
+        "source": "Center content of the bar."
+      },
+      "leading": {
+        "text": "Contenido inicial (p. ej. marca, botón del menú).",
+        "source": "Start content (e.g. brand, menu toggle)."
+      },
+      "trailing": {
+        "text": "Contenido final (p. ej. acciones, menú de usuario).",
+        "source": "End content (e.g. actions, user menu)."
       }
     }
   },
@@ -3118,6 +5586,112 @@
       "selectedKey": {
         "text": "Clave del nodo seleccionado actualmente.",
         "source": "Currently selected node key."
+      }
+    },
+    "events": {
+      "select": {
+        "text": "Se emite junto con `update:selectedKey`; el payload es el nodo seleccionado.",
+        "source": "Fires alongside `update:selectedKey`; payload is the selected node."
+      },
+      "toggle": {
+        "text": "Se emite junto con `update:expandedKeys`; el payload es el nodo y si ahora está expandido.",
+        "source": "Fires alongside `update:expandedKeys`; payload is the node and whether it is now expanded."
+      },
+      "update:expandedKeys": {
+        "text": "Se emite cuando se expande o se contrae un nodo; el payload es la nueva lista de claves expandidas.",
+        "source": "Fires when a node is expanded or collapsed; payload is the new list of expanded keys."
+      },
+      "update:selectedKey": {
+        "text": "Se emite cuando se selecciona un nodo (clic o teclado); el payload es su clave.",
+        "source": "Fires when a node is selected (click or keyboard); payload is its key."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Reemplaza la etiqueta de cada nodo (por defecto, `node.label`); recibe el nodo.",
+        "source": "Replaces each node's label (defaults to `node.label`); receives the node."
+      },
+      "icon": {
+        "text": "Reemplaza el icono de cada nodo (por defecto, `node.icon`); recibe el nodo.",
+        "source": "Replaces each node's icon (defaults to `node.icon`); receives the node."
+      }
+    }
+  },
+  "MsTreeNode": {
+    "props": {
+      "node": {
+        "text": "Nodo que se renderiza; sus `children` se renderizan de forma recursiva como elementos de árbol anidados.",
+        "source": "Node to render; its `children` render recursively as nested tree items."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido de la etiqueta del nodo (por defecto, `node.label`).",
+        "source": "Node label content (defaults to `node.label`)."
+      },
+      "icon": {
+        "text": "Icono del nodo.",
+        "source": "Node icon."
+      }
+    }
+  },
+  "MsTruncate": {
+    "props": {
+      "collapseText": {
+        "text": "Etiqueta del botón de alternancia mientras está expandido.",
+        "source": "Label of the toggle while expanded."
+      },
+      "expandText": {
+        "text": "Etiqueta del botón de alternancia mientras está contraído.",
+        "source": "Label of the toggle while collapsed."
+      },
+      "expandable": {
+        "text": "Muestra un botón \"mostrar más/menos\" (con `aria-expanded`) cuando el texto realmente desborda. Se mide tras el montaje, por lo que el marcado renderizado en el servidor no tiene botón.",
+        "source": "Shows a \"show more/less\" toggle (with `aria-expanded`) when the text actually overflows. Measured after mount, so server-rendered markup has no toggle."
+      },
+      "expanded": {
+        "text": "Estado expandido (`v-model:expanded`); el texto expandido se muestra completo.",
+        "source": "Expanded state (`v-model:expanded`); expanded text is shown in full."
+      },
+      "lines": {
+        "text": "Máximo de líneas visibles; los valores mayores que 1 usan un recorte multilínea.",
+        "source": "Maximum visible lines; values above 1 use a multi-line clamp."
+      },
+      "middleChars": {
+        "text": "Caracteres que se conservan después de la elipsis con `position=\"middle\"`.",
+        "source": "Characters kept after the ellipsis in `position=\"middle\"`."
+      },
+      "position": {
+        "text": "Dónde va la elipsis: \"end\", o \"middle\" (solo en una línea; mantiene visibles los últimos `middleChars` caracteres, p. ej. para hashes y nombres de archivo).",
+        "source": "Where the ellipsis goes: \"end\", or \"middle\" (single line only, keeps the last `middleChars` characters visible, e.g. for hashes and file names)."
+      },
+      "showTooltip": {
+        "text": "Establece el texto completo como tooltip nativo `title` mientras está contraído.",
+        "source": "Sets the full text as the native `title` tooltip while collapsed."
+      },
+      "text": {
+        "text": "Texto que se trunca (el slot predeterminado puede reemplazarlo en el truncado final).",
+        "source": "Text to truncate (the default slot can replace it for end truncation)."
+      }
+    },
+    "events": {
+      "toggle": {
+        "text": "Se emite cuando se usa el botón de alternancia; el payload es el nuevo estado expandido.",
+        "source": "Fires when the toggle is used; payload is the new expanded state."
+      },
+      "update:expanded": {
+        "text": "Se emite cuando el botón de alternancia cambia el estado expandido.",
+        "source": "Fires when the toggle changes the expanded state."
+      }
+    },
+    "slots": {
+      "default": {
+        "text": "Contenido enriquecido que se trunca; reemplaza la prop `text` (no se usa con el truncado central).",
+        "source": "Rich content to truncate; replaces the `text` prop (not used with middle truncation)."
+      },
+      "expand-trigger": {
+        "text": "Reemplaza el botón de mostrar más/menos (mostrado cuando `expandable` y el contenido desborda); recibe el estado y una función `toggle`.",
+        "source": "Replaces the show more/less button (shown when `expandable` and the content overflows); receives the state and a `toggle` function."
       }
     }
   }
