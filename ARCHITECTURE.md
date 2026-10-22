@@ -1,25 +1,26 @@
 # ARCHITECTURE
 
-Fonte normativa única: **Magic-Style Architecture Baseline 1.2** (`docs/baseline/Magic-Style-Architecture-Baseline-1.2/`). Este arquivo resume o que governa ESTE repositório; não duplica o baseline.
+Single normative source: **Magic-Style Architecture Baseline 1.2** (`docs/baseline/Magic-Style-Architecture-Baseline-1.2/`, written in Portuguese). This file summarizes what governs THIS repository; it does not duplicate the baseline.
 
-## Camadas (doc 18 §1)
+## Layers (doc 18 §1)
 
 L0 Schema/Metadata · L1 Core/Tokens/Variants · L2 Themes/Primitives · L3 CSS/Vue · L4 Standalone Subsystems · L5 Registry/Project · L6 CLI/MCP · L7 Apps.
 
-## Packages deste repo
+## Packages in this repository
 
-- Core público: `@magic-style/vue`, `css`, `tailwind`, `cli`, `schema`
+- Public core: `@magic-style/vue`, `css`, `tailwind`, `cli`, `schema`
 - Standalone (bundle-isolated): `datatable`, `calendar`, `charts`, `notifications`
-- Internos: `@magic-style-internal/*` (tokens, themes, variants, primitives)
+- Internal: `@magic-style-internal/*` (tokens, themes, variants, primitives)
+- Apps: `apps/docs` (documentation site, private)
 
-## Edges proibidos (doc 18 §5)
+## Forbidden edges (doc 18 §5)
 
-- Browser packages não dependem de tooling Node-only
-- Core não depende de subsistemas standalone
+- Browser packages do not depend on Node-only tooling
+- Core does not depend on standalone subsystems
 - Subsystem → foundation only
 
-Verificação automatizada: `pnpm architecture`.
+Automated check: `pnpm architecture`.
 
-## Decisão global nova
+## New global decisions
 
-Exige RFC/ADR (stop condition, doc 14). Nada de improvisação local.
+They require an RFC/ADR (stop condition, doc 14); see `docs/adr/`. No local improvisation.
