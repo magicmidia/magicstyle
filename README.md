@@ -4,7 +4,7 @@
 
 **Accessible Vue 3 components and framework-free CSS, with themes you can actually own.**
 
-[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?style=flat-square)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.0-blue.svg?style=flat-square)](CHANGELOG.md)
 [![Components](https://img.shields.io/badge/components-95-10b981.svg?style=flat-square)](apps/docs/)
 [![Themes](https://img.shields.io/badge/themes-10-6366f1.svg?style=flat-square)](#theming)
 [![Design tokens](https://img.shields.io/badge/tokens-199%20DTCG-06b6d4.svg?style=flat-square)](packages/internal/tokens/)

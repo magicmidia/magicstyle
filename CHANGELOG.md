@@ -7,6 +7,59 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.0] - 2026-10-22
+
+`@magic-style/vue` and `@magic-style/css` 0.2.0, versioned together. Detailed entries: [`packages/vue/CHANGELOG.md`](packages/vue/CHANGELOG.md) and [`packages/css/CHANGELOG.md`](packages/css/CHANGELOG.md). Upgrade notes: the [migration guide](apps/docs/src/guide/migration.md).
+
+### ⚠️ Breaking changes (0.x minor)
+
+- **English is the default locale.** Without `locale`, components render English strings; pass `createMsI18n({ locale: "pt-BR" })` or `<MsProvider locale="pt-BR">` to keep Portuguese.
+- **shadcn/ui-style defaults:** badge `solid`, tabs `pill`, alert `neutral`, tooltip `primary`, skeleton `pulse`, hover card `256px`.
+- App-shell classes renamed to `ms-app-shell__sidebar*` / `ms-app-shell__footer` (no more clash with `MsSidebar`/`MsFooter`).
+- `MsPagination` no longer declares `update:pageSize`; `MsTag` (clickable + closable) and `MsList` groups render new, valid markup; `MsButton` sets `aria-expanded` only when `open` is passed.
+
+### Added
+
+- **Documentation site** (`apps/docs`, VitePress 2) in English, Portuguese and Spanish. It replaces the old preview and has:
+  - a landing page;
+  - 95 component pages with live demos and localized code;
+  - API tables generated from the source and translated;
+  - guides, including Laravel + Inertia with SSR;
+  - a theme gallery and a theme generator with AA checks and TS, CSS, DTCG and Tokens Studio export;
+  - a token explorer;
+  - a **Blocks** page with six complete screens;
+  - "Open in StackBlitz", enabled after the npm release.
+- `as`/`href` on `MsButton` (links, `RouterLink`, Inertia `Link`), `as` on `MsBadge`, `as`/`href` and a `soft` variant on `MsCard`.
+- Spanish dictionary; `usePrefersReducedMotion()`; `MsChatBubble` `typing`; `MsTimelineItem` `solid`/`active`/`titleTag`; `MsList` `selectable`; `MsScrollSpy` `container`; `MsBlockquote` `citeUrl`; `MsProvider` `colorMode="inherit"`; `MsRating` tones; `MsList` `separated`.
+- Theme engine:
+  - a 27-variable contract with derived tokens and a tone engine;
+  - density, radius and contrast dials;
+  - `defineMsTheme`, `msThemeToCss` and `checkMsThemeContrast`;
+  - DTCG-compatible tokens;
+  - a Tailwind-scale elevation;
+  - focus ring tokens.
+
+### Changed
+
+- New default look in the style of shadcn/ui across all 10 themes: each theme changes only colors, radii, depth and fonts.
+- RTL through logical properties; decorative animations honor reduced motion; `!important` removed.
+- Every public prop, event and slot has a JSDoc description.
+
+### Fixed
+
+- Accessibility (WCAG 2.2 AA):
+  - keyboard and focus handling in segmented control, snippet, tag, choicebox, menu, FAB, emoji/icon pickers and date picker;
+  - valid list, breadcrumb and button markup;
+  - scrollable regions are focusable and labelled;
+  - 24px select targets;
+  - AA contrast for muted text, code syntax and field borders (3:1);
+  - a pause control for the marquee.
+- SSR hydration: sidebar submenus, icon picker, glimpse, tables, tabs.
+- A nested theme with `colorMode="inherit"` follows the nearest ancestor's light/dark mode in any theme (`@scope`).
+- Translated built-in labels (field optional, rating, tag, chat, avatar group).
+
+---
+
 ## [0.1.0] - 2026-09-17
 
 ### Enterprise Baseline 1.2 Initial Release

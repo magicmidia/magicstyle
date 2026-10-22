@@ -1,15 +1,23 @@
 ---
 title: Changelog
-description: Resumo das mudanças ainda não publicadas e link para o histórico completo de versões.
+description: O que mudou em cada versão, com link para o histórico completo.
 ---
 
 # Changelog
 
-O histórico completo de versões está no [CHANGELOG.md do repositório](https://github.com/magicmidia/magicstyle/blob/main/CHANGELOG.md). A última versão publicada é a **0.1.0**. `@magic-style/vue` e `@magic-style/css` são versionados juntos.
+O histórico completo de versões está no [CHANGELOG.md do repositório](https://github.com/magicmidia/magicstyle/blob/main/CHANGELOG.md). A versão mais recente é a **0.2.0** (ainda não publicada no npm). `@magic-style/vue` e `@magic-style/css` são versionados juntos.
 
-## Próxima versão (não publicada)
+## 0.2.0 — 22/10/2026
 
-Resumo das mudanças já no `main`, agrupadas por tema. Para atualizar um app existente, veja [Migração](/pt/guide/migration).
+Resumo agrupado por tema. Para atualizar um app existente, veja [Migração](/pt/guide/migration).
+
+### Destaques
+
+- Este site de documentação (inglês, português e espanhol), com demos ao vivo, tabelas de API geradas e traduzidas, gerador de temas com exportação DTCG e Tokens Studio, explorador de tokens e telas completas na página [Blocks](/pt/blocks).
+- O inglês passa a ser o idioma padrão dos componentes. Use `createMsI18n({ locale: "pt-BR" })` para manter o português.
+- `MsButton`, `MsBadge` e `MsCard` viram links ou componentes de rota com `as`/`href`.
+- Um `MsProvider` aninhado com `color-mode="inherit"` segue o modo claro ou escuro do ancestral mais próximo, em qualquer tema.
+- Toda prop, evento e slot está documentado.
 
 ### Visual
 

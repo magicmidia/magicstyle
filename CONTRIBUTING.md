@@ -123,6 +123,17 @@ Before submitting a Pull Request:
 
 ---
 
+## 🏷️ Versioning & Releases
+
+Magic-Style follows [Semantic Versioning](https://semver.org/). `@magic-style/vue` and `@magic-style/css` always share the same version (changesets `fixed` group). While the major version is `0`, breaking changes bump the **minor** version and everything else bumps the **patch** version.
+
+1. Every change to a public package ships a changeset (`pnpm changeset`).
+2. On every push to `main`, the **Release** workflow opens or updates the **"chore: version packages"** PR. It runs `changeset version`, which bumps the versions, writes the package `CHANGELOG.md` files and removes the consumed changesets.
+3. When that PR is merged, add the release notes to the root [`CHANGELOG.md`](CHANGELOG.md), then tag the merge commit `vX.Y.Z` and publish a **GitHub Release** with those notes.
+4. Publishing to npm is a separate, manual step: **Actions → Release → Run workflow**. It runs the full health gate, then `changeset publish`, in the protected `npm` environment.
+
+---
+
 ## 🛡️ Governance & Human Gates (Doc 24 §6)
 
 Core foundation changes (`MsButton`, `MsDialog`, `MsSelect`, `MsAppShell`, tokens schema, and release freezes) require human review and approval.

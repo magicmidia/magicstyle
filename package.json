@@ -1,7 +1,7 @@
 {
   "name": "magic-style",
   "description": "Magic-Style design system for Vue 3 and framework-free CSS: 95 accessible components, 10 themes built on a 27-variable contract, 199 DTCG tokens, SSR and WCAG 2.2 AA.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.34.5",

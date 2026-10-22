@@ -1,15 +1,23 @@
 ---
 title: Changelog
-description: Summary of unreleased changes and a link to the full release history.
+description: What changed in each release, with a link to the full release history.
 ---
 
 # Changelog
 
-The full release history lives in the [repository CHANGELOG.md](https://github.com/magicmidia/magicstyle/blob/main/CHANGELOG.md). The latest published release is **0.1.0**. `@magic-style/vue` and `@magic-style/css` are versioned together.
+The full release history lives in the [repository CHANGELOG.md](https://github.com/magicmidia/magicstyle/blob/main/CHANGELOG.md). The latest release is **0.2.0** (not published to npm yet). `@magic-style/vue` and `@magic-style/css` are versioned together.
 
-## Next release (unreleased)
+## 0.2.0 — 2026-10-22
 
-A summary of the changes already on `main`, grouped by theme. To upgrade an existing app, see [Migration](/guide/migration).
+A summary grouped by theme. To upgrade an existing app, see [Migration](/guide/migration).
+
+### Highlights
+
+- This documentation site (English, Portuguese and Spanish), with live demos, generated and translated API tables, a theme generator with DTCG and Tokens Studio export, a token explorer and complete screens on the [Blocks](/blocks) page.
+- English is the default locale of the components. Pass `createMsI18n({ locale: "pt-BR" })` to keep Portuguese.
+- `MsButton`, `MsBadge` and `MsCard` render as links or router components with `as`/`href`.
+- A nested `MsProvider` with `color-mode="inherit"` follows the nearest ancestor's light or dark mode in any theme.
+- Every prop, event and slot is documented.
 
 ### Visual
 
