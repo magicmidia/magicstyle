@@ -240,27 +240,29 @@ function onMenuDismiss(reason: string) {
         {{ t.brand }}
       </div>
       <MsSidebarMenu v-model="active" :aria-label="t.navLabel" density="compact">
-        <MsSidebarMenuItem
-          v-for="item in nav"
-          :id="item.id"
-          :key="item.id"
-          :label="item.label"
-          :badge="item.badge"
-        >
-          <template #icon>
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path v-for="d in item.icon" :key="d" :d="d" />
-            </svg>
-          </template>
-        </MsSidebarMenuItem>
+        <ul class="ms-sidebar-menu-list">
+          <MsSidebarMenuItem
+            v-for="item in nav"
+            :id="item.id"
+            :key="item.id"
+            :label="item.label"
+            :badge="item.badge"
+          >
+            <template #icon>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path v-for="d in item.icon" :key="d" :d="d" />
+              </svg>
+            </template>
+          </MsSidebarMenuItem>
+        </ul>
       </MsSidebarMenu>
       <MsCard class="dash__upgrade" variant="flat" padding="sm">
         <strong>{{ t.upgradeTitle }}</strong>

@@ -36,6 +36,8 @@ const A11Y_PAGES = [
   "/es/components/tabs",
   "/themes",
   "/pt/tokens",
+  "/blocks",
+  "/es/blocks",
 ];
 const CONCURRENCY = 4;
 /** Requests that fail on purpose (the avatar demo shows its fallback for a missing photo). */
